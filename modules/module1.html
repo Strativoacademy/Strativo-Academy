@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- HEADER / FOOTER -->
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- ========================================= -->
+    <!-- SEO & META TAGS -->
+    <!-- ========================================= -->
+    <title>Forex Basics - Module 1 | Strativo Academy</title>
+
+    <meta
+        name="description"
+        content="Master the fundamentals of Forex trading. Learn about currency pairs, market mechanics, global sessions, and risk management in Module 1."
+    >
+
+    <meta name="theme-color" content="#030712">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta
+        property="og:title"
+        content="Forex Basics - Module 1 | Strativo Academy"
+    >
+    <meta
+        property="og:description"
+        content="Master the fundamentals of Forex trading. Learn about currency pairs, market mechanics, global sessions, and risk management."
+    >
+    <meta
+        property="og:image"
+        content="../images/og-module1.jpg"
+    >
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/x-icon"
+        href="../favicon.ico"
+    >
+
+    <!-- ========================================= -->
+    <!-- PERFORMANCE: PRECONNECT FONTS -->
+    <!-- ========================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ========================================= -->
+    <!-- STYLESHEETS -->
+    <!-- ========================================= -->
+
+    <!-- Global Base -->
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+
+    <!-- Shared Components -->
+    <!-- <link rel="stylesheet" href="../css/ui.css"> -->
+
+    <!-- Page Specific -->
+    <link
+        rel="stylesheet"
+        href="../css/module.css"
+    >
+
+    <link
+    rel="stylesheet"
+    href="../css/module-labs.css"
+>
+
+</head>
+
+<body>
+
+<!-- ========================================= -->
+<!-- GLOBAL HEADER -->
+<!-- ========================================= -->
+
+<div data-component="header"></div>
+
+<!-- Skip Link for Accessibility -->
+<a href="#main-content" class="skip-to-content">
+    Skip to main content
+</a>
+
+<!-- Premium Background Effects -->
+<div class="bg-effects"></div>
+<div class="bg-orb-1"></div>
+<div class="bg-orb-2"></div>
+
+
+<div class="academy-layout">
+
+    <!-- ========================================= -->
+    <!-- LAYOUT BODY -->
+    <!-- ========================================= -->
+
+    <div
+        class="layout-body"
+        style="margin-top: 1.5rem; padding-top: 0;"
+    >
+
+        <!-- ========================================= -->
+        <!-- SIDEBAR -->
+        <!-- ========================================= -->
+
+        <aside class="module-sidebar reveal-on-scroll">
+
+            <div class="sidebar-header">
+                <h2 class="sidebar-module-title">
+                    Module 1: Forex Basics
+                </h2>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul
+                    class="lesson-navigation-list"
+                    id="sidebar-lesson-list"
+                ></ul>
+            </nav>
+
+            <div class="sidebar-widgets">
+
+                <!-- DAILY GOAL -->
+                <div class="daily-goal-widget">
+
+                    <div class="dg-header">
+                        <span>Today's Goal</span>
+
+                        <span
+                            style="color:var(--color-primary);"
+                            id="dg-counter"
+                        >
+                            0/2
+                        </span>
+                    </div>
+
+                    <label
+                        class="dg-item"
+                        id="dg-task-1"
+                    >
+                        <input
+                            type="checkbox"
+                            id="dg-check-1"
+                        >
+                        Study 20 Minutes
+                    </label>
+
+                    <label
+                        class="dg-item"
+                        id="dg-task-2"
+                    >
+                        <input
+                            type="checkbox"
+                            id="dg-check-2"
+                        >
+                        Finish a Lesson
+                    </label>
+
+                    <div class="dg-reward">
+                        🎁 Reward: +25 Bonus XP
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIVITY HEATMAP -->
+                <div class="heatmap-widget">
+
+                    <div class="hm-header">
+                        Activity Heatmap
+                    </div>
+
+                    <div
+                        class="hm-grid"
+                        id="heatmap-grid"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ========================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ========================================= -->
+
+        <main
+            class="module-main-content"
+            id="main-content"
+        >
+
+            <!-- ========================================= -->
+            <!-- BREADCRUMB -->
+            <!-- ========================================= -->
+
+            <nav
+                aria-label="Breadcrumb"
+                class="breadcrumb-nav reveal-on-scroll"
+            >
+
+                <ul class="breadcrumb-list">
+
+                    <li class="breadcrumb-item">
+                        <a href="../dashboard/dashboard.html">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="breadcrumb-separator">
+                        /
+                    </li>
+
+                    <li class="breadcrumb-item">
+                        <a href="../beginner.html">
+                            Beginner
+                        </a>
+                    </li>
+
+                    <li class="breadcrumb-separator">
+                        /
+                    </li>
+
+                    <li
+                        class="breadcrumb-item active"
+                        aria-current="page"
+                    >
+                        Module 1
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- ========================================= -->
+            <!-- HERO SECTION -->
+            <!-- ========================================= -->
+
+            <section
+                class="hero-panel glass-panel reveal-on-scroll"
+            >
+
+                <div class="hero-content">
+
+                    <div class="hero-tags">
+
+                        <span class="badge badge-beginner">
+                            Beginner Level
+                        </span>
+
+                        <span class="badge badge-tag">
+                            Forex
+                        </span>
+
+                        <span class="badge badge-tag">
+                            Foundation
+                        </span>
+
+                        <span class="badge badge-tag">
+                            2026 Edition
+                        </span>
+
+                    </div>
+
+
+                    <h1 class="hero-title">
+                        Forex Basics
+                    </h1>
+
+
+                    <div class="hero-mini-stats">
+
+                        <span>
+                            📚 10 Lessons
+                        </span>
+
+                        <span>
+                            ⭐ 500 Max XP
+                        </span>
+
+                        <span>
+                            ⏱ 2.5 Hours
+                        </span>
+
+                        <span id="hero-last-updated">
+                            🔄 Last updated: Today
+                        </span>
+
+                    </div>
+
+
+                    <p
+                        class="hero-desc"
+                        id="hero-welcome-msg"
+                    >
+                        Welcome back. Lay the foundation of your trading
+                        career. Understand the market structure, currency
+                        pairs, and the fundamental mechanics of placing a trade.
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="#lessons-grid-section"
+                            id="hero-continue-btn"
+                            class="btn btn-primary"
+                        >
+                            Start Learning
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO RIGHT -->
+                <div class="hero-right-col hidden-mobile">
+
+                    <div class="hero-illustration">
+
+                        <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            viewBox="0 0 400 300"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+
+                            <path
+                                d="M20 250 Q 80 150 150 200 T 280 100 T 380 50"
+                                stroke="var(--color-primary)"
+                                stroke-width="6"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+
+                            <circle
+                                cx="150"
+                                cy="200"
+                                r="8"
+                                fill="var(--color-accent)"
+                            />
+
+                            <circle
+                                cx="280"
+                                cy="100"
+                                r="8"
+                                fill="var(--color-accent)"
+                            />
+
+                            <circle
+                                cx="380"
+                                cy="50"
+                                r="10"
+                                fill="var(--color-primary)"
+                            />
+
+                        </svg>
+
+                    </div>
+
+
+                    <!-- HERO STAT CARDS -->
+                    <div class="hero-stats-cards">
+
+                        <div
+                            class="h-card"
+                            data-tooltip="Your Current Academy Rank"
+                        >
+
+                            <div class="h-card-top">
+
+                                <div class="hc-icon blue">
+                                    🏅
+                                </div>
+
+                                <div class="hc-info">
+
+                                    <span class="hc-label">
+                                        Current Level
+                                    </span>
+
+                                    <span
+                                        class="hc-val"
+                                        id="hero-val-level"
+                                        style="font-size: var(--fs-lg);"
+                                    >
+                                        Beginner Trader
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="h-card"
+                            data-tooltip="Total XP across all modules"
+                        >
+
+                            <div class="h-card-top">
+
+                                <div class="hc-icon amber">
+                                    ⭐
+                                </div>
+
+                                <div class="hc-info">
+
+                                    <span class="hc-label">
+                                        Next Badge
+                                    </span>
+
+                                    <span
+                                        class="hc-val"
+                                        id="hero-val-next-xp"
+                                        style="font-size: var(--fs-lg);"
+                                    >
+                                        150 XP Remaining
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="h-card"
+                            data-tooltip="Overall completion percentage"
+                            style="grid-column: 1 / -1;"
+                        >
+
+                            <div class="h-card-top">
+
+                                <div
+                                    class="hc-icon"
+                                    style="background: rgba(16,185,129,0.1); color: var(--color-accent);"
+                                >
+                                    📈
+                                </div>
+
+                                <div
+                                    class="hc-info"
+                                    style="width: 100%;"
+                                >
+
+                                    <div
+                                        style="display:flex; justify-content:space-between; align-items:center;"
+                                    >
+
+                                        <span class="hc-label">
+                                            Course Progress
+                                        </span>
+
+                                        <span class="hc-val">
+                                            <span id="hero-val-prog">
+                                                0
+                                            </span>%
+                                        </span>
+
+                                    </div>
+
+                                    <div class="hc-progress-track">
+
+                                        <div
+                                            class="hc-progress-fill"
+                                            id="hero-val-prog-fill"
+                                            style="width: 0%;"
+                                        ></div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- JUMP BACK IN -->
+            <!-- ========================================= -->
+
+            <section
+                id="continue-learning-section"
+                class="reveal-on-scroll"
+                style="display:none;"
+            >
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        Jump Back In
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Pick up exactly where you left off.
+                    </p>
+
+                </div>
+
+
+                <div class="continue-card glass-panel">
+
+                    <div class="cc-info">
+
+                        <div class="cc-meta">
+
+                            <span
+                                class="cc-label"
+                                id="continue-tag"
+                            >
+                                Lesson 1
+                            </span>
+
+                            <span
+                                class="cc-time"
+                                id="continue-time"
+                                data-tooltip="Estimated remaining time"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    viewBox="0 0 24 24"
+                                    width="14"
+                                    height="14"
+                                    fill="currentColor"
+                                >
+                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                </svg>
+                                18 mins left
+                            </span>
+
+                            <span
+                                class="cc-last-open"
+                                id="continue-last-date"
+                                data-tooltip="When you last studied this"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    viewBox="0 0 24 24"
+                                    width="14"
+                                    height="14"
+                                    fill="currentColor"
+                                >
+                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/>
+                                </svg>
+                                Today
+                            </span>
+
+                        </div>
+
+
+                        <h3
+                            class="cc-title"
+                            id="continue-title"
+                        >
+                            Introduction to Forex
+                        </h3>
+
+                        <p
+                            class="cc-desc"
+                            id="continue-excerpt"
+                        >
+                            An overview of the foreign exchange market...
+                        </p>
+
+
+                        <div class="cc-progress-cont">
+
+                            <div class="cc-progress-track">
+
+                                <div
+                                    class="cc-progress-fill"
+                                    id="continue-prog-fill"
+                                    style="width: 0%;"
+                                ></div>
+
+                            </div>
+
+                            <span
+                                class="cc-progress-text"
+                                id="continue-prog-text"
+                            >
+                                0% Complete
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="continue-action">
+
+                        <button
+                            id="continue-btn"
+                            class="btn btn-primary"
+                            onclick="window.location.href='../lessons/module1/lesson1.html'"
+                        >
+                            Resume Lesson
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- PERFORMANCE -->
+            <!-- ========================================= -->
+
+            <section class="section-module-statistics reveal-on-scroll">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        Your Performance
+                    </h2>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card glass-panel">
+
+                        <div class="sc-icon-wrapper">
+                            <span style="color: var(--color-primary);">
+                                📚
+                            </span>
+                        </div>
+
+                        <div class="sc-details">
+
+                            <span
+                                class="sc-value count-up"
+                                id="stat-card-completed"
+                            >
+                                0
+                            </span>
+
+                            <span class="sc-label">
+                                Completed
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="hover-details"
+                            id="stat-hover-comp"
+                        >
+                            Completed Today: 0
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card glass-panel">
+
+                        <div class="sc-icon-wrapper">
+                            <span style="color: var(--color-warning);">
+                                ⏱️
+                            </span>
+                        </div>
+
+                        <div class="sc-details">
+
+                            <span
+                                class="sc-value count-up"
+                                id="stat-card-remaining"
+                            >
+                                10
+                            </span>
+
+                            <span class="sc-label">
+                                Remaining
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="hover-details"
+                            id="stat-hover-time"
+                        >
+                            ~2.5 Hrs left
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card glass-panel">
+
+                        <div class="sc-icon-wrapper">
+                            <span style="color: var(--color-accent);">
+                                ⭐
+                            </span>
+                        </div>
+
+                        <div class="sc-details">
+
+                            <span
+                                class="sc-value count-up"
+                                id="stat-card-xp"
+                            >
+                                0
+                            </span>
+
+                            <span class="sc-label">
+                                Total XP
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="hover-details"
+                            id="stat-hover-xp"
+                        >
+                            Today's XP: 0
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="stat-card glass-panel"
+                        style="padding-top: 1.5rem;"
+                    >
+
+                        <div
+                            class="circular-progress"
+                            id="stat-circular"
+                        >
+
+                            <div class="circular-value">
+
+                                <span
+                                    id="stat-card-progress"
+                                    class="count-up"
+                                >
+                                    0
+                                </span>%
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="sc-details"
+                            style="align-items: center;"
+                        >
+
+                            <span class="sc-label">
+                                Completion
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- LEARNING OBJECTIVES -->
+            <!-- ========================================= -->
+
+            <section class="section-what-you-learn reveal-on-scroll">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        Learning Objectives
+                    </h2>
+
+                    <p class="section-subtitle">
+                        By the end of this module, you will master these core concepts:
+                    </p>
+
+                </div>
+
+
+                <div class="objectives-grid">
+
+                    <div class="obj-card glass-panel">
+
+                        <div class="obj-header">
+
+                            <span class="obj-icon">
+                                💱
+                            </span>
+
+                            <span class="obj-category">
+                                Market Basics
+                            </span>
+
+                        </div>
+
+                        <h4 class="obj-title">
+                            Currency Pairs
+                        </h4>
+
+                        <p class="obj-desc">
+                            Identify and classify major, minor, and exotic pairs,
+                            and master the math behind base vs quote currencies.
+                        </p>
+
+                    </div>
+
+
+                    <div class="obj-card glass-panel">
+
+                        <div class="obj-header">
+
+                            <span class="obj-icon">
+                                ⚙️
+                            </span>
+
+                            <span class="obj-category">
+                                Orders
+                            </span>
+
+                        </div>
+
+                        <h4 class="obj-title">
+                            Market Mechanics
+                        </h4>
+
+                        <p class="obj-desc">
+                            Understand the core mechanics of margin, leverage,
+                            spreads, and calculate pip values instantly.
+                        </p>
+
+                    </div>
+
+
+                    <div class="obj-card glass-panel">
+
+                        <div class="obj-header">
+
+                            <span class="obj-icon">
+                                🌍
+                            </span>
+
+                            <span class="obj-category">
+                                Sessions
+                            </span>
+
+                        </div>
+
+                        <h4 class="obj-title">
+                            Global Sessions
+                        </h4>
+
+                        <p class="obj-desc">
+                            Recognize the major forex market sessions
+                            (London, NY, Tokyo) and determine your optimal trading window.
+                        </p>
+
+                    </div>
+
+
+                    <div class="obj-card glass-panel">
+
+                        <div class="obj-header">
+
+                            <span class="obj-icon">
+                                🛡️
+                            </span>
+
+                            <span class="obj-category">
+                                Risk
+                            </span>
+
+                        </div>
+
+                        <h4 class="obj-title">
+                            Risk Awareness
+                        </h4>
+
+                        <p class="obj-desc">
+                            Evaluate the fundamental risks associated with retail
+                            currency trading and how professionals mitigate them.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- WHY MASTER THE BASICS -->
+            <!-- ========================================= -->
+
+            <section class="section-why-learn reveal-on-scroll">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        Why Master the Basics?
+                    </h2>
+
+                </div>
+
+
+                <div class="why-grid">
+
+                    <div class="why-card glass-panel">
+
+                        <span class="why-icon">
+                            🏗️
+                        </span>
+
+                        <div class="why-info">
+
+                            <h4 class="why-title">
+                                Strong Foundation
+                            </h4>
+
+                            <p class="why-desc">
+                                Every successful trader starts here.
+                                Without a deep understanding of how the forex market operates,
+                                reading charts and managing risk is gambling.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="why-card glass-panel">
+
+                        <span class="why-icon">
+                            🛡️
+                        </span>
+
+                        <div class="why-info">
+
+                            <h4 class="why-title">
+                                Risk Awareness
+                            </h4>
+
+                            <p class="why-desc">
+                                Learn the critical vocabulary and math.
+                                Understand exactly what analysts mean when they talk about
+                                "cable dropping 50 pips" or facing a "margin call."
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="why-card glass-panel">
+
+                        <span class="why-icon">
+                            🚀
+                        </span>
+
+                        <div class="why-info">
+
+                            <h4 class="why-title">
+                                Preparation for Module 2
+                            </h4>
+
+                            <p class="why-desc">
+                                This module seamlessly prepares you for Technical Analysis.
+                                You must know the rules of the game before you can start
+                                predicting the next move.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- CURRICULUM -->
+            <!-- ========================================= -->
+
+            <section
+                id="lessons-grid-section"
+                class="reveal-on-scroll"
+            >
+
+                <div class="section-header">
+
+                    <h2
+                        class="section-title"
+                        id="lessons-grid"
+                    >
+                        Curriculum
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Complete lessons sequentially to unlock your path forward.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="lessons-grid"
+                    id="main-lessons-grid"
+                >
+
+                    <!-- LESSON 1 -->
+
+                    <a
+                        href="../lessons/module1/lesson1.html"
+                        class="lesson-card active"
+                        style="text-decoration: none;"
+                    >
+
+                        <div class="lc-thumb">
+
+                            <span
+                                class="emoji-icon"
+                                style="font-size: 3rem;"
+                            >
+                                📖
+                            </span>
+
+                        </div>
+
+
+                        <div class="lc-content">
+
+                            <div class="lc-badges">
+
+                                <span class="badge badge-cat">
+                                    Beginner
+                                </span>
+
+                            </div>
+
+
+                            <div class="lc-title">
+
+                                <span class="lc-num">
+                                    1.
+                                </span>
+
+                                What is Forex?
+
+                            </div>
+
+
+                            <div class="lc-desc">
+                                An overview of the foreign exchange market,
+                                its participants, and why it exists.
+                            </div>
+
+
+                            <div
+                                class="lc-footer"
+                                style="margin-top: 15px;"
+                            >
+
+                                <button
+                                    class="btn btn-outline"
+                                    style="width: 100%; pointer-events: none;"
+                                >
+                                    Start Lesson
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+<!-- ========================================= -->
+<!-- TRADING LABS -->
+<!-- ========================================= -->
+
+<section
+    class="section-trading-labs reveal-on-scroll"
+    id="trading-labs"
+>
+
+    <div class="section-header">
+
+        <div>
+
+            <span class="section-eyebrow">
+                INTERACTIVE LEARNING
+            </span>
+
+            <h2 class="section-title">
+                Trading Labs
+            </h2>
+
+            <p class="section-subtitle">
+                Build practical trading skills through
+                interactive learning, calculations and
+                realistic trading scenarios.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- LAB CARDS GENERATED BY module-labs.js -->
+    <!-- ========================================= -->
+
+    <div
+        id="tradingLabsContainer"
+        class="trading-labs-grid"
+    ></div>
+
+
+</section>
+
+
+            <!-- ========================================= -->
+            <!-- PRACTICE ZONE -->
+            <!-- ========================================= -->
+
+            <section class="section-practice-zone reveal-on-scroll">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        Practice Zone
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Apply your knowledge with interactive tools and assessments.
+                    </p>
+
+                </div>
+
+
+                <div class="practice-grid">
+
+                    <!-- QUIZ -->
+
+                    <div
+                        class="practice-card glass-panel"
+                        id="practice-card-quiz"
+                    >
+
+                        <div class="pc-icon">
+                            📝
+                        </div>
+
+                        <h3 class="pc-title">
+                            Module 1 Quiz
+                        </h3>
+
+                        <div class="pc-meta">
+
+                            <span data-tooltip="Difficulty level">
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    width="12"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                                </svg>
+                                Hard
+                            </span>
+
+                            <span data-tooltip="Questions">
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    width="12"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                </svg>
+                                20 Qs
+                            </span>
+
+                            <span data-tooltip="Est. Time">
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    width="12"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                </svg>
+                                15 mins
+                            </span>
+
+                        </div>
+
+                        <p
+                            class="pc-desc"
+                            id="quiz-lock-text"
+                        >
+                            Practice all 10 Module 1 exercises
+                        </p>
+
+                        <a
+                            href="module1quiz.html"
+                            id="practice-quiz-btn"
+                            class="btn btn-secondary disabled"
+                        >
+                            Locked
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- SESSION EXERCISES -->
+
+                    <div
+                        class="practice-card glass-panel"
+                        id="practice-card-exe"
+                    >
+
+                        <div class="pc-icon">
+                            📈
+                        </div>
+
+                        <h3 class="pc-title">
+                            Season Exercise
+                        </h3>
+
+                        <div class="pc-meta">
+
+                            <span data-tooltip="Difficulty level">
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    width="12"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                                </svg>
+                                Easy
+                            </span>
+
+                            <span data-tooltip="Est. Time">
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    width="12"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                </svg>
+                                10 mins
+                            </span>
+
+                        </div>
+
+                        <p
+                            class="pc-desc"
+                            id="exe-lock-text"
+                        >
+                            Unlock after Module Completion
+                        </p>
+
+                        <a
+                            href="../season-exercise/module1-exercise/module1-exercise.html"
+                            id="practice-exercises-btn"
+                            class="btn btn-primary"
+                            aria-label="Open Module 1 Season Exercise"
+                        >
+                            Start Season Exercise
+                        </a>
+
+                    </div>
+
+
+                    <!-- REVISION NOTES -->
+
+                    <div class="practice-card glass-panel">
+
+                        <div class="pc-icon">
+                            📓
+                        </div>
+
+                        <h3 class="pc-title">
+                            Revision Notes
+                        </h3>
+
+                        <div class="pc-meta">
+
+                            <span data-tooltip="Resource Type">
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    width="12"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                                </svg>
+                                Guide
+                            </span>
+
+                            <span data-tooltip="Format">
+                                <svg
+                                    aria-hidden="true"
+                                    focusable="false"
+                                    width="12"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 17.52 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                </svg>
+                                PDF
+                            </span>
+
+                        </div>
+
+                        <p class="pc-desc">
+                            A quick, downloadable cheat-sheet of all Module 1 concepts.
+                        </p>
+
+                        <a
+                            href="../tools/revision-notes.html"
+                            class="btn btn-outline"
+                        >
+                            View Notes
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- REWARDS -->
+            <!-- ========================================= -->
+
+            <section class="section-rewards reveal-on-scroll">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        Rewards Summary
+                    </h2>
+
+                    <p class="section-subtitle">
+                        Your accumulated milestones across the academy.
+                    </p>
+
+                </div>
+
+
+                <div class="rewards-grid">
+
+                    <div class="reward-card glass-panel">
+
+                        <div
+                            class="rc-icon-wrapper"
+                            style="background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);"
+                        >
+                            🏅
+                        </div>
+
+                        <div class="rc-info">
+
+                            <span class="rc-label">
+                                Current Badge
+                            </span>
+
+                            <h4
+                                class="rc-value"
+                                id="reward-val-badge"
+                            >
+                                Forex Rookie
+                            </h4>
+
+                            <span class="rc-subtext">
+                                Keep earning XP to upgrade.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="reward-card glass-panel">
+
+                        <div
+                            class="rc-icon-wrapper"
+                            style="background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);"
+                        >
+                            ⚡
+                        </div>
+
+                        <div class="rc-info">
+
+                            <span class="rc-label">
+                                Next Level Progress
+                            </span>
+
+                            <h4 class="rc-value">
+                                Level
+                                <span id="reward-val-level">
+                                    1
+                                </span>
+                            </h4>
+
+                            <div class="rc-progress-bar">
+
+                                <div
+                                    class="rc-progress-fill"
+                                    id="reward-level-fill"
+                                    style="width: 0%;"
+                                ></div>
+
+                            </div>
+
+                            <span
+                                class="rc-subtext"
+                                id="reward-val-next"
+                            >
+                                Needs 500 XP for Lvl 2
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="reward-card glass-panel">
+
+                        <div
+                            class="rc-icon-wrapper"
+                            style="background: radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%);"
+                        >
+                            ⭐
+                        </div>
+
+                        <div class="rc-info">
+
+                            <span class="rc-label">
+                                Lifetime XP
+                            </span>
+
+                            <h4 class="rc-value">
+
+                                <span
+                                    id="reward-val-lifetime"
+                                    class="count-up"
+                                >
+                                    0
+                                </span>
+
+                                XP
+
+                            </h4>
+
+                            <span class="rc-subtext">
+                                Across all modules
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- LEARNING ROADMAP -->
+            <!-- ========================================= -->
+
+            <section class="section-whats-next reveal-on-scroll">
+
+                <div class="section-header">
+
+                    <h2 class="section-title">
+                        Learning Roadmap
+                    </h2>
+
+                </div>
+
+
+                <div class="roadmap-container">
+
+                    <div class="rm-step completed">
+
+                        <div class="rm-icon">
+                            1
+                        </div>
+
+                        <div class="rm-title">
+                            Module 1
+                        </div>
+
+                        <div class="rm-desc">
+                            Forex Basics
+                        </div>
+
+                    </div>
+
+
+                    <div class="rm-connector active"></div>
+
+
+                    <div class="rm-step active">
+
+                        <div class="rm-icon">
+                            📝
+                        </div>
+
+                        <div class="rm-title">
+                            Assessment
+                        </div>
+
+                        <div class="rm-desc">
+                            Module Quiz
+                        </div>
+
+                    </div>
+
+
+                    <div class="rm-connector"></div>
+
+
+                    <div class="rm-step">
+
+                        <div class="rm-icon">
+                            2
+                        </div>
+
+                        <div class="rm-title">
+                            Module 2
+                        </div>
+
+                        <div class="rm-desc">
+                            Tech Analysis
+                        </div>
+
+                    </div>
+
+
+                    <div class="rm-connector"></div>
+
+
+                    <div class="rm-step">
+
+                        <div class="rm-icon">
+                            🚀
+                        </div>
+
+                        <div class="rm-title">
+                            Practice
+                        </div>
+
+                        <div class="rm-desc">
+                            Advanced
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- FAQ -->
+            <!-- ========================================= -->
+
+            <section class="section-faq reveal-on-scroll">
+
+                <div
+                    class="section-header"
+                    style="text-align: center; align-items: center;"
+                >
+
+                    <h2
+                        class="section-title"
+                        style="justify-content: center;"
+                    >
+                        Frequently Asked Questions
+                    </h2>
+
+                    <p
+                        class="section-subtitle"
+                        style="margin:0; text-align: center;"
+                    >
+                        Everything you need to know about this module.
+                    </p>
+
+                </div>
+
+
+                <div class="faq-search">
+
+                    <div class="search-bar">
+
+                        <input
+                            type="search"
+                            id="faq-search-input"
+                            class="search-input"
+                            placeholder="Search FAQs..."
+                            aria-label="Search FAQs"
+                        >
+
+                        <span class="btn-icon">
+                            🔍
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="faq-counter"
+                        id="faq-counter"
+                        style="display:none;"
+                    >
+                        Showing 3 Results
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="faq-grid"
+                    id="faq-container"
+                >
+
+                    <details class="faq-item">
+
+                        <summary class="faq-question">
+
+                            Do I need prior trading experience for this module?
+
+                            <span class="faq-icon">
+                                +
+                            </span>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                No, this module assumes absolute zero prior knowledge.
+                                It is built specifically for complete beginners to lay
+                                a safe and accurate foundation.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+                    <details class="faq-item">
+
+                        <summary class="faq-question">
+
+                            How do I unlock the Module Quiz?
+
+                            <span class="faq-icon">
+                                +
+                            </span>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                You must complete all 10 lessons sequentially.
+                                Once the final lesson is marked complete, the Practice
+                                Zone will automatically unlock the Quiz and Exercises.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+                    <details class="faq-item">
+
+                        <summary class="faq-question">
+
+                            Can I skip lessons to jump ahead?
+
+                            <span class="faq-icon">
+                                +
+                            </span>
+
+                        </summary>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Lessons are designed to be taken sequentially to ensure
+                                a strong, gap-free foundation. Therefore, skipping ahead
+                                to locked lessons is disabled for first-time learners.
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================= -->
+            <!-- QUICK ACTIONS -->
+            <!-- ========================================= -->
+
+            <section class="section-before-you-go reveal-on-scroll">
+
+                <div class="byg-container glass-panel">
+
+                    <div class="byg-header">
+
+                        <h2>
+                            🎯 Before You Go
+                        </h2>
+
+                        <p>
+                            Make sure you've got everything you need before leaving.
+                        </p>
+
+                    </div>
+
+
+                    <div class="byg-links">
+
+                        <a
+                            href="../tools/revision-notes.html"
+                            class="byg-link btn ripple"
+                        >
+                            <span class="byg-icon">
+                                📄
+                            </span>
+                            Download PDF Notes
+                        </a>
+
+
+                        <a
+                            href="module1quiz.html"
+                            class="byg-link btn ripple"
+                        >
+                            <span class="byg-icon">
+                                📝
+                            </span>
+                            Practice Quiz
+                        </a>
+
+
+                        <a
+                            href="../tools/pip-calculator.html"
+                            class="byg-link btn ripple"
+                        >
+                            <span class="byg-icon">
+                                🧮
+                            </span>
+                            Pip &amp; Position Lab
+                        </a>
+
+
+                        <a
+                            href="../community/community.html"
+                            class="byg-link btn ripple"
+                        >
+                            <span class="byg-icon">
+                                💬
+                            </span>
+                            Join Community
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- POPUPS / MODALS -->
+    <!-- ========================================= -->
+
+    <a
+        href="#main-header"
+        id="back-to-top"
+        class="btn ripple"
+        aria-label="Back to Top"
+    >
+        ↑
+    </a>
+
+
+    <!-- ACHIEVEMENT POPUP -->
+
+    <div
+        id="achievement-popup"
+        class="toast-popup"
+    >
+
+        <div class="toast-icon">
+            🎉
+        </div>
+
+        <div class="toast-info">
+
+            <h4>
+                Lesson Complete
+            </h4>
+
+            <p id="popup-xp-text">
+                +50 XP Earned
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- COMPLETION MODAL -->
+
+    <div
+        id="completion-modal"
+        class="modal-overlay"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-icon">
+                🏆
+            </div>
+
+            <h2 class="modal-title">
+                Congratulations!
+            </h2>
+
+            <div class="modal-subtitle">
+                Forex Basics Completed
+            </div>
+
+
+            <div class="modal-stats">
+
+                <div class="modal-stat">
+
+                    <span>
+                        100%
+                    </span>
+
+                    <span>
+                        Progress
+                    </span>
+
+                </div>
+
+
+                <div class="modal-stat">
+
+                    <span>
+                        500
+                    </span>
+
+                    <span>
+                        Total XP
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn btn-secondary ripple"
+                    onclick="document.getElementById('completion-modal').classList.remove('show'); document.getElementById('practice-quiz-btn').scrollIntoView({behavior: 'smooth', block: 'center'});"
+                >
+                    Take Quiz
+                </button>
+
+
+                <a
+                    href="module2.html"
+                    class="btn btn-primary ripple"
+                >
+                    Unlock Module 2
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================= -->
+<!-- GLOBAL FOOTER -->
+<!-- ========================================= -->
+
+<div data-component="footer"></div>
+
+
+<!-- ========================================= -->
+<!-- GLOBAL COMPONENT SYSTEM -->
+<!-- ========================================= -->
+
+<script src="../js/routes.js"></script>
+<script src="../js/component-loader.js"></script>
+
+<!-- IMPORTANT:
+     Notifications must load before header.js
+     because header.js uses StrativoNotifications
+-->
+<script src="../js/notifications.js"></script>
+<script src="../js/header.js"></script>
+
+
+<!-- ========================================= -->
+<!-- CORE LEARNING ENGINE -->
+<!-- ========================================= -->
+
+<script src="../js/progress.js"></script>
+<script src="../js/quiz-engine.js"></script>
+
+
+<!-- ========================================= -->
+<!-- MODULE 1 -->
+<!-- ========================================= -->
+
+<script
+    src="../js/module1.js"
+    defer
+></script>
+
+<script
+    src="../js/module-labs.js"
+    defer
+></script>
+
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!-- ====================================================
+     STRATIVO ACADEMY - MAIN HEADER
+===================================================== -->
+
+<header class="main-header">
+    <div class="main-header-container">
+
+        <!-- BRAND / LOGO -->
+        <a
+            href="index.html"
+            class="header-logo"
+            data-route="home"
+            aria-label="Strativo Academy Home"
+        >
+            <img
+                src="images/logo.png"
+                data-asset="images/logo.png"
+                alt="Strativo Academy Logo"
+                class="header-logo-image"
+            >
+
+            <span class="header-logo-text">STRATIVO</span>
+            <span class="header-logo-accent">ACADEMY</span>
+        </a>
+
+
+        <!-- MOBILE MENU TOGGLE -->
+        <button
+            type="button"
+            id="mobile-menu-toggle"
+            class="mobile-menu-toggle"
+            aria-controls="header-mobile-menu"
+            aria-expanded="false"
+            aria-label="Open navigation menu"
+        >
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+
+
+        <!-- MAIN HEADER CONTENT -->
+        <div
+            class="nav-wrapper header-main-content"
+            id="header-mobile-menu"
+        >
+
+            <!-- NAVIGATION MOUNT -->
+            <nav
+                class="header-navigation"
+                id="header-navigation"
+                aria-label="Main navigation"
+            >
+                <div
+                    class="header-navbar-mount"
+                    id="header-navbar-mount"
+                    data-component="navbar"
+                ></div>
+            </nav>
+
+
+            <!-- HEADER ACTIONS -->
+            <div
+                class="header-actions"
+                id="header-actions"
+                aria-label="User actions"
+            >
+
+                <!-- SEARCH -->
+                <button
+                    type="button"
+                    class="header-action-button header-search-button"
+                    id="header-search-button"
+                    aria-label="Open search"
+                    title="Search"
+                >
+                    <span
+                        class="header-action-icon"
+                        aria-hidden="true"
+                    >
+                        <i class="fas fa-search"></i>
+                    </span>
+
+                    <span class="header-action-label">
+                        Search
+                    </span>
+                </button>
+
+
+                <!-- ========================================================
+                     NOTIFICATIONS
+                ========================================================= -->
+
+                <div
+                    class="header-notification-wrapper"
+                    id="header-notification-wrapper"
+                >
+
+                    <!-- Notification Button -->
+                    <button
+                        type="button"
+                        class="header-action-button header-notification-button"
+                        id="header-notification-button"
+                        aria-label="Open notifications"
+                        title="Notifications"
+                        aria-controls="header-notification-panel"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+
+                        <span
+                            class="header-action-icon"
+                            aria-hidden="true"
+                        >
+                            <i class="fas fa-bell"></i>
+                        </span>
+
+                        <span
+                            class="header-notification-badge"
+                            id="header-notification-badge"
+                            hidden
+                            aria-label="Unread notifications"
+                        >
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <!-- ====================================================
+                         NOTIFICATION PANEL
+                    ===================================================== -->
+
+                    <div
+                        class="header-notification-panel"
+                        id="header-notification-panel"
+                        role="region"
+                        aria-label="Notifications"
+                        aria-hidden="true"
+                        hidden
+                    >
+
+                        <!-- Panel Header -->
+                        <div class="header-notification-panel-header">
+
+                            <div>
+
+                                <h3>
+                                    Notifications
+                                </h3>
+
+                                <span id="header-notification-count">
+                                    No new notifications
+                                </span>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="header-notification-close"
+                                id="header-notification-close"
+                                aria-label="Close notifications"
+                                title="Close"
+                            >
+                                <i
+                                    class="fas fa-xmark"
+                                    aria-hidden="true"
+                                ></i>
+                            </button>
+
+                        </div>
+
+
+                        <!-- Notification List -->
+                        <div
+                            class="header-notification-list"
+                            id="header-notification-list"
+                        >
+
+                            <!-- Achievement -->
+                            <article
+                                class="header-notification-item"
+                                data-notification-id="welcome"
+                            >
+
+                                <div class="header-notification-item-icon">
+                                    <i
+                                        class="fas fa-graduation-cap"
+                                        aria-hidden="true"
+                                    ></i>
+                                </div>
+
+                                <div class="header-notification-item-content">
+
+                                    <strong>
+                                        Welcome to Strativo Academy
+                                    </strong>
+
+                                    <p>
+                                        Your learning journey starts here.
+                                    </p>
+
+                                    <small>
+                                        Academy
+                                    </small>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- Learning -->
+                            <article
+                                class="header-notification-item"
+                                data-notification-id="learning"
+                            >
+
+                                <div class="header-notification-item-icon">
+                                    <i
+                                        class="fas fa-book-open"
+                                        aria-hidden="true"
+                                    ></i>
+                                </div>
+
+                                <div class="header-notification-item-content">
+
+                                    <strong>
+                                        Keep Learning
+                                    </strong>
+
+                                    <p>
+                                        Continue your Forex learning journey.
+                                    </p>
+
+                                    <small>
+                                        Learning
+                                    </small>
+
+                                </div>
+
+                            </article>
+
+
+                            <!-- Empty State -->
+                            <div
+                                class="header-notification-empty"
+                                id="header-notification-empty"
+                                hidden
+                            >
+
+                                <i
+                                    class="fas fa-bell-slash"
+                                    aria-hidden="true"
+                                ></i>
+
+                                <strong>
+                                    You're all caught up
+                                </strong>
+
+                                <p>
+                                    No new notifications right now.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Panel Footer -->
+                        <div class="header-notification-panel-footer">
+
+                            <button
+                                type="button"
+                                id="header-notification-settings"
+                                class="header-notification-settings-button"
+                            >
+
+                                <i
+                                    class="fas fa-sliders"
+                                    aria-hidden="true"
+                                ></i>
+
+                                Notification Settings
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI ASSISTANCE -->
+                <button
+                    type="button"
+                    class="header-action-button header-ai-button"
+                    id="header-ai-assistance-button"
+                    aria-label="Open AI Assistance"
+                    title="AI Assistance"
+                >
+
+                    <span
+                        class="header-action-icon"
+                        aria-hidden="true"
+                    >
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </span>
+
+                    <span class="header-action-label">
+                        AI Assistance
+                    </span>
+
+                </button>
+
+
+                <!-- SETTINGS -->
+                <button
+                    type="button"
+                    class="header-action-button header-settings-button"
+                    id="header-settings-button"
+                    aria-label="Open Settings"
+                    title="Settings"
+                >
+
+                    <span
+                        class="header-action-icon"
+                        aria-hidden="true"
+                    >
+                        <i class="fas fa-cog"></i>
+                    </span>
+
+                    <span class="header-action-label">
+                        Settings
+                    </span>
+
+                </button>
+
+
+                <!-- STUDENT ACCOUNT TOGGLE -->
+                <button
+                    type="button"
+                    class="header-user-button"
+                    id="header-user-button"
+                    aria-label="Open account menu"
+                    aria-controls="header-user-menu"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+
+                    <span
+                        class="header-user-avatar"
+                        id="header-user-avatar"
+                        aria-hidden="true"
+                    >
+                        <i class="fas fa-user"></i>
+                    </span>
+
+                    <span
+                        class="header-user-name"
+                        id="header-user-name"
+                    >
+                        Student
+                    </span>
+
+                    <span
+                        class="header-user-chevron"
+                        aria-hidden="true"
+                    >
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- STUDENT ACCOUNT DROPDOWN MENU -->
+            <div
+                class="header-user-menu"
+                id="header-user-menu"
+                role="menu"
+                aria-hidden="true"
+                hidden
+            >
+
+                <!-- User Information -->
+                <div class="header-user-menu-header">
+
+                    <span
+                        class="header-user-menu-avatar"
+                        id="header-user-menu-avatar"
+                        aria-hidden="true"
+                    >
+                        <i class="fas fa-user"></i>
+                    </span>
+
+                    <div class="header-user-menu-info">
+
+                        <strong id="header-user-menu-name">
+                            Student
+                        </strong>
+
+                        <span id="header-user-menu-role">
+                            Learner
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="header-user-menu-divider"
+                    role="separator"
+                ></div>
+
+
+                <!-- PROFILE -->
+                <button
+                    type="button"
+                    class="header-user-menu-item"
+                    id="header-profile-button"
+                    role="menuitem"
+                    data-action="profile"
+                >
+                    <span aria-hidden="true">
+                        <i class="fas fa-user-circle"></i>
+                    </span>
+
+                    <span>
+                        Profile
+                    </span>
+                </button>
+
+
+                <!-- SETTINGS -->
+                <button
+                    type="button"
+                    class="header-user-menu-item"
+                    id="header-menu-settings-button"
+                    role="menuitem"
+                    data-action="settings"
+                >
+                    <span aria-hidden="true">
+                        <i class="fas fa-sliders-h"></i>
+                    </span>
+
+                    <span>
+                        Settings
+                    </span>
+                </button>
+
+
+                <!-- LOGOUT -->
+                <button
+                    type="button"
+                    class="header-user-menu-item header-logout-button"
+                    id="header-logout-button"
+                    role="menuitem"
+                    data-action="logout"
+                >
+                    <span aria-hidden="true">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </span>
+
+                    <span>
+                        Log Out
+                    </span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</header>

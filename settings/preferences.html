@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Manage learning and practice preferences in Strativo Academy."
+    >
+
+    <title>Learning &amp; Practice | Strativo Academy</title>
+
+
+    <!-- =====================================================
+         GLOBAL APPEARANCE
+         Must load early so saved theme/font settings
+         apply to this page too.
+    ====================================================== -->
+
+    <script src="../js/appearance-global.js"></script>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/settings.css"
+    >
+
+
+    <!-- =====================================================
+         PREFERENCES STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/preferences.css"
+    >
+
+</head>
+
+
+<body class="settings-page preferences-page">
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="settings-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN CONTAINER
+    ====================================================== -->
+
+    <main
+        class="settings-container"
+        id="main-content"
+    >
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="settings-topbar">
+
+            <a
+                href="settings.html"
+                class="settings-back-link"
+                aria-label="Back to Settings"
+            >
+
+                <i
+                    class="fas fa-arrow-left"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Back to Settings
+                </span>
+
+            </a>
+
+
+            <div class="settings-version">
+
+                <span
+                    class="settings-version-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span>
+                    v1.0 Beta
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="settings-hero">
+
+            <div class="settings-eyebrow">
+
+                <i
+                    class="fas fa-graduation-cap"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    LEARNING &amp; PRACTICE
+                </span>
+
+            </div>
+
+
+            <h1>
+                Learning Preferences
+            </h1>
+
+
+            <p>
+                Customize how you study, practice and move
+                through Strativo Academy learning content.
+            </p>
+
+        </section>
+
+
+
+
+        <!-- =================================================
+             LESSON PREFERENCES
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="lesson-preferences-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        LESSONS
+                    </span>
+
+                    <h2 id="lesson-preferences-title">
+                        Lesson Experience
+                    </h2>
+
+                    <p>
+                        Control how lesson content behaves
+                        while you study.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="preferences-toggle-list">
+
+
+                <!-- AUTO CONTINUE -->
+
+                <div class="preferences-toggle-card">
+
+                    <div class="preferences-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-forward-step"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Continue From Last Position
+                            </h3>
+
+                            <p>
+                                Automatically return to the last
+                                saved step when reopening a lesson.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="preferences-switch">
+
+                        <input
+                            type="checkbox"
+                            id="continue-last-position-toggle"
+                            checked
+                            aria-label="Continue from last position"
+                        >
+
+                        <span
+                            class="preferences-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- COMPLETION CONFIRMATION -->
+
+                <div class="preferences-toggle-card">
+
+                    <div class="preferences-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-circle-check"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Completion Confirmation
+                            </h3>
+
+                            <p>
+                                Show a confirmation when a lesson
+                                or learning step is completed.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="preferences-switch">
+
+                        <input
+                            type="checkbox"
+                            id="completion-confirmation-toggle"
+                            checked
+                            aria-label="Enable completion confirmation"
+                        >
+
+                        <span
+                            class="preferences-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- SIDEBAR -->
+
+                <div class="preferences-toggle-card">
+
+                    <div class="preferences-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-sidebar"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Show Lesson Sidebar
+                            </h3>
+
+                            <p>
+                                Keep the lesson navigation sidebar
+                                visible when supported by the page.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="preferences-switch">
+
+                        <input
+                            type="checkbox"
+                            id="lesson-sidebar-toggle"
+                            checked
+                            aria-label="Show lesson sidebar"
+                        >
+
+                        <span
+                            class="preferences-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUIZ PREFERENCES
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="quiz-preferences-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        QUIZZES
+                    </span>
+
+                    <h2 id="quiz-preferences-title">
+                        Quiz &amp; Practice
+                    </h2>
+
+                    <p>
+                        Choose how quiz and practice sessions
+                        behave.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="preferences-toggle-list">
+
+
+                <!-- QUIZ FEEDBACK -->
+
+                <div class="preferences-toggle-card">
+
+                    <div class="preferences-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-lightbulb"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Immediate Answer Feedback
+                            </h3>
+
+                            <p>
+                                Show whether an answer is correct
+                                immediately after selection.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="preferences-switch">
+
+                        <input
+                            type="checkbox"
+                            id="quiz-feedback-toggle"
+                            checked
+                            aria-label="Enable immediate quiz feedback"
+                        >
+
+                        <span
+                            class="preferences-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- QUIZ RETRY -->
+
+                <div class="preferences-toggle-card">
+
+                    <div class="preferences-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-rotate-right"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Allow Quiz Retry
+                            </h3>
+
+                            <p>
+                                Allow completed quizzes to be
+                                attempted again when supported.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="preferences-switch">
+
+                        <input
+                            type="checkbox"
+                            id="quiz-retry-toggle"
+                            checked
+                            aria-label="Allow quiz retry"
+                        >
+
+                        <span
+                            class="preferences-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STUDY PREFERENCES
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="study-preferences-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        STUDY
+                    </span>
+
+                    <h2 id="study-preferences-title">
+                        Study Tools
+                    </h2>
+
+                    <p>
+                        Manage optional learning helpers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="preferences-toggle-list">
+
+
+                <!-- HINTS -->
+
+                <div class="preferences-toggle-card">
+
+                    <div class="preferences-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-wand-magic-sparkles"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Learning Hints
+                            </h3>
+
+                            <p>
+                                Allow helpful hints to appear when
+                                supported by a lesson or quiz.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="preferences-switch">
+
+                        <input
+                            type="checkbox"
+                            id="learning-hints-toggle"
+                            checked
+                            aria-label="Enable learning hints"
+                        >
+
+                        <span
+                            class="preferences-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- NOTES -->
+
+                <div class="preferences-toggle-card">
+
+                    <div class="preferences-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-note-sticky"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Study Notes
+                            </h3>
+
+                            <p>
+                                Enable personal notes and study
+                                annotations where supported.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="preferences-switch">
+
+                        <input
+                            type="checkbox"
+                            id="study-notes-toggle"
+                            checked
+                            aria-label="Enable study notes"
+                        >
+
+                        <span
+                            class="preferences-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="settings-about">
+
+            <div class="settings-about-brand">
+
+                <span class="settings-about-name">
+                    STRATIVO
+                </span>
+
+                <span class="settings-about-accent">
+                    ACADEMY
+                </span>
+
+            </div>
+
+
+            <p>
+                Strativo Academy — Structured Forex Trading Education
+            </p>
+
+
+            <span class="settings-about-version">
+                Version 1.0 Beta
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PREFERENCES ENGINE
+    ====================================================== -->
+
+    <script src="preferences.js"></script>
+
+</body>
+
+</html>

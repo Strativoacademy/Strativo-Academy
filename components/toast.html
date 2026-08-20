@@ -1,0 +1,135 @@
+<!-- ============================================================
+STRATIVO ACADEMY
+GLOBAL TOAST COMPONENT
+Version 1.0 Beta
+============================================================ -->
+
+<div
+  class="toast-container"
+  id="toast-container"
+  aria-live="polite"
+  aria-atomic="true"
+>
+
+  <!-- ==========================================================
+       GLOBAL TOAST
+  =========================================================== -->
+
+  <div
+    class="toast"
+    id="global-toast"
+    role="status"
+    aria-hidden="true"
+    data-toast-state="hidden"
+    data-toast-type="info"
+    hidden
+  >
+
+    <!-- ========================================================
+         TOAST ICON
+    ========================================================= -->
+
+    <div
+      class="toast-icon"
+      id="toast-icon"
+      aria-hidden="true"
+    >
+      ℹ️
+    </div>
+
+
+    <!-- ========================================================
+         TOAST CONTENT
+    ========================================================= -->
+
+    <div class="toast-content">
+
+      <strong
+        class="toast-title"
+        id="toast-title"
+      >
+        Strativo Academy
+      </strong>
+
+      <p
+        class="toast-message"
+        id="toast-message"
+      >
+        Notification message.
+      </p>
+
+
+      <!-- ======================================================
+           TOAST ACTIONS
+      ======================================================= -->
+
+      <div
+        class="toast-actions"
+        id="toast-actions"
+      >
+
+        <!-- Optional Action -->
+
+        <button
+          type="button"
+          class="toast-action-button"
+          id="toast-action-button"
+          data-toast-action="primary"
+          hidden
+        >
+          View
+        </button>
+
+
+        <!-- Close -->
+
+        <button
+          type="button"
+          class="toast-close-button"
+          id="toast-close-button"
+          aria-label="Close notification"
+          title="Close"
+          data-toast-action="close"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ========================================================
+         TOAST PROGRESS
+    ========================================================= -->
+
+    <div
+      class="toast-progress"
+      id="toast-progress"
+      aria-hidden="true"
+    >
+
+      <span
+        class="toast-progress-bar"
+        id="toast-progress-bar"
+      ></span>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==========================================================
+       TOAST CONFIGURATION
+  =========================================================== -->
+
+  <div
+    class="toast-config"
+    id="toast-config"
+    data-duration="4000"
+    data-position="top-right"
+    data-auto-dismiss="true"
+    hidden
+  ></div>
+
+</div>

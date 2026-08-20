@@ -1,0 +1,3341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+
+<meta
+    name="description"
+    content="Strativo Academy Module 1 Complete Notes — Liquidity, pools, BSL/SSL, sweeps, structure, displacement and advanced liquidity mapping."
+>
+
+<title>Liquidity — Complete Study Notes | Strativo Academy</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+/* =========================================================
+   STRATIVO ACADEMY
+   MODULE 1 NOTES
+   LIQUIDITY
+   SINGLE HTML FILE
+========================================================= */
+
+.liq-page {
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.liq-container {
+    width: min(1050px, calc(100% - 30px));
+    margin: auto;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.liq-hero {
+    position: relative;
+    overflow: hidden;
+
+    padding: 90px 20px 70px;
+
+    border-bottom: 1px solid rgba(148,163,184,.08);
+
+    background:
+        radial-gradient(
+            circle at 15% 25%,
+            rgba(59,130,246,.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(168,85,247,.11),
+            transparent 35%
+        ),
+        #030712;
+}
+
+.liq-hero-content {
+    width: min(1000px,100%);
+    margin: auto;
+    text-align: center;
+}
+
+.liq-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    color: #a78bfa;
+
+    font-size: .57rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+}
+
+.liq-hero h1 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-family: Poppins,sans-serif;
+
+    font-size: clamp(2rem,5vw,3.4rem);
+    line-height: 1.12;
+}
+
+.liq-hero p {
+    max-width: 800px;
+
+    margin: 18px auto 0;
+
+    color: #94a3b8;
+
+    font-size: .72rem;
+    line-height: 1.85;
+}
+
+.liq-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 24px;
+}
+
+.liq-badge {
+    padding: 8px 12px;
+
+    border: 1px solid rgba(148,163,184,.10);
+    border-radius: 999px;
+
+    color: #cbd5e1;
+
+    background: rgba(15,23,42,.58);
+
+    font-size: .50rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.liq-section {
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border: 1px solid rgba(148,163,184,.08);
+    border-radius: 17px;
+
+    background: rgba(15,23,42,.38);
+}
+
+.liq-section:first-child {
+    margin-top: 35px;
+}
+
+.liq-section h2 {
+    margin: 0;
+
+    color: #e2e8f0;
+
+    font-family: Poppins,sans-serif;
+
+    font-size: 1rem;
+    line-height: 1.45;
+}
+
+.liq-section h3 {
+    margin-top: 20px;
+
+    color: #cbd5e1;
+
+    font-size: .70rem;
+}
+
+.liq-section p {
+    margin-top: 10px;
+
+    color: #94a3b8;
+
+    font-size: .60rem;
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   HIGHLIGHT
+========================================================= */
+
+.liq-highlight {
+    margin-top: 17px;
+
+    padding: 17px;
+
+    border-left: 3px solid #a78bfa;
+    border-radius: 0 11px 11px 0;
+
+    background: rgba(139,92,246,.045);
+}
+
+.liq-highlight strong {
+    color: #c4b5fd;
+
+    font-size: .58rem;
+}
+
+.liq-highlight p {
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   KEY
+========================================================= */
+
+.liq-key {
+    margin-top: 17px;
+
+    padding: 16px;
+
+    border-left: 3px solid #34d399;
+    border-radius: 0 11px 11px 0;
+
+    background: rgba(16,185,129,.035);
+}
+
+.liq-key strong {
+    color: #6ee7b7;
+
+    font-size: .58rem;
+}
+
+.liq-key p {
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   WARNING
+========================================================= */
+
+.liq-warning {
+    margin-top: 17px;
+
+    padding: 17px;
+
+    border: 1px solid rgba(245,158,11,.13);
+    border-radius: 12px;
+
+    background: rgba(245,158,11,.025);
+}
+
+.liq-warning strong {
+    color: #fcd34d;
+
+    font-size: .59rem;
+}
+
+.liq-warning p {
+    margin-top: 7px;
+}
+
+
+/* =========================================================
+   TWO COLUMN
+========================================================= */
+
+.liq-two-column {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap: 15px;
+
+    margin-top: 17px;
+}
+
+.liq-two-card {
+    padding: 18px;
+
+    border: 1px solid rgba(148,163,184,.08);
+    border-radius: 13px;
+
+    background: rgba(2,6,23,.34);
+}
+
+.liq-two-card h3 {
+    margin: 0;
+
+    font-size: .68rem;
+}
+
+.liq-two-card.buy h3 {
+    color: #6ee7b7;
+}
+
+.liq-two-card.sell h3 {
+    color: #fca5a5;
+}
+
+.liq-two-card p {
+    margin-top: 8px;
+
+    font-size: .55rem;
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.liq-chart {
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(148,163,184,.10);
+    border-radius: 15px;
+
+    background: #07101f;
+
+    box-shadow: 0 15px 45px rgba(0,0,0,.18);
+}
+
+.liq-chart-title {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 12px 15px;
+
+    border-bottom: 1px solid rgba(148,163,184,.08);
+
+    color: #cbd5e1;
+
+    background: rgba(15,23,42,.72);
+
+    font-size: .52rem;
+    font-weight: 800;
+}
+
+.liq-chart-title span:last-child {
+    color: #64748b;
+}
+
+.liq-chart svg {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.liq-card-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.liq-card {
+    padding: 17px;
+
+    border: 1px solid rgba(148,163,184,.08);
+    border-radius: 12px;
+
+    background: rgba(2,6,23,.32);
+}
+
+.liq-card-icon {
+    display: grid;
+
+    width: 38px;
+    height: 38px;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    color: #c4b5fd;
+
+    background: rgba(139,92,246,.09);
+
+    font-size: .70rem;
+}
+
+.liq-card h3 {
+    margin-top: 11px;
+
+    color: #e2e8f0;
+
+    font-size: .62rem;
+}
+
+.liq-card p {
+    margin-top: 6px;
+
+    font-size: .53rem;
+}
+
+
+/* =========================================================
+   STEP
+========================================================= */
+
+.liq-step {
+    display: grid;
+
+    grid-template-columns: 38px 1fr;
+
+    gap: 12px;
+
+    margin-top: 11px;
+
+    padding: 14px;
+
+    border: 1px solid rgba(148,163,184,.08);
+    border-radius: 11px;
+
+    background: rgba(2,6,23,.32);
+}
+
+.liq-step-number {
+    display: grid;
+
+    width: 38px;
+    height: 38px;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    color: #ddd6fe;
+
+    background: rgba(139,92,246,.10);
+
+    font-size: .65rem;
+    font-weight: 900;
+}
+
+.liq-step h3 {
+    margin: 0;
+
+    color: #e2e8f0;
+
+    font-size: .62rem;
+}
+
+.liq-step p {
+    margin-top: 5px;
+
+    font-size: .54rem;
+}
+
+
+/* =========================================================
+   LIST
+========================================================= */
+
+.liq-list {
+    margin: 13px 0 0;
+
+    padding-left: 19px;
+}
+
+.liq-list li {
+    margin-top: 8px;
+
+    color: #94a3b8;
+
+    font-size: .57rem;
+    line-height: 1.75;
+}
+
+.liq-list li strong {
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   MEMORY
+========================================================= */
+
+.liq-memory {
+    margin-top: 15px;
+
+    padding: 17px;
+
+    border: 1px solid rgba(139,92,246,.12);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,.05),
+            rgba(16,185,129,.025)
+        );
+}
+
+.liq-memory h3 {
+    margin: 0;
+
+    color: #e2e8f0;
+
+    font-size: .66rem;
+}
+
+.liq-memory p {
+    margin-top: 6px;
+
+    font-size: .55rem;
+}
+
+
+/* =========================================================
+   CHECKLIST
+========================================================= */
+
+.liq-checklist {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap: 9px;
+
+    margin-top: 16px;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+.liq-checklist li {
+    padding: 12px;
+
+    border: 1px solid rgba(148,163,184,.07);
+    border-radius: 9px;
+
+    color: #cbd5e1;
+
+    background: rgba(2,6,23,.30);
+
+    font-size: .55rem;
+
+    line-height: 1.55;
+}
+
+.liq-checklist li::before {
+    content: "✓";
+
+    margin-right: 7px;
+
+    color: #34d399;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.liq-navigation {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: 40px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(148,163,184,.08);
+}
+
+.liq-navigation a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    border: 1px solid rgba(148,163,184,.10);
+    border-radius: 9px;
+
+    color: #cbd5e1;
+
+    background: rgba(15,23,42,.45);
+
+    text-decoration: none;
+
+    font-size: .53rem;
+    font-weight: 800;
+}
+
+.liq-navigation .next-note {
+    border-color: rgba(52,211,153,.14);
+
+    color: #d1fae5;
+
+    background: rgba(16,185,129,.04);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:800px) {
+
+    .liq-card-grid {
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+}
+
+@media (max-width:700px) {
+
+    .liq-hero {
+        padding: 70px 18px 55px;
+    }
+
+    .liq-container {
+        width: min(100% - 24px,650px);
+    }
+
+    .liq-section {
+        padding: 18px;
+    }
+
+    .liq-two-column,
+    .liq-checklist {
+        grid-template-columns: 1fr;
+    }
+
+    .liq-navigation {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .liq-navigation a {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+@media (max-width:500px) {
+
+    .liq-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+.liq-deep{margin-top:18px;padding:19px;border:1px solid rgba(96,165,250,.10);border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,.035),rgba(139,92,246,.025))}
+.liq-deep h3{margin:0;color:#c4b5fd;font-size:.66rem}.liq-deep h3:not(:first-child){margin-top:20px}.liq-deep p{margin-top:8px!important;line-height:1.95!important}
+.liq-diagram{margin-top:20px;overflow:hidden;border:1px solid rgba(148,163,184,.10);border-radius:15px;background:#07101f}.liq-diagram .title{padding:12px 15px;border-bottom:1px solid rgba(148,163,184,.08);color:#cbd5e1;background:rgba(15,23,42,.72);font-size:.52rem;font-weight:800}.liq-diagram svg{display:block;width:100%;height:auto}
+.liq-table-wrap{margin-top:18px;overflow:auto;border:1px solid rgba(148,163,184,.08);border-radius:12px}.liq-table{width:100%;border-collapse:collapse;min-width:620px}.liq-table th,.liq-table td{padding:11px 12px;border-bottom:1px solid rgba(148,163,184,.07);text-align:left;font-size:.53rem;line-height:1.6}.liq-table th{color:#ddd6fe;background:rgba(139,92,246,.045)}.liq-table td{color:#94a3b8}
+.liq-scenario{margin-top:13px;padding:15px;border:1px solid rgba(148,163,184,.08);border-radius:11px;background:rgba(2,6,23,.32)}.liq-scenario strong{color:#e2e8f0;font-size:.58rem}.liq-scenario p{margin-top:6px!important}
+.liq-quiz{margin-top:18px;padding:17px;border:1px solid rgba(96,165,250,.10);border-radius:12px;background:rgba(59,130,246,.025)}.liq-quiz h3{margin:0;color:#93c5fd;font-size:.65rem}.liq-quiz li{margin-top:8px;color:#94a3b8;font-size:.55rem;line-height:1.7}.liq-answer{margin-top:12px;padding:11px 13px;border-left:3px solid #34d399;border-radius:0 9px 9px 0;background:rgba(16,185,129,.025);color:#a7f3d0;font-size:.53rem;line-height:1.7}
+.liq-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:17px}.liq-map-card{padding:14px;border:1px solid rgba(148,163,184,.08);border-radius:11px;background:rgba(2,6,23,.32)}.liq-map-card h3{margin:0;color:#e2e8f0;font-size:.59rem}.liq-map-card p{margin-top:6px!important;font-size:.51rem!important}@media(max-width:700px){.liq-map{grid-template-columns:1fr}}
+
+
+/* =========================================================
+   STRATIVO ACADEMY — LIQUIDITY CONTRAST FIX
+   Keeps the page dark and makes all study text readable.
+========================================================= */
+
+html, body {
+    background: #030712 !important;
+    color: #e5e7eb;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.liq-page {
+    background: #030712;
+}
+
+.liq-section {
+    background: #0b1220 !important;
+    border-color: rgba(148,163,184,.14) !important;
+    box-shadow: 0 10px 35px rgba(0,0,0,.16);
+}
+
+.liq-section h2 {
+    color: #f1f5f9 !important;
+}
+
+.liq-section h3 {
+    color: #dbe4ef !important;
+}
+
+.liq-section p,
+.liq-list li,
+.liq-table td {
+    color: #b8c5d6 !important;
+}
+
+.liq-section p strong,
+.liq-list li strong {
+    color: #e2e8f0 !important;
+}
+
+.liq-highlight {
+    background: rgba(59,130,246,.09) !important;
+    border-left-color: #60a5fa !important;
+}
+
+.liq-highlight strong {
+    color: #bfdbfe !important;
+}
+
+.liq-key {
+    background: rgba(16,185,129,.08) !important;
+    border-left-color: #34d399 !important;
+}
+
+.liq-key strong {
+    color: #86efac !important;
+}
+
+.liq-warning {
+    background: rgba(245,158,11,.08) !important;
+    border-color: rgba(245,158,11,.25) !important;
+}
+
+.liq-warning strong {
+    color: #fde68a !important;
+}
+
+.liq-two-card,
+.liq-card,
+.liq-step,
+.liq-scenario,
+.liq-map-card,
+.liq-checklist li {
+    background: #0a1424 !important;
+    border-color: rgba(148,163,184,.13) !important;
+}
+
+.liq-two-card p,
+.liq-card p,
+.liq-step p,
+.liq-scenario p,
+.liq-map-card p {
+    color: #b8c5d6 !important;
+}
+
+.liq-two-card h3,
+.liq-card h3,
+.liq-step h3,
+.liq-map-card h3 {
+    color: #e5edf7 !important;
+}
+
+.liq-memory {
+    background: linear-gradient(
+        135deg,
+        rgba(139,92,246,.10),
+        rgba(16,185,129,.06)
+    ) !important;
+    border-color: rgba(167,139,250,.22) !important;
+}
+
+.liq-memory h3 {
+    color: #ddd6fe !important;
+}
+
+.liq-memory p {
+    color: #cbd5e1 !important;
+}
+
+.liq-checklist li {
+    color: #d5deea !important;
+}
+
+.liq-table-wrap {
+    border-color: rgba(148,163,184,.13) !important;
+    background: #08111f;
+}
+
+.liq-table th {
+    color: #e9d5ff !important;
+    background: rgba(139,92,246,.10) !important;
+}
+
+.liq-table td {
+    background: #0a1424;
+}
+
+.liq-quiz {
+    background: rgba(59,130,246,.07) !important;
+    border-color: rgba(96,165,250,.20) !important;
+}
+
+.liq-quiz li {
+    color: #b8c5d6 !important;
+}
+
+.liq-answer {
+    background: rgba(16,185,129,.08) !important;
+    color: #bbf7d0 !important;
+}
+
+.liq-deep {
+    background: linear-gradient(
+        135deg,
+        rgba(59,130,246,.08),
+        rgba(139,92,246,.06)
+    ) !important;
+    border-color: rgba(96,165,250,.18) !important;
+}
+
+.liq-deep h3 {
+    color: #c4b5fd !important;
+}
+
+.liq-deep p {
+    color: #b8c5d6 !important;
+}
+
+.liq-chart,
+.liq-diagram {
+    background: #07101f !important;
+    border-color: rgba(148,163,184,.14) !important;
+}
+
+.liq-chart-title,
+.liq-diagram .title {
+    color: #dbe4ef !important;
+    background: #0d1728 !important;
+    border-bottom-color: rgba(148,163,184,.12) !important;
+}
+
+.liq-chart-title span:last-child {
+    color: #94a3b8 !important;
+}
+
+.liq-navigation {
+    border-top-color: rgba(148,163,184,.13) !important;
+}
+
+.liq-navigation a {
+    color: #dbe4ef !important;
+    background: #0b1627 !important;
+    border-color: rgba(148,163,184,.16) !important;
+}
+
+.liq-navigation .next-note {
+    color: #d1fae5 !important;
+    background: rgba(16,185,129,.08) !important;
+    border-color: rgba(52,211,153,.22) !important;
+}
+
+/* Make the page remain readable even if global CSS changes body colors. */
+.liq-page,
+.liq-container {
+    color: #e5e7eb;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div data-component="header"></div>
+
+
+<main class="liq-page">
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="liq-hero">
+
+    <div class="liq-hero-content">
+
+        <span class="liq-eyebrow">
+            STRATIVO ACADEMY • MODULE 1 • NOTES
+        </span>
+
+        <h1>
+            Liquidity
+        </h1>
+
+        <p>
+            Master liquidity from foundation to advanced price-action concepts: pools, BSL/SSL, equal highs/lows, internal/external liquidity, session and range liquidity, sweeps, inducement, displacement, imbalance, structure shifts, premium/discount and practical liquidity mapping.
+        </p>
+
+        <div class="liq-badges">
+
+            <span class="liq-badge">
+                💧 Liquidity
+            </span>
+
+            <span class="liq-badge">
+                🟢 Buy-Side
+            </span>
+
+            <span class="liq-badge">
+                🔴 Sell-Side
+            </span>
+
+            <span class="liq-badge">
+                🎯 Liquidity Sweep
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="liq-container">
+
+
+<!-- =========================================================
+     01
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        01. What Is Liquidity?
+    </h2><div class="liq-deep"><h3>LIQUIDITY IS A POSSIBILITY, NOT A GUARANTEE</h3><p>On a normal chart we cannot see every participant or every hidden order. Liquidity zones are therefore analytical areas where trading interest may be concentrated.</p><h3>WHY OBVIOUS LEVELS MATTER</h3><p>Highs, lows, equal highs and equal lows are easy for many traders to identify. Different traders can use the same reference for stops, breakout entries, exits or targets.</p><h3>PROFESSIONAL MINDSET</h3><p>Use liquidity to ask better questions about price behaviour. Do not assume that a particular institution must intentionally hunt a specific trader&#x27;s stop.</p></div>
+
+    <p>
+        In simple terms, liquidity refers to the availability of orders that
+        can participate in buying and selling. In trading education, the
+        word is also commonly used to describe areas on a chart where many
+        orders may be concentrated.
+    </p>
+
+    <p>
+        These areas can develop around obvious highs, lows, equal highs,
+        equal lows, previous swing points and other locations that many
+        market participants can see.
+    </p>
+
+    <div class="liq-highlight">
+
+        <strong>
+            SIMPLE DEFINITION
+        </strong>
+
+        <p>
+            Think of chart liquidity as an area where a relatively large
+            amount of trading interest or orders may be located.
+        </p>
+
+    </div>
+
+    <div class="liq-warning">
+
+        <strong>
+            ⚠️ IMPORTANT
+        </strong>
+
+        <p>
+            We cannot directly see every market participant's orders from
+            a normal price chart. Liquidity zones are therefore areas of
+            analysis and inference, not guaranteed maps of hidden orders.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     02
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        02. Why Does Liquidity Matter?
+    </h2>
+
+    <p>
+        Understanding liquidity can help explain why price sometimes moves
+        toward obvious highs or lows before making a larger directional move.
+    </p>
+
+    <div class="liq-card-grid">
+
+
+        <div class="liq-card">
+
+            <div class="liq-card-icon">
+                01
+            </div>
+
+            <h3>
+                Obvious Levels
+            </h3>
+
+            <p>
+                Traders often watch clear highs, lows and equal-price areas.
+            </p>
+
+        </div>
+
+
+        <div class="liq-card">
+
+            <div class="liq-card-icon">
+                02
+            </div>
+
+            <h3>
+                Order Concentration
+            </h3>
+
+            <p>
+                Stop orders and other trading interest may become concentrated
+                around obvious locations.
+            </p>
+
+        </div>
+
+
+        <div class="liq-card">
+
+            <div class="liq-card-icon">
+                03
+            </div>
+
+            <h3>
+                Price Movement
+            </h3>
+
+            <p>
+                Price can move through an obvious area and then continue or
+                reverse depending on market conditions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     03
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        03. Buy-Side Liquidity
+    </h2><div class="liq-deep"><h3>ABOVE HIGHS</h3><p>Above a high there may be short protective stops and breakout buy orders. When triggered, these orders can create buying activity.</p><h3>BSL IS NOT ONLY STOP-LOSSES</h3><p>The area can contain different order types. &#x27;Buy-side liquidity&#x27; describes the potential direction of orders that become active, not one specific trader group.</p><h3>MARK THE AREA</h3><p>Use major highs, equal highs and obvious range highs as references. The exact location and significance depend on timeframe and context.</p></div>
+
+    <p>
+        Buy-side liquidity is commonly discussed as liquidity located above
+        important highs. One reason is that traders who are short may place
+        protective stop orders above swing highs or other obvious resistance
+        areas.
+    </p>
+
+    <div class="liq-two-column">
+
+        <div class="liq-two-card buy">
+
+            <h3>
+                🟢 Above Highs
+            </h3>
+
+            <p>
+                Obvious highs can become areas that attract attention from
+                traders looking for breakout opportunities and from traders
+                protecting short positions.
+            </p>
+
+        </div>
+
+
+        <div class="liq-two-card buy">
+
+            <h3>
+                📈 Buy Orders
+            </h3>
+
+            <p>
+                When price trades upward through an area, stop orders from
+                short positions can become buy orders when triggered.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-chart">
+
+        <div class="liq-chart-title">
+
+            <span>
+                BUY-SIDE LIQUIDITY ABOVE A HIGH
+            </span>
+
+            <span>
+                CONCEPTUAL CHART
+            </span>
+
+        </div>
+
+
+        <svg
+            viewBox="0 0 900 450"
+            role="img"
+            aria-label="Candlestick chart showing buy-side liquidity above equal highs"
+        >
+
+            <rect
+                width="900"
+                height="450"
+                fill="#07101f"
+            />
+
+
+            <!-- Grid -->
+
+            <g
+                stroke="#17243a"
+                stroke-width="1"
+            >
+
+                <line x1="60" y1="70" x2="840" y2="70"/>
+                <line x1="60" y1="140" x2="840" y2="140"/>
+                <line x1="60" y1="210" x2="840" y2="210"/>
+                <line x1="60" y1="280" x2="840" y2="280"/>
+                <line x1="60" y1="350" x2="840" y2="350"/>
+
+            </g>
+
+
+            <!-- Liquidity area -->
+
+            <rect
+                x="60"
+                y="120"
+                width="780"
+                height="48"
+                rx="6"
+                fill="#a78bfa"
+                opacity=".14"
+            />
+
+
+            <line
+                x1="60"
+                y1="144"
+                x2="840"
+                y2="144"
+                stroke="#c4b5fd"
+                stroke-width="3"
+                stroke-dasharray="8 7"
+            />
+
+
+            <!-- Candles -->
+
+            <g
+                stroke-linecap="round"
+                stroke-width="3"
+            >
+
+                <line x1="120" y1="290" x2="120" y2="380" stroke="#34d399"/>
+                <rect x="110" y="315" width="20" height="50" fill="#34d399"/>
+
+
+                <line x1="175" y1="245" x2="175" y2="335" stroke="#34d399"/>
+                <rect x="165" y="260" width="20" height="55" fill="#34d399"/>
+
+
+                <line x1="230" y1="190" x2="230" y2="285" stroke="#34d399"/>
+                <rect x="220" y="210" width="20" height="55" fill="#34d399"/>
+
+
+                <!-- first equal high -->
+
+                <line x1="285" y1="115" x2="285" y2="220" stroke="#f87171"/>
+                <rect x="275" y="145" width="20" height="50" fill="#f87171"/>
+
+
+                <line x1="340" y1="155" x2="340" y2="250" stroke="#f87171"/>
+                <rect x="330" y="175" width="20" height="50" fill="#f87171"/>
+
+
+                <line x1="395" y1="130" x2="395" y2="220" stroke="#34d399"/>
+                <rect x="385" y="145" width="20" height="50" fill="#34d399"/>
+
+
+                <!-- second equal high -->
+
+                <line x1="450" y1="105" x2="450" y2="215" stroke="#f87171"/>
+                <rect x="440" y="140" width="20" height="50" fill="#f87171"/>
+
+
+                <line x1="505" y1="160" x2="505" y2="255" stroke="#f87171"/>
+                <rect x="495" y="180" width="20" height="50" fill="#f87171"/>
+
+
+                <!-- sweep -->
+
+                <line x1="570" y1="70" x2="570" y2="220" stroke="#34d399"/>
+                <rect x="558" y="95" width="24" height="90" fill="#34d399"/>
+
+
+                <line x1="630" y1="80" x2="630" y2="165" stroke="#34d399"/>
+                <rect x="620" y="90" width="20" height="50" fill="#34d399"/>
+
+
+                <line x1="685" y1="65" x2="685" y2="145" stroke="#34d399"/>
+                <rect x="675" y="75" width="20" height="45" fill="#34d399"/>
+
+            </g>
+
+
+            <!-- Arrow -->
+
+            <path
+                d="M570 100 L570 55"
+                stroke="#fbbf24"
+                stroke-width="4"
+                fill="none"
+            />
+
+            <path
+                d="M560 65 L570 50 L580 65"
+                stroke="#fbbf24"
+                stroke-width="4"
+                fill="none"
+            />
+
+
+            <text
+                x="610"
+                y="110"
+                fill="#c4b5fd"
+                font-size="18"
+                font-family="Inter"
+                font-weight="900"
+            >
+                BUY-SIDE LIQUIDITY
+            </text>
+
+
+            <text
+                x="610"
+                y="135"
+                fill="#94a3b8"
+                font-size="15"
+                font-family="Inter"
+                font-weight="700"
+            >
+                ABOVE THE HIGHS
+            </text>
+
+
+            <text
+                x="510"
+                y="400"
+                fill="#fcd34d"
+                font-size="17"
+                font-family="Inter"
+                font-weight="900"
+            >
+                PRICE TRADES THROUGH THE AREA
+            </text>
+
+        </svg>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     04
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        04. Sell-Side Liquidity
+    </h2><div class="liq-deep"><h3>BELOW LOWS</h3><p>Below a low there may be long protective stops and sell-stop breakout orders. Triggered orders can create selling activity.</p><h3>SSL IS NOT ONLY STOP-LOSSES</h3><p>Different traders can have different reasons for placing orders around the same low. Treat the area as a possible concentration, not a visible hidden pool.</p><h3>MARK THE AREA</h3><p>Use major lows, equal lows and obvious range lows. Always compare them with the larger market structure.</p></div>
+
+    <p>
+        Sell-side liquidity is commonly discussed as liquidity located below
+        important lows. Traders holding long positions may place protective
+        stop orders below swing lows or other obvious support areas.
+    </p>
+
+    <div class="liq-two-column">
+
+        <div class="liq-two-card sell">
+
+            <h3>
+                🔴 Below Lows
+            </h3>
+
+            <p>
+                Obvious lows can become areas watched by traders because
+                protective stops and breakout orders may be positioned around
+                them.
+            </p>
+
+        </div>
+
+
+        <div class="liq-two-card sell">
+
+            <h3>
+                📉 Sell Orders
+            </h3>
+
+            <p>
+                When price trades downward through an area, stop orders from
+                long positions can become sell orders when triggered.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-chart">
+
+        <div class="liq-chart-title">
+
+            <span>
+                SELL-SIDE LIQUIDITY BELOW A LOW
+            </span>
+
+            <span>
+                CONCEPTUAL CHART
+            </span>
+
+        </div>
+
+
+        <svg
+            viewBox="0 0 900 450"
+            role="img"
+            aria-label="Candlestick chart showing sell-side liquidity below equal lows"
+        >
+
+            <rect
+                width="900"
+                height="450"
+                fill="#07101f"
+            />
+
+
+            <g
+                stroke="#17243a"
+                stroke-width="1"
+            >
+
+                <line x1="60" y1="70" x2="840" y2="70"/>
+                <line x1="60" y1="140" x2="840" y2="140"/>
+                <line x1="60" y1="210" x2="840" y2="210"/>
+                <line x1="60" y1="280" x2="840" y2="280"/>
+                <line x1="60" y1="350" x2="840" y2="350"/>
+
+            </g>
+
+
+            <!-- Sell-side liquidity -->
+
+            <rect
+                x="60"
+                y="305"
+                width="780"
+                height="50"
+                rx="6"
+                fill="#ef4444"
+                opacity=".14"
+            />
+
+
+            <line
+                x1="60"
+                y1="330"
+                x2="840"
+                y2="330"
+                stroke="#f87171"
+                stroke-width="3"
+                stroke-dasharray="8 7"
+            />
+
+
+            <!-- Candles -->
+
+            <g
+                stroke-linecap="round"
+                stroke-width="3"
+            >
+
+                <line x1="120" y1="80" x2="120" y2="180" stroke="#f87171"/>
+                <rect x="110" y="105" width="20" height="55" fill="#f87171"/>
+
+
+                <line x1="175" y1="130" x2="175" y2="220" stroke="#f87171"/>
+                <rect x="165" y="150" width="20" height="50" fill="#f87171"/>
+
+
+                <line x1="230" y1="185" x2="230" y2="300" stroke="#f87171"/>
+                <rect x="220" y="210" width="20" height="60" fill="#f87171"/>
+
+
+                <!-- first low -->
+
+                <line x1="285" y1="260" x2="285" y2="350" stroke="#34d399"/>
+                <rect x="275" y="280" width="20" height="50" fill="#34d399"/>
+
+
+                <line x1="340" y1="190" x2="340" y2="300" stroke="#34d399"/>
+                <rect x="330" y="210" width="20" height="55" fill="#34d399"/>
+
+
+                <line x1="395" y1="235" x2="395" y2="350" stroke="#34d399"/>
+                <rect x="385" y="260" width="20" height="55" fill="#34d399"/>
+
+
+                <!-- second low -->
+
+                <line x1="450" y1="270" x2="450" y2="355" stroke="#34d399"/>
+                <rect x="440" y="290" width="20" height="45" fill="#34d399"/>
+
+
+                <line x1="505" y1="190" x2="505" y2="300" stroke="#34d399"/>
+                <rect x="495" y="215" width="20" height="55" fill="#34d399"/>
+
+
+                <!-- sweep -->
+
+                <line x1="565" y1="255" x2="565" y2="395" stroke="#f87171"/>
+                <rect x="553" y="290" width="24" height="70" fill="#f87171"/>
+
+
+                <line x1="625" y1="205" x2="625" y2="325" stroke="#f87171"/>
+                <rect x="615" y="225" width="20" height="65" fill="#f87171"/>
+
+
+                <line x1="685" y1="160" x2="685" y2="270" stroke="#34d399"/>
+                <rect x="675" y="180" width="20" height="60" fill="#34d399"/>
+
+            </g>
+
+
+            <path
+                d="M565 380 L565 415"
+                stroke="#fbbf24"
+                stroke-width="4"
+                fill="none"
+            />
+
+            <path
+                d="M555 405 L565 420 L575 405"
+                stroke="#fbbf24"
+                stroke-width="4"
+                fill="none"
+            />
+
+
+            <text
+                x="610"
+                y="300"
+                fill="#fca5a5"
+                font-size="18"
+                font-family="Inter"
+                font-weight="900"
+            >
+                SELL-SIDE LIQUIDITY
+            </text>
+
+
+            <text
+                x="610"
+                y="325"
+                fill="#94a3b8"
+                font-size="15"
+                font-family="Inter"
+                font-weight="700"
+            >
+                BELOW THE LOWS
+            </text>
+
+
+            <text
+                x="485"
+                y="410"
+                fill="#fcd34d"
+                font-size="17"
+                font-family="Inter"
+                font-weight="900"
+            >
+                PRICE TRADES BELOW THE LOWS
+            </text>
+
+        </svg>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     05
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        05. Equal Highs and Equal Lows
+    </h2>
+
+    <p>
+        Equal highs and equal lows are visually obvious areas where price
+        has reacted around approximately the same level more than once.
+        Because many traders can identify these areas, they can become
+        important liquidity reference points.
+    </p>
+
+
+    <div class="liq-two-column">
+
+        <div class="liq-two-card buy">
+
+            <h3>
+                Equal Highs
+            </h3>
+
+            <p>
+                Repeated highs around a similar price area can create a
+                visible pool of potential buy-side liquidity above them.
+            </p>
+
+        </div>
+
+
+        <div class="liq-two-card sell">
+
+            <h3>
+                Equal Lows
+            </h3>
+
+            <p>
+                Repeated lows around a similar price area can create a
+                visible pool of potential sell-side liquidity below them.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-chart">
+
+        <div class="liq-chart-title">
+
+            <span>
+                EQUAL HIGHS + EQUAL LOWS
+            </span>
+
+            <span>
+                LIQUIDITY MAP
+            </span>
+
+        </div>
+
+
+        <svg
+            viewBox="0 0 900 480"
+            role="img"
+            aria-label="Chart showing equal highs and equal lows"
+        >
+
+            <rect
+                width="900"
+                height="480"
+                fill="#07101f"
+            />
+
+
+            <g
+                stroke="#17243a"
+                stroke-width="1"
+            >
+
+                <line x1="60" y1="70" x2="840" y2="70"/>
+                <line x1="60" y1="140" x2="840" y2="140"/>
+                <line x1="60" y1="210" x2="840" y2="210"/>
+                <line x1="60" y1="280" x2="840" y2="280"/>
+                <line x1="60" y1="350" x2="840" y2="350"/>
+                <line x1="60" y1="420" x2="840" y2="420"/>
+
+            </g>
+
+
+            <!-- High liquidity -->
+
+            <rect
+                x="60"
+                y="100"
+                width="780"
+                height="42"
+                rx="6"
+                fill="#8b5cf6"
+                opacity=".13"
+            />
+
+            <line
+                x1="60"
+                y1="121"
+                x2="840"
+                y2="121"
+                stroke="#c4b5fd"
+                stroke-width="3"
+                stroke-dasharray="8 7"
+            />
+
+
+            <!-- Low liquidity -->
+
+            <rect
+                x="60"
+                y="330"
+                width="780"
+                height="42"
+                rx="6"
+                fill="#8b5cf6"
+                opacity=".13"
+            />
+
+            <line
+                x1="60"
+                y1="351"
+                x2="840"
+                y2="351"
+                stroke="#c4b5fd"
+                stroke-width="3"
+                stroke-dasharray="8 7"
+            />
+
+
+            <!-- Price path -->
+
+            <polyline
+                points="
+                    80,300
+                    150,120
+                    220,260
+                    290,120
+                    360,300
+                    430,120
+                    500,280
+                    570,350
+                    640,220
+                    710,350
+                    780,180
+                    830,100
+                "
+                fill="none"
+                stroke="#60a5fa"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+
+
+            <circle
+                cx="150"
+                cy="120"
+                r="8"
+                fill="#c4b5fd"
+            />
+
+            <circle
+                cx="290"
+                cy="120"
+                r="8"
+                fill="#c4b5fd"
+            />
+
+            <circle
+                cx="430"
+                cy="120"
+                r="8"
+                fill="#c4b5fd"
+            />
+
+
+            <circle
+                cx="570"
+                cy="350"
+                r="8"
+                fill="#c4b5fd"
+            />
+
+            <circle
+                cx="710"
+                cy="350"
+                r="8"
+                fill="#c4b5fd"
+            />
+
+
+            <text
+                x="610"
+                y="90"
+                fill="#c4b5fd"
+                font-size="18"
+                font-family="Inter"
+                font-weight="900"
+            >
+                BUY-SIDE LIQUIDITY
+            </text>
+
+
+            <text
+                x="610"
+                y="410"
+                fill="#c4b5fd"
+                font-size="18"
+                font-family="Inter"
+                font-weight="900"
+            >
+                SELL-SIDE LIQUIDITY
+            </text>
+
+
+            <text
+                x="190"
+                y="75"
+                fill="#94a3b8"
+                font-size="16"
+                font-family="Inter"
+                font-weight="700"
+            >
+                EQUAL HIGHS
+            </text>
+
+
+            <text
+                x="190"
+                y="400"
+                fill="#94a3b8"
+                font-size="16"
+                font-family="Inter"
+                font-weight="700"
+            >
+                EQUAL LOWS
+            </text>
+
+        </svg>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     06
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        06. Liquidity Above Highs
+    </h2>
+
+    <p>
+        Imagine a clear swing high on the chart. Traders who are short may
+        place protective stops above that high. Other traders may also be
+        watching the same high for a breakout.
+    </p>
+
+    <p>
+        Because the area is obvious, the region above the high can become
+        important when analysing possible buy-side liquidity.
+    </p>
+
+
+    <div class="liq-memory">
+
+        <h3>
+            🧠 EASY MEMORY
+        </h3>
+
+        <p>
+            <strong>High → look above → possible buy-side liquidity.</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     07
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        07. Liquidity Below Lows
+    </h2>
+
+    <p>
+        The same concept works below lows. Traders who are long may place
+        protective stops below an obvious swing low. Other traders may watch
+        that low for a downside breakout.
+    </p>
+
+    <p>
+        Therefore, the area below a clear low can become important when
+        analysing possible sell-side liquidity.
+    </p>
+
+
+    <div class="liq-memory">
+
+        <h3>
+            🧠 EASY MEMORY
+        </h3>
+
+        <p>
+            <strong>Low → look below → possible sell-side liquidity.</strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     08
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        08. What Is a Liquidity Sweep?
+    </h2><div class="liq-deep"><h3>THE COMPLETE SEQUENCE</h3><p>A useful sequence is: obvious liquidity reference → price trades through it → price behaviour after the level is reached → possible structural consequence.</p><h3>SWEEP DOES NOT EQUAL REVERSAL</h3><p>A sweep can be followed by rejection, continuation or consolidation. The post-sweep candles are essential.</p><h3>BETTER CONFIRMATION</h3><p>Depending on your rules, look for displacement, a close back inside a range, a break of relevant internal structure or another predefined condition.</p></div>
+
+    <p>
+        A liquidity sweep is a term traders commonly use when price moves
+        through an obvious high or low and then reacts. The move through the
+        area can trigger orders positioned around that level.
+    </p>
+
+    <p>
+        A sweep does not automatically mean price must reverse. After moving
+        through liquidity, price can reverse, continue in the same direction,
+        or consolidate.
+    </p>
+
+
+    <div class="liq-highlight">
+
+        <strong>
+            SIMPLE EXAMPLE
+        </strong>
+
+        <p>
+            Price moves above an obvious high, trades beyond it, and then
+            quickly returns below the high. Traders may describe this as a
+            <strong>buy-side liquidity sweep</strong>.
+        </p>
+
+    </div>
+
+
+    <div class="liq-chart">
+
+        <div class="liq-chart-title">
+
+            <span>
+                BUY-SIDE LIQUIDITY SWEEP
+            </span>
+
+            <span>
+                HIGH → SWEEP → RETURN
+            </span>
+
+        </div>
+
+
+        <svg
+            viewBox="0 0 900 450"
+            role="img"
+            aria-label="Candlestick chart showing a buy-side liquidity sweep"
+        >
+
+            <rect
+                width="900"
+                height="450"
+                fill="#07101f"
+            />
+
+
+            <g
+                stroke="#17243a"
+                stroke-width="1"
+            >
+
+                <line x1="60" y1="70" x2="840" y2="70"/>
+                <line x1="60" y1="140" x2="840" y2="140"/>
+                <line x1="60" y1="210" x2="840" y2="210"/>
+                <line x1="60" y1="280" x2="840" y2="280"/>
+                <line x1="60" y1="350" x2="840" y2="350"/>
+
+            </g>
+
+
+            <rect
+                x="60"
+                y="140"
+                width="780"
+                height="45"
+                rx="6"
+                fill="#8b5cf6"
+                opacity=".13"
+            />
+
+
+            <line
+                x1="60"
+                y1="162"
+                x2="840"
+                y2="162"
+                stroke="#c4b5fd"
+                stroke-width="3"
+                stroke-dasharray="8 7"
+            />
+
+
+            <g
+                stroke-linecap="round"
+                stroke-width="3"
+            >
+
+                <line x1="120" y1="300" x2="120" y2="380" stroke="#34d399"/>
+                <rect x="110" y="320" width="20" height="45" fill="#34d399"/>
+
+
+                <line x1="175" y1="240" x2="175" y2="330" stroke="#34d399"/>
+                <rect x="165" y="255" width="20" height="55" fill="#34d399"/>
+
+
+                <line x1="230" y1="190" x2="230" y2="280" stroke="#34d399"/>
+                <rect x="220" y="205" width="20" height="50" fill="#34d399"/>
+
+
+                <line x1="285" y1="135" x2="285" y2="230" stroke="#f87171"/>
+                <rect x="275" y="160" width="20" height="50" fill="#f87171"/>
+
+
+                <line x1="340" y1="145" x2="340" y2="225" stroke="#f87171"/>
+                <rect x="330" y="165" width="20" height="40" fill="#f87171"/>
+
+
+                <line x1="395" y1="135" x2="395" y2="225" stroke="#34d399"/>
+                <rect x="385" y="155" width="20" height="50" fill="#34d399"/>
+
+
+                <!-- sweep candle -->
+
+                <line x1="460" y1="70" x2="460" y2="240" stroke="#f87171"/>
+                <rect x="448" y="125" width="24" height="80" fill="#f87171"/>
+
+
+                <line x1="520" y1="170" x2="520" y2="280" stroke="#f87171"/>
+                <rect x="510" y="190" width="20" height="60" fill="#f87171"/>
+
+
+                <line x1="580" y1="220" x2="580" y2="320" stroke="#f87171"/>
+                <rect x="570" y="240" width="20" height="55" fill="#f87171"/>
+
+
+                <line x1="640" y1="260" x2="640" y2="350" stroke="#34d399"/>
+                <rect x="630" y="275" width="20" height="50" fill="#34d399"/>
+
+            </g>
+
+
+            <path
+                d="M460 80 L460 45"
+                stroke="#fbbf24"
+                stroke-width="4"
+            />
+
+            <path
+                d="M450 55 L460 40 L470 55"
+                stroke="#fbbf24"
+                stroke-width="4"
+                fill="none"
+            />
+
+
+            <text
+                x="500"
+                y="100"
+                fill="#fcd34d"
+                font-size="18"
+                font-family="Inter"
+                font-weight="900"
+            >
+                SWEEP
+            </text>
+
+
+            <text
+                x="620"
+                y="135"
+                fill="#c4b5fd"
+                font-size="18"
+                font-family="Inter"
+                font-weight="900"
+            >
+                BUY-SIDE
+            </text>
+
+
+            <text
+                x="610"
+                y="160"
+                fill="#94a3b8"
+                font-size="15"
+                font-family="Inter"
+                font-weight="700"
+            >
+                ABOVE THE HIGH
+            </text>
+
+
+            <text
+                x="490"
+                y="405"
+                fill="#fca5a5"
+                font-size="17"
+                font-family="Inter"
+                font-weight="900"
+            >
+                PRICE RETURNS BELOW THE HIGH
+            </text>
+
+        </svg>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     09
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        09. Sell-Side Liquidity Sweep
+    </h2>
+
+    <p>
+        A sell-side liquidity sweep is commonly described when price moves
+        below an obvious low, trades through that area and then reacts back
+        upward.
+    </p>
+
+
+    <div class="liq-chart">
+
+        <div class="liq-chart-title">
+
+            <span>
+                SELL-SIDE LIQUIDITY SWEEP
+            </span>
+
+            <span>
+                LOW → SWEEP → RETURN
+            </span>
+
+        </div>
+
+
+        <svg
+            viewBox="0 0 900 450"
+            role="img"
+            aria-label="Candlestick chart showing a sell-side liquidity sweep"
+        >
+
+            <rect
+                width="900"
+                height="450"
+                fill="#07101f"
+            />
+
+
+            <g
+                stroke="#17243a"
+                stroke-width="1"
+            >
+
+                <line x1="60" y1="70" x2="840" y2="70"/>
+                <line x1="60" y1="140" x2="840" y2="140"/>
+                <line x1="60" y1="210" x2="840" y2="210"/>
+                <line x1="60" y1="280" x2="840" y2="280"/>
+                <line x1="60" y1="350" x2="840" y2="350"/>
+
+            </g>
+
+
+            <rect
+                x="60"
+                y="290"
+                width="780"
+                height="48"
+                rx="6"
+                fill="#8b5cf6"
+                opacity=".13"
+            />
+
+
+            <line
+                x1="60"
+                y1="314"
+                x2="840"
+                y2="314"
+                stroke="#c4b5fd"
+                stroke-width="3"
+                stroke-dasharray="8 7"
+            />
+
+
+            <g
+                stroke-linecap="round"
+                stroke-width="3"
+            >
+
+                <line x1="120" y1="80" x2="120" y2="180" stroke="#34d399"/>
+                <rect x="110" y="100" width="20" height="55" fill="#34d399"/>
+
+
+                <line x1="175" y1="125" x2="175" y2="225" stroke="#34d399"/>
+                <rect x="165" y="145" width="20" height="55" fill="#34d399"/>
+
+
+                <line x1="230" y1="180" x2="230" y2="285" stroke="#f87171"/>
+                <rect x="220" y="200" width="20" height="60" fill="#f87171"/>
+
+
+                <line x1="285" y1="250" x2="285" y2="330" stroke="#34d399"/>
+                <rect x="275" y="270" width="20" height="45" fill="#34d399"/>
+
+
+                <line x1="340" y1="190" x2="340" y2="290" stroke="#34d399"/>
+                <rect x="330" y="205" width="20" height="55" fill="#34d399"/>
+
+
+                <line x1="395" y1="240" x2="395" y2="330" stroke="#f87171"/>
+                <rect x="385" y="260" width="20" height="50" fill="#f87171"/>
+
+
+                <!-- sweep -->
+
+                <line x1="455" y1="285" x2="455" y2="400" stroke="#34d399"/>
+                <rect x="443" y="305" width="24" height="70" fill="#34d399"/>
+
+
+                <line x1="515" y1="210" x2="515" y2="330" stroke="#34d399"/>
+                <rect x="505" y="230" width="20" height="70" fill="#34d399"/>
+
+
+                <line x1="575" y1="150" x2="575" y2="250" stroke="#34d399"/>
+                <rect x="565" y="170" width="20" height="55" fill="#34d399"/>
+
+
+                <line x1="635" y1="110" x2="635" y2="200" stroke="#34d399"/>
+                <rect x="625" y="125" width="20" height="55" fill="#34d399"/>
+
+            </g>
+
+
+            <path
+                d="M455 390 L455 425"
+                stroke="#fbbf24"
+                stroke-width="4"
+            />
+
+            <path
+                d="M445 415 L455 430 L465 415"
+                stroke="#fbbf24"
+                stroke-width="4"
+                fill="none"
+            />
+
+
+            <text
+                x="490"
+                y="380"
+                fill="#fcd34d"
+                font-size="18"
+                font-family="Inter"
+                font-weight="900"
+            >
+                SWEEP
+            </text>
+
+
+            <text
+                x="620"
+                y="285"
+                fill="#c4b5fd"
+                font-size="18"
+                font-family="Inter"
+                font-weight="900"
+            >
+                SELL-SIDE
+            </text>
+
+
+            <text
+                x="620"
+                y="310"
+                fill="#94a3b8"
+                font-size="15"
+                font-family="Inter"
+                font-weight="700"
+            >
+                BELOW THE LOW
+            </text>
+
+
+            <text
+                x="495"
+                y="80"
+                fill="#6ee7b7"
+                font-size="17"
+                font-family="Inter"
+                font-weight="900"
+            >
+                PRICE RECOVERS
+            </text>
+
+        </svg>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     10
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        10. Liquidity and Stop-Loss Orders
+    </h2>
+
+    <p>
+        Stop-loss orders are one reason obvious highs and lows can become
+        important when studying liquidity. For example, a trader holding a
+        long position may place a protective stop below a relevant low.
+    </p>
+
+    <p>
+        If many traders make similar decisions around the same obvious area,
+        the area can become important in liquidity analysis.
+    </p>
+
+
+    <div class="liq-card-grid">
+
+
+        <div class="liq-card">
+
+            <div class="liq-card-icon">
+                🟢
+            </div>
+
+            <h3>
+                Long Position
+            </h3>
+
+            <p>
+                Protective stop may be placed below a relevant low.
+            </p>
+
+        </div>
+
+
+        <div class="liq-card">
+
+            <div class="liq-card-icon">
+                🔴
+            </div>
+
+            <h3>
+                Short Position
+            </h3>
+
+            <p>
+                Protective stop may be placed above a relevant high.
+            </p>
+
+        </div>
+
+
+        <div class="liq-card">
+
+            <div class="liq-card-icon">
+                🎯
+            </div>
+
+            <h3>
+                Obvious Level
+            </h3>
+
+            <p>
+                A clearly visible high or low can attract attention from
+                many traders.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-warning">
+
+        <strong>
+            ⚠️ IMPORTANT
+        </strong>
+
+        <p>
+            Never assume that every stop-loss order is located at exactly
+            the same price. The chart only gives us clues about where orders
+            may be concentrated.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     11
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        11. Liquidity + Support &amp; Resistance
+    </h2>
+
+    <p>
+        Support and resistance describe important price areas. Liquidity
+        analysis asks another question: where might orders be concentrated
+        around those areas?
+    </p>
+
+
+    <div class="liq-two-column">
+
+        <div class="liq-two-card buy">
+
+            <h3>
+                Resistance + Buy-Side Liquidity
+            </h3>
+
+            <p>
+                An obvious resistance or swing-high area may have potential
+                buy-side liquidity above it.
+            </p>
+
+        </div>
+
+
+        <div class="liq-two-card sell">
+
+            <h3>
+                Support + Sell-Side Liquidity
+            </h3>
+
+            <p>
+                An obvious support or swing-low area may have potential
+                sell-side liquidity below it.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-memory">
+
+        <h3>
+            🧠 CONNECT THE CONCEPTS
+        </h3>
+
+        <p>
+            <strong>
+                Support → look below for possible sell-side liquidity.
+                Resistance → look above for possible buy-side liquidity.
+            </strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     12
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        12. Liquidity Sweep vs Normal Breakout
+    </h2><div class="liq-deep"><h3>ACCEPTANCE</h3><p>If price crosses a level and continues to trade and close on the new side, the market is showing evidence of acceptance.</p><h3>REJECTION</h3><p>If price crosses and quickly returns, the move is showing evidence of rejection or failure to hold the new territory.</p><h3>RETEST</h3><p>A breakout followed by a return to the broken level can provide additional information. Never assume every retest must hold.</p></div>
+
+    <p>
+        A move beyond a high or low does not automatically mean that a
+        liquidity sweep occurred. The subsequent price behavior matters.
+    </p>
+
+
+    <div class="liq-two-column">
+
+        <div class="liq-two-card buy">
+
+            <h3>
+                Possible Sweep
+            </h3>
+
+            <p>
+                Price moves through an obvious level and then quickly returns
+                or reacts back toward the previous range.
+            </p>
+
+        </div>
+
+
+        <div class="liq-two-card buy">
+
+            <h3>
+                Possible Breakout
+            </h3>
+
+            <p>
+                Price moves beyond the level and maintains acceptance above
+                or below it instead of immediately returning.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-warning">
+
+        <strong>
+            ⚠️ DO NOT LABEL TOO QUICKLY
+        </strong>
+
+        <p>
+            A candle temporarily trading beyond a level is not enough by
+            itself to determine whether the move is a sweep or a genuine
+            breakout.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     13
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        13. Step-by-Step Liquidity Analysis
+    </h2>
+
+
+    <div class="liq-step">
+
+        <div class="liq-step-number">
+            01
+        </div>
+
+        <div>
+
+            <h3>
+                Find Obvious Highs and Lows
+            </h3>
+
+            <p>
+                Start with visible swing points that stand out on the chart.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-step">
+
+        <div class="liq-step-number">
+            02
+        </div>
+
+        <div>
+
+            <h3>
+                Look for Equal Highs or Equal Lows
+            </h3>
+
+            <p>
+                Repeated highs or lows around a similar price can become
+                important reference areas.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-step">
+
+        <div class="liq-step-number">
+            03
+        </div>
+
+        <div>
+
+            <h3>
+                Mark the Liquidity Area
+            </h3>
+
+            <p>
+                Identify the area above highs or below lows where liquidity
+                may potentially be concentrated.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-step">
+
+        <div class="liq-step-number">
+            04
+        </div>
+
+        <div>
+
+            <h3>
+                Wait for Price to Reach It
+            </h3>
+
+            <p>
+                Do not assume price must visit the area. It is only a
+                potential area of interest.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-step">
+
+        <div class="liq-step-number">
+            05
+        </div>
+
+        <div>
+
+            <h3>
+                Observe the Reaction
+            </h3>
+
+            <p>
+                Watch whether price rejects the area, breaks through and
+                continues, or returns inside the previous range.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="liq-step">
+
+        <div class="liq-step-number">
+            06
+        </div>
+
+        <div>
+
+            <h3>
+                Combine With Structure
+            </h3>
+
+            <p>
+                Liquidity should be studied alongside market structure,
+                support and resistance and broader price behavior.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     14
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        14. Common Liquidity Locations
+    </h2>
+
+
+    <ul class="liq-list">
+
+        <li>
+            <strong>Above obvious swing highs.</strong>
+        </li>
+
+        <li>
+            <strong>Below obvious swing lows.</strong>
+        </li>
+
+        <li>
+            <strong>Above equal highs.</strong>
+        </li>
+
+        <li>
+            <strong>Below equal lows.</strong>
+        </li>
+
+        <li>
+            <strong>Around highly visible previous highs and lows.</strong>
+        </li>
+
+        <li>
+            <strong>Around major support and resistance areas.</strong>
+        </li>
+
+        <li>
+            <strong>Around obvious range boundaries.</strong>
+        </li>
+
+    </ul>
+
+
+    <div class="liq-highlight">
+
+        <strong>
+            KEY IDEA
+        </strong>
+
+        <p>
+            The more obvious an area is to many market participants, the
+            more useful it may be to investigate as a potential liquidity
+            reference.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     15
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        15. Liquidity Inside a Trading Range
+    </h2>
+
+    <p>
+        Liquidity is not limited to large trends. It can also appear around
+        the boundaries of a range.
+    </p>
+
+
+    <div class="liq-chart">
+
+        <div class="liq-chart-title">
+
+            <span>
+                RANGE LIQUIDITY
+            </span>
+
+            <span>
+                HIGH + LOW BOUNDARIES
+            </span>
+
+        </div>
+
+
+        <svg
+            viewBox="0 0 900 450"
+            role="img"
+            aria-label="Range chart showing liquidity above range high and below range low"
+        >
+
+            <rect
+                width="900"
+                height="450"
+                fill="#07101f"
+            />
+
+
+            <g
+                stroke="#17243a"
+                stroke-width="1"
+            >
+
+                <line x1="60" y1="70" x2="840" y2="70"/>
+                <line x1="60" y1="140" x2="840" y2="140"/>
+                <line x1="60" y1="210" x2="840" y2="210"/>
+                <line x1="60" y1="280" x2="840" y2="280"/>
+                <line x1="60" y1="350" x2="840" y2="350"/>
+
+            </g>
+
+
+            <!-- upper liquidity -->
+
+            <rect
+                x="60"
+                y="105"
+                width="780"
+                height="45"
+                rx="6"
+                fill="#8b5cf6"
+                opacity=".13"
+            />
+
+
+            <!-- lower liquidity -->
+
+            <rect
+                x="60"
+                y="310"
+                width="780"
+                height="45"
+                rx="6"
+                fill="#8b5cf6"
+                opacity=".13"
+            />
+
+
+            <!-- range -->
+
+            <rect
+                x="120"
+                y="150"
+                width="650"
+                height="160"
+                fill="#1e293b"
+                opacity=".28"
+            />
+
+
+            <!-- range price -->
+
+            <polyline
+                points="
+                    120,230
+                    180,160
+                    240,280
+                    300,165
+                    360,290
+                    420,155
+                    480,275
+                    540,160
+                    600,290
+                    660,165
+                    720,275
+                    770,150
+                "
+                fill="none"
+                stroke="#60a5fa"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+
+
+            <line
+                x1="120"
+                y1="150"
+                x2="770"
+                y2="150"
+                stroke="#f87171"
+                stroke-width="3"
+                stroke-dasharray="8 7"
+            />
+
+
+            <line
+                x1="120"
+                y1="310"
+                x2="770"
+                y2="310"
+                stroke="#34d399"
+                stroke-width="3"
+                stroke-dasharray="8 7"
+            />
+
+
+            <text
+                x="600"
+                y="95"
+                fill="#c4b5fd"
+                font-size="17"
+                font-family="Inter"
+                font-weight="900"
+            >
+                BUY-SIDE LIQUIDITY
+            </text>
+
+
+            <text
+                x="600"
+                y="385"
+                fill="#c4b5fd"
+                font-size="17"
+                font-family="Inter"
+                font-weight="900"
+            >
+                SELL-SIDE LIQUIDITY
+            </text>
+
+
+            <text
+                x="390"
+                y="235"
+                fill="#64748b"
+                font-size="20"
+                font-family="Inter"
+                font-weight="900"
+            >
+                RANGE
+            </text>
+
+        </svg>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     16
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        16. Liquidity Does Not Mean "Smart Money Must Take Stops"
+    </h2>
+
+    <p>
+        Liquidity concepts are useful for analysing price behavior, but they
+        should not be treated as proof that a specific institution or
+        "smart money" must intentionally hunt a trader's stop.
+    </p>
+
+    <p>
+        Markets contain many participants with different objectives,
+        strategies, time horizons and order types. Price movement around
+        obvious levels can have multiple causes.
+    </p>
+
+
+    <div class="liq-key">
+
+        <strong>
+            PROFESSIONAL THINKING
+        </strong>
+
+        <p>
+            Use liquidity as a framework for analysing possible order
+            concentration and price behavior, not as a guaranteed explanation
+            for every market move.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     17
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        17. Common Mistakes
+    </h2><div class="liq-deep"><h3>ANOTHER MAJOR MISTAKE — OVERLABELING</h3><p>If every wick is called a sweep, the word loses meaning. A sweep model should have clear rules.</p><h3>ANOTHER MISTAKE — PREDICTING THE TARGET</h3><p>Finding liquidity does not mean price must visit it next. Price can reverse before the level or continue beyond it.</p><h3>ANOTHER MISTAKE — IGNORING CONTEXT</h3><p>Liquidity should be read with timeframe, structure, volatility and the surrounding price map.</p></div>
+
+
+    <ul class="liq-list">
+
+        <li>
+            <strong>Assuming every high contains huge liquidity.</strong>
+            A high is only a potential reference point.
+        </li>
+
+        <li>
+            <strong>Assuming every wick is a liquidity sweep.</strong>
+            A wick can have many explanations.
+        </li>
+
+        <li>
+            <strong>Buying immediately after a sell-side sweep.</strong>
+            A sweep alone does not guarantee reversal.
+        </li>
+
+        <li>
+            <strong>Selling immediately after a buy-side sweep.</strong>
+            Price can continue upward after taking an obvious high.
+        </li>
+
+        <li>
+            <strong>Ignoring the higher timeframe.</strong>
+            Context matters.
+        </li>
+
+        <li>
+            <strong>Ignoring market structure.</strong>
+            Liquidity should not be analysed in isolation.
+        </li>
+
+        <li>
+            <strong>Calling every breakout a fakeout.</strong>
+            Some breakouts genuinely continue.
+        </li>
+
+        <li>
+            <strong>Thinking liquidity predicts the future.</strong>
+            It provides a framework for analysing possible behavior, not
+            certainty.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================================================
+     18
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        18. Easy Memory Rules
+    </h2>
+
+
+    <div class="liq-memory">
+
+        <h3>
+            🟢 ABOVE HIGHS = POSSIBLE BUY-SIDE LIQUIDITY
+        </h3>
+
+        <p>
+            Look above obvious highs and equal highs.
+        </p>
+
+    </div>
+
+
+    <div class="liq-memory">
+
+        <h3>
+            🔴 BELOW LOWS = POSSIBLE SELL-SIDE LIQUIDITY
+        </h3>
+
+        <p>
+            Look below obvious lows and equal lows.
+        </p>
+
+    </div>
+
+
+    <div class="liq-memory">
+
+        <h3>
+            💧 LIQUIDITY = POSSIBLE ORDER CONCENTRATION
+        </h3>
+
+        <p>
+            It is an analytical concept, not a guarantee that we can see
+            every hidden order.
+        </p>
+
+    </div>
+
+
+    <div class="liq-memory">
+
+        <h3>
+            🎯 SWEEP = LEVEL TAKEN + REACTION
+        </h3>
+
+        <p>
+            Price moves through an obvious level and then reacts. The
+            reaction must be observed rather than assumed.
+        </p>
+
+    </div>
+
+
+    <div class="liq-memory">
+
+        <h3>
+            🧠 SWEEP DOES NOT EQUAL GUARANTEED REVERSAL
+        </h3>
+
+        <p>
+            Price can sweep a level and continue in the same direction.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     19
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        19. Quick Revision Checklist
+    </h2>
+
+
+    <ul class="liq-checklist">
+
+        <li>
+            I understand the basic meaning of liquidity.
+        </li>
+
+        <li>
+            I understand why obvious levels matter.
+        </li>
+
+        <li>
+            I understand buy-side liquidity.
+        </li>
+
+        <li>
+            I understand sell-side liquidity.
+        </li>
+
+        <li>
+            I understand equal highs.
+        </li>
+
+        <li>
+            I understand equal lows.
+        </li>
+
+        <li>
+            I understand why stops can matter around obvious levels.
+        </li>
+
+        <li>
+            I understand a liquidity sweep.
+        </li>
+
+        <li>
+            I understand that a sweep does not guarantee reversal.
+        </li>
+
+        <li>
+            I can identify possible liquidity above highs.
+        </li>
+
+        <li>
+            I can identify possible liquidity below lows.
+        </li>
+
+        <li>
+            I understand the difference between a possible sweep and a
+            possible breakout.
+        </li>
+
+        <li>
+            I know liquidity should be combined with market structure.
+        </li>
+
+        <li>
+            I know liquidity analysis is based on inference, not direct
+            visibility of every hidden order.
+        </li>
+
+    </ul>
+
+</section>
+
+
+<!-- =========================================================
+     20
+========================================================= -->
+
+<section class="liq-section">
+
+    <h2>
+        🎯 Final Summary
+    </h2>
+
+    <p>
+        Liquidity is an important concept for understanding where trading
+        interest may become concentrated. Obvious highs, lows, equal highs,
+        equal lows and major price areas can become useful reference points.
+    </p>
+
+    <p>
+        Buy-side liquidity is commonly discussed above highs, while sell-side
+        liquidity is commonly discussed below lows. Price may move through
+        these areas and trigger orders before continuing, reversing or
+        consolidating.
+    </p>
+
+    <p>
+        A liquidity sweep describes a move through an obvious level followed
+        by a reaction, but a sweep is not a guaranteed reversal signal.
+        Always examine what price does after the level is reached.
+    </p>
+
+
+    <div class="liq-key">
+
+        <strong>
+            THE CORE LESSON
+        </strong>
+
+        <p>
+            <strong>
+                Find the obvious level → identify the possible liquidity
+                area → wait for price → observe the reaction → combine it
+                with structure and context.
+            </strong>
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="liq-section"><h2>21. Internal vs External Liquidity</h2><div class="liq-deep"><h3>EXTERNAL LIQUIDITY</h3><p>Major highs/lows outside a defined dealing range are commonly treated as external liquidity references.</p><h3>INTERNAL LIQUIDITY</h3><p>Smaller highs/lows inside the range are internal liquidity. They may be taken before a larger external objective.</p><h3>HOW TO USE IT</h3><p>Build the large map first, then add only relevant internal swings.</p></div><div class="liq-diagram"><div class="title">INTERNAL VS EXTERNAL LIQUIDITY</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><rect x="100" y="60" width="700" height="240" fill="none" stroke="#64748b" stroke-width="2"/>
+<line x1="100" y1="70" x2="800" y2="70" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="9 7"/>
+<line x1="100" y1="290" x2="800" y2="290" stroke="#fca5a5" stroke-width="4" stroke-dasharray="9 7"/>
+<polyline points="120,250 200,180 280,220 360,130 440,205 520,150 600,235 680,120 780,80" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<text x="610" y="52" fill="#c4b5fd" font-size="15" font-weight="900">EXTERNAL BSL</text>
+<text x="610" y="325" fill="#fca5a5" font-size="15" font-weight="900">EXTERNAL SSL</text>
+<text x="300" y="345" fill="#94a3b8" font-size="14" font-weight="700">INTERNAL HIGHS / LOWS</text></svg></div></section>
+<section class="liq-section"><h2>22. Liquidity Pools</h2><div class="liq-deep"><h3>COMMON POOLS</h3><p>Equal highs, equal lows, swing highs/lows, range boundaries, session highs/lows and previous day/week levels are common liquidity references.</p><h3>POOL QUALITY</h3><p>Visibility, timeframe, repetition and structural importance all matter.</p><h3>DO NOT OVERLOAD THE CHART</h3><p>A clean map with a few important pools is more useful than dozens of minor levels.</p></div><div class="liq-map"><div class="liq-map-card"><h3>Equal Highs</h3><p>Potential BSL above the cluster.</p></div><div class="liq-map-card"><h3>Equal Lows</h3><p>Potential SSL below the cluster.</p></div><div class="liq-map-card"><h3>Range Edge</h3><p>Potential liquidity beyond the boundary.</p></div></div></section>
+<section class="liq-section"><h2>23. Swing Liquidity</h2><div class="liq-deep"><h3>MAJOR SWINGS</h3><p>Major swing highs and lows are broad structural references.</p><h3>INTERNAL SWINGS</h3><p>Smaller swing points can become internal liquidity inside a trend or range.</p><h3>PRACTICAL RULE</h3><p>Mark the major extremes first. Add internal levels only when they explain current price behaviour.</p></div><div class="liq-diagram"><div class="title">SWING LIQUIDITY MAP</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><rect x="100" y="60" width="700" height="240" fill="none" stroke="#64748b" stroke-width="2"/>
+<line x1="100" y1="70" x2="800" y2="70" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="9 7"/>
+<line x1="100" y1="290" x2="800" y2="290" stroke="#fca5a5" stroke-width="4" stroke-dasharray="9 7"/>
+<polyline points="120,250 200,180 280,220 360,130 440,205 520,150 600,235 680,120 780,80" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<text x="610" y="52" fill="#c4b5fd" font-size="15" font-weight="900">EXTERNAL BSL</text>
+<text x="610" y="325" fill="#fca5a5" font-size="15" font-weight="900">EXTERNAL SSL</text>
+<text x="300" y="345" fill="#94a3b8" font-size="14" font-weight="700">INTERNAL HIGHS / LOWS</text></svg></div></section>
+<section class="liq-section"><h2>24. Range Liquidity</h2><div class="liq-deep"><h3>RANGE HIGH</h3><p>The upper boundary can be watched as a potential buy-side liquidity reference.</p><h3>RANGE LOW</h3><p>The lower boundary can be watched as a potential sell-side liquidity reference.</p><h3>THREE OUTCOMES</h3><p>Price can sweep and return, break and accept, or consolidate around the boundary.</p></div><div class="liq-diagram"><div class="title">RANGE LIQUIDITY — BOTH SIDES</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><rect x="140" y="85" width="620" height="190" fill="none" stroke="#64748b" stroke-width="2"/>
+<line x1="140" y1="85" x2="760" y2="85" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="10 8"/>
+<line x1="140" y1="275" x2="760" y2="275" stroke="#fca5a5" stroke-width="4" stroke-dasharray="10 8"/>
+<polyline points="150,220 230,145 310,220 390,120 470,210 550,150 630,235 710,110 780,180" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<text x="570" y="70" fill="#c4b5fd" font-size="16" font-weight="900">RANGE HIGH / BSL</text>
+<text x="550" y="315" fill="#fca5a5" font-size="16" font-weight="900">RANGE LOW / SSL</text></svg></div></section>
+<section class="liq-section"><h2>25. Previous Day and Week High/Low</h2><div class="liq-deep"><h3>OBJECTIVE LEVELS</h3><p>Previous day high/low and previous week high/low are easy-to-identify historical references.</p><h3>POTENTIAL LIQUIDITY</h3><p>Study the area above prior highs and below prior lows as possible liquidity references.</p><h3>HIERARCHY</h3><p>A previous-day level may be internal to a weekly range. Always know the timeframe of the level.</p></div><div class="liq-table-wrap"><table class="liq-table"><tr><th>Level</th><th>Possible liquidity</th><th>Observation</th></tr><tr><td>PDH</td><td>BSL above</td><td>Reject or accept?</td></tr><tr><td>PDL</td><td>SSL below</td><td>Reject or accept?</td></tr><tr><td>PWH</td><td>Higher-TF BSL</td><td>External or internal?</td></tr><tr><td>PWL</td><td>Higher-TF SSL</td><td>Does structure support it?</td></tr></table></div></section>
+<section class="liq-section"><h2>26. Session Liquidity</h2><div class="liq-deep"><h3>SESSION HIGHS/LOWS</h3><p>Active sessions can create identifiable intraday extremes that later become reference points.</p><h3>NO GUARANTEE</h3><p>A session high does not have to be swept. News and changing volatility can completely alter behaviour.</p><h3>WORKFLOW</h3><p>Mark the prior session high and low, then observe the next active session as price approaches them.</p></div><div class="liq-diagram"><div class="title">SESSION HIGH / LOW MAP</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><rect x="140" y="85" width="620" height="190" fill="none" stroke="#64748b" stroke-width="2"/>
+<line x1="140" y1="85" x2="760" y2="85" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="10 8"/>
+<line x1="140" y1="275" x2="760" y2="275" stroke="#fca5a5" stroke-width="4" stroke-dasharray="10 8"/>
+<polyline points="150,220 230,145 310,220 390,120 470,210 550,150 630,235 710,110 780,180" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<text x="570" y="70" fill="#c4b5fd" font-size="16" font-weight="900">RANGE HIGH / BSL</text>
+<text x="550" y="315" fill="#fca5a5" font-size="16" font-weight="900">RANGE LOW / SSL</text></svg></div></section>
+<section class="liq-section"><h2>27. Trendline and Diagonal Liquidity</h2><div class="liq-deep"><h3>DIAGONAL REFERENCES</h3><p>Trendlines can become visible reference areas when several swings align.</p><h3>LOWER PRECISION</h3><p>A diagonal depends on selected anchor points and changes with time. Horizontal highs/lows are more objective.</p><h3>BEST PRACTICE</h3><p>Use swing points as primary evidence and diagonal structure as supporting context.</p></div></section>
+<section class="liq-section"><h2>28. Inducement and Bait Liquidity</h2><div class="liq-deep"><h3>COMMON EDUCATIONAL DEFINITION</h3><p>Inducement is often used for an internal feature that may attract participation before a larger liquidity objective.</p><h3>EXAMPLE</h3><p>An internal swing forms beneath a major high. Traders may focus on the internal structure before price reaches the larger high.</p><h3>CAUTION</h3><p>Do not assume every internal swing was deliberately engineered to trap traders. Treat inducement as a model with explicit rules.</p></div><div class="liq-diagram"><div class="title">INTERNAL FEATURE → EXTERNAL LIQUIDITY</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><line x1="80" y1="120" x2="820" y2="120" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="9 7"/>
+<polyline points="90,280 180,210 270,240 360,150 450,210 540,110 630,180 720,65 820,120" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<line x1="720" y1="65" x2="720" y2="35" stroke="#fbbf24" stroke-width="4"/>
+<text x="620" y="55" fill="#fbbf24" font-size="15" font-weight="900">SWEEP</text>
+<text x="600" y="105" fill="#c4b5fd" font-size="15" font-weight="900">BSL ABOVE HIGH</text>
+<text x="500" y="330" fill="#94a3b8" font-size="14" font-weight="700">OBSERVE: RETURN OR ACCEPTANCE?</text></svg></div></section>
+<section class="liq-section"><h2>29. Liquidity Raid, Grab and Sweep Terminology</h2><div class="liq-deep"><h3>TERMS VARY</h3><p>Different educators use raid, grab, stop hunt and sweep differently.</p><h3>STRATIVO RULE</h3><p>Teach the observable behaviour first: price interacts with an obvious liquidity reference and the following reaction is studied.</p><h3>WHY THIS HELPS</h3><p>Students learn chart behaviour instead of memorising labels.</p></div></section>
+<section class="liq-section"><h2>30. Liquidity Void, Imbalance and Fair Value Gap</h2><div class="liq-deep"><h3>LIQUIDITY VOID</h3><p>A liquidity void is commonly used for an area where price moved rapidly with relatively little visible two-way interaction.</p><h3>IMBALANCE / FVG</h3><p>An imbalance or fair value gap is commonly defined using a three-candle relationship. Exact definitions vary between strategies.</p><h3>CONNECTION</h3><p>A sweep can be followed by displacement, and displacement can leave an imbalance. These are separate observations that can be combined.</p></div><div class="liq-diagram"><div class="title">SWEEP → DISPLACEMENT → IMBALANCE</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><line x1="80" y1="120" x2="820" y2="120" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="9 7"/>
+<polyline points="90,280 180,210 270,240 360,150 450,210 540,110 630,180 720,65 820,120" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<line x1="720" y1="65" x2="720" y2="35" stroke="#fbbf24" stroke-width="4"/>
+<text x="620" y="55" fill="#fbbf24" font-size="15" font-weight="900">SWEEP</text>
+<text x="600" y="105" fill="#c4b5fd" font-size="15" font-weight="900">BSL ABOVE HIGH</text>
+<text x="500" y="330" fill="#94a3b8" font-size="14" font-weight="700">OBSERVE: RETURN OR ACCEPTANCE?</text></svg></div></section>
+<section class="liq-section"><h2>31. Displacement After a Sweep</h2><div class="liq-deep"><h3>DISPLACEMENT</h3><p>Displacement describes decisive directional price movement.</p><h3>WHY IT MATTERS</h3><p>A sweep followed by strong movement away gives more information than a wick alone.</p><h3>STRUCTURAL CONSEQUENCE</h3><p>Study whether the displacement also breaks a relevant internal swing.</p></div><div class="liq-diagram"><div class="title">SWEEP + DISPLACEMENT</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><line x1="80" y1="120" x2="820" y2="120" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="9 7"/>
+<polyline points="90,280 180,210 270,240 360,150 450,210 540,110 630,180 720,65 820,120" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<line x1="720" y1="65" x2="720" y2="35" stroke="#fbbf24" stroke-width="4"/>
+<text x="620" y="55" fill="#fbbf24" font-size="15" font-weight="900">SWEEP</text>
+<text x="600" y="105" fill="#c4b5fd" font-size="15" font-weight="900">BSL ABOVE HIGH</text>
+<text x="500" y="330" fill="#94a3b8" font-size="14" font-weight="700">OBSERVE: RETURN OR ACCEPTANCE?</text></svg></div></section>
+<section class="liq-section"><h2>32. Liquidity + BOS / CHOCH / MSS</h2><div class="liq-deep"><h3>BOS</h3><p>Break of Structure commonly describes a break of a relevant structural swing. The exact rule must be defined.</p><h3>CHOCH / MSS</h3><p>These terms are commonly used for potential changes in directional behaviour. Definitions vary by educator.</p><h3>SEQUENCE</h3><p>Liquidity reference → sweep → displacement → structural break is a more developed narrative than &#x27;wick = reversal&#x27;.</p></div><div class="liq-diagram"><div class="title">LIQUIDITY → DISPLACEMENT → STRUCTURE</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><line x1="80" y1="120" x2="820" y2="120" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="9 7"/>
+<polyline points="90,280 180,210 270,240 360,150 450,210 540,110 630,180 720,65 820,120" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<line x1="720" y1="65" x2="720" y2="35" stroke="#fbbf24" stroke-width="4"/>
+<text x="620" y="55" fill="#fbbf24" font-size="15" font-weight="900">SWEEP</text>
+<text x="600" y="105" fill="#c4b5fd" font-size="15" font-weight="900">BSL ABOVE HIGH</text>
+<text x="500" y="330" fill="#94a3b8" font-size="14" font-weight="700">OBSERVE: RETURN OR ACCEPTANCE?</text></svg></div></section>
+<section class="liq-section"><h2>33. Premium, Equilibrium and Discount</h2><div class="liq-deep"><h3>DEALING RANGE</h3><p>Premium and discount are commonly taught by dividing a meaningful range around its midpoint.</p><h3>LIQUIDITY CONNECTION</h3><p>Range highs/lows can be external liquidity references. Premium/discount adds positional context.</p><h3>DO NOT USE RANDOM RANGES</h3><p>The range must come from meaningful structure; otherwise the midpoint has little analytical value.</p></div></section>
+<section class="liq-section"><h2>34. Liquidity + Order Blocks</h2><div class="liq-deep"><h3>ORDER BLOCK TERM</h3><p>Order block is a trading-education term with multiple definitions, often referring to a candle or small region associated with a strong subsequent move.</p><h3>LIQUIDITY CONNECTION</h3><p>Some frameworks study sweep → displacement → return toward an origin area and call that area an order block.</p><h3>NO HIDDEN-ORDER CLAIM</h3><p>A chart region labelled an order block is not direct proof of a bank order.</p></div></section>
+<section class="liq-section"><h2>35. Mitigation and Retest</h2><div class="liq-deep"><h3>RETEST</h3><p>After a breakout or displacement, price may return toward the crossed level.</p><h3>ACCEPTANCE</h3><p>Observe whether price holds the new side or falls back through it.</p><h3>FAILED RETEST</h3><p>If the level fails again, the continuation thesis needs to be reconsidered.</p></div></section>
+<section class="liq-section"><h2>36. Nested Liquidity Across Timeframes</h2><div class="liq-deep"><h3>MULTIPLE LAYERS</h3><p>A four-hour high can contain many one-minute highs. Small levels can be internal while the four-hour extreme is external.</p><h3>TOP-DOWN</h3><p>Map higher-timeframe boundaries first, then lower-timeframe internal liquidity.</p><h3>CONFLICT</h3><p>A lower-timeframe reaction does not automatically invalidate higher-timeframe structure.</p></div><div class="liq-table-wrap"><table class="liq-table"><tr><th>Layer</th><th>Map</th><th>Purpose</th></tr><tr><td>Higher TF</td><td>Major highs/lows</td><td>External context</td></tr><tr><td>Middle TF</td><td>Structural legs</td><td>Range/internal liquidity</td></tr><tr><td>Lower TF</td><td>Local swings</td><td>Detailed behaviour</td></tr></table></div></section>
+<section class="liq-section"><h2>37. Liquidity Around News and Volatility</h2><div class="liq-deep"><h3>WHY NEWS MATTERS</h3><p>Major economic releases can rapidly change volatility and order flow.</p><h3>DO NOT LABEL EVERY SPIKE A SWEEP</h3><p>A news wick can be caused by rapid repricing rather than a clean technical sweep model.</p><h3>STUDY RULE</h3><p>Mark major news separately when reviewing historical charts.</p></div></section>
+<section class="liq-section"><h2>38. Complete Liquidity Mapping Workflow</h2><div class="liq-deep"><h3>1 — BIG MAP</h3><p>Mark major highs/lows, previous day/week levels and obvious range boundaries.</p><h3>2 — CLASSIFY</h3><p>Label possible BSL/SSL and internal/external references.</p><h3>3 — CONTEXT</h3><p>Add support/resistance and market structure.</p><h3>4 — WAIT</h3><p>Do not decide the outcome before price arrives.</p><h3>5 — OBSERVE</h3><p>Record reaction, sweep, breakout/acceptance or consolidation.</p><h3>6 — UPDATE</h3><p>Use the result to update your market map.</p></div><div class="liq-diagram"><div class="title">COMPLETE LIQUIDITY MAP</div><svg viewBox="0 0 900 360"><rect width="900" height="360" fill="#07101f"/><g stroke="#17243a" stroke-width="1"><line x1="55" y1="70" x2="845" y2="70"/><line x1="55" y1="140" x2="845" y2="140"/><line x1="55" y1="210" x2="845" y2="210"/><line x1="55" y1="280" x2="845" y2="280"/></g><rect x="100" y="60" width="700" height="240" fill="none" stroke="#64748b" stroke-width="2"/>
+<line x1="100" y1="70" x2="800" y2="70" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="9 7"/>
+<line x1="100" y1="290" x2="800" y2="290" stroke="#fca5a5" stroke-width="4" stroke-dasharray="9 7"/>
+<polyline points="120,250 200,180 280,220 360,130 440,205 520,150 600,235 680,120 780,80" fill="none" stroke="#60a5fa" stroke-width="5"/>
+<text x="610" y="52" fill="#c4b5fd" font-size="15" font-weight="900">EXTERNAL BSL</text>
+<text x="610" y="325" fill="#fca5a5" font-size="15" font-weight="900">EXTERNAL SSL</text>
+<text x="300" y="345" fill="#94a3b8" font-size="14" font-weight="700">INTERNAL HIGHS / LOWS</text></svg></div></section>
+<section class="liq-section"><h2>39. Educational Liquidity Models</h2><div class="liq-deep"><h3>MODEL A — SWEEP AND REACTION</h3><p>Liquidity reference → price reaches it → sweep → reaction → structure/risk evaluation.</p><h3>MODEL B — BREAKOUT AND ACCEPTANCE</h3><p>Level → break → acceptance beyond → possible retest → reassessment.</p><h3>MODEL C — SWEEP → DISPLACEMENT → STRUCTURE</h3><p>Liquidity reference → sweep → displacement → relevant structural break → pullback study if required.</p><h3>RISK RULE</h3><p>No liquidity model guarantees an outcome. Define invalidation before entering and keep position sizing consistent.</p></div><div class="liq-scenario"><strong>BUY-SIDE EXAMPLE</strong><p>Price reaches an obvious high → trades above → returns below → bearish displacement → relevant internal low breaks. This is a sequence to study, not an automatic sell signal.</p></div><div class="liq-scenario"><strong>SELL-SIDE EXAMPLE</strong><p>Price reaches an obvious low → trades below → recovers above → bullish displacement → relevant internal high breaks. Confirmation and risk rules remain necessary.</p></div></section>
+<section class="liq-section"><h2>40. Liquidity Failure Scenarios + Study Lab</h2><div class="liq-deep"><h3>SWEEP THEN CONTINUATION</h3><p>Price can take a high and continue higher. The sweep did not produce the reversal condition.</p><h3>FALSE STRUCTURAL SHIFT</h3><p>A lower-timeframe break can occur while higher-timeframe structure remains unchanged.</p><h3>TOO MANY LEVELS</h3><p>If everything is liquidity, nothing is important. Keep the map clean.</p><h3>HINDSIGHT BIAS</h3><p>Mark charts before revealing future candles.</p><h3>PRACTICAL JOURNAL</h3><p>Record level, timeframe, liquidity side, event, reaction, structural consequence and lesson.</p></div><div class="liq-quiz"><h3>STUDENT SELF-TEST</h3><ol><li>What is BSL and where is it commonly mapped?</li><li>What is SSL and where is it commonly mapped?</li><li>Why are equal highs/lows useful references?</li><li>Why does a sweep not guarantee reversal?</li><li>What is internal vs external liquidity?</li><li>What is acceptance beyond a level?</li><li>How can news change liquidity behaviour?</li><li>Why should liquidity be combined with structure?</li></ol><div class="liq-answer"><strong>Core answers:</strong> BSL is commonly studied above highs and SSL below lows; equal levels are visible references; a sweep can continue; internal liquidity sits inside a larger range while external liquidity is at broader extremes; acceptance means sustained trading beyond a level; news can create exceptional volatility; structure provides context.</div></div></section>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<div class="liq-navigation">
+
+    <a href="notes-support-resistance.html">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Support &amp; Resistance
+
+    </a>
+
+
+    <a href="notes.html">
+
+        <i class="fa-solid fa-book"></i>
+
+        Notes Home
+
+    </a>
+
+
+    <a
+        href="notes-price-action-complete.html"
+        class="next-note"
+    >
+
+        Price Action
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </a>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+<div data-component="footer"></div>
+
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+
+</body>
+
+</html>

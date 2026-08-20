@@ -1,0 +1,361 @@
+/* ==========================================================
+   STRATIVO ACADEMY
+   Learning & Practice Preferences
+   ========================================================== */
+
+
+/* ==========================================================
+   PREFERENCE LIST
+   ========================================================== */
+
+.preferences-toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* ==========================================================
+   PREFERENCE CARD
+   ========================================================== */
+
+.preferences-toggle-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+
+    background: rgba(15, 23, 42, 0.72);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.14);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.preferences-toggle-card:hover {
+    border-color: rgba(255, 255, 255, 0.13);
+    background: rgba(15, 23, 42, 0.86);
+
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================================
+   INFORMATION
+   ========================================================== */
+
+.preferences-toggle-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    min-width: 0;
+}
+
+.preferences-toggle-info h3 {
+    margin: 0 0 6px;
+
+    color: #f8fafc;
+
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.preferences-toggle-info p {
+    margin: 0;
+
+    max-width: 720px;
+
+    color: #94a3b8;
+
+    font-size: 0.87rem;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   SWITCH
+   ========================================================== */
+
+.preferences-switch {
+    position: relative;
+
+    display: inline-flex;
+
+    flex: 0 0 auto;
+
+    width: 50px;
+    height: 28px;
+
+    cursor: pointer;
+}
+
+.preferences-switch input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.preferences-switch-slider {
+    position: absolute;
+
+    inset: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 999px;
+
+    background: rgba(148, 163, 184, 0.22);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.preferences-switch-slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    top: 3px;
+    left: 3px;
+
+    border-radius: 50%;
+
+    background: #e2e8f0;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.preferences-switch input:checked
++ .preferences-switch-slider {
+    background: rgba(59, 130, 246, 0.8);
+
+    border-color: rgba(59, 130, 246, 0.9);
+}
+
+.preferences-switch input:checked
++ .preferences-switch-slider::before {
+    transform: translateX(22px);
+
+    background: #ffffff;
+}
+
+.preferences-switch input:focus-visible
++ .preferences-switch-slider {
+    outline: 2px solid rgba(96, 165, 250, 0.9);
+
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   DARK THEME
+   ========================================================== */
+
+html[data-theme="dark"]
+body.preferences-page {
+    background: #030712;
+
+    color: #f8fafc;
+
+    color-scheme: dark;
+}
+
+
+/* ==========================================================
+   LIGHT THEME
+   ========================================================== */
+
+html[data-theme="light"]
+body.preferences-page {
+    background: #f8fafc;
+
+    color: #0f172a;
+
+    color-scheme: light;
+}
+
+html[data-theme="light"]
+body.preferences-page
+.preferences-toggle-card {
+    background: #ffffff;
+
+    border-color: rgba(15, 23, 42, 0.10);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="light"]
+body.preferences-page
+.preferences-toggle-card:hover {
+    background: #ffffff;
+
+    border-color: rgba(15, 23, 42, 0.16);
+}
+
+html[data-theme="light"]
+body.preferences-page
+.preferences-toggle-info h3 {
+    color: #0f172a;
+}
+
+html[data-theme="light"]
+body.preferences-page
+.preferences-toggle-info p {
+    color: #64748b;
+}
+
+html[data-theme="light"]
+body.preferences-page
+.preferences-switch-slider {
+    background: rgba(100, 116, 139, 0.18);
+
+    border-color: rgba(15, 23, 42, 0.12);
+}
+
+
+/* ==========================================================
+   SYSTEM THEME
+   ========================================================== */
+
+@media (prefers-color-scheme: light) {
+
+    html[data-theme-preference="system"]
+    body.preferences-page {
+        background: #f8fafc;
+
+        color: #0f172a;
+
+        color-scheme: light;
+    }
+
+    html[data-theme-preference="system"]
+    body.preferences-page
+    .preferences-toggle-card {
+        background: #ffffff;
+
+        border-color: rgba(15, 23, 42, 0.10);
+
+        box-shadow:
+            0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    html[data-theme-preference="system"]
+    body.preferences-page
+    .preferences-toggle-info h3 {
+        color: #0f172a;
+    }
+
+    html[data-theme-preference="system"]
+    body.preferences-page
+    .preferences-toggle-info p {
+        color: #64748b;
+    }
+
+}
+
+
+/* ==========================================================
+   HIGH CONTRAST
+   ========================================================== */
+
+html[data-high-contrast="true"]
+body.preferences-page
+.preferences-toggle-card {
+    border-color: rgba(255, 255, 255, 0.30);
+}
+
+html[data-high-contrast="true"]
+body.preferences-page
+.preferences-toggle-info p {
+    color: #dbeafe;
+}
+
+
+/* ==========================================================
+   COMPACT LAYOUT
+   ========================================================== */
+
+html[data-compact-layout="true"]
+body.preferences-page
+.preferences-toggle-card {
+    padding: 16px 18px;
+}
+
+html[data-compact-layout="true"]
+body.preferences-page
+.preferences-toggle-list {
+    gap: 8px;
+}
+
+
+/* ==========================================================
+   FOCUS MODE
+   ========================================================== */
+
+html[data-focus-mode="true"]
+body.preferences-page
+.settings-section-heading {
+    max-width: 760px;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 700px) {
+
+    .preferences-toggle-card {
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .preferences-toggle-card {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 18px;
+
+        border-radius: 15px;
+    }
+
+    .preferences-switch {
+        align-self: flex-start;
+    }
+
+    .preferences-toggle-info {
+        gap: 12px;
+    }
+
+    .preferences-toggle-info p {
+        font-size: 0.84rem;
+    }
+
+}

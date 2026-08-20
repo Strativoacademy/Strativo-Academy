@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Risk Management Lab Build 002 — learn position sizing and how account risk, stop loss and pip value work together."
+    >
+
+    <title>
+        Risk Management Build 002 | Strativo Academy
+    </title>
+
+
+    <!-- =====================================================
+         GLOBAL CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/ui.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/header.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/footer.css"
+    >
+
+
+    <!-- =====================================================
+         RISK MANAGEMENT CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/risk-management.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/risk-management-build002.css"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     GLOBAL HEADER
+====================================================== -->
+
+<div data-component="header"></div>
+
+
+
+<!-- =====================================================
+     MAIN RISK MANAGEMENT LAB
+====================================================== -->
+
+<main class="risk-lab-page rm2-page">
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="risk-hero rm2-hero">
+
+        <div class="risk-hero-content">
+
+            <span class="risk-eyebrow">
+                STRATIVO ACADEMY • RISK MANAGEMENT • BUILD 002
+            </span>
+
+
+            <h1>
+                Position Sizing Lab
+            </h1>
+
+
+            <p>
+                Learn how your planned risk and Stop Loss distance work together
+                to determine an appropriate position size.
+            </p>
+
+
+            <div class="risk-hero-pills">
+
+                <span>
+                    🎯 Position Sizing
+                </span>
+
+                <span>
+                    🧮 Interactive Calculator
+                </span>
+
+                <span>
+                    🧠 Practical Training
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         LEARNING NAVIGATION
+    ================================================== -->
+
+    <nav
+        class="risk-lab-navigation"
+        aria-label="Risk Management Build 002 navigation"
+    >
+
+        <a
+            href="#rm2-foundation"
+            class="risk-nav-item active"
+        >
+            <span>01</span>
+            Position Sizing
+        </a>
+
+
+        <a
+            href="#rm2-importance"
+            class="risk-nav-item"
+        >
+            <span>02</span>
+            Why It Matters
+        </a>
+
+
+        <a
+            href="#rm2-calculator"
+            class="risk-nav-item"
+        >
+            <span>03</span>
+            Calculator
+        </a>
+
+
+        <a
+            href="#rm2-practice"
+            class="risk-nav-item"
+        >
+            <span>04</span>
+            Practice
+        </a>
+
+
+        <a
+            href="#rm2-checkpoint"
+            class="risk-nav-item"
+        >
+            <span>05</span>
+            Checkpoint
+        </a>
+
+    </nav>
+
+
+
+    <!-- =================================================
+         01 — POSITION SIZING FOUNDATION
+    ================================================== -->
+
+    <section
+        class="risk-section"
+        id="rm2-foundation"
+    >
+
+        <div class="risk-section-heading">
+
+            <span class="risk-section-number">
+                01
+            </span>
+
+            <div>
+
+                <span class="risk-section-label">
+                    FOUNDATION
+                </span>
+
+                <h2>
+                    What Is Position Sizing?
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="risk-learning-card">
+
+            <div class="risk-learning-icon">
+                📐
+            </div>
+
+            <div>
+
+                <h3>
+                    Position size connects your risk to your trade.
+                </h3>
+
+                <p>
+                    Position sizing is the process of deciding how large a trade should be
+                    based on the amount you are willing to risk and the distance to your Stop Loss.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="risk-formula-card rm2-formula">
+
+            <span>
+                SIMPLIFIED EDUCATIONAL FORMULA
+            </span>
+
+            <strong>
+                Position Size = Risk Amount ÷ (Stop Loss × Pip Value)
+            </strong>
+
+            <p>
+                In this lab, pip value means the dollar value of one pip for one standard lot.
+                Real broker instruments can have different contract specifications.
+            </p>
+
+        </div>
+
+
+        <div class="risk-info-grid">
+
+            <div class="risk-info-card">
+
+                <span>
+                    RISK AMOUNT
+                </span>
+
+                <strong>
+                    How much money you are willing to lose.
+                </strong>
+
+            </div>
+
+
+            <div class="risk-info-card">
+
+                <span>
+                    STOP LOSS
+                </span>
+
+                <strong>
+                    How many pips away your protective stop is.
+                </strong>
+
+            </div>
+
+
+            <div class="risk-info-card">
+
+                <span>
+                    PIP VALUE
+                </span>
+
+                <strong>
+                    The dollar value of one pip for the selected lot basis.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         02 — WHY POSITION SIZE MATTERS
+    ================================================== -->
+
+    <section
+        class="risk-section"
+        id="rm2-importance"
+    >
+
+        <div class="risk-section-heading">
+
+            <span class="risk-section-number">
+                02
+            </span>
+
+            <div>
+
+                <span class="risk-section-label">
+                    WHY IT MATTERS
+                </span>
+
+                <h2>
+                    Why Position Size Matters
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <p class="risk-section-description">
+            The same account risk can require very different position sizes when the Stop Loss distance changes.
+        </p>
+
+
+        <div class="risk-comparison-grid">
+
+            <div class="risk-comparison-card">
+
+                <span>
+                    SMALL STOP
+                </span>
+
+                <strong>
+                    Larger position may be possible
+                </strong>
+
+                <p>
+                    A smaller pip distance can require more units to reach the same planned dollar risk.
+                </p>
+
+            </div>
+
+
+            <div class="risk-comparison-card">
+
+                <span>
+                    LARGE STOP
+                </span>
+
+                <strong>
+                    Smaller position may be required
+                </strong>
+
+                <p>
+                    A wider pip distance means each lot has more room to lose,
+                    so position size must be reduced.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="risk-warning-card">
+
+            <div>
+                ⚠️
+            </div>
+
+            <p>
+                Position sizing should be calculated
+                <strong>before entering the trade</strong>.
+                Do not increase size simply because you want to recover a previous loss.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         03 — POSITION SIZE CALCULATOR
+    ================================================== -->
+
+    <section
+        class="risk-section"
+        id="rm2-calculator"
+    >
+
+        <div class="risk-section-heading">
+
+            <span class="risk-section-number">
+                03
+            </span>
+
+            <div>
+
+                <span class="risk-section-label">
+                    INTERACTIVE LAB
+                </span>
+
+                <h2>
+                    Position Size Calculator
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <p class="risk-section-description">
+            Enter the account details, planned risk and Stop Loss distance.
+            The calculator uses the simplified educational model above.
+        </p>
+
+
+        <div class="rm2-calculator">
+
+
+            <div class="rm2-input-grid">
+
+                <label>
+
+                    <span>
+                        ACCOUNT BALANCE
+                    </span>
+
+                    <input
+                        id="rm2Balance"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="1000"
+                    >
+
+                </label>
+
+
+                <label>
+
+                    <span>
+                        RISK %
+                    </span>
+
+                    <input
+                        id="rm2RiskPercent"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="1"
+                    >
+
+                </label>
+
+
+                <label>
+
+                    <span>
+                        STOP LOSS (PIPS)
+                    </span>
+
+                    <input
+                        id="rm2StopLoss"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        value="20"
+                    >
+
+                </label>
+
+
+                <label>
+
+                    <span>
+                        PIP VALUE / STANDARD LOT
+                    </span>
+
+                    <input
+                        id="rm2PipValue"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        value="10"
+                    >
+
+                </label>
+
+            </div>
+
+
+            <div class="rm2-result">
+
+                <span>
+                    PLANNED RISK
+                </span>
+
+                <strong id="rm2RiskAmount">
+                    $10.00
+                </strong>
+
+            </div>
+
+
+            <div class="rm2-result">
+
+                <span>
+                    CALCULATED POSITION SIZE
+                </span>
+
+                <strong id="rm2PositionSize">
+                    0.05 lots
+                </strong>
+
+            </div>
+
+
+            <div
+                class="rm2-formula-live"
+                id="rm2FormulaLive"
+            >
+                $10 ÷ (20 × $10) = 0.05 lots
+            </div>
+
+
+            <div class="rm2-note">
+
+                Educational model only.
+                Broker contract size, currency conversion and instrument
+                specifications can change the actual pip value.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         04 — PRACTICE
+    ================================================== -->
+
+    <section
+        class="risk-section"
+        id="rm2-practice"
+    >
+
+        <div class="risk-section-heading">
+
+            <span class="risk-section-number">
+                04
+            </span>
+
+            <div>
+
+                <span class="risk-section-label">
+                    PRACTICE
+                </span>
+
+                <h2>
+                    Practice Position Sizing
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <p class="risk-section-description">
+            Solve each question.
+            A wrong answer keeps you on the same question until you get it right.
+        </p>
+
+
+        <div class="rm2-progress">
+
+            <span id="rm2PracticeNumber">
+                1 / 5
+            </span>
+
+            <div>
+                <i id="rm2PracticeBar"></i>
+            </div>
+
+        </div>
+
+
+        <div
+            class="rm2-question-card"
+            id="rm2PracticeCard"
+        >
+
+            <div class="rm2-question-meta">
+
+                <span id="rm2PracticeBadge">
+                    QUESTION 01
+                </span>
+
+                <span id="rm2PracticeTopic">
+                    POSITION SIZE
+                </span>
+
+            </div>
+
+
+            <h3 id="rm2PracticeQuestion"></h3>
+
+
+            <div class="rm2-data-grid">
+
+                <div>
+
+                    <span>
+                        RISK AMOUNT
+                    </span>
+
+                    <strong id="rm2PracticeRisk">
+                        $10
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        STOP LOSS
+                    </span>
+
+                    <strong id="rm2PracticeSL">
+                        20 pips
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        PIP VALUE
+                    </span>
+
+                    <strong id="rm2PracticePV">
+                        $10
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <label class="rm2-answer">
+
+                <span>
+                    Your Answer (lots)
+                </span>
+
+                <input
+                    id="rm2PracticeAnswer"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="e.g. 0.05"
+                >
+
+            </label>
+
+
+            <button
+                type="button"
+                class="rm2-primary-btn"
+                id="rm2PracticeCheck"
+            >
+                Check Answer
+            </button>
+
+
+            <div
+                class="rm2-feedback"
+                id="rm2PracticeFeedback"
+                hidden
+            >
+
+                <b id="rm2PracticeFeedbackTitle"></b>
+
+                <p id="rm2PracticeFeedbackText"></p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="rm2-next-btn"
+                id="rm2PracticeNext"
+                hidden
+            >
+                Next Question
+                <span>→</span>
+            </button>
+
+        </div>
+
+
+        <div
+            class="rm2-result-card"
+            id="rm2PracticeResult"
+            hidden
+        >
+
+            <span>
+                ✓
+            </span>
+
+            <div>
+
+                <small>
+                    PRACTICE COMPLETE
+                </small>
+
+                <strong id="rm2PracticeScore">
+                    5 / 5
+                </strong>
+
+                <p id="rm2PracticeMessage"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         05 — CHECKPOINT
+    ================================================== -->
+
+    <section
+        class="risk-section"
+        id="rm2-checkpoint"
+    >
+
+        <div class="risk-section-heading">
+
+            <span class="risk-section-number">
+                05
+            </span>
+
+            <div>
+
+                <span class="risk-section-label">
+                    CHECKPOINT
+                </span>
+
+                <h2>
+                    Position Sizing Checkpoint
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <p class="risk-section-description">
+            Final assessment.
+            These questions are different from Practice and test whether you can apply the concept.
+        </p>
+
+
+        <div class="rm2-progress">
+
+            <span id="rm2CheckpointNumber">
+                1 / 5
+            </span>
+
+            <div>
+                <i id="rm2CheckpointBar"></i>
+            </div>
+
+        </div>
+
+
+        <div
+            class="rm2-question-card"
+            id="rm2CheckpointCard"
+        >
+
+            <div class="rm2-question-meta">
+
+                <span id="rm2CheckpointBadge">
+                    QUESTION 01
+                </span>
+
+                <span id="rm2CheckpointTopic">
+                    POSITION SIZING
+                </span>
+
+            </div>
+
+
+            <h3 id="rm2CheckpointQuestion"></h3>
+
+
+            <div
+                class="rm2-options"
+                id="rm2CheckpointOptions"
+            ></div>
+
+
+            <div
+                class="rm2-feedback"
+                id="rm2CheckpointFeedback"
+                hidden
+            >
+
+                <b id="rm2CheckpointFeedbackTitle"></b>
+
+                <p id="rm2CheckpointFeedbackText"></p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="rm2-next-btn"
+                id="rm2CheckpointNext"
+                hidden
+            >
+                Next Question
+                <span>→</span>
+            </button>
+
+        </div>
+
+
+        <div
+            class="rm2-result-card"
+            id="rm2CheckpointResult"
+            hidden
+        >
+
+            <span id="rm2CheckpointIcon">
+                🏆
+            </span>
+
+            <div>
+
+                <small>
+                    CHECKPOINT COMPLETE
+                </small>
+
+                <strong id="rm2CheckpointScore">
+                    5 / 5
+                </strong>
+
+                <h3 id="rm2CheckpointTitle">
+                    Build 002 Complete
+                </h3>
+
+                <p id="rm2CheckpointMessage"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         BUILD STATUS
+    ================================================== -->
+
+    <section class="risk-progress-section">
+
+        <div>
+
+            <span>
+                BUILD 002
+            </span>
+
+            <h2>
+                Position Sizing
+            </h2>
+
+        </div>
+
+
+        <div class="risk-progress-status">
+
+            <span>
+                In Progress
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         BUILD NAVIGATION
+    ================================================== -->
+
+    <div class="risk-bottom-navigation">
+
+
+       <!-- BUILD 001 -->
+<a
+    href="risk-management.html"
+    class="risk-bottom-back"
+>
+    <i class="fa-solid fa-arrow-left"></i>
+    <span>Build 001</span>
+</a>
+
+
+<!-- BUILD 003 -->
+<a
+    href="./risk-management-build-003.html"
+    class="risk-bottom-next"
+>
+    <span>Build 003</span>
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
+
+
+<!-- MODULE 1 -->
+<a
+    href="../modules/module1.html"
+    class="risk-bottom-home"
+>
+    Back to Module 1
+</a>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     GLOBAL FOOTER
+====================================================== -->
+
+<div data-component="footer"></div>
+
+
+
+<!-- =====================================================
+     GLOBAL ROUTING
+====================================================== -->
+
+<script src="../js/routes.js"></script>
+
+
+
+<!-- =====================================================
+     GLOBAL COMPONENT LOADER
+====================================================== -->
+
+<script src="../js/component-loader.js"></script>
+
+
+
+<!-- =====================================================
+     GLOBAL HEADER CONTROLLER
+====================================================== -->
+
+<script src="../js/header.js"></script>
+
+
+
+<!-- =====================================================
+     RISK MANAGEMENT BUILD 002 JS
+====================================================== -->
+
+<script
+    src="../js/risk-management-build002.js"
+    defer
+></script>
+
+
+</body>
+
+</html>

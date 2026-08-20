@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strativo Academy - Beginner Dashboard</title>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- External CSS Links -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ui.css">
+    <link rel="stylesheet" href="css/beginner.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+
+<body>
+
+    <!-- GLOBAL HEADER -->
+    <!-- Loaded by component-loader.js from the shared header component. -->
+    <div data-component="header"></div>
+
+    <div class="app-layout">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <a href="index.html" class="brand-logo-link">
+                    <img src="images/logo.PNG" alt="Strativo Academy Logo" class="brand-logo-img">
+                </a>
+                <div class="brand-title">STRATIVO</div>
+                <div class="brand-subtitle">Academy</div>
+                <div class="badge">Version 2.0</div>
+            </div>
+
+            <hr class="divider">
+
+            <nav class="sidebar-nav">
+
+                <!-- MAIN -->
+                <div class="nav-section-title">Main</div>
+                <a href="index.html" class="nav-item">
+                    <span>Home</span>
+                </a>
+                <a href="beginner.html" class="nav-item active">
+                    <span>Dashboard</span>
+                </a>
+
+                <hr class="divider">
+
+                <div class="nav-section-title">Courses</div>
+                <a href="beginner.html" class="nav-item active">
+                    <span>Beginner</span>
+                </a>
+
+                <hr class="divider">
+
+                <!-- LEARNING -->
+                <div class="nav-section-title">Learning</div>
+
+                <hr class="divider">
+
+                <!-- TOOLS -->
+                <div class="nav-section-title">Tools</div>
+
+                <hr class="divider">
+
+                <!-- COMMUNITY -->
+                <div class="nav-section-title">Community</div>
+
+            </nav>
+
+            <div class="card streak-card">
+                <h3 class="card-title">Learning Streak</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                    Double click logo to reset progress (Demo)
+                </p>
+            </div>
+
+            <hr class="divider">
+
+            <div class="sidebar-nav js-community-links" style="flex: 0;">
+                <div class="follow-us-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                    
+                </div>
+
+                <div style="text-align: center; margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-muted);">
+                    <span class="status-dot"></span>
+                    <span class="js-community-members">1,245 Members Online</span>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- WELCOME SECTION -->
+            <div class="welcome-section animate-up">
+                <div class="welcome-text">
+                    <h1 class="js-welcome-greeting">Welcome back, Students 👋</h1>
+                    <p class="js-welcome-msg">Let's continue building your Forex foundation today.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 1: COURSE HERO BANNER -->
+            <div class="module-hero animate-up delay-100">
+                <div class="hero-bg-blur blur-1"></div>
+                <div class="hero-bg-blur blur-2"></div>
+
+                <div class="hero-content">
+                    <span class="hero-module-number">Beginner Track</span>
+                    <h2 class="hero-heading">Beginner Forex Course</h2>
+                    <p class="hero-desc">
+                        Master the complete fundamentals of Forex trading through 10 structured lessons in the current Beginner module.
+                    </p>
+
+                    <div class="learning-info-bar">
+                        <div class="info-item">
+                            <span class="info-label">Total Lessons</span>
+                            <span class="info-value">10 Lessons</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Active Modules</span>
+                            <span class="info-value">1 Active Module</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Est. Time</span>
+                            <span class="info-value">4+ Hours</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Level</span>
+                            <span class="info-value" style="color: var(--accent);">Beginner</span>
+                        </div>
+                    </div>
+
+                    <a href="modules/module1.html" class="hero-btn premium-hover">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon>
+                        </svg>
+                        Continue Learning
+                    </a>
+                </div>
+
+                <div class="module-summary-card">
+                    <div class="mod-prog-header">
+                        <span class="mod-prog-title">Course Progress</span>
+                        <span class="mod-prog-percent js-course-progress-percent">0%</span>
+                    </div>
+
+                    <div class="mod-circular-container">
+                        <div class="mod-circular-progress" style="background: conic-gradient(var(--accent) 0%, var(--bg-primary) 0);">
+                            <div class="mod-circular-inner">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="mod-stats-list">
+                            <div class="mod-stat-row">
+                                <span>Status</span>
+                                <span style="color: var(--warning);" class="js-mod-status">Not Started</span>
+                            </div>
+                            <div class="mod-stat-row">
+                                <span>Completed</span>
+                                <span class="js-course-completed-count">0 / 10</span>
+                            </div>
+                            <div class="mod-stat-row">
+                                <span>Difficulty</span>
+                                <span class="js-mod-difficulty">Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: CONTINUE LEARNING -->
+            <div class="continue-panel animate-up delay-200 premium-hover">
+                <div class="continue-info">
+                    <div class="continue-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon>
+                        </svg>
+                    </div>
+
+                    <div class="continue-details">
+                        <span class="badge accent js-cl-module" style="margin-bottom: 0.5rem; display: inline-block;">Module 1</span>
+                        <h3 class="js-cl-lesson-title">Market Sessions & Trading Hours</h3>
+
+                        <div class="continue-meta">
+                            <span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <span class="js-cl-time-left">25 mins left</span>
+                            </span>
+                            <span>•</span>
+                            <span>
+                                Last opened: <span class="js-cl-last-opened">Today</span>
+                            </span>
+                        </div>
+
+                        <div class="continue-progress-wrapper">
+                            <div class="continue-progress-labels">
+                                <span>Course Progress</span>
+                                <span class="js-cl-progress-text">Lesson 1 of 10</span>
+                            </div>
+                            <div class="continue-progress-bar-bg">
+                                <div class="continue-progress-fill js-cl-progress-bar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="modules/module1.html" class="btn btn-primary btn-large">
+                        Continue Learning
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- COURSE MODULE CARDS -->
+            <div class="animate-up delay-300">
+                <h2 class="section-title">Modules</h2>
+                <div class="modules-grid">
+
+                    <!-- MODULE 1 -->
+                    <a href="modules/module1.html" class="module-card">
+                        <div class="mod-card-header">
+                            <div class="mod-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                            </div>
+                            <span class="badge accent">Current Module</span>
+                        </div>
+
+                        <div class="mod-card-info">
+                            <h3>Module 1: Forex Basics</h3>
+                            <div class="mod-card-meta">
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                    </svg>
+                                    10 Lessons
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    5 Hours
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="mod-card-footer">
+                            <span style="font-size: 0.9rem; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 0.5rem;">
+                                Open Module
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- SECTION 3: COURSE OVERVIEW -->
+            <div class="animate-up delay-400">
+                <h2 class="section-title">Course Overview</h2>
+                <div class="overview-grid">
+                    <div class="overview-card premium-hover">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        <h4>10 Lessons</h4>
+                        <p>Comprehensive curriculum</p>
+                    </div>
+                    <div class="overview-card premium-hover">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 17 22 12"></polyline>
+                        </svg>
+                        <h4>1 Active Module</h4>
+                        <p>Step-by-step structure</p>
+                    </div>
+                    <div class="overview-card premium-hover">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <h4>4+ Hours</h4>
+                        <p>Structured learning content</p>
+                    </div>
+                    <div class="overview-card premium-hover">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <h4>Revision Included</h4>
+                        <p>Quizzes &amp; flashcards</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: WHAT YOU'LL LEARN -->
+            <div class="animate-up delay-400">
+                <h2 class="section-title">What You'll Learn</h2>
+                <div class="wyl-grid">
+                    <div class="wyl-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Forex Fundamentals</span>
+                    </div>
+                    <div class="wyl-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Currency Pairs</span>
+                    </div>
+                    <div class="wyl-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Pips &amp; Lots</span>
+                    </div>
+                    <div class="wyl-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Leverage &amp; Margin</span>
+                    </div>
+                    <div class="wyl-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Risk Management</span>
+                    </div>
+                    <div class="wyl-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Trading Platforms</span>
+                    </div>
+                    <div class="wyl-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Chart Reading</span>
+                    </div>
+                    <div class="wyl-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Trading Psychology</span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="right-sidebar">
+
+            <div class="sidebar-widget">
+
+                <!-- SECTION 5: WEEKLY LEARNING GOAL -->
+                <div class="card premium-hover animate-up delay-100">
+                    <div class="widget-header">
+                        <h2 class="widget-title">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                            Weekly Goal
+                        </h2>
+                    </div>
+
+                    <div class="goal-container">
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <span class="goal-lbl">Lessons Completed</span>
+                                <span class="goal-val js-wg-lessons">0 / 5</span>
+                            </div>
+                            <div class="goal-bar-bg">
+                                <div class="goal-bar-fill js-wg-lessons-bar" style="width: 0%; background: var(--accent); box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);"></div>
+                            </div>
+                        </div>
+
+                        <div class="goal-item" style="margin-top:0.25rem;">
+                            <div class="goal-header">
+                                <span class="goal-lbl">Remaining</span>
+                                <span class="goal-val" style="color:var(--warning);">5 Lessons</span>
+                            </div>
+                        </div>
+
+                        <div class="goal-item" style="margin-top:0.5rem; background:rgba(0,0,0,0.2); padding:0.75rem; border-radius:8px; border:1px solid rgba(255,255,255,0.03);">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="font-size:0.8rem; color:var(--text-muted);">Current Streak</span>
+                                <span style="font-size:1rem; font-weight:700; color:var(--warning);" class="js-val-streak">14 Days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW FEATURE: PRICE ACTION SPOTLIGHT -->
+                <div class="card premium-hover animate-up delay-150">
+                    <div class="widget-header">
+                        <h2 class="widget-title">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                            Price Action Spotlight
+                        </h2>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1rem 0;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.25rem;">The Hammer</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Spotting reversals early</p>
+                        
+                        <!-- Simple visual representation of a hammer candlestick -->
+                        <div style="display: inline-block; position: relative; height: 60px; width: 20px;">
+                            <div style="position: absolute; top: 0; left: 9px; width: 2px; height: 15px; background: #22c55e;"></div>
+                            <div style="position: absolute; top: 15px; left: 0; width: 20px; height: 15px; background: #22c55e; border-radius: 2px;"></div>
+                            <div style="position: absolute; top: 30px; left: 9px; width: 2px; height: 30px; background: #22c55e;"></div>
+                        </div>
+                        
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.4;">
+                            A long lower wick with a small real body at the top. This pattern indicates strong buyer rejection and is vital for entering 1-minute to 5-minute trade-ups in binary sessions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SECTION 6: FOREX GLOSSARY -->
+                <div class="card premium-hover animate-up delay-200">
+                    <div class="widget-header">
+                        <h2 class="widget-title">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                            Forex Glossary
+                        </h2>
+                    </div>
+
+                    <div class="glossary-list">
+                        <div class="glossary-item">
+                            <span class="glossary-term">Pip</span>
+                            <span class="glossary-hint">Smallest price move</span>
+                        </div>
+                        <div class="glossary-item">
+                            <span class="glossary-term">Lot</span>
+                            <span class="glossary-hint">Position size</span>
+                        </div>
+                        <div class="glossary-item">
+                            <span class="glossary-term">Spread</span>
+                            <span class="glossary-hint">Bid vs Ask diff</span>
+                        </div>
+                        <div class="glossary-item">
+                            <span class="glossary-term">Margin</span>
+                            <span class="glossary-hint">Required capital</span>
+                        </div>
+                        <div class="glossary-item">
+                            <span class="glossary-term">Leverage</span>
+                            <span class="glossary-hint">Buying power</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 0.5rem;">
+                        View Full Glossary
+                    </button>
+                </div>
+
+                <!-- SECTION 7: DAILY MOTIVATION -->
+                <div class="motivation-card animate-up delay-300 premium-hover" style="border-radius:var(--radius);">
+                    <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
+                    </svg>
+                    <p class="motivation-quote">
+                        "Consistency beats intensity. Small daily improvements are the key to staggering long-term results."
+                    </p>
+                    <span class="motivation-author">Strativo Trading</span>
+                </div>
+
+                <!-- SECTION 8: PLATFORM UPDATES -->
+                <div class="card premium-hover animate-up delay-400">
+                    <div class="widget-header">
+                        <h2 class="widget-title">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                <path d="M13.73 21a2 2 0 01-3.46 0"></path>
+                            </svg>
+                            What's New
+                        </h2>
+                    </div>
+
+                    <div class="updates-list">
+                        <div class="update-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Beginner Course Updated</span>
+                        </div>
+                        <div class="update-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Lesson Improvements applied</span>
+                        </div>
+                        <div class="update-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>More Intermediate Lessons Coming</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- ============================================================
+         NON-INTRUSIVE EDUCATIONAL ADVERTISEMENT BANNER
+    ============================================================= -->
+    <div class="strativo-ad-wrapper">
+        <aside class="strativo-ad-container" aria-label="Advertisement">
+            <span class="strativo-ad-label">Advertisement</span>
+            <ins class="adsbygoogle strativo-ad-slot"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </aside>
+    </div>
+
+ <!-- GLOBAL FOOTER (MOVED INSIDE APP-LAYOUT) -->
+        <footer id="global-footer-container" class="site-footer">
+            <div data-component="footer"></div>
+        </footer>
+
+<script src="js/app.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/component-loader.js"></script>
+
+<script src="js/header.js"></script>
+<script src="js/notifications.js"></script>
+
+<script src="js/progress.js"></script>
+<script src="js/lesson.js"></script>
+<script src="js/beginner.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 9 - Trendlines & Channels | Strativo Academy</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+
+    <style id="lesson9-local-fixes">
+
+        /* =====================================================
+           ACCESSIBILITY
+        ===================================================== */
+
+        .skip-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 99999;
+            transform: translateY(-150%);
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: #0f172a;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid #60a5fa;
+            outline-offset: 3px;
+        }
+
+
+        /* =====================================================
+           MOBILE LESSON MENU
+        ===================================================== */
+
+        .lesson-mobile-toggle {
+            display: none;
+            width: 100%;
+            min-height: 44px;
+            margin: 0 0 12px;
+            padding: 0 14px;
+            border: 1px solid rgba(148,163,184,.16);
+            border-radius: 10px;
+            background: #0b1220;
+            color: #dbeafe;
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           LESSON NAVIGATOR
+        ===================================================== */
+
+        .lesson-navigator-section {
+            width: min(92%, 1460px);
+            margin: 24px auto 32px;
+        }
+
+        .navigator-card {
+            padding: 28px 32px;
+            border: 1px solid rgba(0,229,168,.20);
+            border-radius: 24px;
+            background: #0b1728;
+            box-shadow: 0 18px 50px rgba(0,0,0,.18);
+        }
+
+        .navigator-header h2 {
+            margin: 0;
+            color: #f8fafc;
+            font-size: 1.55rem;
+        }
+
+        .navigator-header p {
+            margin: 8px 0 24px;
+            color: #94a3b8;
+        }
+
+        .navigator-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .nav-grid-item {
+            min-height: 82px;
+            padding: 16px;
+            border: 1px solid rgba(148,163,184,.14);
+            border-radius: 16px;
+            background: #142238;
+            color: #f8fafc;
+            text-decoration: none;
+            transition:
+                transform .18s ease,
+                border-color .18s ease,
+                background .18s ease;
+        }
+
+        .nav-grid-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(96,165,250,.55);
+        }
+
+        .nav-grid-item.current {
+            border-color: #00e5a8;
+            background: rgba(0,229,168,.10);
+            color: #00e5a8;
+        }
+
+        .grid-item-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-weight: 800;
+        }
+
+        .current-badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #00e5a8;
+            color: #041019;
+            font-size: .70rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           LESSON 9 IMAGE FIX
+        ===================================================== */
+
+        .lesson-banner {
+            width: 100%;
+            max-width: 100%;
+            margin: 18px auto 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .lesson-banner .lesson-image {
+            display: block;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            max-height: 320px;
+            object-fit: contain;
+            object-position: center;
+            margin: 0 auto;
+            border-radius: 14px;
+        }
+
+        .lesson-layout {
+            margin-top: 0;
+        }
+
+        .lesson-content {
+            min-width: 0;
+        }
+
+        .lesson-content .lesson-image {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .lesson-step-controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .lesson-step-controls button {
+            min-height: 44px;
+            padding: 10px 18px;
+            border: 1px solid rgba(148,163,184,.2);
+            border-radius: 10px;
+            background: #1d2b42;
+            color: #fff;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .lesson-step-controls button:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+        .lesson-step-controls .lesson-step-continue {
+            background: #00e5a8;
+            color: #07111f;
+        }
+
+
+        /* =====================================================
+           MOBILE STICKY NAV
+        ===================================================== */
+
+        .lesson-sticky-nav {
+            position: fixed;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            z-index: 1000;
+
+            display: none;
+            align-items: center;
+            gap: 10px;
+
+            padding: 9px;
+
+            border: 1px solid rgba(148,163,184,.15);
+            border-radius: 14px;
+
+            background: rgba(3,7,18,.94);
+            box-shadow: 0 14px 40px rgba(0,0,0,.35);
+            backdrop-filter: blur(8px);
+        }
+
+        .lesson-sticky-nav button {
+            min-height: 44px;
+            padding: 0 13px;
+            border: 1px solid rgba(148,163,184,.14);
+            border-radius: 10px;
+            background: #0b1627;
+            color: #dbeafe;
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .lesson-sticky-nav button:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+        .lesson-sticky-nav span {
+            flex: 1;
+            text-align: center;
+            color: #94a3b8;
+            font-size: .78rem;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .navigator-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .lesson-mobile-toggle {
+                display: block;
+            }
+
+            .lesson-sidebar {
+                display: none;
+            }
+
+            .lesson-sidebar.is-open {
+                display: block;
+            }
+
+            .lesson-sticky-nav {
+                display: flex;
+            }
+
+            .lesson-content {
+                padding-bottom: 90px !important;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .lesson-navigator-section {
+                width: calc(100% - 24px);
+                margin: 18px auto 24px;
+            }
+
+            .navigator-card {
+                padding: 20px;
+            }
+
+            .navigator-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .nav-grid-item {
+                min-height: 74px;
+                padding: 14px;
+            }
+
+            .lesson-banner .lesson-image {
+                max-height: 260px;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .navigator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-banner .lesson-image {
+                max-height: 220px;
+            }
+        }
+
+        @media (min-width: 801px) {
+
+            .lesson-sticky-nav {
+                display: none !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#lesson-content">
+        Skip to content
+    </a>
+
+    <!-- GLOBAL HEADER -->
+    <div
+        class="global-header-mount"
+        data-component="header"
+    ></div>
+
+
+    <!-- SHARED LESSON HEADER -->
+    <div data-component="lesson-header"></div>
+
+
+    <!-- LESSON NAVIGATOR -->
+    <div class="lesson-navigator-section">
+
+        <div class="navigator-card">
+
+            <div class="navigator-header">
+                <h2>📚 Lesson Navigator</h2>
+                <p>
+                    Jump directly to any lesson.
+                    Quiz scores track mastery separately.
+                </p>
+            </div>
+
+            <div class="navigator-grid">
+
+                <a href="lesson1.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 1</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson2.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 2</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson3.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 3</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson4.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 4</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson5.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 5</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson6.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 6</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson7.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 7</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson8.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 8</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+                <a
+                    href="lesson9.html"
+                    class="nav-grid-item current"
+                    aria-current="page"
+                >
+                    <div class="grid-item-top">
+                        <span>Lesson 9</span>
+                        <span>✅</span>
+                    </div>
+
+                    <span class="current-badge">
+                        Current Lesson
+                    </span>
+                </a>
+
+                <a href="lesson10.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span>Lesson 10</span>
+                        <span>▶</span>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MOBILE LESSON MENU -->
+    <button
+        type="button"
+        id="lessonSidebarToggle"
+        class="lesson-mobile-toggle"
+        aria-controls="lessonSidebar"
+        aria-expanded="false"
+    >
+        ☰ Lesson Menu
+    </button>
+
+
+    <!-- LESSON CONTAINER -->
+    <div class="lesson-layout">
+
+        <!-- SIDEBAR -->
+        <aside
+            id="lessonSidebar"
+            class="lesson-sidebar"
+        >
+
+            <h2>Lesson 9</h2>
+
+            <ul id="lessonMenu" class="lesson-nav">
+
+                <li data-step="1">👋 Welcome</li>
+                <li data-step="2">📈 What is a Trendline?</li>
+                <li data-step="3">📈 Bullish Trendline</li>
+                <li data-step="4">📉 Bearish Trendline</li>
+                <li data-step="5">✏️ Drawing Trendlines</li>
+                <li data-step="6">❌ Common Mistakes</li>
+                <li data-step="7">🚀 Trendline Breakouts</li>
+                <li data-step="8">📊 Price Channels</li>
+                <li data-step="9">🎯 Trading with Trendlines</li>
+                <li data-step="10">⚠️ False Breakouts</li>
+                <li data-step="11">💡 Best Practices</li>
+                <li data-step="12">📚 Lesson Summary</li>
+                <li data-step="13">📝 Quiz</li>
+                <li data-step="14">🎉 Congratulations</li>
+
+            </ul>
+
+        </aside>
+
+
+        <!-- MAIN LESSON CONTENT -->
+        <main
+            id="lesson-content"
+            class="lesson-content"
+        >
+
+            <!-- PROGRESS -->
+            <div class="progress-wrapper">
+
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+
+                <span id="progressText">
+                    Step 1 of 14
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 STEP 1
+            ================================================== -->
+
+            <section
+                class="lesson-step active"
+                id="step1"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/welcome.png"
+                        alt="Lesson 9 Welcome"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        📘 Lesson 9
+                    </span>
+
+                    <h1>
+                        Trendlines & Channels
+                    </h1>
+
+                    <p class="lesson-subtitle">
+                        Learn how professional traders use trendlines
+                        and price channels to identify trends, find
+                        high-probability trade setups, and improve
+                        entry and exit timing.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>🎯 What You'll Learn</h2>
+
+                    <ul>
+                        <li>✅ What a trendline is</li>
+                        <li>✅ Bullish and bearish trendlines</li>
+                        <li>✅ How to draw trendlines correctly</li>
+                        <li>✅ Common trendline mistakes</li>
+                        <li>✅ Trendline breakouts</li>
+                        <li>✅ Price channels</li>
+                        <li>✅ Trading with trendlines</li>
+                        <li>✅ False trendline breakouts</li>
+                        <li>✅ Professional best practices</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Why This Lesson Matters</h2>
+
+                    <p>
+                        Trendlines help traders understand market direction,
+                        identify strong trading opportunities, and avoid
+                        trading against the trend. When combined with market
+                        structure and support/resistance, they become one of
+                        the most powerful tools in technical analysis.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            The trend is your friend.
+                        </strong>
+
+                        A correctly drawn trendline helps you trade with the
+                        market instead of fighting against it.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 2
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step2"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step2.png"
+                        alt="What is a Trendline"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        📈 Step 2
+                    </span>
+
+                    <h1>What is a Trendline?</h1>
+
+                    <p class="lesson-subtitle">
+                        A trendline is one of the most powerful tools
+                        in technical analysis. It helps traders identify
+                        the market's direction by connecting important
+                        swing highs or swing lows.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 Definition</h2>
+
+                    <p>
+                        A <strong>trendline</strong> is a straight line drawn
+                        on a chart that connects two or more important price
+                        points. It helps traders visualize the direction of
+                        the market and identify potential support or resistance.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>🎯 Why Trendlines Matter</h2>
+
+                    <ul>
+                        <li>✅ Identify the overall market trend</li>
+                        <li>✅ Find high-probability entry points</li>
+                        <li>✅ Spot potential breakout opportunities</li>
+                        <li>✅ Improve trade timing</li>
+                        <li>✅ Build confidence in trend-following strategies</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Pro Tip</h2>
+
+                    <p>
+                        A trendline should never be forced onto the chart.
+                        Let price action naturally create the trendline by
+                        connecting valid swing highs or swing lows.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            A trendline shows the direction of the market,
+                            not the future.
+                        </strong>
+
+                        Always combine it with price action and confirmation
+                        before taking a trade.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 3
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step3"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step3.png"
+                        alt="Bullish Trendline"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        📈 Step 3
+                    </span>
+
+                    <h1>Bullish Trendline</h1>
+
+                    <p class="lesson-subtitle">
+                        A bullish trendline is drawn during an uptrend
+                        by connecting higher lows. It helps traders identify
+                        buying opportunities while the trend remains strong.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 What is a Bullish Trendline?</h2>
+
+                    <p>
+                        A bullish trendline is created by connecting at least
+                        two significant higher lows. As long as price continues
+                        respecting this line, buyers remain in control of the market.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>✅ Characteristics</h2>
+
+                    <ul>
+                        <li>📈 Connects Higher Lows (HL)</li>
+                        <li>📈 Shows an Uptrend</li>
+                        <li>📈 Acts as Dynamic Support</li>
+                        <li>📈 Buying pressure remains stronger than selling pressure</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Trading Tip</h2>
+
+                    <p>
+                        Look for buying opportunities when price pulls back
+                        to the bullish trendline and forms a confirmation
+                        candle such as a bullish engulfing or a strong
+                        rejection candle.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Common Mistake</h2>
+
+                    <p>
+                        Never connect random candles. Only use clear swing
+                        lows that the market has respected naturally.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            Higher Lows + Bullish Trendline = Healthy Uptrend.
+                        </strong>
+
+                        Always wait for confirmation before entering a buy trade.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 4
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step4"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step4.png"
+                        alt="Bearish Trendline"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        📉 Step 4
+                    </span>
+
+                    <h1>Bearish Trendline</h1>
+
+                    <p class="lesson-subtitle">
+                        A bearish trendline is drawn during a downtrend
+                        by connecting lower highs. It helps traders identify
+                        selling opportunities while sellers remain in control.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 What is a Bearish Trendline?</h2>
+
+                    <p>
+                        A bearish trendline is created by connecting two or more
+                        significant lower highs. As long as price respects this
+                        line, the market remains in a downtrend and sellers maintain control.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>✅ Characteristics</h2>
+
+                    <ul>
+                        <li>📉 Connects Lower Highs (LH)</li>
+                        <li>📉 Shows a Downtrend</li>
+                        <li>📉 Acts as Dynamic Resistance</li>
+                        <li>📉 Selling pressure remains stronger than buying pressure</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Trading Tip</h2>
+
+                    <p>
+                        Look for selling opportunities when price retests the
+                        bearish trendline and forms a bearish confirmation candle
+                        such as a bearish engulfing or a strong rejection candle.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Common Mistake</h2>
+
+                    <p>
+                        Do not force a trendline through every candle.
+                        Connect only clear lower highs that the market
+                        has naturally respected.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            Lower Highs + Bearish Trendline = Healthy Downtrend.
+                        </strong>
+
+                        Always wait for confirmation before entering a sell trade.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 5
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step5"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step5.png"
+                        alt="How to Draw a Trendline"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        ✏️ Step 5
+                    </span>
+
+                    <h1>How to Draw a Trendline Correctly</h1>
+
+                    <p class="lesson-subtitle">
+                        A trendline is only useful if it is drawn correctly.
+                        Professional traders follow simple rules instead of
+                        forcing lines onto the chart.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 Basic Rules</h2>
+
+                    <ul>
+                        <li>✅ Connect at least two valid swing highs or swing lows.</li>
+                        <li>✅ Three or more touches make a trendline stronger.</li>
+                        <li>✅ Draw the line through the main swing points.</li>
+                        <li>✅ Let price naturally respect the trendline.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>🎯 Drawing Tips</h2>
+
+                    <ul>
+                        <li>📈 Use Higher Lows for bullish trendlines.</li>
+                        <li>📉 Use Lower Highs for bearish trendlines.</li>
+                        <li>🕒 Start with higher timeframes for more reliable trendlines.</li>
+                        <li>✔️ Adjust the line only if it improves accuracy without forcing it.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Pro Tip</h2>
+
+                    <p>
+                        Trendlines should guide your analysis—not predict the future.
+                        Combine them with market structure, support & resistance,
+                        candlestick confirmation, and volume when available.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Avoid These Mistakes</h2>
+
+                    <ul>
+                        <li>❌ Connecting random candles.</li>
+                        <li>❌ Ignoring obvious swing points.</li>
+                        <li>❌ Redrawing the trendline after every candle.</li>
+                        <li>❌ Trading only because price touched the line.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            A good trendline fits the market naturally.
+                        </strong>
+
+                        If you have to force it, it is probably not a valid trendline.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 6
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step6"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step6.png"
+                        alt="Common Trendline Mistakes"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        ❌ Step 6
+                    </span>
+
+                    <h1>Common Trendline Mistakes</h1>
+
+                    <p class="lesson-subtitle">
+                        Many beginner traders lose money because they draw
+                        trendlines incorrectly or trust them without confirmation.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+                    <h2>🚫 Mistake #1 – Forcing the Trendline</h2>
+
+                    <p>
+                        Never force a trendline to fit the market. If you have
+                        to move the line repeatedly just to make it touch
+                        candles, it is probably not a valid trendline.
+                    </p>
+                </div>
+
+                <div class="lesson-card info">
+                    <h2>🚫 Mistake #2 – Connecting Random Candles</h2>
+
+                    <p>
+                        Trendlines should connect clear swing highs or swing lows,
+                        not random candle bodies or small market fluctuations.
+                    </p>
+                </div>
+
+                <div class="lesson-card info">
+                    <h2>🚫 Mistake #3 – Trading Every Touch</h2>
+
+                    <p>
+                        A trendline touch alone is not a trade signal.
+                        Always wait for confirmation.
+                    </p>
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Common Beginner Errors</h2>
+
+                    <ul>
+                        <li>❌ Ignoring the overall market trend.</li>
+                        <li>❌ Using only the 1-minute timeframe.</li>
+                        <li>❌ Drawing too many trendlines.</li>
+                        <li>❌ Ignoring higher timeframe analysis.</li>
+                        <li>❌ Believing every breakout is real.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Professional Advice</h2>
+
+                    <p>
+                        Professional traders keep their charts simple.
+                        One well-drawn trendline is more valuable than several
+                        inaccurate ones.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            Trendlines are guides, not guarantees.
+                        </strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 7
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step7"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step7.png"
+                        alt="Trendline Breakouts"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        🚀 Step 7
+                    </span>
+
+                    <h1>Trendline Breakouts</h1>
+
+                    <p class="lesson-subtitle">
+                        A trendline breakout occurs when price moves beyond
+                        a well-respected trendline.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 What is a Trendline Breakout?</h2>
+
+                    <p>
+                        A breakout happens when price closes above a bearish
+                        trendline or below a bullish trendline with enough momentum.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>🔍 Signs of a Strong Breakout</h2>
+
+                    <ul>
+                        <li>✅ Strong breakout candle with a solid body.</li>
+                        <li>✅ Candle closes clearly beyond the trendline.</li>
+                        <li>✅ Increased trading volume if available.</li>
+                        <li>✅ Higher timeframe trend supports the breakout.</li>
+                        <li>✅ Follow-through candles continue.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Professional Trading Tip</h2>
+
+                    <p>
+                        Instead of entering immediately after the breakout,
+                        wait for a retest of the broken trendline.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Don't Chase Every Breakout</h2>
+
+                    <p>
+                        Not every breakout leads to a new trend.
+                        Always wait for confirmation.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            Breakout → Confirmation → Retest → Entry
+                        </strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 8
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step8"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step8.png"
+                        alt="Price Channels"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        📊 Step 8
+                    </span>
+
+                    <h1>Price Channels</h1>
+
+                    <p class="lesson-subtitle">
+                        A price channel is formed by two parallel trendlines
+                        that contain price movement.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 What is a Price Channel?</h2>
+
+                    <p>
+                        A price channel consists of an upper trendline
+                        and a lower trendline.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📈 Types of Price Channels</h2>
+
+                    <ul>
+                        <li>📈 Ascending Channel</li>
+                        <li>📉 Descending Channel</li>
+                        <li>➡️ Horizontal Channel</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Trading Tip</h2>
+
+                    <p>
+                        Use price action confirmation before trading from
+                        either boundary.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Common Mistake</h2>
+
+                    <p>
+                        Do not assume price will always stay inside the channel.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            Channels help you understand where price is likely
+                            to bounce or break.
+                        </strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 9
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step9"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step9.png"
+                        alt="Trading with Trendlines"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        🎯 Step 9
+                    </span>
+
+                    <h1>Trading with Trendlines</h1>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 Buy Setup</h2>
+
+                    <ul>
+                        <li>✅ Higher Highs and Higher Lows</li>
+                        <li>✅ Price pulls back to a bullish trendline</li>
+                        <li>✅ Bullish confirmation candle</li>
+                        <li>✅ Enter after confirmation</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 Sell Setup</h2>
+
+                    <ul>
+                        <li>✅ Lower Highs and Lower Lows</li>
+                        <li>✅ Price retests a bearish trendline</li>
+                        <li>✅ Bearish confirmation candle</li>
+                        <li>✅ Enter after confirmation</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Professional Trading Tips</h2>
+
+                    <ul>
+                        <li>✔️ Trade in the direction of the trend.</li>
+                        <li>✔️ Wait for confirmation.</li>
+                        <li>✔️ Use higher timeframes.</li>
+                        <li>✔️ Combine trendlines with support & resistance.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Avoid These Mistakes</h2>
+
+                    <ul>
+                        <li>❌ Buying in a strong downtrend.</li>
+                        <li>❌ Selling in a strong uptrend.</li>
+                        <li>❌ Entering before confirmation.</li>
+                        <li>❌ Ignoring market structure.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            Trendlines should guide your decisions—not make
+                            them for you.
+                        </strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 10
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step10"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step10.png"
+                        alt="False Trendline Breakouts"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        ⚠️ Step 10
+                    </span>
+
+                    <h1>False Trendline Breakouts</h1>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>📚 What is a False Breakout?</h2>
+
+                    <p>
+                        A false breakout occurs when price briefly breaks
+                        a trendline and then returns back inside the trend.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>🚩 Signs of a False Breakout</h2>
+
+                    <ul>
+                        <li>❌ Price closes back inside the trendline.</li>
+                        <li>❌ Weak breakout candle.</li>
+                        <li>❌ No follow-through.</li>
+                        <li>❌ Strong rejection wick.</li>
+                        <li>❌ Against higher timeframe trend.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 How to Avoid False Breakouts</h2>
+
+                    <ul>
+                        <li>✅ Wait for candle close.</li>
+                        <li>✅ Look for strong momentum.</li>
+                        <li>✅ Wait for retest.</li>
+                        <li>✅ Check higher timeframe trend.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Biggest Beginner Mistake</h2>
+
+                    <p>
+                        Entering immediately after a small trendline break
+                        without confirmation.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            Patience saves money.
+                        </strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 11
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step11"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step11.png"
+                        alt="Trendline Best Practices"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        ⭐ Step 11
+                    </span>
+
+                    <h1>Best Practices for Using Trendlines</h1>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>✅ Follow the Main Trend</h2>
+
+                    <p>
+                        Identify the overall market trend before drawing
+                        trendlines.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>✅ Wait for Confirmation</h2>
+
+                    <p>
+                        Never enter simply because price touches a trendline.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>✅ Combine Multiple Tools</h2>
+
+                    <ul>
+                        <li>📍 Support & Resistance</li>
+                        <li>🕯️ Candlestick Patterns</li>
+                        <li>📈 Market Structure</li>
+                        <li>⏰ Higher Timeframe Analysis</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Professional Tip</h2>
+
+                    <p>
+                        The best setups occur when several factors agree.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card warning">
+
+                    <h2>⚠️ Keep Your Chart Clean</h2>
+
+                    <p>
+                        Avoid drawing too many trendlines.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Remember</h2>
+
+                    <p>
+                        <strong>
+                            Trendlines are a tool—not a complete trading strategy.
+                        </strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 12
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step12"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step12.png"
+                        alt="Lesson Summary"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        📚 Step 12
+                    </span>
+
+                    <h1>Lesson Summary</h1>
+
+                    <p class="lesson-subtitle">
+                        Congratulations! You have completed the Trendlines
+                        & Channels lesson.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card info">
+
+                    <h2>✅ What You Learned</h2>
+
+                    <ul>
+                        <li>📈 What trendlines are.</li>
+                        <li>📉 Bullish and bearish trendlines.</li>
+                        <li>✏️ Correct drawing rules.</li>
+                        <li>❌ Common mistakes.</li>
+                        <li>🚀 Trendline breakouts.</li>
+                        <li>📊 Price channels.</li>
+                        <li>🎯 Trading with trendlines.</li>
+                        <li>⚠️ False breakouts.</li>
+                        <li>⭐ Best practices.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>💡 Key Takeaways</h2>
+
+                    <ul>
+                        <li>✔️ Use clear swing highs and lows.</li>
+                        <li>✔️ Wait for confirmation.</li>
+                        <li>✔️ Trade with the trend.</li>
+                        <li>✔️ Use confluence.</li>
+                        <li>✔️ Be patient.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Final Reminder</h2>
+
+                    <p>
+                        Trendlines help you understand market direction,
+                        but they are only one part of successful trading.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card success">
+
+                    <h2>🎉 Ready for the Quiz?</h2>
+
+                    <p>
+                        Score at least <strong>70%</strong> to unlock
+                        Lesson 10.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 13 — QUIZ
+                 NO IMAGE
+            ================================================== -->
+
+            <section
+                class="lesson-step quiz-step"
+                id="step13"
+            >
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        📝 Step 13
+                    </span>
+
+                    <h1>Lesson Quiz</h1>
+
+                    <p class="lesson-subtitle">
+                        Test your understanding of Trendlines & Channels.
+                        Score at least <strong>70%</strong> to unlock Lesson 10.
+                    </p>
+
+                </div>
+
+                <div class="quiz-container">
+
+                    <div id="quiz-box">
+
+                        <h2 id="question">
+                            Loading question...
+                        </h2>
+
+                        <div
+                            id="answers"
+                            class="answers-grid"
+                        ></div>
+
+                        <div
+                            id="quizResult"
+                            class="quiz-result"
+                            style="display:none;"
+                        >
+                            <p id="scoreText"></p>
+                        </div>
+
+                        <div class="quiz-footer">
+
+                            <button
+                                type="button"
+                                id="nextQuestionBtn"
+                                class="primary-btn"
+                                disabled
+                            >
+                                Next Question →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STEP 14
+            ================================================== -->
+
+            <section
+                class="lesson-step"
+                id="step14"
+            >
+
+                <div class="lesson-banner">
+
+                    <img
+                        loading="lazy"
+                        src="../../images/lesson9/step14.png"
+                        alt="Congratulations"
+                        class="lesson-image"
+                    >
+
+                </div>
+
+                <div class="lesson-header">
+
+                    <span class="lesson-number">
+                        🎉 Step 14
+                    </span>
+
+                    <h1>Congratulations!</h1>
+
+                    <p class="lesson-subtitle">
+                        You have successfully completed Lesson 9:
+                        Trendlines & Channels.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card success">
+
+                    <h2>🏆 Achievement Unlocked</h2>
+
+                    <ul>
+                        <li>✅ Learned how to draw trendlines correctly.</li>
+                        <li>✅ Identified bullish and bearish trendlines.</li>
+                        <li>✅ Understood trendline breakouts.</li>
+                        <li>✅ Learned price channels.</li>
+                        <li>✅ Avoided common beginner mistakes.</li>
+                        <li>✅ Recognized false breakouts.</li>
+                        <li>✅ Applied best practices.</li>
+                    </ul>
+
+                </div>
+
+                <div class="lesson-card tip">
+
+                    <h2>🚀 What's Next?</h2>
+
+                    <p>
+                        In Lesson 10, you'll learn about Chart Patterns.
+                    </p>
+
+                </div>
+
+                <div class="lesson-card remember">
+
+                    <h2>📌 Keep Practicing</h2>
+
+                    <p>
+                        Practice drawing trendlines and channels on
+                        different timeframes.
+                    </p>
+
+                </div>
+
+                <div
+                    id="lesson10ButtonContainer"
+                    class="lesson-complete-container"
+                ></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/lesson.js"></script>
+
+    <script src="../../quizzes/module1/quiz9.js"></script>
+
+    <div
+        id="lessonStickyNav"
+        class="lesson-sticky-nav"
+        aria-label="Lesson step navigation"
+    >
+        <button
+            type="button"
+            id="stickyPrevBtn"
+        >
+            ← Previous
+        </button>
+
+        <span id="stickyStepLabel">
+            Step 1 of 14
+        </span>
+
+        <button
+            type="button"
+            id="stickyNextBtn"
+        >
+            Next →
+        </button>
+    </div>
+
+    <div data-component="footer"></div>
+
+    <script src="../../js/routes.js"></script>
+    <script src="../../js/component-loader.js"></script>
+    <script src="../../js/header.js"></script>
+
+
+    <!-- =====================================================
+         LESSON 9 UI HELPERS
+    ====================================================== -->
+
+    <script>
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            "use strict";
+
+            const totalSteps =
+                document.querySelectorAll(
+                    ".lesson-step"
+                ).length;
+
+            function getActiveStep() {
+                const active = document.querySelector(
+                    ".lesson-step.active-step"
+                );
+                const match = /^step(\d+)$/.exec(active?.id || "");
+                return match ? Number(match[1]) : 1;
+            }
+
+            function quizIsFinished() {
+                try {
+                    const state = JSON.parse(
+                        localStorage.getItem("lesson9_quiz_state") || "{}"
+                    );
+                    return state.finished === true;
+                } catch (error) {
+                    return false;
+                }
+            }
+
+            function addStepControls() {
+                document.querySelectorAll(".lesson-step").forEach((step) => {
+                    if (step.querySelector(".lesson-step-controls")) {
+                        return;
+                    }
+
+                    const number = Number(step.id.replace("step", ""));
+                    const controls = document.createElement("div");
+                    controls.className = "lesson-step-controls";
+
+                    const previous = document.createElement("button");
+                    previous.type = "button";
+                    previous.textContent = "← Previous Step";
+                    previous.disabled = number <= 1;
+                    previous.addEventListener("click", () => window.previousStep());
+
+                    const next = document.createElement("button");
+                    next.type = "button";
+                    next.className = "lesson-step-continue";
+                    next.textContent = number >= totalSteps
+                        ? "Lesson Complete"
+                        : number === 13
+                            ? "Continue to Step 14 →"
+                            : "Next Step →";
+                    next.disabled = number >= totalSteps || (number === 13 && !quizIsFinished());
+                    next.addEventListener("click", () => window.nextStep());
+
+                    controls.append(previous, next);
+                    step.appendChild(controls);
+                });
+            }
+
+            function getActiveStep() {
+
+                const active =
+                    document.querySelector(
+                        ".lesson-step.active, .lesson-step.active-step"
+                    );
+
+                if (!active) {
+                    return 1;
+                }
+
+                const match =
+                    /^step(\d+)$/.exec(
+                        active.id || ""
+                    );
+
+                return match
+                    ? Number(match[1])
+                    : 1;
+            }
+
+            function updateProgress() {
+
+                const step =
+                    getActiveStep();
+
+                const percentage =
+                    Math.round(
+                        (step / totalSteps) * 100
+                    );
+
+                const fill =
+                    document.getElementById(
+                        "progressFill"
+                    );
+
+                const text =
+                    document.getElementById(
+                        "progressText"
+                    );
+
+                const stickyLabel =
+                    document.getElementById(
+                        "stickyStepLabel"
+                    );
+
+                if (fill) {
+                    fill.style.width =
+                        percentage + "%";
+                }
+
+                if (text) {
+                    text.textContent =
+                        `Step ${step} of ${totalSteps}`;
+                }
+
+                if (stickyLabel) {
+                    stickyLabel.textContent =
+                        `Step ${step} of ${totalSteps}`;
+                }
+
+                const previous =
+                    document.getElementById(
+                        "stickyPrevBtn"
+                    );
+
+                const next =
+                    document.getElementById(
+                        "stickyNextBtn"
+                    );
+
+                if (previous) {
+                    previous.disabled =
+                        step <= 1;
+                }
+
+                if (next) {
+                    next.disabled =
+                        step >= totalSteps;
+                }
+
+                try {
+                    localStorage.setItem(
+                        "strativo_lesson9_ui_state",
+                        JSON.stringify({
+                            currentStep: step,
+                            savedAt: Date.now()
+                        })
+                    );
+                } catch (error) {
+                    console.warn(
+                        "Lesson 9 state could not be saved.",
+                        error
+                    );
+                }
+            }
+
+
+            /* Mobile sidebar */
+
+            const toggle =
+                document.getElementById(
+                    "lessonSidebarToggle"
+                );
+
+            const sidebar =
+                document.getElementById(
+                    "lessonSidebar"
+                );
+
+            if (toggle && sidebar) {
+
+                toggle.addEventListener(
+                    "click",
+                    function () {
+
+                        const open =
+                            sidebar.classList.toggle(
+                                "is-open"
+                            );
+
+                        toggle.setAttribute(
+                            "aria-expanded",
+                            open
+                                ? "true"
+                                : "false"
+                        );
+
+                        toggle.textContent =
+                            open
+                                ? "✕ Close Lesson Menu"
+                                : "☰ Lesson Menu";
+                    }
+                );
+            }
+
+            document.querySelectorAll(
+                "#lessonMenu li[data-step]"
+            ).forEach((item) => {
+                item.addEventListener("click", () => {
+                    const step = Number(item.dataset.step);
+                    if (Number.isInteger(step)) {
+                        window.showStep(step);
+                        updateProgress();
+                    }
+                });
+            });
+
+
+            /* Save and Exit */
+
+            const saveExit =
+                document.getElementById(
+                    "saveExitBtn"
+                );
+
+            if (saveExit) {
+
+                saveExit.addEventListener(
+                    "click",
+                    function () {
+
+                        updateProgress();
+
+                        window.location.href =
+                            "../../modules/module1.html";
+                    }
+                );
+            }
+
+
+            /* Wrap existing lesson engine */
+
+            if (
+                typeof window.showStep ===
+                "function"
+            ) {
+
+                const originalShowStep =
+                    window.showStep;
+
+                window.showStep =
+                    function (step) {
+
+                        const result =
+                            originalShowStep.apply(
+                                this,
+                                arguments
+                            );
+
+                        updateProgress();
+
+                        return result;
+                    };
+            }
+
+
+            /* Sticky previous */
+
+            const stickyPrev =
+                document.getElementById(
+                    "stickyPrevBtn"
+                );
+
+            if (stickyPrev) {
+
+                stickyPrev.addEventListener(
+                    "click",
+                    function () {
+
+                        if (
+                            typeof window.previousStep ===
+                            "function"
+                        ) {
+                            window.previousStep();
+                        }
+
+                        updateProgress();
+                    }
+                );
+            }
+
+
+            /* Sticky next */
+
+            const stickyNext =
+                document.getElementById(
+                    "stickyNextBtn"
+                );
+
+            if (stickyNext) {
+
+                stickyNext.addEventListener(
+                    "click",
+                    function () {
+
+                        const step =
+                            getActiveStep();
+
+                        if (step >= 13) {
+                            return;
+                        }
+
+                        if (
+                            typeof window.nextStep ===
+                            "function"
+                        ) {
+                            window.nextStep();
+                        }
+
+                        updateProgress();
+                    }
+                );
+            }
+
+
+            /* Lesson 10 unlock button */
+
+            function updateLesson10Button() {
+
+                const container =
+                    document.getElementById(
+                        "lesson10ButtonContainer"
+                    );
+
+                if (!container) {
+                    return;
+                }
+
+                const unlocked =
+                    localStorage.getItem(
+                        "lesson10_unlocked"
+                    ) === "true";
+
+                if (unlocked) {
+
+                    container.innerHTML =
+                        `
+                        <a
+                            href="lesson10.html"
+                            class="primary-btn"
+                        >
+                            🚀 Continue to Lesson 10
+                        </a>
+                        `;
+                } else {
+
+                    container.innerHTML =
+                        `
+                        <button
+                            type="button"
+                            class="primary-btn"
+                            disabled
+                        >
+                            🔒 Pass the quiz to unlock Lesson 10
+                        </button>
+                        `;
+                }
+            }
+
+            updateLesson10Button();
+            addStepControls();
+            updateProgress();
+
+            window.setInterval(() => {
+                const quizControls = document.querySelector(
+                    "#step13 .lesson-step-continue"
+                );
+                if (quizControls) {
+                    quizControls.disabled = !quizIsFinished();
+                }
+            }, 500);
+
+            window.addEventListener(
+                "beforeunload",
+                updateProgress
+            );
+
+        }
+    );
+    </script>
+
+</body>
+</html>

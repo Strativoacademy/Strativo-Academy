@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Introduction to Forex | Strativo Academy</title>
+
+    <!-- Shared Strativo Academy styles -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+
+    <style>
+        :root {
+            --fx-bg: #020617;
+            --fx-panel: #0b1220;
+            --fx-panel-2: #0f172a;
+            --fx-border: rgba(148,163,184,.14);
+            --fx-text: #e5e7eb;
+            --fx-muted: #94a3b8;
+            --fx-blue: #60a5fa;
+            --fx-green: #34d399;
+            --fx-red: #f87171;
+            --fx-yellow: #facc15;
+            --fx-purple: #a78bfa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 20% 0%, rgba(37,99,235,.10), transparent 32%),
+                radial-gradient(circle at 90% 10%, rgba(16,185,129,.06), transparent 28%),
+                var(--fx-bg);
+            color: var(--fx-text);
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .fx-page {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 40px 0 80px;
+        }
+
+        .fx-hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 330px;
+            padding: 62px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid var(--fx-border);
+            border-radius: 28px;
+            background:
+                linear-gradient(135deg, rgba(15,23,42,.96), rgba(2,6,23,.98)),
+                var(--fx-panel);
+            box-shadow: 0 30px 80px rgba(0,0,0,.28);
+        }
+
+        .fx-hero::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            right: -90px;
+            top: -120px;
+            border-radius: 50%;
+            border: 1px solid rgba(96,165,250,.16);
+            box-shadow:
+                0 0 0 35px rgba(96,165,250,.025),
+                0 0 0 70px rgba(96,165,250,.02);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            color: var(--fx-blue);
+            font-size: .76rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .fx-hero h1 {
+            position: relative;
+            z-index: 2;
+            display: block;
+            max-width: 900px;
+            margin: 12px 0 18px;
+            padding: 0;
+            font-size: clamp(2.3rem, 6vw, 4.8rem);
+            line-height: 1.03;
+            letter-spacing: -.045em;
+        }
+
+        .fx-hero p {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            margin: 0;
+            color: #a8b4c7;
+            font-size: 1.05rem;
+        }
+
+        .hero-tags {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 26px;
+        }
+
+        .hero-tag {
+            padding: 7px 11px;
+            border: 1px solid rgba(148,163,184,.13);
+            border-radius: 999px;
+            color: #cbd5e1;
+            background: rgba(15,23,42,.7);
+            font-size: .78rem;
+        }
+
+        .fx-section {
+            margin-top: 24px;
+            padding: 30px;
+            border: 1px solid var(--fx-border);
+            border-radius: 22px;
+            background: rgba(11,18,32,.76);
+        }
+
+        .fx-section h2 {
+            margin: 0 0 16px;
+            color: #f8fafc;
+            font-size: clamp(1.35rem, 3vw, 2rem);
+            line-height: 1.2;
+        }
+
+        .fx-section h3 {
+            margin: 26px 0 10px;
+            color: #dbeafe;
+            font-size: 1.12rem;
+        }
+
+        .fx-section p {
+            color: var(--fx-muted);
+            margin: 10px 0;
+        }
+
+        .lead {
+            color: #cbd5e1 !important;
+            font-size: 1.02rem;
+        }
+
+        .number-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 31px;
+            height: 31px;
+            margin-right: 8px;
+            border-radius: 9px;
+            color: #dbeafe;
+            background: rgba(37,99,235,.16);
+            border: 1px solid rgba(96,165,250,.18);
+            font-size: .78rem;
+            font-weight: 900;
+            vertical-align: middle;
+        }
+
+        .key-box {
+            margin: 20px 0;
+            padding: 18px 20px;
+            border-left: 4px solid var(--fx-blue);
+            border-radius: 0 14px 14px 0;
+            background: rgba(37,99,235,.07);
+        }
+
+        .key-box strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #bfdbfe;
+            font-size: .78rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .key-box p {
+            margin: 0;
+            color: #cbd5e1;
+        }
+
+        .memory-box {
+            margin: 20px 0;
+            padding: 18px 20px;
+            border: 1px solid rgba(250,204,21,.18);
+            border-radius: 14px;
+            background: rgba(250,204,21,.045);
+        }
+
+        .memory-box strong {
+            color: #fde68a;
+        }
+
+        .diagram {
+            margin: 24px 0;
+            padding: 18px;
+            border: 1px solid rgba(148,163,184,.12);
+            border-radius: 18px;
+            background: #030712;
+            overflow-x: auto;
+        }
+
+        .diagram-title {
+            margin-bottom: 10px;
+            color: #93c5fd;
+            font-size: .76rem;
+            font-weight: 900;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+        }
+
+        .diagram svg {
+            display: block;
+            width: 100%;
+            min-width: 680px;
+            height: auto;
+        }
+
+        .diagram-caption {
+            margin: 12px 0 0;
+            color: #64748b !important;
+            font-size: .82rem;
+            text-align: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .info-card {
+            padding: 19px;
+            border: 1px solid rgba(148,163,184,.11);
+            border-radius: 16px;
+            background: rgba(15,23,42,.55);
+        }
+
+        .info-card h4 {
+            margin: 0 0 8px;
+            color: #e2e8f0;
+            font-size: 1rem;
+        }
+
+        .info-card p {
+            margin: 0;
+            font-size: .92rem;
+        }
+
+        .term {
+            color: #bfdbfe;
+            font-weight: 800;
+        }
+
+        .bull {
+            color: #6ee7b7;
+        }
+
+        .bear {
+            color: #fca5a5;
+        }
+
+        .warning {
+            padding: 18px 20px;
+            border: 1px solid rgba(248,113,113,.17);
+            border-left: 4px solid var(--fx-red);
+            border-radius: 0 14px 14px 0;
+            background: rgba(127,29,29,.09);
+        }
+
+        .warning strong {
+            color: #fca5a5;
+        }
+
+        .table-wrap {
+            margin-top: 18px;
+            overflow-x: auto;
+            border: 1px solid rgba(148,163,184,.1);
+            border-radius: 14px;
+        }
+
+        .fx-table {
+            width: 100%;
+            min-width: 650px;
+            border-collapse: collapse;
+        }
+
+        .fx-table th,
+        .fx-table td {
+            padding: 13px 14px;
+            border-bottom: 1px solid rgba(148,163,184,.08);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .fx-table th {
+            color: #bfdbfe;
+            background: rgba(37,99,235,.07);
+            font-size: .82rem;
+        }
+
+        .fx-table td {
+            color: #94a3b8;
+            font-size: .88rem;
+        }
+
+        .fx-list {
+            padding-left: 22px;
+            color: #94a3b8;
+        }
+
+        .fx-list li {
+            margin: 8px 0;
+        }
+
+        .checklist {
+            display: grid;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .check {
+            display: flex;
+            gap: 11px;
+            align-items: flex-start;
+            padding: 12px 14px;
+            border: 1px solid rgba(148,163,184,.08);
+            border-radius: 12px;
+            background: rgba(15,23,42,.45);
+            color: #cbd5e1;
+        }
+
+        .check span {
+            color: var(--fx-green);
+            font-weight: 900;
+        }
+
+        .nav-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 76px;
+            padding: 14px 17px;
+            border: 1px solid rgba(148,163,184,.12);
+            border-radius: 15px;
+            background: rgba(15,23,42,.72);
+            text-decoration: none;
+            transition: transform .18s ease, border-color .18s ease, background .18s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(96,165,250,.34);
+            background: rgba(30,41,59,.82);
+        }
+
+        .nav-btn small {
+            color: #64748b;
+            font-size: .72rem;
+        }
+
+        .nav-btn strong {
+            margin-top: 3px;
+            color: #e2e8f0;
+        }
+
+        .nav-btn.center {
+            text-align: center;
+            align-items: center;
+        }
+
+        .nav-btn.right {
+            text-align: right;
+            align-items: flex-end;
+        }
+
+        @media (max-width: 820px) {
+            .fx-page {
+                width: min(100% - 20px, 1180px);
+                padding-top: 20px;
+            }
+
+            .fx-hero {
+                min-height: 300px;
+                padding: 40px 23px;
+                border-radius: 21px;
+            }
+
+            .fx-section {
+                padding: 22px 18px;
+                border-radius: 18px;
+            }
+
+            .grid-2,
+            .grid-3,
+            .nav-row {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-btn.right,
+            .nav-btn.center {
+                text-align: left;
+                align-items: flex-start;
+            }
+
+            .diagram {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- GLOBAL HEADER -->
+    <div data-component="header"></div>
+
+    <main class="fx-page">
+
+        <!-- =========================================================
+             HERO
+        ========================================================== -->
+        <header class="fx-hero">
+            <div class="eyebrow">Strativo Academy • Module 1 • Foundation</div>
+
+            <h1>Introduction to Forex</h1>
+
+            <p>
+                A complete beginner-friendly foundation for understanding the
+                foreign exchange market before moving into currency pairs,
+                charts, price action, strategies and risk management.
+            </p>
+
+            <div class="hero-tags">
+                <span class="hero-tag">📘 Foundation</span>
+                <span class="hero-tag">🌍 Global Currency Market</span>
+                <span class="hero-tag">🧠 Beginner Friendly</span>
+                <span class="hero-tag">📊 Market Basics</span>
+                <span class="hero-tag">⚠️ Educational Only</span>
+            </div>
+        </header>
+
+
+        <!-- =========================================================
+             01 — LEARNING OBJECTIVES
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">01</span> What You Will Learn</h2>
+
+            <p class="lead">
+                Before studying charts, indicators or trading strategies, you
+                need to understand what the Forex market actually is. This
+                lesson builds that foundation from the beginning.
+            </p>
+
+            <div class="grid-3">
+                <div class="info-card">
+                    <h4>🌍 What Forex Is</h4>
+                    <p>
+                        Understand the basic purpose of foreign exchange and
+                        why currencies are exchanged.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>💱 How Currency Quotes Work</h4>
+                    <p>
+                        Learn why Forex is written as pairs and how to read the
+                        first and second currency correctly.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>📈 How Price Moves</h4>
+                    <p>
+                        Build a simple mental model of buyers, sellers,
+                        information, expectations and changing prices.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🏦 Who Participates</h4>
+                    <p>
+                        Learn the roles of banks, businesses, central banks,
+                        funds and retail traders.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>📖 Essential Vocabulary</h4>
+                    <p>
+                        Learn the basic words you will repeatedly see in later
+                        Strativo Academy lessons.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>⚠️ Risk Awareness</h4>
+                    <p>
+                        Understand why knowing the market is different from
+                        being guaranteed a profitable result.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             02 — WHAT IS FOREX
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">02</span> What Is Forex?</h2>
+
+            <p class="lead">
+                <span class="term">Forex</span> is short for
+                <span class="term">foreign exchange</span>. It refers to the
+                global market in which currencies are exchanged against one
+                another.
+            </p>
+
+            <p>
+                Whenever one currency is exchanged for another, there is a
+                foreign-exchange transaction involved. International companies
+                may need foreign currency to pay suppliers. Travelers may
+                exchange money when visiting another country. Financial
+                institutions may exchange currencies as part of their
+                operations, hedging or investment activities.
+            </p>
+
+            <p>
+                Retail traders participate for a different reason: they may
+                attempt to benefit from changes in currency prices. A retail
+                trader normally accesses the market through a broker or trading
+                platform rather than directly participating in the entire
+                institutional foreign-exchange network.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — The basic idea of foreign exchange</div>
+
+                <svg viewBox="0 0 1000 360" role="img"
+                     aria-label="Diagram showing one currency exchanged for another">
+                    <defs>
+                        <marker id="fxArrow1" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#60a5fa"></path>
+                        </marker>
+                    </defs>
+
+                    <rect x="55" y="95" width="250" height="165" rx="22"
+                          fill="#0f172a" stroke="#334155" stroke-width="2"></rect>
+                    <text x="180" y="135" text-anchor="middle"
+                          fill="#94a3b8" font-size="17" font-weight="700">
+                        CURRENCY A
+                    </text>
+                    <text x="180" y="195" text-anchor="middle"
+                          fill="#f8fafc" font-size="48" font-weight="900">
+                        EUR
+                    </text>
+                    <text x="180" y="228" text-anchor="middle"
+                          fill="#64748b" font-size="14">
+                        Euro
+                    </text>
+
+                    <line x1="305" y1="177" x2="405" y2="177"
+                          stroke="#60a5fa" stroke-width="5"
+                          marker-end="url(#fxArrow1)"></line>
+
+                    <circle cx="470" cy="177" r="67"
+                            fill="#0b1220" stroke="#60a5fa" stroke-width="2"></circle>
+                    <text x="470" y="163" text-anchor="middle"
+                          fill="#93c5fd" font-size="17" font-weight="800">
+                        EXCHANGE
+                    </text>
+                    <text x="470" y="190" text-anchor="middle"
+                          fill="#cbd5e1" font-size="14">
+                        value
+                    </text>
+
+                    <line x1="537" y1="177" x2="637" y2="177"
+                          stroke="#34d399" stroke-width="5"
+                          marker-end="url(#fxArrow1)"></line>
+
+                    <rect x="637" y="95" width="250" height="165" rx="22"
+                          fill="#0f172a" stroke="#334155" stroke-width="2"></rect>
+                    <text x="762" y="135" text-anchor="middle"
+                          fill="#94a3b8" font-size="17" font-weight="700">
+                        CURRENCY B
+                    </text>
+                    <text x="762" y="195" text-anchor="middle"
+                          fill="#f8fafc" font-size="48" font-weight="900">
+                        USD
+                    </text>
+                    <text x="762" y="228" text-anchor="middle"
+                          fill="#64748b" font-size="14">
+                        US dollar
+                    </text>
+
+                    <text x="500" y="325" text-anchor="middle"
+                          fill="#64748b" font-size="15">
+                        Forex compares the value of one currency with another.
+                    </text>
+                </svg>
+
+                <p class="diagram-caption">
+                    Forex is fundamentally about exchanging and comparing
+                    currencies. A currency is not quoted in isolation.
+                </p>
+            </div>
+
+            <div class="key-box">
+                <strong>Key idea</strong>
+                <p>
+                    The most important beginner concept is this:
+                    <strong>Forex is a comparison market.</strong> A currency
+                    pair tells you how one currency is valued relative to
+                    another currency.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             03 — WHY CURRENCIES ARE EXCHANGED
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">03</span> Why Do People Exchange Currencies?</h2>
+
+            <p>
+                Currency exchange is not created only for trading. Foreign
+                currencies are required because countries, companies,
+                institutions and individuals interact across borders.
+            </p>
+
+            <div class="grid-2">
+                <div class="info-card">
+                    <h4>🌍 International Trade</h4>
+                    <p>
+                        An importer may need to pay a foreign supplier in the
+                        supplier's currency. An exporter may receive payment in
+                        a foreign currency and later convert it.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>✈️ Travel</h4>
+                    <p>
+                        Travelers often exchange their home currency into the
+                        currency accepted in the destination country.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🏦 Financial Operations</h4>
+                    <p>
+                        Banks and financial institutions exchange currencies as
+                        part of international financial activity.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🛡️ Hedging</h4>
+                    <p>
+                        Businesses and institutions can use currency markets to
+                        manage exposure to changes in exchange rates.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>📊 Investment</h4>
+                    <p>
+                        Some funds and institutions hold foreign assets and
+                        therefore have currency exposure.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>💹 Speculation</h4>
+                    <p>
+                        Traders may attempt to profit from changes in exchange
+                        rates by taking positions in currency pairs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="memory-box">
+                <strong>Remember:</strong>
+                <p>
+                    Currency exchange exists in the real economy first. Retail
+                    trading is only one part of the much larger foreign-exchange
+                    ecosystem.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             04 — CURRENCY PAIRS
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">04</span> Why Forex Uses Currency Pairs</h2>
+
+            <p>
+                You will almost never see a Forex price written as simply
+                “EUR = 1.10” without another currency being specified. The
+                market needs a reference currency because exchange rates
+                describe <em>relative value</em>.
+            </p>
+
+            <p>
+                That is why currencies are written as pairs such as
+                <strong>EUR/USD</strong>, <strong>GBP/USD</strong> or
+                <strong>USD/JPY</strong>.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Reading EUR/USD</div>
+
+                <svg viewBox="0 0 1000 390" role="img"
+                     aria-label="EUR USD diagram showing base currency, quote currency and exchange rate">
+                    <defs>
+                        <marker id="pairArrow" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#34d399"></path>
+                        </marker>
+                    </defs>
+
+                    <text x="500" y="50" text-anchor="middle"
+                          fill="#f8fafc" font-size="30" font-weight="900">
+                        EUR / USD = 1.1000
+                    </text>
+
+                    <rect x="55" y="100" width="315" height="180" rx="24"
+                          fill="#0f172a" stroke="#34d399" stroke-width="3"></rect>
+                    <text x="212" y="142" text-anchor="middle"
+                          fill="#6ee7b7" font-size="16" font-weight="800">
+                        BASE CURRENCY
+                    </text>
+                    <text x="212" y="215" text-anchor="middle"
+                          fill="#f8fafc" font-size="60" font-weight="900">
+                        EUR
+                    </text>
+                    <text x="212" y="248" text-anchor="middle"
+                          fill="#64748b" font-size="14">
+                        First currency
+                    </text>
+
+                    <line x1="370" y1="190" x2="630" y2="190"
+                          stroke="#34d399" stroke-width="5"
+                          marker-end="url(#pairArrow)"></line>
+
+                    <rect x="630" y="100" width="315" height="180" rx="24"
+                          fill="#0f172a" stroke="#60a5fa" stroke-width="3"></rect>
+                    <text x="787" y="142" text-anchor="middle"
+                          fill="#93c5fd" font-size="16" font-weight="800">
+                        QUOTE CURRENCY
+                    </text>
+                    <text x="787" y="215" text-anchor="middle"
+                          fill="#f8fafc" font-size="60" font-weight="900">
+                        USD
+                    </text>
+                    <text x="787" y="248" text-anchor="middle"
+                          fill="#64748b" font-size="14">
+                        Second currency
+                    </text>
+
+                    <rect x="220" y="315" width="560" height="42" rx="11"
+                          fill="#020617" stroke="#334155"></rect>
+                    <text x="500" y="342" text-anchor="middle"
+                          fill="#cbd5e1" font-size="16">
+                        1 EUR = 1.1000 USD at this quoted price
+                    </text>
+                </svg>
+
+                <p class="diagram-caption">
+                    The first currency is the base. The second currency is the
+                    quote. The number tells you how much quote currency is
+                    represented by one unit of base currency.
+                </p>
+            </div>
+
+            <div class="key-box">
+                <strong>Memory trick</strong>
+                <p>
+                    <strong>FIRST = BASE.</strong>
+                    <br>
+                    <strong>SECOND = QUOTE.</strong>
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             05 — BASE AND QUOTE
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">05</span> Base Currency and Quote Currency</h2>
+
+            <p>
+                Suppose EUR/USD is quoted at 1.1000. The simple educational
+                interpretation is that one euro is being quoted as 1.1000 US
+                dollars.
+            </p>
+
+            <p>
+                The number can change continuously as market participants
+                change their willingness to exchange currencies. If the quote
+                rises to 1.1050, the quoted value of one euro in US dollars has
+                increased. If it falls to 1.0950, the quoted value has
+                decreased.
+            </p>
+
+            <div class="table-wrap">
+                <table class="fx-table">
+                    <thead>
+                        <tr>
+                            <th>Part</th>
+                            <th>Meaning</th>
+                            <th>Example: EUR/USD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Base currency</strong></td>
+                            <td>The first currency in the pair.</td>
+                            <td>EUR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Quote currency</strong></td>
+                            <td>The second currency used to express the value.</td>
+                            <td>USD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exchange rate</strong></td>
+                            <td>The quoted amount of quote currency for one unit of base currency.</td>
+                            <td>1.1000 USD per EUR</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             06 — PRICE RISE AND FALL
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">06</span> What Does It Mean When a Pair Rises?</h2>
+
+            <p>
+                This is one of the most important ideas to understand before
+                opening a chart.
+            </p>
+
+            <p>
+                If EUR/USD moves from 1.1000 to 1.1050, the pair has risen.
+                In the quotation, one euro is now being expressed as more US
+                dollars than before.
+            </p>
+
+            <p>
+                If EUR/USD moves from 1.1050 to 1.1000, the pair has fallen.
+                One euro is now being expressed as fewer US dollars than before.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Rising vs falling currency pair</div>
+
+                <svg viewBox="0 0 1000 400" role="img"
+                     aria-label="Two panels showing EUR USD price rising and falling">
+                    <defs>
+                        <marker id="riseArrow" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#34d399"></path>
+                        </marker>
+                        <marker id="fallArrow" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#f87171"></path>
+                        </marker>
+                    </defs>
+
+                    <rect x="35" y="35" width="445" height="325" rx="24"
+                          fill="#0b1220" stroke="#334155"></rect>
+                    <text x="257" y="80" text-anchor="middle"
+                          fill="#6ee7b7" font-size="21" font-weight="900">
+                        PAIR RISES
+                    </text>
+                    <text x="257" y="116" text-anchor="middle"
+                          fill="#f8fafc" font-size="26" font-weight="800">
+                        1.1000 → 1.1050
+                    </text>
+                    <path d="M100 290 C145 255 175 275 220 220 S300 205 370 115"
+                          fill="none" stroke="#34d399" stroke-width="7"
+                          marker-end="url(#riseArrow)"></path>
+                    <text x="257" y="330" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        Higher quoted value for EUR in USD
+                    </text>
+
+                    <rect x="520" y="35" width="445" height="325" rx="24"
+                          fill="#0b1220" stroke="#334155"></rect>
+                    <text x="742" y="80" text-anchor="middle"
+                          fill="#fca5a5" font-size="21" font-weight="900">
+                        PAIR FALLS
+                    </text>
+                    <text x="742" y="116" text-anchor="middle"
+                          fill="#f8fafc" font-size="26" font-weight="800">
+                        1.1050 → 1.1000
+                    </text>
+                    <path d="M585 115 C630 150 660 135 705 190 S790 215 855 295"
+                          fill="none" stroke="#f87171" stroke-width="7"
+                          marker-end="url(#fallArrow)"></path>
+                    <text x="742" y="330" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        Lower quoted value for EUR in USD
+                    </text>
+                </svg>
+
+                <p class="diagram-caption">
+                    Always interpret movement using the entire pair, not one
+                    currency in isolation.
+                </p>
+            </div>
+
+            <div class="warning">
+                <strong>Beginner mistake:</strong>
+                <p>
+                    Do not say “EUR/USD is a currency.” EUR/USD is a
+                    <strong>currency pair</strong> representing the relative
+                    quotation between EUR and USD.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             07 — BUYING AND SELLING THE PAIR
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">07</span> Buying and Selling a Currency Pair</h2>
+
+            <p>
+                Once you understand the pair, the idea of long and short
+                positions becomes easier.
+            </p>
+
+            <div class="grid-2">
+                <div class="info-card">
+                    <h4 class="bull">🟢 Long / Buy</h4>
+                    <p>
+                        A trader who buys EUR/USD is taking a position that
+                        benefits if the quoted price rises, before considering
+                        transaction costs and other factors.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4 class="bear">🔴 Short / Sell</h4>
+                    <p>
+                        A trader who sells EUR/USD is taking a position that
+                        benefits if the quoted price falls, before considering
+                        transaction costs and other factors.
+                    </p>
+                </div>
+            </div>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Long vs short concept</div>
+
+                <svg viewBox="0 0 1000 380" role="img"
+                     aria-label="Long and short position diagram">
+                    <defs>
+                        <marker id="longArrow" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#34d399"></path>
+                        </marker>
+                        <marker id="shortArrow" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#f87171"></path>
+                        </marker>
+                    </defs>
+
+                    <rect x="35" y="35" width="445" height="310" rx="24"
+                          fill="#0b1220" stroke="#334155"></rect>
+                    <text x="257" y="78" text-anchor="middle"
+                          fill="#6ee7b7" font-size="21" font-weight="900">
+                        LONG / BUY
+                    </text>
+                    <text x="257" y="112" text-anchor="middle"
+                          fill="#cbd5e1" font-size="15">
+                        Expectation: price rises
+                    </text>
+                    <path d="M110 275 L185 245 L245 255 L315 190 L390 110"
+                          fill="none" stroke="#34d399" stroke-width="7"
+                          marker-end="url(#longArrow)"></path>
+                    <text x="257" y="315" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        Entry → higher price = favorable direction
+                    </text>
+
+                    <rect x="520" y="35" width="445" height="310" rx="24"
+                          fill="#0b1220" stroke="#334155"></rect>
+                    <text x="742" y="78" text-anchor="middle"
+                          fill="#fca5a5" font-size="21" font-weight="900">
+                        SHORT / SELL
+                    </text>
+                    <text x="742" y="112" text-anchor="middle"
+                          fill="#cbd5e1" font-size="15">
+                        Expectation: price falls
+                    </text>
+                    <path d="M595 110 L670 145 L730 130 L800 205 L875 275"
+                          fill="none" stroke="#f87171" stroke-width="7"
+                          marker-end="url(#shortArrow)"></path>
+                    <text x="742" y="315" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        Entry → lower price = favorable direction
+                    </text>
+                </svg>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             08 — WHO PARTICIPATES
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">08</span> Who Participates in the Forex Market?</h2>
+
+            <p>
+                The foreign-exchange market contains participants with very
+                different goals. Understanding this helps prevent the beginner
+                mistake of thinking that every participant is simply trying to
+                “make a trade.”
+            </p>
+
+            <div class="grid-3">
+                <div class="info-card">
+                    <h4>🏦 Banks</h4>
+                    <p>
+                        Banks facilitate currency transactions and participate
+                        in the broader institutional foreign-exchange market.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🏛️ Central Banks</h4>
+                    <p>
+                        Central banks conduct monetary policy and manage
+                        official reserves. Their decisions can influence
+                        currency expectations.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🏢 Businesses</h4>
+                    <p>
+                        International companies may exchange currencies to pay
+                        suppliers, receive revenue or manage currency exposure.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>📈 Funds</h4>
+                    <p>
+                        Investment funds and other institutions can have
+                        currency exposure through investments and hedging.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🌍 Importers & Exporters</h4>
+                    <p>
+                        Cross-border businesses often need to convert one
+                        currency into another to conduct trade.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>👤 Retail Traders</h4>
+                    <p>
+                        Individual traders generally access currency markets
+                        through a broker or trading platform.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             09 — WHY PRICE MOVES
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">09</span> Why Do Forex Prices Move?</h2>
+
+            <p>
+                Currency prices change because market participants constantly
+                reassess information, expectations, risk and the relative
+                attractiveness of holding one currency versus another.
+            </p>
+
+            <p>
+                Economic releases, interest-rate expectations, central-bank
+                decisions, political developments, global risk sentiment and
+                changing supply and demand can all influence the market.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Simplified price-movement process</div>
+
+                <svg viewBox="0 0 1100 300" role="img"
+                     aria-label="Information to expectations to orders to price movement">
+                    <defs>
+                        <marker id="causeArrow" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#60a5fa"></path>
+                        </marker>
+                    </defs>
+
+                    <rect x="20" y="75" width="205" height="135" rx="20"
+                          fill="#0f172a" stroke="#334155"></rect>
+                    <text x="122" y="115" text-anchor="middle"
+                          fill="#93c5fd" font-size="17" font-weight="800">
+                        INFORMATION
+                    </text>
+                    <text x="122" y="150" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        data • decisions
+                    </text>
+                    <text x="122" y="177" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        events • news
+                    </text>
+
+                    <line x1="225" y1="142" x2="280" y2="142"
+                          stroke="#60a5fa" stroke-width="4"
+                          marker-end="url(#causeArrow)"></line>
+
+                    <rect x="280" y="75" width="205" height="135" rx="20"
+                          fill="#0f172a" stroke="#334155"></rect>
+                    <text x="382" y="115" text-anchor="middle"
+                          fill="#6ee7b7" font-size="17" font-weight="800">
+                        EXPECTATIONS
+                    </text>
+                    <text x="382" y="150" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        participants reassess
+                    </text>
+                    <text x="382" y="177" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        future conditions
+                    </text>
+
+                    <line x1="485" y1="142" x2="540" y2="142"
+                          stroke="#60a5fa" stroke-width="4"
+                          marker-end="url(#causeArrow)"></line>
+
+                    <rect x="540" y="75" width="205" height="135" rx="20"
+                          fill="#0f172a" stroke="#334155"></rect>
+                    <text x="642" y="115" text-anchor="middle"
+                          fill="#facc15" font-size="17" font-weight="800">
+                        BUY / SELL
+                    </text>
+                    <text x="642" y="150" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        orders and flows
+                    </text>
+                    <text x="642" y="177" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        change market balance
+                    </text>
+
+                    <line x1="745" y1="142" x2="800" y2="142"
+                          stroke="#60a5fa" stroke-width="4"
+                          marker-end="url(#causeArrow)"></line>
+
+                    <rect x="800" y="75" width="260" height="135" rx="20"
+                          fill="#0f172a" stroke="#334155"></rect>
+                    <text x="930" y="115" text-anchor="middle"
+                          fill="#f8fafc" font-size="17" font-weight="800">
+                        PRICE MOVEMENT
+                    </text>
+                    <text x="930" y="150" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        the quotation changes
+                    </text>
+                    <text x="930" y="177" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        as market conditions change
+                    </text>
+
+                    <text x="550" y="265" text-anchor="middle"
+                          fill="#64748b" font-size="14">
+                        Simplified educational model — real markets are more complex.
+                    </text>
+                </svg>
+            </div>
+
+            <div class="key-box">
+                <strong>Important</strong>
+                <p>
+                    A news headline does not mechanically guarantee a price
+                    direction. The market reacts to expectations, positioning,
+                    liquidity and how new information compares with what was
+                    already expected.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             10 — MARKET IS A CONTINUOUS AUCTION
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">10</span> Forex as a Continuous Market</h2>
+
+            <p>
+                For learning purposes, it is useful to think of the market as
+                a continuous process in which participants are willing to
+                exchange at different prices. The quoted price changes as the
+                balance of willing buyers and sellers changes.
+            </p>
+
+            <p>
+                This idea becomes very important later when you study
+                candlesticks, market structure, support and resistance,
+                liquidity and price action.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Buyers and sellers create changing prices</div>
+
+                <svg viewBox="0 0 1000 390" role="img"
+                     aria-label="Buyers and sellers meeting in a market">
+                    <defs>
+                        <marker id="marketArrow" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#a78bfa"></path>
+                        </marker>
+                    </defs>
+
+                    <rect x="40" y="85" width="270" height="210" rx="24"
+                          fill="#0f172a" stroke="#34d399" stroke-width="2"></rect>
+                    <text x="175" y="130" text-anchor="middle"
+                          fill="#6ee7b7" font-size="21" font-weight="900">
+                        BUYERS
+                    </text>
+                    <text x="175" y="168" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        willing to buy
+                    </text>
+                    <text x="175" y="198" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        at available prices
+                    </text>
+                    <text x="175" y="238" text-anchor="middle"
+                          fill="#cbd5e1" font-size="16">
+                        ↑ demand pressure
+                    </text>
+
+                    <line x1="310" y1="190" x2="420" y2="190"
+                          stroke="#a78bfa" stroke-width="5"
+                          marker-end="url(#marketArrow)"></line>
+
+                    <circle cx="500" cy="190" r="85"
+                            fill="#0b1220" stroke="#a78bfa" stroke-width="3"></circle>
+                    <text x="500" y="177" text-anchor="middle"
+                          fill="#e9d5ff" font-size="20" font-weight="900">
+                        MARKET
+                    </text>
+                    <text x="500" y="207" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        price discovery
+                    </text>
+
+                    <line x1="580" y1="190" x2="690" y2="190"
+                          stroke="#a78bfa" stroke-width="5"
+                          marker-end="url(#marketArrow)"></line>
+
+                    <rect x="690" y="85" width="270" height="210" rx="24"
+                          fill="#0f172a" stroke="#f87171" stroke-width="2"></rect>
+                    <text x="825" y="130" text-anchor="middle"
+                          fill="#fca5a5" font-size="21" font-weight="900">
+                        SELLERS
+                    </text>
+                    <text x="825" y="168" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        willing to sell
+                    </text>
+                    <text x="825" y="198" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        at available prices
+                    </text>
+                    <text x="825" y="238" text-anchor="middle"
+                          fill="#cbd5e1" font-size="16">
+                        ↓ supply pressure
+                    </text>
+                </svg>
+            </div>
+
+            <p>
+                This is a simplified teaching diagram. It should not be
+                interpreted as saying that every price move is caused by one
+                side “winning” in a simple way. Real market microstructure is
+                more complex.
+            </p>
+        </section>
+
+
+        <!-- =========================================================
+             11 — BID ASK
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">11</span> Bid and Ask: The Two-Sided Quote</h2>
+
+            <p>
+                A Forex quote normally has two sides: the <span class="term">Bid</span>
+                and the <span class="term">Ask</span>.
+            </p>
+
+            <p>
+                The exact display and execution details can vary by broker and
+                trading platform, but the basic concept is consistent: there is
+                a price on one side of the market and another price on the
+                other side.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Simplified Bid / Ask quote</div>
+
+                <svg viewBox="0 0 900 330" role="img"
+                     aria-label="Bid and Ask quote diagram">
+                    <rect x="80" y="65" width="315" height="190" rx="24"
+                          fill="#0f172a" stroke="#f87171" stroke-width="2"></rect>
+                    <text x="237" y="108" text-anchor="middle"
+                          fill="#fca5a5" font-size="18" font-weight="900">
+                        BID
+                    </text>
+                    <text x="237" y="170" text-anchor="middle"
+                          fill="#f8fafc" font-size="42" font-weight="900">
+                        1.0999
+                    </text>
+                    <text x="237" y="208" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        one side of the quote
+                    </text>
+
+                    <rect x="505" y="65" width="315" height="190" rx="24"
+                          fill="#0f172a" stroke="#34d399" stroke-width="2"></rect>
+                    <text x="662" y="108" text-anchor="middle"
+                          fill="#6ee7b7" font-size="18" font-weight="900">
+                        ASK
+                    </text>
+                    <text x="662" y="170" text-anchor="middle"
+                          fill="#f8fafc" font-size="42" font-weight="900">
+                        1.1001
+                    </text>
+                    <text x="662" y="208" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        the other side of the quote
+                    </text>
+
+                    <text x="450" y="295" text-anchor="middle"
+                          fill="#cbd5e1" font-size="17" font-weight="700">
+                        Spread = Ask − Bid
+                    </text>
+                </svg>
+            </div>
+
+            <p>
+                In the example above, the difference between 1.1001 and 1.0999
+                is the spread in price terms. The monetary effect of a spread
+                depends on the instrument, position size and broker's
+                specifications.
+            </p>
+        </section>
+
+
+        <!-- =========================================================
+             12 — SPREAD
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">12</span> What Is the Spread?</h2>
+
+            <p>
+                The <span class="term">spread</span> is the difference between
+                the Bid and Ask prices.
+            </p>
+
+            <p>
+                Traders should understand that a position can have a small
+                unfavorable price difference immediately after entry because
+                the two sides of the market are different.
+            </p>
+
+            <div class="key-box">
+                <strong>Simple formula</strong>
+                <p>
+                    <strong>Spread = Ask − Bid</strong>
+                </p>
+            </div>
+
+            <div class="table-wrap">
+                <table class="fx-table">
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Simple meaning</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bid</td>
+                            <td>One side of the market quote.</td>
+                            <td>1.0999</td>
+                        </tr>
+                        <tr>
+                            <td>Ask</td>
+                            <td>The other side of the market quote.</td>
+                            <td>1.1001</td>
+                        </tr>
+                        <tr>
+                            <td>Spread</td>
+                            <td>Difference between Ask and Bid.</td>
+                            <td>0.0002 in this example</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             13 — PIP PREVIEW
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">13</span> A First Look at Pips</h2>
+
+            <p>
+                You will study pips in greater detail in the dedicated Pips
+                and Points note. For now, understand that a <span class="term">pip</span>
+                is a commonly used unit for describing a small movement in a
+                currency exchange rate.
+            </p>
+
+            <p>
+                The exact decimal convention can depend on the currency pair
+                and market quotation. Some platforms also display fractional
+                pip pricing, often called a pipette.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Simplified price movement</div>
+
+                <svg viewBox="0 0 900 300" role="img"
+                     aria-label="Price movement example from 1.1000 to 1.1010">
+                    <line x1="100" y1="220" x2="800" y2="220"
+                          stroke="#334155" stroke-width="3"></line>
+
+                    <circle cx="180" cy="220" r="10" fill="#60a5fa"></circle>
+                    <circle cx="720" cy="220" r="10" fill="#34d399"></circle>
+
+                    <text x="180" y="180" text-anchor="middle"
+                          fill="#cbd5e1" font-size="23" font-weight="800">
+                        1.1000
+                    </text>
+
+                    <text x="720" y="180" text-anchor="middle"
+                          fill="#6ee7b7" font-size="23" font-weight="800">
+                        1.1010
+                    </text>
+
+                    <line x1="195" y1="220" x2="705" y2="220"
+                          stroke="#60a5fa" stroke-width="4"></line>
+
+                    <text x="450" y="130" text-anchor="middle"
+                          fill="#93c5fd" font-size="18" font-weight="800">
+                        PRICE HAS MOVED
+                    </text>
+
+                    <text x="450" y="265" text-anchor="middle"
+                          fill="#64748b" font-size="14">
+                        The exact pip interpretation depends on the pair's quotation convention.
+                    </text>
+                </svg>
+            </div>
+
+            <div class="memory-box">
+                <strong>Do not memorize money value yet.</strong>
+                <p>
+                    A pip is a unit of price movement. Its monetary impact
+                    depends on position size and other instrument details.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             14 — LOTS AND POSITION SIZE
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">14</span> Position Size and Lots</h2>
+
+            <p>
+                A trader's result is affected not only by the direction of the
+                market but also by the size of the position.
+            </p>
+
+            <p>
+                In Forex, trade size is commonly described using
+                <span class="term">lots</span>. Brokers may support different
+                contract specifications and lot sizes, so the exact meaning
+                should always be checked against the instrument specification
+                of the platform being used.
+            </p>
+
+            <div class="grid-3">
+                <div class="info-card">
+                    <h4>Position size</h4>
+                    <p>
+                        Describes how much market exposure the trader has.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Lot</h4>
+                    <p>
+                        A standard way of describing trade size under a
+                        particular contract specification.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Risk impact</h4>
+                    <p>
+                        Larger exposure can make the financial effect of a
+                        price movement larger.
+                    </p>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>Important:</strong>
+                <p>
+                    Never choose a large position merely because the account
+                    balance appears large enough. Position sizing must be
+                    considered together with risk management.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             15 — LEVERAGE PREVIEW
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">15</span> What Is Leverage?</h2>
+
+            <p>
+                <span class="term">Leverage</span> is a mechanism that can
+                provide greater market exposure relative to the trader's own
+                capital. The exact leverage available depends on the broker,
+                jurisdiction, account type and instrument.
+            </p>
+
+            <p>
+                Leverage does not make the market safer. Greater exposure can
+                magnify the financial effect of price movements relative to
+                the trader's own capital.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Why leverage requires caution</div>
+
+                <svg viewBox="0 0 900 350" role="img"
+                     aria-label="Leverage exposure concept diagram">
+                    <rect x="60" y="65" width="220" height="210" rx="22"
+                          fill="#0f172a" stroke="#334155"></rect>
+                    <text x="170" y="110" text-anchor="middle"
+                          fill="#93c5fd" font-size="18" font-weight="800">
+                        OWN CAPITAL
+                    </text>
+                    <text x="170" y="175" text-anchor="middle"
+                          fill="#f8fafc" font-size="42" font-weight="900">
+                        $1,000
+                    </text>
+                    <text x="170" y="220" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        example only
+                    </text>
+
+                    <text x="450" y="170" text-anchor="middle"
+                          fill="#a78bfa" font-size="42" font-weight="900">
+                        ×
+                    </text>
+
+                    <rect x="340" y="65" width="220" height="210" rx="22"
+                          fill="#0f172a" stroke="#a78bfa"></rect>
+                    <text x="450" y="110" text-anchor="middle"
+                          fill="#e9d5ff" font-size="18" font-weight="800">
+                        LEVERAGE
+                    </text>
+                    <text x="450" y="175" text-anchor="middle"
+                          fill="#f8fafc" font-size="42" font-weight="900">
+                        10:1
+                    </text>
+                    <text x="450" y="220" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        example only
+                    </text>
+
+                    <text x="620" y="170" text-anchor="middle"
+                          fill="#a78bfa" font-size="42" font-weight="900">
+                        =
+                    </text>
+
+                    <rect x="650" y="65" width="220" height="210" rx="22"
+                          fill="#0f172a" stroke="#f87171"></rect>
+                    <text x="760" y="110" text-anchor="middle"
+                          fill="#fca5a5" font-size="18" font-weight="800">
+                        EXPOSURE
+                    </text>
+                    <text x="760" y="175" text-anchor="middle"
+                          fill="#f8fafc" font-size="42" font-weight="900">
+                        $10,000
+                    </text>
+                    <text x="760" y="220" text-anchor="middle"
+                          fill="#94a3b8" font-size="14">
+                        illustrative only
+                    </text>
+                </svg>
+            </div>
+
+            <p>
+                The diagram is deliberately simplified. Real margin and
+                leverage calculations depend on contract specifications,
+                instrument price, account currency and broker rules.
+            </p>
+        </section>
+
+
+        <!-- =========================================================
+             16 — MARKET HOURS / SESSIONS PREVIEW
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">16</span> Forex Sessions: A First Look</h2>
+
+            <p>
+                Forex activity is commonly discussed using major financial
+                centers and trading sessions such as Asian, London and New York
+                sessions. The exact clock times depend on the time zone and
+                daylight-saving rules being used.
+            </p>
+
+            <p>
+                You will study sessions in detail in the dedicated
+                <strong>Market Sessions</strong> note. For now, understand that
+                market activity can change during the day and that periods of
+                overlapping major centers can be especially important for
+                liquidity and volatility.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Simplified session sequence</div>
+
+                <svg viewBox="0 0 1000 280" role="img"
+                     aria-label="Simplified Asian London New York trading session sequence">
+                    <line x1="80" y1="185" x2="920" y2="185"
+                          stroke="#334155" stroke-width="5"></line>
+
+                    <rect x="90" y="100" width="230" height="70" rx="16"
+                          fill="#0f172a" stroke="#60a5fa"></rect>
+                    <text x="205" y="130" text-anchor="middle"
+                          fill="#93c5fd" font-size="17" font-weight="800">
+                        ASIAN
+                    </text>
+                    <text x="205" y="153" text-anchor="middle"
+                          fill="#64748b" font-size="12">
+                        simplified session concept
+                    </text>
+
+                    <rect x="385" y="100" width="230" height="70" rx="16"
+                          fill="#0f172a" stroke="#34d399"></rect>
+                    <text x="500" y="130" text-anchor="middle"
+                          fill="#6ee7b7" font-size="17" font-weight="800">
+                        LONDON
+                    </text>
+                    <text x="500" y="153" text-anchor="middle"
+                          fill="#64748b" font-size="12">
+                        simplified session concept
+                    </text>
+
+                    <rect x="680" y="100" width="230" height="70" rx="16"
+                          fill="#0f172a" stroke="#facc15"></rect>
+                    <text x="795" y="130" text-anchor="middle"
+                          fill="#fde68a" font-size="17" font-weight="800">
+                        NEW YORK
+                    </text>
+                    <text x="795" y="153" text-anchor="middle"
+                          fill="#64748b" font-size="12">
+                        simplified session concept
+                    </text>
+
+                    <text x="500" y="235" text-anchor="middle"
+                          fill="#64748b" font-size="14">
+                        Exact session times should be checked using the relevant time zone and date.
+                    </text>
+                </svg>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             17 — WHAT FOREX IS NOT
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">17</span> What Forex Is Not</h2>
+
+            <ul class="fx-list">
+                <li>
+                    <strong>Forex is not guaranteed income.</strong>
+                    Market prices can move against a position.
+                </li>
+                <li>
+                    <strong>Forex is not a prediction machine.</strong>
+                    Analysis creates a framework for decisions; it does not
+                    remove uncertainty.
+                </li>
+                <li>
+                    <strong>Forex is not only charts.</strong>
+                    Economic conditions, institutions, liquidity and
+                    expectations also matter.
+                </li>
+                <li>
+                    <strong>Forex is not the same as a single currency.</strong>
+                    A quoted pair always contains two currencies.
+                </li>
+                <li>
+                    <strong>Leverage is not free profit.</strong>
+                    Greater exposure can increase the effect of adverse price
+                    movement.
+                </li>
+            </ul>
+        </section>
+
+
+        <!-- =========================================================
+             18 — COMMON BEGINNER MISTAKES
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">18</span> Common Beginner Mistakes</h2>
+
+            <div class="grid-2">
+                <div class="info-card">
+                    <h4>❌ Reading the pair backwards</h4>
+                    <p>
+                        Always identify the first currency as the base and the
+                        second as the quote.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>❌ Thinking a currency moves alone</h4>
+                    <p>
+                        Exchange rates describe relative value between two
+                        currencies.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>❌ Ignoring Bid and Ask</h4>
+                    <p>
+                        A market quote has two sides. The difference between
+                        them is the spread.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>❌ Confusing pips with money</h4>
+                    <p>
+                        A pip describes price movement. Monetary impact depends
+                        on position size and instrument details.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>❌ Starting with leverage</h4>
+                    <p>
+                        Beginners should understand exposure and risk before
+                        thinking about increasing market exposure.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h4>❌ Jumping directly to strategies</h4>
+                    <p>
+                        A strategy is easier to understand when the market's
+                        basic language is already clear.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             19 — SIMPLE MENTAL MODEL
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">19</span> The Beginner Mental Model</h2>
+
+            <p>
+                When you see a Forex chart later in this course, use this
+                sequence to organize your thinking.
+            </p>
+
+            <div class="diagram">
+                <div class="diagram-title">Diagram — Beginner Forex thinking process</div>
+
+                <svg viewBox="0 0 1000 330" role="img"
+                     aria-label="Forex beginner thinking flow from pair to price to direction to risk">
+                    <defs>
+                        <marker id="flowArrow" markerWidth="12" markerHeight="12"
+                                refX="10" refY="4" orient="auto">
+                            <path d="M0,0 L0,8 L11,4 z" fill="#60a5fa"></path>
+                        </marker>
+                    </defs>
+
+                    <rect x="25" y="95" width="170" height="120" rx="18"
+                          fill="#0f172a" stroke="#60a5fa"></rect>
+                    <text x="110" y="137" text-anchor="middle"
+                          fill="#93c5fd" font-size="16" font-weight="800">
+                        1. PAIR
+                    </text>
+                    <text x="110" y="170" text-anchor="middle"
+                          fill="#94a3b8" font-size="13">
+                        EUR/USD?
+                    </text>
+
+                    <line x1="195" y1="155" x2="250" y2="155"
+                          stroke="#60a5fa" stroke-width="4"
+                          marker-end="url(#flowArrow)"></line>
+
+                    <rect x="250" y="95" width="170" height="120" rx="18"
+                          fill="#0f172a" stroke="#34d399"></rect>
+                    <text x="335" y="137" text-anchor="middle"
+                          fill="#6ee7b7" font-size="16" font-weight="800">
+                        2. PRICE
+                    </text>
+                    <text x="335" y="170" text-anchor="middle"
+                          fill="#94a3b8" font-size="13">
+                        What is it?
+                    </text>
+
+                    <line x1="420" y1="155" x2="475" y2="155"
+                          stroke="#60a5fa" stroke-width="4"
+                          marker-end="url(#flowArrow)"></line>
+
+                    <rect x="475" y="95" width="170" height="120" rx="18"
+                          fill="#0f172a" stroke="#a78bfa"></rect>
+                    <text x="560" y="137" text-anchor="middle"
+                          fill="#e9d5ff" font-size="16" font-weight="800">
+                        3. CONTEXT
+                    </text>
+                    <text x="560" y="170" text-anchor="middle"
+                          fill="#94a3b8" font-size="13">
+                        What is changing?
+                    </text>
+
+                    <line x1="645" y1="155" x2="700" y2="155"
+                          stroke="#60a5fa" stroke-width="4"
+                          marker-end="url(#flowArrow)"></line>
+
+                    <rect x="700" y="95" width="170" height="120" rx="18"
+                          fill="#0f172a" stroke="#facc15"></rect>
+                    <text x="785" y="137" text-anchor="middle"
+                          fill="#fde68a" font-size="16" font-weight="800">
+                        4. RISK
+                    </text>
+                    <text x="785" y="170" text-anchor="middle"
+                          fill="#94a3b8" font-size="13">
+                        What can go wrong?
+                    </text>
+
+                    <text x="500" y="270" text-anchor="middle"
+                          fill="#64748b" font-size="14">
+                        Later lessons will add chart structure, entries, exits and risk-management rules.
+                    </text>
+                </svg>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             20 — WHAT TO REMEMBER
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">20</span> Key Points to Remember</h2>
+
+            <div class="checklist">
+                <div class="check"><span>✓</span><div>Forex means <strong>foreign exchange</strong>.</div></div>
+                <div class="check"><span>✓</span><div>Forex compares the value of one currency with another.</div></div>
+                <div class="check"><span>✓</span><div>Currencies are quoted in <strong>pairs</strong>.</div></div>
+                <div class="check"><span>✓</span><div>The first currency is the <strong>base currency</strong>.</div></div>
+                <div class="check"><span>✓</span><div>The second currency is the <strong>quote currency</strong>.</div></div>
+                <div class="check"><span>✓</span><div>A rising pair means the quoted value of the base currency has increased relative to the quote currency.</div></div>
+                <div class="check"><span>✓</span><div>A falling pair means the quoted value of the base currency has decreased relative to the quote currency.</div></div>
+                <div class="check"><span>✓</span><div>Bid and Ask are two sides of a market quote.</div></div>
+                <div class="check"><span>✓</span><div>The spread is the difference between Ask and Bid.</div></div>
+                <div class="check"><span>✓</span><div>A pip is a unit for describing price movement; its monetary effect depends on position details.</div></div>
+                <div class="check"><span>✓</span><div>Position size affects the financial impact of price movement.</div></div>
+                <div class="check"><span>✓</span><div>Leverage can increase exposure and therefore requires careful risk management.</div></div>
+                <div class="check"><span>✓</span><div>Forex trading has uncertainty and does not guarantee profit.</div></div>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             21 — QUICK REVISION
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">21</span> Quick Revision</h2>
+
+            <div class="table-wrap">
+                <table class="fx-table">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th>Answer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>What does Forex mean?</td>
+                            <td>Foreign exchange.</td>
+                        </tr>
+                        <tr>
+                            <td>Why are currencies quoted in pairs?</td>
+                            <td>Because an exchange rate expresses relative value between two currencies.</td>
+                        </tr>
+                        <tr>
+                            <td>What is the first currency?</td>
+                            <td>The base currency.</td>
+                        </tr>
+                        <tr>
+                            <td>What is the second currency?</td>
+                            <td>The quote currency.</td>
+                        </tr>
+                        <tr>
+                            <td>What happens when EUR/USD rises?</td>
+                            <td>The quoted value of EUR in USD increases.</td>
+                        </tr>
+                        <tr>
+                            <td>What is the spread?</td>
+                            <td>The difference between Ask and Bid.</td>
+                        </tr>
+                        <tr>
+                            <td>What is a pip?</td>
+                            <td>A commonly used unit for describing small price movements.</td>
+                        </tr>
+                        <tr>
+                            <td>What does leverage do?</td>
+                            <td>It can provide greater market exposure relative to the trader's own capital.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             22 — PRACTICE QUESTIONS
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">22</span> Practice Before Continuing</h2>
+
+            <h3>Question 1</h3>
+            <p>
+                In EUR/USD, which currency is the base currency?
+            </p>
+
+            <div class="key-box">
+                <strong>Answer</strong>
+                <p>EUR is the base currency because it appears first.</p>
+            </div>
+
+            <h3>Question 2</h3>
+            <p>
+                If EUR/USD moves from 1.1000 to 1.1050, did the pair rise or fall?
+            </p>
+
+            <div class="key-box">
+                <strong>Answer</strong>
+                <p>The pair rose.</p>
+            </div>
+
+            <h3>Question 3</h3>
+            <p>
+                If the Bid is 1.0999 and the Ask is 1.1001, what is the spread
+                in price terms?
+            </p>
+
+            <div class="key-box">
+                <strong>Answer</strong>
+                <p>1.1001 − 1.0999 = 0.0002.</p>
+            </div>
+
+            <h3>Question 4</h3>
+            <p>
+                Does understanding Forex guarantee that a trader will make money?
+            </p>
+
+            <div class="key-box">
+                <strong>Answer</strong>
+                <p>
+                    No. Education can improve understanding, but market
+                    outcomes remain uncertain and losses are possible.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             23 — FINAL SUMMARY
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">23</span> Final Summary</h2>
+
+            <p class="lead">
+                Forex is the global foreign-exchange market in which currencies
+                are exchanged and valued relative to one another.
+            </p>
+
+            <p>
+                The most important foundation is learning to read a currency
+                pair correctly. In EUR/USD, EUR is the base currency and USD is
+                the quote currency. A quoted price tells you how much quote
+                currency is represented by one unit of the base currency.
+            </p>
+
+            <p>
+                Once that idea is clear, price movement becomes easier to
+                understand. A rising EUR/USD quotation means the quoted value
+                of EUR in USD has increased. A falling quotation means it has
+                decreased.
+            </p>
+
+            <p>
+                You also now have a first understanding of Bid, Ask, spread,
+                pips, position size, leverage, market participants, sessions
+                and the basic reasons prices can change.
+            </p>
+
+            <div class="memory-box">
+                <strong>One sentence to remember:</strong>
+                <p>
+                    <strong>
+                        Forex is a market where the value of one currency is
+                        expressed relative to another currency.
+                    </strong>
+                </p>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             24 — STUDENT CHECKLIST
+        ========================================================== -->
+        <section class="fx-section">
+            <h2><span class="number-badge">24</span> Student Completion Checklist</h2>
+
+            <div class="checklist">
+                <div class="check"><span>□</span><div>I can explain what Forex means.</div></div>
+                <div class="check"><span>□</span><div>I understand why Forex uses currency pairs.</div></div>
+                <div class="check"><span>□</span><div>I can identify base and quote currencies.</div></div>
+                <div class="check"><span>□</span><div>I understand what a rising pair means.</div></div>
+                <div class="check"><span>□</span><div>I understand what a falling pair means.</div></div>
+                <div class="check"><span>□</span><div>I know the basic idea of Bid and Ask.</div></div>
+                <div class="check"><span>□</span><div>I can explain the spread.</div></div>
+                <div class="check"><span>□</span><div>I understand what a pip represents.</div></div>
+                <div class="check"><span>□</span><div>I understand why position size matters.</div></div>
+                <div class="check"><span>□</span><div>I understand why leverage requires caution.</div></div>
+                <div class="check"><span>□</span><div>I understand that trading outcomes are uncertain.</div></div>
+            </div>
+        </section>
+
+
+        <!-- =========================================================
+             NAVIGATION
+        ========================================================== -->
+        <nav class="nav-row" aria-label="Lesson navigation">
+
+            <a class="nav-btn" href="notes.html">
+                <small>← Notes</small>
+                <strong>Back to Module 1 Notes</strong>
+            </a>
+
+            <a class="nav-btn center" href="notes.html">
+                <small>Module 1</small>
+                <strong>Notes Home</strong>
+            </a>
+
+            <a class="nav-btn right" href="currency-pairs.html">
+                <small>Next Note →</small>
+                <strong>Currency Pairs</strong>
+            </a>
+
+        </nav>
+
+    </main>
+
+
+    <!-- GLOBAL FOOTER -->
+    <div data-component="footer"></div>
+
+
+    <!-- Shared Strativo Academy scripts -->
+    <script src="../../js/routes.js"></script>
+    <script src="../../js/component-loader.js"></script>
+    <script src="../../js/header.js"></script>
+
+</body>
+</html>

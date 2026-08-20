@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#030712" name="theme-color"/>
+<title>Exercise 03 — Pips &amp; Points | Strativo Academy</title>
+<link href="../../css/style.css" rel="stylesheet"/>
+<link href="../../css/ui.css" rel="stylesheet"/>
+<link href="../../css/header.css" rel="stylesheet"/>
+<link href="../../css/footer.css" rel="stylesheet"/>
+<style>
+:root{--bg:#030712;--panel:#0b1220;--panel2:#08111f;--border:rgba(148,163,184,.13);--text:#f8fafc;--muted:#a6b4c6;--blue:#60a5fa;--green:#34d399;--yellow:#fbbf24}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}.page{min-height:100vh;padding-bottom:60px}.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+.hero{padding:76px 20px 54px;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(circle at 15% 20%,rgba(96,165,250,.14),transparent 34%),radial-gradient(circle at 85% 24%,rgba(251,191,36,.08),transparent 31%),#030712}.hero-in{width:min(900px,100%);margin:auto}.eyebrow{color:#93c5fd;font-size:.58rem;font-weight:900;letter-spacing:.16em}.hero h1{margin:15px 0 0;font-family:Poppins,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:1.08}.hero p{max-width:840px;margin:16px auto 0;color:#a8b5c7;font-size:.66rem;line-height:1.9}.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#0f172acc;color:#dbeafe;font-size:.46rem;font-weight:800}
+.meta{display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;margin-top:23px;padding:16px 18px;border:1px solid var(--border);border-radius:15px;background:var(--panel)}.meta strong{display:block;font-size:.56rem}.meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.48rem}.progress{min-width:150px;text-align:right}.bar{width:150px;height:7px;border-radius:999px;background:#162033;overflow:hidden}.fill{width:30%;height:100%;background:linear-gradient(90deg,#60a5fa,#fbbf24)}
+.section{margin-top:20px;padding:22px;border:1px solid var(--border);border-radius:17px;background:var(--panel)}.section h2{margin:0;font-family:Poppins,sans-serif;font-size:.96rem}.section h3{margin:18px 0 0;color:#dbeafe;font-size:.67rem}.section p,.list li{color:var(--muted);font-size:.57rem;line-height:1.9}.list{margin:12px 0;padding-left:20px}.list li{margin-top:7px}
+.formula{margin-top:15px;padding:15px;border:1px solid rgba(96,165,250,.15);border-radius:12px;background:rgba(59,130,246,.06);text-align:center;color:#bfdbfe;font-family:Poppins,sans-serif;font-size:.75rem;font-weight:800}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:16px}.card{padding:15px;border:1px solid rgba(148,163,184,.10);border-radius:12px;background:var(--panel2)}.card strong{display:block;color:#f1f5f9;font-size:.60rem}.card span{display:block;margin-top:7px;color:#a8b5c7;font-size:.51rem;line-height:1.75}
+.diagram{margin-top:18px;border:1px solid rgba(148,163,184,.11);border-radius:14px;overflow:hidden;background:#07101f}.dtitle{padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);background:#0d1728;color:#dbe4ef;font-size:.49rem;font-weight:900}.diagram svg{display:block;width:100%;height:auto}
+.num{margin-top:16px;padding:18px;border:1px solid rgba(251,191,36,.16);border-radius:14px;background:linear-gradient(135deg,rgba(251,191,36,.06),rgba(96,165,250,.04))}.num strong{display:block;text-align:center;color:#fde68a;font-family:Poppins,sans-serif;font-size:1.55rem}.num p{text-align:center}
+.q{margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);border-radius:14px;background:var(--panel2)}.qtag{color:#60a5fa;font-size:.47rem;font-weight:900;letter-spacing:.06em}.q h3{margin-top:7px;color:#f1f5f9;font-size:.67rem;line-height:1.55}.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}.opt{padding:12px 13px;border:1px solid rgba(148,163,184,.11);border-radius:10px;background:#0b1627;color:#b9c6d7;font-size:.52rem}.ans{margin-top:11px;padding:11px 13px;border-left:3px solid var(--green);border-radius:0 9px 9px 0;background:rgba(16,185,129,.055)}.ans strong{color:#86efac;font-size:.49rem}.ans p{margin-top:5px;font-size:.51rem}
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}.check{padding:10px 12px;border:1px solid rgba(148,163,184,.09);border-radius:10px;background:var(--panel2);color:#cbd5e1;font-size:.50rem}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:22px}.nav a{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;color:#dbeafe;text-decoration:none;font-size:.50rem;font-weight:900;text-align:center}.nav a:hover{background:#0e1b30}.center{background:rgba(59,130,246,.06)!important;color:#bfdbfe!important}.next{background:rgba(16,185,129,.055)!important;color:#d1fae5!important}.note{text-align:center;margin-top:14px;color:#64748b;font-size:.45rem}
+@media(max-width:760px){.meta,.grid3{grid-template-columns:1fr}.progress{text-align:left}.bar{width:100%}.opts,.checks,.nav{grid-template-columns:1fr}}
+
+/* =========================================================
+   INTERACTIVE EXERCISE — READABILITY
+========================================================= */
+body{font-size:16px;line-height:1.65}
+.section h2{font-size:1.45rem!important}
+.section h3{font-size:1.02rem!important}
+.section p,.list li,.card span,.table th,.table td{
+    font-size:.92rem!important;
+    line-height:1.8!important;
+}
+.eyebrow{font-size:.82rem!important}
+.hero p{font-size:1rem!important}
+.badge{font-size:.78rem!important}
+.meta strong{font-size:.92rem!important}
+.meta span{font-size:.82rem!important}
+.progress small{font-size:.72rem!important}
+.dtitle{font-size:.78rem!important}
+.qtag{font-size:.78rem!important}
+.q h3{font-size:1.05rem!important;line-height:1.6!important}
+.check{font-size:.84rem!important}
+.nav a{font-size:.82rem!important}
+.note{font-size:.72rem!important}
+
+.q .opt{
+    appearance:none;
+    width:100%;
+    padding:14px 15px;
+    border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;
+    background:#0b1627;
+    color:#d5deea;
+    text-align:left;
+    font:inherit;
+    font-size:.92rem!important;
+    line-height:1.65!important;
+    cursor:pointer;
+    transition:transform .16s ease,border-color .16s ease,background .16s ease;
+}
+.q .opt:hover{
+    transform:translateY(-1px);
+    border-color:rgba(96,165,250,.34);
+    background:#0e1b30;
+}
+.q .opt:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:2px;
+}
+.q .opt.correct{
+    border-color:rgba(52,211,153,.55);
+    background:rgba(16,185,129,.11);
+    color:#d1fae5;
+}
+.q .opt.wrong{
+    border-color:rgba(248,113,113,.50);
+    background:rgba(248,113,113,.09);
+    color:#fecaca;
+}
+.q .opt.reveal-correct{
+    border-color:rgba(52,211,153,.35);
+    box-shadow:inset 3px 0 0 #34d399;
+}
+.q .opt:disabled{cursor:default;transform:none}
+
+.pp-feedback{
+    display:none;
+    margin-top:13px;
+    padding:14px 15px;
+    border-left:3px solid #60a5fa;
+    border-radius:0 10px 10px 0;
+    background:rgba(59,130,246,.055);
+}
+.pp-feedback.visible{display:block}
+.pp-feedback.correct{
+    border-left-color:#34d399;
+    background:rgba(16,185,129,.07);
+}
+.pp-feedback.wrong{
+    border-left-color:#f87171;
+    background:rgba(248,113,113,.06);
+}
+.pp-feedback .feedback-title{
+    color:#f8fafc;
+    font-size:.92rem;
+    font-weight:900;
+}
+.pp-feedback.correct .feedback-title{color:#86efac}
+.pp-feedback.wrong .feedback-title{color:#fca5a5}
+.pp-feedback p{
+    margin-top:7px!important;
+    color:#cbd5e1!important;
+    font-size:.90rem!important;
+    line-height:1.75!important;
+}
+.pp-feedback .why-wrong{color:#fca5a5!important}
+.pp-feedback .correct-answer{color:#86efac!important}
+.pp-retry{
+    margin-top:10px;
+    padding:8px 12px;
+    border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;
+    background:rgba(15,23,42,.66);
+    color:#cbd5e1;
+    font:inherit;
+    font-size:.78rem;
+    font-weight:800;
+    cursor:pointer;
+}
+.pp-retry:hover{
+    border-color:rgba(96,165,250,.30);
+    background:rgba(59,130,246,.08);
+}
+.pp-scorebar{
+    margin-top:18px;
+    padding:14px 16px;
+    border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;
+    background:rgba(59,130,246,.055);
+}
+.pp-scorebar strong{color:#dbeafe;font-size:.90rem}
+.pp-scorebar .score-progress{
+    margin-top:8px;height:7px;border-radius:999px;overflow:hidden;background:#162033;
+}
+.pp-scorebar .score-fill{
+    width:0;height:100%;
+    background:linear-gradient(90deg,#60a5fa,#34d399);
+    transition:width .25s ease;
+}
+</style>
+</head>
+<body>
+<div data-component="header"></div>
+<main class="page">
+<section class="hero"><div class="hero-in">
+<div class="eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+<h1>Exercise 03 — Pips &amp; Points</h1>
+<p>Practice identifying pips and points, reading small Forex price movements and calculating basic pip and point distances.</p>
+<div class="badges"><span class="badge">📏 Pips</span><span class="badge">🎯 Points</span><span class="badge">🧮 Calculations</span><span class="badge">03 / 10</span></div>
+</div></section>
+<div class="wrap">
+<section class="meta"><div><strong>Exercise Goal</strong><span>Understand the difference between a pip and a point and calculate basic price movement.</span></div><div class="progress"><div class="bar"><div class="fill"></div></div><small>Exercise 03 of 10</small></div></section>
+<section class="section"><h2>01. What Is a Pip?</h2>
+<p>A pip is a commonly used unit for describing a small movement in a Forex price. For many traditional non-JPY quotations, one pip is the fourth decimal place. For many JPY quotations, one pip is commonly the second decimal place.</p>
+<p>Modern platforms may display an additional decimal digit. That extra digit is commonly described as a point or fractional pip.</p>
+<div class="grid3"><div class="card"><strong>Non-JPY</strong><span>Example: 1.1050 — fourth decimal is the common pip position.</span></div><div class="card"><strong>JPY</strong><span>Example: 157.20 — second decimal is the common pip position.</span></div><div class="card"><strong>Fractional</strong><span>On 5-digit/3-digit quotations, the extra displayed digit is commonly a point.</span></div></div>
+<div class="diagram"><div class="dtitle">PIP POSITION — COMMON FOREX QUOTATIONS</div>
+<svg viewbox="0 0 900 350"><rect fill="#07101f" height="350" width="900"></rect>
+<text fill="#bfdbfe" font-size="21" font-weight="900" text-anchor="middle" x="225" y="70">NON-JPY</text>
+<text fill="#f8fafc" font-size="35" font-weight="900" text-anchor="middle" x="225" y="120">1.1050</text>
+<text fill="#60a5fa" font-size="15" font-weight="800" text-anchor="middle" x="225" y="165">1 pip = 0.0001</text>
+<text fill="#a7f3d0" font-size="21" font-weight="900" text-anchor="middle" x="675" y="70">JPY</text>
+<text fill="#f8fafc" font-size="35" font-weight="900" text-anchor="middle" x="675" y="120">157.20</text>
+<text fill="#34d399" font-size="15" font-weight="800" text-anchor="middle" x="675" y="165">1 pip = 0.01</text>
+<text fill="#64748b" font-size="15" font-weight="700" text-anchor="middle" x="450" y="285">COMMON FOREX QUOTATION CONVENTIONS</text></svg></div>
+</section>
+<section class="section"><h2>02. What Is a Point?</h2>
+<p>On many retail Forex platforms that display five decimal places on non-JPY pairs or three on JPY pairs, the smallest displayed digit is commonly called a point or fractional pip.</p>
+<div class="num"><strong>1 pip = 10 points</strong><p>Under this common fractional-pip convention, one point is one-tenth of a pip.</p></div>
+<div class="diagram"><div class="dtitle">FRACTIONAL PIP / POINT EXAMPLE</div><svg viewbox="0 0 900 300"><rect fill="#07101f" height="300" width="900"></rect>
+<text fill="#f8fafc" font-size="32" font-weight="900" text-anchor="middle" x="450" y="68">EUR/USD = 1.10527</text>
+<rect fill="#0b1627" height="90" rx="14" stroke="#60a5fa" stroke-width="2" width="300" x="100" y="120"></rect>
+<text fill="#bfdbfe" font-size="20" font-weight="900" text-anchor="middle" x="250" y="160">1.1052</text>
+<text fill="#94a3b8" font-size="14" text-anchor="middle" x="250" y="188">pip position</text>
+<rect fill="#0b1627" height="90" rx="14" stroke="#fbbf24" stroke-width="2" width="300" x="500" y="120"></rect>
+<text fill="#fde68a" font-size="20" font-weight="900" text-anchor="middle" x="650" y="160">7</text>
+<text fill="#94a3b8" font-size="14" text-anchor="middle" x="650" y="188">fractional digit / point</text></svg></div>
+</section>
+<section class="section"><h2>03. Calculate Pip Movement</h2>
+<p>Compare the start and end prices, find the difference, then express that difference using the appropriate pip size.</p>
+<div class="formula">PIP MOVEMENT = PRICE DIFFERENCE ÷ PIP SIZE</div>
+<div class="grid3"><div class="card"><strong>EUR/USD</strong><span>1.1000 → 1.1050 = 50 pips.</span></div><div class="card"><strong>GBP/USD</strong><span>1.2700 → 1.2660 = 40 pips down.</span></div><div class="card"><strong>USD/JPY</strong><span>150.00 → 150.50 = 50 pips.</span></div></div>
+<div class="diagram"><div class="dtitle">PIP MOVEMENT EXAMPLES</div><svg viewbox="0 0 900 300"><rect fill="#07101f" height="300" width="900"></rect>
+<text fill="#bfdbfe" font-size="18" font-weight="900" text-anchor="middle" x="225" y="70">EUR/USD</text>
+<text fill="#f8fafc" font-size="23" text-anchor="middle" x="225" y="125">1.1050 − 1.1000</text>
+<text fill="#60a5fa" font-size="24" font-weight="900" text-anchor="middle" x="225" y="175">= 50 PIPS</text>
+<text fill="#a7f3d0" font-size="18" font-weight="900" text-anchor="middle" x="675" y="70">USD/JPY</text>
+<text fill="#f8fafc" font-size="23" text-anchor="middle" x="675" y="125">150.50 − 150.00</text>
+<text fill="#34d399" font-size="24" font-weight="900" text-anchor="middle" x="675" y="175">= 50 PIPS</text></svg></div>
+</section>
+<section class="section"><h2>04. Knowledge Check</h2><p>Choose an answer first. Your selection is checked immediately. If you are wrong, the exercise explains why, shows the correct answer, and teaches the concept.</p>
+<div class="q"><div class="qtag">QUESTION 01</div><h3>On a common four-decimal non-JPY quote, where is one pip?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>First decimal</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Second decimal</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Fourth decimal</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Fifth decimal only</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div class="q"><div class="qtag">QUESTION 02</div><h3>On a common two-decimal JPY quote, where is one pip?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>First decimal</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Second decimal</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Third decimal only</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Fourth decimal</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div class="q"><div class="qtag">QUESTION 03</div><h3>EUR/USD: 1.1000 → 1.1050. How many pips?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>5</button><button class="opt" data-option="B" type="button"><strong>B. </strong>50</button><button class="opt" data-option="C" type="button"><strong>C. </strong>500</button><button class="opt" data-option="D" type="button"><strong>D. </strong>0.5</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div class="q"><div class="qtag">QUESTION 04</div><h3>USD/JPY: 150.00 → 150.50. How many pips?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>5</button><button class="opt" data-option="B" type="button"><strong>B. </strong>10</button><button class="opt" data-option="C" type="button"><strong>C. </strong>50</button><button class="opt" data-option="D" type="button"><strong>D. </strong>500</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div class="q"><div class="qtag">QUESTION 05</div><h3>Under the common fractional-pip convention, how many points make one pip?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>2</button><button class="opt" data-option="B" type="button"><strong>B. </strong>5</button><button class="opt" data-option="C" type="button"><strong>C. </strong>10</button><button class="opt" data-option="D" type="button"><strong>D. </strong>100</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div class="q"><div class="qtag">QUESTION 06</div><h3>EUR/USD moves from 1.10520 to 1.10530. Under a five-decimal quotation, how many pips?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>0.1 pip</button><button class="opt" data-option="B" type="button"><strong>B. </strong>1 pip</button><button class="opt" data-option="C" type="button"><strong>C. </strong>10 pips</button><button class="opt" data-option="D" type="button"><strong>D. </strong>100 pips</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div aria-live="polite" class="pp-scorebar"><strong>Knowledge Check: 0 / 6 correct</strong><div class="score-progress"><div class="score-fill"></div></div></div></section>
+<section class="section"><h2>05. Calculation Practice</h2>
+<div class="q"><div class="qtag">PRACTICE 01</div><h3>EUR/USD: 1.0870 → 1.0915. How many pips?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>45 pips</button><button class="opt" data-option="B" type="button"><strong>B. </strong>4.5 pips</button><button class="opt" data-option="C" type="button"><strong>C. </strong>450 pips</button><button class="opt" data-option="D" type="button"><strong>D. </strong>0.45 pips</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div class="q"><div class="qtag">PRACTICE 02</div><h3>GBP/USD: 1.2700 → 1.2660. How many pips did it move?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>40 pips up</button><button class="opt" data-option="B" type="button"><strong>B. </strong>40 pips down</button><button class="opt" data-option="C" type="button"><strong>C. </strong>4 pips down</button><button class="opt" data-option="D" type="button"><strong>D. </strong>400 pips down</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div class="q"><div class="qtag">PRACTICE 03</div><h3>USD/JPY: 156.20 → 156.85. How many pips?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>6.5 pips</button><button class="opt" data-option="B" type="button"><strong>B. </strong>650 pips</button><button class="opt" data-option="C" type="button"><strong>C. </strong>65 pips</button><button class="opt" data-option="D" type="button"><strong>D. </strong>0.65 pip</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+<div class="q"><div class="qtag">PRACTICE 04</div><h3>EUR/USD: 1.10520 → 1.10720. How many pips?</h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>20 pips</button><button class="opt" data-option="B" type="button"><strong>B. </strong>2 pips</button><button class="opt" data-option="C" type="button"><strong>C. </strong>200 pips</button><button class="opt" data-option="D" type="button"><strong>D. </strong>0.2 pip</button></div><div aria-live="polite" class="pp-feedback"></div></div>
+</section>
+<section class="section"><h2>06. Why Pips &amp; Points Matter</h2>
+<div class="grid3"><div class="card"><strong>Price Movement</strong><span>Describe how far a Forex pair moved using a common unit.</span></div><div class="card"><strong>Stops &amp; Targets</strong><span>Traders can describe planned distances such as a 20-pip stop or 40-pip target.</span></div><div class="card"><strong>Comparison</strong><span>Pip distance makes movements easier to compare than raw decimal prices alone.</span></div></div>
+<div class="section" style="margin-top:15px;background:#08111f"><h3>⚠️ Important</h3><p>A pip distance is not automatically a cash gain or loss. Money value also depends on position size, instrument and account currency. This exercise is about price measurement only.</p></div>
+</section>
+<section class="section"><h2>07. Student Self-Check</h2>
+<div class="checks"><div class="check">☐ I know what a pip means.</div><div class="check">☐ I know the common non-JPY pip position.</div><div class="check">☐ I know the common JPY pip position.</div><div class="check">☐ I understand points / fractional pips.</div><div class="check">☐ I can calculate pip movement.</div><div class="check">☐ I can tell whether the move was up or down.</div><div class="check">☐ I know pip distance is not automatically money risk.</div><div class="check">☐ I am ready for Market Orders.</div></div>
+</section>
+<section class="section"><h2>08. Quick Revision</h2><ul class="list"><li>A pip is a common unit for describing small Forex price movements.</li><li>For many non-JPY quotations, one pip is 0.0001.</li><li>For many JPY quotations, one pip is 0.01.</li><li>On fractional quotations, the extra displayed digit is commonly called a point.</li><li>Under that convention, 10 points = 1 pip.</li><li>Calculate movement by comparing price difference with the relevant pip size.</li><li>Pips describe price distance; they do not by themselves determine the cash amount at risk.</li></ul></section>
+<nav aria-label="Exercise navigation" class="nav">
+<a href="currency-pairs.html">← Currency Pairs</a>
+<a class="center" href="module1-exercise.html">Exercise Hub</a>
+<a class="next" href="market-orders.html">Next: Market Orders →</a>
+</nav>
+<div class="note">Exercise 03 of 10 • Strativo Academy Module 1 • Next: Market Orders</div>
+</div>
+</main>
+<div data-component="footer"></div>
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const maps = {
+        "QUESTION 01": {
+            correct:"C",
+            explanation:"For many traditional non-JPY Forex quotations, the fourth decimal place is the common pip position.",
+            wrong:{
+                A:"The first decimal is far too large a unit to be the common pip position.",
+                B:"The second decimal is not the common pip position for a traditional non-JPY quotation.",
+                D:"The fifth decimal is commonly used for a fractional pip or point on a five-digit quote."
+            }
+        },
+        "QUESTION 02": {
+            correct:"B",
+            explanation:"For many JPY quotations, one pip is commonly represented at the second decimal place.",
+            wrong:{
+                A:"The first decimal is larger than the common JPY pip unit.",
+                C:"The third decimal can represent a fractional pip or point, not the common pip position.",
+                D:"The fourth decimal is too fine for the common JPY pip convention."
+            }
+        },
+        "QUESTION 03": {
+            correct:"B",
+            explanation:"1.1050 − 1.1000 = 0.0050. Dividing by 0.0001 gives 50 pips.",
+            wrong:{
+                A:"The movement is 0.0050, which is 50 pips, not 5.",
+                C:"500 pips would require a ten-times larger price difference.",
+                D:"0.5 pip is ten-times smaller than the actual movement."
+            }
+        },
+        "QUESTION 04": {
+            correct:"C",
+            explanation:"150.50 − 150.00 = 0.50. With a common JPY pip size of 0.01, that equals 50 pips.",
+            wrong:{
+                A:"5 pips would correspond to only 0.05 in a common JPY quote.",
+                B:"10 pips would correspond to 0.10.",
+                D:"500 pips would correspond to a much larger 5.00 movement."
+            }
+        },
+        "QUESTION 05": {
+            correct:"C",
+            explanation:"Under the common fractional-pip convention, one point is one-tenth of a pip, so 10 points make one pip.",
+            wrong:{
+                A:"Two points would be only 0.2 pip.",
+                B:"Five points would be 0.5 pip.",
+                D:"One hundred points would equal 10 pips."
+            }
+        },
+        "QUESTION 06": {
+            correct:"B",
+            explanation:"1.10520 → 1.10530 is a 0.00010 move. With a common non-JPY pip size of 0.0001, that equals 1 pip.",
+            wrong:{
+                A:"0.1 pip would be a 0.00001 move on a 5-digit EUR/USD quotation.",
+                C:"10 pips would be 0.0010, which is ten-times larger.",
+                D:"100 pips would be 0.0100, which is much larger."
+            }
+        },
+        "PRACTICE 01": {
+            correct:"A",
+            explanation:"1.0915 − 1.0870 = 0.0045. Dividing by 0.0001 gives 45 pips.",
+            wrong:{
+                B:"The decimal difference is 0.0045, which is 45 pips, not 4.5.",
+                C:"450 pips would require a ten-times larger move.",
+                D:"0.45 pips is ten-times smaller than the actual movement."
+            }
+        },
+        "PRACTICE 02": {
+            correct:"B",
+            explanation:"1.2700 − 1.2660 = 0.0040. Dividing by 0.0001 gives 40 pips downward.",
+            wrong:{
+                A:"The ending price is lower than the starting price, so the movement is down.",
+                C:"0.0040 equals 40 pips, not 4.",
+                D:"400 pips would require a ten-times larger move."
+            }
+        },
+        "PRACTICE 03": {
+            correct:"C",
+            explanation:"156.85 − 156.20 = 0.65. With a common JPY pip size of 0.01, that equals 65 pips.",
+            wrong:{
+                A:"6.5 pips is ten-times smaller than the correct movement.",
+                B:"650 pips is ten-times larger than the correct movement.",
+                D:"0.65 is the raw price difference, not the pip count."
+            }
+        },
+        "PRACTICE 04": {
+            correct:"A",
+            explanation:"1.10720 − 1.10520 = 0.00200. Dividing by 0.0001 gives 20 pips.",
+            wrong:{
+                B:"The movement is 0.00200, which is 20 pips, not 2.",
+                C:"200 pips would require a ten-times larger move.",
+                D:"0.2 pip is ten-times smaller than the actual movement."
+            }
+        }
+    };
+
+    let score = 0;
+    const counted = new Set();
+    const scoreStrong = document.querySelector(".pp-scorebar strong");
+    const scoreFill = document.querySelector(".pp-scorebar .score-fill");
+
+    function updateScore(){
+        if(!scoreStrong || !scoreFill) return;
+        scoreStrong.textContent = "Knowledge Check: " + score + " / 6 correct";
+        scoreFill.style.width = (score / 6 * 100) + "%";
+    }
+
+    function evaluate(q, selected, data){
+        const feedback = q.querySelector(".pp-feedback");
+        const correct = selected === data.correct;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.disabled = true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+            if(btn.dataset.option === data.correct) btn.classList.add("reveal-correct");
+            if(btn.dataset.option === selected) btn.classList.add(correct ? "correct" : "wrong");
+        });
+
+        feedback.innerHTML = "";
+        feedback.className = "pp-feedback visible " + (correct ? "correct" : "wrong");
+
+        const title = document.createElement("div");
+        title.className = "feedback-title";
+        title.textContent = correct ? "✅ Correct — well done!" : "❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if(!correct){
+            const why = document.createElement("p");
+            why.className = "why-wrong";
+            why.textContent = "Why your answer is wrong: " +
+                (data.wrong[selected] || "That option does not match the concept being tested.");
+            feedback.appendChild(why);
+
+            const right = document.createElement("p");
+            right.className = "correct-answer";
+            right.textContent = "Correct answer: " + data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explanation = document.createElement("p");
+        explanation.textContent = "Explanation: " + data.explanation;
+        feedback.appendChild(explanation);
+
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.className = "pp-retry";
+        retry.textContent = "Try Again";
+        retry.addEventListener("click", ()=>{
+            q.querySelectorAll(".opt").forEach(btn=>{
+                btn.disabled = false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+            feedback.className = "pp-feedback";
+            feedback.innerHTML = "";
+        });
+        feedback.appendChild(retry);
+    }
+
+    document.querySelectorAll(".q").forEach(q=>{
+        const tag = q.querySelector(".qtag");
+        const id = tag ? tag.textContent.trim() : "";
+        const data = maps[id];
+        if(!data) return;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.addEventListener("click", ()=>{
+                if(btn.disabled) return;
+
+                const selected = btn.dataset.option;
+
+                if(id.startsWith("QUESTION") && !counted.has(id)){
+                    counted.add(id);
+                    if(selected === data.correct) score += 1;
+                    updateScore();
+                }
+
+                evaluate(q, selected, data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+</body>
+</html>

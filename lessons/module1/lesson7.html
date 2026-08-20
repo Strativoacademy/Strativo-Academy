@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7 - Reading Forex Charts | Strativo Academy</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <style>
+        /* ===== MASTER TEMPLATE STYLES ===== */
+        /* ---------------- Global ---------------- */
+        .lesson-step {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .lesson-step.active-step {
+            display: block;
+            opacity: 1;
+        }
+
+        .lesson-sidebar {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+        }
+
+        /* ---------------- Cards & Boxes ---------------- */
+        .info-box {
+            background: #162437;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-left: 6px solid #64748b;
+            color: #cfcfcf;
+        }
+        .info-box.success { border-left-color: #00e5a8; }
+        .info-box.warning { border-left-color: #ef4444; }
+        .info-box.note { border-left-color: #fbbf24; }
+        .info-box.remember { border-left-color: #818cf8; }
+        .info-box.didyouknow { border-left-color: #2dd4bf; }
+        .info-box h3 { color: #ffffff; margin-top: 0; }
+
+        /* ---------------- Dynamic Lesson Button ---------------- */
+        .lesson-action-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .lesson-action-btn.unlocked {
+            background: #00e5a8;
+            color: #0a1424;
+            box-shadow: 0 4px 14px rgba(0, 229, 168, 0.25);
+        }
+        .lesson-action-btn.unlocked:hover {
+            background: #00cc94;
+            transform: translateY(-1px);
+        }
+        .lesson-action-btn.locked {
+            background: #1e293b;
+            color: #64748b;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        .lesson-action-btn.coming-soon {
+            background: #64748b;
+            color: #ffffff;
+            cursor: default;
+            box-shadow: none;
+        }
+        .lesson-action-btn.coming-soon:hover {
+            background: #64748b;
+            transform: none;
+        }
+
+        /* ---------------- Quiz ---------------- */
+        .quiz-options button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 18px;
+            margin: 8px 0;
+            background: #162437;
+            border: 2px solid #1e293b;
+            border-radius: 8px;
+            color: #cfcfcf;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-options button:hover:not(:disabled) {
+            background: #1e293b;
+            border-color: #64748b;
+        }
+        .quiz-options button.correct {
+            background: #00e5a8;
+            border-color: #00e5a8;
+            color: #0a1424;
+        }
+        .quiz-options button.wrong {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: #ffffff;
+        }
+        .quiz-options button:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        .quiz-result {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 12px 0;
+        }
+        .quiz-result.correct { color: #00e5a8; }
+        .quiz-result.wrong { color: #ef4444; }
+        .quiz-explanation {
+            background: #162437;
+            padding: 14px 18px;
+            border-radius: 8px;
+            border-left: 4px solid #fbbf24;
+            margin: 12px 0;
+            color: #cfcfcf;
+        }
+
+        /* ---------------- Checklist ---------------- */
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            color: #cfcfcf;
+            cursor: pointer;
+        }
+        .checklist-item input[type="checkbox"] {
+            accent-color: #00e5a8;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* ---------------- Image Display ---------------- */
+        .lesson-image {
+            display: block;
+            margin: 20px auto;
+            background: #0a1424;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px dashed #1e293b;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+        }
+
+        /* ---------------- Responsive ---------------- */
+        @media (max-width: 700px) {
+            .lesson-sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+
+<style id="lesson7-v1-enhancements">
+
+.skip-link{
+    position:fixed;
+    top:10px;
+    left:10px;
+    z-index:9999;
+    transform:translateY(-150%);
+    padding:10px 14px;
+    border-radius:9px;
+    background:#0f172a;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    border:1px solid rgba(148,163,184,.25);
+}
+
+.skip-link:focus{
+    transform:translateY(0);
+}
+
+.lesson-progress-fill{
+    transition:width .3s ease;
+    will-change:width;
+}
+
+.quick-check-card{
+    margin-top:18px;
+    padding:18px;
+    border:1px solid rgba(96,165,250,.16);
+    border-radius:14px;
+    background:rgba(59,130,246,.055);
+}
+
+.quick-check-badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:999px;
+    background:rgba(96,165,250,.10);
+    color:#bfdbfe;
+    font-size:.78rem;
+    font-weight:900;
+}
+
+.quick-check-card h3{
+    margin:10px 0 0;
+    color:#f8fafc;
+}
+
+.quick-check-card p{
+    color:#aebdd0;
+}
+
+.quick-check-options{
+    display:grid;
+    gap:8px;
+    margin-top:12px;
+}
+
+.quick-check-options button{
+    min-height:44px;
+    padding:10px 13px;
+    border:1px solid rgba(148,163,184,.13);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    text-align:left;
+    font:inherit;
+    font-size:.9rem;
+    cursor:pointer;
+}
+
+.quick-check-options button:hover{
+    background:#0e1b30;
+    border-color:rgba(96,165,250,.30);
+}
+
+.quick-check-options button.correct{
+    border-color:rgba(52,211,153,.50);
+    background:rgba(16,185,129,.09);
+}
+
+.quick-check-options button.wrong{
+    border-color:rgba(248,113,113,.50);
+    background:rgba(248,113,113,.08);
+}
+
+.quick-check-feedback{
+    display:none;
+    margin-top:12px;
+    padding:11px 13px;
+    border-left:3px solid #60a5fa;
+    border-radius:0 9px 9px 0;
+    background:rgba(59,130,246,.055);
+    color:#dbeafe;
+    font-size:.88rem;
+    line-height:1.7;
+}
+
+.quick-check-feedback.visible{
+    display:block;
+}
+
+.quick-check-feedback.correct{
+    border-left-color:#34d399;
+    color:#d1fae5;
+}
+
+.quick-check-feedback.wrong{
+    border-left-color:#f87171;
+    color:#fecaca;
+}
+
+.lesson-mobile-toggle{
+    display:none;
+    width:100%;
+    min-height:44px;
+    margin:0 0 10px;
+    padding:0 14px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1220;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.82rem;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.lesson-sidebar.is-open{
+    display:block;
+}
+
+.lesson-sticky-nav{
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    gap:10px;
+    padding:9px;
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:14px;
+    background:rgba(3,7,18,.94);
+    box-shadow:0 14px 40px rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+}
+
+.lesson-sticky-nav button{
+    min-height:44px;
+    padding:0 13px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.8rem;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.lesson-sticky-nav button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.lesson-sticky-nav span{
+    flex:1;
+    text-align:center;
+    color:#94a3b8;
+    font-size:.78rem;
+    font-weight:700;
+}
+
+button:focus-visible,
+a:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:3px;
+}
+
+@media(max-width:800px){
+
+    .lesson-mobile-toggle{
+        display:block;
+    }
+
+    .lesson-sidebar{
+        display:none;
+    }
+
+    .lesson-sidebar.is-open{
+        display:block;
+    }
+
+    .lesson-sticky-nav{
+        display:flex;
+    }
+
+    .lesson-content{
+        padding-bottom:90px!important;
+    }
+}
+
+@media(min-width:801px){
+
+    .lesson-sticky-nav{
+        display:none!important;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#lesson-content">Skip to content</a>
+<div class="global-header-mount" data-component="header"></div>
+
+
+<div data-component="lesson-header"></div>
+
+
+<!-- =========================================================
+     LESSON NAVIGATOR
+========================================================= -->
+
+<div class="lesson-navigator-section">
+
+    <div class="navigator-card">
+
+        <div class="navigator-header">
+
+            <h2>
+                📚 Lesson Navigator
+            </h2>
+
+            <p>
+                Jump directly to any lesson.
+                Quiz scores track mastery separately.
+            </p>
+
+        </div>
+
+
+        <div class="navigator-grid">
+
+            <a
+                href="lesson1.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 1
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+            <a
+                href="lesson2.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 2
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+            <a
+                href="lesson3.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 3
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+            <a
+                href="lesson4.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 4
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+            <a
+                href="lesson5.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 5
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+            <a
+                href="lesson6.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 6
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+            <a
+                href="lesson7.html"
+                class="nav-grid-item current"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 7
+                    </span>
+
+                    <span class="lesson-icon">
+                        ✅
+                    </span>
+
+                </div>
+
+                <span class="current-badge">
+                    Current Lesson
+                </span>
+
+            </a>
+
+            <a
+                href="lesson8.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 8
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+            <a
+                href="lesson9.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 9
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+            <a
+                href="lesson10.html"
+                class="nav-grid-item"
+            >
+
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 10
+                    </span>
+
+                    <span class="lesson-icon">
+                        ▶
+                    </span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MOBILE LESSON MENU
+========================================================= -->
+
+<button
+    type="button"
+    id="lessonSidebarToggle"
+    class="lesson-mobile-toggle"
+    aria-controls="lessonSidebar"
+    aria-expanded="false"
+>
+    ☰ Lesson Menu
+</button>
+
+<div class="lesson-layout">
+
+        <aside id="lessonSidebar" class="lesson-sidebar">
+            <h2>Lesson 7</h2>
+            <ul id="lessonMenu">
+                <li onclick="showStep(1)" class="active">🏠 Welcome</li>
+                <li onclick="showStep(2)">📈 What is a Forex Chart?</li>
+                <li onclick="showStep(3)">🕯️ Candlestick Charts</li>
+                <li onclick="showStep(4)">⏳ Understanding Timeframes</li>
+                <li onclick="showStep(5)">🟢 Bullish Candles</li>
+                <li onclick="showStep(6)">🔴 Bearish Candles</li>
+                <li onclick="showStep(7)">📉 Reading Price Movement</li>
+                <li onclick="showStep(8)">🔍 Real Chart Example</li>
+                <li onclick="showStep(9)">📝 Quiz</li>
+                <li onclick="showStep(10)">🏁 Summary</li>
+            </ul>
+        </aside>
+
+        <main id="lesson-content" class="lesson-content">
+            <div class="lesson-header">
+                <h1>Lesson 7 — Reading Forex Charts</h1>
+                <div class="lesson-meta">
+                    <div class="meta-item">📈 Beginner</div>
+                    <div class="meta-item">⏱ 25 Minutes</div>
+                   <div class="meta-item">📚 Module 1</div>
+                    <div class="meta-item">📝 10 Steps</div>
+                    <!-- IMPROVED: Descriptive Difficulty Indicator -->
+                    <div class="meta-item">Difficulty: Beginner ⭐☆☆☆☆</div>
+                </div>
+                <div class="lesson-progress">
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+
+            <p class="step-text">Step 1 of 10</p>
+
+            <!-- STEP 1: WELCOME -->
+            <section class="lesson-step active-step" id="step1">
+                <div class="card">
+                    <span class="lesson-badge">BEGINNER COURSE</span>
+                    <h1>Welcome to Lesson 7</h1>
+                    <h2>Reading Forex Charts</h2>
+                    <p>
+                        Charts are the <strong>language of trading</strong>. In this lesson, we dive deep into how to read and understand the market through charts, timeframes, and price action.
+                    </p>
+                    <img loading="lazy" src="../../images/lesson7/welcome.png" alt="Lesson 7 Title Card" class="lesson-image">
+                    
+                    <!-- IMPROVED: Action-oriented Lesson Goal -->
+                    <div class="info-box success">
+                        <h3>✅ Lesson Goal</h3>
+                        <p>After completing this lesson, you will be able to:</p>
+                        <ul class="lesson-list">
+                            <li>✔ Read and interpret Forex charts.</li>
+                            <li>✔ Understand the OHLC (Open, High, Low, Close) of a candlestick.</li>
+                            <li>✔ Recognize bullish and bearish market structures.</li>
+                            <li>✔ Identify basic market trends (HH, HL, LH, LL).</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box note">
+                        <h3>📚 What You Will Learn</h3>
+                        <ul class="lesson-list">
+                            <li>✔ Understand what a Forex chart is.</li>
+                            <li>✔ Read and interpret candlesticks (OHLC).</li>
+                            <li>✔ Identify bullish and bearish candles.</li>
+                            <li>✔ Understand the market psychology behind different candle shapes.</li>
+                            <li>✔ Identify basic trends (Higher Highs, Higher Lows, etc.).</li>
+                        </ul>
+                    </div>
+
+                    <div class="lesson-navigation">
+                        <button class="secondary-btn" disabled>← Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 2: WHAT IS A FOREX CHART? -->
+            <section class="lesson-step" id="step2">
+                <div class="card">
+                    <span class="lesson-badge">STEP 2 OF 10</span>
+                    <h1>What is a Forex Chart?</h1>
+                    <p>Study the infographic below to understand what a Forex chart represents, why it is the most important tool for traders, and how it helps analyze market movements.</p>
+                    
+                    <p>There are three main types of charts: <strong>Line Charts</strong>, <strong>Bar Charts</strong>, and <strong>Candlestick Charts</strong>. Throughout this course, we focus exclusively on <strong>Candlestick Charts</strong> as they are the global industry standard.</p>
+                    
+                    <img loading="lazy" src="../../images/lesson7/step2.png" alt="What is a Forex Chart Infographic" class="lesson-image">
+                    
+                    <div class="info-box note">
+                        <h3>💡 Key Takeaway</h3>
+                        <p>Charts don't predict the future, but they help us <strong>prepare</strong> for it by showing price movements, trends, and market history.</p>
+                    </div>
+                    <div class="lesson-navigation">
+                        <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 3: CANDLESTICK CHARTS -->
+            <section class="lesson-step" id="step3">
+                <div class="card">
+                    <span class="lesson-badge">STEP 3 OF 10</span>
+                    <h1>Candlestick Charts</h1>
+                    <p>Candlestick charts are the industry standard for reading price action. Review the diagram below to see how each part of a candle tells a story.</p>
+                    
+                    <div class="info-box remember">
+                        <h3>📘 Key Components (OHLC)</h3>
+                        <p>Before we go further, let's explicitly define the four price points that make up every candle:</p>
+                        <ul class="lesson-list">
+                            <li><strong>Open</strong> – The price at the start of the session.</li>
+                            <li><strong>High</strong> – The highest price reached during the session.</li>
+                            <li><strong>Low</strong> – The lowest price reached during the session.</li>
+                            <li><strong>Close</strong> – The price at the end of the session.</li>
+                        </ul>
+                    </div>
+                    
+                    <img loading="lazy" src="../../images/lesson7/step3.png" alt="Candlestick Charts Infographic" class="lesson-image">
+                    
+                    <div class="info-box remember">
+                        <h3>📘 Quick Summary</h3>
+                        <p><strong>Bullish (Green)</strong>: Buyers are stronger. Price closed higher.<br>
+                        <strong>Bearish (Red)</strong>: Sellers are stronger. Price closed lower.</p>
+                    </div>
+                    <div class="lesson-navigation">
+                        <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 4: UNDERSTANDING TIMEFRAMES -->
+            <section class="lesson-step" id="step4">
+                <div class="card">
+                    <span class="lesson-badge">STEP 4 OF 10</span>
+                    <h1>Understanding Timeframes</h1>
+                    <p>Different timeframes show different perspectives. Higher timeframes show the big picture (trend), while lower timeframes show the small details (entry timing).</p>
+                    <img loading="lazy" src="../../images/lesson7/step4.png" alt="Understanding Timeframes Infographic" class="lesson-image">
+                    <div class="info-box didyouknow">
+                        <h3>🌟 Pro Tip</h3>
+                        <p><strong>Use Higher Timeframe for Direction, Lower Timeframe for Entry.</strong> Combining multiple timeframes leads to smarter and more accurate trades.</p>
+                    </div>
+                    
+                    <div
+                        class="quick-check-card"
+                        id="quickCheckStep4"
+                    >
+
+                        <span class="quick-check-badge">
+                            🧠 QUICK CHECK — UNGRADED
+                        </span>
+
+                        <h3>
+                            Which of these usually shows the direction of the market over a larger period?
+                        </h3>
+
+                        <p>
+                            Select an answer to receive immediate feedback.
+                        </p>
+
+                        <div class="quick-check-options">
+
+                            <button
+                                type="button"
+                                data-correct="true"
+                            >
+                                A. A higher timeframe chart
+                            </button>
+
+                            <button
+                                type="button"
+                                data-correct="false"
+                            >
+                                B. Only a 1-minute candle
+                            </button>
+
+                            <button
+                                type="button"
+                                data-correct="false"
+                            >
+                                C. A single tick of price
+                            </button>
+
+                        </div>
+
+                        <div
+                            class="quick-check-feedback"
+                            aria-live="polite"
+                        ></div>
+
+                    </div>
+
+<div class="lesson-navigation">
+                        <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 5: BULLISH CANDLES (Psychology Focused) -->
+            <section class="lesson-step" id="step5">
+                <div class="card">
+                    <span class="lesson-badge">STEP 5 OF 10</span>
+                    <h1>Bullish Candles</h1>
+                    <p>Bullish candles are green. They show that buyers are in control and the price is moving up. However, we must look beyond the color to understand <strong>market psychology</strong>. 
+                    <br><br>
+                    <strong>Core Concept:</strong> The size of a candle's body tells you the strength of the conviction. A large body is strong; a small body is weak.</p>
+                    
+                    <img loading="lazy" src="../../images/lesson7/step5.png" alt="Bullish Candles Infographic" class="lesson-image">
+                    
+                    <div class="info-box success">
+                        <h3>📈 The Psychology Behind Bullish Candles</h3>
+                        <ul class="lesson-list">
+                            <li><strong>Large Green Body</strong>: Indicates <strong>high confidence</strong> from buyers. The larger the body, the stronger the conviction. Buyers dominated the entire session.</li>
+                            <li><strong>Small Green Body</strong>: Indicates <strong>weak confidence</strong> or hesitation. Buyers won, but barely. It shows a lack of strong buying pressure.</li>
+                            <li><strong>Long Lower Wick</strong>: Price fell initially, but buyers aggressively pushed it back up. This indicates <strong>buyer rejection</strong> of lower prices.</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-navigation">
+                        <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 6: BEARISH CANDLES (Psychology Focused) -->
+            <section class="lesson-step" id="step6">
+                <div class="card">
+                    <span class="lesson-badge">STEP 6 OF 10</span>
+                    <h1>Bearish Candles</h1>
+                    <p>Bearish candles are red. They show that sellers are in control and the price is moving down. Understanding the psychology behind the wicks and body is critical.
+                    <br><br>
+                    <strong>Core Concept:</strong> A small red body does NOT mean strong sellers. Market momentum requires a large body to confirm conviction.</p>
+                    
+                    <img loading="lazy" src="../../images/lesson7/step6.png" alt="Bearish Candles Infographic" class="lesson-image">
+                    
+                    <div class="info-box warning">
+                        <h3>📉 The Psychology Behind Bearish Candles</h3>
+                        <ul class="lesson-list">
+                            <li><strong>Large Red Body</strong>: Sellers controlled the entire session. Shows <strong>strong selling pressure</strong> and panic/fear.</li>
+                            <li><strong>Long Upper Wick</strong>: Price rose initially, but sellers aggressively pushed it back down. This indicates <strong>seller rejection</strong> of higher prices.</li>
+                            <li><strong>Small Red Body</strong>: A small red candle does <strong>not</strong> indicate strong sellers. It shows hesitation, weak selling pressure, or a market that is barely moving down.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box warning">
+                        <h3>❌ Common Mistake</h3>
+                        <p><strong>Beginners often think: Green candle = Buy now, Red candle = Sell now.</strong> This is WRONG. You must always wait for <strong>confirmation</strong> from the next candle and consider the context (like support and resistance) before trading.</p>
+                    </div>
+                    
+                    <div class="lesson-navigation">
+                        <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 7: READING PRICE MOVEMENT (HH/HL/LH/LL) -->
+            <section class="lesson-step" id="step7">
+                <div class="card">
+                    <span class="lesson-badge">STEP 7 OF 10</span>
+                    <h1>Reading Price Movement</h1>
+                    <p>Reading price movement means understanding what the market is doing right now. To do this, we connect candles to identify <strong>trends</strong>.</p>
+                    
+                    <ul class="lesson-list" style="margin-bottom: 20px;">
+                        <li><strong>Higher High (HH)</strong>: Each new peak is higher than the last.</li>
+                        <li><strong>Higher Low (HL)</strong>: Each new trough is higher than the last.</li>
+                        <li><strong>Lower High (LH)</strong>: Each new peak is lower than the last.</li>
+                        <li><strong>Lower Low (LL)</strong>: Each new trough is lower than the last.</li>
+                        <li><strong>Sideways Market</strong>: Price bounces between a high and low range without a clear direction.</li>
+                    </ul>
+                    
+                    <p>When you see a series of <strong>HH and HL</strong>, the market is in an <strong>Uptrend</strong>. Conversely, <strong>LH and LL</strong> indicate a <strong>Downtrend</strong>. Understanding these terms is vital for Lesson 8.</p>
+                    <p><strong>Important:</strong> Trends don't last forever. Always look for <strong>confirmation</strong> before assuming the trend will continue. Price action can reverse at any time.</p>
+                    
+                    <img loading="lazy" src="../../images/lesson7/step7.png" alt="Reading Price Movement Infographic" class="lesson-image">
+                    
+                    <div class="info-box remember">
+                        <h3>💡 Quick Rule</h3>
+                        <p>The more you <strong>practice</strong> reading charts, the better you will understand market behavior.</p>
+                    </div>
+                    
+                    <div class="lesson-navigation">
+                        <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 8: REAL CHART EXAMPLE (Interactive Checklist) -->
+            <section class="lesson-step" id="step8">
+                <div class="card">
+                    <span class="lesson-badge">STEP 8 OF 10</span>
+                    <h1>Real Chart Example</h1>
+                    <p>Let's put everything together. Study the real chart example below. Use the checklist to practice identifying key elements.</p>
+                    
+                    <img loading="lazy" src="../../images/lesson7/step8.png" alt="Real Chart Example Infographic" class="lesson-image">
+                    
+                    <div class="info-box success">
+                        <h3>✅ Interactive Practice Checklist</h3>
+                        <p>Look at the chart above and tick off these elements:</p>
+                        <label class="checklist-item"><input type="checkbox"> Find a <strong>Bullish Candle</strong> (Green).</label>
+                        <label class="checklist-item"><input type="checkbox"> Find a <strong>Bearish Candle</strong> (Red).</label>
+                        <label class="checklist-item"><input type="checkbox"> Try to spot an area where price repeatedly bounced up (we'll call this <strong>Support</strong> in the next lesson).</label>
+                        <label class="checklist-item"><input type="checkbox"> Try to spot an area where price repeatedly bounced down (we'll call this <strong>Resistance</strong> in the next lesson).</label>
+                        <label class="checklist-item"><input type="checkbox"> Is the market in an <strong>Uptrend</strong>, <strong>Downtrend</strong>, or <strong>Sideways</strong>?</label>
+                    </div>
+                    
+                    <div class="info-box didyouknow">
+                        <h3>🎯 Best Opportunity</h3>
+                        <p>When the market is in an <strong>uptrend</strong> and price pulls back to an area where it previously bounced up, the best opportunity is often to <strong>BUY</strong> in the direction of the trend. We'll explore the formal rules for this in Lesson 8!</p>
+                    </div>
+                    
+                    <div class="lesson-navigation">
+                        <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 9: QUIZ -->
+            <section class="lesson-step" id="step9">
+                <div class="card">
+                    <span class="lesson-badge">STEP 9 OF 10</span>
+                    <h1>📝 Lesson 7 Quiz</h1>
+                    <p>Before you start, let's quickly review what we covered today:</p>
+                    
+                    <div class="info-box note">
+                        <h3>⚡ Quick Revision</h3>
+                        <ul class="lesson-list">
+                            <li>✔ <strong>Forex Chart</strong> – The visual record of price.</li>
+                            <li>✔ <strong>Chart Types</strong> – Line, Bar, and Candlestick.</li>
+                            <li>✔ <strong>OHLC</strong> – Open, High, Low, Close.</li>
+                            <li>✔ <strong>Candlestick</strong> – The story of a session.</li>
+                            <li>✔ <strong>Bullish (Green)</strong> – Buyers won the session.</li>
+                            <li>✔ <strong>Bearish (Red)</strong> – Sellers won the session.</li>
+                            <li>✔ <strong>Timeframes</strong> – Higher (Trend) vs Lower (Entry).</li>
+                            <li>✔ <strong>Price Movement</strong> – HH, HL, LH, LL, Sideways.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box remember">
+                        <h3>📌 Golden Rule</h3>
+                        <p><strong>One candle never tells the whole story.</strong> Always wait for confirmation from the next candle before making a trading decision.</p>
+                    </div>
+
+                    <p>Answer all <strong>10 questions</strong>. Aim for at least <strong>70%</strong> to pass the Lesson 7 mastery target and prepare for Lesson 8.</p>
+                    
+                    <div id="quiz-container">
+                        <div class="question-counter" id="question-counter">Question 1 of 10</div>
+                        <h2 id="question">Loading Question...</h2>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" onclick="checkAnswer(0)" id="option0"></button>
+                            <button class="quiz-btn" onclick="checkAnswer(1)" id="option1"></button>
+                            <button class="quiz-btn" onclick="checkAnswer(2)" id="option2"></button>
+                            <button class="quiz-btn" onclick="checkAnswer(3)" id="option3"></button>
+                        </div>
+                        <div id="quiz-result" class="quiz-result"></div>
+                        <div id="quiz-explanation" class="quiz-explanation" style="display:none;"></div>
+                        <div class="quiz-navigation">
+                            <button class="secondary-btn" onclick="previousQuestion()" id="prevQuestionBtn">← Previous</button>
+                            <button class="btn btn-primary" onclick="nextQuestion()" id="nextQuestionBtn">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 10: SUMMARY -->
+            <section class="lesson-step" id="step10">
+                <div class="card">
+                    <span class="lesson-badge">STEP 10 OF 10</span>
+                    <h1>🎉 Congratulations!</h1>
+                    <p>You have successfully completed <strong>Lesson 7 – Reading Forex Charts</strong>. Review the summary below to solidify what you've learned.</p>
+                    
+                    <img loading="lazy" src="../../images/lesson7/step10.png" alt="Lesson 7 Summary Infographic" class="lesson-image">
+
+                    <div class="info-box success">
+                        <h3>🏆 What You Learned</h3>
+                        <ul class="lesson-list">
+                            <li>✔ What a Forex chart is and its importance.</li>
+                            <li>✔ How to read candlesticks (OHLC).</li>
+                            <li>✔ The importance of different timeframes.</li>
+                            <li>✔ Bullish and Bearish candle psychology (body & wicks).</li>
+                            <li>✔ How to identify trends using HH, HL, LH, LL, and Sideways.</li>
+                            <li>✔ How to analyze real charts.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box didyouknow">
+                        <h3>🚀 What's Next?</h3>
+                        <p><strong>Lesson 8: Support & Resistance</strong></p>
+                        <p>Now that you understand how candles tell a story, it's time to learn where the price is likely to react. In the next lesson, you will master:</p>
+                        <ul class="lesson-list">
+                            <li>🔹 Support & Resistance Zones</li>
+                            <li>🔹 How price <strong>Bounces</strong> off these levels.</li>
+                            <li>🔹 How price <strong>Breaks out</strong> through them.</li>
+                            <li>🔹 How to spot a <strong>Fake Breakout</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lesson-navigation">
+                        <button class="secondary-btn" onclick="retryQuiz()">🔄 Retry Quiz</button>
+                        <span id="lesson8ButtonContainer"></span>
+                    </div>
+                    <div class="lesson-signature">
+                        "Keep practicing, stay consistent and the charts will start speaking to you!"<br><br>
+                        "The market rewards preparation, not prediction."<br><br>
+                        <strong>— Strativo Academy</strong>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+<!-- =========================================================
+     LESSON SCRIPTS
+========================================================= -->
+
+<script src="../../js/progress.js"></script>
+<script src="../../js/lesson.js"></script>
+<script src="../../quizzes/module1/quiz7.js"></script>
+
+
+<!-- =========================================================
+     STICKY MOBILE NAVIGATION
+========================================================= -->
+
+<div
+    id="lessonStickyNav"
+    class="lesson-sticky-nav"
+    aria-label="Lesson step navigation"
+>
+    <button
+        type="button"
+        id="stickyPrevBtn"
+    >
+        ← Previous
+    </button>
+
+    <span id="stickyStepLabel">
+        Step 1 of 10
+    </span>
+
+    <button
+        type="button"
+        id="stickyNextBtn"
+    >
+        Next →
+    </button>
+</div>
+
+
+<!-- =========================================================
+     GLOBAL FOOTER
+========================================================= -->
+
+<div data-component="footer"></div>
+
+
+<!-- =========================================================
+     GLOBAL COMPONENT SYSTEM
+========================================================= -->
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+
+<!-- =========================================================
+     LESSON 8 BUTTON
+========================================================= -->
+
+<script>
+
+const lesson8Config = {
+    status: "unlocked",
+    url: "lesson8.html",
+    labelUnlocked: "🚀 Continue to Lesson 8",
+    labelLocked: "🔒 Lesson 8 Locked",
+    labelComingSoon: "📚 Coming Soon (Back to Courses)",
+    minScore: 70
+};
+
+
+function renderLesson8Button(){
+
+    const container =
+        document.getElementById(
+            "lesson8ButtonContainer"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    if (
+        lesson8Config.status ===
+        "unlocked"
+    ){
+
+        container.innerHTML =
+            `<a
+                href="${lesson8Config.url}"
+                class="lesson-action-btn unlocked"
+            >
+                ${lesson8Config.labelUnlocked}
+            </a>`;
+
+        return;
+    }
+
+
+    if (
+        lesson8Config.status ===
+        "locked"
+    ){
+
+        container.innerHTML =
+            `<span
+                class="lesson-action-btn locked"
+            >
+                ${lesson8Config.labelLocked}
+            </span>`;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        `<a
+            href="../../beginner.html"
+            class="lesson-action-btn coming-soon"
+        >
+            ${lesson8Config.labelComingSoon}
+        </a>`;
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    renderLesson8Button
+);
+
+</script>
+
+
+<!-- =========================================================
+     LESSON 7 HELPER
+========================================================= -->
+
+<script id="lesson7-v1-helper">
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        "use strict";
+
+
+        function getActiveStep(){
+
+            const active =
+                document.querySelector(
+                    ".lesson-step.active-step"
+                );
+
+
+            if (!active){
+                return 1;
+            }
+
+
+            const match =
+                /^step(\d+)$/.exec(
+                    active.id || ""
+                );
+
+
+            return match
+                ? Number(match[1])
+                : 1;
+
+        }
+
+
+        function updateProgress(){
+
+            const step =
+                getActiveStep();
+
+
+            const percent =
+                step * 10;
+
+
+            document
+                .querySelectorAll(
+                    ".lesson-progress-fill"
+                )
+                .forEach(
+                    function(element){
+
+                        element.style.width =
+                            percent + "%";
+
+                    }
+                );
+
+
+            const label =
+                document.getElementById(
+                    "stickyStepLabel"
+                );
+
+
+            if (label){
+
+                label.textContent =
+                    "Step " +
+                    step +
+                    " of 10";
+
+            }
+
+
+            const stepText =
+                document.querySelector(
+                    ".step-text"
+                );
+
+
+            if (stepText){
+
+                stepText.textContent =
+                    "Step " +
+                    step +
+                    " of 10";
+
+            }
+
+
+            const previous =
+                document.getElementById(
+                    "stickyPrevBtn"
+                );
+
+
+            const next =
+                document.getElementById(
+                    "stickyNextBtn"
+                );
+
+
+            if (previous){
+
+                previous.disabled =
+                    step <= 1;
+
+            }
+
+
+            if (next){
+
+                if (step === 9){
+
+                    next.disabled =
+                        true;
+
+                    next.textContent =
+                        "Finish Quiz Above";
+
+                }
+                else{
+
+                    next.disabled =
+                        false;
+
+                    next.textContent =
+                        step === 10
+                            ? "Back to Course →"
+                            : "Next →";
+
+                }
+
+            }
+
+
+            try{
+
+                localStorage.setItem(
+                    "strativo_lesson7_ui_state",
+                    JSON.stringify({
+                        currentStep:
+                            step,
+                        savedAt:
+                            Date.now()
+                    })
+                );
+
+            }
+            catch(error){
+
+                console.warn(
+                    "Lesson 7 UI state could not be saved.",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* SAVE & EXIT */
+
+        const saveExit =
+            document.getElementById(
+                "saveExitBtn"
+            );
+
+
+        if (saveExit){
+
+            saveExit.addEventListener(
+                "click",
+                function(){
+
+                    updateProgress();
+
+                    window.location.href =
+                        "../../modules/module1.html";
+
+                }
+            );
+
+        }
+
+
+        /* MOBILE SIDEBAR */
+
+        const toggle =
+            document.getElementById(
+                "lessonSidebarToggle"
+            );
+
+
+        const sidebar =
+            document.getElementById(
+                "lessonSidebar"
+            );
+
+
+        if (
+            toggle &&
+            sidebar
+        ){
+
+            toggle.addEventListener(
+                "click",
+                function(){
+
+                    const open =
+                        sidebar.classList.toggle(
+                            "is-open"
+                        );
+
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        open
+                            ? "true"
+                            : "false"
+                    );
+
+
+                    toggle.textContent =
+                        open
+                            ? "✕ Close Lesson Menu"
+                            : "☰ Lesson Menu";
+
+                }
+            );
+
+        }
+
+
+        /* QUICK CHECK */
+
+        document
+            .querySelectorAll(
+                "#quickCheckStep4 button[data-correct]"
+            )
+            .forEach(
+                function(button){
+
+                    button.addEventListener(
+                        "click",
+                        function(){
+
+                            const wrapper =
+                                document.getElementById(
+                                    "quickCheckStep4"
+                                );
+
+
+                            if (!wrapper){
+                                return;
+                            }
+
+
+                            wrapper
+                                .querySelectorAll(
+                                    "button[data-correct]"
+                                )
+                                .forEach(
+                                    function(item){
+
+                                        item.classList.remove(
+                                            "correct",
+                                            "wrong"
+                                        );
+
+                                    }
+                                );
+
+
+                            const correct =
+                                button.dataset.correct ===
+                                "true";
+
+
+                            button.classList.add(
+                                correct
+                                    ? "correct"
+                                    : "wrong"
+                            );
+
+
+                            const feedback =
+                                wrapper.querySelector(
+                                    ".quick-check-feedback"
+                                );
+
+
+                            if (!feedback){
+                                return;
+                            }
+
+
+                            feedback.className =
+                                "quick-check-feedback visible " +
+                                (
+                                    correct
+                                        ? "correct"
+                                        : "wrong"
+                                );
+
+
+                            feedback.textContent =
+                                correct
+
+                                    ? "✅ Correct. Higher timeframes help give you the broader market direction."
+
+                                    : "❌ Not quite. The correct answer is A — a higher timeframe chart.";
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* EXISTING LESSON ENGINE */
+
+        if (
+            typeof window.showStep ===
+            "function"
+        ){
+
+            const originalShowStep =
+                window.showStep;
+
+
+            window.showStep =
+                function(step){
+
+                    const result =
+                        originalShowStep.apply(
+                            this,
+                            arguments
+                        );
+
+
+                    updateProgress();
+
+
+                    return result;
+
+                };
+
+        }
+
+
+        /* STICKY PREVIOUS */
+
+        const stickyPrevious =
+            document.getElementById(
+                "stickyPrevBtn"
+            );
+
+
+        if (stickyPrevious){
+
+            stickyPrevious.addEventListener(
+                "click",
+                function(){
+
+                    if (
+                        typeof window.previousStep ===
+                            "function" &&
+                        getActiveStep() > 1
+                    ){
+
+                        window.previousStep();
+
+                        updateProgress();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* STICKY NEXT */
+
+        const stickyNext =
+            document.getElementById(
+                "stickyNextBtn"
+            );
+
+
+        if (stickyNext){
+
+            stickyNext.addEventListener(
+                "click",
+                function(){
+
+                    const step =
+                        getActiveStep();
+
+
+                    if (
+                        step === 9
+                    ){
+
+                        return;
+
+                    }
+
+
+                    if (
+                        typeof window.nextStep ===
+                        "function"
+                    ){
+
+                        window.nextStep();
+
+                    }
+                    else if (
+                        step === 10
+                    ){
+
+                        window.location.href =
+                            "../../beginner.html";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* AUTO SAVE */
+
+        window.addEventListener(
+            "beforeunload",
+            updateProgress
+        );
+
+
+        document.addEventListener(
+            "visibilitychange",
+            function(){
+
+                if (
+                    document.visibilityState ===
+                    "hidden"
+                ){
+
+                    updateProgress();
+
+                }
+
+            }
+        );
+
+
+        updateProgress();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1 | What is Forex? | Strativo Academy</title>
+    <!-- CSS Paths -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+ 
+<style id="lesson1-v1-enhancements">
+/* V1 lesson enhancements — works alongside ../../css/lesson.css */
+ 
+.skip-link{
+    position:fixed;
+    top:10px;
+    left:10px;
+    z-index:9999;
+    transform:translateY(-150%);
+    padding:10px 14px;
+    border-radius:9px;
+    background:#0f172a;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    border:1px solid rgba(148,163,184,.25);
+}
+.skip-link:focus{transform:translateY(0)}
+button:focus-visible,
+a:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:3px;
+}
+ 
+/* Animated progress bars */
+.lesson-progress-fill,
+.continue-progress-fill,
+.dash-progress-fill,
+.progress-bar{
+    transition:width .35s ease;
+    will-change:width;
+}
+ 
+/* Quick Check */
+.quick-check-card{
+    margin-top:18px;
+    padding:18px;
+    border:1px solid rgba(96,165,250,.16);
+    border-radius:14px;
+    background:rgba(59,130,246,.055);
+}
+.quick-check-badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:999px;
+    background:rgba(96,165,250,.10);
+    color:#bfdbfe;
+    font-size:.78rem;
+    font-weight:900;
+}
+.quick-check-card h3{
+    margin:10px 0 0;
+    color:#f8fafc;
+}
+.quick-check-card p{
+    color:#aebdd0;
+}
+.quick-check-options{
+    display:grid;
+    gap:8px;
+    margin-top:12px;
+}
+.quick-check-options button{
+    min-height:44px;
+    padding:10px 13px;
+    border:1px solid rgba(148,163,184,.13);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    text-align:left;
+    font:inherit;
+    font-size:.90rem;
+    cursor:pointer;
+}
+.quick-check-options button:hover{
+    background:#0e1b30;
+    border-color:rgba(96,165,250,.30);
+}
+.quick-check-options button.correct{
+    border-color:rgba(52,211,153,.50);
+    background:rgba(16,185,129,.09);
+}
+.quick-check-options button.wrong{
+    border-color:rgba(248,113,113,.50);
+    background:rgba(248,113,113,.08);
+}
+.quick-check-feedback{
+    display:none;
+    margin-top:12px;
+    padding:11px 13px;
+    border-left:3px solid #60a5fa;
+    border-radius:0 9px 9px 0;
+    background:rgba(59,130,246,.055);
+    color:#dbeafe;
+    font-size:.88rem;
+    line-height:1.7;
+}
+.quick-check-feedback.visible{display:block}
+.quick-check-feedback.correct{
+    border-left-color:#34d399;
+    color:#d1fae5;
+}
+.quick-check-feedback.wrong{
+    border-left-color:#f87171;
+    color:#fecaca;
+}
+ 
+/* Mobile sidebar */
+.lesson-mobile-toggle{
+    display:none;
+    width:100%;
+    min-height:44px;
+    margin:0 0 10px;
+    padding:0 14px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1220;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.82rem;
+    font-weight:800;
+    cursor:pointer;
+}
+.lesson-sidebar.is-open{display:block}
+ 
+/* Sticky mobile navigation */
+.lesson-sticky-nav{
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    gap:10px;
+    padding:9px;
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:14px;
+    background:rgba(3,7,18,.94);
+    box-shadow:0 14px 40px rgba(0,0,0,.35);
+    backdrop-filter:blur(10px);
+}
+.lesson-sticky-nav button{
+    min-height:44px;
+    padding:0 13px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.80rem;
+    font-weight:800;
+    cursor:pointer;
+}
+.lesson-sticky-nav button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+.lesson-sticky-nav span{
+    flex:1;
+    text-align:center;
+    color:#94a3b8;
+    font-size:.78rem;
+    font-weight:700;
+}
+ 
+@media (max-width:800px){
+    .lesson-quick-actions{justify-content:stretch}
+    .lesson-mobile-toggle{display:block}
+    .lesson-sidebar{display:none}
+    .lesson-sidebar.is-open{display:block}
+    .lesson-sticky-nav{display:flex}
+    .lesson-content{padding-bottom:90px!important}
+}
+@media (min-width:801px){
+    .lesson-sticky-nav{display:none!important}
+}
+
+</style>
+ 
+</head>
+ 
+<body>
+<a class="skip-link" href="#lesson-content">Skip to content</a>
+<!-- GLOBAL HEADER -->
+<div data-component="header"></div>
+<div data-component="lesson-header"></div>
+ 
+<!-- LESSON NAVIGATOR -->
+<div class="lesson-navigator-section">
+    <div class="navigator-card">
+        <div class="navigator-header">
+            <h2>📚 Lesson Navigator</h2>
+            <p>Jump directly to any lesson. Quiz scores track mastery separately.</p>
+        </div>
+        
+        <div class="navigator-grid">
+            <a href="lesson1.html" class="nav-grid-item current">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 1</span>
+                    <span class="lesson-icon">✅</span>
+                </div>
+                <span class="current-badge">Current Lesson</span>
+            </a>
+ 
+            <a href="lesson2.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 2</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+ 
+            <a href="lesson3.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 3</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+ 
+            <a href="lesson4.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 4</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+ 
+            <a href="lesson5.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 5</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+ 
+            <a href="lesson6.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 6</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+ 
+            <a href="lesson7.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 7</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+ 
+            <a href="lesson8.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 8</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+ 
+            <a href="lesson9.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 9</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+ 
+            <a href="lesson10.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 10</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- END LESSON NAVIGATOR -->
+ 
+<!-- CONTINUE LEARNING WIDGET -->
+<div class="continue-learning-section">
+    <div class="continue-card">
+        <div class="continue-content">
+            <!-- Info Side -->
+            <div class="continue-info">
+                <h2 class="continue-title">▶ Continue Learning</h2>
+                <div class="continue-lesson-details">
+                    <span class="continue-lesson-name">📖 Lesson 1</span>
+                    <span class="continue-divider">|</span>
+                    <span class="continue-step-status" id="continue-step-text">Step 1 of 10</span>
+                </div>
+            </div>
+            
+            <!-- Progress Bar Center -->
+            <div class="continue-progress-area">
+                <div class="continue-progress-header">
+                    <span>Progress</span>
+                    <span id="continue-percent-text">10%</span>
+                </div>
+                <div class="continue-progress-bar-bg">
+                    <div class="continue-progress-fill"></div>
+                </div>
+            </div>
+ 
+            <!-- Action Button -->
+            <div class="continue-action">
+                <button class="continue-btn" onclick="resumeLearning()">▶ Continue Learning</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END CONTINUE LEARNING WIDGET -->
+ 
+<!-- LIVE LESSON DASHBOARD -->
+<div class="lesson-dashboard-section">
+    <div class="dashboard-card">
+        <div class="dashboard-header">
+            <h2>📊 Lesson Dashboard</h2>
+            <p>Real-time analytics and tracking for your active session.</p>
+        </div>
+ 
+        <div class="dashboard-grid">
+            <div class="dash-metric-item">
+                <span class="dash-label">📖 Current Lesson</span>
+                <span class="dash-value highlight-blue">Lesson 1</span>
+            </div>
+            <div class="dash-metric-item">
+                <span class="dash-label">📍 Current Step</span>
+                <span class="dash-value" id="dash-step-text">Step 1 of 10</span>
+            </div>
+            <div class="dash-metric-item">
+                <span class="dash-label">⭐ XP Earned</span>
+                <span class="dash-value highlight-green" id="dash-xp-text">0 XP</span>
+            </div>
+            <div class="dash-metric-item">
+                <span class="dash-label">🧠 Quiz Status</span>
+                <span class="dash-value" id="dash-quiz-status">Not Started</span>
+            </div>
+            <div class="dash-metric-item">
+                <span class="dash-label">🏆 Lesson Status</span>
+                <span class="dash-value" id="dash-lesson-status">Not Started</span>
+            </div>
+        </div>
+ 
+        <div class="dash-progress-container">
+            <div class="dash-progress-info">
+                <span class="dash-label">📈 Session Progress</span>
+                <span class="dash-value highlight-green" id="dash-percent-text">10%</span>
+            </div>
+            <div class="dash-progress-bg">
+                <div class="dash-progress-fill" id="dash-progress-fill"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END LIVE LESSON DASHBOARD -->
+ 
+<!-- SMART STUDY TOOLKIT -->
+<div class="study-toolkit-section">
+    <div class="toolkit-header">
+        <h2>🧰 Smart Study Toolkit</h2>
+    </div>
+    
+    <div class="toolkit-grid">
+        <div class="toolkit-card">
+            <h3>⭐ Bookmark Lesson</h3>
+            <p>Save this lesson to easily find it later.</p>
+            <button id="btn-bookmark" class="toolkit-btn btn-blue" onclick="toggleBookmark()">Save Bookmark</button>
+        </div>
+        <div class="toolkit-card notes-card">
+            <h3>📝 Personal Notes</h3>
+            <textarea id="personal-notes" class="toolkit-textarea" placeholder="Type your notes here... (Auto-saves safely)"></textarea>
+            <span id="save-status" class="save-status">All changes saved ✓</span>
+        </div>
+        <div class="toolkit-card">
+            <h3>📋 Quick Revision</h3>
+            <p>Review key points instantly.</p>
+            <button class="toolkit-btn btn-green" onclick="toggleRevision()">Show Lesson Summary</button>
+            <div id="revision-panel" class="revision-panel" style="display: none;">
+                <p><strong>Lesson 1 Summary:</strong> Forex means Foreign Exchange. It is the global marketplace where one currency is exchanged for another. This lesson introduced what Forex is, why it exists, who participates, real-life currency exchange, currency pairs, exchange rates, and basic terms.</p>
+            </div>
+        </div>
+        <div class="toolkit-card timer-card">
+            <h3>⏱ Study Time</h3>
+            <div class="timer-display" id="study-timer">00:00</div>
+            <p class="timer-label">Active Focus Time</p>
+        </div>
+    </div>
+</div>
+<!-- END SMART STUDY TOOLKIT -->
+ 
+ 
+<button
+    type="button"
+    id="lessonSidebarToggle"
+    class="lesson-mobile-toggle"
+    aria-controls="lessonSidebar"
+    aria-expanded="false"
+>
+    ☰ Lesson Menu
+</button>
+<div class="lesson-layout">
+    <aside id="lessonSidebar" class="lesson-sidebar">
+        <h2>Lesson 1</h2>
+        <ul id="lessonMenu">
+            <li onclick="showStep(1)" class="active">👋 Welcome</li>
+            <li onclick="showStep(2)">📖 What is Forex?</li>
+            <li onclick="showStep(3)">🌍 Why Forex Exists</li>
+            <li onclick="showStep(4)">🏦 Who Trades Forex?</li>
+            <li onclick="showStep(5)">💱 Real-Life Example</li>
+            <li onclick="showStep(6)">📚 Important Terms</li>
+            <li onclick="showStep(7)">📝 Notebook Notes</li>
+            <li onclick="showStep(8)">🎯 Practice Challenge</li>
+            <li onclick="showStep(9)">🧠 Quiz</li>
+            <li onclick="showStep(10)">🏁 Summary</li>
+        </ul>
+    </aside>
+ 
+    <main id="lesson-content" class="lesson-content">
+        <div class="lesson-header">
+            <h1>Lesson 1 - What is Forex?</h1>
+            <div class="lesson-meta">
+                <div class="meta-item">📈 Beginner</div>
+                <div class="meta-item">⏱ 20 Minutes</div>
+                <div class="meta-item">📚 Module 1</div>
+                <div class="meta-item">📝 10 Steps</div>
+            </div>
+            <div class="lesson-progress">
+                <div class="lesson-progress-bar">
+                    <div class="lesson-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+ 
+        <p class="step-text">Step 1 of 10</p>
+ 
+        <section class="lesson-step active-step" id="step1">
+            <div class="card">
+                <span class="lesson-badge">BEGINNER COURSE</span>
+                <h1>Welcome to Lesson 1</h1>
+                <h2>What is Forex?</h2>
+                <div class="reading-time">⏱ Reading Time: 2 Minutes</div>
+                <p>
+                    Welcome to Strativo Academy.
+                    This Beginner Forex Course is specially designed for complete beginners.
+                    In this lesson you will understand what Forex is, why it exists, who trades Forex, and how the world's largest financial market works.
+                    Read each section carefully and write notes whenever you see the Notebook section.
+                </p>
+                
+                <img loading="lazy" src="../../images/lesson1/welcome.png" alt="Welcome to Lesson 1" class="lesson-image">
+                
+                <h3>Today's Learning Objectives</h3>
+                <ul class="lesson-list">
+                    <li>✔ Understand Forex</li>
+                    <li>✔ Learn why Forex exists</li>
+                    <li>✔ Know who trades Forex</li>
+                    <li>✔ Learn important Forex terms</li>
+                    <li>✔ Complete a quiz</li>
+                </ul>
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" disabled>← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="lesson-step" id="step2">
+            <div class="card">
+                <span class="lesson-badge">STEP 2 OF 10</span>
+                <h1>What is Forex?</h1>
+                <p>
+                    The word <strong>Forex</strong> stands for <strong>Foreign Exchange</strong>.
+                    It is the global marketplace where one country's currency is exchanged for another country's currency.
+                    Whenever you convert one currency into another, you are participating in the Forex market.
+                    Forex is the largest financial market in the world. Every day, trillions of dollars are traded by banks, governments, companies, investment funds, and individual traders.
+                </p>
+ 
+                <img loading="lazy" src="../../images/lesson1/step2.png" alt="What is Forex" class="lesson-image">
+ 
+                <h2>Why is Forex Important?</h2>
+                <p>
+                    Imagine you live in India and want to travel to the United States.
+                    The money in your wallet is Indian Rupees (INR), but shops in America accept US Dollars (USD).
+                    Before travelling, you exchange your Indian Rupees for US Dollars. That exchange is a Forex transaction.
+                </p>
+                <div class="note-box">
+                    <h3>💡 Remember</h3>
+                    <p>Forex is not only for traders. Every time a currency is exchanged for another currency, Forex is being used.</p>
+                </div>
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="lesson-step" id="step3">
+            <div class="card">
+                <span class="lesson-badge">STEP 3 OF 10</span>
+                <h1>Why Does Forex Exist?</h1>
+                <p>
+                    Forex allows currencies to be exchanged quickly and efficiently so that people, businesses and governments can trade with each other safely across global borders.
+                </p>
+                
+                <img loading="lazy" src="../../images/lesson1/step3.png" alt="Why Forex Exists" class="lesson-image">
+                
+                <h2>Real-Life Examples</h2>
+                <ul class="lesson-list">
+                    <li>🌍 An Indian tourist exchanges INR for Japanese Yen (JPY) before visiting Japan.</li>
+                    <li>🏭 A company in India buys machines from Germany and pays in Euros (EUR).</li>
+                    <li>☕ An American company imports tea from India and converts US Dollars (USD) into Indian Rupees (INR).</li>
+                    <li>💻 An online freelancer receives payment from another country in a different currency.</li>
+                </ul>
+                <div class="note-box">
+                    <h3>💡 Remember</h3>
+                    <p>
+                        Forex exists because countries around the world use different currencies.
+                        Without Forex, international travel, online shopping, imports, exports,
+                        and global business would be extremely difficult.
+                    </p>
+                </div>
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="lesson-step" id="step4">
+            <div class="card">
+                <span class="lesson-badge">STEP 4 OF 10</span>
+                <h1>Who Trades in the Forex Market?</h1>
+                <p>
+                    The Forex market is open 24 hours a day because millions of people and organizations around the world exchange currencies every day.
+                    Not everyone trades Forex to make money. Many people and businesses exchange currencies because they need them.
+                </p>
+ 
+                <h2>🏦 1. Banks</h2>
+                <p>
+                    Banks are the biggest participants in the Forex market.
+                    They exchange currencies for customers, businesses, and international transactions.
+                </p>
+ 
+                <h2>🏛 2. Central Banks & Governments</h2>
+                <p>
+                    Central banks control their country's currency and help keep the economy stable.
+                    They may buy or sell currencies to manage inflation and exchange rates.
+                </p>
+ 
+                <h2>🏢 3. Businesses</h2>
+                <p>
+                    Companies that import or export goods exchange currencies to pay suppliers in other countries.
+                </p>
+ 
+                <h2>💰 4. Investment Funds</h2>
+                <p>
+                    Large investment companies and hedge funds trade currencies as part of their investment strategies.
+                </p>
+ 
+                <h2>👨‍💻 5. Retail Traders</h2>
+                <p>
+                    Retail traders are ordinary people like you and me.
+                    They use online brokers to buy and sell currencies hoping to make a profit from price movements.
+                </p>
+ 
+                <div class="note-box">
+                    <h3>💡 Remember</h3>
+                    <p>Banks and financial institutions trade the largest amounts of money, while retail traders make up only a small part of the Forex market.</p>
+                </div>
+                
+                <img loading="lazy" src="../../images/lesson1/step4.png" alt="Who Trades Forex" class="lesson-image">
+                
+                <div class="quick-check-card" id="quickCheckStep4">
+                    <span class="quick-check-badge">🧠 QUICK CHECK — UNGRADED</span>
+                    <h3>Who is a Forex participant?</h3>
+                    <p>Choose an answer to receive immediate feedback before continuing.</p>
+ 
+                    <div class="quick-check-options">
+                        <button type="button" data-correct="false">A. A local bakery</button>
+                        <button type="button" data-correct="true">B. A bank</button>
+                        <button type="button" data-correct="false">C. A school</button>
+                    </div>
+ 
+                    <div class="quick-check-feedback" aria-live="polite"></div>
+                </div>
+ 
+ 
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="lesson-step" id="step5">
+            <div class="card">
+                <span class="lesson-badge">STEP 5 OF 10</span>
+                <h1>Real-Life Forex Example</h1>
+                <h2>✈️ Travelling from India to the United States</h2>
+                <p>
+                    Imagine you are travelling from India to the United States for a vacation.
+                    You have ₹50,000 in your bank account, but shops and hotels in America only accept US Dollars (USD).
+                </p>
+                <p>
+                    Before your trip, you visit a bank or currency exchange office and exchange your Indian Rupees (INR) into US Dollars (USD).
+                    This exchange is called a Forex transaction.
+                </p>
+ 
+                <img loading="lazy" src="../../images/lesson1/step5.png" alt="Real Life Forex Example" class="lesson-image">
+ 
+                <h2>Example</h2>
+                <ul class="lesson-list">
+                    <li>🇮🇳 You have ₹50,000.</li>
+                    <li>🏦 You visit a currency exchange.</li>
+                    <li>💵 You exchange INR for USD.</li>
+                    <li>✈️ You use those US Dollars while travelling in America.</li>
+                </ul>
+ 
+                <div class="note-box">
+                    <h3>💡 Remember</h3>
+                    <p>
+                    Every time one currency is exchanged for another currency,
+                    a Forex transaction takes place.
+                    Millions of these transactions happen every day around the world.
+                    </p>
+                </div>
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="lesson-step" id="step6">
+            <div class="card">
+                <span class="lesson-badge">STEP 6 OF 10</span>
+                <h1>Important Forex Terms</h1>
+                <p>
+                    Before you start trading, you need to understand a few basic Forex terms.
+                    These words will appear in almost every lesson and every trading platform.
+                </p>
+ 
+                <img loading="lazy" src="../../images/lesson1/step6.png" alt="Important Forex Terms" class="lesson-image">
+ 
+                <h2>💰 1. Currency</h2>
+                <p>
+                    A currency is the official money used by a country.
+                    Every country has its own currency.
+                </p>
+                <ul class="lesson-list">
+                    <li>🇮🇳 INR = Indian Rupee</li>
+                    <li>🇺🇸 USD = US Dollar</li>
+                    <li>🇪🇺 EUR = Euro</li>
+                    <li>🇬🇧 GBP = British Pound</li>
+                    <li>🇯🇵 JPY = Japanese Yen</li>
+                </ul>
+ 
+                <h2>💱 2. Currency Pair</h2>
+                <p>
+                    Forex currencies are always traded in pairs.
+                    When you buy one currency, you automatically sell another currency.
+                </p>
+                <div class="note-box">
+                    <h3>Example</h3>
+                    <p>EUR/USD<br><br>EUR = Base Currency<br>USD = Quote Currency</p>
+                </div>
+ 
+                <h2>📈 3. Exchange Rate</h2>
+                <p>
+                    The exchange rate tells you how much one currency is worth compared to another currency.
+                </p>
+                <div class="note-box">
+                    <h3>Example</h3>
+                    <p>If EUR/USD = 1.20<br><br>It means<br>1 Euro = 1.20 US Dollars</p>
+                </div>
+ 
+                <div class="note-box">
+                    <h3>💡 Remember</h3>
+                    <p>
+                    ✔ Every country has its own currency.<br>
+                    ✔ Forex always trades two currencies together.<br>
+                    ✔ The exchange rate tells us how much one currency is worth.
+                    </p>
+                </div>
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="lesson-step" id="step7">
+            <div class="card">
+                <span class="lesson-badge">STEP 7 OF 10</span>
+                <h1>📝 Notebook Notes</h1>
+                <p>
+                    Every successful trader keeps a trading notebook.
+                    Writing important points helps you remember concepts and prepares you for future lessons.
+                </p>
+ 
+                <img loading="lazy" src="../../images/lesson1/step7.png" alt="Notebook Notes" class="lesson-image">
+ 
+                <h2>📚 Write These Notes</h2>
+                <div class="note-box">
+                    <h3>Lesson 1 Summary</h3>
+                    <ul class="lesson-list">
+                        <li>✔ Forex means Foreign Exchange.</li>
+                        <li>✔ Forex is the world's largest financial market.</li>
+                        <li>✔ Forex allows people, businesses, and countries to exchange currencies.</li>
+                        <li>✔ Banks are the biggest participants in the Forex market.</li>
+                        <li>✔ Retail traders are individuals who trade through online brokers.</li>
+                        <li>✔ Every Forex trade always involves two currencies.</li>
+                        <li>✔ Exchange rates determine the value of one currency compared to another.</li>
+                    </ul>
+                </div>
+ 
+                <h2>✍️ Homework</h2>
+                <p>Take your notebook and write the following:</p>
+                <ul class="lesson-list">
+                    <li>📌 What does Forex mean?</li>
+                    <li>📌 Name five currencies.</li>
+                    <li>📌 Name five Forex market participants.</li>
+                    <li>📌 Explain what an exchange rate is.</li>
+                    <li>📌 Write one real-life Forex example.</li>
+                </ul>
+ 
+                <div class="note-box">
+                    <h3>💡 Coach's Tip</h3>
+                    <p>
+                    Students who write notes usually remember lessons much better than those who only read them.
+                    Building this habit now will help you throughout your trading journey.
+                    </p>
+                </div>
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="lesson-step" id="step8">
+            <div class="card">
+                <span class="lesson-badge">STEP 8 OF 10</span>
+                <h1>🎯 Practice Challenge</h1>
+                <p>
+                    Great job! You have learned the basic concepts of Forex.
+                    Now let's test your understanding with some real-life situations.
+                    Think carefully before looking at the answers.
+                </p>
+ 
+                <img loading="lazy" src="../../images/lesson1/step8.png" alt="Practice Challenge" class="lesson-image">
+ 
+                <h2>🌍 Scenario 1</h2>
+                <p>
+                    Rahul is travelling from India to Japan.
+                    Before leaving, he exchanges Indian Rupees (INR) into Japanese Yen (JPY).<br><br>
+                    <strong>Question:</strong> Is this a Forex transaction?
+                </p>
+                <div class="note-box">
+                    <h3>✅ Answer</h3>
+                    <p>Yes. Rahul exchanged one currency for another currency. That is a Forex transaction.</p>
+                </div>
+ 
+                <h2>🏭 Scenario 2</h2>
+                <p>
+                    An Indian company imports cars from Germany and pays in Euros (EUR).<br><br>
+                    <strong>Question:</strong> Why did the company exchange its currency?
+                </p>
+                <div class="note-box">
+                    <h3>✅ Answer</h3>
+                    <p>Because Germany uses Euros, not Indian Rupees. The company must exchange INR into EUR before making payment.</p>
+                </div>
+ 
+                <h2>💰 Scenario 3</h2>
+                <p>
+                    You buy 100 US Dollars from a bank before travelling to America.<br><br>
+                    <strong>Question:</strong> Which market are you using?
+                </p>
+                <div class="note-box">
+                    <h3>✅ Answer</h3>
+                    <p>You are using the Forex Market.</p>
+                </div>
+ 
+                <div class="note-box">
+                    <h3>💡 Coach's Tip</h3>
+                    <p>
+                    Always try to connect Forex with real-life situations.
+                    If you understand why people exchange currencies in everyday life, trading concepts become much easier to understand.
+                    </p>
+                </div>
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="lesson-step" id="step9">
+            <div class="card">
+                <span class="lesson-badge">STEP 9 OF 10</span>
+                <h1>Lesson Quiz</h1>
+                <p>Answer all 10 questions. A score of <strong>70%</strong> or higher marks this lesson quiz as passed. You can still visit every lesson from the Lesson Navigator.</p>
+                <div id="quiz-container">
+                    <div class="question-counter" id="question-counter">Question 1 of 10</div>
+                    <h2 id="question">Loading Question...</h2>
+                    <div class="quiz-options">
+                        <button class="quiz-btn" onclick="checkAnswer(0)" id="option0"></button>
+                        <button class="quiz-btn" onclick="checkAnswer(1)" id="option1"></button>
+                        <button class="quiz-btn" onclick="checkAnswer(2)" id="option2"></button>
+                        <button class="quiz-btn" onclick="checkAnswer(3)" id="option3"></button>
+                    </div>
+                    <p id="quiz-result"></p>
+                    <div class="quiz-navigation">
+                        <button class="secondary-btn" onclick="previousQuestion()" id="prevQuestionBtn">← Previous Question</button>
+                        <button class="btn btn-primary" onclick="nextQuestion()" id="nextQuestionBtn">Next Question →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="lesson-step" id="step10">
+            <div class="card">
+                <span class="lesson-badge">STEP 10 OF 10</span>
+                <h1>🎉 Congratulations!</h1>
+                <p>
+                    You have successfully completed Lesson 1 of the Strativo Academy Beginner Course.
+                    You have learned the basic concepts of the Forex market and built a strong foundation for the lessons ahead.
+                </p>
+ 
+                <img loading="lazy" src="../../images/lesson1/step10.png" alt="Lesson 1 Complete" class="lesson-image">
+ 
+                <h2>📚 What You Learned</h2>
+                <ul class="lesson-list">
+                    <li>✅ What Forex means</li>
+                    <li>✅ Why the Forex market exists</li>
+                    <li>✅ Who trades in the Forex market</li>
+                    <li>✅ Real-life examples of currency exchange</li>
+                    <li>✅ Basic Forex terms</li>
+                    <li>✅ Currency pairs</li>
+                    <li>✅ Exchange rates</li>
+                    <li>✅ How Forex is used every day around the world</li>
+                </ul>
+ 
+                <div class="note-box">
+                    <h3>🏆 Achievement Unlocked</h3>
+                    <p>
+                    🎓 Beginner Level – Lesson 1 Completed<br><br>
+                    You have taken the first step toward becoming a professional trader.<br>
+                    Keep learning consistently.<br>
+                    Small progress every day leads to big success.
+                    </p>
+                </div>
+ 
+                <div class="note-box">
+                    <h3>📖 Before Lesson 2</h3>
+                    <p>
+                    Before starting Lesson 2, make sure you can answer these questions without looking at your notes:<br><br>
+                    ✔ What does Forex mean?<br>
+                    ✔ Why does the Forex market exist?<br>
+                    ✔ Name five Forex market participants.<br>
+                    ✔ What is a currency pair?<br>
+                    ✔ What is an exchange rate?
+                    </p>
+                </div>
+ 
+                <div class="note-box">
+                    <h3>🚀 Next Lesson</h3>
+                    <p>
+                    Lesson 2: Understanding the Forex Market<br><br>
+                    In the next lesson, you will learn:<br>
+                    • How the Forex market works<br>
+                    • Market size<br>
+                    • Trading sessions<br>
+                    • Why Forex is open 24 hours<br>
+                    • How traders buy and sell currencies
+                    </p>
+                </div>
+ 
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="window.location.href='../../beginner.html'">
+                        📚 Back to Course
+                    </button>
+                    <button class="btn btn-primary" onclick="window.location.href='lesson2.html'">
+                        🚀 Start Lesson 2
+                    </button>
+                </div>
+            </div>
+        </section>
+ 
+    </main>
+</div>
+ 
+<!-- Script Paths -->
+<script src="../../js/progress.js"></script>
+<script src="../../js/lesson.js"></script>
+<script src="../../quizzes/module1/quiz1.js"></script>
+<!-- GLOBAL FOOTER -->
+ 
+<div id="lessonStickyNav" class="lesson-sticky-nav" aria-label="Lesson step navigation">
+    <button type="button" id="stickyPrevBtn">← Previous</button>
+    <span id="stickyStepLabel">Step 1 of 10</span>
+    <button type="button" id="stickyNextBtn">Next →</button>
+</div>
+ 
+<div data-component="footer"></div>
+ 
+<!-- GLOBAL COMPONENT SYSTEM -->
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+ 
+<script id="lesson1-v1-helper">
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+ 
+    const STORAGE_KEY = "strativo_lesson1_ui_state";
+ 
+    const state = {
+        currentStep: 1,
+        notes: ""
+    };
+ 
+    function loadState() {
+        try {
+            const saved = JSON.parse(
+                localStorage.getItem(STORAGE_KEY) || "null"
+            );
+ 
+            if (saved && Number.isInteger(saved.currentStep)) {
+                state.currentStep = Math.min(
+                    Math.max(saved.currentStep, 1),
+                    10
+                );
+            }
+ 
+            if (saved && typeof saved.notes === "string") {
+                state.notes = saved.notes;
+            }
+        } catch (error) {
+            console.warn("Lesson 1 saved state could not be loaded.", error);
+        }
+    }
+ 
+    function saveState() {
+        try {
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify({
+                    currentStep: state.currentStep,
+                    notes: state.notes,
+                    savedAt: Date.now()
+                })
+            );
+        } catch (error) {
+            console.warn("Lesson 1 saved state could not be saved.", error);
+        }
+    }
+ 
+    function getActiveStep() {
+        const active = document.querySelector(".lesson-step.active-step");
+        if (!active) return 1;
+ 
+        const match = /^step(\d+)$/.exec(active.id || "");
+        return match ? Number(match[1]) : 1;
+    }
+ 
+    function updateProgress(step) {
+        if (!Number.isInteger(step) || step < 1 || step > 10) {
+            return;
+        }
+ 
+        state.currentStep = step;
+ 
+        const percent = step * 10;
+ 
+        document.querySelectorAll(
+            ".lesson-progress-fill, .continue-progress-fill, .dash-progress-fill"
+        ).forEach(function (element) {
+            element.style.width = percent + "%";
+        });
+ 
+        const labels = [
+            ["continue-percent-text", percent + "%"],
+            ["dash-percent-text", percent + "%"],
+            ["continue-step-text", "Step " + step + " of 10"],
+            ["dash-step-text", "Step " + step + " of 10"],
+            ["stickyStepLabel", "Step " + step + " of 10"]
+        ];
+ 
+        labels.forEach(function ([id, value]) {
+            const element = document.getElementById(id);
+            if (element) element.textContent = value;
+        });
+ 
+        const prev = document.getElementById("stickyPrevBtn");
+        const next = document.getElementById("stickyNextBtn");
+ 
+        if (prev) {
+            prev.disabled = step <= 1;
+        }
+ 
+        if (next) {
+            if (step === 9) {
+                next.disabled = true;
+                next.textContent = "Finish Quiz Above";
+            } else {
+                next.disabled = false;
+                next.textContent = step === 10
+                    ? "Back to Course →"
+                    : "Next →";
+            }
+        }
+ 
+        saveState();
+    }
+ 
+    function refreshFromDOM() {
+        updateProgress(getActiveStep());
+    }
+ 
+    function saveNotes() {
+        const notes = document.getElementById("personal-notes");
+        if (!notes) return;
+ 
+        state.notes = notes.value;
+        saveState();
+    }
+ 
+    loadState();
+ 
+    const notes = document.getElementById("personal-notes");
+    if (notes) {
+        if (state.notes) notes.value = state.notes;
+        notes.addEventListener("input", saveNotes);
+    }
+ 
+    /* Save & Exit */
+    const saveExit = document.getElementById("saveExitBtn");
+    if (saveExit) {
+        saveExit.addEventListener("click", function () {
+            refreshFromDOM();
+            saveNotes();
+ 
+            window.location.href = "../../modules/module1.html";
+        });
+    }
+ 
+    /* Mobile sidebar */
+    const toggle = document.getElementById("lessonSidebarToggle");
+    const sidebar = document.getElementById("lessonSidebar");
+ 
+    if (toggle && sidebar) {
+        toggle.addEventListener("click", function () {
+            const open = sidebar.classList.toggle("is-open");
+ 
+            toggle.setAttribute(
+                "aria-expanded",
+                open ? "true" : "false"
+            );
+ 
+            toggle.textContent = open
+                ? "✕ Close Lesson Menu"
+                : "☰ Lesson Menu";
+        });
+ 
+        sidebar.addEventListener("click", function (event) {
+            const item = event.target.closest("li");
+ 
+            if (!item || window.innerWidth > 800) return;
+ 
+            window.setTimeout(function () {
+                sidebar.classList.remove("is-open");
+                toggle.setAttribute("aria-expanded", "false");
+                toggle.textContent = "☰ Lesson Menu";
+                refreshFromDOM();
+            }, 50);
+        });
+    }
+ 
+    /* Quick Check */
+    document.querySelectorAll(
+        "#quickCheckStep4 button[data-correct]"
+    ).forEach(function (button) {
+        button.addEventListener("click", function () {
+            const wrapper = document.getElementById("quickCheckStep4");
+            if (!wrapper) return;
+ 
+            wrapper.querySelectorAll(
+                "button[data-correct]"
+            ).forEach(function (item) {
+                item.classList.remove("correct", "wrong");
+            });
+ 
+            const isCorrect = button.dataset.correct === "true";
+            button.classList.add(isCorrect ? "correct" : "wrong");
+ 
+            const feedback = wrapper.querySelector(
+                ".quick-check-feedback"
+            );
+ 
+            if (!feedback) return;
+ 
+            feedback.className =
+                "quick-check-feedback visible " +
+                (isCorrect ? "correct" : "wrong");
+ 
+            feedback.textContent = isCorrect
+                ? "✅ Correct. Banks are major participants in the Forex market."
+                : "❌ Not quite. The correct answer is B — a bank. Banks are major participants in the Forex market.";
+        });
+    });
+ 
+    /*
+     * IMPORTANT:
+     * Patch the existing lesson engine instead of watching the whole DOM.
+     * This keeps lesson.js as the real lesson engine.
+     *
+     * FIX: read the step that is actually active in the DOM after the
+     * call, rather than trusting the requested step number. lesson.js's
+     * real showStep() silently no-ops (with a locked-step toast) if the
+     * requested step isn't unlocked yet — trusting the argument here
+     * would save/display a step that was never actually shown.
+     */
+    if (typeof window.showStep === "function") {
+        const originalShowStep = window.showStep;
+ 
+        window.showStep = function (step) {
+            const result = originalShowStep.apply(this, arguments);
+            updateProgress(getActiveStep());
+            return result;
+        };
+    }
+ 
+    const previousButton = document.getElementById("stickyPrevBtn");
+    const nextButton = document.getElementById("stickyNextBtn");
+ 
+    if (previousButton) {
+        previousButton.addEventListener("click", function () {
+            refreshFromDOM();
+ 
+            if (
+                typeof window.previousStep === "function" &&
+                getActiveStep() > 1
+            ) {
+                window.previousStep();
+            }
+        });
+    }
+ 
+    if (nextButton) {
+        nextButton.addEventListener("click", function () {
+            const step = getActiveStep();
+ 
+            if (step === 9) return;
+ 
+            if (typeof window.nextStep === "function") {
+                window.nextStep();
+            } else if (step === 10) {
+                window.location.href = "../../beginner.html";
+            }
+        });
+    }
+ 
+    /*
+     * The separate quiz1.js owns:
+     * - questions
+     * - answer checking
+     * - scoring
+     * - final result
+     *
+     * We intentionally do not redefine any quiz functions here.
+     */
+ 
+    window.addEventListener("beforeunload", function () {
+        refreshFromDOM();
+        saveNotes();
+    });
+ 
+    document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "hidden") {
+            refreshFromDOM();
+            saveNotes();
+        }
+    });
+ 
+    /*
+     * Start with the actual lesson.js state.
+     * We do not force a saved step automatically, which avoids fighting
+     * the existing Continue Learning system.
+     */
+    refreshFromDOM();
+});
+</script>
+ 
+</body>
+</html>
+ 

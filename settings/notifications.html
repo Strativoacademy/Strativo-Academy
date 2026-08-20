@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Manage Strativo Academy notification preferences."
+    >
+
+    <title>Notifications | Strativo Academy</title>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/settings.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/notifications.css"
+    >
+
+</head>
+
+
+<body class="settings-page notifications-page">
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="settings-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN CONTAINER
+    ====================================================== -->
+
+    <main
+        class="settings-container"
+        id="main-content"
+    >
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="settings-topbar">
+
+            <a
+                href="settings.html"
+                class="settings-back-link"
+                aria-label="Back to Settings"
+            >
+
+                <i
+                    class="fas fa-arrow-left"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Back to Settings
+                </span>
+
+            </a>
+
+
+            <div class="settings-version">
+
+                <span
+                    class="settings-version-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span>
+                    v1.0 Beta
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="settings-hero">
+
+            <div class="settings-eyebrow">
+
+                <i
+                    class="fas fa-bell"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    NOTIFICATIONS
+                </span>
+
+            </div>
+
+
+            <h1>
+                Stay Informed
+            </h1>
+
+
+            <p>
+                Choose which Strativo Academy updates and
+                learning reminders you want to receive.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING NOTIFICATIONS
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="learning-notifications-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        LEARNING
+                    </span>
+
+                    <h2 id="learning-notifications-title">
+                        Learning Notifications
+                    </h2>
+
+                    <p>
+                        Stay on track with reminders and
+                        important learning activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="notifications-list">
+
+
+                <!-- LEARNING REMINDERS -->
+
+                <div class="notification-setting-card">
+
+                    <div class="notification-setting-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-book-open"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Learning Reminders
+                            </h3>
+
+                            <p>
+                                Receive reminders to continue
+                                your lessons and learning journey.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="notification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="learning-reminders-toggle"
+                            checked
+                            aria-label="Enable learning reminders"
+                        >
+
+                        <span
+                            class="notification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- QUIZ RESULTS -->
+
+                <div class="notification-setting-card">
+
+                    <div class="notification-setting-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-circle-check"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Quiz Results
+                            </h3>
+
+                            <p>
+                                Receive feedback and notifications
+                                when quiz results are available.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="notification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="quiz-results-toggle"
+                            checked
+                            aria-label="Enable quiz result notifications"
+                        >
+
+                        <span
+                            class="notification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACHIEVEMENTS
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="achievement-notifications-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        GAMIFICATION
+                    </span>
+
+                    <h2 id="achievement-notifications-title">
+                        Achievement Notifications
+                    </h2>
+
+                    <p>
+                        Control notifications for XP, achievements
+                        and learning milestones.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="notifications-list">
+
+
+                <!-- ACHIEVEMENTS -->
+
+                <div class="notification-setting-card">
+
+                    <div class="notification-setting-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-trophy"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Achievement Unlocks
+                            </h3>
+
+                            <p>
+                                Show a notification when you
+                                unlock a new achievement.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="notification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="achievement-unlocks-toggle"
+                            checked
+                            aria-label="Enable achievement notifications"
+                        >
+
+                        <span
+                            class="notification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- XP -->
+
+                <div class="notification-setting-card">
+
+                    <div class="notification-setting-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-star"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                XP &amp; Level Updates
+                            </h3>
+
+                            <p>
+                                Receive notifications when you
+                                earn XP or reach a new level.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="notification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="xp-level-toggle"
+                            checked
+                            aria-label="Enable XP and level notifications"
+                        >
+
+                        <span
+                            class="notification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PLATFORM UPDATES
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="platform-notifications-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        PLATFORM
+                    </span>
+
+                    <h2 id="platform-notifications-title">
+                        Platform Updates
+                    </h2>
+
+                    <p>
+                        Stay informed about important Academy
+                        updates and new learning content.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="notifications-list">
+
+
+                <!-- COURSE UPDATES -->
+
+                <div class="notification-setting-card">
+
+                    <div class="notification-setting-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-graduation-cap"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Course Updates
+                            </h3>
+
+                            <p>
+                                Get notified about new lessons,
+                                modules and course improvements.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="notification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="course-updates-toggle"
+                            checked
+                            aria-label="Enable course update notifications"
+                        >
+
+                        <span
+                            class="notification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- COMMUNITY -->
+
+                <div class="notification-setting-card">
+
+                    <div class="notification-setting-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-users"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Community Notifications
+                            </h3>
+
+                            <p>
+                                Receive updates from community
+                                features when they become available.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="notification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="community-notifications-toggle"
+                            checked
+                            aria-label="Enable community notifications"
+                        >
+
+                        <span
+                            class="notification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NOTIFICATION SOUND
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="notification-sound-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        SOUND
+                    </span>
+
+                    <h2 id="notification-sound-title">
+                        Notification Sound
+                    </h2>
+
+                    <p>
+                        Control whether notification sounds are
+                        allowed. Detailed audio controls will be
+                        managed in Sound &amp; Audio settings.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="notification-setting-card">
+
+                <div class="notification-setting-info">
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-volume-high"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Notification Sounds
+                        </h3>
+
+                        <p>
+                            Play a sound when an important
+                            notification appears.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="notification-switch">
+
+                    <input
+                        type="checkbox"
+                        id="notification-sound-toggle"
+                        checked
+                        aria-label="Enable notification sounds"
+                    >
+
+                    <span
+                        class="notification-switch-slider"
+                        aria-hidden="true"
+                    ></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="settings-about">
+
+            <div class="settings-about-brand">
+
+                <span class="settings-about-name">
+                    STRATIVO
+                </span>
+
+                <span class="settings-about-accent">
+                    ACADEMY
+                </span>
+
+            </div>
+
+
+            <p>
+                Strativo Academy — Structured Forex Trading Education
+            </p>
+
+
+            <span class="settings-about-version">
+                Version 1.0 Beta
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         NOTIFICATIONS JAVASCRIPT
+    ====================================================== -->
+
+    <script src="notifications.js"></script>
+
+</body>
+
+</html>

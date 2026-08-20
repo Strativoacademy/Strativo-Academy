@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+<meta name="description" content="Strativo Academy Module 1 Exercise 09 — Market Structure.">
+<title>Exercise 09 — Market Structure | Strativo Academy</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+
+<style>
+:root{
+    --bg:#030712;--panel:#0b1220;--panel2:#08111f;
+    --border:rgba(148,163,184,.13);--text:#f8fafc;--muted:#a6b4c6;
+    --blue:#60a5fa;--green:#34d399;--yellow:#fbbf24;--red:#f87171;
+    --purple:#a78bfa;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.65
+}
+.page{min-height:100vh;padding-bottom:60px}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+
+.hero{
+    padding:76px 20px 54px;text-align:center;border-bottom:1px solid var(--border);
+    background:
+        radial-gradient(circle at 13% 20%,rgba(96,165,250,.14),transparent 34%),
+        radial-gradient(circle at 86% 24%,rgba(52,211,153,.08),transparent 31%),
+        #030712
+}
+.hero-in{width:min(900px,100%);margin:auto}
+.eyebrow{color:#93c5fd;font-size:.82rem;font-weight:900;letter-spacing:.16em}
+.hero h1{margin:15px 0 0;font-family:Poppins,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:1.08}
+.hero p{max-width:870px;margin:16px auto 0;color:#a8b5c7;font-size:1rem;line-height:1.9}
+.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}
+.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#0f172acc;color:#dbeafe;font-size:.78rem;font-weight:800}
+
+.meta{
+    display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;
+    margin-top:23px;padding:16px 18px;border:1px solid var(--border);
+    border-radius:15px;background:var(--panel)
+}
+.meta strong{display:block;font-size:.92rem}
+.meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.82rem}
+.progress{min-width:150px;text-align:right}
+.bar{width:150px;height:7px;border-radius:999px;background:#162033;overflow:hidden}
+.fill{width:90%;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399)}
+.progress small{display:block;margin-top:6px;color:#7f8ea2;font-size:.72rem}
+
+.section{
+    margin-top:20px;padding:22px;border:1px solid var(--border);
+    border-radius:17px;background:var(--panel)
+}
+.section h2{margin:0;font-family:Poppins,sans-serif;font-size:1.45rem}
+.section h3{margin:18px 0 0;color:#dbeafe;font-size:1.02rem}
+.section p{margin:8px 0 0;color:var(--muted);font-size:.92rem;line-height:1.8}
+.list{margin:12px 0;padding-left:20px}
+.list li{margin-top:7px;color:#aebdd0;font-size:.92rem;line-height:1.8}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:17px}
+.card{padding:16px;border:1px solid rgba(148,163,184,.10);border-radius:13px;background:var(--panel2)}
+.card strong{display:block;color:#f1f5f9;font-size:.92rem}
+.card span{display:block;margin-top:7px;color:#aebdd0;font-size:.84rem;line-height:1.75}
+
+.structure-table{
+    margin-top:16px;overflow:auto;border:1px solid rgba(148,163,184,.10);border-radius:12px
+}
+.structure-table table{width:100%;min-width:650px;border-collapse:collapse}
+.structure-table th,.structure-table td{
+    padding:12px;border-bottom:1px solid rgba(148,163,184,.07);
+    text-align:left;font-size:.88rem;line-height:1.65
+}
+.structure-table th{color:#dbeafe;background:rgba(59,130,246,.08)}
+.structure-table td{color:#b7c4d4;background:#08111f}
+
+.diagram{margin-top:18px;border:1px solid rgba(148,163,184,.11);border-radius:14px;overflow:hidden;background:#07101f}
+.dtitle{padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);background:#0d1728;color:#dbe4ef;font-size:.78rem;font-weight:900}
+.diagram svg{display:block;width:100%;height:auto}
+
+.callout{
+    margin-top:15px;padding:15px;border-left:3px solid #fbbf24;
+    border-radius:0 10px 10px 0;background:rgba(245,158,11,.055)
+}
+.callout strong{color:#fde68a;font-size:.88rem}
+.callout p{color:#cbd5e1!important;font-size:.86rem!important}
+
+.q{
+    margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.qtag{color:#60a5fa;font-size:.78rem;font-weight:900;letter-spacing:.06em}
+.q h3{margin-top:7px;color:#f1f5f9;font-size:1.05rem;line-height:1.6}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}
+.opt{
+    appearance:none;width:100%;padding:14px 15px;border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;background:#0b1627;color:#d5deea;text-align:left;font:inherit;
+    font-size:.92rem;line-height:1.65;cursor:pointer;
+    transition:transform .16s ease,border-color .16s ease,background .16s ease
+}
+.opt:hover{transform:translateY(-1px);border-color:rgba(96,165,250,.34);background:#0e1b30}
+.opt:focus-visible{outline:2px solid #60a5fa;outline-offset:2px}
+.opt.correct{border-color:rgba(52,211,153,.55);background:rgba(16,185,129,.11);color:#d1fae5}
+.opt.wrong{border-color:rgba(248,113,113,.50);background:rgba(248,113,113,.09);color:#fecaca}
+.opt.reveal-correct{border-color:rgba(52,211,153,.35);box-shadow:inset 3px 0 0 #34d399}
+.opt:disabled{cursor:default;transform:none}
+
+.feedback{
+    display:none;margin-top:13px;padding:14px 15px;border-left:3px solid #60a5fa;
+    border-radius:0 10px 10px 0;background:rgba(59,130,246,.055)
+}
+.feedback.visible{display:block}
+.feedback.correct{border-left-color:#34d399;background:rgba(16,185,129,.07)}
+.feedback.wrong{border-left-color:#f87171;background:rgba(248,113,113,.06)}
+.feedback .title{color:#f8fafc;font-size:.92rem;font-weight:900}
+.feedback.correct .title{color:#86efac}
+.feedback.wrong .title{color:#fca5a5}
+.feedback p{margin-top:7px!important;color:#cbd5e1!important;font-size:.90rem!important;line-height:1.75!important}
+.feedback .why{color:#fca5a5!important}
+.feedback .correct-answer{color:#86efac!important}
+
+.retry{
+    margin-top:10px;padding:8px 12px;border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;background:rgba(15,23,42,.66);color:#cbd5e1;
+    font:inherit;font-size:.78rem;font-weight:800;cursor:pointer
+}
+.retry:hover{border-color:rgba(96,165,250,.30);background:rgba(59,130,246,.08)}
+
+.scorebar{
+    margin-top:18px;padding:14px 16px;border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;background:rgba(59,130,246,.055)
+}
+.scorebar strong{color:#dbeafe;font-size:.90rem}
+.score-progress{margin-top:8px;height:7px;border-radius:999px;overflow:hidden;background:#162033}
+.score-fill{width:0;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399);transition:width .25s ease}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
+.check{padding:10px 12px;border:1px solid rgba(148,163,184,.09);border-radius:10px;background:var(--panel2);color:#cbd5e1;font-size:.84rem}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:22px}
+.nav a{
+    display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;
+    border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;
+    color:#dbeafe;text-decoration:none;font-size:.82rem;font-weight:900;text-align:center
+}
+.nav a:hover{background:#0e1b30}
+.center{background:rgba(59,130,246,.06)!important;color:#bfdbfe!important}
+.next{background:rgba(16,185,129,.055)!important;color:#d1fae5!important}
+.note{text-align:center;margin-top:14px;color:#64748b;font-size:.72rem}
+
+@media(max-width:850px){
+    .cards{grid-template-columns:1fr}
+    .meta{grid-template-columns:1fr}
+    .progress{text-align:left}.bar{width:100%}
+}
+@media(max-width:760px){
+    .opts,.checks,.nav{grid-template-columns:1fr}
+    .section{padding:20px}
+    .section h2{font-size:1.25rem}
+    .q h3{font-size:1rem}
+}
+</style>
+</head>
+
+<body>
+
+<div data-component="header"></div>
+
+<main class="page">
+
+<section class="hero">
+    <div class="hero-in">
+        <div class="eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+        <h1>Exercise 09 — Market Structure</h1>
+        <p>
+            Practice identifying swing highs and swing lows, then use HH, HL,
+            LH and LL to describe upward, downward and sideways market structure.
+            This exercise also introduces the basic idea of structure breaks
+            without turning them into automatic trade signals.
+        </p>
+        <div class="badges">
+            <span class="badge">📈 Swing Structure</span>
+            <span class="badge">🔎 HH • HL • LH • LL</span>
+            <span class="badge">🧠 Trend</span>
+            <span class="badge">09 / 10</span>
+        </div>
+    </div>
+</section>
+
+<div class="wrap">
+
+<section class="meta">
+    <div>
+        <strong>Exercise Goal</strong>
+        <span>Learn to recognize meaningful swing points and classify the basic market-structure sequence.</span>
+    </div>
+    <div class="progress">
+        <div class="bar"><div class="fill"></div></div>
+        <small>Exercise 09 of 10</small>
+    </div>
+</section>
+
+<section class="section">
+    <h2>01. What Is Market Structure?</h2>
+    <p>
+        Market structure is the way price forms a sequence of swing highs and
+        swing lows over time. By studying these points, we can describe whether
+        price is generally moving upward, downward or sideways.
+    </p>
+    <p>
+        Instead of looking at every individual candle, market structure helps
+        us step back and identify the larger path that price is taking. This
+        means we focus on meaningful turning points rather than every tiny
+        fluctuation.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Upward Structure</strong><span>Higher highs and higher lows.</span></div>
+        <div class="card"><strong>Downward Structure</strong><span>Lower highs and lower lows.</span></div>
+        <div class="card"><strong>Range</strong><span>Price oscillates between important boundaries instead of building a clear directional sequence.</span></div>
+    </div>
+
+    <div class="callout">
+        <strong>Important:</strong>
+        <p>
+            Do not label every tiny candle movement as a major swing. The goal
+            is to identify meaningful structure, not every microscopic fluctuation.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>02. Swing Highs and Swing Lows</h2>
+    <p>
+        Before learning HH, HL, LH and LL, you need to understand swing highs
+        and swing lows. These are local turning points created by price movement.
+        They help us describe the larger path price is taking.
+    </p>
+
+    <div class="diagram">
+        <div class="dtitle">SWING POINTS — VISUAL EXAMPLE</div>
+        <svg viewBox="0 0 900 430" role="img" aria-label="Swing highs and swing lows diagram">
+            <rect width="900" height="430" fill="#07101f"/>
+
+            <polyline points="70,310 155,215 235,270 325,155 410,225 500,90 590,170 685,55 790,130"
+                      fill="none" stroke="#60a5fa" stroke-width="5"/>
+
+            <circle cx="155" cy="215" r="8" fill="#f87171"/>
+            <circle cx="235" cy="270" r="8" fill="#34d399"/>
+            <circle cx="325" cy="155" r="8" fill="#f87171"/>
+            <circle cx="410" cy="225" r="8" fill="#34d399"/>
+            <circle cx="500" cy="90" r="8" fill="#f87171"/>
+            <circle cx="590" cy="170" r="8" fill="#34d399"/>
+            <circle cx="685" cy="55" r="8" fill="#f87171"/>
+
+            <text x="155" y="188" text-anchor="middle" fill="#fecaca" font-size="15" font-weight="900">Swing High</text>
+            <text x="235" y="302" text-anchor="middle" fill="#a7f3d0" font-size="15" font-weight="900">Swing Low</text>
+            <text x="325" y="128" text-anchor="middle" fill="#fecaca" font-size="15" font-weight="900">Swing High</text>
+            <text x="410" y="257" text-anchor="middle" fill="#a7f3d0" font-size="15" font-weight="900">Swing Low</text>
+            <text x="500" y="63" text-anchor="middle" fill="#fecaca" font-size="15" font-weight="900">Swing High</text>
+            <text x="590" y="202" text-anchor="middle" fill="#a7f3d0" font-size="15" font-weight="900">Swing Low</text>
+
+            <text x="450" y="385" text-anchor="middle" fill="#64748b" font-size="14" font-weight="700">
+                FOCUS ON MEANINGFUL TURNING POINTS, NOT EVERY SMALL CANDLE MOVE
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>03. HH, HL, LH and LL</h2>
+    <p>
+        These four labels describe how a new relevant high or low compares with
+        the previous relevant high or low.
+    </p>
+
+    <div class="structure-table">
+        <table>
+            <thead>
+                <tr><th>Label</th><th>Meaning</th><th>Simple Interpretation</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>HH</td><td>Higher High</td><td>New relevant high above the previous high.</td></tr>
+                <tr><td>HL</td><td>Higher Low</td><td>New relevant low above the previous low.</td></tr>
+                <tr><td>LH</td><td>Lower High</td><td>New relevant high below the previous high.</td></tr>
+                <tr><td>LL</td><td>Lower Low</td><td>New relevant low below the previous low.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">HIGHER HIGH + HIGHER LOW SEQUENCE</div>
+        <svg viewBox="0 0 900 370" role="img" aria-label="HH HL sequence diagram">
+            <rect width="900" height="370" fill="#07101f"/>
+
+            <polyline points="75,300 175,205 270,250 385,145 490,195 620,85 760,145"
+                      fill="none" stroke="#34d399" stroke-width="6"/>
+
+            <circle cx="175" cy="205" r="8" fill="#34d399"/>
+            <circle cx="270" cy="250" r="8" fill="#60a5fa"/>
+            <circle cx="385" cy="145" r="8" fill="#34d399"/>
+            <circle cx="490" cy="195" r="8" fill="#60a5fa"/>
+            <circle cx="620" cy="85" r="8" fill="#34d399"/>
+
+            <text x="175" y="173" text-anchor="middle" fill="#a7f3d0" font-size="17" font-weight="900">HH</text>
+            <text x="270" y="280" text-anchor="middle" fill="#bfdbfe" font-size="17" font-weight="900">HL</text>
+            <text x="385" y="113" text-anchor="middle" fill="#a7f3d0" font-size="17" font-weight="900">HH</text>
+            <text x="490" y="225" text-anchor="middle" fill="#bfdbfe" font-size="17" font-weight="900">HL</text>
+            <text x="620" y="53" text-anchor="middle" fill="#a7f3d0" font-size="17" font-weight="900">HH</text>
+
+            <text x="450" y="330" text-anchor="middle" fill="#64748b" font-size="14" font-weight="700">
+                HIGHER HIGHS + HIGHER LOWS = BASIC UPWARD STRUCTURE
+            </text>
+        </svg>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">LOWER HIGH + LOWER LOW SEQUENCE</div>
+        <svg viewBox="0 0 900 370" role="img" aria-label="LH LL sequence diagram">
+            <rect width="900" height="370" fill="#07101f"/>
+
+            <polyline points="75,80 170,165 270,110 370,230 470,175 590,300 760,235"
+                      fill="none" stroke="#f87171" stroke-width="6"/>
+
+            <circle cx="170" cy="165" r="8" fill="#f87171"/>
+            <circle cx="270" cy="110" r="8" fill="#fbbf24"/>
+            <circle cx="370" cy="230" r="8" fill="#f87171"/>
+            <circle cx="470" cy="175" r="8" fill="#fbbf24"/>
+            <circle cx="590" cy="300" r="8" fill="#f87171"/>
+
+            <text x="170" y="198" text-anchor="middle" fill="#fecaca" font-size="17" font-weight="900">LL</text>
+            <text x="270" y="78" text-anchor="middle" fill="#fde68a" font-size="17" font-weight="900">LH</text>
+            <text x="370" y="263" text-anchor="middle" fill="#fecaca" font-size="17" font-weight="900">LL</text>
+            <text x="470" y="143" text-anchor="middle" fill="#fde68a" font-size="17" font-weight="900">LH</text>
+            <text x="590" y="333" text-anchor="middle" fill="#fecaca" font-size="17" font-weight="900">LL</text>
+
+            <text x="450" y="40" text-anchor="middle" fill="#64748b" font-size="14" font-weight="700">
+                LOWER HIGHS + LOWER LOWS = BASIC DOWNWARD STRUCTURE
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>04. Putting Structure Together</h2>
+    <p>
+        Structure is about the sequence. One HH does not automatically prove a
+        complete uptrend, and one LL does not automatically prove a complete
+        downtrend. Look at the relationship between multiple meaningful swing
+        highs and lows.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Upward</strong><span>HH + HL sequence shows buyers are generally creating higher structural points.</span></div>
+        <div class="card"><strong>Downward</strong><span>LH + LL sequence shows sellers are generally creating lower structural points.</span></div>
+        <div class="card"><strong>Range</strong><span>Price can move between boundaries without producing a clean directional sequence.</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">STRUCTURE COMPARISON</div>
+        <svg viewBox="0 0 900 360" role="img" aria-label="Market structure comparison diagram">
+            <rect width="900" height="360" fill="#07101f"/>
+
+            <rect x="55" y="60" width="245" height="225" rx="15" fill="#0b1627" stroke="#34d399" stroke-width="2"/>
+            <text x="178" y="92" text-anchor="middle" fill="#a7f3d0" font-size="18" font-weight="900">UPWARD</text>
+            <text x="178" y="125" text-anchor="middle" fill="#d1fae5" font-size="17">HH → HL → HH → HL</text>
+            <polyline points="95,245 145,195 190,225 235,150 275,180" fill="none" stroke="#34d399" stroke-width="5"/>
+
+            <rect x="328" y="60" width="245" height="225" rx="15" fill="#0b1627" stroke="#f87171" stroke-width="2"/>
+            <text x="450" y="92" text-anchor="middle" fill="#fecaca" font-size="18" font-weight="900">DOWNWARD</text>
+            <text x="450" y="125" text-anchor="middle" fill="#fee2e2" font-size="17">LH → LL → LH → LL</text>
+            <polyline points="370,145 420,195 465,165 510,235 550,205" fill="none" stroke="#f87171" stroke-width="5"/>
+
+            <rect x="600" y="60" width="245" height="225" rx="15" fill="#0b1627" stroke="#a78bfa" stroke-width="2"/>
+            <text x="723" y="92" text-anchor="middle" fill="#ddd6fe" font-size="18" font-weight="900">RANGE</text>
+            <text x="723" y="125" text-anchor="middle" fill="#ede9fe" font-size="17">Boundary ↔ Boundary</text>
+            <polyline points="640,210 670,120 705,205 740,125 775,210 810,120" fill="none" stroke="#a78bfa" stroke-width="5"/>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>05. Knowledge Check</h2>
+    <p>
+        Choose an answer first. Your choice is checked immediately. A wrong
+        answer explains why it is wrong, reveals the correct answer and teaches
+        the concept.
+    </p>
+
+    <div class="q"><div class="qtag">QUESTION 01</div>
+        <h3>What is market structure mainly describing?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> The relationship between important highs and lows</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Only the colour of candles</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> A currency's name</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Only the spread</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 02</div>
+        <h3>What should you identify before using HH, HL, LH and LL?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Meaningful swing highs and swing lows</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Every tiny candle movement</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> The next trade entry</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A fixed price target</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 03</div>
+        <h3>What does HH mean?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Higher High — a new relevant high above the previous high</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Higher High — a new low below the previous low</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Lower High</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Lower Low</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 04</div>
+        <h3>What does HL mean?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Higher Low — a new relevant low above the previous low</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Higher Low — a new high below the previous high</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Lower High</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Higher High</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 05</div>
+        <h3>Which sequence best describes basic downward structure?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> HH → HL → HH → HL</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> LH → LL → LH → LL</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> HH → HH → HH only</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Range → Range → Range</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 06</div>
+        <h3>Why should you avoid treating every tiny candle movement as a major swing?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Market structure focuses on meaningful turning points rather than microscopic fluctuations</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Candles have no price information</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Swing points never matter</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Every tiny movement is automatically a major trend</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="scorebar" aria-live="polite">
+        <strong>Knowledge Check: 0 / 6 correct</strong>
+        <div class="score-progress"><div class="score-fill"></div></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>06. Practical Structure Scenarios</h2>
+
+    <div class="q"><div class="qtag">SCENARIO 01</div>
+        <h3>Price forms a new high above the previous relevant high. Which label fits?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> HH</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> HL</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> LH</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> LL</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 02</div>
+        <h3>Price forms a new low, but that low remains above the previous relevant low. Which label fits?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> HH</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> HL</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> LH</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> LL</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 03</div>
+        <h3>Price creates a new high below the previous relevant high. Which label fits?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> HH</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> HL</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> LH</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> LL</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 04</div>
+        <h3>Price creates a new low below the previous relevant low. Which label fits?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> HH</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> HL</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> LH</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> LL</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>07. Student Self-Check</h2>
+    <div class="checks">
+        <div class="check">☐ I can explain market structure.</div>
+        <div class="check">☐ I can identify meaningful swing highs.</div>
+        <div class="check">☐ I can identify meaningful swing lows.</div>
+        <div class="check">☐ I know what HH means.</div>
+        <div class="check">☐ I know what HL means.</div>
+        <div class="check">☐ I know what LH means.</div>
+        <div class="check">☐ I know what LL means.</div>
+        <div class="check">☐ I can recognize basic upward, downward and range structure.</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>08. Quick Revision</h2>
+    <ul class="list">
+        <li>Market structure describes the sequence and relationship of important highs and lows.</li>
+        <li>Swing highs and swing lows are meaningful local turning points.</li>
+        <li>Do not label every microscopic fluctuation as a major structural swing.</li>
+        <li>HH = Higher High: new relevant high above the previous high.</li>
+        <li>HL = Higher Low: new relevant low above the previous low.</li>
+        <li>LH = Lower High: new relevant high below the previous high.</li>
+        <li>LL = Lower Low: new relevant low below the previous low.</li>
+        <li>HH + HL describes basic upward structure; LH + LL describes basic downward structure.</li>
+        <li>A range describes price oscillating between important boundaries without a clean directional sequence.</li>
+    </ul>
+</section>
+
+<nav class="nav" aria-label="Exercise navigation">
+    <a href="price-action.html">← Price Action</a>
+    <a class="center" href="module1-exercise.html">Exercise Hub</a>
+    <a class="next" href="support-resistance-liquidity.html">Next: Support, Resistance &amp; Liquidity →</a>
+</nav>
+
+<div class="note">Exercise 09 of 10 • Strativo Academy Module 1 • Next: Support, Resistance &amp; Liquidity</div>
+
+</div>
+</main>
+
+<div data-component="footer"></div>
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const maps={
+        "QUESTION 01":{
+            correct:"A",
+            explanation:"Market structure describes the relationship between important highs and lows over time.",
+            wrong:{
+                B:"Candle colour alone does not define market structure.",
+                C:"A currency name does not describe structure.",
+                D:"Spread is a bid/ask concept, not market structure."
+            }
+        },
+        "QUESTION 02":{
+            correct:"A",
+            explanation:"HH, HL, LH and LL are labels applied by comparing meaningful swing highs and swing lows.",
+            wrong:{
+                B:"The notes specifically warn against treating every tiny movement as a major swing.",
+                C:"Entry timing is a separate decision; structure should be understood first.",
+                D:"A fixed price target is not what creates the structural labels."
+            }
+        },
+        "QUESTION 03":{
+            correct:"A",
+            explanation:"HH means Higher High: a new relevant high above the previous relevant high.",
+            wrong:{
+                B:"A new low below the previous low is an LL, not an HH.",
+                C:"LH means Lower High.",
+                D:"LL means Lower Low."
+            }
+        },
+        "QUESTION 04":{
+            correct:"A",
+            explanation:"HL means Higher Low: a new relevant low above the previous relevant low.",
+            wrong:{
+                B:"A high below the previous high is an LH, not an HL.",
+                C:"LH means Lower High.",
+                D:"HH means Higher High."
+            }
+        },
+        "QUESTION 05":{
+            correct:"B",
+            explanation:"Basic downward structure is described by Lower Highs and Lower Lows: LH → LL → LH → LL.",
+            wrong:{
+                A:"HH and HL describe basic upward structure.",
+                C:"Repeated highs without the relevant lows do not describe the complete sequence.",
+                D:"A range is a different market condition."
+            }
+        },
+        "QUESTION 06":{
+            correct:"A",
+            explanation:"Market structure focuses on meaningful turning points so that the larger path of price remains readable rather than becoming cluttered by microscopic fluctuations.",
+            wrong:{
+                B:"Candles contain useful price information.",
+                C:"Swing points are the foundation of the structure being studied.",
+                D:"Tiny fluctuations are not automatically major trends."
+            }
+        },
+        "SCENARIO 01":{
+            correct:"A",
+            explanation:"A new relevant high above the previous high is a Higher High, or HH.",
+            wrong:{
+                B:"HL describes a new low above the previous low.",
+                C:"LH describes a new high below the previous high.",
+                D:"LL describes a new low below the previous low."
+            }
+        },
+        "SCENARIO 02":{
+            correct:"B",
+            explanation:"A new low that remains above the previous low is a Higher Low, or HL.",
+            wrong:{
+                A:"HH is a high, not a low.",
+                C:"LH is a new high below the previous high.",
+                D:"LL would require the new low to be below the previous low."
+            }
+        },
+        "SCENARIO 03":{
+            correct:"C",
+            explanation:"A new high below the previous high is a Lower High, or LH.",
+            wrong:{
+                A:"HH requires the new high to be above the previous high.",
+                B:"HL is a low, not a high.",
+                D:"LL is a low below the previous low."
+            }
+        },
+        "SCENARIO 04":{
+            correct:"D",
+            explanation:"A new low below the previous relevant low is a Lower Low, or LL.",
+            wrong:{
+                A:"HH is a high above the previous high.",
+                B:"HL is a low above the previous low.",
+                C:"LH is a high below the previous high."
+            }
+        }
+    };
+
+    let score=0;
+    const counted=new Set();
+    const scoreText=document.querySelector(".scorebar strong");
+    const fill=document.querySelector(".score-fill");
+
+    function updateScore(){
+        scoreText.textContent="Knowledge Check: "+score+" / 6 correct";
+        fill.style.width=(score/6*100)+"%";
+    }
+
+    function evaluate(q,selected,data){
+        const feedback=q.querySelector(".feedback");
+        const correct=selected===data.correct;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.disabled=true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+            if(btn.dataset.option===data.correct)btn.classList.add("reveal-correct");
+            if(btn.dataset.option===selected)btn.classList.add(correct?"correct":"wrong");
+        });
+
+        feedback.className="feedback visible "+(correct?"correct":"wrong");
+        feedback.innerHTML="";
+
+        const title=document.createElement("div");
+        title.className="title";
+        title.textContent=correct?"✅ Correct — well done!":"❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if(!correct){
+            const why=document.createElement("p");
+            why.className="why";
+            why.textContent="Why your answer is wrong: "+data.wrong[selected];
+            feedback.appendChild(why);
+
+            const right=document.createElement("p");
+            right.className="correct-answer";
+            right.textContent="Correct answer: "+data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explanation=document.createElement("p");
+        explanation.textContent="Explanation: "+data.explanation;
+        feedback.appendChild(explanation);
+
+        const retry=document.createElement("button");
+        retry.type="button";
+        retry.className="retry";
+        retry.textContent="Try Again";
+        retry.addEventListener("click",()=>{
+            q.querySelectorAll(".opt").forEach(btn=>{
+                btn.disabled=false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+            feedback.className="feedback";
+            feedback.innerHTML="";
+        });
+        feedback.appendChild(retry);
+    }
+
+    document.querySelectorAll(".q").forEach(q=>{
+        const tag=q.querySelector(".qtag");
+        const id=tag?tag.textContent.trim():"";
+        const data=maps[id];
+        if(!data)return;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.addEventListener("click",()=>{
+                if(btn.disabled)return;
+                const selected=btn.dataset.option;
+
+                if(id.startsWith("QUESTION")&&!counted.has(id)){
+                    counted.add(id);
+                    if(selected===data.correct)score++;
+                    updateScore();
+                }
+                evaluate(q,selected,data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+
+</body>
+</html>

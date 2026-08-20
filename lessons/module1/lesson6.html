@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6 - Order Types | Strativo Academy</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+
+<style id="lesson6-v1-enhancements">
+
+.skip-link{
+    position:fixed;
+    top:10px;
+    left:10px;
+    z-index:9999;
+    transform:translateY(-150%);
+    padding:10px 14px;
+    border-radius:9px;
+    background:#0f172a;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    border:1px solid rgba(148,163,184,.25);
+}
+
+.skip-link:focus{
+    transform:translateY(0);
+}
+
+.lesson-progress-fill{
+    transition:width .3s ease;
+    will-change:width;
+}
+
+.quick-check-card{
+    margin-top:18px;
+    padding:18px;
+    border:1px solid rgba(96,165,250,.16);
+    border-radius:14px;
+    background:rgba(59,130,246,.055);
+}
+
+.quick-check-badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:999px;
+    background:rgba(96,165,250,.10);
+    color:#bfdbfe;
+    font-size:.78rem;
+    font-weight:900;
+}
+
+.quick-check-card h3{
+    margin:10px 0 0;
+    color:#f8fafc;
+}
+
+.quick-check-card p{
+    color:#aebdd0;
+}
+
+.quick-check-options{
+    display:grid;
+    gap:8px;
+    margin-top:12px;
+}
+
+.quick-check-options button{
+    min-height:44px;
+    padding:10px 13px;
+    border:1px solid rgba(148,163,184,.13);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    text-align:left;
+    font:inherit;
+    font-size:.9rem;
+    cursor:pointer;
+}
+
+.quick-check-options button.correct{
+    border-color:rgba(52,211,153,.5);
+    background:rgba(16,185,129,.09);
+}
+
+.quick-check-options button.wrong{
+    border-color:rgba(248,113,113,.5);
+    background:rgba(248,113,113,.08);
+}
+
+.quick-check-feedback{
+    display:none;
+    margin-top:12px;
+    padding:11px 13px;
+    border-left:3px solid #60a5fa;
+    border-radius:0 9px 9px 0;
+    background:rgba(59,130,246,.055);
+    color:#dbeafe;
+    font-size:.88rem;
+    line-height:1.7;
+}
+
+.quick-check-feedback.visible{
+    display:block;
+}
+
+.quick-check-feedback.correct{
+    border-left-color:#34d399;
+    color:#d1fae5;
+}
+
+.quick-check-feedback.wrong{
+    border-left-color:#f87171;
+    color:#fecaca;
+}
+
+.quiz-options{
+    display:grid;
+    gap:10px;
+    margin-top:18px;
+}
+
+.quiz-btn{
+    width:100%;
+    min-height:48px;
+    padding:12px 14px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    text-align:left;
+    font:inherit;
+    line-height:1.5;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+
+.quiz-btn:hover:not(:disabled){
+    border-color:rgba(96,165,250,.35);
+    background:#0e1b30;
+}
+
+.quiz-btn.correct{
+    border-color:rgba(52,211,153,.6);
+    background:rgba(16,185,129,.12);
+    color:#d1fae5;
+}
+
+.quiz-btn.wrong{
+    border-color:rgba(248,113,113,.6);
+    background:rgba(248,113,113,.10);
+    color:#fecaca;
+}
+
+.quiz-btn:disabled{
+    cursor:not-allowed;
+    opacity:.95;
+}
+
+.lesson-mobile-toggle{
+    display:none;
+    width:100%;
+    min-height:44px;
+    margin:0 0 10px;
+    padding:0 14px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1220;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.82rem;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.lesson-sidebar.is-open{
+    display:block;
+}
+
+.lesson-sticky-nav{
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    gap:10px;
+    padding:9px;
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:14px;
+    background:rgba(3,7,18,.94);
+    box-shadow:0 14px 40px rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+}
+
+.lesson-sticky-nav button{
+    min-height:44px;
+    padding:0 13px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.8rem;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.lesson-sticky-nav button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.lesson-sticky-nav span{
+    flex:1;
+    text-align:center;
+    color:#94a3b8;
+    font-size:.78rem;
+    font-weight:700;
+}
+
+button:focus-visible,
+a:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:3px;
+}
+
+@media(max-width:800px){
+
+    .lesson-mobile-toggle{
+        display:block;
+    }
+
+    .lesson-sidebar{
+        display:none;
+    }
+
+    .lesson-sidebar.is-open{
+        display:block;
+    }
+
+    .lesson-sticky-nav{
+        display:flex;
+    }
+
+    .lesson-content{
+        padding-bottom:90px!important;
+    }
+
+}
+
+@media(min-width:801px){
+
+    .lesson-sticky-nav{
+        display:none!important;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#lesson-content">Skip to content</a>
+<div class="global-header-mount" data-component="header"></div>
+
+
+<div data-component="lesson-header"></div>
+
+
+<!-- =========================================================
+     LESSON NAVIGATOR
+========================================================= -->
+
+<div class="lesson-navigator-section">
+
+    <div class="navigator-card">
+
+        <div class="navigator-header">
+            <h2>📚 Lesson Navigator</h2>
+            <p>Jump directly to any lesson. Quiz scores track mastery separately.</p>
+        </div>
+
+        <div class="navigator-grid">
+
+            <a
+                href="lesson1.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 1</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a
+                href="lesson2.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 2</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a
+                href="lesson3.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 3</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a
+                href="lesson4.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 4</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a
+                href="lesson5.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 5</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a
+                href="lesson6.html"
+                class="nav-grid-item current"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 6</span>
+                    <span class="lesson-icon">✅</span>
+                </div>
+                <span class='current-badge'>Current Lesson</span>
+            </a>
+
+            <a
+                href="lesson7.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 7</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a
+                href="lesson8.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 8</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a
+                href="lesson9.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 9</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a
+                href="lesson10.html"
+                class="nav-grid-item"
+            >
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 10</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- =========================================================
+     MOBILE LESSON MENU
+========================================================= -->
+
+<button
+    type="button"
+    id="lessonSidebarToggle"
+    class="lesson-mobile-toggle"
+    aria-controls="lessonSidebar"
+    aria-expanded="false"
+>
+    ☰ Lesson Menu
+</button>
+
+<div class="lesson-layout">
+
+    <aside id="lessonSidebar" class="lesson-sidebar">
+        <h2>Lesson 6</h2>
+        <ul id="lessonMenu">
+            <li onclick="showStep(1)" class="active">👋 Welcome</li>
+            <li onclick="showStep(2)">📝 What is an Order?</li>
+            <li onclick="showStep(3)">⚡ Market Order</li>
+            <li onclick="showStep(4)">⏳ Pending Orders</li>
+            <li onclick="showStep(5)">📉 Buy Limit & Sell Limit</li>
+            <li onclick="showStep(6)">📈 Buy Stop & Sell Stop</li>
+            <li onclick="showStep(7)">🛡️ Stop Loss & Take Profit</li>
+            <li onclick="showStep(8)">💡 Real Trading Example</li>
+            <li onclick="showStep(9)">🧠 Quiz</li>
+            <li onclick="showStep(10)">🏁 Summary</li>
+        </ul>
+    </aside>
+
+    <main id="lesson-content" class="lesson-content">
+        <div class="lesson-header">
+            <h1>Lesson 6 - Order Types</h1>
+            <div class="lesson-meta">
+                <div class="meta-item">📈 Beginner</div>
+                <div class="meta-item">⏱ 20 Minutes</div>
+                <div class="meta-item">📚 Module 1</div>
+                <div class="meta-item">📝 10 Steps</div>
+            </div>
+            <div class="lesson-progress">
+                <div class="lesson-progress-bar">
+                    <div class="lesson-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <p class="step-text">Step 1 of 10</p>
+
+        <section class="lesson-step active-step" id="step1">
+
+    <div class="card">
+
+        <span class="lesson-badge">BEGINNER COURSE</span>
+
+        <h1>Welcome to Lesson 6</h1>
+
+        <h2>Order Types</h2>
+
+        <p>
+            Welcome to Lesson 6! In trading, knowing <em>when</em> to buy or sell is great, but knowing <em>how</em> to tell your broker to do it is just as important.
+            <br><br>
+            An <strong>Order</strong> is simply a message you send to your broker. It tells them exactly what you want to buy or sell, and at what price.
+            <br><br>
+            By learning the different types of orders, you will have full control over your money. You can even set up trades to happen automatically while you are asleep!
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/welcome.png"
+             alt="Lesson 6 Welcome"
+             class="lesson-image">
+
+        <div class="success-box">
+
+            <h3>📘 Simple Definition</h3>
+
+            <p>
+                An <strong>Order</strong> is an instruction you give your broker to place a trade for you.
+            </p>
+
+        </div>
+
+        <h3>🎯 Today's Learning Objectives</h3>
+
+        <ul class="lesson-list">
+
+            <li>✔ Learn what an order is.</li>
+
+            <li>✔ Understand Market Orders (Buy or Sell right now).</li>
+
+            <li>✔ Learn Buy Limit & Sell Limit Orders (Catching a bounce).</li>
+
+            <li>✔ Learn Buy Stop & Sell Stop Orders (Riding a breakout).</li>
+
+            <li>✔ Learn to protect your money with a Stop Loss (SL).</li>
+
+            <li>✔ Learn to lock in your winnings with Take Profit (TP).</li>
+
+            <li>✔ Look at a real, easy-to-understand trading example.</li>
+
+            <li>✔ Complete the Lesson 6 Quiz.</li>
+
+        </ul>
+
+        <div class="didyouknow-box">
+
+            <h3>💡 Did You Know?</h3>
+
+            <p>
+                Professional traders do not stare at their screens all day long!
+                <br><br>
+                They use different <strong>order types</strong> to let the computer open and close their trades automatically.
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                disabled>
+
+                ← Previous
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+        
+       <section class="lesson-step" id="step2">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 2 OF 10</span>
+
+        <h1>What is an Order?</h1>
+
+        <p>
+            Before you can enter a trade, you have to tell your broker what to do. This message is called an <strong>Order</strong>.
+            <br><br>
+            Think of it like ordering food at a restaurant. You tell the waiter (your broker) exactly what you want. The waiter then goes to the kitchen (the market) to get it for you.
+            <br><br>
+            Every single time you buy or sell in Forex, you are using an order. 
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/step2.png"
+             alt="What is an Order"
+             class="lesson-image">
+
+        <div class="success-box">
+
+            <h3>📘 Simple Definition</h3>
+
+            <p>
+                <strong>Order = Your Instructions</strong>
+                <br><br>
+                It tells the broker <em>how fast</em> you want the trade, and <em>at what price</em>.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🔄 How Brokers Make It Happen</h3>
+
+            <p>
+                When you send an order to buy, your broker looks inside the market for someone who wants to sell. 
+                <br><br>
+                When you want to sell, they look for someone who wants to buy. They match you up!
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+        
+        <section class="lesson-step" id="step3">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 3 OF 10</span>
+
+        <h1>Market Order</h1>
+
+        <p>
+            A <strong>Market Order</strong> is the simplest type of order. It means you want to Buy or Sell <strong>RIGHT NOW</strong> at whatever the current price is.
+            <br><br>
+            If you are in a rush and do not want to wait for a specific price, you use a Market Order.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/step3.png"
+             alt="Market Order"
+             class="lesson-image">
+
+        <div class="success-box">
+
+            <h3>⚡ Instant Action</h3>
+
+            <ul class="lesson-list">
+                <li><strong>Buy Now:</strong> You enter the trade instantly at the current buying price.</li>
+                <li><strong>Sell Now:</strong> You enter the trade instantly at the current selling price.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>💡 Best Time to Use It</h3>
+
+            <p>
+                Use a Market Order when getting into the trade quickly is more important than getting a perfect price. 
+                <br><br>
+                For example: If big news comes out and the price starts shooting up, you might hit "Buy Now" to join the ride immediately.
+            </p>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠ Beginner Mistake</h3>
+
+            <p>
+                Because Market Orders happen instantly, the price might change a tiny bit in the split second it takes to click the button. 
+                <br><br>
+                You might get a slightly different price than you expected.
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <section class="lesson-step" id="step4">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 4 OF 10</span>
+
+        <h1>Pending Orders</h1>
+
+        <p>
+            What if you don't want to buy right now? What if you want to wait until the price gets cheaper? 
+            <br><br>
+            That is where a <strong>Pending Order</strong> comes in. A Pending Order tells the broker: <em>"Do not buy or sell right now. Wait until the price hits my special number, and THEN open the trade."</em>
+            <br><br>
+            If the price never reaches your number, the trade never happens!
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/step4.png"
+             alt="Pending Orders"
+             class="lesson-image">
+
+        <div class="info-box">
+
+            <h3>🗂️ The Four Types of Pending Orders</h3>
+
+            <p>
+                There are 4 main pending orders. They depend on what you expect the price to do:
+            </p>
+
+            <ul class="lesson-list">
+
+                <li><strong>1. Buy Limit:</strong> You think the price will drop, hit the floor, and bounce back UP.</li>
+
+                <li><strong>2. Sell Limit:</strong> You think the price will rise, hit the ceiling, and fall back DOWN.</li>
+
+                <li><strong>3. Buy Stop:</strong> You think the price will rise, smash through the ceiling, and keep going UP.</li>
+
+                <li><strong>4. Sell Stop:</strong> You think the price will drop, smash through the floor, and keep falling DOWN.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="didyouknow-box">
+
+            <h3>🌍 Did You Know?</h3>
+
+            <p>
+                Pending orders let you set up your trade, turn off your computer, and go outside! The broker will open the trade for you automatically if the price hits your target.
+            </p>
+
+        </div>
+
+        
+        <div class="quick-check-card" id="quickCheckStep4">
+
+            <span class="quick-check-badge">
+                🧠 QUICK CHECK — UNGRADED
+            </span>
+
+            <h3>
+                Which order executes immediately at the current market price?
+            </h3>
+
+            <p>
+                Select an answer to receive immediate feedback.
+            </p>
+
+            <div class="quick-check-options">
+
+                <button
+                    type="button"
+                    data-correct="true"
+                >
+                    A. Market Order
+                </button>
+
+                <button
+                    type="button"
+                    data-correct="false"
+                >
+                    B. Buy Limit
+                </button>
+
+                <button
+                    type="button"
+                    data-correct="false"
+                >
+                    C. Sell Stop
+                </button>
+
+            </div>
+
+            <div
+                class="quick-check-feedback"
+                aria-live="polite"
+            ></div>
+
+        </div>
+
+<div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+       <section class="lesson-step" id="step5">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 5 OF 10</span>
+
+        <h1>Buy Limit & Sell Limit</h1>
+
+        <p>
+            Let's talk about the first two pending orders: <strong>Limit Orders</strong>. 
+            <br><br>
+            You use a "Limit" order when you expect the price to hit a wall and <strong>bounce back</strong> the other way.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/step5.png"
+             alt="Buy Limit & Sell Limit"
+             class="lesson-image">
+
+        <div class="success-box">
+
+            <h3>📉 Buy Limit (Catching the dip)</h3>
+
+            <p>
+                You place this order <strong>below</strong> the current price.
+                <br><br>
+                <strong>Example:</strong> The price is falling. You think it will hit a cheap price and then bounce back up. You place a Buy Limit at the bottom so you can buy it at the cheapest price possible before it goes up.
+            </p>
+
+        </div>
+
+        <div class="success-box">
+
+            <h3>📈 Sell Limit (Catching the top)</h3>
+
+            <p>
+                You place this order <strong>above</strong> the current price.
+                <br><br>
+                <strong>Example:</strong> The price is rising. You think it will hit a high ceiling and then fall back down. You place a Sell Limit at the top to start a sell trade right before it drops.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Memory Trick</h3>
+
+            <p>
+                Think of the word <strong>LIMIT</strong> as a <strong>BOUNCE</strong>.
+                <br><br>
+                You are waiting for the price to hit its limit and turn around!
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <section class="lesson-step" id="step6">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 6 OF 10</span>
+
+        <h1>Buy Stop & Sell Stop</h1>
+
+        <p>
+            Now let's look at the other two pending orders: <strong>Stop Orders</strong>. 
+            <br><br>
+            You use a "Stop" order when you think the price will smash through a wall and <strong>keep going</strong> in the same direction. Traders call this a "Breakout."
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/step6.png"
+             alt="Buy Stop & Sell Stop"
+             class="lesson-image">
+
+        <div class="success-box">
+
+            <h3>📈 Buy Stop (Jumping on the rocket)</h3>
+
+            <p>
+                You place this order <strong>above</strong> the current price.
+                <br><br>
+                <strong>Example:</strong> The price is going up. You think if it crosses a certain line, it will explode much higher. You place a Buy Stop above that line. When the price hits it, your Buy trade opens automatically to join the ride up.
+            </p>
+
+        </div>
+
+        <div class="success-box">
+
+            <h3>📉 Sell Stop (Jumping on the slide)</h3>
+
+            <p>
+                You place this order <strong>below</strong> the current price.
+                <br><br>
+                <strong>Example:</strong> The price is going down. You think if it drops past a certain floor, it will crash even lower. You place a Sell Stop below that floor. When the price hits it, your Sell trade opens automatically to ride it down.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Memory Trick</h3>
+
+            <p>
+                Think of the word <strong>STOP</strong> as <strong>"DON'T STOP!"</strong>
+                <br><br>
+                You expect the price to hit your line and go straight through it without stopping.
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+       <section class="lesson-step" id="step7">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 7 OF 10</span>
+
+        <h1>Stop Loss & Take Profit</h1>
+
+        <p>
+            This is the most important step in this lesson! Once your trade is open, you need a plan to close it. 
+            <br><br>
+            You do this using two automatic tools: a <strong>Stop Loss (SL)</strong> and a <strong>Take Profit (TP)</strong>.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/step7.png"
+             alt="Stop Loss & Take Profit"
+             class="lesson-image">
+
+        <div class="warning-box">
+
+            <h3>🛡️ Stop Loss (SL) - Your Safety Seatbelt</h3>
+
+            <p>
+                A Stop Loss is an automatic order that closes your trade if you are losing money.
+                <br><br>
+                <strong>Why it matters:</strong> If you buy, but the market suddenly crashes, the Stop Loss will kick you out of the trade early. It takes a small loss so that your whole account isn't destroyed. 
+                <br><br>
+                <strong>Golden Rule:</strong> NEVER open a trade without a Stop Loss!
+            </p>
+
+        </div>
+
+        <div class="success-box">
+
+            <h3>🎯 Take Profit (TP) - Your Piggy Bank</h3>
+
+            <p>
+                A Take Profit is an automatic order that closes your trade when you reach your winning goal.
+                <br><br>
+                <strong>Why it matters:</strong> The market might hit your winning number and then quickly reverse. A Take Profit grabs your winnings instantly and puts the money safely in your account balance before the market can take it back.
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+       <section class="lesson-step" id="step8">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 8 OF 10</span>
+
+        <h1>Real Trading Example</h1>
+
+        <p>
+            Let's see how all of this works together with a super simple example using the EUR/USD currency pair.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/step8.png"
+             alt="Real Trading Example"
+             class="lesson-image">
+
+        <div class="info-box">
+
+            <h3>📊 Let's say the EUR/USD price is exactly 1.1000 right now.</h3>
+
+            <ul class="lesson-list">
+
+                <li><strong>Market Order (Buy Now):</strong> You click Buy. The trade opens instantly at 1.1000.</li>
+                <br>
+                <li><strong>Buy Limit (Wait for a bounce):</strong> You want to buy it cheaper. You place a Buy Limit at 1.0950. The trade only starts if the price drops down to 1.0950.</li>
+                <br>
+                <li><strong>Buy Stop (Wait for a breakout):</strong> You want to make sure it's really going up. You place a Buy Stop at 1.1050. The trade only starts if the price climbs up to 1.1050.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="success-box">
+
+            <h3>🛡️ Keeping the Trade Safe</h3>
+
+            <p>
+                Okay, let's say your trade is now open and you bought at 1.1000.
+                <br><br>
+                <strong>1. Set Stop Loss (SL):</strong> You put your SL at 1.0950. If the trade drops against you, it automatically closes so you don't lose any more money.
+                <br><br>
+                <strong>2. Set Take Profit (TP):</strong> You put your TP at 1.1100. If the trade goes up and hits this number, it closes automatically, and you get to keep the profit!
+            </p>
+
+            <div class="tip-box">
+
+    <h3>⭐ Remember</h3>
+
+    <p>
+        Not every trade needs a <strong>Market Order</strong>.
+        <br><br>
+        Professional traders often use <strong>Pending Orders</strong> because they allow them to plan their trades in advance instead of making emotional decisions.
+        <br><br>
+        The best traders don't chase the market—they wait patiently for the market to come to them.
+    </p>
+
+</div>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+        
+        <section class="lesson-step" id="step9">
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 9 OF 10
+                </span>
+
+                <h1>
+                    🧠 Lesson 6 Quiz
+                </h1>
+
+                <p>
+                    Test your understanding of
+                    <strong>Market Orders, Pending Orders,
+                    Stop Loss, and Take Profit.</strong>
+
+                    <br><br>
+
+                    Answer all
+                    <strong>10 questions</strong>.
+
+                    <br><br>
+
+                    Aim for at least
+                    <strong>70%</strong>
+                    to pass the Lesson 6 mastery target.
+                </p>
+
+                <div id="quiz-container">
+
+                    <div
+                        class="question-counter"
+                        id="question-counter"
+                    >
+                        Question 1 of 10
+                    </div>
+
+                    <h2 id="question">
+                        Loading Question...
+                    </h2>
+
+                    <div class="quiz-options">
+
+                        <button
+                            type="button"
+                            class="quiz-btn"
+                            onclick="checkAnswer(0)"
+                            id="option0"
+                        ></button>
+
+                        <button
+                            type="button"
+                            class="quiz-btn"
+                            onclick="checkAnswer(1)"
+                            id="option1"
+                        ></button>
+
+                        <button
+                            type="button"
+                            class="quiz-btn"
+                            onclick="checkAnswer(2)"
+                            id="option2"
+                        ></button>
+
+                        <button
+                            type="button"
+                            class="quiz-btn"
+                            onclick="checkAnswer(3)"
+                            id="option3"
+                        ></button>
+
+                    </div>
+
+                    <p
+                        id="quiz-result"
+                        aria-live="polite"
+                    ></p>
+
+                    <div class="quiz-navigation">
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            onclick="previousQuestion()"
+                            id="prevQuestionBtn"
+                        >
+                            ← Previous Question
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            onclick="nextQuestion()"
+                            id="nextQuestionBtn"
+                        >
+                            Next Question →
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="info-box">
+
+                    <h3>
+                        📚 Quiz Rules
+                    </h3>
+
+                    <ul class="lesson-list">
+
+                        <li>
+                            ✔ Read every question carefully.
+                        </li>
+
+                        <li>
+                            ✔ Pick the best answer.
+                        </li>
+
+                        <li>
+                            ✔ You cannot skip a question.
+                        </li>
+
+                        <li>
+                            ✔ Read the explanation after answering.
+                        </li>
+
+                        <li>
+                            ✔ Score 70% or above for mastery.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Learning Tip
+                    </h3>
+
+                    <p>
+                        Don't rush the quiz.
+                        Think about where the order should be placed
+                        and what you expect the market to do.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+<section class="lesson-step" id="step10">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 10 OF 10</span>
+
+        <h1>🎉 Congratulations!</h1>
+
+        <p>
+            You have successfully completed <strong>Lesson 6 – Order Types.</strong>
+            <br><br>
+            You now know exactly how to tell your broker what to do. You know how to jump in right away, how to plan a trade for later, and most importantly, how to keep your money safe with a Stop Loss.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson6/step10.png"
+             alt="Lesson 6 Summary"
+             class="lesson-image">
+
+        <div class="success-box">
+
+            <h3>🏆 What You Learned</h3>
+
+            <p>
+                ✔ What an order is (your instruction to the broker).<br><br>
+                ✔ Market Orders (Buy or Sell right now).<br><br>
+                ✔ Limit Orders (Waiting for the price to bounce).<br><br>
+                ✔ Stop Orders (Waiting for the price to break through).<br><br>
+                ✔ Stop Loss (Your automatic safety net).<br><br>
+                ✔ Take Profit (Locking in your winnings).
+            </p>
+
+        </div>
+
+        <div class="pro-box">
+
+            <h3>🎓 Coach Strativo Says</h3>
+
+            <p>
+                Pending orders are amazing because they let you trade without feelings or stress. You plan your trade, set your Stop Loss and Take Profit, and let the market do the rest.
+                <br><br>
+                And remember: A trader who uses a Stop Loss on every single trade will survive in this game for years. A trader who doesn't will eventually lose it all. Protect your money first!
+            </p>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>🚀 Coming Next</h3>
+
+            <p>
+                In <strong>Lesson 7</strong>, we will finally start looking at the charts! You will learn how to read the price and see what the market is doing.
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button
+                class="secondary-btn"
+                onclick="retryQuiz()">
+
+                🔄 Retry Quiz
+
+            </button>
+
+            <a href="lesson7.html"
+               class="btn btn-primary">
+
+                ▶ Continue to Lesson 7
+
+            </a>
+
+        </div>
+
+        <div class="lesson-signature">
+
+            "Plan your trade, and trade your plan."
+
+            <br><br>
+
+            <strong>— Strativo Academy</strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+</div>
+
+<script src="../../js/progress.js"></script>
+<script src="../../js/lesson.js"></script>
+<script src="../../quizzes/module1/quiz6.js"></script>
+
+
+<!-- =========================================================
+     STICKY MOBILE NAVIGATION
+========================================================= -->
+
+<div
+    id="lessonStickyNav"
+    class="lesson-sticky-nav"
+    aria-label="Lesson step navigation"
+>
+
+    <button
+        type="button"
+        id="stickyPrevBtn"
+    >
+        ← Previous
+    </button>
+
+    <span id="stickyStepLabel">
+        Step 1 of 10
+    </span>
+
+    <button
+        type="button"
+        id="stickyNextBtn"
+    >
+        Next →
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     GLOBAL FOOTER
+========================================================= -->
+
+<div data-component="footer"></div>
+
+
+<!-- =========================================================
+     GLOBAL COMPONENT SYSTEM
+========================================================= -->
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+
+<!-- =========================================================
+     LESSON 6 V1 HELPER
+========================================================= -->
+
+<script id="lesson6-v1-helper">
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        "use strict";
+
+
+        function getActiveStep() {
+
+            const active =
+                document.querySelector(
+                    ".lesson-step.active-step"
+                );
+
+            if (!active) {
+                return 1;
+            }
+
+            const match =
+                /^step(\d+)$/.exec(
+                    active.id || ""
+                );
+
+            return match
+                ? Number(match[1])
+                : 1;
+        }
+
+
+        function updateProgress() {
+
+            const step =
+                getActiveStep();
+
+            const percent =
+                step * 10;
+
+
+            document
+                .querySelectorAll(
+                    ".lesson-progress-fill"
+                )
+                .forEach(
+                    function (element) {
+
+                        element.style.width =
+                            percent + "%";
+
+                    }
+                );
+
+
+            const label =
+                document.getElementById(
+                    "stickyStepLabel"
+                );
+
+            if (label) {
+
+                label.textContent =
+                    "Step " +
+                    step +
+                    " of 10";
+            }
+
+
+            const stepText =
+                document.querySelector(
+                    ".step-text"
+                );
+
+            if (stepText) {
+
+                stepText.textContent =
+                    "Step " +
+                    step +
+                    " of 10";
+            }
+
+
+            const previous =
+                document.getElementById(
+                    "stickyPrevBtn"
+                );
+
+            const next =
+                document.getElementById(
+                    "stickyNextBtn"
+                );
+
+
+            if (previous) {
+
+                previous.disabled =
+                    step <= 1;
+            }
+
+
+            if (next) {
+
+                if (step === 9) {
+
+                    next.disabled =
+                        true;
+
+                    next.textContent =
+                        "Finish Quiz Above";
+
+                } else {
+
+                    next.disabled =
+                        false;
+
+                    next.textContent =
+                        step === 10
+                            ? "Back to Course →"
+                            : "Next →";
+                }
+            }
+
+
+            try {
+
+                localStorage.setItem(
+                    "strativo_lesson6_ui_state",
+                    JSON.stringify({
+                        currentStep:
+                            step,
+                        savedAt:
+                            Date.now()
+                    })
+                );
+
+            } catch (error) {
+
+                console.warn(
+                    "Lesson 6 UI state could not be saved.",
+                    error
+                );
+            }
+
+        }
+
+
+        /* SAVE & EXIT */
+
+        const saveExit =
+            document.getElementById(
+                "saveExitBtn"
+            );
+
+
+        if (saveExit) {
+
+            saveExit.addEventListener(
+                "click",
+                function () {
+
+                    updateProgress();
+
+                    window.location.href =
+                        "../../modules/module1.html";
+                }
+            );
+        }
+
+
+        /* MOBILE SIDEBAR */
+
+        const toggle =
+            document.getElementById(
+                "lessonSidebarToggle"
+            );
+
+        const sidebar =
+            document.getElementById(
+                "lessonSidebar"
+            );
+
+
+        if (toggle && sidebar) {
+
+            toggle.addEventListener(
+                "click",
+                function () {
+
+                    const open =
+                        sidebar.classList.toggle(
+                            "is-open"
+                        );
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        open
+                            ? "true"
+                            : "false"
+                    );
+
+                    toggle.textContent =
+                        open
+                            ? "✕ Close Lesson Menu"
+                            : "☰ Lesson Menu";
+                }
+            );
+        }
+
+
+        /* QUICK CHECK */
+
+        document
+            .querySelectorAll(
+                "#quickCheckStep4 button[data-correct]"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const wrapper =
+                                document.getElementById(
+                                    "quickCheckStep4"
+                                );
+
+                            if (!wrapper) {
+                                return;
+                            }
+
+
+                            wrapper
+                                .querySelectorAll(
+                                    "button[data-correct]"
+                                )
+                                .forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "correct",
+                                            "wrong"
+                                        );
+
+                                    }
+                                );
+
+
+                            const correct =
+                                button.dataset.correct ===
+                                "true";
+
+
+                            button.classList.add(
+                                correct
+                                    ? "correct"
+                                    : "wrong"
+                            );
+
+
+                            const feedback =
+                                wrapper.querySelector(
+                                    ".quick-check-feedback"
+                                );
+
+
+                            if (!feedback) {
+                                return;
+                            }
+
+
+                            feedback.className =
+                                "quick-check-feedback visible " +
+                                (
+                                    correct
+                                        ? "correct"
+                                        : "wrong"
+                                );
+
+
+                            feedback.textContent =
+                                correct
+
+                                    ? "✅ Correct. A Market Order is designed to execute immediately at the current market price."
+
+                                    : "❌ Not quite. The correct answer is A — Market Order. Limit and Stop orders wait for a specified price condition.";
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* CONNECT TO EXISTING LESSON ENGINE */
+
+        if (
+            typeof window.showStep ===
+            "function"
+        ) {
+
+            const originalShowStep =
+                window.showStep;
+
+
+            window.showStep =
+                function (step) {
+
+                    const result =
+                        originalShowStep.apply(
+                            this,
+                            arguments
+                        );
+
+
+                    updateProgress();
+
+                    return result;
+                };
+        }
+
+
+        /* STICKY PREVIOUS */
+
+        const stickyPrevious =
+            document.getElementById(
+                "stickyPrevBtn"
+            );
+
+
+        if (stickyPrevious) {
+
+            stickyPrevious.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        typeof window.previousStep ===
+                            "function" &&
+                        getActiveStep() > 1
+                    ) {
+
+                        window.previousStep();
+
+                        updateProgress();
+                    }
+                }
+            );
+        }
+
+
+        /* STICKY NEXT */
+
+        const stickyNext =
+            document.getElementById(
+                "stickyNextBtn"
+            );
+
+
+        if (stickyNext) {
+
+            stickyNext.addEventListener(
+                "click",
+                function () {
+
+                    const step =
+                        getActiveStep();
+
+
+                    if (step === 9) {
+                        return;
+                    }
+
+
+                    if (
+                        typeof window.nextStep ===
+                        "function"
+                    ) {
+
+                        window.nextStep();
+
+                    } else if (
+                        step === 10
+                    ) {
+
+                        window.location.href =
+                            "../../beginner.html";
+                    }
+                }
+            );
+        }
+
+
+        /* AUTO SAVE */
+
+        window.addEventListener(
+            "beforeunload",
+            updateProgress
+        );
+
+
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                if (
+                    document.visibilityState ===
+                    "hidden"
+                ) {
+
+                    updateProgress();
+                }
+            }
+        );
+
+
+        updateProgress();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

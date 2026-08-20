@@ -1,0 +1,863 @@
+/* ==========================================================================
+   STRATIVO ACADEMY
+   LEGAL PAGES & RISK DISCLAIMER
+   ========================================================================== */
+
+
+/* ==========================================================================
+   LEGAL PAGE HEADER
+   ========================================================================== */
+
+.legal-page-header {
+    width: 100%;
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    background: #080d18;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.legal-brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3rem;
+
+    text-decoration: none;
+    font-weight: 800;
+}
+
+
+.legal-brand-main {
+    color: #ffffff;
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+}
+
+
+.legal-brand-accent {
+    color: var(--accent, #00e5a8);
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+}
+
+
+.legal-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+
+    color: #9ca3af;
+
+    font-size: 0.82rem;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+
+.legal-home-link:hover {
+    color: var(--accent, #00e5a8);
+}
+
+
+/* ==========================================================================
+   LEGAL PAGE BACKGROUND
+   ========================================================================== */
+
+.legal-page {
+    width: 100%;
+    min-height: calc(100vh - 72px);
+
+    padding: 4rem 5% 5rem;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(0, 229, 168, 0.06),
+            transparent 35%
+        ),
+        #0b1120;
+}
+
+
+.legal-card {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 3.5rem;
+
+    background: rgba(15, 23, 42, 0.88);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.28);
+}
+
+
+/* ==========================================================================
+   LEGAL HEADING
+   ========================================================================== */
+
+.legal-heading {
+    margin-bottom: 2.5rem;
+}
+
+
+.legal-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 0.75rem;
+
+    color: var(--accent, #00e5a8);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+}
+
+
+.legal-heading h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    line-height: 1.15;
+}
+
+
+.legal-heading p {
+    margin: 0.8rem 0 0;
+
+    color: #9ca3af;
+
+    font-size: 0.95rem;
+}
+
+
+/* ==========================================================================
+   WARNING BOX
+   ========================================================================== */
+
+.legal-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    margin-bottom: 2.5rem;
+    padding: 1.25rem 1.4rem;
+
+    background: rgba(245, 158, 11, 0.08);
+
+    border: 1px solid rgba(245, 158, 11, 0.22);
+
+    border-radius: 12px;
+}
+
+
+.legal-warning-icon {
+    flex: 0 0 auto;
+
+    color: #f59e0b;
+
+    font-size: 1.35rem;
+}
+
+
+.legal-warning strong {
+    display: block;
+
+    margin-bottom: 0.25rem;
+
+    color: #ffffff;
+
+    font-size: 0.9rem;
+}
+
+
+.legal-warning p {
+    margin: 0;
+
+    color: #cbd5e1;
+
+    font-size: 0.82rem;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   LEGAL SECTIONS
+   ========================================================================== */
+
+.legal-section {
+    padding: 1.8rem 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.legal-section:first-of-type {
+    padding-top: 0;
+}
+
+
+.legal-section h2 {
+    margin: 0 0 0.9rem;
+
+    color: #ffffff;
+
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+
+.legal-section p {
+    margin: 0 0 0.85rem;
+
+    color: #aeb8c8;
+
+    font-size: 0.88rem;
+
+    line-height: 1.8;
+}
+
+
+.legal-section p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   ACKNOWLEDGEMENT
+   ========================================================================== */
+
+.legal-acknowledgement {
+    margin-top: 2.5rem;
+    padding: 2rem;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 229, 168, 0.07),
+            rgba(0, 229, 168, 0.025)
+        );
+
+    border: 1px solid rgba(0, 229, 168, 0.18);
+
+    border-radius: 14px;
+}
+
+
+.legal-acknowledgement-icon {
+    margin-bottom: 0.75rem;
+
+    color: var(--accent, #00e5a8);
+
+    font-size: 1.5rem;
+}
+
+
+.legal-acknowledgement h2 {
+    margin: 0 0 0.6rem;
+
+    color: #ffffff;
+
+    font-size: 1.15rem;
+}
+
+
+.legal-acknowledgement p {
+    margin: 0 0 1.5rem;
+
+    color: #aeb8c8;
+
+    font-size: 0.85rem;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   CHECKBOX
+   ========================================================================== */
+
+.legal-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+
+    cursor: pointer;
+
+    color: #dbe4ef;
+
+    font-size: 0.85rem;
+
+    line-height: 1.5;
+}
+
+
+.legal-checkbox input {
+    width: 18px;
+    height: 18px;
+
+    flex: 0 0 auto;
+
+    margin-top: 2px;
+
+    accent-color: var(--accent, #00e5a8);
+
+    cursor: pointer;
+}
+
+
+.legal-checkbox-text {
+    user-select: none;
+}
+
+
+/* ==========================================================================
+   CONTINUE BUTTON
+   ========================================================================== */
+
+.legal-continue-button {
+    width: 100%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+
+    margin-top: 1.25rem;
+    padding: 0.9rem 1.2rem;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: var(--accent, #00e5a8);
+    color: #07111c;
+
+    font-size: 0.86rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.legal-continue-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+
+.legal-continue-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+
+/* ==========================================================================
+   LAST UPDATED
+   ========================================================================== */
+
+.legal-last-updated {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    margin-top: 2rem;
+
+    color: #64748b;
+
+    font-size: 0.72rem;
+}
+
+
+.legal-last-updated a {
+    color: #94a3b8;
+
+    text-decoration: none;
+}
+
+
+.legal-last-updated a:hover {
+    color: var(--accent, #00e5a8);
+}
+
+
+/* ==========================================================================
+   FIRST-VISIT DISCLAIMER MODAL
+   ========================================================================== */
+
+.strativo-disclaimer-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(5, 10, 20, 0.94);
+
+    backdrop-filter: blur(12px);
+}
+
+
+.strativo-disclaimer-modal {
+    width: 100%;
+    max-width: 620px;
+
+    max-height: calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    padding: 2.5rem;
+
+    background: #0f172a;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55);
+
+    text-align: center;
+}
+
+
+.strativo-disclaimer-icon {
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 1.25rem;
+
+    border-radius: 50%;
+
+    background: rgba(245, 158, 11, 0.1);
+
+    color: #f59e0b;
+
+    font-size: 1.35rem;
+}
+
+
+.strativo-disclaimer-modal h2 {
+    margin: 0 0 1rem;
+
+    color: #ffffff;
+
+    font-size: 1.45rem;
+}
+
+
+.strativo-disclaimer-modal p {
+    margin: 0 0 1rem;
+
+    color: #aeb8c8;
+
+    font-size: 0.87rem;
+
+    line-height: 1.75;
+}
+
+
+.strativo-disclaimer-links {
+    margin-top: 1.25rem !important;
+}
+
+
+.strativo-disclaimer-modal a {
+    color: var(--accent, #00e5a8);
+
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+
+.strativo-disclaimer-accept {
+    width: 100%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    margin-top: 1rem;
+    padding: 0.95rem 1.25rem;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: var(--accent, #00e5a8);
+    color: #07111c;
+
+    font-size: 0.88rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+.strativo-disclaimer-accept:hover {
+    transform: translateY(-1px);
+
+    filter: brightness(1.05);
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 700px) {
+
+    .legal-page-header {
+        min-height: 64px;
+
+        padding: 0 1.25rem;
+    }
+
+
+    .legal-brand-main,
+    .legal-brand-accent {
+        font-size: 1.05rem;
+    }
+
+
+    .legal-home-link {
+        font-size: 0.72rem;
+    }
+
+
+    .legal-page {
+        padding: 2rem 1rem 3rem;
+    }
+
+
+    .legal-card {
+        padding: 1.5rem;
+
+        border-radius: 14px;
+    }
+
+
+    .legal-heading {
+        margin-bottom: 2rem;
+    }
+
+
+    .legal-heading h1 {
+        font-size: 1.8rem;
+    }
+
+
+    .legal-section {
+        padding: 1.4rem 0;
+    }
+
+
+    .legal-section p {
+        font-size: 0.82rem;
+
+        line-height: 1.7;
+    }
+
+
+    .legal-acknowledgement {
+        padding: 1.4rem;
+    }
+
+
+    .legal-last-updated {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+    .strativo-disclaimer-modal {
+        padding: 1.5rem;
+
+        border-radius: 14px;
+    }
+
+
+    .strativo-disclaimer-modal h2 {
+        font-size: 1.2rem;
+    }
+
+
+    .strativo-disclaimer-modal p {
+        font-size: 0.8rem;
+    }
+
+}
+
+/* ============================================================
+   LEGAL PAGE BRAND LOGO
+   ============================================================ */
+
+.legal-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.legal-brand-logo {
+    width: 34px;
+    height: 34px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   FIRST-VISIT DISCLAIMER MODAL
+   ============================================================ */
+
+#strativo-first-visit-disclosure {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 20px !important;
+
+    background: rgba(5, 10, 20, 0.96) !important;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    z-index: 999999 !important;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+}
+
+
+/* ============================================================
+   DISCLAIMER MODAL
+   ============================================================ */
+
+#strativo-first-visit-disclosure
+.strativo-disclaimer-modal {
+
+    width: 100% !important;
+
+    max-width: 620px !important;
+
+    max-height: 90vh !important;
+
+    overflow-y: auto !important;
+
+    -webkit-overflow-scrolling: touch;
+
+    padding: 40px !important;
+
+    background: #0b1628 !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+
+    border-radius: 20px !important;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55) !important;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   ICON
+   ============================================================ */
+
+#strativo-first-visit-disclosure
+.strativo-disclaimer-icon {
+
+    width: 64px;
+    height: 64px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(0, 220, 180, 0.10);
+
+    color: #00e0b0;
+
+    font-size: 28px;
+}
+
+
+/* ============================================================
+   TITLE
+   ============================================================ */
+
+#strativo-first-visit-disclosure
+.strativo-disclaimer-modal h2 {
+
+    margin: 0 0 18px;
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    line-height: 1.2;
+}
+
+
+/* ============================================================
+   TEXT
+   ============================================================ */
+
+#strativo-first-visit-disclosure
+.strativo-disclaimer-modal p {
+
+    margin: 0 0 18px;
+
+    color: #b7c4d8;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   LEGAL LINKS
+   ============================================================ */
+
+#strativo-first-visit-disclosure
+.strativo-disclaimer-modal a {
+
+    color: #00e0b0;
+
+    text-decoration: underline;
+
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   BUTTON
+   ============================================================ */
+
+#strativo-first-visit-disclosure
+.strativo-disclaimer-accept {
+
+    width: 100%;
+
+    min-height: 52px;
+
+    margin-top: 12px;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #00dcb0;
+
+    color: #06111f;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+#strativo-first-visit-disclosure
+.strativo-disclaimer-accept:hover {
+
+    transform: translateY(-1px);
+
+    opacity: 0.92;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    #strativo-first-visit-disclosure {
+
+        padding: 15px !important;
+
+    }
+
+    #strativo-first-visit-disclosure
+    .strativo-disclaimer-modal {
+
+        padding: 28px 22px !important;
+
+        border-radius: 16px !important;
+
+    }
+
+    #strativo-first-visit-disclosure
+    .strativo-disclaimer-modal h2 {
+
+        font-size: 23px;
+
+    }
+
+}

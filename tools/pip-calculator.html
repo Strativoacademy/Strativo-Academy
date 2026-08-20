@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Pip & Position Lab — learn and understand pips, lots, quantity, position size, pip value, risk and trading calculations."
+    >
+
+    <title>Pip & Position Lab | Strativo Academy</title>
+
+
+    <!-- =====================================================
+         GLOBAL CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/ui.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/header.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/footer.css"
+    >
+
+
+    <!-- =====================================================
+         PIP & POSITION LAB CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/pip-position-lab.css"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <div data-component="header"></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="pip-lab-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="pip-lab-hero">
+
+            <div class="pip-lab-hero-content">
+
+                <span class="pip-lab-eyebrow">
+
+                    <span class="pip-lab-eyebrow-dot"></span>
+
+                    Interactive Trading Lab
+
+                </span>
+
+
+                <h1 class="pip-lab-title">
+
+                    Pip &amp;
+
+                    <span>Position Lab</span>
+
+                </h1>
+
+
+                <p class="pip-lab-subtitle">
+
+                    Learn how price movement, pips, lots, quantity,
+                    position size, pip value, risk and profit or loss
+                    work together inside a real Forex trade.
+
+                </p>
+
+
+                <div class="pip-lab-hero-pills">
+
+                    <span class="pip-lab-hero-pill">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        Pips
+
+                    </span>
+
+
+                    <span class="pip-lab-hero-pill">
+
+                        <i class="fa-solid fa-layer-group"></i>
+
+                        Lots
+
+                    </span>
+
+
+                    <span class="pip-lab-hero-pill">
+
+                        <i class="fa-solid fa-cubes"></i>
+
+                        Quantity
+
+                    </span>
+
+
+                    <span class="pip-lab-hero-pill">
+
+                        <i class="fa-solid fa-scale-balanced"></i>
+
+                        Position Size
+
+                    </span>
+
+
+                    <span class="pip-lab-hero-pill">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        Risk
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING NAVIGATION
+        ================================================== -->
+
+        <section class="pip-lab-section">
+
+            <div class="pip-lab-section-heading">
+
+                <h2>
+                    Your Learning Path
+                </h2>
+
+                <p>
+                    Start simple. Understand the concept before using the calculation.
+                </p>
+
+            </div>
+
+
+            <div class="pip-lab-learning-nav">
+
+
+                <button
+                    type="button"
+                    class="pip-lab-learning-tab active"
+                    data-scroll-target="calculator"
+                >
+
+                    <span class="pip-lab-learning-tab-icon">
+                        <i class="fa-solid fa-calculator"></i>
+                    </span>
+
+                    <span class="pip-lab-learning-tab-title">
+                        Calculate
+                    </span>
+
+                    <span class="pip-lab-learning-tab-text">
+                        Start with the numbers
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="pip-lab-learning-tab"
+                    data-scroll-target="pip-simulator"
+                >
+
+                    <span class="pip-lab-learning-tab-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </span>
+
+                    <span class="pip-lab-learning-tab-title">
+                        Learn
+                    </span>
+
+                    <span class="pip-lab-learning-tab-text">
+                        Understand the terms
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="pip-lab-learning-tab"
+                    data-scroll-target="relationship"
+                >
+
+                    <span class="pip-lab-learning-tab-icon">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </span>
+
+                    <span class="pip-lab-learning-tab-title">
+                        Understand
+                    </span>
+
+                    <span class="pip-lab-learning-tab-text">
+                        See how everything connects
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="pip-lab-learning-tab"
+                    data-scroll-target="experiment"
+                >
+
+                    <span class="pip-lab-learning-tab-icon">
+                        <i class="fa-solid fa-flask"></i>
+                    </span>
+
+                    <span class="pip-lab-learning-tab-title">
+                        Experiment
+                    </span>
+
+                    <span class="pip-lab-learning-tab-text">
+                        Change the numbers
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="pip-lab-learning-tab"
+                    data-scroll-target="practice"
+                >
+
+                    <span class="pip-lab-learning-tab-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </span>
+
+                    <span class="pip-lab-learning-tab-title">
+                        Practice
+                    </span>
+
+                    <span class="pip-lab-learning-tab-text">
+                        Test your understanding
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CALCULATOR
+        ================================================== -->
+
+        <section
+            class="pip-lab-section"
+            id="calculator"
+        >
+
+            <div class="pip-lab-section-heading">
+
+                <h2>
+                    Start With a Trade
+                </h2>
+
+                <p>
+                    Change the numbers and watch the result update instantly.
+                </p>
+
+            </div>
+
+
+            <div class="pip-lab-calculator-grid">
+
+
+                <!-- =========================================
+                     TRADE SETUP
+                ========================================== -->
+
+                <div class="pip-lab-panel">
+
+
+                    <div class="pip-lab-panel-header">
+
+                        <div>
+
+                            <h3>
+                                Trade Setup
+                            </h3>
+
+                            <p>
+                                Enter a simple example trade.
+                            </p>
+
+                        </div>
+
+
+                        <i
+                            class="fa-solid fa-sliders"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="pip-lab-panel-body">
+
+
+                        <div class="pip-lab-form-grid">
+
+
+                            <!-- PAIR -->
+
+                            <div class="pip-lab-field pip-lab-field-full">
+
+                                <label for="pair">
+                                    Currency Pair
+                                </label>
+
+                                <select id="pair">
+
+                                    <option value="EURUSD">
+                                        EUR/USD
+                                    </option>
+
+                                    <option value="GBPUSD">
+                                        GBP/USD
+                                    </option>
+
+                                    <option value="USDJPY">
+                                        USD/JPY
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- ENTRY -->
+
+                            <div class="pip-lab-field">
+
+                                <label for="entryPrice">
+                                    Entry Price
+                                </label>
+
+                                <input
+                                    id="entryPrice"
+                                    type="number"
+                                    step="0.00001"
+                                    value="1.10000"
+                                >
+
+                                <span>
+                                    Where the trade starts
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- EXIT -->
+
+                            <div class="pip-lab-field">
+
+                                <label for="exitPrice">
+                                    Exit / Current Price
+                                </label>
+
+                                <input
+                                    id="exitPrice"
+                                    type="number"
+                                    step="0.00001"
+                                    value="1.10500"
+                                >
+
+                                <span>
+                                    Where the trade ends
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- LOT -->
+
+                            <div class="pip-lab-field">
+
+                                <label for="lots">
+                                    Position Size — Lots
+                                </label>
+
+                                <input
+                                    id="lots"
+                                    type="number"
+                                    step="0.01"
+                                    min="0.01"
+                                    value="0.10"
+                                >
+
+                                <span>
+                                    Example: 0.10 lot
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- CONTRACT SIZE -->
+
+                            <div class="pip-lab-field">
+
+                                <label for="contractSize">
+                                    Contract Size
+                                </label>
+
+                                <input
+                                    id="contractSize"
+                                    type="number"
+                                    step="1"
+                                    min="1"
+                                    value="100000"
+                                >
+
+                                <span>
+                                    Common Forex standard
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- ACCOUNT CURRENCY -->
+
+                            <div class="pip-lab-field">
+
+                                <label for="accountCurrency">
+                                    Account Currency
+                                </label>
+
+                                <select id="accountCurrency">
+
+                                    <option value="USD">
+                                        USD
+                                    </option>
+
+                                </select>
+
+                                <span>
+                                    Simplified example
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- STOP LOSS -->
+
+                            <div class="pip-lab-field">
+
+                                <label for="stopLoss">
+                                    Stop Loss — Pips
+                                </label>
+
+                                <input
+                                    id="stopLoss"
+                                    type="number"
+                                    step="1"
+                                    min="0"
+                                    value="30"
+                                >
+
+                                <span>
+                                    Planned distance
+                                </span>
+
+                            </div>
+
+
+
+                            <!-- TAKE PROFIT -->
+
+                            <div class="pip-lab-field">
+
+                                <label for="takeProfit">
+                                    Take Profit — Pips
+                                </label>
+
+                                <input
+                                    id="takeProfit"
+                                    type="number"
+                                    step="1"
+                                    min="0"
+                                    value="60"
+                                >
+
+                                <span>
+                                    Planned target
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="pip-lab-explanation">
+
+                            <div class="pip-lab-explanation-title">
+
+                                <i class="fa-solid fa-lightbulb"></i>
+
+                                Why are we using all these numbers?
+
+                            </div>
+
+
+                            <p>
+
+                                Pips tell us how far price moved.
+                                Position size tells us how large the trade is.
+                                Pip value connects those ideas to money.
+                                Risk and stop-loss distance help us understand
+                                how large the position should be for a planned risk.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     RESULTS
+                ========================================== -->
+
+                <div class="pip-lab-panel">
+
+
+                    <div class="pip-lab-panel-header">
+
+                        <div>
+
+                            <h3>
+                                Live Results
+                            </h3>
+
+                            <p>
+                                Your calculation updates automatically.
+                            </p>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                    </div>
+
+
+                    <div class="pip-lab-panel-body">
+
+
+                        <div class="pip-lab-result-stack">
+
+
+                            <div class="pip-lab-result-card pip-lab-result-primary">
+
+                                <div class="pip-lab-result-label">
+                                    Price Movement
+                                </div>
+
+                                <div
+                                    class="pip-lab-result-value"
+                                    id="pipResult"
+                                >
+                                    +50.0 pips
+                                </div>
+
+                                <div class="pip-lab-result-description">
+                                    How far price moved between entry and exit.
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="pip-lab-result-card">
+
+                                <div class="pip-lab-result-label">
+                                    Quantity / Units
+                                </div>
+
+                                <div
+                                    class="pip-lab-result-value"
+                                    id="quantityResult"
+                                >
+                                    10,000
+                                </div>
+
+                                <div class="pip-lab-result-description">
+                                    Approximate base-currency units represented
+                                    by the position.
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="pip-lab-result-card">
+
+                                <div class="pip-lab-result-label">
+                                    Pip Value
+                                </div>
+
+                                <div
+                                    class="pip-lab-result-value"
+                                    id="pipValueResult"
+                                >
+                                    $1.00 / pip
+                                </div>
+
+                                <div class="pip-lab-result-description">
+                                    Approximate value of one pip for this
+                                    simplified example.
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="pip-lab-result-card">
+
+                                <div class="pip-lab-result-label">
+                                    Estimated P/L
+                                </div>
+
+                                <div
+                                    class="pip-lab-result-value pip-lab-profit"
+                                    id="plResult"
+                                >
+                                    +$50.00
+                                </div>
+
+                                <div class="pip-lab-result-description">
+                                    Simplified result before trading costs.
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="pip-lab-result-card">
+
+                                <div class="pip-lab-result-label">
+                                    Planned Stop Risk
+                                </div>
+
+                                <div
+                                    class="pip-lab-result-value pip-lab-loss"
+                                    id="riskResult"
+                                >
+                                    -$30.00
+                                </div>
+
+                                <div class="pip-lab-result-description">
+                                    Approximate monetary effect if the
+                                    specified stop is reached.
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="pip-lab-result-card">
+
+                                <div class="pip-lab-result-label">
+                                    Risk : Reward
+                                </div>
+
+                                <div
+                                    class="pip-lab-result-value"
+                                    id="rrResult"
+                                >
+                                    1 : 2
+                                </div>
+
+                                <div class="pip-lab-result-description">
+                                    Planned reward compared with planned risk.
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PIP MOVEMENT SIMULATOR
+        ================================================== -->
+
+        <section
+            class="pip-lab-section"
+            id="pip-simulator"
+        >
+
+            <div class="pip-lab-section-heading">
+
+                <h2>
+                    Pip Movement Simulator
+                </h2>
+
+                <p>
+                    Move the price and watch exactly how many pips it travels.
+                </p>
+
+            </div>
+
+
+            <div class="pip-lab-panel">
+
+
+                <div class="pip-lab-panel-header">
+
+                    <div>
+
+                        <h3>
+                            See Pips in Motion
+                        </h3>
+
+                        <p>
+                            Change price movement without thinking about money.
+                        </p>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-arrows-left-right"></i>
+
+                </div>
+
+
+                <div class="pip-lab-panel-body">
+
+
+                    <!-- PAIR -->
+
+                    <div class="pip-lab-simulator-top">
+
+
+                        <div class="pip-lab-simulator-pair">
+
+                            <label for="pipPair">
+                                Currency Pair
+                            </label>
+
+                            <select id="pipPair">
+
+                                <option value="EURUSD">
+                                    EUR/USD
+                                </option>
+
+                                <option value="GBPUSD">
+                                    GBP/USD
+                                </option>
+
+                                <option value="USDJPY">
+                                    USD/JPY
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="pip-lab-pip-definition">
+
+                            <span>
+                                Pip Size
+                            </span>
+
+                            <strong id="pipSizeDisplay">
+                                0.0001
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PRICE VISUAL -->
+
+                    <div class="pip-lab-price-movement-box">
+
+
+                        <div class="pip-lab-price-point">
+
+                            <span>
+                                Starting Price
+                            </span>
+
+                            <strong id="simStartPrice">
+                                1.10000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="pip-lab-movement-line">
+
+                            <div class="pip-lab-movement-track">
+
+                                <div
+                                    class="pip-lab-movement-progress"
+                                    id="movementProgress"
+                                ></div>
+
+                                <div
+                                    class="pip-lab-movement-marker"
+                                    id="movementMarker"
+                                ></div>
+
+                            </div>
+
+
+                            <div class="pip-lab-movement-arrow">
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="pip-lab-price-point">
+
+                            <span>
+                                Current Price
+                            </span>
+
+                            <strong id="simCurrentPrice">
+                                1.10500
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SLIDER -->
+
+                    <div class="pip-lab-slider-area">
+
+
+                        <div class="pip-lab-slider-heading">
+
+                            <label for="pipMovementSlider">
+                                Price Movement
+                            </label>
+
+                            <strong id="sliderPipValue">
+                                +50 pips
+                            </strong>
+
+                        </div>
+
+
+                        <input
+                            type="range"
+                            id="pipMovementSlider"
+                            min="-100"
+                            max="100"
+                            step="1"
+                            value="50"
+                        >
+
+
+                        <div class="pip-lab-slider-scale">
+
+                            <span>
+                                -100 pips
+                            </span>
+
+                            <span>
+                                0
+                            </span>
+
+                            <span>
+                                +100 pips
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- RESULT -->
+
+                    <div class="pip-lab-pip-big-result">
+
+                        <span>
+                            Price Movement
+                        </span>
+
+                        <strong id="bigPipResult">
+                            +50.0 pips
+                        </strong>
+
+                        <p id="pipDirectionText">
+                            Price moved upward by 50 pips.
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        class="pip-lab-learning-message"
+                        id="pipLearningMessage"
+                    >
+
+                        <div class="pip-lab-learning-icon">
+
+                            <i class="fa-solid fa-lightbulb"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Remember:
+                            </strong>
+
+                            <p>
+
+                                A pip describes
+                                <b>how far price moved</b>.
+                                It does not tell you how much money
+                                you made or lost.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- RESET -->
+
+                    <button
+                        type="button"
+                        class="pip-lab-reset-button"
+                        id="resetPipSimulator"
+                    >
+
+                        <i class="fa-solid fa-rotate-left"></i>
+
+                        Reset Simulator
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONCEPTS
+        ================================================== -->
+
+        <section
+            class="pip-lab-section"
+            id="concepts"
+        >
+
+            <div class="pip-lab-section-heading">
+
+                <h2>
+                    Understand the Building Blocks
+                </h2>
+
+                <p>
+                    You don't need to memorize these terms. Understand what each one does.
+                </p>
+
+            </div>
+
+
+            <div class="pip-lab-concept-grid">
+
+
+                <article class="pip-lab-concept-card">
+
+                    <div class="pip-lab-concept-icon">
+                        <i class="fa-solid fa-ruler-horizontal"></i>
+                    </div>
+
+                    <h3>
+                        Pip
+                    </h3>
+
+                    <p>
+                        A standardized unit used to describe a small movement
+                        in a Forex price.
+                    </p>
+
+                    <button
+                        type="button"
+                        data-explain="pip"
+                    >
+                        Why do I need this?
+                    </button>
+
+                </article>
+
+
+
+                <article class="pip-lab-concept-card">
+
+                    <div class="pip-lab-concept-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+
+                    <h3>
+                        Lot
+                    </h3>
+
+                    <p>
+                        A common way Forex platforms express the size of a
+                        position.
+                    </p>
+
+                    <button
+                        type="button"
+                        data-explain="lot"
+                    >
+                        Why do I need this?
+                    </button>
+
+                </article>
+
+
+
+                <article class="pip-lab-concept-card">
+
+                    <div class="pip-lab-concept-icon">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+
+                    <h3>
+                        Quantity
+                    </h3>
+
+                    <p>
+                        The number of units represented by your position under
+                        the instrument's contract specification.
+                    </p>
+
+                    <button
+                        type="button"
+                        data-explain="quantity"
+                    >
+                        Why do I need this?
+                    </button>
+
+                </article>
+
+
+
+                <article class="pip-lab-concept-card">
+
+                    <div class="pip-lab-concept-icon">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+
+                    <h3>
+                        Position Size
+                    </h3>
+
+                    <p>
+                        How large your market position is and how strongly
+                        price movement affects the position.
+                    </p>
+
+                    <button
+                        type="button"
+                        data-explain="position"
+                    >
+                        Why do I need this?
+                    </button>
+
+                </article>
+
+
+
+                <article class="pip-lab-concept-card">
+
+                    <div class="pip-lab-concept-icon">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+
+                    <h3>
+                        Pip Value
+                    </h3>
+
+                    <p>
+                        The monetary value of one pip for a particular position,
+                        account currency and instrument.
+                    </p>
+
+                    <button
+                        type="button"
+                        data-explain="pipvalue"
+                    >
+                        Why do I need this?
+                    </button>
+
+                </article>
+
+
+
+                <article class="pip-lab-concept-card">
+
+                    <div class="pip-lab-concept-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <h3>
+                        Risk
+                    </h3>
+
+                    <p>
+                        The amount of money a trader plans to put at risk if
+                        a planned stop level is reached.
+                    </p>
+
+                    <button
+                        type="button"
+                        data-explain="risk"
+                    >
+                        Why do I need this?
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RELATIONSHIP
+        ================================================== -->
+
+        <section
+            class="pip-lab-section"
+            id="relationship"
+        >
+
+            <div class="pip-lab-section-heading">
+
+                <h2>
+                    How Everything Connects
+                </h2>
+
+                <p>
+                    This is the big picture behind the entire lab.
+                </p>
+
+            </div>
+
+
+            <div class="pip-lab-panel">
+
+                <div class="pip-lab-panel-body">
+
+                    <div class="pip-lab-relationship">
+
+
+                        <div class="pip-lab-relationship-item">
+
+                            <strong>
+                                Price
+                            </strong>
+
+                            <span>
+                                1.1000 → 1.1050
+                            </span>
+
+                        </div>
+
+
+                        <div class="pip-lab-relationship-arrow">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+
+                        <div class="pip-lab-relationship-item">
+
+                            <strong>
+                                Pips
+                            </strong>
+
+                            <span>
+                                50 pips
+                            </span>
+
+                        </div>
+
+
+                        <div class="pip-lab-relationship-arrow">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+
+                        <div class="pip-lab-relationship-item">
+
+                            <strong>
+                                Position Size
+                            </strong>
+
+                            <span>
+                                0.10 lot
+                            </span>
+
+                        </div>
+
+
+                        <div class="pip-lab-relationship-arrow">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+
+                        <div class="pip-lab-relationship-item">
+
+                            <strong>
+                                Pip Value
+                            </strong>
+
+                            <span>
+                                ≈ $1 / pip
+                            </span>
+
+                        </div>
+
+
+                        <div class="pip-lab-relationship-arrow">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+
+                        <div class="pip-lab-relationship-item">
+
+                            <strong>
+                                P/L
+                            </strong>
+
+                            <span>
+                                ≈ $50
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXPERIMENT
+        ================================================== -->
+
+        <section
+            class="pip-lab-section"
+            id="experiment"
+        >
+
+            <div class="pip-lab-section-heading">
+
+                <h2>
+                    Experiment With the Trade
+                </h2>
+
+                <p>
+                    Change one number at a time and observe what changes.
+                </p>
+
+            </div>
+
+
+            <div class="pip-lab-panel">
+
+                <div class="pip-lab-panel-body">
+
+                    <div class="pip-lab-concept-grid">
+
+
+                        <article class="pip-lab-concept-card">
+
+                            <div class="pip-lab-concept-icon">
+                                <i class="fa-solid fa-arrows-left-right"></i>
+                            </div>
+
+                            <h3>
+                                Change the Pips
+                            </h3>
+
+                            <p>
+                                Keep the position size the same.
+                                Increase the price movement and watch
+                                the estimated P/L change.
+                            </p>
+
+                        </article>
+
+
+
+                        <article class="pip-lab-concept-card">
+
+                            <div class="pip-lab-concept-icon">
+                                <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                            </div>
+
+                            <h3>
+                                Change the Lot
+                            </h3>
+
+                            <p>
+                                Keep the same price movement.
+                                Increase the lot and see how the monetary
+                                effect changes.
+                            </p>
+
+                        </article>
+
+
+
+                        <article class="pip-lab-concept-card">
+
+                            <div class="pip-lab-concept-icon">
+                                <i class="fa-solid fa-stopwatch"></i>
+                            </div>
+
+                            <h3>
+                                Change the Stop
+                            </h3>
+
+                            <p>
+                                A wider stop changes the position-sizing
+                                decision when planned monetary risk stays constant.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRACTICE
+        ================================================== -->
+
+        <section
+            class="pip-lab-section"
+            id="practice"
+        >
+
+            <div class="pip-lab-section-heading">
+
+                <h2>
+                    Practice Your Understanding
+                </h2>
+
+                <p>
+                    Build understanding before trying more advanced calculations.
+                </p>
+
+            </div>
+
+
+            <div class="pip-lab-panel">
+
+                <div class="pip-lab-panel-body">
+
+                    <div class="pip-lab-concept-grid">
+
+
+                        <article class="pip-lab-concept-card">
+
+                            <div class="pip-lab-concept-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+
+                            <h3>
+                                Read a Trade
+                            </h3>
+
+                            <p>
+                                Learn what entry, exit, lots, quantity,
+                                stop loss and take profit mean when they
+                                appear together.
+                            </p>
+
+                        </article>
+
+
+
+                        <article class="pip-lab-concept-card">
+
+                            <div class="pip-lab-concept-icon">
+                                <i class="fa-solid fa-question"></i>
+                            </div>
+
+                            <h3>
+                                Explain It
+                            </h3>
+
+                            <p>
+                                Understand why two traders can experience
+                                the same number of pips but different
+                                monetary results.
+                            </p>
+
+                        </article>
+
+
+
+                        <article class="pip-lab-concept-card">
+
+                            <div class="pip-lab-concept-icon">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+
+                            <h3>
+                                Master It
+                            </h3>
+
+                            <p>
+                                Later, the lab will test your understanding
+                                through calculation, prediction and explanation.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EDUCATIONAL NOTE
+        ================================================== -->
+
+        <div class="pip-lab-note">
+
+            <strong>
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                Educational calculation:
+
+            </strong>
+
+
+            This first version uses simplified examples to teach the
+            relationships between pips, position size, pip value and
+            profit/loss. Actual trading results can vary with the
+            instrument, account currency, contract specifications,
+            spreads, commissions, swaps, slippage and broker execution.
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         GLOBAL FOOTER
+    ====================================================== -->
+
+    <div data-component="footer"></div>
+
+
+
+    <!-- =====================================================
+         GLOBAL ROUTING
+    ====================================================== -->
+
+    <script src="../js/routes.js"></script>
+
+
+
+    <!-- =====================================================
+         GLOBAL COMPONENT LOADER
+    ====================================================== -->
+
+    <script src="../js/component-loader.js"></script>
+
+
+
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <script src="../js/header.js"></script>
+
+
+
+    <!-- =====================================================
+         PIP & POSITION LAB JS
+    ====================================================== -->
+
+    <script src="../js/pip-position-lab.js"></script>
+
+
+</body>
+
+</html>

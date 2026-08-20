@@ -1,0 +1,114 @@
+<!--
+============================================================
+STRATIVO ACADEMY
+Shared Loading Component
+============================================================
+
+Purpose:
+- Reusable loading indicator
+- Can be used for pages, lessons, quizzes, dashboard data,
+  and future asynchronous operations
+- Accessible to screen readers
+- Supports both inline and full-screen loading states
+
+JavaScript can control this component through:
+- data-loading-state
+- data-loading-type
+- data-loading-message
+============================================================
+-->
+
+<div
+  class="loading-component"
+  id="global-loading"
+  data-component="loading"
+  data-loading-state="hidden"
+  data-loading-type="fullscreen"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+  aria-hidden="true"
+  hidden
+>
+
+  <!-- ==================================================
+       LOADING CONTAINER
+       ================================================== -->
+
+  <div class="loading-container">
+
+    <!-- Loading Spinner -->
+    <div
+      class="loading-spinner"
+      id="loading-spinner"
+      aria-hidden="true"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Loading Message -->
+    <p
+      class="loading-message"
+      id="loading-message"
+    >
+      Loading Strativo Academy...
+    </p>
+        <!-- ==================================================
+         LOADING DETAILS
+         ================================================== -->
+
+    <div
+      class="loading-details"
+      id="loading-details"
+      aria-hidden="true"
+    >
+
+      <span
+        class="loading-progress-track"
+        aria-hidden="true"
+      >
+        <span
+          class="loading-progress-bar"
+          id="loading-progress-bar"
+        ></span>
+      </span>
+
+      <span
+        class="loading-progress-text"
+        id="loading-progress-text"
+      >
+        Please wait...
+      </span>
+
+    </div>
+
+
+    <!-- ==================================================
+         ACCESSIBLE STATUS TEXT
+         ================================================== -->
+
+    <span
+      class="loading-sr-status"
+      id="loading-sr-status"
+    >
+      Loading in progress.
+    </span>
+        <!-- ==================================================
+         LOADING ACTION
+         ================================================== -->
+
+    <button
+      type="button"
+      class="loading-cancel-button"
+      id="loading-cancel-button"
+      data-action="cancel-loading"
+      hidden
+    >
+      Cancel
+    </button>
+
+  </div>
+
+</div>

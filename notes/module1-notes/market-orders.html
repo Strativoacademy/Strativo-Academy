@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Strativo Academy Module 1 - complete educational notes on Forex Market Orders.">
+<title>Market Orders | Strativo Academy</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+<style>
+:root{
+ --bg:#020617;--panel:#07111f;--line:#26364b;--text:#dbe5f2;--muted:#9aaac0;
+ --head:#f8fafc;--blue:#60a5fa;--green:#34d399;--yellow:#facc15;
+ --red:#f87171;--cyan:#22d3ee;--orange:#fb923c
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:radial-gradient(circle at 8% 0%,#2563eb22,transparent 30%),#020617;
+ color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.82
+}
+.page{width:min(1200px,calc(100% - 32px));margin:auto;padding:35px 0 80px}
+.hero,.toc,.section{
+ border:1px solid var(--line);border-radius:25px;
+ background:linear-gradient(180deg,#07111ff8,#040b15f8);box-shadow:0 25px 80px #0005
+}
+.hero{padding:62px 48px;min-height:440px}
+.kicker{color:var(--blue);font-size:13px;font-weight:850;letter-spacing:.16em;text-transform:uppercase}
+.hero h1{font-size:clamp(46px,7vw,82px);line-height:1.03;letter-spacing:-.045em;margin:18px 0;color:var(--head)}
+.hero p{max-width:960px;font-size:20px;color:#b9c7d9}
+.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.tag{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#0f172acc;font-size:14px}
+.toc{margin-top:24px;padding:28px 32px}
+.toc h2{margin:0 0 15px;color:var(--head)}
+.tocgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 22px}
+.toc a{color:#9fc5f7;text-decoration:none;font-size:14px}
+.section{margin-top:24px;padding:38px 42px}
+.section h2{display:flex;align-items:center;gap:14px;color:var(--head);font-size:31px;line-height:1.25;margin:0 0 20px}
+.num{display:inline-grid;place-items:center;flex:0 0 auto;width:44px;height:44px;border-radius:13px;
+ background:#2563eb2e;border:1px solid #60a5fa47;color:#bfdbfe;font-size:14px}
+.section h3{color:#eaf2fb;font-size:21px;margin:27px 0 9px}
+.section p{color:#b9c7d9;font-size:17px;margin:14px 0}
+.example{margin:24px 0;padding:21px 23px;border-left:4px solid var(--blue);border-radius:0 15px 15px 0;background:#1e293b75}
+.good{border-left-color:var(--green);background:#064e3b22}
+.warn{border-left-color:var(--yellow);background:#713f1222}
+.danger{border-left-color:var(--red);background:#7f1d1d22}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px;margin:22px 0}
+.card{padding:21px;border:1px solid var(--line);border-radius:18px;background:#0f172a85}
+.card h3{margin:0 0 7px}.card p{margin:0;font-size:15px}
+.table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
+.table th,.table td{padding:13px 15px;border:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{background:#1e293fc2;color:#dbeafe}.table td{color:#c8d5e4}
+.diagram{margin:30px 0;padding:15px;border:1px solid var(--line);border-radius:22px;background:#030914;overflow:hidden}
+.diagram-title{font-weight:800;color:#e5edf7;padding:5px 8px 14px}.diagram svg{display:block;width:100%;height:auto}
+.note{padding:17px 19px;border:1px dashed #94a3b940;border-radius:15px;color:#aebdd0;background:#0f172a4d;margin:18px 0}
+.list{padding-left:22px;color:#b9c7d9}.list li{margin:9px 0}
+.check{list-style:none;padding:0}.check li{padding:12px 15px;margin:8px 0;border:1px solid var(--line);border-radius:12px;background:#0f172a7a}
+.check li:before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}
+.formula{padding:18px;text-align:center;border:1px solid #60a5fa45;border-radius:15px;background:#17255455;color:#dbeafe;font-size:21px;font-weight:800;margin:20px 0}
+.nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:28px}
+.nav a{display:block;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:#08111f;color:#e2e8f0;text-decoration:none}
+.nav small{display:block;color:#8ea0b8;margin-bottom:5px}.nav .center{text-align:center}.nav .right{text-align:right}
+@media(max-width:850px){
+ .page{width:calc(100% - 20px)}.hero{padding:42px 24px}.section{padding:27px 21px}
+ .grid,.tocgrid,.nav{grid-template-columns:1fr}.nav .center,.nav .right{text-align:left}
+}
+</style>
+</head>
+<body>
+<div data-component="header"></div>
+<main class="page">
+
+<section class="hero">
+<div class="kicker">STRATIVO ACADEMY • MODULE 1 • FOUNDATION</div>
+<h1>Market Orders</h1>
+<p>
+A complete educational lesson explaining market buys and sells, execution priority,
+bid/ask interaction, price uncertainty, slippage, limit and stop orders, liquidity,
+spread, position sizing, news conditions, order confirmation and practical execution
+discipline.
+</p>
+<div class="tags">
+<span class="tag">⚡ Market Buy</span><span class="tag">🔻 Market Sell</span>
+<span class="tag">↔️ Bid / Ask</span><span class="tag">📉 Slippage</span>
+<span class="tag">🎯 Limit Orders</span><span class="tag">🛑 Stop Orders</span>
+</div>
+</section>
+
+<section class="toc">
+<h2>What This Note Covers</h2>
+<div class="tocgrid">
+<a href="#section-01">1. What Is a Market Order?</a><a href="#section-02">2. Why Traders Use Market Orders</a><a href="#section-03">3. Market Buy</a><a href="#section-04">4. Market Sell</a><a href="#section-05">5. Market Order and Bid/Ask</a><a href="#section-06">6. Execution Priority vs Price Certainty</a><a href="#section-07">7. Why the Fill Price Can Change</a><a href="#section-08">8. Slippage</a><a href="#section-09">9. Market Order vs Limit Order</a><a href="#section-10">10. Limit Buy</a><a href="#section-11">11. Limit Sell</a><a href="#section-12">12. Stop Orders</a><a href="#section-13">13. Stop-Loss Orders</a><a href="#section-14">14. Position Size and Market Orders</a><a href="#section-15">15. Liquidity and Execution</a><a href="#section-16">16. Spread and Market Orders</a><a href="#section-17">17. Commission and Market Orders</a><a href="#section-18">18. Slippage and Fast Markets</a><a href="#section-19">19. News and Market Orders</a><a href="#section-20">20. Market Sessions</a><a href="#section-21">21. Market Order Is Not a Trading Signal</a><a href="#section-22">22. When Immediate Execution Makes Sense</a><a href="#section-23">23. When Waiting May Be Better</a><a href="#section-24">24. Market Orders in Scalping</a><a href="#section-25">25. Market Orders in Intraday Trading</a><a href="#section-26">26. Market Orders in Swing Trading</a><a href="#section-27">27. Market Order and Stop-Loss Relationship</a><a href="#section-28">28. Market Order and Take-Profit</a><a href="#section-29">29. Partial Fills and Execution</a><a href="#section-30">30. Order Size and Liquidity</a><a href="#section-31">31. Market Order During Volatility</a><a href="#section-32">32. Market Order During Low Liquidity</a><a href="#section-33">33. Market Order and Gap Risk</a><a href="#section-34">34. Order Confirmation</a><a href="#section-35">35. Never Double-Click in Panic</a><a href="#section-36">36. Market Order and Emotional Trading</a><a href="#section-37">37. Market Order Testing</a><a href="#section-38">38. Practical Decision Process</a><a href="#section-39">39. Common Beginner Mistakes</a><a href="#section-40">40. Final Market-Order Checklist</a><a href="#section-41">41. Final Summary</a>
+<a href="#reference">43. Quick Reference</a>
+<a href="#worked">44. Worked Examples</a>
+<a href="#decision">45. When to Consider a Market Order</a>
+<a href="#mistakes">46. Common Mistakes</a>
+<a href="#checklist">47. Complete Checklist</a>
+<a href="#summary">48. Final Summary</a>
+<a href="#disclaimer">49. Educational Disclaimer</a>
+</div>
+</section>
+
+
+<section class="section" id="section-01">
+<h2><span class="num">01</span>What Is a Market Order?</h2>
+<p>A market order is an instruction to execute a trade as soon as possible at the best available price under the current market conditions. The important idea is that a market order prioritizes execution rather than guaranteeing one exact price.</p>
+<div class="example"><strong>Simple Example:</strong><br>If a trader decides that entering immediately is more important than controlling the exact entry price, a market order may be considered. The actual fill still depends on the available quote and execution conditions.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">01 • Market order means execution priority</div><svg viewBox="0 0 1000 330" role="img" aria-label="01 • Market order means execution priority"><rect x="55" y="65" width="890" height="210" rx="18" fill="#07111f" stroke="#334155"/><text x="500" y="112" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial,sans-serif">MARKET ORDER</text><text x="500" y="157" text-anchor="middle" fill="#a7f3d0" font-size="21" font-weight="600" font-family="Arial,sans-serif">Execute as soon as possible at the best available price</text><text x="500" y="200" text-anchor="middle" fill="#b9c7d9" font-size="18" font-weight="600" font-family="Arial,sans-serif">under the current market conditions</text><line x1="250" y1="245" x2="750" y2="245" stroke="#34d399" stroke-width="7"/><text x="500" y="285" text-anchor="middle" fill="#86efac" font-size="16" font-weight="800" font-family="Arial,sans-serif">Priority = execution, not an exact price guarantee</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-02">
+<h2><span class="num">02</span>Why Traders Use Market Orders</h2>
+<p>The main reason for using a market order is urgency. A trader may want to enter or exit immediately rather than wait for a specific price.</p>
+<div class="example"><strong>Simple Example:</strong><br>For example, if a planned setup is already active and the strategy requires immediate participation, the trader may choose a market order instead of waiting for a limit price.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">02 • Market buy and market sell</div><svg viewBox="0 0 1000 330" role="img" aria-label="02 • Market buy and market sell"><rect x="50" y="55" width="405" height="220" rx="18" fill="#14532d" stroke="#34d399"/><text x="252" y="98" text-anchor="middle" fill="#a7f3d0" font-size="25" font-weight="800" font-family="Arial,sans-serif">MARKET BUY</text><text x="252" y="145" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial,sans-serif">ASK</text><text x="252" y="190" text-anchor="middle" fill="#e5edf7" font-size="17" font-weight="600" font-family="Arial,sans-serif">basic quote model</text><rect x="545" y="55" width="405" height="220" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="747" y="98" text-anchor="middle" fill="#fecaca" font-size="25" font-weight="800" font-family="Arial,sans-serif">MARKET SELL</text><text x="747" y="145" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial,sans-serif">BID</text><text x="747" y="190" text-anchor="middle" fill="#e5edf7" font-size="17" font-weight="600" font-family="Arial,sans-serif">basic quote model</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-03">
+<h2><span class="num">03</span>Market Buy</h2>
+<p>In the basic bid/ask model, an immediate buy interacts with the ask side of the quote. The trader accepts the available offer to buy now.</p>
+<div class="example"><strong>Simple Example:</strong><br>If the illustrative bid is 1.10500 and ask is 1.10502, the market buy is associated with the 1.10502 ask.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">03 • Bid, ask and execution</div><svg viewBox="0 0 1000 330" role="img" aria-label="03 • Bid, ask and execution"><text x="150" y="60" text-anchor="middle" fill="#60a5fa" font-size="22" font-weight="800" font-family="Arial,sans-serif">BID</text><text x="500" y="60" text-anchor="middle" fill="#facc15" font-size="22" font-weight="800" font-family="Arial,sans-serif">SPREAD</text><text x="850" y="60" text-anchor="middle" fill="#34d399" font-size="22" font-weight="800" font-family="Arial,sans-serif">ASK</text><rect x="65" y="90" width="220" height="125" rx="18" fill="#172554" stroke="#60a5fa"/><text x="175" y="140" text-anchor="middle" fill="#e5edf7" font-size="30" font-weight="600" font-family="Arial,sans-serif">1.10500</text><text x="175" y="185" text-anchor="middle" fill="#bfdbfe" font-size="16" font-weight="600" font-family="Arial,sans-serif">sell side</text><rect x="390" y="90" width="220" height="125" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="500" y="140" text-anchor="middle" fill="#fef08a" font-size="30" font-weight="600" font-family="Arial,sans-serif">0.00002</text><text x="500" y="185" text-anchor="middle" fill="#fde68a" font-size="16" font-weight="600" font-family="Arial,sans-serif">illustrative</text><rect x="715" y="90" width="220" height="125" rx="18" fill="#14532d" stroke="#34d399"/><text x="825" y="140" text-anchor="middle" fill="#e5edf7" font-size="30" font-weight="600" font-family="Arial,sans-serif">1.10502</text><text x="825" y="185" text-anchor="middle" fill="#a7f3d0" font-size="16" font-weight="600" font-family="Arial,sans-serif">buy side</text><text x="500" y="280" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">A market order interacts with the relevant available quote side.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-04">
+<h2><span class="num">04</span>Market Sell</h2>
+<p>In the basic bid/ask model, an immediate sell interacts with the bid side of the quote. The trader accepts the available bid to sell now.</p>
+<div class="example"><strong>Simple Example:</strong><br>If the illustrative bid is 1.10500 and ask is 1.10502, the market sell is associated with the 1.10500 bid.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">04 • Market buy execution path</div><svg viewBox="0 0 1000 330" role="img" aria-label="04 • Market buy execution path"><rect x="45" y="70" width="180" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="135" y="112" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">CLICK</text><text x="135" y="155" text-anchor="middle" fill="#e5edf7" font-size="27" font-weight="600" font-family="Arial,sans-serif">BUY</text><line x1="235" y1="165" x2="315" y2="165" stroke="#64748b" stroke-width="5"/><rect x="325" y="70" width="250" height="185" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="450" y="112" text-anchor="middle" fill="#a5f3fc" font-size="23" font-weight="800" font-family="Arial,sans-serif">ASK</text><text x="450" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">available</text><text x="450" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">quote</text><line x1="585" y1="165" x2="665" y2="165" stroke="#64748b" stroke-width="5"/><rect x="675" y="70" width="280" height="185" rx="18" fill="#14532d" stroke="#34d399"/><text x="815" y="112" text-anchor="middle" fill="#a7f3d0" font-size="23" font-weight="800" font-family="Arial,sans-serif">FILL</text><text x="815" y="155" text-anchor="middle" fill="#e5edf7" font-size="20" font-weight="600" font-family="Arial,sans-serif">LONG</text><text x="815" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">position</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-05">
+<h2><span class="num">05</span>Market Order and Bid/Ask</h2>
+<p>The market order cannot be understood correctly without the bid and ask concept. A chart may show a single visual price, while the executable quote has two sides.</p>
+<div class="example"><strong>Simple Example:</strong><br>This is why the previous Bid &amp; Ask &amp; Spreads lesson comes directly before this note.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">05 • Market sell execution path</div><svg viewBox="0 0 1000 330" role="img" aria-label="05 • Market sell execution path"><rect x="45" y="70" width="180" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="135" y="112" text-anchor="middle" fill="#fecaca" font-size="22" font-weight="800" font-family="Arial,sans-serif">CLICK</text><text x="135" y="155" text-anchor="middle" fill="#e5edf7" font-size="27" font-weight="600" font-family="Arial,sans-serif">SELL</text><line x1="235" y1="165" x2="315" y2="165" stroke="#64748b" stroke-width="5"/><rect x="325" y="70" width="250" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="450" y="112" text-anchor="middle" fill="#bfdbfe" font-size="23" font-weight="800" font-family="Arial,sans-serif">BID</text><text x="450" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">available</text><text x="450" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">quote</text><line x1="585" y1="165" x2="665" y2="165" stroke="#64748b" stroke-width="5"/><rect x="675" y="70" width="280" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="815" y="112" text-anchor="middle" fill="#fecaca" font-size="23" font-weight="800" font-family="Arial,sans-serif">FILL</text><text x="815" y="155" text-anchor="middle" fill="#e5edf7" font-size="20" font-weight="600" font-family="Arial,sans-serif">SHORT</text><text x="815" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">position</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-06">
+<h2><span class="num">06</span>Execution Priority vs Price Certainty</h2>
+<p>A market order gives priority to execution. A limit order gives priority to price. Neither concept is automatically better; the appropriate choice depends on the trading plan.</p>
+<div class="example"><strong>Simple Example:</strong><br>A trader who absolutely needs a specific price may prefer a limit order. A trader who needs immediate execution may prefer a market order.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">06 • Market order does not lock an exact price</div><svg viewBox="0 0 1000 330" role="img" aria-label="06 • Market order does not lock an exact price"><line x1="100" y1="245" x2="900" y2="245" stroke="#64748b" stroke-width="4"/><line x1="220" y1="200" x2="220" y2="260" stroke="#60a5fa" stroke-width="6"/><line x1="500" y1="160" x2="500" y2="260" stroke="#facc15" stroke-width="6"/><line x1="800" y1="105" x2="800" y2="260" stroke="#f87171" stroke-width="6"/><text x="220" y="155" text-anchor="middle" fill="#bfdbfe" font-size="20" font-weight="800" font-family="Arial,sans-serif">QUOTE</text><text x="500" y="115" text-anchor="middle" fill="#fef08a" font-size="20" font-weight="800" font-family="Arial,sans-serif">MARKET MOVES</text><text x="800" y="65" text-anchor="middle" fill="#fecaca" font-size="20" font-weight="800" font-family="Arial,sans-serif">FILL</text><text x="500" y="295" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">The available execution price can change before the order is filled.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-07">
+<h2><span class="num">07</span>Why the Fill Price Can Change</h2>
+<p>Prices can change between the moment an order is submitted and the moment it is filled. This can happen especially quickly during volatile conditions.</p>
+<div class="example"><strong>Simple Example:</strong><br>Therefore, seeing a price on the chart and expecting the market order to fill at exactly that number is not always realistic.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">07 • Fast market and slippage</div><svg viewBox="0 0 1000 330" role="img" aria-label="07 • Fast market and slippage"><rect x="50" y="70" width="260" height="180" rx="18" fill="#172554" stroke="#60a5fa"/><text x="180" y="110" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial,sans-serif">EXPECTED</text><text x="180" y="155" text-anchor="middle" fill="#e5edf7" font-size="31" font-weight="600" font-family="Arial,sans-serif">1.10502</text><line x1="315" y1="160" x2="390" y2="160" stroke="#facc15" stroke-width="7"/><text x="352" y="135" text-anchor="middle" fill="#fef08a" font-size="14" font-weight="800" font-family="Arial,sans-serif">MOVE</text><rect x="420" y="70" width="260" height="180" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="550" y="110" text-anchor="middle" fill="#fef08a" font-size="21" font-weight="800" font-family="Arial,sans-serif">ACTUAL</text><text x="550" y="155" text-anchor="middle" fill="#e5edf7" font-size="31" font-weight="600" font-family="Arial,sans-serif">1.10504</text><line x1="685" y1="160" x2="760" y2="160" stroke="#f87171" stroke-width="7"/><rect x="790" y="70" width="160" height="180" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="870" y="125" text-anchor="middle" fill="#fecaca" font-size="18" font-weight="800" font-family="Arial,sans-serif">SLIP</text><text x="870" y="170" text-anchor="middle" fill="#fecaca" font-size="15" font-weight="600" font-family="Arial,sans-serif">PAGE</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-08">
+<h2><span class="num">08</span>Slippage</h2>
+<p>Slippage is the difference between the expected or requested execution price and the actual execution price. It is separate from the bid/ask spread.</p>
+<div class="example"><strong>Simple Example:</strong><br>Slippage can be favorable or unfavorable depending on the circumstances, although traders should plan for execution uncertainty rather than assume favorable slippage.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">08 • Market order vs limit order</div><svg viewBox="0 0 1000 330" role="img" aria-label="08 • Market order vs limit order"><rect x="45" y="65" width="410" height="205" rx="18" fill="#14532d" stroke="#34d399"/><text x="250" y="108" text-anchor="middle" fill="#a7f3d0" font-size="24" font-weight="800" font-family="Arial,sans-serif">MARKET ORDER</text><text x="250" y="150" text-anchor="middle" fill="#e5edf7" font-size="19" font-weight="600" font-family="Arial,sans-serif">execution priority</text><text x="250" y="190" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">price can vary</text><rect x="545" y="65" width="410" height="205" rx="18" fill="#172554" stroke="#60a5fa"/><text x="750" y="108" text-anchor="middle" fill="#bfdbfe" font-size="24" font-weight="800" font-family="Arial,sans-serif">LIMIT ORDER</text><text x="750" y="150" text-anchor="middle" fill="#e5edf7" font-size="19" font-weight="600" font-family="Arial,sans-serif">price priority</text><text x="750" y="190" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">execution can wait</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-09">
+<h2><span class="num">09</span>Market Order vs Limit Order</h2>
+<p>A market order prioritizes immediate execution, while a limit order generally specifies a price condition. A limit order may not execute if the market never reaches the required price.</p>
+<div class="example"><strong>Simple Example:</strong><br>This trade-off is one of the most important order-type concepts for beginners.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">09 • Limit buy waits for a chosen price condition</div><svg viewBox="0 0 1000 330" role="img" aria-label="09 • Limit buy waits for a chosen price condition"><line x1="100" y1="245" x2="900" y2="245" stroke="#64748b" stroke-width="4"/><line x1="350" y1="120" x2="350" y2="260" stroke="#60a5fa" stroke-width="6"/><line x1="660" y1="120" x2="660" y2="260" stroke="#34d399" stroke-width="6"/><text x="350" y="95" text-anchor="middle" fill="#bfdbfe" font-size="19" font-weight="800" font-family="Arial,sans-serif">CURRENT</text><text x="660" y="95" text-anchor="middle" fill="#a7f3d0" font-size="19" font-weight="800" font-family="Arial,sans-serif">LIMIT</text><line x1="350" y1="145" x2="660" y2="145" stroke="#facc15" stroke-width="6"/><text x="505" y="128" text-anchor="middle" fill="#fef08a" font-size="17" font-weight="800" font-family="Arial,sans-serif">WAITING AREA</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">A limit buy generally seeks the chosen price or better, subject to execution rules.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-10">
+<h2><span class="num">10</span>Limit Buy</h2>
+<p>A limit buy generally seeks to buy at a specified price or better, subject to platform and market rules. The order can remain waiting until the condition is reached or until it is cancelled or expires.</p>
+<div class="example"><strong>Simple Example:</strong><br>A trader should understand that a limit order does not guarantee execution simply because the trader wants the trade.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">10 • Limit sell waits for a chosen price condition</div><svg viewBox="0 0 1000 330" role="img" aria-label="10 • Limit sell waits for a chosen price condition"><line x1="100" y1="245" x2="900" y2="245" stroke="#64748b" stroke-width="4"/><line x1="350" y1="145" x2="350" y2="260" stroke="#34d399" stroke-width="6"/><line x1="660" y1="145" x2="660" y2="260" stroke="#60a5fa" stroke-width="6"/><text x="350" y="115" text-anchor="middle" fill="#a7f3d0" font-size="19" font-weight="800" font-family="Arial,sans-serif">LIMIT</text><text x="660" y="115" text-anchor="middle" fill="#bfdbfe" font-size="19" font-weight="800" font-family="Arial,sans-serif">CURRENT</text><line x1="350" y1="165" x2="660" y2="165" stroke="#facc15" stroke-width="6"/><text x="505" y="148" text-anchor="middle" fill="#fef08a" font-size="17" font-weight="800" font-family="Arial,sans-serif">WAITING AREA</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">A limit sell generally seeks the chosen price or better, subject to execution rules.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-11">
+<h2><span class="num">11</span>Limit Sell</h2>
+<p>A limit sell generally seeks to sell at a specified price or better, subject to the order rules.</p>
+<div class="example"><strong>Simple Example:</strong><br>The key idea is price control. The trader accepts the possibility of not being filled in exchange for controlling the price condition.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">11 • Stop order trigger concept</div><svg viewBox="0 0 1000 330" role="img" aria-label="11 • Stop order trigger concept"><line x1="90" y1="245" x2="910" y2="245" stroke="#64748b" stroke-width="4"/><line x1="250" y1="115" x2="250" y2="260" stroke="#60a5fa" stroke-width="6"/><line x1="500" y1="85" x2="500" y2="260" stroke="#facc15" stroke-width="6"/><line x1="750" y1="120" x2="750" y2="260" stroke="#f87171" stroke-width="6"/><text x="250" y="75" text-anchor="middle" fill="#bfdbfe" font-size="19" font-weight="800" font-family="Arial,sans-serif">PRICE</text><text x="500" y="50" text-anchor="middle" fill="#fef08a" font-size="19" font-weight="800" font-family="Arial,sans-serif">TRIGGER</text><text x="750" y="85" text-anchor="middle" fill="#fecaca" font-size="19" font-weight="800" font-family="Arial,sans-serif">EXECUTION</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="14" font-weight="600" font-family="Arial,sans-serif">The exact behavior after a trigger depends on the order type and platform.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-12">
+<h2><span class="num">12</span>Stop Orders</h2>
+<p>A stop order uses a trigger condition. Once triggered, its resulting execution behavior depends on the specific stop order type and platform.</p>
+<div class="example"><strong>Simple Example:</strong><br>Students should not assume that every stop order is identical. The exact specifications should always be checked on the broker/platform.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">12 • Stop-loss concept</div><svg viewBox="0 0 1000 330" role="img" aria-label="12 • Stop-loss concept"><rect x="55" y="70" width="245" height="185" rx="18" fill="#14532d" stroke="#34d399"/><text x="177" y="110" text-anchor="middle" fill="#a7f3d0" font-size="21" font-weight="800" font-family="Arial,sans-serif">POSITION</text><text x="177" y="155" text-anchor="middle" fill="#e5edf7" font-size="25" font-weight="600" font-family="Arial,sans-serif">OPEN</text><line x1="305" y1="165" x2="395" y2="165" stroke="#64748b" stroke-width="5"/><rect x="405" y="70" width="245" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="527" y="110" text-anchor="middle" fill="#fecaca" font-size="21" font-weight="800" font-family="Arial,sans-serif">STOP</text><text x="527" y="155" text-anchor="middle" fill="#e5edf7" font-size="22" font-weight="600" font-family="Arial,sans-serif">TRIGGER</text><line x1="650" y1="165" x2="740" y2="165" stroke="#64748b" stroke-width="5"/><rect x="750" y="70" width="195" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="847" y="110" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial,sans-serif">EXIT</text><text x="847" y="155" text-anchor="middle" fill="#e5edf7" font-size="20" font-weight="600" font-family="Arial,sans-serif">RISK</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-13">
+<h2><span class="num">13</span>Stop-Loss Orders</h2>
+<p>A stop-loss is a risk-management instruction intended to close a position when a specified condition is reached. It is designed to limit risk, but actual execution can differ from the planned stop level in fast or gapping conditions.</p>
+<div class="example"><strong>Simple Example:</strong><br>A stop-loss should therefore be treated as a risk-control mechanism, not as a mathematical guarantee of the exact exit price.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">13 • Stop level is not always the exact fill price</div><svg viewBox="0 0 1000 330" role="img" aria-label="13 • Stop level is not always the exact fill price"><rect x="55" y="70" width="260" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="185" y="110" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial,sans-serif">STOP LEVEL</text><text x="185" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">planned</text><text x="185" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">trigger</text><line x1="330" y1="165" x2="445" y2="165" stroke="#facc15" stroke-width="7"/><text x="387" y="142" text-anchor="middle" fill="#fef08a" font-size="14" font-weight="800" font-family="Arial,sans-serif">FAST MOVE</text><rect x="480" y="70" width="260" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="610" y="110" text-anchor="middle" fill="#fecaca" font-size="21" font-weight="800" font-family="Arial,sans-serif">ACTUAL FILL</text><text x="610" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">may differ</text><text x="610" y="195" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">during fast markets</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">A stop manages a condition; it does not eliminate market risk.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-14">
+<h2><span class="num">14</span>Position Size and Market Orders</h2>
+<p>The larger the position, the greater the monetary effect of a given price movement and transaction cost. Order size should therefore be chosen through risk management rather than emotion.</p>
+<div class="example"><strong>Simple Example:</strong><br>A market order does not make position sizing less important. It makes execution immediate, while risk still depends on size and stop distance.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">14 • Order size affects monetary impact</div><svg viewBox="0 0 1000 330" role="img" aria-label="14 • Order size affects monetary impact"><rect x="55" y="70" width="250" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="180" y="110" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">SMALL</text><text x="180" y="155" text-anchor="middle" fill="#e5edf7" font-size="19" font-weight="600" font-family="Arial,sans-serif">POSITION</text><text x="180" y="195" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">smaller impact</text><rect x="375" y="70" width="250" height="185" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="500" y="110" text-anchor="middle" fill="#a5f3fc" font-size="22" font-weight="800" font-family="Arial,sans-serif">LARGE</text><text x="500" y="155" text-anchor="middle" fill="#e5edf7" font-size="19" font-weight="600" font-family="Arial,sans-serif">POSITION</text><text x="500" y="195" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">larger impact</text><rect x="695" y="70" width="250" height="185" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="820" y="110" text-anchor="middle" fill="#fef08a" font-size="21" font-weight="800" font-family="Arial,sans-serif">SAME MOVE</text><text x="820" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">different</text><text x="820" y="195" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">money result</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-15">
+<h2><span class="num">15</span>Liquidity and Execution</h2>
+<p>Liquidity broadly describes the availability of trading interest. Market orders depend on the prices available when the order reaches the market.</p>
+<div class="example"><strong>Simple Example:</strong><br>In highly active conditions execution may be easier, but no liquidity assumption should be treated as guaranteed.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">15 • Liquidity and order size</div><svg viewBox="0 0 1000 330" role="img" aria-label="15 • Liquidity and order size"><rect x="50" y="75" width="250" height="175" rx="18" fill="#172554" stroke="#60a5fa"/><text x="175" y="112" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">ORDER</text><text x="175" y="155" text-anchor="middle" fill="#e5edf7" font-size="28" font-weight="600" font-family="Arial,sans-serif">SIZE</text><line x1="310" y1="160" x2="380" y2="160" stroke="#64748b" stroke-width="5"/><rect x="395" y="75" width="230" height="175" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="510" y="112" text-anchor="middle" fill="#a5f3fc" font-size="20" font-weight="800" font-family="Arial,sans-serif">AVAILABLE</text><text x="510" y="155" text-anchor="middle" fill="#e5edf7" font-size="22" font-weight="600" font-family="Arial,sans-serif">LIQUIDITY</text><line x1="630" y1="160" x2="700" y2="160" stroke="#64748b" stroke-width="5"/><rect x="715" y="75" width="235" height="175" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="832" y="112" text-anchor="middle" fill="#fef08a" font-size="19" font-weight="800" font-family="Arial,sans-serif">EXECUTION</text><text x="832" y="155" text-anchor="middle" fill="#e5edf7" font-size="22" font-weight="600" font-family="Arial,sans-serif">QUALITY</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-16">
+<h2><span class="num">16</span>Spread and Market Orders</h2>
+<p>A market order interacts with the bid/ask quote, so spread is part of the practical execution environment.</p>
+<div class="example"><strong>Simple Example:</strong><br>A trader should know the current spread before entering, especially when the expected movement is small.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">16 • Spread is part of the execution environment</div><svg viewBox="0 0 1000 330" role="img" aria-label="16 • Spread is part of the execution environment"><text x="165" y="70" text-anchor="middle" fill="#60a5fa" font-size="21" font-weight="800" font-family="Arial,sans-serif">BID</text><text x="835" y="70" text-anchor="middle" fill="#34d399" font-size="21" font-weight="800" font-family="Arial,sans-serif">ASK</text><line x1="165" y1="145" x2="835" y2="145" stroke="#facc15" stroke-width="9"/><text x="500" y="125" text-anchor="middle" fill="#fef08a" font-size="20" font-weight="800" font-family="Arial,sans-serif">SPREAD</text><text x="500" y="205" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">A market order crosses the relevant side of the quote.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-17">
+<h2><span class="num">17</span>Commission and Market Orders</h2>
+<p>Commission is separate from spread. An account may offer a narrow spread while charging a commission.</p>
+<div class="example"><strong>Simple Example:</strong><br>A realistic cost assessment therefore considers spread and any separate fees together.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">17 • Commission is different from spread</div><svg viewBox="0 0 1000 330" role="img" aria-label="17 • Commission is different from spread"><rect x="55" y="70" width="400" height="180" rx="18" fill="#172554" stroke="#60a5fa"/><text x="255" y="112" text-anchor="middle" fill="#bfdbfe" font-size="24" font-weight="800" font-family="Arial,sans-serif">SPREAD</text><text x="255" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">bid ↔ ask</text><rect x="545" y="70" width="400" height="180" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="745" y="112" text-anchor="middle" fill="#a5f3fc" font-size="24" font-weight="800" font-family="Arial,sans-serif">COMMISSION</text><text x="745" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">separate fee</text><text x="500" y="290" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">An account can have a low spread and still charge commission.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-18">
+<h2><span class="num">18</span>Slippage and Fast Markets</h2>
+<p>Fast markets can produce rapid quote changes. A market order submitted during such conditions may fill at a different price from the one observed immediately before submission.</p>
+<div class="example"><strong>Simple Example:</strong><br>This is one reason to be cautious with very large positions or extremely tight risk limits during abnormal conditions.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">18 • Slippage is an execution difference</div><svg viewBox="0 0 1000 330" role="img" aria-label="18 • Slippage is an execution difference"><rect x="55" y="70" width="400" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="255" y="112" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">EXPECTED</text><text x="255" y="160" text-anchor="middle" fill="#e5edf7" font-size="29" font-weight="600" font-family="Arial,sans-serif">PRICE A</text><rect x="545" y="70" width="400" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="745" y="112" text-anchor="middle" fill="#fecaca" font-size="22" font-weight="800" font-family="Arial,sans-serif">ACTUAL</text><text x="745" y="160" text-anchor="middle" fill="#e5edf7" font-size="29" font-weight="600" font-family="Arial,sans-serif">PRICE B</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">Spread and slippage can both affect results, but they are not the same thing.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-19">
+<h2><span class="num">19</span>News and Market Orders</h2>
+<p>Important economic releases and unexpected events can change price, spread, liquidity and execution conditions quickly.</p>
+<div class="example"><strong>Simple Example:</strong><br>The order type itself does not protect a trader from news volatility.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">19 • News can change execution conditions</div><svg viewBox="0 0 1000 330" role="img" aria-label="19 • News can change execution conditions"><line x1="80" y1="245" x2="920" y2="245" stroke="#64748b" stroke-width="4"/><polyline points="90,225 200,220 300,225 390,175 470,205 550,90 650,185 760,120 900,205" fill="none" stroke="#f87171" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text x="500" y="60" text-anchor="middle" fill="#fecaca" font-size="24" font-weight="800" font-family="Arial,sans-serif">NEWS / EVENT</text><text x="500" y="290" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">Quotes, spreads and execution can change quickly around important events.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-20">
+<h2><span class="num">20</span>Market Sessions</h2>
+<p>Execution conditions can vary throughout the trading day as market participation changes.</p>
+<div class="example"><strong>Simple Example:</strong><br>The trader should understand the normal conditions of the session in which the strategy is being used.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">20 • Market sessions can have different activity</div><svg viewBox="0 0 1000 330" role="img" aria-label="20 • Market sessions can have different activity"><rect x="55" y="75" width="260" height="175" rx="18" fill="#172554" stroke="#60a5fa"/><text x="185" y="115" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">QUIETER</text><text x="185" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">LESS FLOW</text><rect x="370" y="75" width="260" height="175" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="500" y="115" text-anchor="middle" fill="#a5f3fc" font-size="22" font-weight="800" font-family="Arial,sans-serif">ACTIVE</text><text x="500" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">MORE FLOW</text><rect x="685" y="75" width="260" height="175" rx="18" fill="#14532d" stroke="#34d399"/><text x="815" y="115" text-anchor="middle" fill="#a7f3d0" font-size="22" font-weight="800" font-family="Arial,sans-serif">OVERLAP</text><text x="815" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">CAN BE ACTIVE</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-21">
+<h2><span class="num">21</span>Market Order Is Not a Trading Signal</h2>
+<p>A market order is an execution tool. It does not tell the trader whether the market should go up or down.</p>
+<div class="example"><strong>Simple Example:</strong><br>Direction must come from the trading analysis and plan, not from the order type.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">21 • Market order checklist before clicking</div><svg viewBox="0 0 1000 330" role="img" aria-label="21 • Market order checklist before clicking"><rect x="35" y="75" width="145" height="105" rx="18" fill="#172554" stroke="#60a5fa"/><text x="107" y="112" text-anchor="middle" fill="#bfdbfe" font-size="18" font-weight="800" font-family="Arial,sans-serif">SETUP</text><text x="107" y="145" text-anchor="middle" fill="#e5edf7" font-size="14" font-weight="600" font-family="Arial,sans-serif">valid?</text><line x1="190" y1="127" x2="220" y2="127" stroke="#64748b" stroke-width="4"/><rect x="225" y="75" width="145" height="105" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="297" y="112" text-anchor="middle" fill="#a5f3fc" font-size="18" font-weight="800" font-family="Arial,sans-serif">QUOTE</text><text x="297" y="145" text-anchor="middle" fill="#e5edf7" font-size="14" font-weight="600" font-family="Arial,sans-serif">bid/ask</text><line x1="380" y1="127" x2="410" y2="127" stroke="#64748b" stroke-width="4"/><rect x="415" y="75" width="145" height="105" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="487" y="112" text-anchor="middle" fill="#fef08a" font-size="18" font-weight="800" font-family="Arial,sans-serif">SPREAD</text><text x="487" y="145" text-anchor="middle" fill="#e5edf7" font-size="14" font-weight="600" font-family="Arial,sans-serif">cost</text><line x1="570" y1="127" x2="600" y2="127" stroke="#64748b" stroke-width="4"/><rect x="605" y="75" width="145" height="105" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="677" y="112" text-anchor="middle" fill="#fecaca" font-size="18" font-weight="800" font-family="Arial,sans-serif">RISK</text><text x="677" y="145" text-anchor="middle" fill="#e5edf7" font-size="14" font-weight="600" font-family="Arial,sans-serif">size/stop</text><line x1="760" y1="127" x2="790" y2="127" stroke="#64748b" stroke-width="4"/><rect x="795" y="75" width="170" height="105" rx="18" fill="#14532d" stroke="#34d399"/><text x="880" y="112" text-anchor="middle" fill="#a7f3d0" font-size="18" font-weight="800" font-family="Arial,sans-serif">EXECUTE</text><text x="880" y="145" text-anchor="middle" fill="#e5edf7" font-size="14" font-weight="600" font-family="Arial,sans-serif">or wait</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-22">
+<h2><span class="num">22</span>When Immediate Execution Makes Sense</h2>
+<p>Immediate execution may be appropriate when the trading plan requires participation now and the current spread, liquidity and risk conditions are acceptable.</p>
+<div class="example"><strong>Simple Example:</strong><br>The decision should be based on the complete setup, not fear of missing out.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">22 • Market order is a tool, not a signal</div><svg viewBox="0 0 1000 330" role="img" aria-label="22 • Market order is a tool, not a signal"><rect x="55" y="70" width="890" height="185" rx="18" fill="#07111f" stroke="#334155"/><text x="500" y="112" text-anchor="middle" fill="#f8fafc" font-size="25" font-weight="800" font-family="Arial,sans-serif">MARKET ORDER ≠ BUY SIGNAL</text><text x="220" y="165" text-anchor="middle" fill="#bfdbfe" font-size="19" font-weight="800" font-family="Arial,sans-serif">ANALYSIS</text><text x="500" y="165" text-anchor="middle" fill="#fef08a" font-size="19" font-weight="800" font-family="Arial,sans-serif">RISK</text><text x="780" y="165" text-anchor="middle" fill="#a7f3d0" font-size="19" font-weight="800" font-family="Arial,sans-serif">EXECUTION</text><text x="500" y="215" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">The order type controls execution behavior; it does not predict direction.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-23">
+<h2><span class="num">23</span>When Waiting May Be Better</h2>
+<p>If the spread is unusually wide, volatility is abnormal, the setup is unclear or the risk is unacceptable, waiting may be the better decision.</p>
+<div class="example"><strong>Simple Example:</strong><br>Not placing an order is also a trading decision.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">01 • Market order means execution priority</div><svg viewBox="0 0 1000 330" role="img" aria-label="01 • Market order means execution priority"><rect x="55" y="65" width="890" height="210" rx="18" fill="#07111f" stroke="#334155"/><text x="500" y="112" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial,sans-serif">MARKET ORDER</text><text x="500" y="157" text-anchor="middle" fill="#a7f3d0" font-size="21" font-weight="600" font-family="Arial,sans-serif">Execute as soon as possible at the best available price</text><text x="500" y="200" text-anchor="middle" fill="#b9c7d9" font-size="18" font-weight="600" font-family="Arial,sans-serif">under the current market conditions</text><line x1="250" y1="245" x2="750" y2="245" stroke="#34d399" stroke-width="7"/><text x="500" y="285" text-anchor="middle" fill="#86efac" font-size="16" font-weight="800" font-family="Arial,sans-serif">Priority = execution, not an exact price guarantee</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-24">
+<h2><span class="num">24</span>Market Orders in Scalping</h2>
+<p>Scalpers often care strongly about execution because their targets can be relatively small. Spread and slippage can therefore represent a meaningful part of the expected movement.</p>
+<div class="example"><strong>Simple Example:</strong><br>A scalping strategy should be tested with realistic execution costs.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">02 • Market buy and market sell</div><svg viewBox="0 0 1000 330" role="img" aria-label="02 • Market buy and market sell"><rect x="50" y="55" width="405" height="220" rx="18" fill="#14532d" stroke="#34d399"/><text x="252" y="98" text-anchor="middle" fill="#a7f3d0" font-size="25" font-weight="800" font-family="Arial,sans-serif">MARKET BUY</text><text x="252" y="145" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial,sans-serif">ASK</text><text x="252" y="190" text-anchor="middle" fill="#e5edf7" font-size="17" font-weight="600" font-family="Arial,sans-serif">basic quote model</text><rect x="545" y="55" width="405" height="220" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="747" y="98" text-anchor="middle" fill="#fecaca" font-size="25" font-weight="800" font-family="Arial,sans-serif">MARKET SELL</text><text x="747" y="145" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial,sans-serif">BID</text><text x="747" y="190" text-anchor="middle" fill="#e5edf7" font-size="17" font-weight="600" font-family="Arial,sans-serif">basic quote model</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-25">
+<h2><span class="num">25</span>Market Orders in Intraday Trading</h2>
+<p>Intraday traders may use market orders when a setup requires immediate entry or exit.</p>
+<div class="example"><strong>Simple Example:</strong><br>The same risk principles apply: position size, stop distance, spread, volatility and execution quality matter.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">03 • Bid, ask and execution</div><svg viewBox="0 0 1000 330" role="img" aria-label="03 • Bid, ask and execution"><text x="150" y="60" text-anchor="middle" fill="#60a5fa" font-size="22" font-weight="800" font-family="Arial,sans-serif">BID</text><text x="500" y="60" text-anchor="middle" fill="#facc15" font-size="22" font-weight="800" font-family="Arial,sans-serif">SPREAD</text><text x="850" y="60" text-anchor="middle" fill="#34d399" font-size="22" font-weight="800" font-family="Arial,sans-serif">ASK</text><rect x="65" y="90" width="220" height="125" rx="18" fill="#172554" stroke="#60a5fa"/><text x="175" y="140" text-anchor="middle" fill="#e5edf7" font-size="30" font-weight="600" font-family="Arial,sans-serif">1.10500</text><text x="175" y="185" text-anchor="middle" fill="#bfdbfe" font-size="16" font-weight="600" font-family="Arial,sans-serif">sell side</text><rect x="390" y="90" width="220" height="125" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="500" y="140" text-anchor="middle" fill="#fef08a" font-size="30" font-weight="600" font-family="Arial,sans-serif">0.00002</text><text x="500" y="185" text-anchor="middle" fill="#fde68a" font-size="16" font-weight="600" font-family="Arial,sans-serif">illustrative</text><rect x="715" y="90" width="220" height="125" rx="18" fill="#14532d" stroke="#34d399"/><text x="825" y="140" text-anchor="middle" fill="#e5edf7" font-size="30" font-weight="600" font-family="Arial,sans-serif">1.10502</text><text x="825" y="185" text-anchor="middle" fill="#a7f3d0" font-size="16" font-weight="600" font-family="Arial,sans-serif">buy side</text><text x="500" y="280" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">A market order interacts with the relevant available quote side.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-26">
+<h2><span class="num">26</span>Market Orders in Swing Trading</h2>
+<p>Swing traders may also use market orders, particularly when exiting a position immediately is more important than obtaining a specific price.</p>
+<div class="example"><strong>Simple Example:</strong><br>Because swing targets can be larger, spread may represent a smaller percentage of the expected movement, but it still matters.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">04 • Market buy execution path</div><svg viewBox="0 0 1000 330" role="img" aria-label="04 • Market buy execution path"><rect x="45" y="70" width="180" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="135" y="112" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">CLICK</text><text x="135" y="155" text-anchor="middle" fill="#e5edf7" font-size="27" font-weight="600" font-family="Arial,sans-serif">BUY</text><line x1="235" y1="165" x2="315" y2="165" stroke="#64748b" stroke-width="5"/><rect x="325" y="70" width="250" height="185" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="450" y="112" text-anchor="middle" fill="#a5f3fc" font-size="23" font-weight="800" font-family="Arial,sans-serif">ASK</text><text x="450" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">available</text><text x="450" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">quote</text><line x1="585" y1="165" x2="665" y2="165" stroke="#64748b" stroke-width="5"/><rect x="675" y="70" width="280" height="185" rx="18" fill="#14532d" stroke="#34d399"/><text x="815" y="112" text-anchor="middle" fill="#a7f3d0" font-size="23" font-weight="800" font-family="Arial,sans-serif">FILL</text><text x="815" y="155" text-anchor="middle" fill="#e5edf7" font-size="20" font-weight="600" font-family="Arial,sans-serif">LONG</text><text x="815" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">position</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-27">
+<h2><span class="num">27</span>Market Order and Stop-Loss Relationship</h2>
+<p>A trader may enter with one order type and manage risk with another. For example, a position can be opened through a market order and protected with a stop-loss instruction.</p>
+<div class="example"><strong>Simple Example:</strong><br>The exact behavior depends on the platform and order configuration.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">05 • Market sell execution path</div><svg viewBox="0 0 1000 330" role="img" aria-label="05 • Market sell execution path"><rect x="45" y="70" width="180" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="135" y="112" text-anchor="middle" fill="#fecaca" font-size="22" font-weight="800" font-family="Arial,sans-serif">CLICK</text><text x="135" y="155" text-anchor="middle" fill="#e5edf7" font-size="27" font-weight="600" font-family="Arial,sans-serif">SELL</text><line x1="235" y1="165" x2="315" y2="165" stroke="#64748b" stroke-width="5"/><rect x="325" y="70" width="250" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="450" y="112" text-anchor="middle" fill="#bfdbfe" font-size="23" font-weight="800" font-family="Arial,sans-serif">BID</text><text x="450" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">available</text><text x="450" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">quote</text><line x1="585" y1="165" x2="665" y2="165" stroke="#64748b" stroke-width="5"/><rect x="675" y="70" width="280" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="815" y="112" text-anchor="middle" fill="#fecaca" font-size="23" font-weight="800" font-family="Arial,sans-serif">FILL</text><text x="815" y="155" text-anchor="middle" fill="#e5edf7" font-size="20" font-weight="600" font-family="Arial,sans-serif">SHORT</text><text x="815" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">position</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-28">
+<h2><span class="num">28</span>Market Order and Take-Profit</h2>
+<p>A take-profit is generally designed to close a position when a specified profit condition is reached. The exact order mechanics depend on the platform.</p>
+<div class="example"><strong>Simple Example:</strong><br>Students should understand the difference between a planned target and the actual execution price.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">06 • Market order does not lock an exact price</div><svg viewBox="0 0 1000 330" role="img" aria-label="06 • Market order does not lock an exact price"><line x1="100" y1="245" x2="900" y2="245" stroke="#64748b" stroke-width="4"/><line x1="220" y1="200" x2="220" y2="260" stroke="#60a5fa" stroke-width="6"/><line x1="500" y1="160" x2="500" y2="260" stroke="#facc15" stroke-width="6"/><line x1="800" y1="105" x2="800" y2="260" stroke="#f87171" stroke-width="6"/><text x="220" y="155" text-anchor="middle" fill="#bfdbfe" font-size="20" font-weight="800" font-family="Arial,sans-serif">QUOTE</text><text x="500" y="115" text-anchor="middle" fill="#fef08a" font-size="20" font-weight="800" font-family="Arial,sans-serif">MARKET MOVES</text><text x="800" y="65" text-anchor="middle" fill="#fecaca" font-size="20" font-weight="800" font-family="Arial,sans-serif">FILL</text><text x="500" y="295" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">The available execution price can change before the order is filled.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-29">
+<h2><span class="num">29</span>Partial Fills and Execution</h2>
+<p>Some markets and order systems can involve partial execution depending on available liquidity and order rules. The exact behavior varies by venue and broker.</p>
+<div class="example"><strong>Simple Example:</strong><br>Do not assume every market order must always fill the entire requested size at one single price.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">07 • Fast market and slippage</div><svg viewBox="0 0 1000 330" role="img" aria-label="07 • Fast market and slippage"><rect x="50" y="70" width="260" height="180" rx="18" fill="#172554" stroke="#60a5fa"/><text x="180" y="110" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial,sans-serif">EXPECTED</text><text x="180" y="155" text-anchor="middle" fill="#e5edf7" font-size="31" font-weight="600" font-family="Arial,sans-serif">1.10502</text><line x1="315" y1="160" x2="390" y2="160" stroke="#facc15" stroke-width="7"/><text x="352" y="135" text-anchor="middle" fill="#fef08a" font-size="14" font-weight="800" font-family="Arial,sans-serif">MOVE</text><rect x="420" y="70" width="260" height="180" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="550" y="110" text-anchor="middle" fill="#fef08a" font-size="21" font-weight="800" font-family="Arial,sans-serif">ACTUAL</text><text x="550" y="155" text-anchor="middle" fill="#e5edf7" font-size="31" font-weight="600" font-family="Arial,sans-serif">1.10504</text><line x1="685" y1="160" x2="760" y2="160" stroke="#f87171" stroke-width="7"/><rect x="790" y="70" width="160" height="180" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="870" y="125" text-anchor="middle" fill="#fecaca" font-size="18" font-weight="800" font-family="Arial,sans-serif">SLIP</text><text x="870" y="170" text-anchor="middle" fill="#fecaca" font-size="15" font-weight="600" font-family="Arial,sans-serif">PAGE</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-30">
+<h2><span class="num">30</span>Order Size and Liquidity</h2>
+<p>A large order relative to available liquidity can have a different execution experience from a small order.</p>
+<div class="example"><strong>Simple Example:</strong><br>This is why position sizing and instrument liquidity belong together in execution planning.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">08 • Market order vs limit order</div><svg viewBox="0 0 1000 330" role="img" aria-label="08 • Market order vs limit order"><rect x="45" y="65" width="410" height="205" rx="18" fill="#14532d" stroke="#34d399"/><text x="250" y="108" text-anchor="middle" fill="#a7f3d0" font-size="24" font-weight="800" font-family="Arial,sans-serif">MARKET ORDER</text><text x="250" y="150" text-anchor="middle" fill="#e5edf7" font-size="19" font-weight="600" font-family="Arial,sans-serif">execution priority</text><text x="250" y="190" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">price can vary</text><rect x="545" y="65" width="410" height="205" rx="18" fill="#172554" stroke="#60a5fa"/><text x="750" y="108" text-anchor="middle" fill="#bfdbfe" font-size="24" font-weight="800" font-family="Arial,sans-serif">LIMIT ORDER</text><text x="750" y="150" text-anchor="middle" fill="#e5edf7" font-size="19" font-weight="600" font-family="Arial,sans-serif">price priority</text><text x="750" y="190" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">execution can wait</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-31">
+<h2><span class="num">31</span>Market Order During Volatility</h2>
+<p>Volatility increases the possibility of rapid price changes. A market order still seeks execution, but the price available at execution may be different from the price observed earlier.</p>
+<div class="example"><strong>Simple Example:</strong><br>This is execution risk, not a directional trading signal.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">09 • Limit buy waits for a chosen price condition</div><svg viewBox="0 0 1000 330" role="img" aria-label="09 • Limit buy waits for a chosen price condition"><line x1="100" y1="245" x2="900" y2="245" stroke="#64748b" stroke-width="4"/><line x1="350" y1="120" x2="350" y2="260" stroke="#60a5fa" stroke-width="6"/><line x1="660" y1="120" x2="660" y2="260" stroke="#34d399" stroke-width="6"/><text x="350" y="95" text-anchor="middle" fill="#bfdbfe" font-size="19" font-weight="800" font-family="Arial,sans-serif">CURRENT</text><text x="660" y="95" text-anchor="middle" fill="#a7f3d0" font-size="19" font-weight="800" font-family="Arial,sans-serif">LIMIT</text><line x1="350" y1="145" x2="660" y2="145" stroke="#facc15" stroke-width="6"/><text x="505" y="128" text-anchor="middle" fill="#fef08a" font-size="17" font-weight="800" font-family="Arial,sans-serif">WAITING AREA</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">A limit buy generally seeks the chosen price or better, subject to execution rules.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-32">
+<h2><span class="num">32</span>Market Order During Low Liquidity</h2>
+<p>Thin or less-liquid conditions can make execution less predictable and may be associated with wider spreads or larger price changes between available quotes.</p>
+<div class="example"><strong>Simple Example:</strong><br>A trader should check current conditions rather than relying on normal-market assumptions.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">10 • Limit sell waits for a chosen price condition</div><svg viewBox="0 0 1000 330" role="img" aria-label="10 • Limit sell waits for a chosen price condition"><line x1="100" y1="245" x2="900" y2="245" stroke="#64748b" stroke-width="4"/><line x1="350" y1="145" x2="350" y2="260" stroke="#34d399" stroke-width="6"/><line x1="660" y1="145" x2="660" y2="260" stroke="#60a5fa" stroke-width="6"/><text x="350" y="115" text-anchor="middle" fill="#a7f3d0" font-size="19" font-weight="800" font-family="Arial,sans-serif">LIMIT</text><text x="660" y="115" text-anchor="middle" fill="#bfdbfe" font-size="19" font-weight="800" font-family="Arial,sans-serif">CURRENT</text><line x1="350" y1="165" x2="660" y2="165" stroke="#facc15" stroke-width="6"/><text x="505" y="148" text-anchor="middle" fill="#fef08a" font-size="17" font-weight="800" font-family="Arial,sans-serif">WAITING AREA</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">A limit sell generally seeks the chosen price or better, subject to execution rules.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-33">
+<h2><span class="num">33</span>Market Order and Gap Risk</h2>
+<p>If the market opens or moves across a price region without trading at every intermediate level, an order may not be filled at the planned price.</p>
+<div class="example"><strong>Simple Example:</strong><br>This is particularly important for stop-based risk management.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">11 • Stop order trigger concept</div><svg viewBox="0 0 1000 330" role="img" aria-label="11 • Stop order trigger concept"><line x1="90" y1="245" x2="910" y2="245" stroke="#64748b" stroke-width="4"/><line x1="250" y1="115" x2="250" y2="260" stroke="#60a5fa" stroke-width="6"/><line x1="500" y1="85" x2="500" y2="260" stroke="#facc15" stroke-width="6"/><line x1="750" y1="120" x2="750" y2="260" stroke="#f87171" stroke-width="6"/><text x="250" y="75" text-anchor="middle" fill="#bfdbfe" font-size="19" font-weight="800" font-family="Arial,sans-serif">PRICE</text><text x="500" y="50" text-anchor="middle" fill="#fef08a" font-size="19" font-weight="800" font-family="Arial,sans-serif">TRIGGER</text><text x="750" y="85" text-anchor="middle" fill="#fecaca" font-size="19" font-weight="800" font-family="Arial,sans-serif">EXECUTION</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="14" font-weight="600" font-family="Arial,sans-serif">The exact behavior after a trigger depends on the order type and platform.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-34">
+<h2><span class="num">34</span>Order Confirmation</h2>
+<p>After sending an order, the trader should verify that the position actually exists, the quantity is correct, the entry price is understood and protective orders are present when required.</p>
+<div class="example"><strong>Simple Example:</strong><br>A click is not the end of the process; confirmation is part of execution discipline.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">12 • Stop-loss concept</div><svg viewBox="0 0 1000 330" role="img" aria-label="12 • Stop-loss concept"><rect x="55" y="70" width="245" height="185" rx="18" fill="#14532d" stroke="#34d399"/><text x="177" y="110" text-anchor="middle" fill="#a7f3d0" font-size="21" font-weight="800" font-family="Arial,sans-serif">POSITION</text><text x="177" y="155" text-anchor="middle" fill="#e5edf7" font-size="25" font-weight="600" font-family="Arial,sans-serif">OPEN</text><line x1="305" y1="165" x2="395" y2="165" stroke="#64748b" stroke-width="5"/><rect x="405" y="70" width="245" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="527" y="110" text-anchor="middle" fill="#fecaca" font-size="21" font-weight="800" font-family="Arial,sans-serif">STOP</text><text x="527" y="155" text-anchor="middle" fill="#e5edf7" font-size="22" font-weight="600" font-family="Arial,sans-serif">TRIGGER</text><line x1="650" y1="165" x2="740" y2="165" stroke="#64748b" stroke-width="5"/><rect x="750" y="70" width="195" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="847" y="110" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial,sans-serif">EXIT</text><text x="847" y="155" text-anchor="middle" fill="#e5edf7" font-size="20" font-weight="600" font-family="Arial,sans-serif">RISK</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-35">
+<h2><span class="num">35</span>Never Double-Click in Panic</h2>
+<p>If the platform appears slow or the trader is unsure whether an order was accepted, repeatedly submitting orders can unintentionally create multiple positions.</p>
+<div class="example"><strong>Simple Example:</strong><br>Always verify order status before sending another order.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">13 • Stop level is not always the exact fill price</div><svg viewBox="0 0 1000 330" role="img" aria-label="13 • Stop level is not always the exact fill price"><rect x="55" y="70" width="260" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="185" y="110" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial,sans-serif">STOP LEVEL</text><text x="185" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">planned</text><text x="185" y="195" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">trigger</text><line x1="330" y1="165" x2="445" y2="165" stroke="#facc15" stroke-width="7"/><text x="387" y="142" text-anchor="middle" fill="#fef08a" font-size="14" font-weight="800" font-family="Arial,sans-serif">FAST MOVE</text><rect x="480" y="70" width="260" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="610" y="110" text-anchor="middle" fill="#fecaca" font-size="21" font-weight="800" font-family="Arial,sans-serif">ACTUAL FILL</text><text x="610" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">may differ</text><text x="610" y="195" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">during fast markets</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">A stop manages a condition; it does not eliminate market risk.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-36">
+<h2><span class="num">36</span>Market Order and Emotional Trading</h2>
+<p>Fear of missing out can push traders into immediate execution without checking spread, risk or setup quality.</p>
+<div class="example"><strong>Simple Example:</strong><br>A market order should be the result of a predefined decision, not an emotional reaction.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">14 • Order size affects monetary impact</div><svg viewBox="0 0 1000 330" role="img" aria-label="14 • Order size affects monetary impact"><rect x="55" y="70" width="250" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="180" y="110" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">SMALL</text><text x="180" y="155" text-anchor="middle" fill="#e5edf7" font-size="19" font-weight="600" font-family="Arial,sans-serif">POSITION</text><text x="180" y="195" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">smaller impact</text><rect x="375" y="70" width="250" height="185" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="500" y="110" text-anchor="middle" fill="#a5f3fc" font-size="22" font-weight="800" font-family="Arial,sans-serif">LARGE</text><text x="500" y="155" text-anchor="middle" fill="#e5edf7" font-size="19" font-weight="600" font-family="Arial,sans-serif">POSITION</text><text x="500" y="195" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">larger impact</text><rect x="695" y="70" width="250" height="185" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="820" y="110" text-anchor="middle" fill="#fef08a" font-size="21" font-weight="800" font-family="Arial,sans-serif">SAME MOVE</text><text x="820" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">different</text><text x="820" y="195" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">money result</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-37">
+<h2><span class="num">37</span>Market Order Testing</h2>
+<p>When testing a strategy, record realistic spread, commission and slippage assumptions where possible.</p>
+<div class="example"><strong>Simple Example:</strong><br>A strategy that looks profitable only when execution costs are ignored may not be robust.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">15 • Liquidity and order size</div><svg viewBox="0 0 1000 330" role="img" aria-label="15 • Liquidity and order size"><rect x="50" y="75" width="250" height="175" rx="18" fill="#172554" stroke="#60a5fa"/><text x="175" y="112" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">ORDER</text><text x="175" y="155" text-anchor="middle" fill="#e5edf7" font-size="28" font-weight="600" font-family="Arial,sans-serif">SIZE</text><line x1="310" y1="160" x2="380" y2="160" stroke="#64748b" stroke-width="5"/><rect x="395" y="75" width="230" height="175" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="510" y="112" text-anchor="middle" fill="#a5f3fc" font-size="20" font-weight="800" font-family="Arial,sans-serif">AVAILABLE</text><text x="510" y="155" text-anchor="middle" fill="#e5edf7" font-size="22" font-weight="600" font-family="Arial,sans-serif">LIQUIDITY</text><line x1="630" y1="160" x2="700" y2="160" stroke="#64748b" stroke-width="5"/><rect x="715" y="75" width="235" height="175" rx="18" fill="#3f2a0a" stroke="#facc15"/><text x="832" y="112" text-anchor="middle" fill="#fef08a" font-size="19" font-weight="800" font-family="Arial,sans-serif">EXECUTION</text><text x="832" y="155" text-anchor="middle" fill="#e5edf7" font-size="22" font-weight="600" font-family="Arial,sans-serif">QUALITY</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-38">
+<h2><span class="num">38</span>Practical Decision Process</h2>
+<p>The complete process is: validate the setup → check direction → check bid/ask and spread → calculate risk and position size → check volatility/liquidity → choose the appropriate order type → execute → confirm → manage.</p>
+<div class="example"><strong>Simple Example:</strong><br>This turns the market order from an impulsive button click into a planned execution step.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">16 • Spread is part of the execution environment</div><svg viewBox="0 0 1000 330" role="img" aria-label="16 • Spread is part of the execution environment"><text x="165" y="70" text-anchor="middle" fill="#60a5fa" font-size="21" font-weight="800" font-family="Arial,sans-serif">BID</text><text x="835" y="70" text-anchor="middle" fill="#34d399" font-size="21" font-weight="800" font-family="Arial,sans-serif">ASK</text><line x1="165" y1="145" x2="835" y2="145" stroke="#facc15" stroke-width="9"/><text x="500" y="125" text-anchor="middle" fill="#fef08a" font-size="20" font-weight="800" font-family="Arial,sans-serif">SPREAD</text><text x="500" y="205" text-anchor="middle" fill="#e5edf7" font-size="16" font-weight="600" font-family="Arial,sans-serif">A market order crosses the relevant side of the quote.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-39">
+<h2><span class="num">39</span>Common Beginner Mistakes</h2>
+<p>Beginners often believe market orders guarantee exact prices, confuse market orders with trading signals, ignore spread, oversize positions, repeatedly click during platform delays and trade during abnormal conditions without adjusting risk.</p>
+<div class="example"><strong>Simple Example:</strong><br>Understanding the order mechanism reduces these mistakes.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">17 • Commission is different from spread</div><svg viewBox="0 0 1000 330" role="img" aria-label="17 • Commission is different from spread"><rect x="55" y="70" width="400" height="180" rx="18" fill="#172554" stroke="#60a5fa"/><text x="255" y="112" text-anchor="middle" fill="#bfdbfe" font-size="24" font-weight="800" font-family="Arial,sans-serif">SPREAD</text><text x="255" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">bid ↔ ask</text><rect x="545" y="70" width="400" height="180" rx="18" fill="#164e63" stroke="#22d3ee"/><text x="745" y="112" text-anchor="middle" fill="#a5f3fc" font-size="24" font-weight="800" font-family="Arial,sans-serif">COMMISSION</text><text x="745" y="155" text-anchor="middle" fill="#e5edf7" font-size="18" font-weight="600" font-family="Arial,sans-serif">separate fee</text><text x="500" y="290" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">An account can have a low spread and still charge commission.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-40">
+<h2><span class="num">40</span>Final Market-Order Checklist</h2>
+<p>Before using a market order, know why immediate execution is required, know the current quote and spread, know the position size, know the stop and target, understand possible slippage, and confirm the order after execution.</p>
+<div class="example"><strong>Simple Example:</strong><br>If these conditions are not clear, pause rather than forcing the trade.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">18 • Slippage is an execution difference</div><svg viewBox="0 0 1000 330" role="img" aria-label="18 • Slippage is an execution difference"><rect x="55" y="70" width="400" height="185" rx="18" fill="#172554" stroke="#60a5fa"/><text x="255" y="112" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial,sans-serif">EXPECTED</text><text x="255" y="160" text-anchor="middle" fill="#e5edf7" font-size="29" font-weight="600" font-family="Arial,sans-serif">PRICE A</text><rect x="545" y="70" width="400" height="185" rx="18" fill="#7f1d1d" stroke="#f87171"/><text x="745" y="112" text-anchor="middle" fill="#fecaca" font-size="22" font-weight="800" font-family="Arial,sans-serif">ACTUAL</text><text x="745" y="160" text-anchor="middle" fill="#e5edf7" font-size="29" font-weight="600" font-family="Arial,sans-serif">PRICE B</text><text x="500" y="292" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">Spread and slippage can both affect results, but they are not the same thing.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+<section class="section" id="section-41">
+<h2><span class="num">41</span>Final Summary</h2>
+<p>A market order prioritizes execution at the best available price under current conditions. It does not guarantee an exact entry price. Market buys and sells interact with different quote sides, while limit and stop orders use different conditions.</p>
+<div class="example"><strong>Simple Example:</strong><br>The most important lesson is that an order type is an execution tool. Good trading decisions still require analysis, risk management and discipline.</div>
+<h3>Why This Matters</h3>
+<p>
+Order execution is part of trading. A chart can show a market idea, but an actual
+position is created through an order sent to a trading platform. The order type
+determines what condition the trader is asking the platform to use for execution.
+Understanding that difference prevents the common beginner mistake of treating every
+click as if it guarantees a specific price.
+</p>
+<h3>How to Think About It</h3>
+<p>
+Think of an order as an instruction. A market order says that execution now is the
+priority. A limit order says that the price condition is the priority. A stop order
+uses a trigger condition. The exact behavior can vary by broker, venue and platform,
+so students should always verify the actual order specification they are using.
+</p>
+<h3>Practical Application</h3>
+<p>
+Before sending an order, identify the setup, direction, current bid and ask, spread,
+position size, stop, target and current market conditions. Then choose the order type
+that matches the plan. After execution, confirm the position size, entry price and
+protective orders instead of assuming the order was filled exactly as expected.
+</p>
+<div class="diagram"><div class="diagram-title">19 • News can change execution conditions</div><svg viewBox="0 0 1000 330" role="img" aria-label="19 • News can change execution conditions"><line x1="80" y1="245" x2="920" y2="245" stroke="#64748b" stroke-width="4"/><polyline points="90,225 200,220 300,225 390,175 470,205 550,90 650,185 760,120 900,205" fill="none" stroke="#f87171" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><text x="500" y="60" text-anchor="middle" fill="#fecaca" font-size="24" font-weight="800" font-family="Arial,sans-serif">NEWS / EVENT</text><text x="500" y="290" text-anchor="middle" fill="#e5edf7" font-size="15" font-weight="600" font-family="Arial,sans-serif">Quotes, spreads and execution can change quickly around important events.</text></svg></div>
+<div class="note"><strong>Beginner reminder:</strong> A market order is an execution
+tool, not a prediction. The order type does not decide whether price should rise or fall.
+</div>
+</section>
+
+
+<section class="section" id="reference">
+<h2><span class="num">43</span>Market Order Quick Reference</h2>
+<table class="table">
+<tr><th>Order Type</th><th>Main Priority</th><th>Important Limitation</th></tr>
+<tr><td>Market Order</td><td>Immediate execution</td><td>Exact price is not guaranteed.</td></tr>
+<tr><td>Limit Order</td><td>Specified price condition</td><td>May not execute.</td></tr>
+<tr><td>Stop Order</td><td>Trigger condition</td><td>Execution after trigger depends on order type and market conditions.</td></tr>
+<tr><td>Stop-Loss</td><td>Risk-control exit</td><td>Actual fill can differ in fast/gapping conditions.</td></tr>
+<tr><td>Take-Profit</td><td>Planned profit exit</td><td>Execution remains subject to order/platform rules.</td></tr>
+</table>
+<div class="formula">Market Order → Execution Priority</div>
+<p>
+The simplest way to remember the lesson is: market order means “execute now if possible
+at the best available price,” not “guarantee this exact number.”
+</p>
+</section>
+
+<section class="section" id="worked">
+<h2><span class="num">44</span>Detailed Worked Examples</h2>
+<h3>Example A — Market Buy</h3>
+<p>
+Suppose an illustrative quote shows Bid 1.10500 and Ask 1.10502. A market buy is
+associated with the ask in the basic quote model. If the quote changes before the
+order is filled, the actual execution can be different.
+</p>
+<h3>Example B — Market Sell</h3>
+<p>
+Using the same illustrative quote, a market sell is associated with the bid. The
+important concept is not memorizing a number but understanding which side of the
+two-sided quote the order interacts with.
+</p>
+<h3>Example C — Market Order During Fast Movement</h3>
+<p>
+Imagine a trader sees 1.10502 and immediately sends a market buy. A fast price change
+occurs before execution and the fill occurs at 1.10504. The difference is an example
+of slippage. It does not mean the market order failed; it means execution occurred
+under changed market conditions.
+</p>
+<h3>Example D — Limit Instead of Market</h3>
+<p>
+Suppose a trader wants to buy only at 1.10500 or better. A limit order can express a
+price condition. The trade may not happen if the market never reaches the required
+condition. The trader trades execution certainty for price control.
+</p>
+<h3>Example E — Stop-Loss</h3>
+<p>
+A trader opens a position and places a stop-loss to control downside. If the market
+moves rapidly through the stop level, the actual fill can differ from the planned
+level. This is why risk planning should account for execution uncertainty.
+</p>
+</section>
+
+<section class="section" id="decision">
+<h2><span class="num">45</span>When Should a Trader Consider a Market Order?</h2>
+<div class="grid">
+<div class="card"><h3>Immediate Entry Matters</h3><p>The strategy requires participation now rather than waiting for a specific price.</p></div>
+<div class="card"><h3>Immediate Exit Matters</h3><p>Risk or market conditions make waiting for a limit price inappropriate.</p></div>
+<div class="card"><h3>Conditions Are Acceptable</h3><p>Current spread, volatility, liquidity and position size fit the plan.</p></div>
+<div class="card"><h3>Risk Is Already Defined</h3><p>The trader knows the stop, target, position size and maximum acceptable risk before clicking.</p></div>
+</div>
+<div class="example warn"><strong>Important:</strong> “I am afraid price will run away” is not by itself a complete reason to use a market order. The order should follow a trading plan.</div>
+</section>
+
+<section class="section" id="mistakes">
+<h2><span class="num">46</span>Common Market-Order Mistakes</h2>
+<ul class="list">
+<li>Believing a market order guarantees the exact displayed price.</li>
+<li>Confusing a market order with a buy or sell signal.</li>
+<li>Ignoring the bid/ask spread.</li>
+<li>Entering before calculating position size.</li>
+<li>Using a market order during abnormal volatility without considering execution risk.</li>
+<li>Repeatedly clicking because the platform appears slow.</li>
+<li>Failing to confirm whether the first order was accepted.</li>
+<li>Entering without a defined stop or risk plan.</li>
+<li>Using market orders simply because of fear of missing out.</li>
+<li>Assuming a stop-loss guarantees the exact stop price.</li>
+<li>Ignoring commission and slippage when testing a strategy.</li>
+<li>Assuming all brokers and platforms execute orders identically.</li>
+<li>Trading oversized positions in less-liquid instruments.</li>
+<li>Confusing limit orders with guaranteed execution.</li>
+</ul>
+</section>
+
+<section class="section" id="checklist">
+<h2><span class="num">47</span>Complete Market-Order Checklist</h2>
+<ul class="check">
+<li>I know why immediate execution is required.</li>
+<li>I have a valid market setup before sending the order.</li>
+<li>I know whether I am buying or selling.</li>
+<li>I checked the current bid and ask.</li>
+<li>I checked the current spread.</li>
+<li>I know my position size.</li>
+<li>I know my stop-loss level or risk-control plan.</li>
+<li>I know my target or exit plan.</li>
+<li>I understand that slippage is possible.</li>
+<li>I checked current volatility and liquidity.</li>
+<li>I considered news or abnormal market conditions when relevant.</li>
+<li>I am not entering because of fear of missing out.</li>
+<li>I will confirm the order after execution.</li>
+<li>I will verify the position size and entry price.</li>
+<li>I will verify that intended protective orders are present.</li>
+</ul>
+</section>
+
+<section class="section" id="summary">
+<h2><span class="num">48</span>Final Summary</h2>
+<p>
+A market order is an instruction to execute as soon as possible at the best available
+price under current conditions. It prioritizes execution rather than guaranteeing an
+exact price. In the basic quote model, a market buy interacts with ask and a market sell
+interacts with bid.
+</p>
+<p>
+The market order must be understood together with bid, ask and spread. During fast or
+thin conditions, the available quote can change quickly and slippage can occur. A limit
+order provides more price control but may not execute. Stop orders use trigger conditions
+and have their own execution behavior.
+</p>
+<p>
+The most important practical lesson is:
+<strong>analysis decides what you want to trade; risk management decides how much you can
+risk; the order type decides how you request execution.</strong>
+</p>
+<div class="example good"><strong>Remember:</strong> Market order = execution priority.
+It is never a guarantee of profit and it is never a directional signal by itself.</div>
+</section>
+
+<section class="section" id="disclaimer">
+<h2><span class="num">49</span>Educational Disclaimer</h2>
+<p>
+These notes are educational material for Strativo Academy. They explain general Forex
+order concepts and are not financial advice, personalized investment advice, a trading
+recommendation or a guarantee of profit.
+</p>
+<p>
+Actual order behavior, execution policies, available order types, fill rules, slippage,
+contract specifications, spreads, commissions and trading conditions can vary by broker,
+platform, instrument, account type and market conditions.
+</p>
+<p>
+Always read and verify the current order specifications of the actual broker/platform
+before using an order type in a live account. Examples in this lesson are simplified
+for education and are not guaranteed live execution prices.
+</p>
+</section>
+
+
+<nav class="nav" aria-label="Lesson navigation">
+<a href="bid-ask-spreads.html"><small>← Previous Note</small><strong>Bid &amp; Ask &amp; Spreads</strong></a>
+<a href="notes.html" class="center"><small>Module 1</small><strong>Notes Home</strong></a>
+<a href="who-trades-forex.html" class="right"><small>Next Note →</small><strong>Who Trades Forex?</strong></a>
+</nav>
+
+</main>
+<div data-component="footer"></div>
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+</body>
+</html>

@@ -1,0 +1,3577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 10 - Chart Patterns | Strativo Academy</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+
+<style id="lesson10-v1-enhancements">
+
+body{
+    padding-top:0;
+}
+
+.skip-link{
+    position:fixed;
+    top:10px;
+    left:10px;
+    z-index:9999;
+    transform:translateY(-150%);
+    padding:10px 14px;
+    border-radius:9px;
+    background:#0f172a;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    border:1px solid rgba(148,163,184,.25);
+}
+.skip-link:focus{transform:translateY(0)}
+
+.lesson-mobile-toggle{
+    display:none;
+    width:100%;
+    min-height:44px;
+    margin:0 0 10px;
+    padding:0 14px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1220;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.82rem;
+    font-weight:800;
+    cursor:pointer;
+}
+.lesson-sidebar.is-open{display:block}
+.lesson-sticky-nav{
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    gap:10px;
+    padding:9px;
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:14px;
+    background:rgba(3,7,18,.94);
+    box-shadow:0 14px 40px rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+}
+.lesson-sticky-nav button{
+    min-height:44px;
+    padding:0 13px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.8rem;
+    font-weight:800;
+    cursor:pointer;
+}
+.lesson-sticky-nav button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+.lesson-sticky-nav span{
+    flex:1;
+    text-align:center;
+    color:#94a3b8;
+    font-size:.78rem;
+    font-weight:700;
+}
+.quiz-container{
+    margin-top:20px;
+}
+
+.lesson-layout{
+    margin-top:0;
+}
+.lesson-content{
+    min-width:0;
+}
+.lesson-content .lesson-image{
+    width:100%;
+    max-width:100%;
+    height:auto;
+    max-height:420px;
+    object-fit:contain;
+    overflow:hidden;
+}
+.lesson-content .lesson-image img{
+    display:block;
+    width:100%;
+    max-width:100%;
+    max-height:400px;
+    height:auto;
+    object-fit:contain;
+    margin:0 auto;
+}
+.lesson-step-controls{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:32px;
+}
+.lesson-step-controls button{
+    min-height:44px;
+    padding:10px 18px;
+    border:1px solid rgba(148,163,184,.2);
+    border-radius:10px;
+    background:#1d2b42;
+    color:#fff;
+    font:inherit;
+    font-weight:700;
+    cursor:pointer;
+}
+.lesson-step-controls button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+.lesson-step-controls .lesson-step-continue{
+    background:#00e5a8;
+    color:#07111f;
+}
+button:focus-visible,
+a:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:3px;
+}
+@media(max-width:800px){
+    .lesson-mobile-toggle{display:block}
+    .lesson-sidebar{display:none}
+    .lesson-sidebar.is-open{display:block}
+    .lesson-sticky-nav{display:flex}
+    .lesson-content{padding-bottom:90px!important}
+}
+@media(min-width:801px){
+    .lesson-sticky-nav{display:none!important}
+}
+</style>
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#lesson-content">Skip to content</a>
+
+<div class="global-header-mount" data-component="header"></div>
+
+<div data-component="lesson-header"></div>
+
+<!-- =========================================================
+     LESSON NAVIGATOR
+========================================================= -->
+
+<div class="lesson-navigator-section">
+    <div class="navigator-card">
+
+        <div class="navigator-header">
+            <h2>📚 Lesson Navigator</h2>
+            <p>Jump directly to any lesson. Quiz scores track mastery separately.</p>
+        </div>
+
+        <div class="navigator-grid">
+
+            <a href="lesson1.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 1</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson2.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 2</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson3.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 3</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson4.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 4</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson5.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 5</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson6.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 6</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson7.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 7</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson8.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 8</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson9.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 9</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+                
+            </a>
+
+            <a href="lesson10.html" class="nav-grid-item current">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 10</span>
+                    <span class="lesson-icon">✅</span>
+                </div>
+                <span class='current-badge'>Current Lesson</span>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<button
+    type="button"
+    id="lessonSidebarToggle"
+    class="lesson-mobile-toggle"
+    aria-controls="lessonSidebar"
+    aria-expanded="false"
+>
+    ☰ Lesson Menu
+</button>
+
+<div class="lesson-layout">
+
+    <!-- Sidebar -->
+    <aside id="lessonSidebar" class="lesson-sidebar">
+
+        <h2>Lesson 10</h2>
+
+        <ul id="lessonMenu" class="lesson-nav">
+
+    <li data-step="1">👋 Welcome</li>
+
+    <li data-step="2">📖 What Are Chart Patterns?</li>
+
+    <li data-step="3">✏️ How to Draw Chart Patterns</li>
+
+    <li data-step="4">🔄 Reversal Patterns</li>
+
+    <li data-step="5">➡️ Continuation Patterns</li>
+
+    <li data-step="6">📉 Double Top Pattern</li>
+
+    <li data-step="7">📈 Double Bottom Pattern</li>
+
+    <li data-step="8">👤 Head & Shoulders Pattern</li>
+
+    <li data-step="9">📈 Ascending Triangle</li>
+
+    <li data-step="10">📉 Descending Triangle</li>
+
+    <li data-step="11">🔺 Symmetrical Triangle</li>
+
+    <li data-step="12">📐 Wedge Pattern</li>
+
+    <li data-step="13">⬛ Rectangle Pattern</li>
+
+    <li data-step="14">💹 How to Trade Chart Patterns</li>
+
+    <li data-step="15">📋 Trading Guide</li>
+
+    <li data-step="16">⚠️ Common Mistakes</li>
+
+    <li data-step="17">📝 Lesson Summary</li>
+
+    <li data-step="18">📝 Quiz</li>
+
+    <li data-step="19">🎉 Congratulations</li>
+
+</ul>
+
+    </aside>
+
+    <!-- Lesson Content -->
+    <main id="lesson-content" class="lesson-content">
+
+        <!-- Progress Bar -->
+        <div class="progress-wrapper">
+
+            <div class="progress-bar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+            <span id="progressText">Step 1 of 19</span>
+
+        </div>
+
+        <!-- Lesson Steps will go here -->
+
+       <!-- ==========================================
+STEP 1 - WELCOME
+========================================== -->
+<section id="step1" class="lesson-step active">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/welcome.png"
+                 alt="Lesson 10 Welcome - Chart Patterns"
+                 class="lesson-img">
+        </div>
+
+        <h2>🏆 Welcome to Lesson 10</h2>
+
+<h1>Chart Patterns</h1>
+
+<div class="info-box">
+
+    <h3>📘 Lesson Information</h3>
+
+    <ul>
+        <li>⏱ Estimated Time: 35–45 Minutes</li>
+        <li>📊 Difficulty: Beginner</li>
+        <li>📝 Total Steps: 19</li>
+        <li>🎯 Quiz: 15 Questions</li>
+    </ul>
+
+</div>
+
+<p>
+Welcome to Lesson 10! Chart Patterns are one of the most powerful tools in technical analysis. They help traders understand market psychology, recognize potential reversals or continuations, and identify high-probability trading opportunities. In this lesson, you'll learn how to recognize the most common chart patterns and use them effectively in your trading.
+</p>
+
+<div class="info-box">
+
+<h3>🎯 Learning Objectives</h3>
+
+<ul>
+
+<li>✅ What chart patterns are</li>
+
+<li>✅ How to draw chart patterns correctly</li>
+
+<li>✅ Reversal and continuation patterns</li>
+
+<li>✅ Double Top & Double Bottom</li>
+
+<li>✅ Head & Shoulders Pattern</li>
+
+<li>✅ Triangle, Wedge & Rectangle Patterns</li>
+
+<li>✅ How to trade chart patterns professionally</li>
+
+<li>✅ Common mistakes to avoid</li>
+
+</ul>
+
+</div>
+
+<div class="tip-box">
+
+<h3>💡 Strativo Tip</h3>
+
+<p>
+Don't try to memorize every pattern in one day. Focus on understanding why a pattern forms. Once you understand the psychology behind buyers and sellers, identifying chart patterns becomes much easier.
+</p>
+
+</div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 2 - WHAT ARE CHART PATTERNS?
+========================================== -->
+<section id="step2" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step2.png"
+                 alt="What Are Chart Patterns"
+                 class="lesson-img">
+        </div>
+
+        <h2>📖 What Are Chart Patterns?</h2>
+
+        <p>
+            Chart patterns are shapes that naturally form on a price chart as the
+            market moves. These shapes are created by the continuous battle
+            between buyers and sellers. By studying these patterns, traders can
+            better understand what the market is trying to communicate and make
+            more informed trading decisions.
+        </p>
+
+        <p>
+            Think of chart patterns as a visual representation of market
+            psychology. Every candle on a chart represents buying and selling
+            activity. When candles combine over time, they often create recognizable
+            formations that repeat because human emotions—such as fear, greed,
+            confidence, and uncertainty—repeat in every market.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🧠 Why Do Chart Patterns Form?</h3>
+
+            <p>
+                Financial markets move because buyers and sellers constantly
+                compete to control price. Sometimes buyers are stronger and price
+                rises. Sometimes sellers dominate and price falls. There are also
+                times when neither side is in control, causing price to move
+                sideways before eventually breaking out.
+            </p>
+
+            <p>
+                These repeated battles create patterns that traders have observed
+                for many years. While no pattern guarantees a future move,
+                understanding them helps traders identify high-probability
+                opportunities.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 Why Are Chart Patterns Important?</h3>
+
+            <ul>
+
+                <li>✅ Help identify potential trend reversals.</li>
+
+                <li>✅ Help identify trend continuation opportunities.</li>
+
+                <li>✅ Improve entry and exit timing.</li>
+
+                <li>✅ Help locate logical Stop Loss and Take Profit levels.</li>
+
+                <li>✅ Improve overall market analysis.</li>
+
+                <li>✅ Increase trading confidence by following structured setups.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>⚠️ Important Reality</h3>
+
+            <p>
+                Many beginners believe chart patterns always work. This is not
+                true. Chart patterns are probability-based tools, not guarantees.
+                A pattern can fail if market conditions change or if traders enter
+                before proper confirmation.
+            </p>
+
+            <p>
+                Professional traders never rely on a chart pattern alone. They
+                combine chart patterns with trend analysis, support and resistance,
+                volume, market structure, and proper risk management before taking
+                a trade.
+            </p>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                Chart patterns do not predict the future. They help traders read
+                market psychology and prepare for possible price movements.
+                Always wait for confirmation before entering a trade.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 3 - HOW TO DRAW CHART PATTERNS
+========================================== -->
+<section id="step3" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step3.png"
+                 alt="How to Draw Chart Patterns"
+                 class="lesson-img">
+        </div>
+
+        <h2>✏️ How to Draw Chart Patterns</h2>
+
+        <p>
+            Before you can successfully trade chart patterns, you must first learn
+            how to draw them correctly. Many beginners lose money because they
+            force patterns onto random price movements instead of waiting for a
+            clear and valid formation.
+        </p>
+
+        <p>
+            Professional traders never guess where a pattern exists. They patiently
+            wait until price creates a recognizable structure. If the pattern is
+            unclear, they simply ignore it and wait for a better opportunity.
+        </p>
+
+        <div class="info-box">
+
+            <h3>📌 Step 1: Identify the Current Trend</h3>
+
+            <p>
+                Every chart pattern begins with understanding the current market
+                direction. Ask yourself these questions:
+            </p>
+
+            <ul>
+                <li>📈 Is the market making Higher Highs and Higher Lows? (Uptrend)</li>
+                <li>📉 Is the market making Lower Highs and Lower Lows? (Downtrend)</li>
+                <li>➡️ Is the market moving sideways? (Range)</li>
+            </ul>
+
+            <p>
+                Knowing the trend helps you understand whether the pattern is more
+                likely to become a continuation pattern or a reversal pattern.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📌 Step 2: Connect Important Swing Points</h3>
+
+            <p>
+                Chart patterns are built using swing highs and swing lows.
+                These are the points where price clearly changes direction.
+            </p>
+
+            <ul>
+                <li>✅ Connect swing highs to create resistance trendlines.</li>
+                <li>✅ Connect swing lows to create support trendlines.</li>
+                <li>✅ Use at least two touches before considering a valid trendline.</li>
+                <li>✅ Three or more touches make the pattern stronger.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📌 Step 3: Let the Pattern Develop Naturally</h3>
+
+            <p>
+                One of the biggest mistakes beginners make is drawing a pattern
+                before it is complete. A professional trader allows price to
+                naturally form the structure.
+            </p>
+
+            <p>
+                The more complete and cleaner the pattern looks, the higher the
+                probability that other traders are also watching the same setup.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📌 Step 4: Wait for Confirmation</h3>
+
+            <p>
+                Never enter a trade simply because a pattern appears on the chart.
+                Wait for confirmation such as:
+            </p>
+
+            <ul>
+                <li>✔️ A breakout above resistance or below support.</li>
+                <li>✔️ A strong closing candle outside the pattern.</li>
+                <li>✔️ Increased trading volume (if available).</li>
+                <li>✔️ A retest of the broken level for extra confirmation.</li>
+            </ul>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Drawing Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Forcing trendlines to fit price.</li>
+
+                <li>❌ Connecting candle wicks randomly.</li>
+
+                <li>❌ Ignoring the overall trend.</li>
+
+                <li>❌ Trading before confirmation.</li>
+
+                <li>❌ Assuming every zigzag movement is a chart pattern.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                Keep your chart clean. Draw only the most obvious swing highs,
+                swing lows, support, and resistance levels. If you have to force a
+                pattern to make it fit, it is probably not a valid chart pattern.
+                The best setups are usually the simplest and easiest to recognize.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 4 - REVERSAL PATTERNS
+========================================== -->
+<section id="step4" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step4.png"
+                 alt="Reversal Chart Patterns"
+                 class="lesson-img">
+        </div>
+
+        <h2>🔄 Reversal Chart Patterns</h2>
+
+        <p>
+            A reversal pattern is a chart formation that signals the current trend
+            may be coming to an end and a new trend could begin. These patterns
+            appear after a strong upward or downward movement and indicate that
+            the balance between buyers and sellers is changing.
+        </p>
+
+        <p>
+            Imagine a car driving at high speed. Before it changes direction, it
+            usually slows down first. Financial markets behave in a similar way.
+            Before price changes direction, buying or selling pressure often
+            weakens, allowing the opposite side to take control. This transition
+            creates reversal chart patterns.
+        </p>
+
+        <div class="info-box">
+
+            <h3>📈 Bullish Reversal Patterns</h3>
+
+            <p>
+                Bullish reversal patterns usually appear after a downtrend. They
+                suggest that sellers are losing strength and buyers are beginning
+                to take control of the market.
+            </p>
+
+            <p>Common bullish reversal patterns include:</p>
+
+            <ul>
+                <li>✅ Double Bottom</li>
+                <li>✅ Inverse Head & Shoulders</li>
+                <li>✅ Falling Wedge (Bullish Breakout)</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📉 Bearish Reversal Patterns</h3>
+
+            <p>
+                Bearish reversal patterns usually appear after an uptrend. They
+                indicate that buyers are becoming weaker while sellers are gaining
+                control, increasing the probability of a downward move.
+            </p>
+
+            <p>Common bearish reversal patterns include:</p>
+
+            <ul>
+                <li>✅ Double Top</li>
+                <li>✅ Head & Shoulders</li>
+                <li>✅ Rising Wedge (Bearish Breakdown)</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                Every reversal pattern tells a story about the struggle between
+                buyers and sellers.
+            </p>
+
+            <ul>
+
+                <li>📈 During an uptrend, buyers push price higher.</li>
+
+                <li>⚖️ Eventually buyers become exhausted and momentum slows.</li>
+
+                <li>📉 Sellers begin entering the market.</li>
+
+                <li>🔄 Control gradually shifts from buyers to sellers.</li>
+
+                <li>🚀 Price reverses after confirmation.</li>
+
+            </ul>
+
+            <p>
+                The opposite process happens during a bullish reversal, where
+                sellers lose momentum and buyers begin taking control.
+            </p>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Don't Assume Every Pullback Is a Reversal</h3>
+
+            <p>
+                One of the biggest beginner mistakes is confusing a temporary
+                pullback with a complete trend reversal. Markets often retrace
+                before continuing in the original direction.
+            </p>
+
+            <p>
+                Always wait for confirmation such as a breakout, strong candle
+                close, or change in market structure before assuming the trend has
+                reversed.
+            </p>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                Reversal patterns signal a possible change in trend—not a
+                guaranteed one. Professional traders always wait for confirmation
+                before entering a trade and never rely on the pattern alone.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 5 - CONTINUATION PATTERNS
+========================================== -->
+<section id="step5" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step5.png"
+                 alt="Continuation Chart Patterns"
+                 class="lesson-img">
+        </div>
+
+        <h2>➡️ Continuation Chart Patterns</h2>
+
+        <p>
+            Continuation patterns are chart formations that suggest the current
+            trend is likely to continue after a short pause or period of
+            consolidation. Instead of changing direction, the market takes a
+            break before moving further in the same direction.
+        </p>
+
+        <p>
+            Think of a runner in a marathon. The runner may slow down for a short
+            time to regain energy but then continues running toward the finish
+            line. Markets behave in a similar way. During a strong trend, price
+            often pauses before continuing its movement.
+        </p>
+
+        <div class="info-box">
+
+            <h3>📈 Why Do Continuation Patterns Form?</h3>
+
+            <p>
+                No market moves in one direction forever. Even during a strong
+                trend, traders take profits while new traders wait for better
+                entry opportunities. This temporary balance between buyers and
+                sellers creates continuation patterns.
+            </p>
+
+            <p>
+                Once enough buying or selling pressure returns, price usually
+                breaks out of the pattern and resumes the original trend.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 Common Continuation Patterns</h3>
+
+            <ul>
+
+                <li>✅ Ascending Triangle</li>
+
+                <li>✅ Descending Triangle</li>
+
+                <li>✅ Symmetrical Triangle</li>
+
+                <li>✅ Rectangle Pattern</li>
+
+                <li>✅ Bull Flag</li>
+
+                <li>✅ Bear Flag</li>
+
+            </ul>
+
+            <p>
+                In this lesson, we will focus on the most reliable continuation
+                patterns that beginners should learn first.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                Continuation patterns show that the dominant side of the market
+                still has control, even though price temporarily slows down.
+            </p>
+
+            <ul>
+
+                <li>📈 Buyers or sellers create a strong trend.</li>
+
+                <li>⏸️ Price pauses as traders take profits.</li>
+
+                <li>⚖️ Buyers and sellers reach temporary balance.</li>
+
+                <li>📊 The chart forms a recognizable pattern.</li>
+
+                <li>🚀 One side regains control and price breaks out.</li>
+
+                <li>📈 The original trend continues.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Don't Trade Before the Breakout</h3>
+
+            <p>
+                Many beginners enter trades while the price is still moving
+                inside the pattern. This is risky because the market has not yet
+                decided which direction it will move.
+            </p>
+
+            <p>
+                Professional traders usually wait for a clear breakout and a
+                strong candle close outside the pattern before considering an
+                entry.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📌 Reversal vs Continuation</h3>
+
+            <table class="comparison-table">
+
+                <tr>
+                    <th>Reversal Pattern</th>
+                    <th>Continuation Pattern</th>
+                </tr>
+
+                <tr>
+                    <td>Changes the current trend.</td>
+                    <td>Continues the existing trend.</td>
+                </tr>
+
+                <tr>
+                    <td>Appears near the end of a trend.</td>
+                    <td>Appears during an existing trend.</td>
+                </tr>
+
+                <tr>
+                    <td>Signals a possible trend reversal.</td>
+                    <td>Signals a temporary pause before continuation.</td>
+                </tr>
+
+                <tr>
+                    <td>Requires confirmation.</td>
+                    <td>Also requires confirmation.</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                Continuation patterns do not mean the trend has ended. They
+                simply represent a temporary pause in the market. Always wait
+                for a confirmed breakout before entering a trade, and combine
+                the pattern with support, resistance, and overall market trend
+                for better decision-making.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 6 - DOUBLE TOP PATTERN
+========================================== -->
+<section id="step6" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step6.png"
+                 alt="Double Top Pattern"
+                 class="lesson-img">
+        </div>
+
+        <h2>📉 Double Top Pattern</h2>
+
+        <p>
+            The Double Top is one of the most reliable bearish reversal chart
+            patterns. It usually appears after a strong uptrend and signals that
+            buyers are losing strength while sellers are beginning to take
+            control. Because it is easy to identify and widely used by traders,
+            it is considered one of the first chart patterns every beginner
+            should learn.
+        </p>
+
+        <p>
+            The pattern gets its name because price reaches approximately the
+            same high level twice, creating two peaks that resemble the letter
+            <strong>"M"</strong>. When the second attempt to move higher fails,
+            it shows that buyers are no longer strong enough to continue the
+            uptrend.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🔍 How to Identify a Double Top</h3>
+
+            <ul>
+
+                <li>✅ A clear uptrend must exist before the pattern forms.</li>
+
+                <li>✅ Price creates the first peak and then pulls back.</li>
+
+                <li>✅ Buyers push price up again to nearly the same level.</li>
+
+                <li>✅ The second peak fails to break significantly above the first peak.</li>
+
+                <li>✅ Price falls below the neckline, confirming the pattern.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                During the first rally, buyers are in complete control and push
+                price to a new high. After reaching resistance, some traders take
+                profits, causing a temporary pullback.
+            </p>
+
+            <p>
+                Buyers then try to continue the uptrend by pushing price back to
+                the previous high. However, they fail to create a strong new high.
+                This failure shows that buying momentum is weakening.
+            </p>
+
+            <p>
+                As sellers notice the failed breakout, they begin entering the
+                market. When price breaks below the neckline, many buyers exit
+                their positions while more sellers enter, increasing bearish
+                momentum.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📏 Important Parts of the Pattern</h3>
+
+            <ul>
+
+                <li>📈 Existing Uptrend</li>
+
+                <li>⛰️ First Peak</li>
+
+                <li>📉 Pullback</li>
+
+                <li>⛰️ Second Peak</li>
+
+                <li>➖ Neckline (Support Level)</li>
+
+                <li>📉 Breakdown Below Neckline</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 How to Trade a Double Top</h3>
+
+            <ol>
+
+                <li>Wait for a complete Double Top to form.</li>
+
+                <li>Draw the neckline by connecting the lowest point between the two peaks.</li>
+
+                <li>Wait for a strong candle to close below the neckline.</li>
+
+                <li>Some traders wait for a retest of the neckline before entering.</li>
+
+                <li>Place Stop Loss above the second peak.</li>
+
+                <li>Take Profit can be placed near the next support level or by measuring the height of the pattern.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Trading before the neckline breaks.</li>
+
+                <li>❌ Assuming every "M" shape is a Double Top.</li>
+
+                <li>❌ Ignoring the previous uptrend.</li>
+
+                <li>❌ Entering without confirmation.</li>
+
+                <li>❌ Forgetting to use proper risk management.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                The strongest Double Top patterns usually form near major
+                resistance zones after a long uptrend. A strong bearish breakout
+                below the neckline, followed by a successful retest, often
+                provides a higher-probability trading opportunity. Remember,
+                confirmation is more important than entering early.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 7 - DOUBLE BOTTOM PATTERN
+========================================== -->
+<section id="step7" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step7.png"
+                 alt="Double Bottom Pattern"
+                 class="lesson-img">
+        </div>
+
+        <h2>📈 Double Bottom Pattern</h2>
+
+        <p>
+            The Double Bottom is one of the most popular bullish reversal chart
+            patterns. It usually forms after a prolonged downtrend and signals
+            that sellers are losing momentum while buyers are beginning to take
+            control. Because of its reliability and easy identification, it is
+            considered one of the most important patterns every trader should
+            understand.
+        </p>
+
+        <p>
+            The pattern gets its name because price reaches approximately the
+            same low level twice, creating two valleys that resemble the letter
+            <strong>"W"</strong>. When sellers fail to push the market below the
+            first low, it shows that selling pressure is weakening and buyers
+            may soon reverse the trend.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🔍 How to Identify a Double Bottom</h3>
+
+            <ul>
+
+                <li>✅ A clear downtrend must exist before the pattern forms.</li>
+
+                <li>✅ Price creates the first bottom and then rebounds upward.</li>
+
+                <li>✅ Sellers push price down again toward the previous low.</li>
+
+                <li>✅ The second bottom forms near the same price level as the first.</li>
+
+                <li>✅ Price breaks above the neckline, confirming the pattern.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                During a downtrend, sellers control the market and continue
+                pushing prices lower. Eventually, buyers begin to see value and
+                enter the market, causing a temporary bounce.
+            </p>
+
+            <p>
+                Sellers attempt one more time to continue the downtrend, but
+                they fail to create a significantly lower low. This failure
+                shows that selling pressure is fading while buyers are becoming
+                stronger.
+            </p>
+
+            <p>
+                As more traders recognize the failed breakdown, buying pressure
+                increases. When price breaks above the neckline, many buyers
+                enter the market while short sellers begin closing their
+                positions, helping price move even higher.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📏 Important Parts of the Pattern</h3>
+
+            <ul>
+
+                <li>📉 Existing Downtrend</li>
+
+                <li>🔻 First Bottom</li>
+
+                <li>📈 Temporary Rally</li>
+
+                <li>🔻 Second Bottom</li>
+
+                <li>➖ Neckline (Resistance Level)</li>
+
+                <li>🚀 Breakout Above Neckline</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 How to Trade a Double Bottom</h3>
+
+            <ol>
+
+                <li>Wait for both bottoms to form completely.</li>
+
+                <li>Draw the neckline by connecting the highest point between the two bottoms.</li>
+
+                <li>Wait for a strong candle to close above the neckline.</li>
+
+                <li>Many professional traders wait for a retest of the neckline before entering.</li>
+
+                <li>Place the Stop Loss below the second bottom.</li>
+
+                <li>Take Profit can be placed near the next resistance level or by measuring the height of the pattern.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Trading before the neckline breakout.</li>
+
+                <li>❌ Confusing a temporary bounce with a Double Bottom.</li>
+
+                <li>❌ Ignoring the previous downtrend.</li>
+
+                <li>❌ Entering without waiting for confirmation.</li>
+
+                <li>❌ Forgetting proper risk management.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                The strongest Double Bottom patterns usually develop near major
+                support levels after an extended downtrend. A decisive breakout
+                above the neckline, followed by a successful retest, often
+                provides a higher-probability buying opportunity. Always combine
+                the pattern with trend analysis, support and resistance, and
+                sound risk management before entering a trade.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 8 - HEAD & SHOULDERS PATTERN
+========================================== -->
+<section id="step8" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step8.png"
+                 alt="Head and Shoulders Pattern"
+                 class="lesson-img">
+        </div>
+
+        <h2>👤 Head & Shoulders Pattern</h2>
+
+        <p>
+            The Head & Shoulders pattern is one of the strongest and most trusted
+            bearish reversal patterns in technical analysis. It usually forms
+            after a strong uptrend and indicates that buyers are gradually losing
+            control while sellers are becoming stronger. Many professional
+            traders watch this pattern because it often appears before a
+            significant downward price movement.
+        </p>
+
+        <p>
+            The pattern is named after its appearance. It consists of three
+            peaks: the first peak is called the <strong>Left Shoulder</strong>,
+            the middle and highest peak is called the
+            <strong>Head</strong>, and the third peak is called the
+            <strong>Right Shoulder</strong>. A support line drawn beneath these
+            peaks is known as the <strong>Neckline</strong>. When price breaks
+            below the neckline, the pattern is confirmed.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🔍 Structure of the Pattern</h3>
+
+            <ul>
+
+                <li>✅ A strong uptrend exists before the pattern forms.</li>
+
+                <li>✅ Price creates the Left Shoulder and then pulls back.</li>
+
+                <li>✅ Buyers push price to a higher high, creating the Head.</li>
+
+                <li>✅ Price falls again to the neckline.</li>
+
+                <li>✅ Buyers attempt another rally but fail to reach the Head, creating the Right Shoulder.</li>
+
+                <li>✅ Price breaks below the neckline, confirming the bearish reversal.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                During the uptrend, buyers confidently push prices higher. The
+                Left Shoulder forms as buyers take a short break after reaching
+                a new high.
+            </p>
+
+            <p>
+                Buyers then return with enough strength to create an even higher
+                peak, forming the Head. However, after this move, sellers begin
+                to increase their pressure, causing another decline toward the
+                neckline.
+            </p>
+
+            <p>
+                Buyers make one final attempt to continue the uptrend, but this
+                time they fail to create a new high. Instead, the Right Shoulder
+                forms below the Head, showing that buying strength is fading.
+                When sellers finally push price below the neckline, market
+                control shifts from buyers to sellers.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📏 Important Parts of the Pattern</h3>
+
+            <ul>
+
+                <li>📈 Existing Uptrend</li>
+
+                <li>👈 Left Shoulder</li>
+
+                <li>👤 Head (Highest Peak)</li>
+
+                <li>👉 Right Shoulder</li>
+
+                <li>➖ Neckline (Support Level)</li>
+
+                <li>📉 Breakout Below Neckline</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 How to Trade the Head & Shoulders Pattern</h3>
+
+            <ol>
+
+                <li>Wait for the complete pattern to form.</li>
+
+                <li>Draw the neckline by connecting the swing lows between the shoulders and the head.</li>
+
+                <li>Wait for a strong candle to close below the neckline.</li>
+
+                <li>Many traders wait for a retest of the neckline before entering a sell trade.</li>
+
+                <li>Place the Stop Loss above the Right Shoulder.</li>
+
+                <li>Take Profit can be placed near the next support level or by measuring the distance from the Head to the Neckline.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📈 Inverse Head & Shoulders</h3>
+
+            <p>
+                There is also a bullish version called the
+                <strong>Inverse Head & Shoulders</strong>. It forms after a
+                downtrend and signals a possible bullish reversal. Instead of
+                three peaks, it consists of three valleys. Once price breaks
+                above the neckline, buyers often gain control and the market may
+                begin moving upward.
+            </p>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Trading before the neckline breaks.</li>
+
+                <li>❌ Ignoring the previous uptrend.</li>
+
+                <li>❌ Assuming every three-peak formation is a valid Head & Shoulders pattern.</li>
+
+                <li>❌ Entering without confirmation.</li>
+
+                <li>❌ Ignoring risk management.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                The best Head & Shoulders patterns form after a strong uptrend
+                and near important resistance levels. A decisive breakout below
+                the neckline, especially with strong bearish momentum, provides
+                a higher-probability trading opportunity. Always combine this
+                pattern with trend analysis, support and resistance, and proper
+                risk management for the best results.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 9 - ASCENDING TRIANGLE PATTERN
+========================================== -->
+<section id="step9" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step9.png"
+                 alt="Ascending Triangle Pattern"
+                 class="lesson-img">
+        </div>
+
+        <h2>📈 Ascending Triangle Pattern</h2>
+
+        <p>
+            The Ascending Triangle is one of the strongest bullish continuation
+            chart patterns. It usually forms during an uptrend and suggests that
+            buyers are becoming increasingly stronger while sellers are struggling
+            to stop the price from moving higher. Once the resistance level is
+            broken, the market often continues its upward trend with strong
+            momentum.
+        </p>
+
+        <p>
+            The pattern is called an <strong>Ascending Triangle</strong> because
+            it is formed by a horizontal resistance line at the top and a rising
+            support trendline below. As the support line moves upward, buyers keep
+            entering the market at higher prices, showing increasing confidence.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🔍 How to Identify an Ascending Triangle</h3>
+
+            <ul>
+
+                <li>✅ A clear uptrend should exist before the pattern forms.</li>
+
+                <li>✅ Price repeatedly touches a horizontal resistance level.</li>
+
+                <li>✅ Each pullback creates a Higher Low.</li>
+
+                <li>✅ Draw a horizontal line across the resistance.</li>
+
+                <li>✅ Draw an upward-sloping trendline connecting the Higher Lows.</li>
+
+                <li>✅ Wait for a breakout above the resistance line.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                Sellers initially defend a resistance level and prevent price from
+                moving higher. However, buyers continue stepping into the market
+                after every small pullback, creating a series of Higher Lows.
+            </p>
+
+            <p>
+                This shows that buyers are becoming more aggressive. They are no
+                longer waiting for deep pullbacks before buying. Instead, they are
+                willing to buy at increasingly higher prices.
+            </p>
+
+            <p>
+                Eventually, the buying pressure becomes too strong for sellers to
+                defend the resistance level. When price breaks above resistance,
+                many new buyers enter the market while sellers exit their
+                positions, causing the trend to continue upward.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📏 Important Parts of the Pattern</h3>
+
+            <ul>
+
+                <li>📈 Existing Uptrend</li>
+
+                <li>➖ Horizontal Resistance</li>
+
+                <li>📈 Rising Support Trendline</li>
+
+                <li>📍 Higher Lows</li>
+
+                <li>🚀 Bullish Breakout</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 How to Trade an Ascending Triangle</h3>
+
+            <ol>
+
+                <li>Wait for the Ascending Triangle to fully develop.</li>
+
+                <li>Draw the resistance and rising support lines.</li>
+
+                <li>Wait for a strong bullish candle to close above resistance.</li>
+
+                <li>Many professional traders wait for a retest of the breakout level before buying.</li>
+
+                <li>Place the Stop Loss below the most recent Higher Low or below the support trendline.</li>
+
+                <li>Take Profit can be placed at the next resistance level or by measuring the height of the triangle and projecting it upward.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Trading before the breakout occurs.</li>
+
+                <li>❌ Drawing the resistance line at different price levels.</li>
+
+                <li>❌ Ignoring the Higher Lows.</li>
+
+                <li>❌ Entering without waiting for a candle close above resistance.</li>
+
+                <li>❌ Forgetting to use Stop Loss.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                The strongest Ascending Triangle patterns form during a healthy
+                uptrend with multiple touches of both the resistance line and the
+                rising support trendline. A breakout supported by strong momentum
+                provides a higher-probability buying opportunity. Always combine
+                the pattern with trend analysis, support and resistance, and
+                proper risk management before entering a trade.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 10 - DESCENDING TRIANGLE PATTERN
+========================================== -->
+<section id="step10" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step10.png"
+                 alt="Descending Triangle Pattern"
+                 class="lesson-img">
+        </div>
+
+        <h2>📉 Descending Triangle Pattern</h2>
+
+        <p>
+            The Descending Triangle is one of the strongest bearish continuation
+            chart patterns. It usually forms during a downtrend and indicates
+            that sellers are becoming increasingly aggressive while buyers are
+            struggling to defend a support level. Once that support level breaks,
+            the market often continues moving downward with strong momentum.
+        </p>
+
+        <p>
+            The pattern is called a <strong>Descending Triangle</strong> because
+            it is formed by a horizontal support line at the bottom and a
+            downward-sloping resistance trendline above. As the resistance line
+            moves lower, sellers continue entering the market at lower prices,
+            showing increasing selling pressure.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🔍 How to Identify a Descending Triangle</h3>
+
+            <ul>
+
+                <li>✅ A clear downtrend should exist before the pattern forms.</li>
+
+                <li>✅ Price repeatedly touches the same support level.</li>
+
+                <li>✅ Each rally creates a Lower High.</li>
+
+                <li>✅ Draw a horizontal support line across the lows.</li>
+
+                <li>✅ Draw a downward-sloping trendline connecting the Lower Highs.</li>
+
+                <li>✅ Wait for a bearish breakout below the support line.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                Buyers initially defend an important support level and stop the
+                price from falling further. However, sellers continue entering
+                the market after every small rally, creating a series of Lower
+                Highs.
+            </p>
+
+            <p>
+                This shows that sellers are becoming more confident. Buyers are
+                unable to push price back to previous highs, while sellers are
+                willing to sell at increasingly lower prices.
+            </p>
+
+            <p>
+                Eventually, selling pressure becomes too strong for buyers to
+                defend the support level. When price breaks below support, many
+                sellers enter new positions while buyers close their trades,
+                causing the downtrend to continue.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📏 Important Parts of the Pattern</h3>
+
+            <ul>
+
+                <li>📉 Existing Downtrend</li>
+
+                <li>➖ Horizontal Support</li>
+
+                <li>📉 Falling Resistance Trendline</li>
+
+                <li>📍 Lower Highs</li>
+
+                <li>⬇️ Bearish Breakout</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 How to Trade a Descending Triangle</h3>
+
+            <ol>
+
+                <li>Wait for the Descending Triangle to fully develop.</li>
+
+                <li>Draw the horizontal support and falling resistance lines.</li>
+
+                <li>Wait for a strong bearish candle to close below support.</li>
+
+                <li>Many professional traders wait for a retest of the broken support before entering a sell trade.</li>
+
+                <li>Place the Stop Loss above the most recent Lower High or above the resistance trendline.</li>
+
+                <li>Take Profit can be placed at the next support level or by measuring the height of the triangle and projecting it downward.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Selling before the support breaks.</li>
+
+                <li>❌ Ignoring the Lower Highs.</li>
+
+                <li>❌ Drawing trendlines incorrectly.</li>
+
+                <li>❌ Entering without waiting for breakout confirmation.</li>
+
+                <li>❌ Trading without proper risk management.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                The strongest Descending Triangle patterns usually develop during
+                a strong downtrend with several touches of both the support line
+                and the falling resistance trendline. A decisive breakout below
+                support, especially with strong bearish momentum, offers a
+                higher-probability selling opportunity. Always combine this
+                pattern with market structure, support and resistance, and sound
+                risk management before placing a trade.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 11 - SYMMETRICAL TRIANGLE PATTERN
+========================================== -->
+<section id="step11" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step11.png"
+                 alt="Symmetrical Triangle Pattern"
+                 class="lesson-img">
+        </div>
+
+        <h2>🔺 Symmetrical Triangle Pattern</h2>
+
+        <p>
+            The Symmetrical Triangle is one of the most common chart patterns in
+            technical analysis. Unlike the Ascending Triangle and Descending
+            Triangle, this pattern does not automatically indicate whether the
+            market will move up or down. Instead, it represents a period of
+            balance between buyers and sellers, where neither side has complete
+            control.
+        </p>
+
+        <p>
+            As the pattern develops, price creates Lower Highs and Higher Lows.
+            This causes the two trendlines to move closer together, forming a
+            triangle shape. Eventually, the market reaches a point where one side
+            gains control and price breaks out strongly in that direction.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🔍 How to Identify a Symmetrical Triangle</h3>
+
+            <ul>
+
+                <li>✅ Price forms a series of Lower Highs.</li>
+
+                <li>✅ Price also forms a series of Higher Lows.</li>
+
+                <li>✅ Draw a descending trendline across the highs.</li>
+
+                <li>✅ Draw an ascending trendline across the lows.</li>
+
+                <li>✅ The two trendlines converge toward each other.</li>
+
+                <li>✅ Wait for a confirmed breakout before entering a trade.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                During the formation of a Symmetrical Triangle, buyers are no
+                longer able to push price to new highs, while sellers are also
+                unable to create new lows. This creates a temporary balance
+                between demand and supply.
+            </p>
+
+            <p>
+                As the trading range becomes smaller, pressure builds inside the
+                pattern. Eventually, one side becomes stronger than the other,
+                resulting in a powerful breakout. The breakout direction tells us
+                who has gained control of the market.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📏 Important Parts of the Pattern</h3>
+
+            <ul>
+
+                <li>📉 Descending Resistance Trendline</li>
+
+                <li>📈 Ascending Support Trendline</li>
+
+                <li>📍 Lower Highs</li>
+
+                <li>📍 Higher Lows</li>
+
+                <li>⚡ Breakout Point</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 How to Trade a Symmetrical Triangle</h3>
+
+            <ol>
+
+                <li>Wait until the triangle is fully developed.</li>
+
+                <li>Draw both converging trendlines accurately.</li>
+
+                <li>Never guess the breakout direction.</li>
+
+                <li>Wait for a strong candle to close outside the triangle.</li>
+
+                <li>If the breakout is upward, look for buying opportunities.</li>
+
+                <li>If the breakout is downward, look for selling opportunities.</li>
+
+                <li>Many professional traders wait for a retest of the broken trendline before entering.</li>
+
+                <li>Place Stop Loss outside the opposite side of the triangle.</li>
+
+                <li>Take Profit can be estimated by measuring the widest part of the triangle and projecting that distance from the breakout point.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Predicting the breakout direction before confirmation.</li>
+
+                <li>❌ Entering trades while price is still inside the triangle.</li>
+
+                <li>❌ Drawing trendlines through random candles.</li>
+
+                <li>❌ Ignoring false breakouts.</li>
+
+                <li>❌ Trading without a Stop Loss.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                A Symmetrical Triangle is a pattern of patience. Professional
+                traders focus on waiting for confirmation instead of trying to
+                predict the breakout. Strong breakouts supported by momentum,
+                trend analysis, and key support or resistance levels generally
+                provide the highest-probability trading opportunities. Remember,
+                the breakout direction—not the triangle itself—determines whether
+                the trade should be bullish or bearish.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 12 - WEDGE PATTERN
+========================================== -->
+<section id="step12" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step12.png"
+                 alt="Wedge Pattern"
+                 class="lesson-img">
+        </div>
+
+        <h2>📐 Wedge Pattern</h2>
+
+        <p>
+            The Wedge Pattern is a popular chart pattern that forms when price
+            moves between two trendlines that gradually come closer together.
+            Unlike triangles, both trendlines slope in the same direction.
+            Wedges can signal either a continuation of the current trend or a
+            possible trend reversal, depending on where they appear and how the
+            breakout occurs.
+        </p>
+
+        <p>
+            There are two main types of wedge patterns:
+            <strong>Rising Wedge</strong> and
+            <strong>Falling Wedge</strong>. Learning to distinguish between them
+            helps traders understand changing market momentum and prepare for
+            potential breakout opportunities.
+        </p>
+
+        <div class="info-box">
+
+            <h3>📈 Rising Wedge</h3>
+
+            <p>
+                A Rising Wedge forms when both support and resistance trendlines
+                slope upward, but the support line rises faster than the
+                resistance line. This causes the trading range to become
+                narrower as price continues climbing.
+            </p>
+
+            <p>
+                Although price is still moving upward, each new rally becomes
+                weaker. Buyers are losing momentum, while sellers gradually gain
+                confidence. When price breaks below the lower trendline, it often
+                signals a bearish move.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📉 Falling Wedge</h3>
+
+            <p>
+                A Falling Wedge forms when both support and resistance trendlines
+                slope downward, but the resistance line falls faster than the
+                support line. As the pattern narrows, selling pressure begins to
+                weaken.
+            </p>
+
+            <p>
+                Sellers continue pushing price lower, but each new decline
+                becomes smaller. Buyers slowly gain strength, and a breakout
+                above the upper trendline often signals a bullish move.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                Wedge patterns represent slowing momentum. Even though price
+                continues moving in the current direction, each move becomes
+                weaker than the previous one. This tells traders that the
+                dominant side of the market may be losing control.
+            </p>
+
+            <ul>
+
+                <li>📈 Rising Wedge → Buying pressure gradually weakens.</li>
+
+                <li>📉 Falling Wedge → Selling pressure gradually weakens.</li>
+
+                <li>⚖️ Momentum decreases as price approaches the end of the wedge.</li>
+
+                <li>🚀 A breakout confirms which side has taken control.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 How to Trade a Wedge Pattern</h3>
+
+            <ol>
+
+                <li>Identify whether the pattern is a Rising Wedge or Falling Wedge.</li>
+
+                <li>Draw both converging trendlines accurately.</li>
+
+                <li>Wait for a strong breakout candle outside the wedge.</li>
+
+                <li>Many traders wait for a retest of the broken trendline before entering.</li>
+
+                <li>Place Stop Loss outside the opposite side of the wedge.</li>
+
+                <li>Take Profit can be placed at the next support or resistance level, or by measuring the height of the wedge.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Confusing wedges with triangles.</li>
+
+                <li>❌ Trading before the breakout is confirmed.</li>
+
+                <li>❌ Drawing trendlines through random candles.</li>
+
+                <li>❌ Ignoring the overall market trend.</li>
+
+                <li>❌ Trading without proper risk management.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                Wedge patterns become much more reliable when they form near
+                important support or resistance levels. Always wait for a
+                confirmed breakout instead of predicting the direction. Combining
+                wedge patterns with market structure, trend analysis, and risk
+                management can significantly improve trading decisions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 13 - RECTANGLE PATTERN
+========================================== -->
+<section id="step13" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step13.png"
+                 alt="Rectangle Pattern"
+                 class="lesson-img">
+        </div>
+
+        <h2>⬛ Rectangle Pattern</h2>
+
+        <p>
+            The Rectangle Pattern is a chart formation that occurs when price
+            moves sideways between a horizontal resistance level and a horizontal
+            support level. During this period, neither buyers nor sellers have
+            enough strength to take complete control of the market. As a result,
+            price continues bouncing between these two levels until a breakout
+            finally occurs.
+        </p>
+
+        <p>
+            This pattern is also known as a <strong>Trading Range</strong> or
+            <strong>Consolidation Zone</strong>. It represents a temporary pause
+            in the market where traders wait for new information before deciding
+            the next direction. Once price breaks above resistance or below
+            support, a strong move often follows.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🔍 How to Identify a Rectangle Pattern</h3>
+
+            <ul>
+
+                <li>✅ Price moves sideways instead of trending.</li>
+
+                <li>✅ A clear horizontal resistance level forms at the top.</li>
+
+                <li>✅ A clear horizontal support level forms at the bottom.</li>
+
+                <li>✅ Price touches both support and resistance multiple times.</li>
+
+                <li>✅ Wait for a confirmed breakout before entering a trade.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                During a Rectangle Pattern, buyers and sellers are evenly
+                matched. Buyers prevent price from falling below support, while
+                sellers stop price from rising above resistance.
+            </p>
+
+            <p>
+                As this battle continues, the market stores energy. Eventually,
+                one side gains enough strength to break out of the range. A
+                breakout above resistance shows buyers have taken control, while
+                a breakout below support shows sellers are now in control.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📏 Important Parts of the Pattern</h3>
+
+            <ul>
+
+                <li>⬆️ Horizontal Resistance</li>
+
+                <li>⬇️ Horizontal Support</li>
+
+                <li>↔️ Sideways Price Movement</li>
+
+                <li>📍 Multiple Touches of Support and Resistance</li>
+
+                <li>🚀 Breakout Above Resistance or Breakdown Below Support</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 How to Trade a Rectangle Pattern</h3>
+
+            <ol>
+
+                <li>Wait for the rectangle to fully develop.</li>
+
+                <li>Draw horizontal support and resistance lines.</li>
+
+                <li>Do not trade while price is moving randomly inside the range unless your strategy is specifically designed for range trading.</li>
+
+                <li>Wait for a strong candle to close above resistance for a buy trade or below support for a sell trade.</li>
+
+                <li>Many professional traders wait for a retest of the broken level before entering.</li>
+
+                <li>Place the Stop Loss on the opposite side of the breakout level.</li>
+
+                <li>Take Profit can be set near the next support or resistance level or by measuring the height of the rectangle and projecting it from the breakout point.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Entering trades before the breakout is confirmed.</li>
+
+                <li>❌ Mistaking random market movement for a rectangle.</li>
+
+                <li>❌ Ignoring false breakouts.</li>
+
+                <li>❌ Forgetting to use Stop Loss.</li>
+
+                <li>❌ Ignoring the overall market trend.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                Rectangle patterns become much more reliable when they appear
+                after a strong trend and are confirmed by a decisive breakout
+                with strong momentum. Avoid chasing price inside the range.
+                Instead, wait patiently for confirmation and always combine the
+                pattern with support and resistance, trend analysis, and proper
+                risk management before entering a trade.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 14 - HOW TO TRADE CHART PATTERNS
+========================================== -->
+<section id="step14" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step14.png"
+                 alt="How to Trade Chart Patterns"
+                 class="lesson-img">
+        </div>
+
+        <h2>💹 How to Trade Chart Patterns</h2>
+
+        <p>
+            Learning to identify chart patterns is only half of the journey.
+            Successful traders know that finding a pattern is not enough—they
+            must also know when to enter, where to place a Stop Loss, where to
+            take profit, and how to manage risk. A well-planned trade is always
+            better than a rushed trade based on emotions.
+        </p>
+
+        <p>
+            Every chart pattern follows the same basic trading process. Whether
+            you are trading a Double Top, Triangle, Wedge, or Rectangle, the
+            goal is to wait for confirmation before risking your money.
+        </p>
+
+        <div class="info-box">
+
+            <h3>📝 Step 1: Identify a Valid Pattern</h3>
+
+            <p>
+                Before taking any trade, make sure the pattern is complete.
+                Draw your trendlines carefully and confirm that the structure
+                matches the rules you learned in this lesson.
+            </p>
+
+            <ul>
+
+                <li>✅ Look for clear and clean price action.</li>
+
+                <li>✅ Make sure the pattern is easy to recognize.</li>
+
+                <li>✅ Avoid forcing patterns where they don't exist.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 Step 2: Wait for Confirmation</h3>
+
+            <p>
+                Never enter a trade simply because a pattern appears on the
+                chart. The safest approach is to wait until price confirms the
+                breakout or breakdown.
+            </p>
+
+            <ul>
+
+                <li>✅ Strong candle closes outside the pattern.</li>
+
+                <li>✅ Breakout above resistance or below support.</li>
+
+                <li>✅ Optional retest of the breakout level.</li>
+
+                <li>✅ Momentum supports the breakout.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🎯 Step 3: Plan Your Entry</h3>
+
+            <p>
+                Once confirmation is received, decide exactly where you want to
+                enter the trade. Many traders enter immediately after the
+                breakout, while others wait for a retest to reduce risk.
+            </p>
+
+            <p>
+                Whatever method you choose, always have a clear plan before
+                entering the market.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🛡️ Step 4: Place Your Stop Loss</h3>
+
+            <p>
+                Every trade should have a Stop Loss. It protects your trading
+                account if the market moves against you.
+            </p>
+
+            <ul>
+
+                <li>✅ Place it beyond the invalidation point.</li>
+
+                <li>✅ Avoid placing it too close to the entry.</li>
+
+                <li>✅ Never move your Stop Loss farther away just to avoid taking a loss.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>💰 Step 5: Set Your Take Profit</h3>
+
+            <p>
+                Before entering the trade, decide where you will take profits.
+                Common methods include:
+            </p>
+
+            <ul>
+
+                <li>📍 Next Support or Resistance Level</li>
+
+                <li>📏 Measured Move (Pattern Height)</li>
+
+                <li>⚖️ Fixed Risk-to-Reward Ratio</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📈 Step 6: Manage the Trade</h3>
+
+            <p>
+                Entering the trade is only the beginning. Professional traders
+                continue monitoring the position until it is closed.
+            </p>
+
+            <ul>
+
+                <li>✅ Follow your trading plan.</li>
+
+                <li>✅ Don't panic because of small pullbacks.</li>
+
+                <li>✅ Avoid emotional decisions.</li>
+
+                <li>✅ Accept both wins and losses as part of trading.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠️ Never Do These Things</h3>
+
+            <ul>
+
+                <li>❌ Enter before confirmation.</li>
+
+                <li>❌ Risk your entire account on one trade.</li>
+
+                <li>❌ Remove your Stop Loss.</li>
+
+                <li>❌ Chase the market after a breakout.</li>
+
+                <li>❌ Trade based on emotions instead of your plan.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                The best traders are not the ones who trade the most—they are
+                the ones who wait patiently for the highest-quality setups.
+                Always remember: patience, confirmation, and proper risk
+                management are far more important than trying to catch every
+                market move.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 15 - COMMON CHART PATTERN TRADING GUIDE
+========================================== -->
+<section id="step15" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step15.png"
+                 alt="Chart Pattern Trading Guide"
+                 class="lesson-img">
+        </div>
+
+        <h2>📋 Common Chart Pattern Trading Guide</h2>
+
+        <p>
+            By now, you've learned several important chart patterns and how they
+            work. However, identifying a pattern is only the first step. Before
+            placing any trade, you should always follow a simple checklist to
+            make sure the setup is valid. Professional traders use checklists to
+            reduce emotional decisions and improve consistency.
+        </p>
+
+        <p>
+            Think of this guide as your trading routine. Every time you see a
+            chart pattern, go through these steps before clicking the Buy or Sell
+            button. If one or more important conditions are missing, it's often
+            better to wait for another opportunity.
+        </p>
+
+        <div class="info-box">
+
+            <h3>✅ Pre-Trade Checklist</h3>
+
+            <ul>
+
+                <li>✅ Is the chart pattern complete?</li>
+
+                <li>✅ Is the overall trend clear?</li>
+
+                <li>✅ Have you drawn support and resistance correctly?</li>
+
+                <li>✅ Has the breakout or breakdown been confirmed?</li>
+
+                <li>✅ Is there enough room for price to reach your target?</li>
+
+                <li>✅ Have you planned your Stop Loss?</li>
+
+                <li>✅ Have you planned your Take Profit?</li>
+
+                <li>✅ Are you risking only a small portion of your account?</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>📊 Best Trading Practices</h3>
+
+            <ul>
+
+                <li>📈 Trade with the overall market trend whenever possible.</li>
+
+                <li>🕒 Wait patiently for the pattern to complete.</li>
+
+                <li>✔️ Wait for breakout confirmation before entering.</li>
+
+                <li>📍 Use support and resistance to improve accuracy.</li>
+
+                <li>🛡️ Always protect your account with a Stop Loss.</li>
+
+                <li>💰 Decide your Take Profit before entering the trade.</li>
+
+                <li>📖 Keep a trading journal to review your trades and improve over time.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🚫 When You Should Avoid Trading</h3>
+
+            <ul>
+
+                <li>❌ The pattern is incomplete.</li>
+
+                <li>❌ The breakout has not been confirmed.</li>
+
+                <li>❌ The market is moving randomly with no clear direction.</li>
+
+                <li>❌ Risk is much larger than the potential reward.</li>
+
+                <li>❌ You are trading because of fear, greed, or frustration.</li>
+
+                <li>❌ Important economic news is about to be released and your strategy doesn't account for it.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🎯 Professional Trading Routine</h3>
+
+            <ol>
+
+                <li>Analyze the overall market trend.</li>
+
+                <li>Identify a valid chart pattern.</li>
+
+                <li>Draw support, resistance, and trendlines.</li>
+
+                <li>Wait for breakout confirmation.</li>
+
+                <li>Calculate your Stop Loss and Take Profit.</li>
+
+                <li>Check your risk before entering.</li>
+
+                <li>Enter the trade only if all conditions are met.</li>
+
+                <li>Stay disciplined and follow your trading plan.</li>
+
+            </ol>
+
+        </div>
+
+         <h3>⚠️ Important Reminder</h3>
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                There is no chart pattern that wins 100% of the time. Even the
+                best traders experience losing trades. Your goal is not to win
+                every trade—it is to follow your trading plan consistently and
+                protect your capital over the long term.
+            </p>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                Success in trading comes from discipline, patience, and
+                consistency—not from finding a "magic" pattern. Focus on taking
+                high-quality trades, managing risk carefully, and learning from
+                every trade you take. Over time, these habits can make a much
+                bigger difference than any single chart pattern.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 16 - COMMON MISTAKES & BEST PRACTICES
+========================================== -->
+<section id="step16" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step16.png"
+                 alt="Common Mistakes and Best Practices"
+                 class="lesson-img">
+        </div>
+
+        <h2>⚠️ Common Mistakes & Best Practices</h2>
+
+        <p>
+            Learning chart patterns is only the beginning of becoming a
+            successful trader. Many beginners understand the theory but still
+            lose money because they ignore trading discipline. The difference
+            between successful traders and unsuccessful traders is often not
+            knowledge—it's how consistently they apply that knowledge.
+        </p>
+
+        <p>
+            Every trader makes mistakes, especially in the beginning. The goal
+            is not to avoid every mistake but to recognize them quickly, learn
+            from them, and avoid repeating them. By following good trading
+            habits, you can improve your decision-making and protect your
+            trading account.
+        </p>
+
+        <div class="warning-box">
+
+            <h3>❌ Common Beginner Mistakes</h3>
+
+            <ul>
+
+                <li>❌ Trading before the chart pattern is fully formed.</li>
+
+                <li>❌ Entering without waiting for breakout confirmation.</li>
+
+                <li>❌ Ignoring the overall market trend.</li>
+
+                <li>❌ Drawing incorrect support, resistance, or trendlines.</li>
+
+                <li>❌ Risking too much money on a single trade.</li>
+
+                <li>❌ Trading because of fear, greed, or revenge.</li>
+
+                <li>❌ Moving or removing the Stop Loss after entering a trade.</li>
+
+                <li>❌ Chasing the market after missing a breakout.</li>
+
+                <li>❌ Taking every pattern without checking its quality.</li>
+
+                <li>❌ Expecting every trade to be a winner.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>✅ Best Trading Practices</h3>
+
+            <ul>
+
+                <li>✅ Wait patiently for high-quality chart patterns.</li>
+
+                <li>✅ Always wait for confirmation before entering.</li>
+
+                <li>✅ Trade with the overall market trend whenever possible.</li>
+
+                <li>✅ Use proper Stop Loss and Take Profit levels.</li>
+
+                <li>✅ Follow your trading plan without changing it emotionally.</li>
+
+                <li>✅ Risk only a small percentage of your account on each trade.</li>
+
+                <li>✅ Review your completed trades to improve over time.</li>
+
+                <li>✅ Keep learning and practicing before increasing your trade size.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🧠 Build Good Trading Habits</h3>
+
+            <p>
+                Good habits create consistent results. Before entering any trade,
+                ask yourself a few simple questions:
+            </p>
+
+            <ul>
+
+                <li>📌 Is the pattern complete?</li>
+
+                <li>📌 Has the breakout been confirmed?</li>
+
+                <li>📌 Am I trading with the trend?</li>
+
+                <li>📌 Have I planned my Stop Loss?</li>
+
+                <li>📌 Have I planned my Take Profit?</li>
+
+                <li>📌 Am I following my trading rules?</li>
+
+            </ul>
+
+            <p>
+                If the answer to any of these questions is "No," it may be
+                better to wait rather than force a trade.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🏆 Characteristics of Successful Traders</h3>
+
+            <ul>
+
+                <li>🎯 They are patient.</li>
+
+                <li>📚 They continue learning.</li>
+
+                <li>🛡️ They protect their capital.</li>
+
+                <li>📊 They follow a trading plan.</li>
+
+                <li>🧾 They keep a trading journal.</li>
+
+                <li>💡 They focus on consistency instead of quick profits.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Strativo Tip</h3>
+
+            <p>
+                Chart patterns are powerful tools, but they are only one part of
+                successful trading. Your long-term success depends on patience,
+                discipline, risk management, and following a consistent trading
+                plan. Focus on making good decisions instead of trying to win
+                every trade.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 17 - LESSON SUMMARY
+========================================== -->
+<section id="step17" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step17.png"
+                 alt="Lesson 10 Summary"
+                 class="lesson-img">
+        </div>
+
+        <h2>📝 Lesson Summary</h2>
+
+        <p>
+            Congratulations! You have completed the learning portion of Lesson
+            10. In this lesson, you explored some of the most important chart
+            patterns used in technical analysis. These patterns help traders
+            understand market psychology, identify potential trading
+            opportunities, and make better trading decisions.
+        </p>
+
+        <p>
+            Remember that chart patterns do not predict the future. Instead,
+            they provide clues about what buyers and sellers are doing. The
+            most successful traders use chart patterns together with trend
+            analysis, support and resistance, confirmation, and proper risk
+            management to improve the probability of successful trades.
+        </p>
+
+        <div class="info-box">
+
+            <h3>📚 What You Learned</h3>
+
+            <ul>
+
+                <li>✅ What chart patterns are and why they form.</li>
+
+                <li>✅ How to draw chart patterns correctly.</li>
+
+                <li>✅ The difference between reversal and continuation patterns.</li>
+
+                <li>✅ How to identify a Double Top.</li>
+
+                <li>✅ How to identify a Double Bottom.</li>
+
+                <li>✅ How to recognize the Head & Shoulders pattern.</li>
+
+                <li>✅ How to trade Ascending, Descending, and Symmetrical Triangles.</li>
+
+                <li>✅ The difference between Rising and Falling Wedges.</li>
+
+                <li>✅ How Rectangle patterns represent market consolidation.</li>
+
+                <li>✅ How to trade chart patterns using confirmation.</li>
+
+                <li>✅ Common trading mistakes and professional best practices.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🎯 Key Rules to Remember</h3>
+
+            <ul>
+
+                <li>✔️ Always identify the overall market trend first.</li>
+
+                <li>✔️ Never force a chart pattern that isn't clearly visible.</li>
+
+                <li>✔️ Wait for breakout confirmation before entering.</li>
+
+                <li>✔️ Always use a Stop Loss to manage risk.</li>
+
+                <li>✔️ Plan your Take Profit before entering a trade.</li>
+
+                <li>✔️ Stay patient and avoid emotional trading.</li>
+
+                <li>✔️ Focus on consistency instead of quick profits.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>💡 Final Advice</h3>
+
+            <p>
+                Becoming a successful trader takes time, practice, and
+                discipline. Don't worry if you don't recognize every chart
+                pattern immediately. The more charts you study, the easier it
+                becomes to identify high-quality setups. Practice on historical
+                charts or a demo account before risking real money, and always
+                continue learning.
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+    <h3>🚀 What's Next?</h3>
+
+    <p>
+        Great job! In the next lesson, you'll learn about <strong>Candlestick Patterns</strong>—how to read individual candlesticks, recognize bullish and bearish reversal signals, and combine candlestick patterns with chart patterns to make stronger trading decisions.
+    </p>
+
+    <ul>
+        <li>📖 Single Candlestick Patterns</li>
+        <li>📖 Double Candlestick Patterns</li>
+        <li>📖 Triple Candlestick Patterns</li>
+        <li>📖 Confirmation Techniques</li>
+    </ul>
+
+</div>
+
+        <div class="tip-box">
+
+            <h3>🚀 Ready for the Quiz?</h3>
+
+            <p>
+                Great job completing Lesson 10! Now it's time to test your
+                knowledge. The quiz will help reinforce everything you've
+                learned and prepare you for the next lesson. Read each question
+                carefully, think before answering, and do your best. Good luck!
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+STEP 18 - QUIZ
+========================================== -->
+<section id="step18" class="lesson-step quiz-step" data-step-type="quiz">
+
+    <div class="lesson-card">
+
+    <h2>📝 Lesson 10 Quiz</h2>
+
+    <p>
+        It's time to test your understanding of Chart Patterns. Answer all 15 questions carefully. Take your time and choose the best answer for each question.
+    </p>
+
+    <div class="info-box">
+
+        <h3>📋 Quiz Information</h3>
+
+        <ul>
+            <li>📝 Total Questions: 15</li>
+            <li>🎯 Passing Score: 70%</li>
+            <li>⏱ Estimated Time: 10–15 Minutes</li>
+            <li>🔄 Unlimited Retry Attempts</li>
+        </ul>
+
+    </div>
+
+    <div class="warning-box">
+
+        <h3>⚠️ Quiz Rules</h3>
+
+        <ul>
+            <li>✅ Read every question carefully.</li>
+            <li>✅ Select only one answer.</li>
+            <li>✅ You must answer before moving to the next question.</li>
+            <li>✅ Score at least 70% to unlock the next lesson.</li>
+        </ul>
+
+    </div>
+
+    <div class="tip-box">
+
+        <h3>💡 Strativo Tip</h3>
+
+        <p>
+            Don't rush. This quiz is designed to reinforce your learning. Even if you don't pass on the first attempt, reviewing your mistakes will help you become a better trader.
+        </p>
+
+    </div>
+
+    <div id="quiz-container"></div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+STEP 19 - CONGRATULATIONS
+========================================== -->
+<section id="step19" class="lesson-step">
+
+    <div class="lesson-card">
+
+        <div class="lesson-image">
+            <img loading="lazy" src="../../images/lesson10/step19.png"
+                 alt="Congratulations"
+                 class="lesson-img">
+        </div>
+
+        <h2>🎉 Congratulations!</h2>
+
+        <h1>You Have Successfully Completed Lesson 10</h1>
+
+        <p>
+            Outstanding work! You have completed one of the most important
+            lessons in technical analysis. Chart patterns are powerful tools
+            that help traders understand market psychology and identify
+            high-probability trading opportunities.
+        </p>
+
+        <p>
+            Throughout this lesson, you learned how to recognize major reversal
+            and continuation patterns, understand why they form, and apply them
+            using proper confirmation and risk management. These skills will
+            become more valuable as you continue practicing and analyzing real
+            market charts.
+        </p>
+
+        <div class="info-box">
+
+            <h3>🏆 What You Achieved</h3>
+
+            <ul>
+
+                <li>✅ Learned what chart patterns are.</li>
+
+                <li>✅ Learned how to draw chart patterns correctly.</li>
+
+                <li>✅ Understood reversal and continuation patterns.</li>
+
+                <li>✅ Mastered Double Top and Double Bottom patterns.</li>
+
+                <li>✅ Learned the Head & Shoulders pattern.</li>
+
+                <li>✅ Studied Ascending, Descending, and Symmetrical Triangles.</li>
+
+                <li>✅ Learned Rising and Falling Wedge patterns.</li>
+
+                <li>✅ Understood Rectangle consolidation patterns.</li>
+
+                <li>✅ Learned how to trade chart patterns step by step.</li>
+
+                <li>✅ Improved your trading knowledge and discipline.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="info-box">
+
+            <h3>🚀 What's Next?</h3>
+
+            <p>
+                Every completed lesson builds a stronger trading foundation.
+                Continue practicing the patterns you've learned by reviewing
+                historical charts and identifying real examples.
+            </p>
+
+            <p>
+                In the next lesson, you'll learn another essential trading
+                concept that will help you analyze the market with even greater
+                confidence.
+            </p>
+
+        </div>
+
+        <div class="tip-box">
+
+            <h3>💡 Final Motivation</h3>
+
+            <p>
+                Becoming a successful trader is a journey, not a destination.
+                Every chart you study and every lesson you complete improves
+                your experience. Stay patient, keep learning, manage your risk,
+                and never stop practicing. Consistency is what turns knowledge
+                into skill.
+            </p>
+
+        </div>
+
+        <div class="lesson-complete">
+
+      <h2>🏅 Lesson 10 Completed Successfully!</h2>
+
+      <p>
+        Click <strong>Finish Lesson</strong> to save your progress.
+        After passing the quiz, your next lesson will unlock when it is available.
+     </p>
+
+     <button id="finishLessonBtn" class="finish-btn">
+        ✅ Finish Lesson
+    </button>
+
+    <br><br>
+
+    <!-- Lesson 11 Button Appears Here -->
+    <div id="lesson11ButtonContainer"></div>
+
+</div>
+
+    </div>
+
+</section>
+
+
+<script>
+const lesson11Config = {
+    lessonId: 11,
+    buttonText: "🚀 Continue to Lesson 11",
+    buttonLink: "lesson11.html",
+    unlockKey: "lesson11_unlocked"
+};
+
+function renderLesson11Button() {
+    const container =
+        document.getElementById(
+            "lesson11ButtonContainer"
+        );
+
+    if (!container) return;
+
+    const unlocked =
+        localStorage.getItem(
+            lesson11Config.unlockKey
+        ) === "true";
+
+    if (unlocked) {
+        container.innerHTML = `
+            <a
+                href="${lesson11Config.buttonLink}"
+                class="primary-btn"
+            >
+                ${lesson11Config.buttonText}
+            </a>
+        `;
+    } else {
+        container.innerHTML = `
+            <button
+                type="button"
+                class="primary-btn"
+                disabled
+            >
+                🔒 Complete the quiz to unlock the next lesson
+            </button>
+        `;
+    }
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    renderLesson11Button
+);
+</script>
+
+    </main>
+</div>
+
+<!-- =========================================================
+     MOBILE STICKY NAV
+========================================================= -->
+
+<div
+    id="lessonStickyNav"
+    class="lesson-sticky-nav"
+    aria-label="Lesson step navigation"
+>
+    <button type="button" id="stickyPrevBtn">
+        ← Previous
+    </button>
+
+    <span id="stickyStepLabel">
+        Step 1 of 19
+    </span>
+
+    <button type="button" id="stickyNextBtn">
+        Next →
+    </button>
+</div>
+
+<!-- =========================================================
+     GLOBAL FOOTER
+========================================================= -->
+
+<div data-component="footer"></div>
+
+<!-- =========================================================
+     SHARED LESSON / QUIZ SCRIPTS
+========================================================= -->
+
+<script src="../../js/progress.js"></script>
+<script src="../../js/lesson.js"></script>
+<script src="../../quizzes/module1/quiz10.js"></script>
+
+<!-- =========================================================
+     GLOBAL COMPONENT SYSTEM
+========================================================= -->
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<!-- =========================================================
+     LESSON 10 HELPER
+========================================================= -->
+
+<script id="lesson10-v1-helper">
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        "use strict";
+
+        const TOTAL_STEPS = 19;
+        const STORAGE_KEY =
+            "strativo_lesson10_ui_state";
+
+        function getActiveStep() {
+
+            const active =
+                document.querySelector(
+                    ".lesson-step.active-step, .lesson-step.active"
+                );
+
+            if (!active) return 1;
+
+            const match =
+                /^step(\d+)$/.exec(
+                    active.id || ""
+                );
+
+            return match
+                ? Number(match[1])
+                : 1;
+        }
+
+        function addStepControls() {
+            document.querySelectorAll(".lesson-step").forEach((step) => {
+                if (step.querySelector(".lesson-step-controls")) {
+                    return;
+                }
+
+                const number = Number(step.id.replace("step", ""));
+                const controls = document.createElement("div");
+                controls.className = "lesson-step-controls";
+
+                const previous = document.createElement("button");
+                previous.type = "button";
+                previous.textContent = "← Previous Step";
+                previous.disabled = number <= 1;
+                previous.addEventListener("click", () => window.previousStep());
+
+                const next = document.createElement("button");
+                next.type = "button";
+                next.className = "lesson-step-continue";
+                next.textContent = number >= TOTAL_STEPS
+                    ? "Course Complete"
+                    : "Next Step →";
+                next.disabled = number >= TOTAL_STEPS;
+                next.addEventListener("click", () => window.nextStep());
+
+                controls.append(previous, next);
+                step.appendChild(controls);
+            });
+        }
+
+        function updateProgress() {
+
+            const step =
+                Math.min(
+                    Math.max(
+                        getActiveStep(),
+                        1
+                    ),
+                    TOTAL_STEPS
+                );
+
+            const percent =
+                Math.round(
+                    (step / TOTAL_STEPS) * 100
+                );
+
+            const fill =
+                document.getElementById(
+                    "progressFill"
+                );
+
+            const text =
+                document.getElementById(
+                    "progressText"
+                );
+
+            const stickyLabel =
+                document.getElementById(
+                    "stickyStepLabel"
+                );
+
+            if (fill) {
+                fill.style.width =
+                    percent + "%";
+            }
+
+            if (text) {
+                text.textContent =
+                    `Step ${step} of ${TOTAL_STEPS}`;
+            }
+
+            if (stickyLabel) {
+                stickyLabel.textContent =
+                    `Step ${step} of ${TOTAL_STEPS}`;
+            }
+
+            const prev =
+                document.getElementById(
+                    "stickyPrevBtn"
+                );
+
+            const next =
+                document.getElementById(
+                    "stickyNextBtn"
+                );
+
+            if (prev) {
+                prev.disabled =
+                    step <= 1;
+            }
+
+            if (next) {
+                next.disabled =
+                    step >= TOTAL_STEPS;
+
+                next.textContent =
+                    step >= TOTAL_STEPS
+                        ? "Completed"
+                        : "Next →";
+            }
+
+            try {
+                localStorage.setItem(
+                    STORAGE_KEY,
+                    JSON.stringify({
+                        currentStep: step,
+                        savedAt: Date.now()
+                    })
+                );
+            } catch (error) {
+                console.warn(
+                    "Lesson 10 UI state could not be saved.",
+                    error
+                );
+            }
+        }
+
+        /* Save & Exit */
+        const saveExit =
+            document.getElementById(
+                "saveExitBtn"
+            );
+
+        if (saveExit) {
+            saveExit.addEventListener(
+                "click",
+                function () {
+
+                    updateProgress();
+
+                    window.location.href =
+                        "../../modules/module1.html";
+                }
+            );
+        }
+
+        /* Mobile sidebar */
+        const toggle =
+            document.getElementById(
+                "lessonSidebarToggle"
+            );
+
+        const sidebar =
+            document.getElementById(
+                "lessonSidebar"
+            );
+
+        if (toggle && sidebar) {
+
+            toggle.addEventListener(
+                "click",
+                function () {
+
+                    const open =
+                        sidebar.classList.toggle(
+                            "is-open"
+                        );
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        open
+                            ? "true"
+                            : "false"
+                    );
+
+                    toggle.textContent =
+                        open
+                            ? "✕ Close Lesson Menu"
+                            : "☰ Lesson Menu";
+                }
+            );
+
+            sidebar.addEventListener(
+                "click",
+                function (event) {
+
+                    const item =
+                        event.target.closest(
+                            "li[data-step]"
+                        );
+
+                    if (
+                        !item ||
+                        window.innerWidth > 800
+                    ) {
+                        return;
+                    }
+
+                    window.setTimeout(
+                        function () {
+
+                            sidebar.classList.remove(
+                                "is-open"
+                            );
+
+                            toggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                            toggle.textContent =
+                                "☰ Lesson Menu";
+
+                            updateProgress();
+                        },
+                        50
+                    );
+                }
+            );
+        }
+
+        /* Connect to the existing lesson engine */
+        if (
+            typeof window.showStep ===
+            "function"
+        ) {
+
+            const originalShowStep =
+                window.showStep;
+
+            window.showStep =
+                function (step) {
+
+                    const result =
+                        originalShowStep.apply(
+                            this,
+                            arguments
+                        );
+
+                    updateProgress();
+
+                    return result;
+                };
+        }
+
+        /* Sidebar data-step support */
+        document
+            .querySelectorAll(
+                ".lesson-sidebar li[data-step]"
+            )
+            .forEach(
+                function (item) {
+
+                    item.addEventListener(
+                        "click",
+                        function () {
+
+                            const step =
+                                Number(
+                                    item.dataset.step
+                                );
+
+                            if (
+                                Number.isInteger(
+                                    step
+                                ) &&
+                                typeof window.showStep ===
+                                    "function"
+                            ) {
+
+                                window.showStep(
+                                    step
+                                );
+
+                                updateProgress();
+                            }
+                        }
+                    );
+                }
+            );
+
+        /* Sticky previous */
+        const stickyPrev =
+            document.getElementById(
+                "stickyPrevBtn"
+            );
+
+        if (stickyPrev) {
+
+            stickyPrev.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        typeof window.previousStep ===
+                            "function" &&
+                        getActiveStep() > 1
+                    ) {
+
+                        window.previousStep();
+
+                        updateProgress();
+                    }
+                }
+            );
+        }
+
+        /* Sticky next */
+        const stickyNext =
+            document.getElementById(
+                "stickyNextBtn"
+            );
+
+        if (stickyNext) {
+
+            stickyNext.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        getActiveStep() >=
+                        TOTAL_STEPS
+                    ) {
+                        return;
+                    }
+
+                    if (
+                        typeof window.nextStep ===
+                        "function"
+                    ) {
+
+                        window.nextStep();
+
+                        updateProgress();
+                    }
+                }
+            );
+        }
+
+        window.addEventListener(
+            "beforeunload",
+            updateProgress
+        );
+
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                if (
+                    document.visibilityState ===
+                    "hidden"
+                ) {
+                    updateProgress();
+                }
+            }
+        );
+
+        updateProgress();
+        addStepControls();
+    }
+);
+</script>
+
+</body>
+</html>

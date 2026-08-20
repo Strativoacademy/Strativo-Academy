@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Risk Management Lab — learn how account balance, risk percentage, risk amount, position size and Stop Loss work together in Forex trading."
+    >
+
+    <title>
+        Risk Management Lab | Strativo Academy
+    </title>
+
+
+    <!-- =====================================================
+         GLOBAL CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/ui.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/header.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/footer.css"
+    >
+
+
+    <!-- =====================================================
+         RISK MANAGEMENT LAB CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/risk-management.css"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <div data-component="header"></div>
+
+
+
+    <!-- =====================================================
+         MAIN RISK MANAGEMENT LAB
+    ====================================================== -->
+
+    <main class="risk-lab-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="risk-hero">
+
+            <div class="risk-hero-content">
+
+
+                <span class="risk-eyebrow">
+
+                    STRATIVO ACADEMY • TRADING LAB
+
+                </span>
+
+
+                <h1>
+                    Risk Management Lab
+                </h1>
+
+
+                <p>
+                    Learn how to understand, calculate and
+                    manage trading risk before entering a trade.
+                </p>
+
+
+                <div class="risk-hero-badges">
+
+
+                    <span>
+                        🛡️ Risk Management
+                    </span>
+
+
+                    <span>
+                        🎯 Interactive Learning
+                    </span>
+
+
+                    <span>
+                        🧠 Practical Training
+                    </span>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING NAVIGATION
+        ================================================== -->
+
+        <nav
+            class="risk-lab-navigation"
+            aria-label="Risk Management Lab navigation"
+        >
+
+            <a
+                href="#risk-foundation"
+                class="risk-nav-item active"
+            >
+                <span>01</span>
+                Foundation
+            </a>
+
+            <a
+                href="#risk-importance"
+                class="risk-nav-item"
+            >
+                <span>02</span>
+                Why It Matters
+            </a>
+
+            <a
+                href="#risk-calculator-section"
+                class="risk-nav-item"
+            >
+                <span>03</span>
+                Calculator
+            </a>
+
+            <a
+                href="#risk-practice"
+                class="risk-nav-item"
+            >
+                <span>04</span>
+                Practice
+            </a>
+
+            <a
+                href="#risk-checkpoint"
+                class="risk-nav-item"
+            >
+                <span>05</span>
+                Checkpoint
+            </a>
+
+        </nav>
+
+
+
+<!-- =================================================
+     01 — RISK MANAGEMENT FOUNDATION
+================================================== -->
+
+<section
+    class="risk-section"
+    id="risk-foundation"
+>
+
+    <div class="risk-section-heading">
+
+        <span class="risk-section-number">
+            01
+        </span>
+
+        <div>
+
+            <span class="risk-section-label">
+                FOUNDATION
+            </span>
+
+            <h2>
+                What Is Risk Management?
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN EXPLANATION
+    ================================================== -->
+
+    <div class="risk-learning-card">
+
+        <div class="risk-learning-icon">
+            🛡️
+        </div>
+
+        <div>
+
+            <h3>
+                Think About Risk Before Reward
+            </h3>
+
+            <p>
+                Risk management is the process of deciding
+                how much of your trading account you are
+                willing to put at risk before entering a trade.
+            </p>
+
+            <p>
+                You cannot know whether the next trade will
+                win or lose. Risk management helps you control
+                the amount of money that is planned to be at
+                risk if the trade moves against you.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         IMPORTANT IDEA
+    ================================================== -->
+
+    <div class="risk-concept-box">
+
+        <span class="risk-concept-icon">
+            💡
+        </span>
+
+        <div>
+
+            <strong>
+                The Goal of Risk Management
+            </strong>
+
+            <p>
+                Risk management does not predict whether a
+                trade will win. Its purpose is to control your
+                planned exposure so that one trade or a series
+                of losing trades does not unnecessarily damage
+                your trading account.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BASIC RISK FLOW
+    ================================================== -->
+
+    <div class="risk-flow">
+
+        <!-- STEP 01 -->
+
+        <div class="risk-flow-step">
+
+            <span>
+                01
+            </span>
+
+            <strong>
+                Account
+            </strong>
+
+            <small>
+                Know your available trading capital.
+            </small>
+
+        </div>
+
+
+        <div class="risk-flow-arrow">
+            →
+        </div>
+
+
+        <!-- STEP 02 -->
+
+        <div class="risk-flow-step">
+
+            <span>
+                02
+            </span>
+
+            <strong>
+                Risk %
+            </strong>
+
+            <small>
+                Choose the percentage you plan to risk.
+            </small>
+
+        </div>
+
+
+        <div class="risk-flow-arrow">
+            →
+        </div>
+
+
+        <!-- STEP 03 -->
+
+        <div class="risk-flow-step">
+
+            <span>
+                03
+            </span>
+
+            <strong>
+                Risk Amount
+            </strong>
+
+            <small>
+                Convert the percentage into money.
+            </small>
+
+        </div>
+
+
+        <div class="risk-flow-arrow">
+            →
+        </div>
+
+
+        <!-- STEP 04 -->
+
+        <div class="risk-flow-step">
+
+            <span>
+                04
+            </span>
+
+            <strong>
+                Stop Loss
+            </strong>
+
+            <small>
+                Define where the trade plan is invalidated.
+            </small>
+
+        </div>
+
+
+        <div class="risk-flow-arrow">
+            →
+        </div>
+
+
+        <!-- STEP 05 -->
+
+        <div class="risk-flow-step">
+
+            <span>
+                05
+            </span>
+
+            <strong>
+                Position Size
+            </strong>
+
+            <small>
+                Determine the appropriate trade size.
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SIMPLE EXAMPLE
+    ================================================== -->
+
+    <div class="risk-example-card">
+
+        <div class="risk-example-header">
+
+            <span>
+                SIMPLE EXAMPLE
+            </span>
+
+            <span>
+                FOUNDATION
+            </span>
+
+        </div>
+
+
+        <div class="risk-example-content">
+
+            <div class="risk-example-item">
+
+                <small>
+                    Account Balance
+                </small>
+
+                <strong>
+                    $1,000
+                </strong>
+
+            </div>
+
+
+            <div class="risk-example-symbol">
+                ×
+            </div>
+
+
+            <div class="risk-example-item">
+
+                <small>
+                    Planned Risk
+                </small>
+
+                <strong>
+                    1%
+                </strong>
+
+            </div>
+
+
+            <div class="risk-example-symbol">
+                =
+            </div>
+
+
+            <div class="risk-example-item highlight">
+
+                <small>
+                    Planned Risk Amount
+                </small>
+
+                <strong>
+                    $10
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <p class="risk-example-note">
+
+            The $10 is the planned monetary risk based on
+            the example above. The actual result of a trade
+            can be affected by execution conditions such as
+            spread and slippage.
+
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         KEY TAKEAWAY
+    ================================================== -->
+
+    <div class="risk-takeaway">
+
+        <div class="risk-takeaway-icon">
+            ✓
+        </div>
+
+        <div>
+
+            <strong>
+                Key Takeaway
+            </strong>
+
+            <p>
+                Before thinking about how much you can make,
+                first understand how much you are prepared
+                to risk according to your trading plan.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- =================================================
+     02 — WHY RISK MANAGEMENT MATTERS
+================================================== -->
+
+<section
+    class="risk-section risk-importance-section"
+    id="risk-importance"
+>
+
+    <div class="risk-section-heading">
+
+        <span class="risk-section-number">
+            02
+        </span>
+
+        <div>
+
+            <span class="risk-section-label">
+                WHY IT MATTERS
+            </span>
+
+            <h2>
+                Why Does Risk Management Matter?
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <p class="risk-section-description">
+
+        A trading strategy can produce winning trades and
+        losing trades. Risk management helps make sure that
+        losing trades do not put too much pressure on your
+        trading account.
+
+    </p>
+
+
+    <!-- =================================================
+         MAIN IDEA
+    ================================================== -->
+
+    <div class="risk-learning-card">
+
+        <div class="risk-learning-icon">
+            🛡️
+        </div>
+
+        <div>
+
+            <h3>
+                You Cannot Control Every Trade
+            </h3>
+
+            <p>
+
+                No trading method can guarantee that every
+                trade will be profitable. Losses are a normal
+                part of trading.
+
+            </p>
+
+            <p>
+
+                What you can control is how much of your
+                account you plan to risk when a trade does
+                not work as expected.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SAME STRATEGY — DIFFERENT RISK
+    ================================================== -->
+
+    <div class="risk-comparison-card">
+
+        <div class="risk-comparison-header">
+
+            <div>
+
+                <span class="risk-section-label">
+                    SAME ACCOUNT
+                </span>
+
+                <h3>
+                    Different Risk Can Create Very Different Results
+                </h3>
+
+            </div>
+
+            <span class="risk-comparison-badge">
+                EXAMPLE
+            </span>
+
+        </div>
+
+
+        <p class="risk-comparison-intro">
+
+            Imagine two traders start with the same
+            $1,000 account. Both experience five consecutive
+            losing trades.
+
+        </p>
+
+
+        <div class="risk-comparison-grid">
+
+
+            <!-- =========================================
+                 1% RISK
+            ========================================== -->
+
+            <div class="risk-comparison-column">
+
+                <div class="risk-comparison-title">
+
+                    <span class="risk-comparison-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Trader A
+                        </strong>
+
+                        <small>
+                            1% planned risk per trade
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-loss-list">
+
+                    <div>
+                        <span>
+                            Start
+                        </span>
+
+                        <strong>
+                            $1,000.00
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            After 1 loss
+                        </span>
+
+                        <strong>
+                            $990.00
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            After 3 losses
+                        </span>
+
+                        <strong>
+                            ~$970.30
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            After 5 losses
+                        </span>
+
+                        <strong class="risk-positive-result">
+                            ~$950.99
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="risk-result-note">
+
+                    <span>
+                        Account drawdown
+                    </span>
+
+                    <strong>
+                        ~4.9%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================================
+                 10% RISK
+            ========================================== -->
+
+            <div class="risk-comparison-column warning">
+
+                <div class="risk-comparison-title">
+
+                    <span class="risk-comparison-number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Trader B
+                        </strong>
+
+                        <small>
+                            10% planned risk per trade
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-loss-list">
+
+                    <div>
+                        <span>
+                            Start
+                        </span>
+
+                        <strong>
+                            $1,000.00
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            After 1 loss
+                        </span>
+
+                        <strong>
+                            $900.00
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            After 3 losses
+                        </span>
+
+                        <strong>
+                            ~$729.00
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            After 5 losses
+                        </span>
+
+                        <strong class="risk-warning-result">
+                            ~$590.49
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="risk-result-note warning">
+
+                    <span>
+                        Account drawdown
+                    </span>
+
+                    <strong>
+                        ~40.95%
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="risk-comparison-explanation">
+
+            <span class="risk-concept-icon">
+                💡
+            </span>
+
+            <div>
+
+                <strong>
+                    The important lesson
+                </strong>
+
+                <p>
+
+                    Both traders experienced the same five
+                    losing trades. The major difference was
+                    how much each trader planned to risk on
+                    every trade.
+
+                </p>
+
+                <p>
+
+                    This is why controlling risk matters:
+                    a losing streak can have a very different
+                    impact depending on the amount risked.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         LOSS RECOVERY LESSON
+    ================================================== -->
+
+    <div class="risk-recovery-card">
+
+        <div class="risk-recovery-icon">
+            📉
+        </div>
+
+        <div>
+
+            <span class="risk-section-label">
+                IMPORTANT CONCEPT
+            </span>
+
+            <h3>
+                Large Losses Require Larger Gains to Recover
+            </h3>
+
+            <p>
+
+                Losing money also creates a recovery problem.
+                The percentage gain needed to recover a loss
+                becomes larger as the loss becomes larger.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="risk-recovery-grid">
+
+        <div class="risk-recovery-item">
+
+            <span>
+                10% loss
+            </span>
+
+            <strong>
+                11.1%
+            </strong>
+
+            <small>
+                gain needed to recover
+            </small>
+
+        </div>
+
+
+        <div class="risk-recovery-item">
+
+            <span>
+                25% loss
+            </span>
+
+            <strong>
+                33.3%
+            </strong>
+
+            <small>
+                gain needed to recover
+            </small>
+
+        </div>
+
+
+        <div class="risk-recovery-item">
+
+            <span>
+                50% loss
+            </span>
+
+            <strong>
+                100%
+            </strong>
+
+            <small>
+                gain needed to recover
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         KEY TAKEAWAY
+    ================================================== -->
+
+    <div class="risk-takeaway">
+
+        <div class="risk-takeaway-icon">
+            ✓
+        </div>
+
+        <div>
+
+            <strong>
+                Key Takeaway
+            </strong>
+
+            <p>
+
+                Good risk management is not about avoiding
+                every losing trade. It is about keeping losses
+                controlled so that your account can withstand
+                normal losing periods.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =================================================
+     03 — RISK CALCULATOR
+================================================== -->
+
+<section
+    class="risk-section risk-calculator-section"
+    id="risk-calculator-section"
+>
+
+    <!-- SECTION HEADER -->
+
+    <div class="risk-section-heading">
+
+        <span class="risk-section-number">
+            03
+        </span>
+
+        <div>
+
+            <span class="risk-section-label">
+                CALCULATOR
+            </span>
+
+            <h2>
+                Calculate Your Risk Amount
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+
+    <p class="risk-section-description">
+
+        Turn your account balance and planned risk percentage
+        into a clear monetary risk amount before entering a trade.
+
+    </p>
+
+
+    <!-- CALCULATOR CARD -->
+
+    <div class="risk-calculator-card">
+
+        <!-- CALCULATOR HEADER -->
+
+        <div class="risk-calculator-header">
+
+            <div>
+
+                <span class="risk-section-label">
+                    INTERACTIVE CALCULATOR
+                </span>
+
+                <h3>
+                    How Much Money Are You Risking?
+                </h3>
+
+                <p>
+                    Enter your account balance and planned risk
+                    percentage to calculate the monetary amount
+                    you plan to risk.
+                </p>
+
+            </div>
+
+            <div class="risk-calculator-icon">
+                🧮
+            </div>
+
+        </div>
+
+
+        <!-- INPUT GRID -->
+
+        <div class="risk-calculator-grid">
+
+
+            <!-- ACCOUNT BALANCE -->
+
+            <div class="risk-input-group">
+
+                <label for="accountBalance">
+                    Account Balance
+                </label>
+
+                <div class="risk-input-wrapper">
+
+                    <span class="risk-input-prefix">
+                        $
+                    </span>
+
+                    <input
+                        type="number"
+                        id="accountBalance"
+                        min="0"
+                        step="0.01"
+                        value="1000"
+                        placeholder="1000"
+                        inputmode="decimal"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <small>
+                    Enter the amount available in your trading account.
+                </small>
+
+            </div>
+
+
+            <!-- RISK PERCENTAGE -->
+
+            <div class="risk-input-group">
+
+                <label for="riskPercent">
+                    Planned Risk %
+                </label>
+
+                <div class="risk-input-wrapper">
+
+                    <input
+                        type="number"
+                        id="riskPercent"
+                        min="0"
+                        step="0.1"
+                        value="1"
+                        placeholder="1"
+                        inputmode="decimal"
+                        autocomplete="off"
+                    >
+
+                    <span class="risk-input-suffix">
+                        %
+                    </span>
+
+                </div>
+
+                <small>
+                    Enter the percentage you plan to risk on the trade.
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- FORMULA -->
+
+        <div class="risk-formula-box">
+
+            <span class="risk-formula-label">
+                FORMULA
+            </span>
+
+            <strong>
+                Risk Amount = Account Balance × Risk %
+            </strong>
+
+            <p>
+                Remember to convert the percentage into decimal form
+                when calculating manually.
+            </p>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="risk-calculator-result">
+
+            <div>
+
+                <span>
+                    PLANNED RISK AMOUNT
+                </span>
+
+                <small>
+                    Maximum planned monetary risk based on your inputs
+                </small>
+
+            </div>
+
+            <strong id="riskAmountResult">
+                $10.00
+            </strong>
+
+        </div>
+
+
+        <!-- EXAMPLE -->
+
+        <div class="risk-calculator-example">
+
+            <div class="risk-example-icon">
+                💡
+            </div>
+
+            <div>
+
+                <strong>
+                    Example
+                </strong>
+
+                <p>
+                    If your account has <strong>$1,000</strong>
+                    and you plan to risk <strong>1%</strong>:
+                </p>
+
+                <p class="risk-example-equation">
+                    $1,000 × 1% = <strong>$10</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMPORTANT NOTE -->
+
+        <div class="risk-calculator-note">
+
+            <div class="risk-note-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <strong>
+                    Important
+                </strong>
+
+                <p>
+                    This calculator shows a planned risk amount.
+                    It does not guarantee that the actual loss will
+                    be exactly the calculated amount. Spread,
+                    slippage, commission and execution conditions
+                    can affect the final result.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- KEY TAKEAWAY -->
+
+    <div class="risk-takeaway">
+
+        <div class="risk-takeaway-icon">
+            ✓
+        </div>
+
+        <div>
+
+            <strong>
+                Key Takeaway
+            </strong>
+
+            <p>
+                Always know your planned monetary risk before
+                thinking about position size or entering a trade.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =================================================
+     04 — PRACTICE
+================================================== -->
+
+<section
+    class="risk-section risk-practice-section"
+    id="risk-practice"
+>
+
+    <!-- SECTION HEADER -->
+
+    <div class="risk-section-heading">
+
+        <span class="risk-section-number">
+            04
+        </span>
+
+        <div>
+
+            <span class="risk-section-label">
+                PRACTICE
+            </span>
+
+            <h2>
+                Test Your Risk Management
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <p class="risk-section-description">
+
+        Now apply what you have learned.
+        Solve each question before moving to the next one.
+
+    </p>
+
+
+    <!-- =================================================
+         PRACTICE PROGRESS
+    ================================================== -->
+
+    <div class="risk-practice-progress">
+
+        <div class="risk-practice-progress-top">
+
+            <span>
+                QUESTION
+            </span>
+
+            <strong id="practiceQuestionNumber">
+                1 / 5
+            </strong>
+
+        </div>
+
+
+        <div class="risk-practice-progress-track">
+
+            <div
+                class="risk-practice-progress-bar"
+                id="practiceProgressBar"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         QUESTION CARD
+    ================================================== -->
+
+    <div
+        class="risk-practice-card"
+        id="practiceCard"
+    >
+
+        <div class="risk-practice-card-header">
+
+            <span class="risk-practice-badge">
+                QUESTION 01
+            </span>
+
+            <span class="risk-practice-topic">
+                RISK AMOUNT
+            </span>
+
+        </div>
+
+
+        <h3 id="practiceQuestion">
+
+            A trader has a $1,000 account and plans to
+            risk 1% on a trade.
+
+            How much is the planned risk amount?
+
+        </h3>
+
+
+        <!-- QUESTION DETAILS -->
+
+        <div
+            class="risk-practice-details"
+            id="practiceDetails"
+        >
+
+            <div>
+
+                <span>
+                    ACCOUNT
+                </span>
+
+                <strong id="practiceBalance">
+                    $1,000
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    PLANNED RISK
+                </span>
+
+                <strong id="practiceRisk">
+                    1%
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    FORMULA
+                </span>
+
+                <strong>
+                    Balance × Risk %
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ANSWER -->
+
+        <div class="risk-practice-answer">
+
+            <label for="practiceAnswer">
+                Your Answer
+            </label>
+
+            <div class="risk-practice-input-wrapper">
+
+                <span>
+                    $
+                </span>
+
+                <input
+                    id="practiceAnswer"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    placeholder="Enter amount"
+                    aria-label="Practice answer"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- CHECK BUTTON -->
+
+        <button
+            type="button"
+            class="risk-practice-button"
+            id="checkPracticeButton"
+        >
+            Check Answer
+        </button>
+
+
+        <!-- FEEDBACK -->
+
+        <div
+            class="risk-practice-feedback"
+            id="practiceFeedback"
+            hidden
+        >
+
+            <div
+                class="risk-practice-feedback-icon"
+                id="practiceFeedbackIcon"
+            >
+                ✓
+            </div>
+
+            <div>
+
+                <strong id="practiceFeedbackTitle">
+                    Correct!
+                </strong>
+
+                <p id="practiceFeedbackText">
+                    Great job.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- NEXT BUTTON -->
+
+        <button
+            type="button"
+            class="risk-practice-next"
+            id="practiceNextButton"
+            hidden
+        >
+            Next Question
+            <span>→</span>
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         SCORE CARD
+    ================================================== -->
+
+    <div
+        class="risk-practice-score"
+        id="practiceScore"
+        hidden
+    >
+
+        <div class="risk-practice-score-icon">
+            🏆
+        </div>
+
+        <div>
+
+            <span>
+                PRACTICE COMPLETE
+            </span>
+
+            <strong id="practiceScoreText">
+                5 / 5
+            </strong>
+
+            <p id="practiceScoreMessage">
+                Excellent work. You understand the foundation
+                of risk amount calculations.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         KEY TAKEAWAY
+    ================================================== -->
+
+    <div class="risk-takeaway">
+
+        <div class="risk-takeaway-icon">
+            ✓
+        </div>
+
+        <div>
+
+            <strong>
+                Practice Goal
+            </strong>
+
+            <p>
+
+                By the end of this section, you should be able
+                to calculate a planned risk amount from an
+                account balance and risk percentage without
+                needing to guess.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     05 — CHECKPOINT
+================================================== -->
+
+<section
+    class="risk-section risk-checkpoint-section"
+    id="risk-checkpoint"
+>
+
+    <!-- SECTION HEADER -->
+
+    <div class="risk-section-heading">
+
+        <span class="risk-section-number">
+            05
+        </span>
+
+        <div>
+
+            <span class="risk-section-label">
+                CHECKPOINT
+            </span>
+
+            <h2>
+                Risk Management Checkpoint
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <p class="risk-section-description">
+
+        You've learned the foundation, why risk management
+        matters, and how to calculate planned risk.
+        Now prove what you know.
+
+    </p>
+
+
+    <!-- =================================================
+         CHECKPOINT INTRO
+    ================================================== -->
+
+    <div class="risk-checkpoint-intro">
+
+        <div class="risk-checkpoint-intro-icon">
+            🎯
+        </div>
+
+        <div>
+
+            <span class="risk-section-label">
+                FINAL KNOWLEDGE CHECK
+            </span>
+
+            <h3>
+                Can You Apply What You Learned?
+            </h3>
+
+            <p>
+
+                Answer all five questions. If you make a
+                mistake, you can try the same question again.
+                You need at least <strong>4 out of 5</strong>
+                correct answers to pass this checkpoint.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CHECKPOINT PROGRESS
+    ================================================== -->
+
+    <div class="risk-checkpoint-progress">
+
+        <div class="risk-checkpoint-progress-top">
+
+            <span>
+                CHECKPOINT PROGRESS
+            </span>
+
+            <strong id="checkpointQuestionNumber">
+                1 / 5
+            </strong>
+
+        </div>
+
+
+        <div class="risk-checkpoint-progress-track">
+
+            <div
+                class="risk-checkpoint-progress-bar"
+                id="checkpointProgressBar"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         QUESTION CARD
+    ================================================== -->
+
+    <div
+        class="risk-checkpoint-card"
+        id="checkpointCard"
+    >
+
+        <div class="risk-checkpoint-card-header">
+
+            <span
+                class="risk-checkpoint-badge"
+                id="checkpointQuestionBadge"
+            >
+                QUESTION 01
+            </span>
+
+            <span
+                class="risk-checkpoint-topic"
+                id="checkpointQuestionTopic"
+            >
+                FOUNDATION
+            </span>
+
+        </div>
+
+
+        <h3 id="checkpointQuestion">
+
+            What is the main purpose of risk management?
+
+        </h3>
+
+
+        <!-- =================================================
+             ANSWER OPTIONS
+        ================================================== -->
+
+        <div
+            class="risk-checkpoint-options"
+            id="checkpointOptions"
+        >
+
+            <!-- Options are generated by JavaScript -->
+
+        </div>
+
+
+        <!-- =================================================
+             FEEDBACK
+        ================================================== -->
+
+        <div
+            class="risk-checkpoint-feedback"
+            id="checkpointFeedback"
+            hidden
+        >
+
+            <div
+                class="risk-checkpoint-feedback-icon"
+                id="checkpointFeedbackIcon"
+            >
+                ✓
+            </div>
+
+            <div>
+
+                <strong id="checkpointFeedbackTitle">
+                    Correct!
+                </strong>
+
+                <p id="checkpointFeedbackText">
+                    Great job.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NEXT / RETRY
+        ================================================== -->
+
+        <button
+            type="button"
+            class="risk-checkpoint-next"
+            id="checkpointNextButton"
+            hidden
+        >
+            Next Question
+            <span>→</span>
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         FINAL RESULT
+    ================================================== -->
+
+    <div
+        class="risk-checkpoint-result"
+        id="checkpointResult"
+        hidden
+    >
+
+        <div
+            class="risk-checkpoint-result-icon"
+            id="checkpointResultIcon"
+        >
+            🏆
+        </div>
+
+        <div>
+
+            <span>
+                CHECKPOINT COMPLETE
+            </span>
+
+            <strong id="checkpointScore">
+                5 / 5
+            </strong>
+
+            <h3 id="checkpointResultTitle">
+                Risk Management Build 001 Complete
+            </h3>
+
+            <p id="checkpointResultMessage">
+                Excellent work. You successfully completed
+                the Risk Management foundation.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PASS REQUIREMENT
+    ================================================== -->
+
+    <div class="risk-checkpoint-requirement">
+
+        <div class="risk-checkpoint-requirement-icon">
+            ✓
+        </div>
+
+        <div>
+
+            <strong>
+                Passing Requirement
+            </strong>
+
+            <p>
+
+                You need <strong>4 / 5</strong> correct answers
+                to pass this checkpoint.
+
+                If you do not pass on your first attempt,
+                review the Risk Management Lab and try again.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BUILD COMPLETE MESSAGE
+    ================================================== -->
+
+    <div
+        class="risk-build-complete"
+        id="riskBuildComplete"
+        hidden
+    >
+
+        <span class="risk-build-complete-icon">
+            ✓
+        </span>
+
+        <div>
+
+            <strong>
+                Build 001 Complete
+            </strong>
+
+            <p>
+
+                You now understand the foundation of risk
+                management, planned risk percentage,
+                monetary risk, and why controlling losses
+                matters.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- =================================================
+             IMPORTANT NOTE
+        ================================================== -->
+
+        <section class="risk-note-section">
+
+
+            <div class="risk-note">
+
+
+                <div class="risk-note-icon">
+                    ⚠️
+                </div>
+
+
+                <div>
+
+
+                    <h3>
+                        Important Learning Note
+                    </h3>
+
+
+                    <p>
+                        A risk percentage is a planning input,
+                        not a guarantee of safety or profitability.
+                        Actual trading results can be affected by
+                        factors such as spread, commission,
+                        slippage, financing costs and market
+                        conditions.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             BUILD STATUS
+        ================================================== -->
+
+        <section class="risk-progress-section">
+
+
+            <div>
+
+
+                <span>
+                    BUILD 001
+                </span>
+
+
+                <h2>
+                    Risk Management Foundation
+                </h2>
+
+
+            </div>
+
+
+            <div class="risk-progress-status">
+
+
+                <span>
+                    Foundation
+                </span>
+
+
+            </div>
+
+
+        </section>
+
+
+
+<!-- =================================================
+     BACK / BUILD NAVIGATION
+================================================== -->
+
+<div class="risk-bottom-navigation">
+
+
+    <!-- BACK TO MODULE 1 -->
+
+    <a
+        href="../modules/module1.html"
+        class="risk-bottom-back"
+    >
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        <span>
+            Back to Module 1
+        </span>
+
+    </a>
+
+
+
+    <!-- BUILD 002 -->
+
+<a
+    href="risk-management-build-002.html"
+    class="risk-bottom-next"
+>
+    <span>Build 002</span>
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
+
+
+
+    <!-- HOME -->
+
+    <a
+        href="../index.html"
+        class="risk-bottom-home"
+    >
+
+        Strativo Academy Home
+
+    </a>
+
+
+</div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         GLOBAL FOOTER
+    ====================================================== -->
+
+    <div data-component="footer"></div>
+
+
+
+    <!-- =====================================================
+         GLOBAL ROUTING
+    ====================================================== -->
+
+    <script src="../js/routes.js"></script>
+
+
+
+    <!-- =====================================================
+         GLOBAL COMPONENT LOADER
+    ====================================================== -->
+
+    <script src="../js/component-loader.js"></script>
+
+
+
+    <!-- =====================================================
+         GLOBAL HEADER CONTROLLER
+    ====================================================== -->
+
+    <script src="../js/header.js"></script>
+
+
+
+    <!-- =====================================================
+         RISK MANAGEMENT LAB JS
+    ====================================================== -->
+
+    <script
+        src="../js/risk-management.js"
+        defer
+    ></script>
+
+
+</body>
+
+</html>

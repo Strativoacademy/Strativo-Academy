@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Strativo Academy Module 1 — complete Bid, Ask and Spreads notes.">
+<title>Bid &amp; Ask &amp; Spreads | Strativo Academy</title>
+<link rel="stylesheet" href="../../css/style.css"><link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css"><link rel="stylesheet" href="../../css/footer.css">
+<style>
+:root{--bg:#020617;--panel:#07111f;--line:#26364b;--text:#dbe5f2;--muted:#9aaac0;--head:#f8fafc;--blue:#60a5fa;--green:#34d399;--yellow:#facc15;--red:#f87171;--cyan:#22d3ee}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 8% 0%,#2563eb20,transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.82}.page{width:min(1200px,calc(100% - 32px));margin:auto;padding:35px 0 80px}.hero,.toc,.section{border:1px solid var(--line);border-radius:25px;background:linear-gradient(180deg,#07111ff8,#040b15f8);box-shadow:0 25px 80px #0005}.hero{padding:62px 48px;min-height:420px}.kicker{color:var(--blue);font-size:13px;font-weight:850;letter-spacing:.16em;text-transform:uppercase}.hero h1{font-size:clamp(46px,7vw,82px);line-height:1.03;letter-spacing:-.045em;margin:18px 0;color:var(--head)}.hero p{max-width:950px;font-size:20px;color:#b9c7d9}.tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.tag{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#0f172acc;font-size:14px}.toc{margin-top:24px;padding:28px 32px}.toc h2{margin:0 0 15px}.tocgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 22px}.toc a{color:#9fc5f7;text-decoration:none;font-size:14px}.section{margin-top:24px;padding:38px 42px}.section h2{display:flex;align-items:center;gap:14px;color:var(--head);font-size:31px;line-height:1.25;margin:0 0 20px}.num{display:inline-grid;place-items:center;flex:0 0 auto;width:44px;height:44px;border-radius:13px;background:#2563eb2e;border:1px solid #60a5fa47;color:#bfdbfe;font-size:14px}.section h3{color:#eaf2fb;font-size:21px;margin:27px 0 9px}.section p{color:#b9c7d9;font-size:17px;margin:14px 0}.example{margin:24px 0;padding:21px 23px;border-left:4px solid var(--blue);border-radius:0 15px 15px 0;background:#1e293b75}.good{border-left-color:var(--green);background:#064e3b22}.warn{border-left-color:var(--yellow);background:#713f1222}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px;margin:22px 0}.card{padding:21px;border:1px solid var(--line);border-radius:18px;background:#0f172a85}.card h3{margin:0 0 7px}.card p{margin:0;font-size:15px}.table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}.table th,.table td{padding:13px 15px;border:1px solid var(--line);text-align:left;vertical-align:top}.table th{background:#1e293fc2;color:#dbeafe}.table td{color:#c8d5e4}.formula{padding:21px;margin:20px 0;border:1px solid #60a5fa40;border-radius:18px;background:#1e40af14;text-align:center;color:#dbeafe;font-size:21px;font-weight:750}.diagram{margin:30px 0;padding:15px;border:1px solid var(--line);border-radius:22px;background:#030914;overflow:hidden}.diagram-title{font-weight:800;color:#e5edf7;padding:5px 8px 14px}.diagram svg{display:block;width:100%;height:auto}.note{padding:17px 19px;border:1px dashed #94a3b940;border-radius:15px;color:#aebdd0;background:#0f172a4d;margin:18px 0}.list{padding-left:22px;color:#b9c7d9}.list li{margin:9px 0}.check{list-style:none;padding:0}.check li{padding:12px 15px;margin:8px 0;border:1px solid var(--line);border-radius:12px;background:#0f172a7a}.check li:before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}.nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:28px}.nav a{display:block;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:#08111f;color:#e2e8f0;text-decoration:none}.nav small{display:block;color:#8ea0b8;margin-bottom:5px}.nav .center{text-align:center}.nav .right{text-align:right}@media(max-width:850px){.page{width:calc(100% - 20px)}.hero{padding:42px 24px}.section{padding:27px 21px}.grid,.tocgrid,.nav{grid-template-columns:1fr}.nav .center,.nav .right{text-align:left}}
+</style></head><body>
+<div data-component="header"></div><main class="page">
+<section class="hero"><div class="kicker">STRATIVO ACADEMY • MODULE 1 • FOUNDATION</div>
+<h1>Bid &amp; Ask &amp; Spreads</h1>
+<p>A detailed foundation lesson covering the two-sided Forex quote, bid price, ask price,
+spread, execution sides, liquidity, volatility, news conditions, spread cost, commission,
+slippage, trading sessions and practical pre-trade execution checks.</p>
+<div class="tags"><span class="tag">↔️ Bid / Ask</span><span class="tag">📏 Spread</span>
+<span class="tag">💧 Liquidity</span><span class="tag">⚡ Volatility</span><span class="tag">💰 Costs</span>
+<span class="tag">🧭 Execution</span></div></section>
+<section class="toc"><h2>What This Note Covers</h2><div class="tocgrid">
+<a href="#section-01">1. What Is Bid and Ask?</a><a href="#section-02">2. Why Are There Two Prices?</a><a href="#section-03">3. What Is the Spread?</a><a href="#section-04">4. Reading a Forex Quote</a><a href="#section-05">5. Buying and the Ask</a><a href="#section-06">6. Selling and the Bid</a><a href="#section-07">7. Tight vs Wide Spread</a><a href="#section-08">8. Liquidity and Spread</a><a href="#section-09">9. Volatility and Spread</a><a href="#section-10">10. News Conditions</a><a href="#section-11">11. Spread Cost</a><a href="#section-12">12. Spread and Small Targets</a><a href="#section-13">13. Spread and Stop Loss</a><a href="#section-14">14. Spread vs Commission</a><a href="#section-15">15. Complete Trading Cost</a><a href="#section-16">16. Trading Sessions</a><a href="#section-17">17. Major and Less-Liquid Pairs</a><a href="#section-18">18. Spread vs Slippage</a><a href="#section-19">19. Price Can Move Before Execution</a><a href="#section-20">20. Why Scalpers Watch Spread</a><a href="#section-21">21. When Wide Spread Changes a Setup</a><a href="#section-22">22. Quote vs Candle</a><a href="#section-23">23. Why Spread Exists</a><a href="#section-24">24. News, Thin Liquidity and Fast Markets</a><a href="#section-25">25. Spread Relative to Strategy</a><a href="#section-26">26. Execution-Side Map</a><a href="#section-27">27. Spread, Stop and Target Together</a><a href="#section-28">28. Pips and Points</a><a href="#section-29">29. Position Size Changes Cost</a><a href="#section-30">30. Pre-Trade Spread Check</a><a href="#section-31">31. Waiting Is a Decision</a><a href="#section-32">32. Comparing Brokers</a><a href="#section-33">33. Fixed vs Variable Spread</a><a href="#section-34">34. Why Spreads Widen</a><a href="#section-35">35. Spread in Risk Calculations</a><a href="#section-36">36. Gross vs Net Result</a><a href="#section-37">37. A Good Spread Does Not Make a Good Trade</a><a href="#section-38">38. Do Not Trade Only Because Spread Is Tight</a><a href="#section-39">39. Complete Pre-Trade Workflow</a><a href="#section-40">40. Common Beginner Confusion</a><a href="#section-41">41. Complete Bid/Ask Decision Flow</a>
+<a href="#reference">43. Quick Reference</a><a href="#worked">44. Worked Examples</a>
+<a href="#costs">45. Complete Cost Framework</a><a href="#mistakes">46. Common Mistakes</a>
+<a href="#checklist">47. Complete Checklist</a><a href="#summary">48. Final Summary</a>
+<a href="#disclaimer">49. Educational Disclaimer</a></div></section>
+
+
+<section class="section" id="section-01">
+<h2><span class="num">01</span>What Is Bid and Ask?</h2>
+<p>Bid and ask are the two sides of a tradable quote. The bid is the price associated with selling to the market in the basic quote model, while the ask is the price associated with buying from the market. A quote therefore represents two-sided pricing rather than one universal execution price.</p>
+<div class="example"><strong>Simple Example:</strong><br>The two numbers are not an unnecessary complication. They explain why immediate buying and selling normally occur at slightly different prices.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">01</div><svg viewBox="0 0 1000 300" role="img" aria-label="01">Bid and Ask are two sides of one quote</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-02">
+<h2><span class="num">02</span>Why Are There Two Prices?</h2>
+<p>A market needs a price at which one side is willing to buy and a price at which the other side is willing to sell. The existence of both prices creates a tradable two-sided market.</p>
+<div class="example"><strong>Simple Example:</strong><br>Think of the quote as a doorway with a buying side and a selling side. The difference between those sides is the spread.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">02</div><svg viewBox="0 0 1000 300" role="img" aria-label="02">Spread is the distance between bid and ask</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-03">
+<h2><span class="num">03</span>What Is the Spread?</h2>
+<p>The spread is the numerical distance between ask and bid. It can be described in raw price units, pips or points depending on the instrument and platform.</p>
+<div class="example"><strong>Simple Example:</strong><br>The basic relationship is Ask − Bid = Spread. Always verify the quote precision before converting the difference into pips.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">03</div><svg viewBox="0 0 1000 300" role="img" aria-label="03">Buy and sell orders interact with different quote sides</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-04">
+<h2><span class="num">04</span>Reading a Forex Quote</h2>
+<p>A Forex quote should be interpreted as a pair of prices. A chart may visually emphasize one price, but execution can depend on the bid or ask.</p>
+<div class="example"><strong>Simple Example:</strong><br>An illustrative quote such as 1.10500 / 1.10502 shows how two-sided pricing works. It is an educational example, not a live quote.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">04</div><svg viewBox="0 0 1000 300" role="img" aria-label="04">Long and short positions use opposite sides when closing</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-05">
+<h2><span class="num">05</span>Buying and the Ask</h2>
+<p>In the basic market-order model, an immediate buy interacts with the ask. This is the price at which the trader buys from the available offer.</p>
+<div class="example"><strong>Simple Example:</strong><br>If bid is 1.10500 and ask is 1.10502, a simplified market buy is associated with 1.10502.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">05</div><svg viewBox="0 0 1000 300" role="img" aria-label="05">Tight spread vs wide spread</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-06">
+<h2><span class="num">06</span>Selling and the Bid</h2>
+<p>In the basic market-order model, an immediate sell interacts with the bid. This is the price at which the trader sells to the available buyer.</p>
+<div class="example"><strong>Simple Example:</strong><br>Using the same illustrative quote, a simplified market sell is associated with 1.10500.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">06</div><svg viewBox="0 0 1000 300" role="img" aria-label="06">Spread cost becomes more important with small targets</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-07">
+<h2><span class="num">07</span>Tight vs Wide Spread</h2>
+<p>A tight spread means the bid and ask are close together. A wide spread means they are farther apart. The practical importance depends on strategy, position size and expected movement.</p>
+<div class="example"><strong>Simple Example:</strong><br>A spread that is acceptable for a long-term position may be much more important for a very short scalp.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">07</div><svg viewBox="0 0 1000 300" role="img" aria-label="07">Position size changes the monetary effect of the same spread</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-08">
+<h2><span class="num">08</span>Liquidity and Spread</h2>
+<p>Liquidity broadly describes the availability of trading interest and the ease of executing transactions. Under normal conditions, stronger liquidity can support more competitive two-sided pricing, although this is not guaranteed.</p>
+<div class="example"><strong>Simple Example:</strong><br>Liquidity changes by instrument, time and market conditions, so a spread observed at one moment is not permanent.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">08</div><svg viewBox="0 0 1000 300" role="img" aria-label="08">Liquidity and spread</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-09">
+<h2><span class="num">09</span>Volatility and Spread</h2>
+<p>Fast price movement can cause quotes to update rapidly. Spread conditions can change as market participants adjust their prices and liquidity changes.</p>
+<div class="example"><strong>Simple Example:</strong><br>Never assume the current spread is guaranteed during the next seconds or minutes.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">09</div><svg viewBox="0 0 1000 300" role="img" aria-label="09">Volatility can change the spread</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-10">
+<h2><span class="num">10</span>News Conditions</h2>
+<p>Economic releases and unexpected events can cause rapid repricing. During such conditions spreads may widen and execution can become less predictable.</p>
+<div class="example"><strong>Simple Example:</strong><br>The correct lesson is that news can change execution conditions; it does not mean every news event will always create the same spread.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">10</div><svg viewBox="0 0 1000 300" role="img" aria-label="10">News can rapidly change execution conditions</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-11">
+<h2><span class="num">11</span>Spread Cost</h2>
+<p>Spread has a monetary effect because a price-distance cost interacts with position size and pip value.</p>
+<div class="example"><strong>Simple Example:</strong><br>The same one-pip spread can have a very different monetary effect on a micro-sized position and a much larger position.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">11</div><svg viewBox="0 0 1000 300" role="img" aria-label="11">Spread, pip value and monetary cost</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-12">
+<h2><span class="num">12</span>Spread and Small Targets</h2>
+<p>When the expected movement is small, transaction costs consume a larger percentage of the opportunity.</p>
+<div class="example"><strong>Simple Example:</strong><br>This is why short-term strategies must test realistic spread and execution costs rather than assuming all gross movement becomes profit.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">12</div><svg viewBox="0 0 1000 300" role="img" aria-label="12">Spread is one cost; commission can be another</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-13">
+<h2><span class="num">13</span>Spread and Stop Loss</h2>
+<p>The quote side matters when a position is closed. A stop is a risk-control instruction, but actual execution can depend on the market and the side of the quote.</p>
+<div class="example"><strong>Simple Example:</strong><br>A chart line should not be treated as a guarantee that the account will exit at one exact number.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">13</div><svg viewBox="0 0 1000 300" role="img" aria-label="13">Spread and slippage are not the same</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-14">
+<h2><span class="num">14</span>Spread vs Commission</h2>
+<p>Spread is the distance between bid and ask. Commission is a separate broker charge when applicable.</p>
+<div class="example"><strong>Simple Example:</strong><br>A low-spread account can still have substantial total costs if commission is charged. Compare total cost, not one number.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">14</div><svg viewBox="0 0 1000 300" role="img" aria-label="14">Session conditions can influence spread</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-15">
+<h2><span class="num">15</span>Complete Trading Cost</h2>
+<p>A practical cost model can include spread, commission and slippage. The exact components depend on the account and broker.</p>
+<div class="example"><strong>Simple Example:</strong><br>Gross price movement and net result are different. Costs can reduce a favorable movement.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">15</div><svg viewBox="0 0 1000 300" role="img" aria-label="15">Pre-trade bid/ask workflow</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-16">
+<h2><span class="num">16</span>Trading Sessions</h2>
+<p>Market activity changes through the day. Session overlaps and active periods can have different liquidity and execution conditions.</p>
+<div class="example"><strong>Simple Example:</strong><br>Do not assume the spread remains identical across all hours.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">16</div><svg viewBox="0 0 1000 300" role="img" aria-label="16">Spread and strategy type</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-17">
+<h2><span class="num">17</span>Major and Less-Liquid Pairs</h2>
+<p>Different pairs can have different spread behavior. Major pairs often show competitive spreads under normal conditions, while less-liquid instruments can be wider or more variable.</p>
+<div class="example"><strong>Simple Example:</strong><br>These are tendencies, not guarantees. Check the actual instrument.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">17</div><svg viewBox="0 0 1000 300" role="img" aria-label="17">Same spread, different target impact</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-18">
+<h2><span class="num">18</span>Spread vs Slippage</h2>
+<p>Spread is the quoted bid/ask distance. Slippage is an execution difference between expected/requested and actual fill.</p>
+<div class="example"><strong>Simple Example:</strong><br>They can both affect results but must be analyzed separately.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">18</div><svg viewBox="0 0 1000 300" role="img" aria-label="18">Long and short execution map</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-19">
+<h2><span class="num">19</span>Price Can Move Before Execution</h2>
+<p>The displayed quote is a snapshot of current conditions. The market can change before an order is filled.</p>
+<div class="example"><strong>Simple Example:</strong><br>This is particularly relevant in fast markets, where the next available price can differ from the price just observed.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">19</div><svg viewBox="0 0 1000 300" role="img" aria-label="19">Gross movement versus net result</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-20">
+<h2><span class="num">20</span>Why Scalpers Watch Spread</h2>
+<p>Scalpers often seek small movements. A cost that is minor relative to a large swing can be meaningful relative to a tiny target.</p>
+<div class="example"><strong>Simple Example:</strong><br>Spread should therefore be included in scalping strategy testing.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">20</div><svg viewBox="0 0 1000 300" role="img" aria-label="20">Tight spread is not a trading signal</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-21">
+<h2><span class="num">21</span>When Wide Spread Changes a Setup</h2>
+<p>A chart setup can remain technically valid while the current execution environment becomes unattractive.</p>
+<div class="example"><strong>Simple Example:</strong><br>Waiting or skipping can be a valid trading decision.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">21</div><svg viewBox="0 0 1000 300" role="img" aria-label="21">Wide spread is a condition, not a buy/sell signal</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-22">
+<h2><span class="num">22</span>Quote vs Candle</h2>
+<p>A candle summarizes OHLC over time. A bid/ask quote represents current two-sided execution prices.</p>
+<div class="example"><strong>Simple Example:</strong><br>The candle and quote are related but not identical. This distinction becomes important when studying execution.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+<div class="diagram"><div class="diagram-title">22</div><svg viewBox="0 0 1000 300" role="img" aria-label="22">Complete cost environment</svg></div>
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-23">
+<h2><span class="num">23</span>Why Spread Exists</h2>
+<p>Spread can reflect liquidity, market structure, broker pricing arrangements, volatility and instrument characteristics.</p>
+<div class="example"><strong>Simple Example:</strong><br>A spread is not automatically an error. Evaluate whether it is reasonable for the current instrument and conditions.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-24">
+<h2><span class="num">24</span>News, Thin Liquidity and Fast Markets</h2>
+<p>Rapid events can produce changing quotes and less predictable execution. Thin liquidity can also make available prices less stable.</p>
+<div class="example"><strong>Simple Example:</strong><br>Tight stops and oversized positions are especially sensitive to poor execution conditions.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-25">
+<h2><span class="num">25</span>Spread Relative to Strategy</h2>
+<p>The importance of spread depends on target size, stop distance, holding period and position size.</p>
+<div class="example"><strong>Simple Example:</strong><br>A trader should evaluate spread as part of the whole strategy rather than using a universal good/bad number.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-26">
+<h2><span class="num">26</span>Execution-Side Map</h2>
+<p>In the simplified market-order model, long opens interact with ask and close with bid; short opens interact with bid and close with ask.</p>
+<div class="example"><strong>Simple Example:</strong><br>This mental map helps students understand why the quote side matters.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-27">
+<h2><span class="num">27</span>Spread, Stop and Target Together</h2>
+<p>Entry, stop and target form one execution plan. Spread and other costs influence the practical distance between theoretical and realized results.</p>
+<div class="example"><strong>Simple Example:</strong><br>A chart-based reward-to-risk calculation should be interpreted with realistic execution costs.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-28">
+<h2><span class="num">28</span>Pips and Points</h2>
+<p>Spread can be expressed in pips or points. A point is often a smaller price increment than a pip on commonly quoted Forex pairs.</p>
+<div class="example"><strong>Simple Example:</strong><br>Always check the instrument&#x27;s precision and tick size.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-29">
+<h2><span class="num">29</span>Position Size Changes Cost</h2>
+<p>The monetary effect of a given spread generally increases as the position&#x27;s pip value increases.</p>
+<div class="example"><strong>Simple Example:</strong><br>This connects directly to the previous Lots &amp; Leverage lesson.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-30">
+<h2><span class="num">30</span>Pre-Trade Spread Check</h2>
+<p>Before an order, observe bid, ask and spread, then compare them with target, stop, position size and expected costs.</p>
+<div class="example"><strong>Simple Example:</strong><br>If conditions are unusual, pause and reassess.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-31">
+<h2><span class="num">31</span>Waiting Is a Decision</h2>
+<p>A trader does not have to execute every setup immediately. Poor spread or execution conditions can justify waiting.</p>
+<div class="example"><strong>Simple Example:</strong><br>Discipline includes choosing not to trade.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-32">
+<h2><span class="num">32</span>Comparing Brokers</h2>
+<p>A complete broker comparison should consider spread, commission, execution quality, slippage, contract specifications and account rules.</p>
+<div class="example"><strong>Simple Example:</strong><br>Advertised spread alone is not enough.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-33">
+<h2><span class="num">33</span>Fixed vs Variable Spread</h2>
+<p>Some accounts describe spreads as fixed while others use variable or floating spreads. Actual behavior depends on the broker and account.</p>
+<div class="example"><strong>Simple Example:</strong><br>Read the current account and instrument specifications.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-34">
+<h2><span class="num">34</span>Why Spreads Widen</h2>
+<p>Spreads can widen when liquidity changes, volatility rises or market participants reprice.</p>
+<div class="example"><strong>Simple Example:</strong><br>Widening is an execution condition, not a directional signal.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-35">
+<h2><span class="num">35</span>Spread in Risk Calculations</h2>
+<p>A simplified stop-risk formula does not automatically include every trading cost. Practical planning should account for relevant costs and execution uncertainty.</p>
+<div class="example"><strong>Simple Example:</strong><br>Use the broker&#x27;s actual specifications when precision matters.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-36">
+<h2><span class="num">36</span>Gross vs Net Result</h2>
+<p>Gross movement is the price change before costs. Net result is what remains after applicable costs and execution effects.</p>
+<div class="example"><strong>Simple Example:</strong><br>This distinction is critical when evaluating strategy performance.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-37">
+<h2><span class="num">37</span>A Good Spread Does Not Make a Good Trade</h2>
+<p>A low-cost execution environment cannot create a valid market setup.</p>
+<div class="example"><strong>Simple Example:</strong><br>Market structure, direction, risk and timing remain essential.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-38">
+<h2><span class="num">38</span>Do Not Trade Only Because Spread Is Tight</h2>
+<p>A tight spread is helpful but not a signal to enter.</p>
+<div class="example"><strong>Simple Example:</strong><br>The full decision should combine setup quality, risk and execution.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-39">
+<h2><span class="num">39</span>Complete Pre-Trade Workflow</h2>
+<p>A robust workflow checks setup, quote, spread, target, stop, position size, costs, margin and total exposure.</p>
+<div class="example"><strong>Simple Example:</strong><br>This prevents spread from being treated as an isolated statistic.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-40">
+<h2><span class="num">40</span>Common Beginner Confusion</h2>
+<p>Common mistakes include treating bid and ask as one price, confusing spread with commission, confusing spread with slippage and assuming candle price equals exact execution price.</p>
+<div class="example"><strong>Simple Example:</strong><br>Learning these distinctions makes later trade-planning lessons easier.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+
+<section class="section" id="section-41">
+<h2><span class="num">41</span>Complete Bid/Ask Decision Flow</h2>
+<p>The practical sequence is: read quote → identify bid and ask → observe spread → compare with expected movement → check costs → check risk and size → decide whether to execute.</p>
+<div class="example"><strong>Simple Example:</strong><br>This is the framework students should carry into later lessons.</div>
+<h3>Why This Matters</h3>
+<p>Execution is part of trading. A chart can provide a market idea, but the actual
+position is opened and closed through quoted prices. Understanding bid, ask and spread
+helps separate theoretical price movement from practical execution conditions. A trader
+who understands this is less likely to assume that every displayed price is simultaneously
+available for buying and selling.</p>
+<h3>How to Think About It</h3>
+<p>Think of bid and ask as two sides of the same market. The spread is the distance between
+those sides. An immediate order interacts with the relevant side of the quote. If the
+market changes before execution, the available quote can also change. Therefore a price
+seen a moment ago is not necessarily a guaranteed future fill.</p>
+<h3>Practical Application</h3>
+<p>Before trading, identify the instrument, read the current quote, observe the spread,
+consider the target and stop, calculate position size, and review other costs such as
+commission and possible slippage. The importance of each variable depends on the strategy,
+holding period and market conditions.</p>
+
+<div class="note"><strong>Beginner reminder:</strong> Bid, ask, spread, commission,
+slippage and liquidity are connected to execution, but they are different concepts.
+Keep their definitions separate.</div>
+</section>
+<section class="section" id="reference">
+<h2><span class="num">43</span>Quick Reference Table</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;"><table class="table"><tr><th>Concept</th><th>Meaning</th><th>Question</th></tr>
+<tr><td>Bid</td><td>Price associated with selling to the market in the basic quote model.</td><td>What price is available for a sell?</td></tr>
+<tr><td>Ask</td><td>Price associated with buying from the market in the basic quote model.</td><td>What price is available for a buy?</td></tr>
+<tr><td>Spread</td><td>Ask minus bid.</td><td>How far apart are the two prices?</td></tr>
+<tr><td>Commission</td><td>Separate broker charge when applicable.</td><td>Is there an additional fee?</td></tr>
+<tr><td>Slippage</td><td>Difference between expected/requested and actual execution.</td><td>Did the fill differ?</td></tr>
+<tr><td>Liquidity</td><td>Broad availability of trading interest.</td><td>How stable are available prices?</td></tr></table></div>
+<div class="formula">Spread = Ask − Bid</div>
+<p>Always verify quote precision and instrument specifications before converting a raw
+price difference into pips or points.</p>
+</section>
+
+<section class="section" id="worked">
+<h2><span class="num">44</span>Detailed Worked Examples</h2>
+<h3>Example A — Reading a Quote</h3>
+<p>Suppose an illustrative EUR/USD quote is Bid 1.10500 and Ask 1.10502.
+The price difference is 0.00002. The example teaches the subtraction and the idea of
+two-sided pricing. The exact pip conversion depends on quote precision.</p>
+<div class="example good"><strong>Calculation:</strong> 1.10502 − 1.10500 = 0.00002.</div>
+<h3>Example B — Same Spread, Different Position Size</h3>
+<p>The same quoted spread can have a different monetary effect on different positions.
+A larger position generally has a larger pip value, so the same price-distance cost
+creates a larger monetary effect.</p>
+<h3>Example C — Small Target</h3>
+<p>A strategy expecting only a few pips has less room to absorb spread, commission and
+slippage than a strategy expecting a much larger move. This is why short-term testing
+needs realistic cost assumptions.</p>
+<h3>Example D — Fast Market</h3>
+<p>During a fast event, the displayed quote can change rapidly. The spread can change and
+the actual fill can differ from the quote observed before clicking the order.</p>
+<h3>Example E — Long and Short</h3>
+<p>In the basic market-order model, a long opens against ask and closes against bid,
+while a short opens against bid and closes against ask. This simple map helps explain
+two-sided trading costs.</p>
+</section>
+
+<section class="section" id="costs">
+<h2><span class="num">45</span>Complete Trading-Cost Framework</h2>
+<div class="grid">
+<div class="card"><h3>Spread</h3><p>Bid/ask distance and part of the quoted execution environment.</p></div>
+<div class="card"><h3>Commission</h3><p>A separate broker fee when applicable, often related to volume.</p></div>
+<div class="card"><h3>Slippage</h3><p>Actual execution can differ from expected or requested price.</p></div>
+<div class="card"><h3>Market Conditions</h3><p>Liquidity and volatility can influence practical execution.</p></div>
+</div>
+<p>A realistic strategy review should not stop at “the spread is X pips.” Ask what the
+spread means in account currency for the actual position and whether the expected target
+is large enough to absorb realistic transaction costs.</p>
+</section>
+
+<section class="section" id="mistakes">
+<h2><span class="num">46</span>Common Mistakes</h2>
+<ul class="list">
+<li>Thinking bid and ask are the same price.</li><li>Assuming every chart price is executable in both directions.</li>
+<li>Confusing spread with commission.</li><li>Confusing spread with slippage.</li>
+<li>Assuming spread is constant throughout the day.</li><li>Ignoring spread on very small targets.</li>
+<li>Ignoring position size when evaluating monetary cost.</li><li>Assuming a tight spread guarantees a profitable trade.</li>
+<li>Ignoring news and fast-market conditions.</li><li>Comparing brokers using advertised spread alone.</li>
+<li>Assuming every currency pair has identical spread behavior.</li><li>Ignoring commission on low-spread account types.</li>
+</ul>
+</section>
+
+<section class="section" id="checklist">
+<h2><span class="num">47</span>Complete Bid &amp; Ask Checklist</h2>
+<ul class="check">
+<li>I know the instrument I am trading.</li><li>I know which price is bid and which is ask.</li>
+<li>I know the current spread.</li><li>I understand which quote side my order uses.</li>
+<li>I know my entry, stop and target.</li><li>I checked spread relative to the target.</li>
+<li>I considered position size and pip value.</li><li>I checked commission if applicable.</li>
+<li>I understand slippage is different from spread.</li><li>I considered current liquidity and volatility.</li>
+<li>I checked unusual market/news conditions when relevant.</li><li>I am not entering merely because the spread is tight.</li>
+<li>The trade still fits my overall risk plan.</li>
+</ul>
+</section>
+
+<section class="section" id="summary">
+<h2><span class="num">48</span>Final Summary</h2>
+<p>Bid and ask are the two sides of a tradable quote. The spread is the distance between
+them. In the basic market-order model, buys interact with ask and sells interact with bid.
+Closing a long and closing a short therefore involve the opposite quote sides.</p>
+<p>Spread is one part of trading cost. Commission may be separate. Slippage concerns
+execution differences. Liquidity and volatility can influence the conditions under which
+quotes and execution behave.</p>
+<p>The central lesson is that a chart setup and an execution setup are not exactly the same.
+The practical workflow is: <strong>read the quote → understand bid/ask → observe spread →
+compare it with expected movement → check costs → check risk and position size → decide.</strong></p>
+<div class="example good"><strong>Remember:</strong> A tight spread is useful, but it is
+not a buy signal. A wide spread is a cost condition, not a sell signal.</div>
+</section>
+
+<section class="section" id="disclaimer">
+<h2><span class="num">49</span>Educational Disclaimer</h2>
+<p>These notes are educational material for Strativo Academy. They explain common Forex
+terminology and execution concepts. They are not financial advice, personalized investment
+advice, a trading recommendation or a guarantee of profit.</p>
+<p>Actual spreads, bid/ask pricing, commissions, execution policies, contract specifications,
+market conditions, liquidity and slippage vary by broker, account type, instrument,
+jurisdiction and time.</p>
+<p>Verify current specifications with the actual broker and instrument before applying these
+concepts to a live account. Examples are simplified for education and are not guaranteed
+live execution prices.</p>
+</section>
+
+<nav class="nav" aria-label="Lesson navigation">
+<a href="lots-and-leverage.html"><small>← Previous Note</small><strong>Lots &amp; Leverage</strong></a>
+<a href="notes.html" class="center"><small>Module 1</small><strong>Notes Home</strong></a>
+<a href="market-orders.html" class="right"><small>Next Note →</small><strong>Market Orders</strong></a>
+</nav></main>
+<div data-component="footer"></div>
+<script src="../../js/routes.js"></script><script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script></body></html>

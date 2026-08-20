@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#030712" name="theme-color"/>
+<meta content="Strativo Academy Module 1 Exercise 02 — Currency Pairs." name="description"/>
+<title>Exercise 02 — Currency Pairs | Strativo Academy</title>
+<link href="../../css/style.css" rel="stylesheet"/>
+<link href="../../css/ui.css" rel="stylesheet"/>
+<link href="../../css/header.css" rel="stylesheet"/>
+<link href="../../css/footer.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root{
+            --cp-bg:#030712;--cp-panel:#0b1220;--cp-panel2:#08111f;
+            --cp-border:rgba(148,163,184,.13);--cp-text:#f8fafc;--cp-muted:#a6b4c6;
+            --cp-blue:#60a5fa;--cp-green:#34d399;--cp-yellow:#fbbf24;
+            --cp-purple:#a78bfa;--cp-red:#f87171
+        }
+        *{box-sizing:border-box} html{scroll-behavior:smooth}
+        body{margin:0;min-height:100vh;background:var(--cp-bg);color:var(--cp-text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+        .cp-page{min-height:100vh;padding-bottom:60px}
+        .cp-wrap{width:min(1120px,calc(100% - 28px));margin:0 auto}
+        .cp-hero{position:relative;overflow:hidden;padding:76px 20px 54px;background:radial-gradient(circle at 13% 20%,rgba(96,165,250,.14),transparent 34%),radial-gradient(circle at 86% 24%,rgba(52,211,153,.09),transparent 31%),#030712;border-bottom:1px solid var(--cp-border)}
+        .cp-hero-inner{width:min(900px,100%);margin:0 auto;text-align:center}
+        .cp-eyebrow{color:#93c5fd;font-size:.58rem;font-weight:900;letter-spacing:.16em}
+        .cp-hero h1{margin:15px 0 0;font-family:Poppins,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:1.08;letter-spacing:-.04em}
+        .cp-hero p{max-width:840px;margin:16px auto 0;color:#a8b5c7;font-size:.66rem;line-height:1.9}
+        .cp-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}
+        .cp-badge{padding:7px 11px;border:1px solid var(--cp-border);border-radius:999px;background:rgba(15,23,42,.62);color:#dbeafe;font-size:.46rem;font-weight:800}
+        .cp-meta{display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;margin-top:23px;padding:16px 18px;border:1px solid var(--cp-border);border-radius:15px;background:var(--cp-panel)}
+        .cp-meta strong{display:block;color:#f1f5f9;font-size:.56rem}
+        .cp-meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.48rem}
+        .cp-progress{min-width:150px;text-align:right}.cp-progress-bar{width:150px;height:7px;overflow:hidden;border-radius:999px;background:#162033}.cp-progress-fill{width:20%;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399)}.cp-progress small{display:block;margin-top:6px;color:#7f8ea2;font-size:.43rem}
+        .cp-section{margin-top:20px;padding:22px;border:1px solid var(--cp-border);border-radius:17px;background:var(--cp-panel)}
+        .cp-section h2{margin:0;font-family:Poppins,sans-serif;font-size:.96rem;color:#f8fafc}
+        .cp-section h3{margin:18px 0 0;color:#dbeafe;font-size:.67rem}
+        .cp-section p{margin:8px 0 0;color:var(--cp-muted);font-size:.57rem;line-height:1.9}
+        .cp-list{margin:12px 0 0;padding-left:20px}.cp-list li{margin-top:7px;color:#aebdd0;font-size:.55rem;line-height:1.75}
+        .pair-diagram{margin-top:18px;display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:10px}
+        .pair-box{padding:22px 17px;text-align:center;border:1px solid rgba(148,163,184,.12);border-radius:15px;background:#08111f}
+        .pair-box .label{color:#64748b;font-size:.46rem;font-weight:900;letter-spacing:.08em}.pair-box strong{display:block;margin-top:9px;color:#f8fafc;font-family:Poppins,sans-serif;font-size:1.65rem}
+        .pair-box.base{border-color:rgba(96,165,250,.20)}.pair-box.base strong{color:#bfdbfe}.pair-box.quote{border-color:rgba(52,211,153,.20)}.pair-box.quote strong{color:#a7f3d0}
+        .pair-arrow{color:#94a3b8;text-align:center;font-size:1.55rem;font-weight:900}
+        .quote-card{margin-top:16px;padding:18px;border:1px solid rgba(96,165,250,.13);border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,.07),rgba(16,185,129,.035))}
+        .quote-number{text-align:center;color:#f8fafc;font-family:Poppins,sans-serif;font-size:1.7rem;font-weight:800}.quote-explain{margin-top:7px!important;text-align:center}
+        .cp-diagram{margin-top:18px;border:1px solid rgba(148,163,184,.11);border-radius:14px;overflow:hidden;background:#07101f}.cp-diagram-title{padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);background:#0d1728;color:#dbe4ef;font-size:.49rem;font-weight:900;letter-spacing:.03em}.cp-diagram svg{display:block;width:100%;height:auto}
+        .cp-two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:15px}
+        .cp-mini{padding:15px;border:1px solid rgba(148,163,184,.10);border-radius:12px;background:var(--cp-panel2)}.cp-mini h3{margin:0;color:#f1f5f9;font-size:.63rem}.cp-mini p{margin-top:7px;font-size:.52rem;line-height:1.75}
+        .cp-question{margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);border-radius:14px;background:#08111f}.cp-qnum{color:#60a5fa;font-size:.47rem;font-weight:900;letter-spacing:.06em}.cp-question h3{margin-top:7px;color:#f1f5f9;font-size:.67rem;line-height:1.55}
+        .cp-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:11px}.cp-option{padding:12px 13px;border:1px solid rgba(148,163,184,.11);border-radius:10px;background:#0b1627;color:#b9c6d7;font-size:.52rem;line-height:1.65}.cp-option strong{color:#dbeafe}
+        .cp-answer{margin-top:11px;padding:11px 13px;border-left:3px solid var(--cp-green);border-radius:0 9px 9px 0;background:rgba(16,185,129,.055)}.cp-answer strong{color:#86efac;font-size:.49rem}.cp-answer p{margin-top:5px;color:#b7c8d8;font-size:.51rem}
+        .cp-table-wrap{margin-top:16px;overflow:auto;border:1px solid rgba(148,163,184,.10);border-radius:12px}.cp-table{width:100%;min-width:620px;border-collapse:collapse}.cp-table th,.cp-table td{padding:11px 12px;border-bottom:1px solid rgba(148,163,184,.07);text-align:left;font-size:.52rem;line-height:1.6}.cp-table th{color:#dbeafe;background:rgba(59,130,246,.08)}.cp-table td{color:#aebdd0;background:#08111f}
+        .cp-checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:15px}.cp-check{padding:10px 12px;border:1px solid rgba(148,163,184,.09);border-radius:10px;background:#08111f;color:#cbd5e1;font-size:.50rem;line-height:1.65}
+        .cp-navigation{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;margin-top:22px}.cp-nav{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;color:#dbeafe;text-decoration:none;font-size:.50rem;font-weight:900;text-align:center;transition:.2s ease}.cp-nav:hover{border-color:rgba(96,165,250,.25);background:#0e1b30}.cp-nav.center{background:rgba(59,130,246,.06);color:#bfdbfe}.cp-nav.next{background:rgba(16,185,129,.055);color:#d1fae5}
+        .cp-note{margin-top:14px;color:#64748b;text-align:center;font-size:.45rem;line-height:1.7}
+        @media(max-width:760px){.cp-meta,.cp-two-col{grid-template-columns:1fr}.cp-progress{text-align:left}.cp-progress-bar{width:100%}.cp-options,.cp-checklist{grid-template-columns:1fr}.cp-navigation{grid-template-columns:1fr}}
+        @media(max-width:560px){.cp-wrap{width:min(100% - 18px,680px)}.cp-section{padding:18px}.pair-diagram{grid-template-columns:1fr}.pair-arrow{transform:rotate(90deg)}}
+    
+/* =========================================================
+   INTERACTIVE EXERCISE — READABILITY
+========================================================= */
+body{
+    font-size:16px;
+    line-height:1.65;
+}
+
+.cp-section h2{
+    font-size:1.45rem !important;
+}
+
+.cp-section h3{
+    font-size:1.02rem !important;
+}
+
+.cp-section p,
+.cp-list li,
+.cp-table th,
+.cp-table td,
+.cp-mini p{
+    font-size:.92rem !important;
+    line-height:1.8 !important;
+}
+
+.cp-eyebrow{font-size:.82rem !important}
+.cp-hero p{font-size:1rem !important}
+.cp-badge{font-size:.78rem !important}
+.cp-meta strong{font-size:.92rem !important}
+.cp-meta span{font-size:.82rem !important}
+.cp-progress small{font-size:.72rem !important}
+.cp-diagram-title{font-size:.78rem !important}
+.cp-mini h3{font-size:.96rem !important}
+.cp-question h3{
+    font-size:1.05rem !important;
+    line-height:1.6 !important;
+}
+.cp-qnum{
+    font-size:.78rem !important;
+}
+.cp-check{
+    font-size:.84rem !important;
+}
+.cp-nav{
+    font-size:.82rem !important;
+}
+.cp-note{
+    font-size:.72rem !important;
+}
+
+/* Clickable answers */
+.cp-option{
+    appearance:none;
+    width:100%;
+    padding:14px 15px !important;
+    border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;
+    background:#0b1627;
+    color:#d5deea;
+    text-align:left;
+    font:inherit;
+    font-size:.92rem !important;
+    line-height:1.65 !important;
+    cursor:pointer;
+    transition:transform .16s ease,border-color .16s ease,background .16s ease;
+}
+.cp-option:hover{
+    transform:translateY(-1px);
+    border-color:rgba(96,165,250,.34);
+    background:#0e1b30;
+}
+.cp-option:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:2px;
+}
+.cp-option.correct{
+    border-color:rgba(52,211,153,.55);
+    background:rgba(16,185,129,.11);
+    color:#d1fae5;
+}
+.cp-option.wrong{
+    border-color:rgba(248,113,113,.50);
+    background:rgba(248,113,113,.09);
+    color:#fecaca;
+}
+.cp-option.reveal-correct{
+    border-color:rgba(52,211,153,.35);
+    box-shadow:inset 3px 0 0 #34d399;
+}
+.cp-option:disabled{
+    cursor:default;
+    transform:none;
+}
+
+.cp-feedback{
+    display:none;
+    margin-top:13px;
+    padding:14px 15px;
+    border-left:3px solid #60a5fa;
+    border-radius:0 10px 10px 0;
+    background:rgba(59,130,246,.055);
+}
+.cp-feedback.visible{display:block}
+.cp-feedback.correct{
+    border-left-color:#34d399;
+    background:rgba(16,185,129,.07);
+}
+.cp-feedback.wrong{
+    border-left-color:#f87171;
+    background:rgba(248,113,113,.06);
+}
+.cp-feedback .feedback-title{
+    color:#f8fafc;
+    font-size:.92rem;
+    font-weight:900;
+}
+.cp-feedback.correct .feedback-title{color:#86efac}
+.cp-feedback.wrong .feedback-title{color:#fca5a5}
+.cp-feedback p{
+    margin-top:7px !important;
+    color:#cbd5e1 !important;
+    font-size:.90rem !important;
+    line-height:1.75 !important;
+}
+.cp-feedback .why-wrong{color:#fca5a5 !important}
+.cp-feedback .correct-answer{color:#86efac !important}
+.cp-retry{
+    margin-top:10px;
+    padding:8px 12px;
+    border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;
+    background:rgba(15,23,42,.66);
+    color:#cbd5e1;
+    font:inherit;
+    font-size:.78rem;
+    font-weight:800;
+    cursor:pointer;
+}
+.cp-retry:hover{
+    border-color:rgba(96,165,250,.30);
+    background:rgba(59,130,246,.08);
+}
+
+.cp-scorebar{
+    margin-top:18px;
+    padding:14px 16px;
+    border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;
+    background:rgba(59,130,246,.055);
+}
+.cp-scorebar strong{
+    color:#dbeafe;
+    font-size:.90rem;
+}
+.cp-scorebar .score-progress{
+    margin-top:8px;
+    height:7px;
+    border-radius:999px;
+    overflow:hidden;
+    background:#162033;
+}
+.cp-scorebar .score-fill{
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,#60a5fa,#34d399);
+    transition:width .25s ease;
+}
+
+@media(max-width:760px){
+    .cp-section{padding:20px !important}
+    .cp-section h2{font-size:1.25rem !important}
+    .cp-question h3{font-size:1rem !important}
+    .cp-option{font-size:.92rem !important}
+}
+</style>
+</head>
+<body>
+<div data-component="header"></div>
+<main class="cp-page">
+<section class="cp-hero">
+<div class="cp-hero-inner">
+<div class="cp-eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+<h1>Exercise 02 — Currency Pairs</h1>
+<p>
+                    Practice reading currency pairs, identifying the base and
+                    quote currencies, understanding pair categories and
+                    interpreting what a quoted price means.
+                </p>
+<div class="cp-badges">
+<span class="cp-badge">💱 Currency Pairs</span>
+<span class="cp-badge">🧠 Knowledge Check</span>
+<span class="cp-badge">📊 Quote Reading</span>
+<span class="cp-badge">02 / 10</span>
+</div>
+</div>
+</section>
+<div class="cp-wrap">
+<section class="cp-meta">
+<div>
+<strong>Exercise Goal</strong>
+<span>Read a currency pair correctly and understand the relationship between the two currencies.</span>
+</div>
+<div class="cp-progress">
+<div class="cp-progress-bar"><div class="cp-progress-fill"></div></div>
+<small>Exercise 02 of 10</small>
+</div>
+</section>
+<section class="cp-section">
+<h2>01. Read the Pair Correctly</h2>
+<p>
+                    A currency pair represents the value of one currency relative
+                    to another. Forex quotes contain two currencies because the
+                    market expresses a relationship between them. The first
+                    currency is the base currency and the second is the quote
+                    currency.
+                </p>
+<div class="pair-diagram">
+<div class="pair-box base">
+<div class="label">FIRST CURRENCY</div>
+<strong>EUR</strong>
+<div class="label">BASE CURRENCY</div>
+</div>
+<div class="pair-arrow">/</div>
+<div class="pair-box quote">
+<div class="label">SECOND CURRENCY</div>
+<strong>USD</strong>
+<div class="label">QUOTE CURRENCY</div>
+</div>
+</div>
+<div class="quote-card">
+<div class="quote-number">EUR / USD = 1.1000</div>
+<p class="quote-explain">
+                        One unit of EUR is valued at 1.1000 units of USD in this quotation.
+                    </p>
+</div>
+<div class="cp-two-col">
+<div class="cp-mini">
+<h3>Base Currency</h3>
+<p>
+                            The base currency is written first. It is the currency
+                            whose value is being expressed relative to the second currency.
+                        </p>
+</div>
+<div class="cp-mini">
+<h3>Quote Currency</h3>
+<p>
+                            The quote currency is written second. It tells you
+                            how many units correspond to one unit of the base currency.
+                        </p>
+</div>
+</div>
+<div class="cp-diagram">
+<div class="cp-diagram-title">HOW TO READ A FOREX QUOTE</div>
+<svg aria-label="Currency pair quote diagram" role="img" viewbox="0 0 900 350">
+<rect fill="#07101f" height="350" width="900"></rect>
+<text fill="#f8fafc" font-size="31" font-weight="900" text-anchor="middle" x="450" y="70">EUR / USD = 1.1000</text>
+<rect fill="#0b1627" height="95" rx="14" stroke="#60a5fa" stroke-width="2" width="300" x="75" y="180"></rect>
+<text fill="#93c5fd" font-size="17" font-weight="900" text-anchor="middle" x="225" y="215">EUR = BASE</text>
+<text fill="#94a3b8" font-size="15" text-anchor="middle" x="225" y="248">1 unit of EUR</text>
+<rect fill="#0b1627" height="95" rx="14" stroke="#34d399" stroke-width="2" width="300" x="525" y="180"></rect>
+<text fill="#86efac" font-size="17" font-weight="900" text-anchor="middle" x="675" y="215">USD = QUOTE</text>
+<text fill="#94a3b8" font-size="15" text-anchor="middle" x="675" y="248">1 EUR = 1.1000 USD</text>
+</svg>
+</div>
+</section>
+<section class="cp-section">
+<h2>02. What Does a Rising or Falling Pair Mean?</h2>
+<p>
+                    When the quoted price of a pair rises, the base currency is
+                    becoming more valuable relative to the quote currency.
+                    When the quoted price falls, the base currency is becoming
+                    less valuable relative to the quote currency.
+                </p>
+<div class="cp-two-col">
+<div class="cp-mini">
+<h3>EUR/USD Rises</h3>
+<p>
+                            More USD are represented by one EUR, so the base
+                            currency is stronger relative to the quote within the pair.
+                        </p>
+</div>
+<div class="cp-mini">
+<h3>EUR/USD Falls</h3>
+<p>
+                            Fewer USD are represented by one EUR, so the base
+                            currency is weaker relative to the quote within the pair.
+                        </p>
+</div>
+</div>
+<div class="cp-diagram">
+<div class="cp-diagram-title">PAIR MOVEMENT — RELATIVE VALUE</div>
+<svg aria-label="Rising and falling currency pair diagram" role="img" viewbox="0 0 900 360">
+<rect fill="#07101f" height="360" width="900"></rect>
+<line stroke="#34d399" stroke-linecap="round" stroke-width="7" x1="110" x2="390" y1="265" y2="110"></line>
+<polygon fill="#34d399" points="390,110 360,119 378,138"></polygon>
+<text fill="#86efac" font-size="18" font-weight="900" text-anchor="middle" x="250" y="90">PAIR RISES</text>
+<text fill="#94a3b8" font-size="15" text-anchor="middle" x="250" y="315">Base stronger relative to quote</text>
+<line stroke="#f87171" stroke-linecap="round" stroke-width="7" x1="510" x2="790" y1="110" y2="265"></line>
+<polygon fill="#f87171" points="790,265 760,242 752,264"></polygon>
+<text fill="#fca5a5" font-size="18" font-weight="900" text-anchor="middle" x="650" y="90">PAIR FALLS</text>
+<text fill="#94a3b8" font-size="15" text-anchor="middle" x="650" y="315">Base weaker relative to quote</text>
+</svg>
+</div>
+</section>
+<section class="cp-section">
+<h2>03. Pair Categories</h2>
+<p>
+                    Currency pairs are commonly grouped into major pairs, minor
+                    or cross pairs, and exotic pairs. These categories describe
+                    how the currencies relate to the U.S. dollar and common market usage.
+                </p>
+<div class="cp-table-wrap">
+<table class="cp-table">
+<thead>
+<tr><th>Category</th><th>Example</th><th>Basic Idea</th></tr>
+</thead>
+<tbody>
+<tr><td>Major</td><td>EUR/USD</td><td>Commonly traded USD pair involving a major global currency.</td></tr>
+<tr><td>Major</td><td>USD/JPY</td><td>USD paired with the Japanese yen.</td></tr>
+<tr><td>Cross / Minor</td><td>EUR/GBP</td><td>Two major currencies without USD in the pair.</td></tr>
+<tr><td>Exotic</td><td>USD/INR</td><td>Commonly describes a major currency paired with an emerging-market currency.</td></tr>
+</tbody>
+</table>
+</div>
+<ul class="cp-list">
+<li><strong>Major examples:</strong> EUR/USD, GBP/USD, USD/JPY, USD/CHF, AUD/USD, USD/CAD, NZD/USD.</li>
+<li><strong>Cross example:</strong> EUR/GBP has no USD in the pair.</li>
+<li><strong>Exotic example:</strong> USD/INR pairs a major currency with an emerging-market currency.</li>
+</ul>
+</section>
+<section class="cp-section">
+<h2>04. Knowledge Check</h2><p>Choose an answer first. Your answer is checked immediately. If you are wrong, the exercise explains why your choice was wrong, shows the correct answer, and teaches the concept.</p>
+<div class="cp-question"><div class="cp-qnum">QUESTION 01</div><h3>In EUR/USD, which currency is the base currency?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>EUR</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>USD</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>Both</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>Neither</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div class="cp-question"><div class="cp-qnum">QUESTION 02</div><h3>In GBP/USD, which currency is the quote currency?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>GBP</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>USD</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>Both</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>Neither</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div class="cp-question"><div class="cp-qnum">QUESTION 03</div><h3>If EUR/USD = 1.1000, approximately how much USD represents 1 EUR?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>0.1100 USD</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>1.0000 USD</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>1.1000 USD</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>11.0000 USD</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div class="cp-question"><div class="cp-qnum">QUESTION 04</div><h3>EUR/USD rises from 1.1000 to 1.1200. What does that mean in the quoted relationship?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>EUR strengthened relative to USD</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>EUR weakened relative to USD</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>The pair stopped representing relative value</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>Both currencies became equal</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div class="cp-question"><div class="cp-qnum">QUESTION 05</div><h3>Which is a cross/minor example without USD?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>EUR/USD</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>USD/JPY</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>EUR/GBP</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>GBP/USD</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div class="cp-question"><div class="cp-qnum">QUESTION 06</div><h3>Which statement about the order of a currency pair is correct?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>Quote currency comes first</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>Base comes first, quote second</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>Order does not matter</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>Both currencies must be the same</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div aria-live="polite" class="cp-scorebar"><strong>Knowledge Check: 0 / 6 correct</strong><div class="score-progress"><div class="score-fill"></div></div></div></section>
+<section class="cp-section">
+<h2>05. Practical Pair Reading</h2>
+<div class="cp-question"><div class="cp-qnum">SCENARIO 01</div><h3>USD/JPY = 150.00. Which currency is the base and which is the quote?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>USD is base; JPY is quote</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>JPY is base; USD is quote</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>Both are base currencies</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>Neither currency has a role</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div class="cp-question"><div class="cp-qnum">SCENARIO 02</div><h3>GBP/USD moves from 1.3000 to 1.2800. What happened to the quoted pair?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>The pair rose</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>The pair fell</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>The pair did not move</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>The currencies became equal</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div class="cp-question"><div class="cp-qnum">SCENARIO 03</div><h3>A student says EUR/GBP is a major pair because both currencies are important. Is that correct?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>Yes, all important currencies automatically make a major pair</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>No, EUR/GBP is commonly treated as a cross/minor pair because it has no USD</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>No, EUR/GBP is a cryptocurrency pair</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>Yes, but only when the pair is rising</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+<div class="cp-question"><div class="cp-qnum">SCENARIO 04</div><h3>USD/INR = 85.00. What does the quotation relationship tell you?</h3><div class="cp-options"><button class="cp-option" data-option="A" type="button"><strong>A. </strong>One INR equals 85 USD</button><button class="cp-option" data-option="B" type="button"><strong>B. </strong>One USD is represented by 85 INR in this quotation</button><button class="cp-option" data-option="C" type="button"><strong>C. </strong>USD is the quote currency</button><button class="cp-option" data-option="D" type="button"><strong>D. </strong>The pair has no base currency</button></div><div aria-live="polite" class="cp-feedback"></div></div>
+</section>
+<section class="cp-section">
+<h2>06. Student Self-Check</h2>
+<div class="cp-checklist">
+<div class="cp-check">☐ I can identify the base currency.</div>
+<div class="cp-check">☐ I can identify the quote currency.</div>
+<div class="cp-check">☐ I can read a simple Forex quotation.</div>
+<div class="cp-check">☐ I understand what a rising pair means.</div>
+<div class="cp-check">☐ I understand what a falling pair means.</div>
+<div class="cp-check">☐ I can identify a major pair.</div>
+<div class="cp-check">☐ I can identify a cross/minor pair.</div>
+<div class="cp-check">☐ I understand the basic idea of an exotic pair.</div>
+<div class="cp-check">☐ I know the order of currencies matters.</div>
+<div class="cp-check">☐ I am ready to study pips and points next.</div>
+</div>
+</section>
+<section class="cp-section">
+<h2>07. Quick Revision</h2>
+<ul class="cp-list">
+<li>Every Forex pair contains two currencies.</li>
+<li>The first currency is the base currency.</li>
+<li>The second currency is the quote currency.</li>
+<li>The quoted number expresses the base currency relative to the quote currency.</li>
+<li>A rising pair means the base is becoming more valuable relative to the quote.</li>
+<li>A falling pair means the base is becoming less valuable relative to the quote.</li>
+<li>Major, cross/minor and exotic are common categories used to classify pairs.</li>
+<li>The next exercise focuses on how Forex price movement is measured with pips and points.</li>
+</ul>
+</section>
+<nav aria-label="Exercise navigation" class="cp-navigation">
+<a aria-label="Previous Exercise: Forex Fundamentals" class="cp-nav" href="forex-basics.html">← Forex Fundamentals</a>
+<a aria-label="Return to Module 1 Exercise Hub" class="cp-nav center" href="module1-exercise.html">Exercise Hub</a>
+<a aria-label="Next Exercise: Pips and Points" class="cp-nav next" href="pips-points.html">Next: Pips &amp; Points →</a>
+</nav>
+<div class="cp-note">
+                Exercise 02 of 10 • Strativo Academy Module 1 • Review the Currency Pairs notes whenever needed.
+            </div>
+</div>
+</main>
+<div data-component="footer"></div>
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const knowledgeMap = {
+        "QUESTION 01": {
+            correct:"A",
+            explanation:"The first currency in a currency pair is the base currency. In EUR/USD, EUR is therefore the base.",
+            wrong:{
+                B:"USD is the second currency, so it is the quote currency rather than the base.",
+                C:"A pair has one base currency and one quote currency; they do not both have the same role.",
+                D:"EUR/USD does have a base currency: EUR."
+            }
+        },
+        "QUESTION 02": {
+            correct:"B",
+            explanation:"The second currency in a pair is the quote currency. In GBP/USD, USD is the quote.",
+            wrong:{
+                A:"GBP is first in the pair, so GBP is the base currency.",
+                C:"The two currencies have different roles in the quotation.",
+                D:"USD is clearly the second currency, so it is the quote."
+            }
+        },
+        "QUESTION 03": {
+            correct:"C",
+            explanation:"EUR is the base currency, so EUR/USD = 1.1000 means one EUR is valued at 1.1000 USD in that quotation.",
+            wrong:{
+                A:"0.1100 is ten times too small for this quotation.",
+                B:"The quote is specifically 1.1000, not 1.0000.",
+                D:"11.0000 is ten times too large for this quotation."
+            }
+        },
+        "QUESTION 04": {
+            correct:"A",
+            explanation:"When EUR/USD rises, one EUR is represented by more USD, so EUR has strengthened relative to USD within this quoted relationship.",
+            wrong:{
+                B:"A falling pair would indicate the base currency becoming weaker relative to the quote.",
+                C:"The pair still represents relative value after the move.",
+                D:"A rise does not make the two currencies equal."
+            }
+        },
+        "QUESTION 05": {
+            correct:"C",
+            explanation:"EUR/GBP has no USD in the pair, so it is commonly classified as a cross/minor pair.",
+            wrong:{
+                A:"EUR/USD contains USD, so it is not the cross example being tested here.",
+                B:"USD/JPY also contains USD.",
+                D:"GBP/USD contains USD."
+            }
+        },
+        "QUESTION 06": {
+            correct:"B",
+            explanation:"The first currency is the base currency and the second currency is the quote currency. The order is essential to understanding the price.",
+            wrong:{
+                A:"The quote currency comes second, not first.",
+                C:"The order absolutely matters because it changes how the quotation is interpreted.",
+                D:"A valid currency pair contains two distinct currencies."
+            }
+        }
+    };
+
+    const scenarioMap = {
+        "SCENARIO 01": {
+            correct:"A",
+            explanation:"USD appears first, so it is the base currency. JPY appears second, so it is the quote currency.",
+            wrong:{
+                B:"The order is reversed. USD is written first in USD/JPY.",
+                C:"A pair has one base and one quote currency.",
+                D:"Both currencies have defined roles in the quotation."
+            }
+        },
+        "SCENARIO 02": {
+            correct:"B",
+            explanation:"The quoted price decreased from 1.3000 to 1.2800, so GBP/USD fell. In this relationship, GBP weakened relative to USD.",
+            wrong:{
+                A:"1.2800 is lower than 1.3000, so the pair fell.",
+                C:"The price changed by 0.0200, so it clearly moved.",
+                D:"The quotation is still a relationship between two currencies."
+            }
+        },
+        "SCENARIO 03": {
+            correct:"B",
+            explanation:"EUR/GBP contains two major currencies but no USD, so it is commonly classified as a cross/minor pair.",
+            wrong:{
+                A:"Pair classification is not based simply on whether both currencies are important.",
+                C:"EUR/GBP is a currency pair, not a cryptocurrency pair.",
+                D:"A pair's category does not change simply because price rises."
+            }
+        },
+        "SCENARIO 04": {
+            correct:"B",
+            explanation:"USD is first, so it is the base. The quote tells us how many INR correspond to one USD.",
+            wrong:{
+                A:"The relationship is reversed. USD is the base, not INR.",
+                C:"USD appears first, so USD is the base currency.",
+                D:"Every currency pair in this exercise has a base and quote role."
+            }
+        }
+    };
+
+    const knowledgeQuestions = document.querySelectorAll(".cp-question");
+    const scoreStrong = document.querySelector(".cp-scorebar strong");
+    const scoreFill = document.querySelector(".cp-scorebar .score-fill");
+
+    let score = 0;
+    const counted = new Set();
+
+    function mapFor(q) {
+        const id = q.querySelector(".cp-qnum")?.textContent.trim() || "";
+        return knowledgeMap[id] || scenarioMap[id] || null;
+    }
+
+    function updateScore() {
+        if (!scoreStrong || !scoreFill) return;
+        scoreStrong.textContent = "Knowledge Check: " + score + " / 6 correct";
+        scoreFill.style.width = (score / 6 * 100) + "%";
+    }
+
+    function renderFeedback(q, selected, data) {
+        const feedback = q.querySelector(".cp-feedback");
+        const correct = selected === data.correct;
+
+        q.querySelectorAll(".cp-option").forEach(btn => {
+            btn.disabled = true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+            if (btn.dataset.option === data.correct) btn.classList.add("reveal-correct");
+            if (btn.dataset.option === selected) btn.classList.add(correct ? "correct" : "wrong");
+        });
+
+        feedback.innerHTML = "";
+        feedback.className = "cp-feedback visible " + (correct ? "correct" : "wrong");
+
+        const title = document.createElement("div");
+        title.className = "feedback-title";
+        title.textContent = correct ? "✅ Correct — well done!" : "❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if (!correct) {
+            const wrong = document.createElement("p");
+            wrong.className = "why-wrong";
+            wrong.textContent = "Why your answer is wrong: " +
+                (data.wrong[selected] || "That option does not match the concept being tested.");
+            feedback.appendChild(wrong);
+
+            const right = document.createElement("p");
+            right.className = "correct-answer";
+            right.textContent = "Correct answer: " + data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explain = document.createElement("p");
+        explain.textContent = "Explanation: " + data.explanation;
+        feedback.appendChild(explain);
+
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.className = "cp-retry";
+        retry.textContent = "Try Again";
+        retry.addEventListener("click", () => {
+            q.querySelectorAll(".cp-option").forEach(btn => {
+                btn.disabled = false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+            feedback.className = "cp-feedback";
+            feedback.innerHTML = "";
+        });
+        feedback.appendChild(retry);
+    }
+
+    knowledgeQuestions.forEach(q => {
+        const data = mapFor(q);
+        if (!data) return;
+
+        q.querySelectorAll(".cp-option").forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (btn.disabled) return;
+
+                const id = q.querySelector(".cp-qnum")?.textContent.trim() || "";
+
+                // Count only the first attempt for the six main Knowledge Check questions.
+                if (id.startsWith("QUESTION") && !counted.has(id)) {
+                    counted.add(id);
+                    if (btn.dataset.option === data.correct) score += 1;
+                    updateScore();
+                }
+
+                renderFeedback(q, btn.dataset.option, data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="View your Strativo Academy achievements, XP, levels and learning milestones."
+    >
+
+    <title>Achievements | Strativo Academy</title>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         ACHIEVEMENTS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/achievements.css"
+    >
+
+</head>
+
+
+<body class="achievements-page">
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="achievements-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN CONTAINER
+    ====================================================== -->
+
+    <main class="achievements-container">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="achievements-topbar">
+
+<a
+    href="settings.html"
+    class="achievements-back-link"
+    aria-label="Back to Settings"
+>
+    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+    <span>Back to Settings</span>
+</a>
+
+
+            <div class="achievements-version">
+
+                <span
+                    class="achievements-version-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span>
+                    v1.0 Beta
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="achievements-hero">
+
+            <div class="achievements-eyebrow">
+
+                <i
+                    class="fas fa-trophy"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    ACHIEVEMENTS
+                </span>
+
+            </div>
+
+
+            <h1 class="achievements-title">
+                Your Learning Journey
+            </h1>
+
+
+            <p class="achievements-description">
+                Track your XP, levels and learning milestones
+                as you progress through Strativo Academy.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             XP OVERVIEW
+        ================================================== -->
+
+        <section
+            class="achievements-section"
+            aria-labelledby="xp-overview-title"
+        >
+
+            <div class="achievements-section-header">
+
+                <span class="achievements-section-eyebrow">
+                    XP OVERVIEW
+                </span>
+
+                <h2
+                    class="achievements-section-title"
+                    id="xp-overview-title"
+                >
+                    Your Progress
+                </h2>
+
+                <p class="achievements-section-description">
+                    Track your current XP, level, achievements
+                    and learning streak.
+                </p>
+
+            </div>
+
+
+            <div class="achievements-stats-grid">
+
+
+                <!-- TOTAL XP -->
+
+                <article class="achievement-stat-card is-primary">
+
+                    <div class="achievement-stat-icon">
+
+                        <i
+                            class="fas fa-bolt"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <span class="achievement-stat-label">
+                        TOTAL XP
+                    </span>
+
+
+                    <strong
+                        class="achievement-stat-value"
+                        id="total-xp"
+                    >
+                        0
+                    </strong>
+
+                </article>
+
+
+
+                <!-- CURRENT LEVEL -->
+
+                <article class="achievement-stat-card">
+
+                    <div class="achievement-stat-icon">
+
+                        <i
+                            class="fas fa-layer-group"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <span class="achievement-stat-label">
+                        CURRENT LEVEL
+                    </span>
+
+
+                    <strong
+                        class="achievement-stat-value"
+                        id="current-level"
+                    >
+                        Level 1
+                    </strong>
+
+                </article>
+
+
+
+                <!-- ACHIEVEMENTS -->
+
+                <article class="achievement-stat-card">
+
+                    <div class="achievement-stat-icon">
+
+                        <i
+                            class="fas fa-medal"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <span class="achievement-stat-label">
+                        ACHIEVEMENTS
+                    </span>
+
+
+                    <strong
+                        class="achievement-stat-value"
+                        id="achievement-count"
+                    >
+                        0
+                    </strong>
+
+                </article>
+
+
+
+                <!-- LEARNING STREAK -->
+
+                <article class="achievement-stat-card">
+
+                    <div class="achievement-stat-icon">
+
+                        <i
+                            class="fas fa-fire"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <span class="achievement-stat-label">
+                        LEARNING STREAK
+                    </span>
+
+
+                    <strong
+                        class="achievement-stat-value"
+                        id="learning-streak"
+                    >
+                        0 days
+                    </strong>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEVEL PROGRESS
+        ================================================== -->
+
+        <section class="achievements-section">
+
+            <div class="achievement-level-card">
+
+
+                <div class="achievement-level-header">
+
+                    <div>
+
+                        <span class="achievement-level-eyebrow">
+                            LEVEL PROGRESS
+                        </span>
+
+                        <h2 class="achievement-level-title">
+                            Keep Learning
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        class="achievement-level-badge"
+                        id="level-progress-label"
+                    >
+                        Level 1
+                    </span>
+
+                </div>
+
+
+
+                <div class="achievement-progress-meta">
+
+                    <span id="current-xp">
+                        0 XP
+                    </span>
+
+                    <span>
+                        Next Level:
+                        <strong id="next-level-xp">
+                            100 XP
+                        </strong>
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="achievement-progress-track"
+                    role="progressbar"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                    aria-label="XP progress to next level"
+                >
+
+                    <div
+                        class="achievement-progress-bar"
+                        id="level-progress-fill"
+                    ></div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING MILESTONES
+        ================================================== -->
+
+        <section class="achievements-section">
+
+            <div class="achievements-section-header">
+
+                <span class="achievements-section-eyebrow">
+                    LEARNING MILESTONES
+                </span>
+
+                <h2 class="achievements-section-title">
+                    Your Activity
+                </h2>
+
+                <p class="achievements-section-description">
+                    Your learning milestones will be connected
+                    to the Academy progress system.
+                </p>
+
+            </div>
+
+
+            <div class="achievements-stats-grid">
+
+
+                <!-- LESSONS COMPLETED -->
+
+                <article class="achievement-stat-card">
+
+                    <div class="achievement-stat-icon">
+
+                        <i
+                            class="fas fa-book-open"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <span class="achievement-stat-label">
+                        LESSONS COMPLETED
+                    </span>
+
+
+                    <strong
+                        class="achievement-stat-value"
+                        id="lessons-completed"
+                    >
+                        0
+                    </strong>
+
+                </article>
+
+
+
+                <!-- QUIZZES COMPLETED -->
+
+                <article class="achievement-stat-card">
+
+                    <div class="achievement-stat-icon">
+
+                        <i
+                            class="fas fa-circle-question"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <span class="achievement-stat-label">
+                        QUIZZES COMPLETED
+                    </span>
+
+
+                    <strong
+                        class="achievement-stat-value"
+                        id="quizzes-completed"
+                    >
+                        0
+                    </strong>
+
+                </article>
+
+
+
+                <!-- PRACTICE SESSIONS -->
+
+                <article class="achievement-stat-card">
+
+                    <div class="achievement-stat-icon">
+
+                        <i
+                            class="fas fa-chart-line"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <span class="achievement-stat-label">
+                        PRACTICE SESSIONS
+                    </span>
+
+
+                    <strong
+                        class="achievement-stat-value"
+                        id="practice-sessions"
+                    >
+                        0
+                    </strong>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EARNED ACHIEVEMENTS
+        ================================================== -->
+
+        <section class="achievements-section">
+
+            <div class="achievements-section-header">
+
+                <span class="achievements-section-eyebrow">
+                    ACHIEVEMENTS
+                </span>
+
+                <h2 class="achievements-section-title">
+                    Earned
+                </h2>
+
+                <p class="achievements-section-description">
+                    Achievements you unlock through your
+                    learning journey will appear here.
+                </p>
+
+            </div>
+
+
+            <div
+                class="achievements-grid"
+                id="earned-achievements"
+            >
+
+                <!-- EMPTY STATE -->
+
+                <div class="achievements-empty-state">
+
+                    <div class="achievements-empty-icon">
+
+                        <i
+                            class="fas fa-medal"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <h3>
+                        Your first achievement is waiting
+                    </h3>
+
+
+                    <p>
+                        Complete your first learning milestone
+                        to unlock an achievement.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LOCKED ACHIEVEMENTS
+        ================================================== -->
+
+        <section class="achievements-section">
+
+            <div class="achievements-section-header">
+
+                <span class="achievements-section-eyebrow">
+                    MILESTONES
+                </span>
+
+                <h2 class="achievements-section-title">
+                    Achievements to Unlock
+                </h2>
+
+                <p class="achievements-section-description">
+                    Keep learning to unlock new milestones.
+                </p>
+
+            </div>
+
+
+            <div class="achievements-grid">
+
+
+                <!-- FIRST LESSON -->
+
+                <article class="achievement-card is-locked">
+
+                    <div class="achievement-icon">
+
+                        <i
+                            class="fas fa-book"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="achievement-stat-label">
+                            LEARNING
+                        </span>
+
+                        <h3 class="achievement-card-title">
+                            First Step
+                        </h3>
+
+                        <p class="achievement-card-description">
+                            Complete your first lesson.
+                        </p>
+
+                    </div>
+
+
+                    <div class="achievement-card-footer">
+
+                        <span class="achievement-xp">
+                            +25 XP
+                        </span>
+
+                        <span class="achievement-status">
+                            <i
+                                class="fas fa-lock"
+                                aria-hidden="true"
+                            ></i>
+                            Locked
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- FIRST QUIZ -->
+
+                <article class="achievement-card is-locked">
+
+                    <div class="achievement-icon">
+
+                        <i
+                            class="fas fa-circle-question"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="achievement-stat-label">
+                            QUIZ
+                        </span>
+
+                        <h3 class="achievement-card-title">
+                            Knowledge Check
+                        </h3>
+
+                        <p class="achievement-card-description">
+                            Complete your first quiz.
+                        </p>
+
+                    </div>
+
+
+                    <div class="achievement-card-footer">
+
+                        <span class="achievement-xp">
+                            +25 XP
+                        </span>
+
+                        <span class="achievement-status">
+                            <i
+                                class="fas fa-lock"
+                                aria-hidden="true"
+                            ></i>
+                            Locked
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- LEARNING STREAK -->
+
+                <article class="achievement-card is-locked">
+
+                    <div class="achievement-icon">
+
+                        <i
+                            class="fas fa-fire"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="achievement-stat-label">
+                            CONSISTENCY
+                        </span>
+
+                        <h3 class="achievement-card-title">
+                            Building Momentum
+                        </h3>
+
+                        <p class="achievement-card-description">
+                            Maintain a 3-day learning streak.
+                        </p>
+
+                    </div>
+
+
+                    <div class="achievement-card-footer">
+
+                        <span class="achievement-xp">
+                            +50 XP
+                        </span>
+
+                        <span class="achievement-status">
+                            <i
+                                class="fas fa-lock"
+                                aria-hidden="true"
+                            ></i>
+                            Locked
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- FIRST 100 XP -->
+
+                <article class="achievement-card is-locked">
+
+                    <div class="achievement-icon">
+
+                        <i
+                            class="fas fa-star"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="achievement-stat-label">
+                            XP
+                        </span>
+
+                        <h3 class="achievement-card-title">
+                            First 100 XP
+                        </h3>
+
+                        <p class="achievement-card-description">
+                            Earn your first 100 XP.
+                        </p>
+
+                    </div>
+
+
+                    <div class="achievement-card-footer">
+
+                        <span class="achievement-xp">
+                            +100 XP
+                        </span>
+
+                        <span class="achievement-status">
+                            <i
+                                class="fas fa-lock"
+                                aria-hidden="true"
+                            ></i>
+                            Locked
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="achievements-footer">
+
+            <div class="achievements-footer-brand">
+
+                <span>
+                    STRATIVO
+                </span>
+
+                <strong>
+                    ACADEMY
+                </strong>
+
+            </div>
+
+
+            <p>
+                Structured Forex Trading Education
+            </p>
+
+
+            <span>
+                Version 1.0 Beta
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         ACHIEVEMENTS JAVASCRIPT
+    ====================================================== -->
+
+
+
+<!-- =====================================================
+     ACHIEVEMENT ENGINE
+====================================================== -->
+
+<script src="../js/achievement-engine.js"></script>
+
+<!-- =====================================================
+     ACHIEVEMENTS PAGE CONTROLLER
+====================================================== -->
+
+<script src="achievements.js"></script>
+
+</body>
+
+</html>

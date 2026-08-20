@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+<meta name="description" content="Strativo Academy Module 1 Exercise 10 — Support, Resistance & Liquidity.">
+<title>Exercise 10 — Support, Resistance &amp; Liquidity | Strativo Academy</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+
+<style>
+:root{
+    --bg:#030712;--panel:#0b1220;--panel2:#08111f;
+    --border:rgba(148,163,184,.13);--text:#f8fafc;--muted:#a6b4c6;
+    --blue:#60a5fa;--green:#34d399;--yellow:#fbbf24;--red:#f87171;
+    --purple:#a78bfa;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.65
+}
+.page{min-height:100vh;padding-bottom:60px}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+
+.hero{
+    padding:76px 20px 54px;text-align:center;border-bottom:1px solid var(--border);
+    background:
+        radial-gradient(circle at 13% 20%,rgba(96,165,250,.14),transparent 34%),
+        radial-gradient(circle at 86% 24%,rgba(52,211,153,.08),transparent 31%),
+        #030712
+}
+.hero-in{width:min(930px,100%);margin:auto}
+.eyebrow{color:#93c5fd;font-size:.82rem;font-weight:900;letter-spacing:.16em}
+.hero h1{margin:15px 0 0;font-family:Poppins,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:1.08}
+.hero p{max-width:900px;margin:16px auto 0;color:#a8b5c7;font-size:1rem;line-height:1.9}
+.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}
+.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#0f172acc;color:#dbeafe;font-size:.78rem;font-weight:800}
+
+.meta{
+    display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;
+    margin-top:23px;padding:16px 18px;border:1px solid var(--border);
+    border-radius:15px;background:var(--panel)
+}
+.meta strong{display:block;font-size:.92rem}
+.meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.82rem}
+.progress{min-width:150px;text-align:right}
+.bar{width:150px;height:7px;border-radius:999px;background:#162033;overflow:hidden}
+.fill{width:100%;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399)}
+.progress small{display:block;margin-top:6px;color:#7f8ea2;font-size:.72rem}
+
+.section{
+    margin-top:20px;padding:22px;border:1px solid var(--border);
+    border-radius:17px;background:var(--panel)
+}
+.section h2{margin:0;font-family:Poppins,sans-serif;font-size:1.45rem}
+.section h3{margin:18px 0 0;color:#dbeafe;font-size:1.02rem}
+.section p{margin:8px 0 0;color:var(--muted);font-size:.92rem;line-height:1.8}
+.list{margin:12px 0;padding-left:20px}
+.list li{margin-top:7px;color:#aebdd0;font-size:.92rem;line-height:1.8}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:17px}
+.card{padding:16px;border:1px solid rgba(148,163,184,.10);border-radius:13px;background:var(--panel2)}
+.card strong{display:block;color:#f1f5f9;font-size:.92rem}
+.card span{display:block;margin-top:7px;color:#aebdd0;font-size:.84rem;line-height:1.75}
+
+.diagram{margin-top:18px;border:1px solid rgba(148,163,184,.11);border-radius:14px;overflow:hidden;background:#07101f}
+.dtitle{padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);background:#0d1728;color:#dbe4ef;font-size:.78rem;font-weight:900}
+.diagram svg{display:block;width:100%;height:auto}
+
+.q{
+    margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.qtag{color:#60a5fa;font-size:.78rem;font-weight:900;letter-spacing:.06em}
+.q h3{margin-top:7px;color:#f1f5f9;font-size:1.05rem;line-height:1.6}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}
+.opt{
+    appearance:none;width:100%;padding:14px 15px;border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;background:#0b1627;color:#d5deea;text-align:left;font:inherit;
+    font-size:.92rem;line-height:1.65;cursor:pointer;
+    transition:transform .16s ease,border-color .16s ease,background .16s ease
+}
+.opt:hover{transform:translateY(-1px);border-color:rgba(96,165,250,.34);background:#0e1b30}
+.opt:focus-visible{outline:2px solid #60a5fa;outline-offset:2px}
+.opt.correct{border-color:rgba(52,211,153,.55);background:rgba(16,185,129,.11);color:#d1fae5}
+.opt.wrong{border-color:rgba(248,113,113,.50);background:rgba(248,113,113,.09);color:#fecaca}
+.opt.reveal-correct{border-color:rgba(52,211,153,.35);box-shadow:inset 3px 0 0 #34d399}
+.opt:disabled{cursor:default;transform:none}
+
+.feedback{
+    display:none;margin-top:13px;padding:14px 15px;border-left:3px solid #60a5fa;
+    border-radius:0 10px 10px 0;background:rgba(59,130,246,.055)
+}
+.feedback.visible{display:block}
+.feedback.correct{border-left-color:#34d399;background:rgba(16,185,129,.07)}
+.feedback.wrong{border-left-color:#f87171;background:rgba(248,113,113,.06)}
+.feedback .title{color:#f8fafc;font-size:.92rem;font-weight:900}
+.feedback.correct .title{color:#86efac}
+.feedback.wrong .title{color:#fca5a5}
+.feedback p{margin-top:7px!important;color:#cbd5e1!important;font-size:.90rem!important;line-height:1.75!important}
+.feedback .why{color:#fca5a5!important}
+.feedback .correct-answer{color:#86efac!important}
+.retry{
+    margin-top:10px;padding:8px 12px;border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;background:rgba(15,23,42,.66);color:#cbd5e1;
+    font:inherit;font-size:.78rem;font-weight:800;cursor:pointer
+}
+.retry:hover{border-color:rgba(96,165,250,.30);background:rgba(59,130,246,.08)}
+
+.scorebar{
+    margin-top:18px;padding:14px 16px;border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;background:rgba(59,130,246,.055)
+}
+.scorebar strong{color:#dbeafe;font-size:.90rem}
+.score-progress{margin-top:8px;height:7px;border-radius:999px;overflow:hidden;background:#162033}
+.score-fill{width:0;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399);transition:width .25s ease}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
+.check{padding:10px 12px;border:1px solid rgba(148,163,184,.09);border-radius:10px;background:var(--panel2);color:#cbd5e1;font-size:.84rem}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:22px}
+.nav a{
+    display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;
+    border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;
+    color:#dbeafe;text-decoration:none;font-size:.82rem;font-weight:900;text-align:center
+}
+.nav a:hover{background:#0e1b30}
+.center{background:rgba(59,130,246,.06)!important;color:#bfdbfe!important}
+.next{background:rgba(16,185,129,.055)!important;color:#d1fae5!important}
+.note{text-align:center;margin-top:14px;color:#64748b;font-size:.72rem}
+
+@media(max-width:850px){
+    .cards{grid-template-columns:1fr}
+    .meta{grid-template-columns:1fr}
+    .progress{text-align:left}.bar{width:100%}
+}
+@media(max-width:760px){
+    .opts,.checks,.nav{grid-template-columns:1fr}
+    .section{padding:20px}
+    .section h2{font-size:1.25rem}
+    .q h3{font-size:1rem}
+}
+</style>
+</head>
+
+<body>
+
+<div data-component="header"></div>
+
+<main class="page">
+
+<section class="hero">
+    <div class="hero-in">
+        <div class="eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+        <h1>Exercise 10 — Support, Resistance &amp; Liquidity</h1>
+        <p>
+            Practice identifying support and resistance as zones, recognizing
+            trendlines and important price areas, understanding reactions,
+            breakouts and retests, and learning where liquidity can build around
+            obvious highs, lows and ranges.
+        </p>
+        <div class="badges">
+            <span class="badge">🎯 Support &amp; Resistance</span>
+            <span class="badge">📏 Zones &amp; Trendlines</span>
+            <span class="badge">💧 Liquidity</span>
+            <span class="badge">🔎 Sweeps</span>
+            <span class="badge">10 / 10</span>
+        </div>
+    </div>
+</section>
+
+<div class="wrap">
+
+<section class="meta">
+    <div>
+        <strong>Exercise Goal</strong>
+        <span>Recognize important price areas and basic liquidity concepts without treating every level as a perfect line or every sweep as an automatic trade.</span>
+    </div>
+    <div class="progress">
+        <div class="bar"><div class="fill"></div></div>
+        <small>Exercise 10 of 10</small>
+    </div>
+</section>
+
+<section class="section">
+    <h2>01. Support &amp; Resistance Are Areas</h2>
+    <p>
+        Support and resistance are better understood as areas or zones where
+        price has reacted, rather than perfect mathematical lines. The notes
+        emphasize important zones, reactions and rejection, along with the idea
+        that price may move slightly beyond an area before reacting.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Support Zone</strong><span>An area where buying interest or previous reactions may make it harder for price to continue lower.</span></div>
+        <div class="card"><strong>Resistance Zone</strong><span>An area where selling interest or previous reactions may make it harder for price to continue higher.</span></div>
+        <div class="card"><strong>Zone, Not Exact Line</strong><span>Price can enter, leave or briefly move through an area without invalidating the concept automatically.</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">SUPPORT AND RESISTANCE AS ZONES</div>
+        <svg viewBox="0 0 900 390" role="img" aria-label="Support and resistance zones diagram">
+            <rect width="900" height="390" fill="#07101f"/>
+
+            <rect x="85" y="72" width="730" height="70" rx="10" fill="rgba(248,113,113,.075)" stroke="#f87171" stroke-width="2"/>
+            <text x="450" y="112" text-anchor="middle" fill="#fecaca" font-size="19" font-weight="900">RESISTANCE ZONE</text>
+
+            <rect x="85" y="260" width="730" height="70" rx="10" fill="rgba(52,211,153,.075)" stroke="#34d399" stroke-width="2"/>
+            <text x="450" y="300" text-anchor="middle" fill="#a7f3d0" font-size="19" font-weight="900">SUPPORT ZONE</text>
+
+            <polyline points="120,225 185,155 250,230 320,120 390,205 455,90 520,155 590,125 650,220 720,150 785,240"
+                      fill="none" stroke="#60a5fa" stroke-width="5"/>
+
+            <text x="450" y="355" text-anchor="middle" fill="#64748b" font-size="14" font-weight="700">
+                PRICE MAY REACT WITHIN OR SLIGHTLY THROUGH A ZONE
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>02. Different Types of Areas Traders Watch</h2>
+    <p>
+        Traders can mark important areas in different ways. The most useful
+        lesson is not to memorize a huge list of lines, but to understand why a
+        price area matters and how price reacts when it reaches that area.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Horizontal Zones</strong><span>Previous highs and lows or repeated reaction areas can create important horizontal zones.</span></div>
+        <div class="card"><strong>Trendlines</strong><span>A line connecting meaningful swing points can help visualize a directional path.</span></div>
+        <div class="card"><strong>Previous Reaction Areas</strong><span>Areas where price previously showed rejection, breakout or repeated interaction can remain important.</span></div>
+        <div class="card"><strong>Breakout / Retest Areas</strong><span>A previous boundary that price breaks may later become an area to watch for a retest and reaction.</span></div>
+        <div class="card"><strong>Range Boundaries</strong><span>The upper and lower boundaries of a range can behave as repeated areas of interest.</span></div>
+        <div class="card"><strong>Confluence</strong><span>Several pieces of structural evidence can overlap around the same area, increasing its importance as context.</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">TRENDLINE + HORIZONTAL AREA — CONCEPTUAL</div>
+        <svg viewBox="0 0 900 390" role="img" aria-label="Trendline and horizontal support resistance diagram">
+            <rect width="900" height="390" fill="#07101f"/>
+
+            <line x1="90" y1="300" x2="810" y2="130" stroke="#60a5fa" stroke-width="4"/>
+            <circle cx="145" cy="287" r="7" fill="#34d399"/>
+            <circle cx="315" cy="247" r="7" fill="#34d399"/>
+            <circle cx="510" cy="200" r="7" fill="#34d399"/>
+            <circle cx="690" cy="158" r="7" fill="#34d399"/>
+
+            <rect x="470" y="105" width="290" height="58" rx="10" fill="rgba(248,113,113,.08)" stroke="#f87171" stroke-width="2"/>
+            <text x="615" y="140" text-anchor="middle" fill="#fecaca" font-size="17" font-weight="900">HORIZONTAL RESISTANCE AREA</text>
+
+            <text x="450" y="345" text-anchor="middle" fill="#64748b" font-size="14">
+                A TRENDLINE IS A VISUAL TOOL — PRICE CAN BREAK OR VIOLATE IT
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>03. Rejection, Breakout and Retest</h2>
+    <p>
+        A price area becomes more useful when you study the reaction around it.
+        Price can reject an area, break through it, or break and later return to
+        test the area again.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Rejection</strong><span>Price reaches an area and moves away from it instead of continuing through.</span></div>
+        <div class="card"><strong>Breakout</strong><span>Price moves through an important boundary or zone.</span></div>
+        <div class="card"><strong>Retest</strong><span>After a breakout, price may return toward the broken area and react again.</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">BREAKOUT → RETEST → POSSIBLE REACTION</div>
+        <svg viewBox="0 0 900 400" role="img" aria-label="Breakout and retest diagram">
+            <rect width="900" height="400" fill="#07101f"/>
+
+            <rect x="85" y="205" width="730" height="55" rx="10" fill="rgba(96,165,250,.055)" stroke="#60a5fa" stroke-width="2"/>
+            <text x="450" y="239" text-anchor="middle" fill="#bfdbfe" font-size="17" font-weight="900">KEY ZONE / BOUNDARY</text>
+
+            <polyline points="100,170 190,120 285,180 370,130 455,205 520,115 580,70 650,165 720,210 790,120"
+                      fill="none" stroke="#34d399" stroke-width="6"/>
+
+            <circle cx="520" cy="115" r="8" fill="#fbbf24"/>
+            <text x="520" y="92" text-anchor="middle" fill="#fde68a" font-size="15" font-weight="900">BREAKOUT</text>
+
+            <circle cx="720" cy="210" r="8" fill="#a78bfa"/>
+            <text x="720" y="245" text-anchor="middle" fill="#ddd6fe" font-size="15" font-weight="900">RETEST AREA</text>
+
+            <text x="450" y="350" text-anchor="middle" fill="#64748b" font-size="14">
+                A RETEST IS A POSSIBILITY, NOT A GUARANTEE
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>04. What Is Liquidity?</h2>
+    <p>
+        Liquidity describes the availability of orders that can help transactions
+        take place. In chart-based Price Action discussions, traders often watch
+        areas where many market participants may place orders, such as around
+        obvious highs, lows and ranges.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Equal Highs</strong><span>Repeated or nearly equal highs can become an obvious area watched by market participants.</span></div>
+        <div class="card"><strong>Equal Lows</strong><span>Repeated or nearly equal lows can likewise become an obvious area of interest.</span></div>
+        <div class="card"><strong>Range Edges</strong><span>Highs and lows around a visible range can become areas where orders accumulate.</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">OBVIOUS HIGH / LOW AREAS — LIQUIDITY CONCEPT</div>
+        <svg viewBox="0 0 900 410" role="img" aria-label="Liquidity around equal highs and equal lows diagram">
+            <rect width="900" height="410" fill="#07101f"/>
+
+            <line x1="90" y1="95" x2="810" y2="95" stroke="#f87171" stroke-width="3" stroke-dasharray="10 8"/>
+            <text x="450" y="70" text-anchor="middle" fill="#fecaca" font-size="17" font-weight="900">OBVIOUS / EQUAL HIGH AREA</text>
+
+            <line x1="90" y1="315" x2="810" y2="315" stroke="#34d399" stroke-width="3" stroke-dasharray="10 8"/>
+            <text x="450" y="350" text-anchor="middle" fill="#a7f3d0" font-size="17" font-weight="900">OBVIOUS / EQUAL LOW AREA</text>
+
+            <polyline points="110,255 185,170 255,97 320,160 390,97 450,245 520,170 590,98 665,205 735,95 800,260"
+                      fill="none" stroke="#60a5fa" stroke-width="5"/>
+
+            <text x="760" y="122" fill="#fca5a5" font-size="14" font-weight="800">orders may cluster</text>
+            <text x="760" y="295" fill="#86efac" font-size="14" font-weight="800">orders may cluster</text>
+        </svg>
+    </div>
+
+    <div class="callout">
+        <strong>Important:</strong>
+        <p>
+            "Liquidity" in chart analysis is a context concept. Do not assume
+            that every obvious high or low will definitely be swept, and do not
+            treat a liquidity area as an automatic entry signal.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>05. Liquidity Sweep — Basic Concept</h2>
+    <p>
+        A liquidity sweep describes a situation where price moves into or
+        through an obvious high/low area, interacts with the orders around that
+        area, and then may reverse or continue. The important learning point is
+        to observe what happens after the interaction.
+    </p>
+
+    <div class="diagram">
+        <div class="dtitle">LIQUIDITY AREA → SWEEP → OBSERVE REACTION</div>
+        <svg viewBox="0 0 900 400" role="img" aria-label="Liquidity sweep concept diagram">
+            <rect width="900" height="400" fill="#07101f"/>
+
+            <line x1="85" y1="120" x2="815" y2="120" stroke="#f87171" stroke-width="3" stroke-dasharray="10 8"/>
+            <text x="450" y="92" text-anchor="middle" fill="#fecaca" font-size="17" font-weight="900">OBVIOUS HIGH / LIQUIDITY AREA</text>
+
+            <polyline points="90,300 190,230 285,255 390,160 500,115 575,45 635,150 720,215 805,170"
+                      fill="none" stroke="#60a5fa" stroke-width="6"/>
+
+            <circle cx="575" cy="45" r="8" fill="#fbbf24"/>
+            <text x="575" y="28" text-anchor="middle" fill="#fde68a" font-size="15" font-weight="900">SWEEP AREA</text>
+
+            <line x1="635" y1="150" x2="700" y2="205" stroke="#f87171" stroke-width="4"/>
+            <text x="720" y="230" fill="#fca5a5" font-size="15" font-weight="900">REACTION</text>
+
+            <text x="450" y="355" text-anchor="middle" fill="#64748b" font-size="14">
+                THE FOLLOW-THROUGH HELPS PROVIDE CONTEXT
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>06. Knowledge Check</h2>
+    <p>
+        Choose an answer first. Your selection is checked immediately. If you
+        are wrong, the exercise explains why, reveals the correct answer and
+        teaches the concept.
+    </p>
+
+    <div class="q"><div class="qtag">QUESTION 01</div>
+        <h3>How should support and resistance generally be treated?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> As areas or zones rather than perfect lines</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> As exact prices that can never be crossed</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> As guaranteed entry signals</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> As random numbers</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 02</div>
+        <h3>Which can be used as an important price area?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Horizontal reaction zones, trendlines, range boundaries and previous reaction areas</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Only one exact candle close</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Only the current bid</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A random number with no price context</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 03</div>
+        <h3>What is a basic breakout?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Price moving through an important boundary or area</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Price stopping forever</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Any random wick</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A guaranteed trend continuation</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 04</div>
+        <h3>What can happen after a breakout?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Price may return toward the broken area and retest it</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> The market must close</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Price cannot move again</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> The retest is guaranteed every time</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 05</div>
+        <h3>Where can liquidity become an obvious area of interest in chart-based analysis?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Around obvious highs, lows, equal highs/equal lows and visible ranges</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Only in the middle of random candles</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Only after every breakout</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Nowhere on a chart</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 06</div>
+        <h3>Why should a liquidity sweep not be treated as an automatic trade signal?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> The trader still needs to observe the reaction and broader context</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Every sweep guarantees reversal</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Liquidity has no relationship to price behaviour</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Every high and low is meaningless</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="scorebar" aria-live="polite">
+        <strong>Knowledge Check: 0 / 6 correct</strong>
+        <div class="score-progress"><div class="score-fill"></div></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>07. Practical Scenarios</h2>
+
+    <div class="q"><div class="qtag">SCENARIO 01</div>
+        <h3>Price repeatedly reacts around roughly the same area instead of respecting one exact number. How should the trader think about it?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> As a zone or area of interest</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> As a mathematically perfect line</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> As a guaranteed entry</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> As meaningless noise</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 02</div>
+        <h3>Price breaks above a resistance area and later returns toward that old area. What concept are you studying?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Retest of the broken area</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Pips calculation</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Currency conversion</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Candle OHLC only</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 03</div>
+        <h3>A chart shows several nearly equal highs. Why might traders pay attention to that area?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> It is an obvious high area where liquidity may build</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> It guarantees a bearish trade</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> It guarantees a sweep</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Equal highs cannot be relevant</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 04</div>
+        <h3>Price briefly moves above an obvious high, then quickly moves back below it. What is the safest basic conclusion?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Price interacted with the obvious high/liquidity area; now observe the reaction</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> A reversal is guaranteed</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> A trade must be entered immediately</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Liquidity no longer matters</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>08. Student Self-Check</h2>
+    <div class="checks">
+        <div class="check">☐ I understand support as a zone.</div>
+        <div class="check">☐ I understand resistance as a zone.</div>
+        <div class="check">☐ I know why trendlines can be useful context.</div>
+        <div class="check">☐ I understand breakouts.</div>
+        <div class="check">☐ I understand retests.</div>
+        <div class="check">☐ I understand the basic liquidity concept.</div>
+        <div class="check">☐ I can identify obvious high/low liquidity areas.</div>
+        <div class="check">☐ I understand that a sweep is not an automatic trade signal.</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>09. Quick Revision</h2>
+    <ul class="list">
+        <li>Support and resistance should generally be treated as zones or areas rather than perfect lines.</li>
+        <li>Important areas can come from horizontal reactions, trendlines, range boundaries and previous reaction zones.</li>
+        <li>Price can reject an area, break through it or return to retest a broken area.</li>
+        <li>Liquidity is a context concept describing areas where orders may be concentrated or available for transactions.</li>
+        <li>Equal highs, equal lows and visible range edges can become obvious liquidity areas.</li>
+        <li>A liquidity sweep can involve price moving into or through an obvious high/low area.</li>
+        <li>The reaction and broader market context matter after a sweep.</li>
+        <li>No single zone, breakout, retest or sweep guarantees a trade outcome.</li>
+    </ul>
+</section>
+
+<nav class="nav" aria-label="Exercise navigation">
+    <a href="market-structure.html">← Market Structure</a>
+    <a class="center" href="module1-exercise.html">Exercise Hub</a>
+    <a class="next" href="module1-exercise.html">✓ Finish Module 1 →</a>
+</nav>
+
+<div class="note">Exercise 10 of 10 • Strativo Academy Module 1 • Module 1 Season Exercise complete</div>
+
+</div>
+</main>
+
+<div data-component="footer"></div>
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const maps={
+        "QUESTION 01":{
+            correct:"A",
+            explanation:"The notes emphasize treating support and resistance as areas or zones rather than perfect mathematical lines.",
+            wrong:{
+                B:"Price can move slightly through or around an area.",
+                C:"A zone is context, not a guaranteed entry.",
+                D:"The area is based on price behaviour, not random numbers."
+            }
+        },
+        "QUESTION 02":{
+            correct:"A",
+            explanation:"Important areas can be marked using horizontal reaction zones, trendlines, range boundaries and previous reaction areas.",
+            wrong:{
+                B:"One exact close does not capture the full area.",
+                C:"The current bid is a live quote, not a structural area by itself.",
+                D:"An area should have a price-context reason."
+            }
+        },
+        "QUESTION 03":{
+            correct:"A",
+            explanation:"A breakout is price moving through an important boundary or area.",
+            wrong:{
+                B:"A breakout requires price movement through an area.",
+                C:"One random wick is not automatically a breakout.",
+                D:"A breakout does not guarantee continuation."
+            }
+        },
+        "QUESTION 04":{
+            correct:"A",
+            explanation:"After a breakout, price may return toward the broken area and retest it.",
+            wrong:{
+                B:"A breakout does not close the market.",
+                C:"Price can continue moving after a breakout.",
+                D:"Retests are possible, not guaranteed every time."
+            }
+        },
+        "QUESTION 05":{
+            correct:"A",
+            explanation:"Obvious highs, lows, equal highs/equal lows and visible range areas can become places where traders watch for liquidity.",
+            wrong:{
+                B:"The middle of random candles is not the main concept being tested.",
+                C:"Liquidity can exist independently of a breakout.",
+                D:"Liquidity is a useful chart-analysis context concept."
+            }
+        },
+        "QUESTION 06":{
+            correct:"A",
+            explanation:"A sweep should be interpreted with the reaction afterward and the broader market context instead of treated as an automatic entry.",
+            wrong:{
+                B:"A sweep does not guarantee a reversal.",
+                C:"Liquidity is relevant to the price-action concept being studied.",
+                D:"Obvious highs and lows can be important areas."
+            }
+        },
+        "SCENARIO 01":{
+            correct:"A",
+            explanation:"Repeated reactions around a general area support thinking in terms of a zone instead of one exact line.",
+            wrong:{
+                B:"The notes emphasize zones rather than perfect lines.",
+                C:"An area is context, not a guaranteed entry.",
+                D:"Repeated reactions are meaningful information, not automatically noise."
+            }
+        },
+        "SCENARIO 02":{
+            correct:"A",
+            explanation:"When price breaks a resistance area and later returns toward the old area, the trader is studying a retest.",
+            wrong:{
+                B:"Pips measure price distance and are not the concept being tested.",
+                C:"Currency conversion is unrelated to the chart reaction.",
+                D:"OHLC is the candle structure, not the breakout/retest relationship."
+            }
+        },
+        "SCENARIO 03":{
+            correct:"A",
+            explanation:"Several nearly equal highs create an obvious area that traders may watch for liquidity.",
+            wrong:{
+                B:"Equal highs do not guarantee a bearish trade.",
+                C:"They do not guarantee that a sweep will occur.",
+                D:"Equal highs can be relevant precisely because they are obvious."
+            }
+        },
+        "SCENARIO 04":{
+            correct:"A",
+            explanation:"The safest conclusion is that price interacted with the obvious high/liquidity area. The next step is to observe the reaction and context.",
+            wrong:{
+                B:"A quick move back below does not guarantee a full reversal.",
+                C:"The event alone does not require an immediate trade.",
+                D:"Liquidity remains part of the context."
+            }
+        }
+    };
+
+    let score=0;
+    const counted=new Set();
+    const scoreText=document.querySelector(".scorebar strong");
+    const fill=document.querySelector(".score-fill");
+
+    function updateScore(){
+        scoreText.textContent="Knowledge Check: "+score+" / 6 correct";
+        fill.style.width=(score/6*100)+"%";
+    }
+
+    function evaluate(q,selected,data){
+        const feedback=q.querySelector(".feedback");
+        const correct=selected===data.correct;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.disabled=true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+            if(btn.dataset.option===data.correct)btn.classList.add("reveal-correct");
+            if(btn.dataset.option===selected)btn.classList.add(correct?"correct":"wrong");
+        });
+
+        feedback.className="feedback visible "+(correct?"correct":"wrong");
+        feedback.innerHTML="";
+
+        const title=document.createElement("div");
+        title.className="title";
+        title.textContent=correct?"✅ Correct — well done!":"❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if(!correct){
+            const why=document.createElement("p");
+            why.className="why";
+            why.textContent="Why your answer is wrong: "+data.wrong[selected];
+            feedback.appendChild(why);
+
+            const right=document.createElement("p");
+            right.className="correct-answer";
+            right.textContent="Correct answer: "+data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explanation=document.createElement("p");
+        explanation.textContent="Explanation: "+data.explanation;
+        feedback.appendChild(explanation);
+
+        const retry=document.createElement("button");
+        retry.type="button";
+        retry.className="retry";
+        retry.textContent="Try Again";
+        retry.addEventListener("click",()=>{
+            q.querySelectorAll(".opt").forEach(btn=>{
+                btn.disabled=false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+            feedback.className="feedback";
+            feedback.innerHTML="";
+        });
+        feedback.appendChild(retry);
+    }
+
+    document.querySelectorAll(".q").forEach(q=>{
+        const tag=q.querySelector(".qtag");
+        const id=tag?tag.textContent.trim():"";
+        const data=maps[id];
+        if(!data)return;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.addEventListener("click",()=>{
+                if(btn.disabled)return;
+                const selected=btn.dataset.option;
+
+                if(id.startsWith("QUESTION")&&!counted.has(id)){
+                    counted.add(id);
+                    if(selected===data.correct)score++;
+                    updateScore();
+                }
+                evaluate(q,selected,data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+
+</body>
+</html>

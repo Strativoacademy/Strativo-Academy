@@ -1,0 +1,2824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Strativo Academy Module 1 — complete educational notes on Forex lots, position sizing, leverage and margin.">
+<title>Lots &amp; Leverage | Strativo Academy</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+<style>
+:root{
+  --bg:#020617;
+  --panel:#07111f;
+  --panel2:#0b1627;
+  --panel3:#101c30;
+  --line:rgba(148,163,184,.16);
+  --text:#dbe5f2;
+  --muted:#9aaac0;
+  --heading:#f8fafc;
+  --blue:#60a5fa;
+  --blue2:#2563eb;
+  --cyan:#22d3ee;
+  --green:#34d399;
+  --yellow:#facc15;
+  --orange:#fb923c;
+  --red:#f87171;
+  --purple:#a78bfa;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(37,99,235,.12),transparent 30%),
+    radial-gradient(circle at 94% 8%,rgba(16,185,129,.07),transparent 28%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.82;
+}
+a{color:inherit}
+.ll-page{width:min(1200px,calc(100% - 32px));margin:0 auto;padding:36px 0 80px}
+.ll-hero{
+  position:relative;
+  overflow:hidden;
+  padding:64px 50px;
+  min-height:470px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:30px;
+  background:linear-gradient(135deg,rgba(9,19,35,.98),rgba(2,6,23,.98));
+  box-shadow:0 35px 110px rgba(0,0,0,.34);
+}
+.ll-hero:after{
+  content:"";
+  position:absolute;
+  width:380px;height:380px;
+  right:-120px;top:-150px;
+  border:1px solid rgba(96,165,250,.15);
+  border-radius:50%;
+  box-shadow:0 0 0 65px rgba(96,165,250,.025),0 0 0 130px rgba(96,165,250,.015);
+}
+.ll-kicker{
+  position:relative;z-index:1;
+  color:var(--blue);
+  font-size:13px;
+  font-weight:850;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.ll-hero h1{
+  position:relative;z-index:1;
+  margin:18px 0;
+  color:var(--heading);
+  font-size:clamp(48px,7vw,88px);
+  line-height:1.02;
+  letter-spacing:-.045em;
+}
+.ll-hero p{
+  position:relative;z-index:1;
+  max-width:950px;
+  margin:0;
+  color:#b9c7d9;
+  font-size:20px;
+}
+.ll-tags{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.ll-tag{
+  padding:8px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(15,23,42,.72);
+  color:#cbd5e1;
+  font-size:14px;
+}
+.ll-toc{
+  margin-top:24px;
+  padding:28px 32px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:rgba(7,17,31,.92);
+}
+.ll-toc h2{margin:0 0 16px;color:var(--heading)}
+.ll-toc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 24px}
+.ll-toc a{text-decoration:none;color:#9fc5f7;font-size:14px}
+.ll-toc a:hover{text-decoration:underline;color:#dbeafe}
+.ll-section{
+  margin-top:24px;
+  padding:38px 42px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(180deg,rgba(7,17,31,.97),rgba(4,11,21,.97));
+}
+.ll-section h2{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:0 0 20px;
+  color:var(--heading);
+  font-size:32px;
+  line-height:1.25;
+  letter-spacing:-.02em;
+}
+.ll-section h3{color:#eaf2fb;font-size:21px;margin:28px 0 10px}
+.ll-section h4{color:#cfe1f6;font-size:17px;margin:22px 0 8px}
+.ll-num{
+  flex:0 0 auto;
+  display:inline-grid;
+  place-items:center;
+  width:44px;height:44px;
+  border-radius:13px;
+  background:rgba(37,99,235,.18);
+  border:1px solid rgba(96,165,250,.28);
+  color:#bfdbfe;
+  font-size:14px;
+}
+.ll-section p{color:#b9c7d9;font-size:17px;margin:14px 0}
+.ll-section strong{color:#eef6ff}
+.ll-example{
+  margin:24px 0;
+  padding:21px 23px;
+  border-left:4px solid var(--blue);
+  border-radius:0 15px 15px 0;
+  background:rgba(30,41,59,.46);
+  color:#dbeafe;
+}
+.ll-good{border-left-color:var(--green);color:#d1fae5;background:rgba(6,78,59,.13)}
+.ll-warning{border-left-color:var(--yellow);color:#fef3c7;background:rgba(113,63,18,.13)}
+.ll-danger{border-left-color:var(--red);color:#fee2e2;background:rgba(127,29,29,.12)}
+.ll-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin:22px 0}
+.ll-card{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(15,23,42,.52);
+}
+.ll-card h3{margin:0 0 8px;font-size:19px}
+.ll-card p{margin:0;font-size:15px}
+.ll-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:24px 0;
+  overflow:hidden;
+  font-size:15px;
+}
+.ll-table th,.ll-table td{
+  padding:13px 15px;
+  border:1px solid var(--line);
+  text-align:left;
+  vertical-align:top;
+}
+.ll-table th{background:rgba(30,41,59,.76);color:#dbeafe}
+.ll-table td{color:#c8d5e4}
+.ll-table tr:nth-child(even) td{background:rgba(15,23,42,.25)}
+.ll-diagram{
+  margin:30px 0;
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#030914;
+  overflow:hidden;
+}
+.ll-diagram-title{
+  padding:5px 8px 15px;
+  color:#e5edf7;
+  font-weight:800;
+  font-size:16px;
+}
+.ll-diagram svg{display:block;width:100%;height:auto}
+.ll-list{padding-left:22px;color:#b9c7d9}
+.ll-list li{margin:9px 0;padding-left:4px}
+.ll-checklist{list-style:none;padding:0;margin:18px 0}
+.ll-checklist li{
+  padding:12px 15px;
+  margin:8px 0;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(15,23,42,.48);
+  color:#cbd5e1;
+}
+.ll-checklist li:before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}
+.ll-formula{
+  padding:22px;
+  margin:20px 0;
+  border:1px solid rgba(96,165,250,.25);
+  border-radius:18px;
+  background:rgba(30,64,175,.08);
+  text-align:center;
+  color:#dbeafe;
+  font-size:21px;
+  font-weight:750;
+}
+.ll-note{
+  padding:17px 19px;
+  border:1px dashed rgba(148,163,184,.25);
+  border-radius:15px;
+  color:#aebdd0;
+  background:rgba(15,23,42,.3);
+  margin:18px 0;
+}
+.ll-nav{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:14px;
+  margin-top:28px;
+}
+.ll-nav a{
+  display:block;
+  padding:18px 20px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#08111f;
+  color:#e2e8f0;
+  text-decoration:none;
+  transition:.2s ease;
+}
+.ll-nav a:hover{transform:translateY(-2px);border-color:rgba(96,165,250,.42)}
+.ll-nav .center{text-align:center}
+.ll-nav .right{text-align:right}
+.ll-nav small{display:block;color:#8ea0b8;margin-bottom:5px}
+.ll-nav strong{font-size:16px}
+@media(max-width:850px){
+  .ll-page{width:min(100% - 20px,1200px)}
+  .ll-hero{padding:42px 24px}
+  .ll-section{padding:27px 21px}
+  .ll-grid,.ll-toc-grid,.ll-nav{grid-template-columns:1fr}
+  .ll-nav .center,.ll-nav .right{text-align:left}
+  .ll-section h2{font-size:27px}
+}
+</style>
+</head>
+<body>
+<div data-component="header"></div>
+
+<main class="ll-page">
+
+<section class="ll-hero">
+  <div class="ll-kicker">STRATIVO ACADEMY • MODULE 1 • FOUNDATION</div>
+  <h1>Lots &amp; Leverage</h1>
+  <p>
+    A complete beginner-to-intermediate foundation for understanding Forex position size,
+    standard/mini/micro lots, units, pip value, stop distance, account risk, leverage,
+    margin, free margin, margin level, overleveraging and practical position sizing.
+  </p>
+  <div class="ll-tags">
+    <span class="ll-tag">📦 Position Size</span>
+    <span class="ll-tag">⚖️ Risk Management</span>
+    <span class="ll-tag">🔗 Leverage</span>
+    <span class="ll-tag">🛡️ Margin</span>
+    <span class="ll-tag">🧮 Calculations</span>
+    <span class="ll-tag">📚 Module 1 Notes</span>
+  </div>
+</section>
+
+<section class="ll-toc">
+  <h2>What This Note Covers</h2>
+  <div class="ll-toc-grid">
+    <a href="#section-01">01. What Is a Lot?</a><a href="#section-02">02. Why Lot Size Matters</a><a href="#section-03">03. Standard Lot</a><a href="#section-04">04. Mini Lot</a><a href="#section-05">05. Micro Lot</a><a href="#section-06">06. Nano Lots and Smaller Sizes</a><a href="#section-07">07. Lots vs Units</a><a href="#section-08">08. Position Size Scaling</a><a href="#section-09">09. Pip Value Connection</a><a href="#section-10">10. Lot Size and Stop Loss</a><a href="#section-11">11. The Core Risk Formula</a><a href="#section-12">12. Worked Example: Small Position</a><a href="#section-13">13. Worked Example: Larger Position</a><a href="#section-14">14. Stop Distance and Position Size Work Together</a><a href="#section-15">15. Risk as a Percentage of the Account</a><a href="#section-16">16. Worked Example: Percentage Risk</a><a href="#section-17">17. What Is Leverage?</a><a href="#section-18">18. Margin vs Risk</a><a href="#section-19">19. Leverage Does Not Set Your Stop</a><a href="#section-20">20. Notional Exposure</a><a href="#section-21">21. Margin Requirement</a><a href="#section-22">22. Free Margin</a><a href="#section-23">23. Used Margin</a><a href="#section-24">24. Margin Level</a><a href="#section-25">25. Margin Call and Stop-Out</a><a href="#section-26">26. How Leverage Can Magnify Losses</a><a href="#section-27">27. How Leverage Can Magnify Gains</a><a href="#section-28">28. High Leverage Is Not a Strategy</a><a href="#section-29">29. Position Size First, Leverage Second</a><a href="#section-30">30. Stop Distance Changes Position Size</a><a href="#section-31">31. Worked Example: Same Risk, Different Stops</a><a href="#section-32">32. Worked Example: Same Position, Different Stops</a><a href="#section-33">33. Spread and Position Size</a><a href="#section-34">34. Commission and Position Size</a><a href="#section-35">35. Slippage and Position Size</a><a href="#section-36">36. Overleveraging</a><a href="#section-37">37. Margin Is Not a Risk Budget</a><a href="#section-38">38. Multiple Positions</a><a href="#section-39">39. Correlation and Currency Exposure</a><a href="#section-40">40. Lot Size and Trading Style</a><a href="#section-41">41. Common Beginner Mistakes</a><a href="#section-42">42. Complete Position-Sizing Workflow</a><a href="#section-43">43. Pre-Trade Checklist</a><a href="#section-44">44. Final Summary: Lots, Leverage and Risk</a><a href="#section-45">45. Educational Disclaimer</a>
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-01">
+  <h2><span class="ll-num">01</span>What Is a Lot?</h2>
+
+  <p>A lot is a standardized way of describing the size of a Forex position. When you place a Forex order, you are not simply saying “I want to trade.” You are also specifying how many units of the base currency you want exposure to. The word lot is a convenient shorthand for that quantity.
+
+For educational purposes, the common convention is that one standard lot represents 100,000 units of the base currency. A mini lot is commonly 10,000 units and a micro lot is commonly 1,000 units. These are conventions rather than universal guarantees, so the contract specification of the actual instrument always takes priority.
+
+The important beginner idea is that a lot is about **quantity**, not about profit. Saying “I traded 0.10 lots” tells you something about position size, but it does not tell you whether the trade made money, how many pips the stop was, or how much account risk was taken.
+
+Position size is one of the foundations of risk management. Once you understand it, the connection between pips, pip value, stop distance and monetary risk becomes much easier to understand.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Imagine EUR/USD is being traded and the platform allows volume such as 0.01, 0.10 and 1.00 lots. Under the common convention, these correspond approximately to 1,000, 10,000 and 100,000 units of the base currency respectively.
+
+The important observation is that the chart does not change when the volume changes. Price still moves through the same candles. What changes is the amount of the position that is exposed to those price movements.
+
+Therefore, when learning Forex, always keep two questions separate: **“How far did price move?”** and **“How large was my position?”** The first is a market-distance question. The second is an exposure question.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>This concept is the starting point for understanding position size. If the quantity is misunderstood, every later calculation can become misleading.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Start with quantity. Do not start with desired profit and work backward to a huge lot size.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">A lot is a standardized way to describe position quantity</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="A lot is a standardized way to describe position quantity"><rect x="70" y="70" width="860" height="185" rx="24" fill="#07111f" stroke="#334155"/><text x="500" y="112" text-anchor="middle" fill="#f8fafc" font-size="29" font-weight="800" font-family="Arial, sans-serif">POSITION SIZE</text><text x="220" y="170" text-anchor="middle" fill="#bfdbfe" font-size="20" font-weight="800" font-family="Arial, sans-serif">STANDARD</text><text x="220" y="208" text-anchor="middle" fill="#f8fafc" font-size="25" font-weight="600" font-family="Arial, sans-serif">100,000 units*</text><text x="500" y="170" text-anchor="middle" fill="#a7f3d0" font-size="20" font-weight="800" font-family="Arial, sans-serif">MINI</text><text x="500" y="208" text-anchor="middle" fill="#f8fafc" font-size="25" font-weight="600" font-family="Arial, sans-serif">10,000 units*</text><text x="780" y="170" text-anchor="middle" fill="#fde68a" font-size="20" font-weight="800" font-family="Arial, sans-serif">MICRO</text><text x="780" y="208" text-anchor="middle" fill="#f8fafc" font-size="25" font-weight="600" font-family="Arial, sans-serif">1,000 units*</text><text x="500" y="290" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="600" font-family="Arial, sans-serif">*Common educational conventions; verify the instrument specification.</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-02">
+  <h2><span class="ll-num">02</span>Why Lot Size Matters</h2>
+
+  <p>Lot size matters because the same market movement can have very different monetary consequences for different position sizes. Price does not know how large your account is or how many lots you opened. The market simply moves. Your position size determines how much of that movement reaches your account.
+
+Suppose two traders are watching exactly the same EUR/USD chart. Trader A has a small position and Trader B has a much larger position. If EUR/USD moves 20 pips in the same direction, both traders experienced the same 20-pip price movement. Their monetary results, however, can be very different.
+
+This is why “20 pips” should never automatically be interpreted as “I made X dollars.” The missing information is position size and the relevant pip value.
+
+For risk management, this distinction is essential. A trader can use the same strategy, the same entry, the same stop and the same target as another trader while taking a completely different amount of account risk simply by changing position size.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A 20-pip movement with a small position might represent a small monetary change. The same 20-pip movement with a position five times larger can produce approximately five times the pip-value impact, assuming the same instrument and simplified conditions.
+
+Nothing about the chart became five times more volatile. The **exposure** became five times larger.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Lot size changes account sensitivity to the exact same chart movement. This is why position size is a risk-control variable rather than simply a profit variable.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Before increasing lot size, ask whether the additional exposure is actually supported by your planned risk budget.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Same chart movement — different position sizes — different monetary impact</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Same chart movement — different position sizes — different monetary impact"><text x="500" y="42" text-anchor="middle" fill="#f8fafc" font-size="27" font-weight="800" font-family="Arial, sans-serif">20 PIPS OF PRICE MOVEMENT</text><rect x="60" y="85" width="360" height="150" rx="22" fill="#172554" stroke="#60a5fa"/><rect x="580" y="85" width="360" height="150" rx="22" fill="#14532d" stroke="#34d399"/><text x="240" y="130" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="800" font-family="Arial, sans-serif">SMALL POSITION</text><text x="240" y="170" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">lower monetary impact</text><text x="240" y="202" text-anchor="middle" fill="#94a3b8" font-size="16" font-weight="600" font-family="Arial, sans-serif">same 20-pip movement</text><text x="760" y="130" text-anchor="middle" fill="#a7f3d0" font-size="22" font-weight="800" font-family="Arial, sans-serif">LARGER POSITION</text><text x="760" y="170" text-anchor="middle" fill="#ecfdf5" font-size="18" font-weight="600" font-family="Arial, sans-serif">higher monetary impact</text><text x="760" y="202" text-anchor="middle" fill="#94a3b8" font-size="16" font-weight="600" font-family="Arial, sans-serif">same 20-pip movement</text><line x1="440" y1="160" x2="560" y2="160" stroke="#facc15" stroke-width="7" /></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-03">
+  <h2><span class="ll-num">03</span>Standard Lot</h2>
+
+  <p>A standard lot is commonly defined as 100,000 units of the base currency in traditional retail Forex education. It is useful as a reference because smaller lot sizes are often described as fractions of it.
+
+If EUR/USD is the instrument, the base currency is EUR. Under the common convention, one standard lot therefore represents 100,000 EUR of base-currency units. The exact economic exposure and margin calculation still depend on the broker, account currency, leverage and instrument specifications.
+
+Beginners sometimes hear “one lot” and assume it means one unit, one dollar, or one trade. None of those assumptions is correct. A lot is a position-size convention.
+
+Understanding the standard lot first makes mini and micro lots easier because you can see the scale relationship.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a platform displays 1.00 lot on a conventional Forex pair, educational examples commonly interpret this as 100,000 base-currency units. If it displays 0.10 lots, that is one-tenth of the standard-lot convention, or 10,000 units.
+
+Always treat these numbers as the conventional learning framework and check the actual contract specification for live trading.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>The standard lot provides the reference scale from which smaller conventional lot sizes can be understood.</p>
+
+  <h3>How to Think About It</h3>
+  <p>The standard lot is a reference point. It does not mean a beginner should trade one standard lot.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-04">
+  <h2><span class="ll-num">04</span>Mini Lot</h2>
+
+  <p>A mini lot is commonly described as 10,000 units of the base currency. That makes it one-tenth of the conventional standard-lot size.
+
+Mini lots help students understand scaling. If a standard lot is 100,000 units, then a mini lot is 10,000. If a position is reduced from one standard lot to one mini lot, the quantity is reduced by a factor of ten.
+
+This does not mean the market becomes safer. It means the position has less exposure to each price movement, assuming the same instrument and conditions.
+
+Mini lots are therefore useful for understanding how position size can be adjusted without changing the chart itself.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a trader is studying EUR/USD and uses 0.10 lots under the common convention, the position represents about 10,000 units of the base currency. If the trader instead uses 1.00 lot, the conventional quantity becomes about 100,000 units.
+
+The chart is identical in both cases. The exposure is not.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Mini lots make the scaling relationship concrete and help students understand that a smaller position is simply fewer units.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Mini-lot terminology describes quantity. It does not describe whether a trade is good or bad.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-05">
+  <h2><span class="ll-num">05</span>Micro Lot</h2>
+
+  <p>A micro lot is commonly described as 1,000 units of the base currency. It is one-hundredth of a conventional standard lot and one-tenth of a conventional mini lot.
+
+Micro sizing is particularly useful when learning because it allows a trader to work with much smaller exposure than a standard lot. It also makes the relationship between volume and monetary impact easier to observe.
+
+However, smaller position size does not remove market risk. A trader can still lose money if the market moves against the position, and repeated trades can still create meaningful cumulative losses.
+
+The important lesson is that position size should be chosen from a risk plan rather than from the smallest or largest number available on the platform.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Under the common convention, 0.01 lots corresponds to about 1,000 units of the base currency. If the platform uses direct unit sizing, the equivalent quantity may be entered directly.
+
+Always check what the volume field on the specific platform actually represents.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Micro lots demonstrate how position size can be reduced substantially while studying the same market.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Micro lots are a sizing tool, not a strategy.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-06">
+  <h2><span class="ll-num">06</span>Nano Lots and Smaller Sizes</h2>
+
+  <p>Some brokers, platforms or account types may allow position sizes smaller than a conventional micro lot. You may encounter terms such as nano lots, fractional lots or direct unit quantities.
+
+These terms are not as universally standardized as the common standard/mini/micro framework. This is why a student should avoid memorizing one number and assuming it applies everywhere.
+
+When the platform gives a direct units field, the units specification can be clearer than the lot label. The broker&#x27;s contract specification is the authoritative source for exact quantity, minimum trade size and volume step.
+
+The educational principle remains the same: smaller quantity generally means smaller exposure to each price movement, all else equal.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If one platform lets a trader enter 500 units directly, the student should think in terms of “500 units” rather than forcing that amount into a standard-lot label.
+
+This prevents confusion when different platforms use different volume conventions.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Smaller-unit terminology is not always standardized. Verification prevents dangerous assumptions.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Whenever a lot label is unfamiliar, verify the actual unit quantity before calculating risk.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-07">
+  <h2><span class="ll-num">07</span>Lots vs Units</h2>
+
+  <p>Lots and units describe the same basic idea from two different perspectives. Units tell you the quantity directly. Lots provide a standardized shorthand.
+
+The common educational relationship is 1 standard lot = 100,000 units, 1 mini lot = 10,000 units and 1 micro lot = 1,000 units. Therefore 0.01 standard lot is commonly 1,000 units, while 0.10 standard lot is commonly 10,000 units.
+
+Thinking in units can make position sizing less mysterious because the word “lot” stops being an abstract trading term. It becomes a quantity.
+
+When reading a platform, however, do not assume that every volume field uses exactly the same convention. Some instruments outside traditional Forex can have completely different contract sizes.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A quick conversion table is useful for revision.
+
+0.01 lot → 1,000 units*  
+0.10 lot → 10,000 units*  
+1.00 lot → 100,000 units*
+
+The asterisk matters: these are common educational conventions for traditional Forex, not universal specifications for every instrument.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Understanding units removes the mystery from lot terminology and makes position size easier to calculate.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Use the unit quantity whenever you need maximum clarity.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;"><table class="ll-table">
+<thead><tr><th>Common educational label</th><th>Common quantity</th><th>Relationship</th></tr></thead>
+<tbody>
+<tr><td>1.00 standard lot</td><td>100,000 units*</td><td>1× reference</td></tr>
+<tr><td>0.10 lot / mini convention</td><td>10,000 units*</td><td>0.10× standard</td></tr>
+<tr><td>0.01 lot / micro convention</td><td>1,000 units*</td><td>0.01× standard</td></tr>
+</tbody>
+</table></div>
+<p><small>*Common educational conventions for traditional Forex. Verify the actual contract specification for live trading.</small></p>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Lots are shorthand for units</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Lots are shorthand for units"><rect x="60" y="60" width="880" height="210" rx="24" fill="#07111f" stroke="#334155"/><text x="180" y="110" text-anchor="middle" fill="#bfdbfe" font-size="20" font-weight="800" font-family="Arial, sans-serif">STANDARD</text><text x="180" y="155" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial, sans-serif">100,000</text><text x="180" y="195" text-anchor="middle" fill="#94a3b8" font-size="17" font-weight="600" font-family="Arial, sans-serif">units</text><text x="500" y="110" text-anchor="middle" fill="#a7f3d0" font-size="20" font-weight="800" font-family="Arial, sans-serif">MINI</text><text x="500" y="155" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial, sans-serif">10,000</text><text x="500" y="195" text-anchor="middle" fill="#94a3b8" font-size="17" font-weight="600" font-family="Arial, sans-serif">units</text><text x="820" y="110" text-anchor="middle" fill="#fde68a" font-size="20" font-weight="800" font-family="Arial, sans-serif">MICRO</text><text x="820" y="155" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="800" font-family="Arial, sans-serif">1,000</text><text x="820" y="195" text-anchor="middle" fill="#94a3b8" font-size="17" font-weight="600" font-family="Arial, sans-serif">units</text><text x="500" y="245" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="600" font-family="Arial, sans-serif">The labels are shorthand; the actual contract specification controls.</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-08">
+  <h2><span class="ll-num">08</span>Position Size Scaling</h2>
+
+  <p>Position size scaling is one of the easiest ways to understand exposure. If the quantity is doubled while everything else stays equal, the monetary impact of each unit of price movement generally doubles.
+
+For example, if a certain position produces a simplified monetary change of 2 account-currency units per pip, doubling the position size would produce approximately 4 units per pip. The market did not change. The position did.
+
+This relationship is why increasing lot size can dramatically increase both gains and losses. It is also why position sizing is often more important to account survival than finding a perfect entry.
+
+A strategy that works with a small position can become dangerous when its size is increased without recalculating risk.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Compare 0.01 lot, 0.05 lot and 0.10 lot on the same instrument. If all other variables remain equal, the monetary effect of a one-pip movement scales with the position.
+
+The key word is **approximately**, because actual results can also depend on conversion, contract specifications, costs and execution.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Scaling is the reason volume changes can quickly change account results even though the chart itself is identical.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Whenever volume changes, recalculate the exposure instead of assuming the old risk still applies.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-09">
+  <h2><span class="ll-num">09</span>Pip Value Connection</h2>
+
+  <p>Pip value is the bridge between price movement and money. A pip tells you about price distance. Pip value tells you how much that price movement is worth for a particular position.
+
+Lot size strongly influences pip value because a larger position contains more units exposed to the price change. But pip value is not determined by lot size alone in every situation. The currency pair, quote currency, account currency, exchange rate and contract specification can matter.
+
+This is why a statement such as “one pip is worth $10” should never be treated as a universal rule. It may be a useful example for one standard-lot situation, but the actual value must be calculated or verified for the specific instrument and account.
+
+Understanding this connection is essential before calculating monetary risk.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    The conceptual chain is:
+
+Position size → pip value → price movement → monetary change.
+
+If one pip is worth 2 account-currency units for a position, a 10-pip movement would be approximately 20 units before costs. If pip value becomes 5 units because position size increases, the same 10-pip movement becomes approximately 50 units.
+
+The movement is still 10 pips.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Pip value is the bridge between price distance and money, making it essential for risk calculations.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Never confuse pip distance with pip value.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Position size → pip value → monetary impact</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Position size → pip value → monetary impact"><rect x="45" y="90" width="245" height="125" rx="20" fill="#172554" stroke="#60a5fa"/><text x="167" y="132" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial, sans-serif">POSITION SIZE</text><text x="167" y="170" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">quantity</text><line x1="295" y1="152" x2="355" y2="152" stroke="#94a3b8" stroke-width="5" /><rect x="355" y="90" width="245" height="125" rx="20" fill="#164e63" stroke="#22d3ee"/><text x="477" y="132" text-anchor="middle" fill="#a5f3fc" font-size="21" font-weight="800" font-family="Arial, sans-serif">PIP VALUE</text><text x="477" y="170" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">money / pip</text><line x1="605" y1="152" x2="665" y2="152" stroke="#94a3b8" stroke-width="5" /><rect x="665" y="90" width="290" height="125" rx="20" fill="#14532d" stroke="#34d399"/><text x="810" y="132" text-anchor="middle" fill="#a7f3d0" font-size="21" font-weight="800" font-family="Arial, sans-serif">MONETARY</text><text x="810" y="170" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">trade impact</text><text x="500" y="270" text-anchor="middle" fill="#94a3b8" font-size="16" font-weight="600" font-family="Arial, sans-serif">A larger position generally increases the monetary effect of each pip.</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-10">
+  <h2><span class="ll-num">10</span>Lot Size and Stop Loss</h2>
+
+  <p>A stop-loss is usually placed at a price level where the original trade idea is considered invalid. The distance between entry and stop can be measured in pips on many Forex pairs.
+
+Lot size determines how much money that stop distance represents. A 20-pip stop on a small position is not the same monetary exposure as a 20-pip stop on a large position.
+
+This creates an important relationship: **stop distance and position size must be considered together**. Choosing the stop from the chart and then choosing position size from the account-risk budget is generally more logical than choosing a lot size first and forcing the stop to fit.
+
+A wider stop does not automatically have to mean more account risk. Position size can be reduced.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Suppose a setup requires a 50-pip stop because the structural invalidation point is 50 pips away. If the planned risk budget is fixed, the trader can calculate a smaller position than they would use for a setup requiring only a 25-pip stop.
+
+The market structure determines the stop. Risk management determines the size.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Stop distance and position size jointly determine the monetary effect of an adverse move.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Do not move a logical stop closer simply to justify a larger lot size.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Stop distance and position size must be considered together</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Stop distance and position size must be considered together"><line x1="100" y1="235" x2="880" y2="235" stroke="#64748b" stroke-width="4" /><line x1="230" y1="195" x2="230" y2="255" stroke="#60a5fa" stroke-width="5" /><line x1="470" y1="195" x2="470" y2="255" stroke="#f87171" stroke-width="5" /><line x1="760" y1="195" x2="760" y2="255" stroke="#f87171" stroke-width="5" /><text x="230" y="165" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial, sans-serif">ENTRY</text><text x="470" y="165" text-anchor="middle" fill="#fecaca" font-size="20" font-weight="800" font-family="Arial, sans-serif">30 PIPS</text><text x="760" y="165" text-anchor="middle" fill="#fecaca" font-size="20" font-weight="800" font-family="Arial, sans-serif">70 PIPS</text><text x="500" y="70" text-anchor="middle" fill="#f8fafc" font-size="25" font-weight="800" font-family="Arial, sans-serif">WIDER STOP = MORE PRICE DISTANCE</text><text x="500" y="108" text-anchor="middle" fill="#a7f3d0" font-size="17" font-weight="600" font-family="Arial, sans-serif">If risk budget stays fixed, position size generally must decrease.</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-11">
+  <h2><span class="ll-num">11</span>The Core Risk Formula</h2>
+
+  <p>A simplified position-risk relationship is:
+
+planned monetary risk ≈ stop distance in pips × pip value for the position.
+
+This is not a complete broker accounting formula. Real results can be affected by spread, commission, slippage, exchange-rate conversion and exact contract specifications. But the simplified relationship is extremely useful for learning.
+
+The formula teaches an important lesson: risk is a combination of **distance and exposure**. You cannot fully understand the risk of a position by looking at the lot size alone, and you cannot fully understand it by looking at the stop distance alone.
+
+Both variables need to be considered together.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If the stop is 40 pips and the position&#x27;s pip value is 0.50 account-currency units per pip, the simplified planned risk is:
+
+40 × 0.50 = 20 account-currency units.
+
+The calculation becomes different if either the stop distance or the pip value changes.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>The risk relationship provides the foundation for calculating position size from a defined risk budget.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Always label the result as planned or approximate when costs and execution have not been included.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div class="ll-formula">
+  Planned Risk ≈ Stop Distance (pips) × Pip Value (account currency per pip)
+</div>
+<p>
+  For actual position sizing, rearrange the relationship conceptually:
+  <strong>Position size is chosen so that the monetary effect of the stop is close
+  to the planned risk budget.</strong> The exact broker calculation can require
+  currency conversion and contract-specific details.
+</p>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Simplified risk relationship</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Simplified risk relationship"><rect x="55" y="85" width="260" height="130" rx="20" fill="#172554" stroke="#60a5fa"/><text x="185" y="128" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial, sans-serif">STOP DISTANCE</text><text x="185" y="166" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">pips</text><line x1="320" y1="150" x2="390" y2="150" stroke="#94a3b8" stroke-width="5" /><text x="355" y="136" text-anchor="middle" fill="#facc15" font-size="28" font-weight="900" font-family="Arial, sans-serif">×</text><rect x="390" y="85" width="230" height="130" rx="20" fill="#164e63" stroke="#22d3ee"/><text x="505" y="128" text-anchor="middle" fill="#a5f3fc" font-size="21" font-weight="800" font-family="Arial, sans-serif">PIP VALUE</text><text x="505" y="166" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">money / pip</text><line x1="625" y1="150" x2="695" y2="150" stroke="#94a3b8" stroke-width="5" /><rect x="695" y="85" width="250" height="130" rx="20" fill="#14532d" stroke="#34d399"/><text x="820" y="128" text-anchor="middle" fill="#a7f3d0" font-size="21" font-weight="800" font-family="Arial, sans-serif">PLANNED RISK</text><text x="820" y="166" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">before costs</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-12">
+  <h2><span class="ll-num">12</span>Worked Example: Small Position</h2>
+
+  <p>A worked example is useful because it separates the mathematical relationship from the emotional idea of “winning money.”
+
+Suppose a trader has a position with an approximate pip value of 1 account-currency unit per pip and places a 30-pip stop. If the stop is reached, the simplified price-movement component is approximately 30 account-currency units.
+
+This is not a universal pip-value calculation. It is an example showing how the formula works.
+
+The correct process is always to obtain the actual pip value for the position first, then multiply by the stop distance.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    30 pips × 1 unit per pip = approximately 30 units.
+
+If the same position had a 60-pip stop, the simplified price-distance component would become approximately 60 units.
+
+The lot size did not change. The allowed adverse price distance did.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>A small worked example helps separate the formula from the complexity of live trading.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Practice the calculation with several stop distances before using a position-size calculator.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-13">
+  <h2><span class="ll-num">13</span>Worked Example: Larger Position</h2>
+
+  <p>Now keep the stop distance the same but increase the position size. The pip value rises with exposure under the simplified assumption.
+
+Suppose the pip value is approximately 5 account-currency units per pip and the stop remains 30 pips. The simplified risk becomes 150 account-currency units.
+
+This demonstrates why a large position can become dangerous even when the stop looks small on the chart.
+
+The visual distance between entry and stop is not enough to judge account risk. You need the position&#x27;s monetary sensitivity as well.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    30 pips × 5 units per pip = approximately 150 units.
+
+Compare this with the previous example: 30 pips × 1 unit per pip = approximately 30 units.
+
+Same chart distance. Different exposure.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>A larger position demonstrates how quickly monetary risk can increase even with the same stop.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Never judge risk from the number of pips alone.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-14">
+  <h2><span class="ll-num">14</span>Stop Distance and Position Size Work Together</h2>
+
+  <p>The relationship between stop distance and position size is one of the most important lessons in practical risk management.
+
+Suppose a trader has a fixed monetary risk budget. A setup with a 20-pip structural stop can usually support a larger position than a setup with an 80-pip structural stop, assuming the same instrument and pip-value relationship.
+
+This does not mean the 20-pip setup is automatically better. A stop must still be placed where the trade idea is invalidated. Position size is adjusted around the market-defined stop, not the other way around.
+
+This prevents a common beginner mistake: moving the stop closer merely to allow a larger lot size.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Setup A needs a 25-pip stop. Setup B needs a 75-pip stop. If the account-risk budget is identical, Setup B generally requires a much smaller position.
+
+The wider stop uses three times the price distance, so the position size needs to be adjusted accordingly.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>This relationship is central to professional position sizing.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Market structure chooses the invalidation; risk management chooses the quantity.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Same risk budget — different stop distances</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Same risk budget — different stop distances"><rect x="55" y="65" width="890" height="200" rx="22" fill="#07111f" stroke="#334155"/><text x="500" y="102" text-anchor="middle" fill="#f8fafc" font-size="25" font-weight="800" font-family="Arial, sans-serif">FIXED RISK BUDGET</text><text x="240" y="150" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial, sans-serif">30-pip stop</text><text x="240" y="190" text-anchor="middle" fill="#a7f3d0" font-size="18" font-weight="600" font-family="Arial, sans-serif">larger position may fit</text><text x="760" y="150" text-anchor="middle" fill="#fecaca" font-size="21" font-weight="800" font-family="Arial, sans-serif">60-pip stop</text><text x="760" y="190" text-anchor="middle" fill="#fde68a" font-size="18" font-weight="600" font-family="Arial, sans-serif">smaller position may fit</text><text x="500" y="235" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="600" font-family="Arial, sans-serif">The wider stop uses more price distance per unit of position.</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-15">
+  <h2><span class="ll-num">15</span>Risk as a Percentage of the Account</h2>
+
+  <p>Many risk-management frameworks express planned trade risk as a percentage of account equity or balance.
+
+For example, a trader might choose a small percentage of the account as a maximum planned loss for an individual trade. The percentage itself is a risk-management choice and should not be presented as a universal rule.
+
+The key concept is that the percentage creates a **risk budget**. Once the budget is known, the trader can calculate position size from the stop distance and pip value.
+
+This reverses the beginner approach of choosing a lot size because the potential profit looks attractive.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If an account contains 1,000 units of account currency and the chosen planning percentage is 1%, the risk budget is 10 units.
+
+The next question is not “How many lots can I open?” It is “What position size would keep the planned stop risk near 10 units?”
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Percentage-based risk creates a repeatable risk budget across different account sizes.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Risk percentage is a planning framework, not a guarantee of the final loss.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div class="ll-formula">
+  Risk Budget = Account Value × Chosen Risk Percentage
+</div>
+<p>
+  Example: an account of 5,000 units with a 0.5% planning risk gives a risk budget
+  of 25 units. This does not predict the exact realized loss; spread, slippage,
+  gaps and execution can affect the final result.
+</p>
+</section>
+
+
+<section class="ll-section" id="section-16">
+  <h2><span class="ll-num">16</span>Worked Example: Percentage Risk</h2>
+
+  <p>Percentage-risk calculations are simple mathematically but powerful conceptually.
+
+Start with account value. Multiply by the chosen risk percentage. This gives the approximate monetary risk budget. Then use stop distance and pip value to calculate the position size that fits the budget.
+
+This sequence keeps account risk in control even when different trades require different stop distances.
+
+It also makes the system more adaptable: a setup with a wider stop can still be traded without automatically risking more money.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Account = 2,000 units. Chosen planning risk = 0.5%.
+
+2,000 × 0.005 = 10 units.
+
+The 10-unit budget is then used with the actual stop distance and pip value to determine position size.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Converting account percentage into a monetary budget is the first step before calculating volume.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Calculate the risk budget before calculating the volume.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-17">
+  <h2><span class="ll-num">17</span>What Is Leverage?</h2>
+
+  <p>Leverage allows a trader to control a larger notional position with less initial margin than would be required without leverage. It is a mechanism that changes the relationship between position exposure and the amount of capital committed as margin.
+
+Leverage does not make price movements smaller. If the position is large, a small price movement can still create a large monetary gain or loss.
+
+This is why leverage should be understood as an **exposure and margin tool**, not as a strategy for generating profits.
+
+The maximum leverage offered by a broker also does not mean a trader should use the maximum possible position.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A broker may allow a high leverage ratio. That can reduce the margin required to support a particular notional position.
+
+But if the trader uses the additional capacity to open a much larger position, the account becomes more sensitive to price movement.
+
+Leverage can therefore make large exposure easier to open without making large exposure safer.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Leverage changes margin requirements and exposure capacity, but does not remove market risk.</p>
+
+  <h3>How to Think About It</h3>
+  <p>High leverage and low margin requirements should never be confused with low trading risk.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div class="ll-grid">
+  <div class="ll-card"><h3>What Leverage Can Do</h3><p>It can reduce the margin required to support a given notional position, subject to broker and instrument rules.</p></div>
+  <div class="ll-card"><h3>What Leverage Cannot Do</h3><p>It cannot make a losing position safer, improve an entry, predict direction or eliminate market risk.</p></div>
+</div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Leverage changes the margin relationship — not the market movement</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Leverage changes the margin relationship — not the market movement"><rect x="50" y="65" width="390" height="190" rx="22" fill="#172554" stroke="#60a5fa"/><rect x="560" y="65" width="390" height="190" rx="22" fill="#3f1d1d" stroke="#f87171"/><text x="245" y="110" text-anchor="middle" fill="#bfdbfe" font-size="26" font-weight="800" font-family="Arial, sans-serif">LEVERAGE</text><text x="245" y="150" text-anchor="middle" fill="#dbeafe" font-size="19" font-weight="600" font-family="Arial, sans-serif">can reduce required margin</text><text x="245" y="185" text-anchor="middle" fill="#94a3b8" font-size="17" font-weight="600" font-family="Arial, sans-serif">for a given notional position</text><text x="755" y="110" text-anchor="middle" fill="#fecaca" font-size="26" font-weight="800" font-family="Arial, sans-serif">MARKET EXPOSURE</text><text x="755" y="150" text-anchor="middle" fill="#fee2e2" font-size="19" font-weight="600" font-family="Arial, sans-serif">still moves with price</text><text x="755" y="185" text-anchor="middle" fill="#94a3b8" font-size="17" font-weight="600" font-family="Arial, sans-serif">losses can still be large</text><text x="500" y="155" text-anchor="middle" fill="#facc15" font-size="32" font-weight="900" font-family="Arial, sans-serif">≠</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-18">
+  <h2><span class="ll-num">18</span>Margin vs Risk</h2>
+
+  <p>Margin and risk are different concepts.
+
+Margin is the amount of account resources required or reserved to support a leveraged position. Risk is the amount that may be lost if the market moves against the trade and the position is closed at the relevant price.
+
+A position can require relatively little margin while still carrying significant market exposure. Conversely, a position can use substantial margin without necessarily having the same amount of monetary risk at the stop.
+
+Beginners often see “margin used” and assume that is the amount they are risking. That is incorrect.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Think of margin as the broker/platform&#x27;s support requirement and risk as the trader&#x27;s loss budget.
+
+A platform might show 50 units of used margin while the planned stop loss could represent 10 units or 100 units depending on position size, stop distance and pip value.
+
+The two numbers answer different questions.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Confusing margin with risk is a major beginner error.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Keep margin and risk in separate columns in your notes.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;"><table class="ll-table">
+<thead><tr><th>Concept</th><th>Main question</th><th>Do not confuse it with</th></tr></thead>
+<tbody>
+<tr><td>Margin</td><td>How much is required to support the position?</td><td>Potential loss</td></tr>
+<tr><td>Risk</td><td>How much can the trade lose at the planned exit?</td><td>Used margin</td></tr>
+<tr><td>Leverage</td><td>How much exposure can be controlled relative to margin?</td><td>Profit probability</td></tr>
+</tbody>
+</table></div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Margin and risk are different concepts</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Margin and risk are different concepts"><rect x="60" y="70" width="360" height="175" rx="22" fill="#172554" stroke="#60a5fa"/><rect x="580" y="70" width="360" height="175" rx="22" fill="#14532d" stroke="#34d399"/><text x="240" y="115" text-anchor="middle" fill="#bfdbfe" font-size="25" font-weight="800" font-family="Arial, sans-serif">MARGIN</text><text x="240" y="155" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">supports the leveraged</text><text x="240" y="185" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">position</text><text x="760" y="115" text-anchor="middle" fill="#a7f3d0" font-size="25" font-weight="800" font-family="Arial, sans-serif">RISK</text><text x="760" y="155" text-anchor="middle" fill="#ecfdf5" font-size="18" font-weight="600" font-family="Arial, sans-serif">potential monetary</text><text x="760" y="185" text-anchor="middle" fill="#ecfdf5" font-size="18" font-weight="600" font-family="Arial, sans-serif">loss</text><text x="500" y="160" text-anchor="middle" fill="#facc15" font-size="32" font-weight="900" font-family="Arial, sans-serif">≠</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-19">
+  <h2><span class="ll-num">19</span>Leverage Does Not Set Your Stop</h2>
+
+  <p>A broker may offer a particular maximum leverage, but leverage should not determine where a stop-loss belongs.
+
+The stop should come from the trade idea: structure, invalidation, volatility and the timeframe being traded. Once the logical stop is known, position size can be adjusted to fit the risk budget.
+
+If a trader chooses the stop based on how many lots they want to trade, the process is backwards.
+
+A high-leverage account should still use disciplined position sizing.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Suppose a chart-based setup requires a 60-pip stop. The trader should not move the stop to 20 pips just because a 20-pip stop allows a larger position.
+
+The stop should remain where the analysis says the setup is invalid. The volume should change instead.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>The stop should come from the trade idea rather than from the desired lot size.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Never sacrifice a logical stop to justify a desired lot size.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-20">
+  <h2><span class="ll-num">20</span>Notional Exposure</h2>
+
+  <p>Notional exposure describes the approximate economic value controlled by a position. In leveraged Forex trading, notional exposure can be much larger than the margin used to support the position.
+
+This is one reason leverage can be misunderstood. A trader may look at the relatively small margin requirement and forget that the underlying position can represent a much larger quantity of currency.
+
+Notional exposure helps explain why price movement can have a meaningful account impact even when the margin number looks small.
+
+The exact notional calculation depends on the instrument and quotation convention.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A leveraged position can have a large notional quantity while the broker requires only a fraction of that amount as margin.
+
+The important distinction is:
+
+**margin used ≠ notional exposure ≠ planned loss**.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Notional exposure explains why a small margin requirement can support a much larger economic position.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Think about the economic size of the position, not only the margin displayed by the platform.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Notional exposure can be much larger than the margin used</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Notional exposure can be much larger than the margin used"><rect x="65" y="80" width="350" height="150" rx="22" fill="#172554" stroke="#60a5fa"/><rect x="585" y="80" width="350" height="150" rx="22" fill="#3f1d1d" stroke="#f87171"/><text x="240" y="125" text-anchor="middle" fill="#bfdbfe" font-size="24" font-weight="800" font-family="Arial, sans-serif">MARGIN</text><text x="240" y="165" text-anchor="middle" fill="#dbeafe" font-size="17" font-weight="600" font-family="Arial, sans-serif">smaller amount supporting</text><text x="240" y="195" text-anchor="middle" fill="#dbeafe" font-size="17" font-weight="600" font-family="Arial, sans-serif">the position</text><text x="760" y="125" text-anchor="middle" fill="#fecaca" font-size="24" font-weight="800" font-family="Arial, sans-serif">NOTIONAL EXPOSURE</text><text x="760" y="165" text-anchor="middle" fill="#fee2e2" font-size="17" font-weight="600" font-family="Arial, sans-serif">economic value controlled</text><text x="760" y="195" text-anchor="middle" fill="#fee2e2" font-size="17" font-weight="600" font-family="Arial, sans-serif">by the position</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-21">
+  <h2><span class="ll-num">21</span>Margin Requirement</h2>
+
+  <p>A margin requirement is the amount a broker or platform requires to support an open leveraged position.
+
+It can depend on position size, instrument, leverage, account type, current market conditions and broker rules. Some instruments can have different margin requirements from ordinary major Forex pairs.
+
+Because these requirements can change, the live platform specification is more important than a memorized percentage.
+
+Margin is therefore something to check after position size has been planned, not a number to use as the primary risk budget.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Before opening an unfamiliar instrument, check the platform&#x27;s contract and margin information.
+
+If the required margin is unexpectedly high, that does not automatically mean the trade is unsafe; it means the account must be evaluated with the actual margin requirement in mind.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Margin requirements vary, so exact current specifications must be checked.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Verify current broker specifications whenever the instrument or account type changes.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-22">
+  <h2><span class="ll-num">22</span>Free Margin</h2>
+
+  <p>Free margin is generally the portion of available equity that is not currently committed as used margin and can support additional positions or adverse account movement.
+
+The exact display and calculation can vary by platform, but the concept is useful: free margin is about remaining margin capacity.
+
+A large free-margin number does not automatically mean a trader should open another position. A trader can have plenty of free margin while already carrying too much market risk.
+
+This is why free margin should be monitored alongside total exposure and planned risk.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Imagine an account shows a large amount of free margin. That only tells you something about current margin capacity. It does not answer whether a new position fits the trading plan.
+
+Before adding a trade, review the new position&#x27;s risk and how it interacts with existing positions.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Free margin describes remaining margin capacity, not how much additional risk should be taken.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Free margin is capacity, not permission to increase risk.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-23">
+  <h2><span class="ll-num">23</span>Used Margin</h2>
+
+  <p>Used margin is the amount currently committed to support open leveraged positions.
+
+It can increase when positions are opened and decrease when positions are closed, depending on the platform and instrument.
+
+Used margin is not the same as money lost. It is not automatically the amount that would disappear if the trade were stopped.
+
+The actual loss depends on price movement, position size, stop or exit price, spread, commission, slippage and other execution details.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a platform displays 100 units of used margin, that does not mean the trade has 100 units of risk.
+
+A stop might produce a smaller or larger monetary loss depending on the position&#x27;s actual pip value and distance.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Used margin is an account status number, not a direct measure of possible loss.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Do not use used margin as a substitute for a risk calculation.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-24">
+  <h2><span class="ll-num">24</span>Margin Level</h2>
+
+  <p>Margin level is a platform risk indicator based on account equity relative to used margin. The exact formula and thresholds vary by broker, but the concept is generally intended to show how much equity exists relative to the margin supporting open positions.
+
+A falling margin level can indicate that leveraged exposure is becoming more stressed.
+
+Margin level should not be treated as a trading signal. It is an account-health indicator.
+
+A well-managed trade should not depend on approaching a broker&#x27;s emergency thresholds.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A simplified conceptual relationship is equity divided by used margin, often expressed as a percentage.
+
+If equity falls while used margin remains substantial, the margin level can decline. This is one reason excessive leverage can create account stress quickly.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Margin level can warn that leveraged exposure is becoming stressed.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Use margin level as a warning indicator, not as a target.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div class="ll-formula">Conceptually: Margin Level ≈ Equity ÷ Used Margin × 100</div>
+<p>
+  The exact broker definition and liquidation thresholds must be checked in the
+  account's current terms. The formula is included to teach the relationship,
+  not to replace broker documentation.
+</p>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Margin level is an account-health indicator, not a trading signal</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Margin level is an account-health indicator, not a trading signal"><rect x="70" y="75" width="860" height="175" rx="22" fill="#07111f" stroke="#334155"/><text x="500" y="115" text-anchor="middle" fill="#bfdbfe" font-size="24" font-weight="800" font-family="Arial, sans-serif">EQUITY</text><text x="500" y="150" text-anchor="middle" fill="#facc15" font-size="28" font-weight="900" font-family="Arial, sans-serif">÷</text><text x="500" y="188" text-anchor="middle" fill="#a5f3fc" font-size="24" font-weight="800" font-family="Arial, sans-serif">USED MARGIN</text><text x="500" y="225" text-anchor="middle" fill="#a7f3d0" font-size="17" font-weight="600" font-family="Arial, sans-serif">→ margin level indicator</text><text x="500" y="280" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="600" font-family="Arial, sans-serif">Falling margin level can signal increasing leverage stress.</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-25">
+  <h2><span class="ll-num">25</span>Margin Call and Stop-Out</h2>
+
+  <p>Brokers can have rules that restrict trading, request additional margin or automatically close positions when account equity becomes too low relative to required margin.
+
+The terminology and exact thresholds vary. Some brokers use margin-call levels and stop-out levels; others structure their rules differently.
+
+Students should understand the concept without assuming that every broker follows identical numbers.
+
+Most importantly, stop-out should be viewed as an emergency mechanism. A responsible risk plan should aim to control risk well before forced liquidation becomes relevant.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If an account becomes heavily leveraged and the market moves sharply against open positions, equity can fall while margin remains committed. The account can eventually reach the broker&#x27;s protective threshold.
+
+At that point the platform may begin closing positions according to its rules.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Stop-out is an emergency broker mechanism and should never be the foundation of risk management.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Never design a strategy around surviving until the broker&#x27;s stop-out level.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-26">
+  <h2><span class="ll-num">26</span>How Leverage Can Magnify Losses</h2>
+
+  <p>Leverage makes larger positions possible relative to deposited capital. If a trader uses that capacity to increase position size, adverse price movement can affect the account more quickly.
+
+The important distinction is that leverage itself does not move the market. It changes how much exposure the trader can control with the available capital.
+
+A small market movement against a large leveraged position can therefore produce a meaningful loss relative to the account.
+
+This is why maximum leverage should never be confused with recommended leverage.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If two traders have identical accounts but one chooses a much larger position because the broker allows high leverage, the second trader has greater exposure.
+
+The chart is identical. The account sensitivity is different.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Larger leveraged exposure can make adverse movement affect account equity more quickly.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Leverage magnifies the consequences of position size decisions.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-27">
+  <h2><span class="ll-num">27</span>How Leverage Can Magnify Gains</h2>
+
+  <p>Leverage can also make favorable price movements produce larger gains relative to the margin committed. This is the other side of the same exposure mechanism.
+
+However, larger potential gains always come with larger potential losses when exposure increases.
+
+Leverage therefore does not create an edge. It changes the scale at which the underlying trade is expressed.
+
+A profitable strategy can become unsuitable for an account if its position size is increased too aggressively.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A 30-pip favorable movement on a large position produces a larger monetary result than the same movement on a small position.
+
+The same would be true if the 30-pip movement were unfavorable.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>The same exposure mechanism that increases upside also increases downside.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Always evaluate the downside before thinking about the leveraged upside.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-28">
+  <h2><span class="ll-num">28</span>High Leverage Is Not a Strategy</h2>
+
+  <p>A broker advertising high leverage is describing account capacity, not a trading method.
+
+High leverage can be useful for reducing the margin required for a particular position, but using the available capacity to maximize position size can expose the account to unnecessary drawdown.
+
+A strategy&#x27;s quality comes from its market logic, execution process and risk management—not from the leverage ratio displayed in the account.
+
+Professional risk control treats leverage as a constraint or tool, not as a source of trading edge.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a broker permits 1:500 leverage, that does not mean a trader should choose a position five times larger than before.
+
+The appropriate position is still determined by the setup, stop distance and risk budget.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Maximum leverage is not a trading edge.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Never let the broker&#x27;s maximum position capacity determine your normal position size.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-29">
+  <h2><span class="ll-num">29</span>Position Size First, Leverage Second</h2>
+
+  <p>A useful learning sequence is to decide the market setup, define invalidation, calculate the stop distance, choose the risk budget and then calculate the position size.
+
+Only after that should you check whether the available leverage and margin are sufficient to support the desired position.
+
+This keeps market analysis and risk management in control.
+
+If leverage is considered first, the trader can easily start with the question “How much can I open?” rather than the more important question “How much exposure fits my plan?”</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    The correct direction of thinking is:
+
+Setup → stop → risk budget → position size → margin check.
+
+Not:
+
+Maximum leverage → maximum lots → find a stop.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Risk-based sizing prevents available leverage from becoming the driver of position size.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Let risk determine size; let leverage determine whether the size is operationally possible.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-30">
+  <h2><span class="ll-num">30</span>Stop Distance Changes Position Size</h2>
+
+  <p>If monetary risk is held constant, a wider stop generally requires a smaller position size. A narrower stop generally allows a larger position size, assuming the same pip-value relationship.
+
+This does not mean narrow stops are better. A stop must be placed where the trade idea becomes invalid.
+
+The purpose of adjusting position size is to keep account risk consistent while respecting the market-defined stop.
+
+This relationship is fundamental to professional position sizing.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Suppose one setup needs a 30-pip stop and another needs a 60-pip stop. If the risk budget is identical, the 60-pip setup generally needs roughly half the exposure of the 30-pip setup under a simplified linear relationship.
+
+The exact lot calculation depends on the instrument and pip value.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>A wider market-defined stop generally requires smaller exposure when risk is fixed.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Never use a fixed lot size as a substitute for fixed risk.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div class="ll-formula">Fixed Risk + Wider Stop → Generally Smaller Position Size</div>
+<p>
+  If the stop distance becomes larger while the risk budget stays fixed, the
+  position's monetary sensitivity per pip generally needs to decrease. This is
+  why professional position sizing can produce different lot sizes for different
+  setups.
+</p>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Wider stop → smaller position when monetary risk is held constant</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Wider stop → smaller position when monetary risk is held constant"><line x1="120" y1="235" x2="880" y2="235" stroke="#64748b" stroke-width="4" /><line x1="235" y1="195" x2="235" y2="255" stroke="#60a5fa" stroke-width="5" /><line x1="430" y1="195" x2="430" y2="255" stroke="#f87171" stroke-width="5" /><line x1="735" y1="195" x2="735" y2="255" stroke="#f87171" stroke-width="5" /><text x="235" y="165" text-anchor="middle" fill="#bfdbfe" font-size="20" font-weight="800" font-family="Arial, sans-serif">ENTRY</text><text x="430" y="165" text-anchor="middle" fill="#fecaca" font-size="20" font-weight="800" font-family="Arial, sans-serif">30 PIPS</text><text x="735" y="165" text-anchor="middle" fill="#fecaca" font-size="20" font-weight="800" font-family="Arial, sans-serif">60 PIPS</text><text x="500" y="75" text-anchor="middle" fill="#f8fafc" font-size="26" font-weight="800" font-family="Arial, sans-serif">SAME RISK BUDGET</text><text x="500" y="112" text-anchor="middle" fill="#a7f3d0" font-size="17" font-weight="600" font-family="Arial, sans-serif">shorter stop → larger size | wider stop → smaller size</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-31">
+  <h2><span class="ll-num">31</span>Worked Example: Same Risk, Different Stops</h2>
+
+  <p>This example shows why two trades can use different lot sizes while having approximately the same planned monetary risk.
+
+Imagine the account-risk budget is 20 units. If one setup has a 20-pip stop and another has an 80-pip stop, the second setup requires much smaller pip value per pip to keep the same risk budget.
+
+The exact position size comes from the instrument&#x27;s pip-value relationship.
+
+The important concept is the inverse relationship between stop distance and position size when risk is fixed.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Setup A: 20-pip stop.  
+Setup B: 80-pip stop.
+
+Setup B has four times the price distance. Under a simplified linear relationship, its position exposure would need to be approximately one-quarter as large to keep the same monetary risk.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Different stop distances can be managed with different volumes while preserving a similar risk budget.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Wide stops are not automatically bad; they simply require appropriate sizing.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-32">
+  <h2><span class="ll-num">32</span>Worked Example: Same Position, Different Stops</h2>
+
+  <p>Now keep the position size fixed and change the stop distance. This demonstrates the opposite relationship.
+
+If the pip value remains constant, doubling the stop distance approximately doubles the price-movement component of planned risk.
+
+This is why a trader cannot claim that risk is unchanged merely because the lot size stayed the same.
+
+Fixed volume and fixed risk are two different concepts.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a position has a pip value of 2 units and the stop is 25 pips, the simplified price-distance risk is about 50 units.
+
+If the same position uses a 50-pip stop, the simplified price-distance risk becomes about 100 units.
+
+The volume stayed the same. The allowed adverse distance doubled.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Keeping volume fixed while widening the stop increases planned adverse distance.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Changing the stop without recalculating risk is a common sizing error.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Same position size + wider stop = larger planned loss</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Same position size + wider stop = larger planned loss"><rect x="60" y="65" width="880" height="200" rx="22" fill="#07111f" stroke="#334155"/><text x="500" y="103" text-anchor="middle" fill="#f8fafc" font-size="25" font-weight="800" font-family="Arial, sans-serif">POSITION SIZE: UNCHANGED</text><text x="260" y="155" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="800" font-family="Arial, sans-serif">30-pip stop</text><text x="740" y="155" text-anchor="middle" fill="#fecaca" font-size="21" font-weight="800" font-family="Arial, sans-serif">60-pip stop</text><text x="260" y="200" text-anchor="middle" fill="#a7f3d0" font-size="18" font-weight="600" font-family="Arial, sans-serif">lower planned loss</text><text x="740" y="200" text-anchor="middle" fill="#fde68a" font-size="18" font-weight="600" font-family="Arial, sans-serif">approximately 2× distance</text><text x="500" y="240" text-anchor="middle" fill="#94a3b8" font-size="15" font-weight="600" font-family="Arial, sans-serif">When position size stays fixed, widening the stop increases price distance at risk.</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-33">
+  <h2><span class="ll-num">33</span>Spread and Position Size</h2>
+
+  <p>Spread is the difference between bid and ask. It is one of the transaction costs associated with entering and exiting a Forex position.
+
+The monetary effect of spread depends partly on position size. A larger position means the same spread distance affects more units.
+
+This becomes especially important for short-term strategies where the expected movement may be relatively small.
+
+A trader should therefore consider spread before deciding whether a particular position size and target are practical.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a spread is 1 pip and the position&#x27;s pip value is 5 units, the simplified spread impact is about 5 units.
+
+If the same spread applies to a position whose pip value is 0.50 units, the simplified impact is about 0.50 units.
+
+The spread did not change. The exposure did.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Transaction costs become more meaningful as position size increases.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Compare spread cost with the intended target and position size.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-34">
+  <h2><span class="ll-num">34</span>Commission and Position Size</h2>
+
+  <p>Some Forex account types charge commission separately from the spread. Commission is often based on trading volume or notional size.
+
+Because commission can scale with volume, larger positions can produce larger transaction costs.
+
+A realistic risk and performance calculation should distinguish between gross price movement and net result after costs.
+
+Commission structures vary by broker and account type, so the actual schedule must be checked rather than assumed.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a broker charges a commission per unit of trading volume, increasing position size increases the commission accordingly.
+
+This means two otherwise identical trades can have different net results because their position sizes differ.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Commission can materially affect short-term trading costs and should be included when applicable.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Include applicable commissions when evaluating short-term strategies and expected net performance.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-35">
+  <h2><span class="ll-num">35</span>Slippage and Position Size</h2>
+
+  <p>Slippage occurs when the actual execution price differs from the requested or expected price. It can happen during fast markets, low liquidity, news events or other execution conditions.
+
+The monetary effect of slippage depends on position size because a given price difference affects the quantity being traded.
+
+This is another reason why theoretical risk and actual realized risk can differ.
+
+A stop-loss is a risk-control mechanism, but it is not a guarantee of an exact execution price in every market condition.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a position is filled several points away from the intended price, the monetary difference is small for a small position and larger for a large position.
+
+This is especially relevant around fast-moving markets.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Slippage can change realized results and its monetary effect scales with position size.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Plan for execution uncertainty rather than assuming every order fills at the exact requested price.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-36">
+  <h2><span class="ll-num">36</span>Overleveraging</h2>
+
+  <p>Overleveraging means taking more exposure than the account can reasonably support through its risk plan and ability to withstand adverse movement.
+
+It is not defined simply by the number written in the leverage setting. A trader can overleverage even with a broker offering moderate maximum leverage if the position is too large for the account.
+
+Warning signs include unusually large lots, very small margin buffers, oversized exposure relative to equity, and increasing position size after losses in an attempt to recover quickly.
+
+The solution is not merely lowering the broker leverage setting. The primary solution is controlling position size and total exposure.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a trader normally risks a small planned amount but suddenly opens a position many times larger because a high-leverage account allows it, the account has become much more sensitive to ordinary price movement.
+
+This is overexposure even if the platform technically accepts the order.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Overleveraging is fundamentally excessive exposure relative to account capacity and risk controls.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Judge leverage by the exposure it creates, not only by the broker&#x27;s ratio.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-37">
+  <h2><span class="ll-num">37</span>Margin Is Not a Risk Budget</h2>
+
+  <p>An account can have enough free margin to open a new position while still having an unacceptable level of market risk.
+
+Margin answers an operational question: can the broker support the position under its margin rules?
+
+Risk answers a management question: if the trade reaches the invalidation or stop area, how much money could be lost?
+
+These questions must remain separate.
+
+Using all available free margin is not a rational position-sizing method because margin availability does not account for the trader&#x27;s intended risk percentage or the structure of the trade.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Suppose the platform says a trader has enough free margin to open a very large position. That does not mean the position belongs in the trading plan.
+
+The trader still needs to calculate stop distance, pip value, planned risk and total portfolio exposure.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Margin capacity does not answer whether a trade is appropriately sized.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Free margin tells you what may be possible, not what is appropriate.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Free margin does not tell you how much you should risk</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Free margin does not tell you how much you should risk"><rect x="55" y="70" width="370" height="180" rx="22" fill="#172554" stroke="#60a5fa"/><rect x="575" y="70" width="370" height="180" rx="22" fill="#14532d" stroke="#34d399"/><text x="240" y="115" text-anchor="middle" fill="#bfdbfe" font-size="24" font-weight="800" font-family="Arial, sans-serif">FREE MARGIN</text><text x="240" y="155" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">Can the platform support</text><text x="240" y="185" text-anchor="middle" fill="#dbeafe" font-size="18" font-weight="600" font-family="Arial, sans-serif">the position?</text><text x="760" y="115" text-anchor="middle" fill="#a7f3d0" font-size="24" font-weight="800" font-family="Arial, sans-serif">RISK BUDGET</text><text x="760" y="155" text-anchor="middle" fill="#ecfdf5" font-size="18" font-weight="600" font-family="Arial, sans-serif">Should the account take</text><text x="760" y="185" text-anchor="middle" fill="#ecfdf5" font-size="18" font-weight="600" font-family="Arial, sans-serif">this exposure?</text><text x="500" y="160" text-anchor="middle" fill="#facc15" font-size="32" font-weight="900" font-family="Arial, sans-serif">≠</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-38">
+  <h2><span class="ll-num">38</span>Multiple Positions</h2>
+
+  <p>Risk management must consider the whole account, not just one trade at a time.
+
+If a trader opens several positions, each position contributes to total exposure. Even if each trade individually appears small, the combined risk can become significant.
+
+Multiple positions can also share the same underlying currency exposure. This means trades that look different on the chart may respond similarly to a major currency movement.
+
+Therefore, position sizing should include a portfolio-level review before adding another trade.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A trader could hold EUR/USD long and GBP/USD long at the same time. These are different pairs, but both positions contain long exposure to USD weakness in a broad sense.
+
+The exact relationship varies, but the important lesson is that trade labels do not automatically mean independent risk.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Total account exposure matters when several positions are open.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Review total open risk and currency exposure before adding another position.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-39">
+  <h2><span class="ll-num">39</span>Correlation and Currency Exposure</h2>
+
+  <p>Correlation describes the tendency of markets or positions to move in related ways. In Forex, multiple pairs can share currencies and therefore have overlapping drivers.
+
+Correlation is not constant. It can change across timeframes and market regimes.
+
+The practical lesson is not to avoid every correlated trade. It is to recognize that several positions can create a larger combined exposure than their individual risk numbers suggest.
+
+A trader should understand which currencies are represented across open positions.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If several positions all depend on the same broad USD move, a single macro event can affect several trades at once.
+
+The account should therefore be evaluated on aggregate exposure, not just one position at a time.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Shared currency exposure can make apparently separate trades behave similarly.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Map currency exposure before adding a second or third related trade.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-40">
+  <h2><span class="ll-num">40</span>Lot Size and Trading Style</h2>
+
+  <p>Scalping, intraday trading and swing trading often use different stop distances and holding periods. This can lead to different position sizes even when the account-risk budget remains consistent.
+
+A scalper may use a smaller price-distance stop. A swing trader may need a wider structural stop because the trade is designed to withstand larger market fluctuations.
+
+Neither style automatically deserves a larger lot size.
+
+The position size should still come from the relationship between account risk, stop distance and pip value.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    If a swing setup needs a 120-pip stop while an intraday setup needs a 30-pip stop, the swing position may need to be much smaller if the trader wants similar monetary risk.
+
+The difference is caused by stop distance, not by the label “swing” or “intraday.”
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Different styles can require different stop distances, but risk principles remain the same.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Trading style influences stop distance, but risk still controls position size.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-41">
+  <h2><span class="ll-num">41</span>Common Beginner Mistakes</h2>
+
+  <p>Many beginners make the same position-sizing mistakes.
+
+They may choose a lot size because the potential profit looks exciting. They may use the broker&#x27;s maximum leverage. They may keep the same lot size even when stop distance changes. They may confuse used margin with risk. They may ignore spread and commission. Or they may open several correlated positions without considering combined exposure.
+
+These mistakes are dangerous because the strategy itself may appear reasonable while the account-level exposure is not.
+
+A good educational process therefore teaches position sizing before encouraging aggressive leverage.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A trader sees a setup that “looks perfect” and increases the position dramatically. The chart may still move against the trade. A larger position simply makes the same market movement more damaging to the account.
+
+The solution is process, not prediction.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Many beginner errors come from sizing based on profit desire rather than risk.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Never allow confidence in one setup to override the account&#x27;s risk rules.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="section-42">
+  <h2><span class="ll-num">42</span>Complete Position-Sizing Workflow</h2>
+
+  <p>A disciplined workflow connects market analysis with account risk.
+
+First identify the instrument and trade idea. Next identify the level that invalidates the idea and measure the stop distance. Then determine the planned monetary risk. Calculate the position size from the stop and pip value. After that, check spread, commission, slippage, margin requirements and total account exposure.
+
+Only when all of those checks are acceptable should the order be considered ready.
+
+This process prevents leverage and desired profit from becoming the primary drivers of position size.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    The workflow is:
+
+1. Setup and direction.  
+2. Structural invalidation.  
+3. Stop distance.  
+4. Risk budget.  
+5. Pip value.  
+6. Position size.  
+7. Costs.  
+8. Margin.  
+9. Total exposure.  
+10. Final decision.
+
+This sequence is deliberately risk-first.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>A repeatable workflow reduces emotional and inconsistent position sizing.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Use the same workflow repeatedly until it becomes automatic.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<ol class="ll-checklist">
+<li>Identify the currency pair or instrument.</li>
+<li>Identify the trade direction and market setup.</li>
+<li>Define the price level that invalidates the idea.</li>
+<li>Measure the stop distance in the appropriate price unit.</li>
+<li>Choose the planned account-risk budget.</li>
+<li>Determine the relevant pip value or contract-value relationship.</li>
+<li>Calculate the position size.</li>
+<li>Check spread and commission.</li>
+<li>Consider slippage and execution conditions.</li>
+<li>Check required margin and available free margin.</li>
+<li>Review all existing positions and shared currency exposure.</li>
+<li>Only then decide whether the position fits the trading plan.</li>
+</ol>
+<div class="ll-diagram">
+<div class="ll-diagram-title">Position-sizing workflow</div>
+<svg viewBox="0 0 1000 330" role="img" aria-label="Position-sizing workflow"><text x="500" y="38" text-anchor="middle" fill="#bfdbfe" font-size="19" font-weight="800" font-family="Arial, sans-serif">MARKET SETUP</text><rect x="35" y="70" width="145" height="95" rx="16" fill="#172554" stroke="#60a5fa"/><text x="107" y="108" text-anchor="middle" fill="#bfdbfe" font-size="18" font-weight="800" font-family="Arial, sans-serif">SETUP</text><text x="107" y="138" text-anchor="middle" fill="#cbd5e1" font-size="15" font-weight="600" font-family="Arial, sans-serif">&amp; bias</text><line x1="185" y1="117" x2="215" y2="117" stroke="#64748b" stroke-width="4" /><rect x="220" y="70" width="145" height="95" rx="16" fill="#172554" stroke="#60a5fa"/><text x="292" y="108" text-anchor="middle" fill="#bfdbfe" font-size="18" font-weight="800" font-family="Arial, sans-serif">STOP</text><text x="292" y="138" text-anchor="middle" fill="#cbd5e1" font-size="15" font-weight="600" font-family="Arial, sans-serif">distance</text><line x1="370" y1="117" x2="400" y2="117" stroke="#64748b" stroke-width="4" /><rect x="405" y="70" width="145" height="95" rx="16" fill="#164e63" stroke="#22d3ee"/><text x="477" y="108" text-anchor="middle" fill="#a5f3fc" font-size="18" font-weight="800" font-family="Arial, sans-serif">RISK</text><text x="477" y="138" text-anchor="middle" fill="#cbd5e1" font-size="15" font-weight="600" font-family="Arial, sans-serif">budget</text><line x1="555" y1="117" x2="585" y2="117" stroke="#64748b" stroke-width="4" /><rect x="590" y="70" width="145" height="95" rx="16" fill="#14532d" stroke="#34d399"/><text x="662" y="108" text-anchor="middle" fill="#a7f3d0" font-size="18" font-weight="800" font-family="Arial, sans-serif">SIZE</text><text x="662" y="138" text-anchor="middle" fill="#cbd5e1" font-size="15" font-weight="600" font-family="Arial, sans-serif">position</text><line x1="740" y1="117" x2="770" y2="117" stroke="#64748b" stroke-width="4" /><rect x="775" y="70" width="180" height="95" rx="16" fill="#3f2a0a" stroke="#facc15"/><text x="865" y="108" text-anchor="middle" fill="#fef08a" font-size="18" font-weight="800" font-family="Arial, sans-serif">CHECK</text><text x="865" y="138" text-anchor="middle" fill="#fef3c7" font-size="15" font-weight="600" font-family="Arial, sans-serif">cost + margin</text><text x="500" y="220" text-anchor="middle" fill="#dbeafe" font-size="17" font-weight="600" font-family="Arial, sans-serif">Only after these checks should the order be considered ready.</text></svg>
+</div></section>
+
+
+<section class="ll-section" id="section-43">
+  <h2><span class="ll-num">43</span>Pre-Trade Checklist</h2>
+
+  <p>A checklist reduces the chance that a trader forgets a key risk variable.
+
+The checklist should not replace analysis. It should protect the analysis from poor execution and oversized exposure.
+
+Before opening a position, confirm the instrument, quantity, stop distance, risk budget, pip value, expected costs, margin requirement, free margin and total portfolio exposure.
+
+If any critical value is unknown, pause and verify it rather than guessing.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    A practical checklist can be used on paper or inside the Strativo Academy learning system. The goal is consistency.
+
+A good checklist is short enough to use but complete enough to catch major sizing errors.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>A checklist protects the trading process from preventable sizing mistakes.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Do the checklist before the order, not after the loss.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;"><table class="ll-table">
+<thead><tr><th>Check</th><th>Question</th></tr></thead>
+<tbody>
+<tr><td>Instrument</td><td>Am I using the correct contract specification?</td></tr>
+<tr><td>Position size</td><td>What quantity am I actually controlling?</td></tr>
+<tr><td>Stop</td><td>Where is the trade idea invalidated?</td></tr>
+<tr><td>Risk</td><td>What is my planned monetary risk?</td></tr>
+<tr><td>Costs</td><td>What spread, commission and execution costs apply?</td></tr>
+<tr><td>Margin</td><td>Can the account support the position without excessive leverage stress?</td></tr>
+<tr><td>Total exposure</td><td>What happens if other positions move at the same time?</td></tr>
+</tbody>
+</table></div>
+</section>
+
+
+<section class="ll-section" id="section-44">
+  <h2><span class="ll-num">44</span>Final Summary: Lots, Leverage and Risk</h2>
+
+  <p>Lots describe position quantity. Units describe the quantity directly. Pip value connects price movement to money. Stop distance describes how far price can move against the trade idea before invalidation. Risk budget describes how much account exposure the trader is willing to plan for.
+
+Leverage changes how much notional exposure can be controlled relative to margin. Margin supports the leveraged position. Free margin and margin level describe account capacity and stress. None of these concepts should be confused with the actual planned monetary risk.
+
+The central idea is simple: **position size should be derived from risk and market structure, not from maximum available leverage or desired profit.**
+
+Once this framework is understood, later lessons about risk management, price action and trade planning become much easier.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    The entire lesson can be reduced to one chain:
+
+**Market setup → invalidation → stop distance → risk budget → position size → cost check → margin check → total exposure → execution.**
+
+If the position is too large, reduce it. If the stop is too wide, do not automatically move it closer; reconsider the setup or size the position appropriately.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>The core framework connects market structure, stop distance, risk budget, position size and leverage.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Control exposure first. Profit is never guaranteed.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+
+<div class="ll-example ll-good">
+<strong>The central Strativo Academy learning chain:</strong><br>
+Market analysis → invalidation → stop distance → risk budget → position size →
+cost check → margin check → total exposure → execution.
+</div>
+</section>
+
+
+<section class="ll-section" id="section-45">
+  <h2><span class="ll-num">45</span>Educational Disclaimer</h2>
+
+  <p>This lesson is educational material for Strativo Academy. It explains common Forex terminology, position-sizing concepts and risk-management relationships.
+
+It is not financial advice, a personalized trading recommendation or a guarantee of profit. Forex and leveraged products can result in losses, including losses that may be significant relative to the capital committed.
+
+Actual contract sizes, lot definitions, margin requirements, leverage limits, pip values, commission structures, spreads, execution rules and stop-out procedures can vary by broker, instrument, jurisdiction and account type.</p>
+
+  <div class="ll-example">
+    <strong>Core Example / Key Idea:</strong><br>
+    Before applying any calculation to a live account, verify the actual instrument specification and broker rules.
+
+Educational examples intentionally simplify some real-world details. They should be used to understand the relationship between variables, not as a promise of a particular trading result.
+  </div>
+
+  <h3>Why This Matters</h3>
+  <p>Exact live-trading conditions vary and must be verified with the relevant broker and instrument.</p>
+
+  <h3>How to Think About It</h3>
+  <p>Always verify live-trading specifications with the relevant broker/platform and use appropriate risk controls.</p>
+
+  <h3>Important Beginner Distinction</h3>
+  <p>
+    Do not mix <strong>position quantity</strong>, <strong>price distance</strong>,
+    <strong>monetary value</strong> and <strong>margin capacity</strong>.
+    These concepts interact, but they answer different questions. A good trader
+    learns to identify which variable is being discussed before doing any calculation.
+  </p>
+
+  <h3>Practical Application</h3>
+  <p>
+    When you study a Forex setup, write down the instrument, planned entry,
+    invalidation level, stop distance, position size, pip value and intended
+    account-risk budget separately. This makes it much harder to accidentally
+    increase exposure simply because a trade looks attractive.
+  </p>
+
+  <div class="ll-note">
+    <strong>Study habit:</strong> Do not memorize a single “correct lot size.”
+    The correct educational process is to calculate position size from the actual
+    setup, stop distance, account risk and instrument specifications.
+  </div>
+</section>
+
+
+<section class="ll-section" id="reference-table">
+<h2><span class="ll-num">46</span>Lot Size Quick Reference</h2>
+<p>
+This table is a revision aid for the common traditional-Forex convention. It is
+not a substitute for the actual instrument specification. Some brokers and
+non-Forex instruments use different contract sizes.
+</p>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;"><table class="ll-table">
+<thead><tr><th>Volume</th><th>Common educational interpretation</th><th>Scale vs 1.00 lot</th></tr></thead>
+<tbody>
+<tr><td>1.00</td><td>100,000 units</td><td>100%</td></tr>
+<tr><td>0.50</td><td>50,000 units</td><td>50%</td></tr>
+<tr><td>0.20</td><td>20,000 units</td><td>20%</td></tr>
+<tr><td>0.10</td><td>10,000 units</td><td>10%</td></tr>
+<tr><td>0.05</td><td>5,000 units</td><td>5%</td></tr>
+<tr><td>0.02</td><td>2,000 units</td><td>2%</td></tr>
+<tr><td>0.01</td><td>1,000 units</td><td>1%</td></tr>
+</tbody>
+</table></div>
+<div class="ll-example ll-warning">
+<strong>Important:</strong> This is a conventional learning table. Always check the
+broker's current contract size, minimum volume and volume step before placing a live order.
+</div>
+</section>
+
+<section class="ll-section" id="worked-examples">
+<h2><span class="ll-num">47</span>Complete Position-Sizing Thought Process</h2>
+<h3>Example A — Narrower Stop</h3>
+<p>
+Imagine a trader identifies a setup where the structural invalidation is relatively
+close to the planned entry. The trader has already chosen a fixed monetary risk budget.
+The correct next step is not to choose the largest possible lot. The correct next step
+is to calculate the position size that makes the stop compatible with the risk budget.
+</p>
+<p>
+If the stop distance is smaller, the same risk budget can support greater pip exposure.
+That does not make the setup automatically superior. A very tight stop can also be
+more vulnerable to ordinary market noise. Stop placement still comes from the trade idea.
+</p>
+
+<h3>Example B — Wider Structural Stop</h3>
+<p>
+Now imagine another setup where the structural invalidation is much farther away.
+The trader keeps the same monetary risk budget. Because the market distance to the
+stop is larger, the position size generally needs to be smaller.
+</p>
+<p>
+This is a very important lesson: <strong>different lot sizes do not necessarily mean
+different risk percentages.</strong> Two trades can have different volumes while being
+designed around a similar monetary risk budget.
+</p>
+
+<h3>Example C — The Wrong Approach</h3>
+<p>
+A beginner sees a setup and decides that 0.50 lots “looks good.” They then move the
+stop closer because the original structural stop would make the monetary loss too large.
+This reverses the correct process.
+</p>
+<p>
+The market structure should determine the invalidation. If that stop produces too much
+risk at the desired position size, the trader should reduce position size or skip the
+trade—not distort the analysis simply to justify a larger lot.
+</p>
+
+<h3>Example D — The Correct Sequence</h3>
+<p>
+Start with the market. Identify the setup. Determine the invalidation. Measure the stop.
+Choose the account-risk budget. Determine pip value. Calculate the position size. Check
+costs and margin. Review total exposure. Then make the execution decision.
+</p>
+
+<div class="ll-example ll-good">
+<strong>Remember:</strong> A position-sizing calculation is not designed to make every
+trade possible. Sometimes the correct result is that the position is too large for the
+account or that the trade should be skipped.
+</div>
+</section>
+
+<section class="ll-section" id="mistakes">
+<h2><span class="ll-num">48</span>Major Mistakes to Avoid</h2>
+<ul class="ll-list">
+<li>Choosing lot size from desired profit instead of planned risk.</li>
+<li>Using maximum available leverage simply because the broker offers it.</li>
+<li>Confusing used margin with the amount that can be lost.</li>
+<li>Keeping the same lot size when stop distance changes substantially.</li>
+<li>Moving a logical stop closer solely to justify a larger position.</li>
+<li>Ignoring spread when trading very small targets.</li>
+<li>Ignoring commission when the account charges it separately.</li>
+<li>Ignoring slippage during fast or low-liquidity conditions.</li>
+<li>Opening several positions without reviewing combined currency exposure.</li>
+<li>Assuming a pip value is identical across every pair and account currency.</li>
+<li>Assuming every broker uses identical contract and margin specifications.</li>
+<li>Increasing position size after a loss in an attempt to recover immediately.</li>
+<li>Using free margin as if it were a risk budget.</li>
+<li>Believing that high leverage itself creates a trading advantage.</li>
+</ul>
+</section>
+
+<section class="ll-section" id="final-checklist">
+<h2><span class="ll-num">49</span>Complete Lots &amp; Leverage Checklist</h2>
+<ul class="ll-checklist">
+<li>I know what instrument I am trading.</li>
+<li>I know the actual contract or unit specification.</li>
+<li>I know what the platform's volume field represents.</li>
+<li>I know the planned entry and invalidation level.</li>
+<li>I measured the stop distance correctly.</li>
+<li>I chose the account-risk budget before choosing volume.</li>
+<li>I understand the relevant pip-value relationship.</li>
+<li>I calculated position size from the risk budget.</li>
+<li>I checked spread and commission.</li>
+<li>I considered possible slippage and execution conditions.</li>
+<li>I checked required margin and available free margin.</li>
+<li>I understand that margin is not the same as risk.</li>
+<li>I am not using maximum leverage simply because it is available.</li>
+<li>I reviewed existing positions and correlated currency exposure.</li>
+<li>The total exposure still fits my trading plan.</li>
+<li>I am not changing the stop just to increase lot size.</li>
+<li>I understand that the calculation does not guarantee a result.</li>
+</ul>
+</section>
+
+<section class="ll-section" id="final-summary">
+<h2><span class="ll-num">50</span>Final Summary</h2>
+<p>
+Lots describe position quantity. Units describe the quantity directly. Pip value
+connects price movement to money. Stop distance describes how far price can move
+against the position before the original trade idea is considered invalid. Risk
+percentage creates a monetary budget for the trade.
+</p>
+<p>
+Leverage changes the relationship between notional exposure and required margin.
+Margin supports the position. Free margin describes remaining margin capacity.
+Margin level can indicate the health of leveraged exposure. None of these concepts
+should be treated as a substitute for a proper risk calculation.
+</p>
+<p>
+The most important principle in this entire lesson is that <strong>position size should
+be derived from the market-defined stop and the account's risk budget</strong>.
+Leverage should not be used as a reason to increase position size, and free margin
+should not be interpreted as permission to take more risk.
+</p>
+<div class="ll-example ll-good">
+<strong>Core rule to remember:</strong><br>
+Market setup → invalidation → stop distance → risk budget → position size →
+cost check → margin check → total exposure → execution.
+</div>
+</section>
+
+<section class="ll-section" id="disclaimer">
+<h2><span class="ll-num">51</span>Educational Disclaimer</h2>
+<p>
+These notes are educational material created for Strativo Academy. They are intended
+to explain common Forex terminology, calculations and risk-management concepts.
+They are not financial advice, personalized investment advice, a recommendation to
+trade, or a guarantee of profit.
+</p>
+<p>
+Forex and leveraged products involve substantial risk. Actual contract sizes, pip
+values, margin requirements, leverage limits, commissions, spreads, execution rules,
+liquidation procedures and other conditions can vary by broker, instrument,
+jurisdiction and account type.
+</p>
+<p>
+Always verify the current specifications of the actual instrument and broker/platform
+before applying a calculation to a live account. Educational examples in this note
+simplify some real-world details so that the underlying relationship between variables
+can be understood clearly.
+</p>
+</section>
+
+<nav class="ll-nav" aria-label="Lesson navigation">
+  <a href="pips-and-points.html">
+    <small>← Previous Note</small>
+    <strong>Pips &amp; Points</strong>
+  </a>
+  <a href="notes.html" class="center">
+    <small>Module 1</small>
+    <strong>Notes Home</strong>
+  </a>
+  <a href="bid-ask-spreads.html" class="right">
+    <small>Next Note →</small>
+    <strong>Bid &amp; Ask &amp; Spreads</strong>
+  </a>
+</nav>
+
+</main>
+
+<div data-component="footer"></div>
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+</body>
+</html>

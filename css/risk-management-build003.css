@@ -1,0 +1,1210 @@
+/* =========================================================
+   STRATIVO ACADEMY
+   RISK MANAGEMENT LAB
+   BUILD 003 — RISK-TO-REWARD RATIO
+========================================================= */
+
+
+/* =========================================================
+   BUILD 003 VARIABLES
+========================================================= */
+
+.rm3-page {
+
+    --rm3-green: #34d399;
+    --rm3-green-light: #6ee7b7;
+    --rm3-blue: #60a5fa;
+    --rm3-blue-light: #bfdbfe;
+    --rm3-red: #f87171;
+    --rm3-red-light: #fca5a5;
+    --rm3-yellow: #fcd34d;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.rm3-hero {
+    position: relative;
+}
+
+
+/* =========================================================
+   FORMULA CARD
+========================================================= */
+
+.rm3-formula-card {
+
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.12);
+
+    border-radius: 15px;
+
+    background:
+        rgba(16, 185, 129, 0.035);
+
+}
+
+
+.rm3-formula-card span {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+}
+
+
+.rm3-formula-card strong {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--rm3-green-light);
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+
+}
+
+
+.rm3-formula-card p {
+
+    margin-top: 8px;
+
+    color: #94a3b8;
+
+    font-size: 0.56rem;
+
+    line-height: 1.65;
+
+}
+
+
+/* =========================================================
+   EXAMPLE GRID
+========================================================= */
+
+.rm3-example-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 16px;
+
+}
+
+
+.rm3-example-card {
+
+    padding: 16px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.08);
+
+    border-radius: 13px;
+
+    background:
+        rgba(15, 23, 42, 0.38);
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        background 0.2s ease;
+
+}
+
+
+.rm3-example-card:hover {
+
+    border-color:
+        rgba(96, 165, 250, 0.16);
+
+    background:
+        rgba(15, 23, 42, 0.52);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.rm3-example-card span {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.06em;
+
+}
+
+
+.rm3-example-card strong {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: #e2e8f0;
+
+    font-size: 0.68rem;
+
+    line-height: 1.5;
+
+}
+
+
+.rm3-example-card p {
+
+    margin-top: 6px;
+
+    color: #94a3b8;
+
+    font-size: 0.55rem;
+
+    line-height: 1.55;
+
+}
+
+
+/* =========================================================
+   CALCULATOR
+========================================================= */
+
+.rm3-calculator {
+
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.10);
+
+    border-radius: 17px;
+
+    background:
+        rgba(2, 6, 23, 0.34);
+
+}
+
+
+.rm3-input-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.rm3-input-grid label {
+
+    display: block;
+
+}
+
+
+.rm3-input-grid label span {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+}
+
+
+.rm3-input-grid input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    min-height: 44px;
+
+    margin-top: 7px;
+
+    padding: 0 12px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.10);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    color: #f8fafc;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+
+    font: inherit;
+
+    font-size: 0.65rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.rm3-input-grid input:focus {
+
+    border-color:
+        rgba(96, 165, 250, 0.35);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(96, 165, 250, 0.06);
+
+}
+
+
+.rm3-input-grid input:read-only {
+
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+}
+
+
+/* =========================================================
+   CALCULATOR RESULTS
+========================================================= */
+
+.rm3-result-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 14px;
+
+}
+
+
+.rm3-result {
+
+    margin-top: 12px;
+
+    padding: 15px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.10);
+
+    border-radius: 11px;
+
+    background:
+        rgba(16, 185, 129, 0.025);
+
+}
+
+
+.rm3-result-grid .rm3-result {
+
+    margin-top: 0;
+
+}
+
+
+.rm3-result span {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.06em;
+
+}
+
+
+.rm3-result strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--rm3-green-light);
+
+    font-size: 0.95rem;
+
+}
+
+
+.rm3-live-formula {
+
+    margin-top: 12px;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    color: var(--rm3-blue-light);
+
+    background:
+        rgba(59, 130, 246, 0.045);
+
+    font-size: 0.58rem;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.rm3-progress {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+}
+
+
+.rm3-progress > span {
+
+    flex: 0 0 auto;
+
+    min-width: 78px;
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    text-align: right;
+
+}
+
+
+.rm3-progress > div {
+
+    position: relative;
+
+    flex: 1;
+
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(148, 163, 184, 0.08);
+
+}
+
+
+.rm3-progress i {
+
+    display: block;
+
+    width: 20%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        var(--rm3-green);
+
+    transition:
+        width 0.25s ease;
+
+}
+
+
+/* =========================================================
+   QUESTION CARD
+========================================================= */
+
+.rm3-question {
+
+    margin-top: 14px;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.10);
+
+    border-radius: 16px;
+
+    background:
+        rgba(2, 6, 23, 0.38);
+
+}
+
+
+.rm3-question-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.rm3-question-meta span {
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.06em;
+
+}
+
+
+.rm3-question h3 {
+
+    color: #e2e8f0;
+
+    font-size: 0.82rem;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   QUESTION DATA
+========================================================= */
+
+.rm3-data-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-top: 16px;
+
+}
+
+
+.rm3-data-grid > div {
+
+    padding: 13px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.08);
+
+    border-radius: 10px;
+
+    background:
+        rgba(15, 23, 42, 0.36);
+
+}
+
+
+.rm3-data-grid span {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 0.47rem;
+
+    font-weight: 800;
+
+}
+
+
+.rm3-data-grid strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #e2e8f0;
+
+    font-size: 0.7rem;
+
+}
+
+
+/* =========================================================
+   ANSWER INPUT
+========================================================= */
+
+.rm3-answer {
+
+    display: block;
+
+    margin-top: 15px;
+
+}
+
+
+.rm3-answer > span {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.06em;
+
+}
+
+
+.rm3-answer input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    min-height: 44px;
+
+    margin-top: 7px;
+
+    padding: 0 12px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.10);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    color: #f8fafc;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+
+    font: inherit;
+
+    font-size: 0.65rem;
+
+}
+
+
+.rm3-answer input:focus {
+
+    border-color:
+        rgba(96, 165, 250, 0.35);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(96, 165, 250, 0.06);
+
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.rm3-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 40px;
+
+    margin-top: 13px;
+
+    padding: 0 17px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.15);
+
+    border-radius: 9px;
+
+    color: var(--rm3-blue-light);
+
+    background:
+        rgba(59, 130, 246, 0.06);
+
+    font: inherit;
+
+    font-size: 0.56rem;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.rm3-button:hover {
+
+    border-color:
+        rgba(96, 165, 250, 0.28);
+
+    background:
+        rgba(59, 130, 246, 0.10);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.rm3-button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+.rm3-button.retry {
+
+    border-color:
+        rgba(245, 158, 11, 0.16);
+
+    color: var(--rm3-yellow);
+
+    background:
+        rgba(245, 158, 11, 0.05);
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.rm3-feedback {
+
+    margin-top: 13px;
+
+    padding: 13px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.13);
+
+    border-radius: 10px;
+
+    background:
+        rgba(16, 185, 129, 0.03);
+
+}
+
+
+.rm3-feedback.incorrect {
+
+    border-color:
+        rgba(248, 113, 113, 0.14);
+
+    background:
+        rgba(248, 113, 113, 0.03);
+
+}
+
+
+.rm3-feedback b {
+
+    color: var(--rm3-green-light);
+
+    font-size: 0.61rem;
+
+}
+
+
+.rm3-feedback.incorrect b {
+
+    color: var(--rm3-red-light);
+
+}
+
+
+.rm3-feedback p {
+
+    margin-top: 5px;
+
+    color: #94a3b8;
+
+    font-size: 0.55rem;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   CHECKPOINT OPTIONS
+========================================================= */
+
+.rm3-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-top: 16px;
+
+}
+
+
+.rm3-option {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    width: 100%;
+
+    min-height: 58px;
+
+    padding: 13px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.09);
+
+    border-radius: 10px;
+
+    color: #cbd5e1;
+
+    background:
+        rgba(15, 23, 42, 0.45);
+
+    text-align: left;
+
+    font: inherit;
+
+    font-size: 0.56rem;
+
+    line-height: 1.55;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.rm3-option:hover:not(:disabled) {
+
+    border-color:
+        rgba(96, 165, 250, 0.20);
+
+    background:
+        rgba(59, 130, 246, 0.045);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.rm3-option > span {
+
+    display: grid;
+
+    flex: 0 0 27px;
+
+    width: 27px;
+
+    height: 27px;
+
+    place-items: center;
+
+    border-radius: 7px;
+
+    color: #64748b;
+
+    background:
+        rgba(148, 163, 184, 0.07);
+
+    font-size: 0.5rem;
+
+    font-weight: 900;
+
+}
+
+
+.rm3-option b {
+
+    padding-top: 4px;
+
+    color: inherit;
+
+    font-weight: 600;
+
+}
+
+
+.rm3-option.correct {
+
+    border-color:
+        rgba(52, 211, 153, 0.28);
+
+    background:
+        rgba(16, 185, 129, 0.05);
+
+}
+
+
+.rm3-option.correct > span {
+
+    color: #6ee7b7;
+
+    background:
+        rgba(52, 211, 153, 0.10);
+
+}
+
+
+.rm3-option.incorrect {
+
+    border-color:
+        rgba(248, 113, 113, 0.25);
+
+    background:
+        rgba(248, 113, 113, 0.04);
+
+}
+
+
+.rm3-option.incorrect > span {
+
+    color: #fca5a5;
+
+    background:
+        rgba(248, 113, 113, 0.08);
+
+}
+
+
+/* =========================================================
+   COMPLETE CARD
+========================================================= */
+
+.rm3-complete {
+
+    margin-top: 14px;
+
+    padding: 18px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.14);
+
+    border-radius: 14px;
+
+    background:
+        rgba(16, 185, 129, 0.03);
+
+}
+
+
+.rm3-complete strong {
+
+    display: block;
+
+    color: var(--rm3-green-light);
+
+    font-size: 0.9rem;
+
+}
+
+
+.rm3-complete p {
+
+    margin-top: 6px;
+
+    color: #94a3b8;
+
+    font-size: 0.56rem;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   BUILD NAVIGATION
+========================================================= */
+
+.risk-bottom-navigation {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 14px;
+
+    margin-top: 30px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        rgba(148, 163, 184, 0.08);
+
+    flex-wrap: wrap;
+
+}
+
+
+.risk-bottom-back,
+.risk-bottom-next,
+.risk-bottom-home {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.12);
+
+    border-radius: 9px;
+
+    color: #94a3b8;
+
+    background:
+        rgba(15, 23, 42, 0.35);
+
+    text-decoration: none;
+
+    font-size: 0.55rem;
+
+    font-weight: 800;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.risk-bottom-back:hover,
+.risk-bottom-next:hover,
+.risk-bottom-home:hover {
+
+    color: #e2e8f0;
+
+    border-color:
+        rgba(96, 165, 250, 0.25);
+
+    background:
+        rgba(59, 130, 246, 0.05);
+
+}
+
+
+.risk-bottom-next {
+
+    color: var(--rm3-blue-light);
+
+    border-color:
+        rgba(52, 211, 153, 0.14);
+
+}
+
+
+.risk-bottom-next:hover {
+
+    border-color:
+        rgba(52, 211, 153, 0.28);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .rm3-example-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm3-input-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm3-result-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm3-options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm3-data-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm3-question-meta {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .risk-bottom-navigation {
+
+        flex-direction: column;
+
+    }
+
+
+    .risk-bottom-back,
+    .risk-bottom-next,
+    .risk-bottom-home {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .rm3-calculator,
+    .rm3-question {
+
+        padding: 15px;
+
+    }
+
+
+    .rm3-formula-card {
+
+        padding: 15px;
+
+    }
+
+
+    .rm3-example-card {
+
+        padding: 14px;
+
+    }
+
+}

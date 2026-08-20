@@ -1,0 +1,1208 @@
+/* =========================================================
+   STRATIVO ACADEMY
+   RISK MANAGEMENT LAB
+   BUILD 010
+   FINAL RISK MANAGEMENT ASSESSMENT
+========================================================= */
+
+.rm10-page {
+
+    --rm10-green: #34d399;
+    --rm10-green-light: #6ee7b7;
+    --rm10-blue: #60a5fa;
+    --rm10-blue-light: #bfdbfe;
+    --rm10-red: #f87171;
+    --rm10-red-light: #fca5a5;
+    --rm10-yellow: #fcd34d;
+
+}
+
+
+/* =========================================================
+   REVIEW GRID
+========================================================= */
+
+.rm10-review-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+}
+
+
+.rm10-review-card {
+
+    padding: 17px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.08);
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.38);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.rm10-review-card:hover {
+
+    border-color:
+        rgba(96, 165, 250, 0.20);
+
+    background:
+        rgba(15, 23, 42, 0.52);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.rm10-review-card span {
+
+    display: grid;
+
+    width: 27px;
+
+    height: 27px;
+
+    place-items: center;
+
+    border-radius: 7px;
+
+    color: var(--rm10-blue-light);
+
+    background:
+        rgba(59, 130, 246, 0.08);
+
+    font-size: 0.48rem;
+
+    font-weight: 900;
+
+}
+
+
+.rm10-review-card strong {
+
+    display: block;
+
+    margin-top: 11px;
+
+    color: #e2e8f0;
+
+    font-size: 0.67rem;
+
+    line-height: 1.45;
+
+}
+
+
+.rm10-review-card p {
+
+    margin-top: 7px;
+
+    color: #94a3b8;
+
+    font-size: 0.55rem;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   CORE RULES
+========================================================= */
+
+.rm10-rules-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+}
+
+
+.rm10-rule-card {
+
+    display: grid;
+
+    grid-template-columns: 38px 1fr;
+
+    column-gap: 12px;
+
+    padding: 17px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.10);
+
+    border-radius: 14px;
+
+    background:
+        rgba(16, 185, 129, 0.025);
+
+}
+
+
+.rm10-rule-card > div {
+
+    display: grid;
+
+    width: 35px;
+
+    height: 35px;
+
+    place-items: center;
+
+    border-radius: 9px;
+
+    color: var(--rm10-green-light);
+
+    background:
+        rgba(52, 211, 153, 0.07);
+
+    font-size: 0.5rem;
+
+    font-weight: 900;
+
+}
+
+
+.rm10-rule-card strong {
+
+    align-self: center;
+
+    color: #e2e8f0;
+
+    font-size: 0.65rem;
+
+    line-height: 1.45;
+
+}
+
+
+.rm10-rule-card p {
+
+    grid-column: 2;
+
+    margin-top: 7px;
+
+    color: #94a3b8;
+
+    font-size: 0.55rem;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   WARNING
+========================================================= */
+
+.rm10-warning {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 16px;
+
+    padding: 14px;
+
+    border:
+        1px solid
+        rgba(245, 158, 11, 0.13);
+
+    border-radius: 11px;
+
+    background:
+        rgba(245, 158, 11, 0.035);
+
+}
+
+
+.rm10-warning > div {
+
+    flex: 0 0 auto;
+
+    font-size: 0.8rem;
+
+}
+
+
+.rm10-warning p {
+
+    color: #94a3b8;
+
+    font-size: 0.55rem;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   ASSESSMENT HEADER
+========================================================= */
+
+.rm10-assessment-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+
+.rm10-assessment-header span {
+
+    color: #64748b;
+
+    font-size: 0.5rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.07em;
+
+}
+
+
+.rm10-assessment-header strong {
+
+    color: var(--rm10-green-light);
+
+    font-size: 0.55rem;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   ASSESSMENT PROGRESS
+========================================================= */
+
+.rm10-progress {
+
+    width: 100%;
+
+    height: 5px;
+
+    margin-top: 10px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(148, 163, 184, 0.08);
+
+}
+
+
+.rm10-progress i {
+
+    display: block;
+
+    width: 10%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        var(--rm10-green);
+
+    transition:
+        width 0.25s ease;
+
+}
+
+
+/* =========================================================
+   QUESTION CARD
+========================================================= */
+
+.rm10-question-card {
+
+    margin-top: 15px;
+
+    padding: 21px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.11);
+
+    border-radius: 17px;
+
+    background:
+        rgba(2, 6, 23, 0.38);
+
+}
+
+
+.rm10-question-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+}
+
+
+.rm10-question-meta span {
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.07em;
+
+}
+
+
+.rm10-question-meta span:last-child {
+
+    display: grid;
+
+    width: 28px;
+
+    height: 28px;
+
+    place-items: center;
+
+    border-radius: 7px;
+
+    color: var(--rm10-blue-light);
+
+    background:
+        rgba(59, 130, 246, 0.08);
+
+}
+
+
+.rm10-question-card h3 {
+
+    margin-top: 15px;
+
+    color: #e2e8f0;
+
+    font-size: 0.84rem;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+.rm10-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-top: 17px;
+
+}
+
+
+.rm10-option {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    width: 100%;
+
+    min-height: 62px;
+
+    padding: 13px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.09);
+
+    border-radius: 10px;
+
+    color: #cbd5e1;
+
+    background:
+        rgba(15, 23, 42, 0.45);
+
+    text-align: left;
+
+    font: inherit;
+
+    font-size: 0.57rem;
+
+    line-height: 1.55;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.rm10-option:hover:not(:disabled) {
+
+    border-color:
+        rgba(96, 165, 250, 0.22);
+
+    background:
+        rgba(59, 130, 246, 0.045);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.rm10-option > span {
+
+    display: grid;
+
+    flex: 0 0 28px;
+
+    width: 28px;
+
+    height: 28px;
+
+    place-items: center;
+
+    border-radius: 7px;
+
+    color: #64748b;
+
+    background:
+        rgba(148, 163, 184, 0.07);
+
+    font-size: 0.5rem;
+
+    font-weight: 900;
+
+}
+
+
+.rm10-option b {
+
+    padding-top: 4px;
+
+    color: inherit;
+
+    font-weight: 600;
+
+}
+
+
+.rm10-option.correct {
+
+    border-color:
+        rgba(52, 211, 153, 0.30);
+
+    background:
+        rgba(16, 185, 129, 0.055);
+
+}
+
+
+.rm10-option.correct > span {
+
+    color: var(--rm10-green-light);
+
+    background:
+        rgba(52, 211, 153, 0.10);
+
+}
+
+
+.rm10-option.incorrect {
+
+    border-color:
+        rgba(248, 113, 113, 0.28);
+
+    background:
+        rgba(248, 113, 113, 0.045);
+
+}
+
+
+.rm10-option.incorrect > span {
+
+    color: var(--rm10-red-light);
+
+    background:
+        rgba(248, 113, 113, 0.08);
+
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.rm10-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 41px;
+
+    margin-top: 14px;
+
+    padding: 0 17px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.16);
+
+    border-radius: 9px;
+
+    color: var(--rm10-blue-light);
+
+    background:
+        rgba(59, 130, 246, 0.06);
+
+    font: inherit;
+
+    font-size: 0.56rem;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.rm10-button:hover {
+
+    border-color:
+        rgba(96, 165, 250, 0.30);
+
+    background:
+        rgba(59, 130, 246, 0.10);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.rm10-button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+.rm10-link-button {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.rm10-feedback {
+
+    margin-top: 14px;
+
+    padding: 14px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.14);
+
+    border-radius: 10px;
+
+    background:
+        rgba(16, 185, 129, 0.03);
+
+}
+
+
+.rm10-feedback.incorrect {
+
+    border-color:
+        rgba(248, 113, 113, 0.15);
+
+    background:
+        rgba(248, 113, 113, 0.03);
+
+}
+
+
+.rm10-feedback strong {
+
+    color: var(--rm10-green-light);
+
+    font-size: 0.62rem;
+
+}
+
+
+.rm10-feedback.incorrect strong {
+
+    color: var(--rm10-red-light);
+
+}
+
+
+.rm10-feedback p {
+
+    margin-top: 5px;
+
+    color: #94a3b8;
+
+    font-size: 0.55rem;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   FINAL RESULT
+========================================================= */
+
+.rm10-result-card {
+
+    margin-top: 18px;
+
+    padding: 28px 20px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.16);
+
+    border-radius: 17px;
+
+    background:
+        rgba(16, 185, 129, 0.035);
+
+    text-align: center;
+
+}
+
+
+.rm10-result-icon {
+
+    font-size: 2rem;
+
+}
+
+
+.rm10-result-card > span {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #64748b;
+
+    font-size: 0.48rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.09em;
+
+}
+
+
+.rm10-result-card h3 {
+
+    margin-top: 7px;
+
+    color: #e2e8f0;
+
+    font-size: 0.95rem;
+
+}
+
+
+.rm10-result-card > strong {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: var(--rm10-green-light);
+
+    font-size: 1.5rem;
+
+}
+
+
+.rm10-result-card > p {
+
+    max-width: 550px;
+
+    margin: 9px auto 0;
+
+    color: #94a3b8;
+
+    font-size: 0.57rem;
+
+    line-height: 1.65;
+
+}
+
+
+.rm10-result-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+
+}
+
+
+.rm10-result-actions .rm10-button {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================================
+   COMPLETION CARD
+========================================================= */
+
+.rm10-completion-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.13);
+
+    border-radius: 15px;
+
+    background:
+        rgba(16, 185, 129, 0.03);
+
+}
+
+
+.rm10-completion-icon {
+
+    display: grid;
+
+    flex: 0 0 50px;
+
+    width: 50px;
+
+    height: 50px;
+
+    place-items: center;
+
+    border-radius: 13px;
+
+    background:
+        rgba(52, 211, 153, 0.07);
+
+    font-size: 1.35rem;
+
+}
+
+
+.rm10-completion-card h3 {
+
+    color: #e2e8f0;
+
+    font-size: 0.75rem;
+
+}
+
+
+.rm10-completion-card p {
+
+    margin-top: 6px;
+
+    color: #94a3b8;
+
+    font-size: 0.55rem;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   BUILD LIST
+========================================================= */
+
+.rm10-build-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+
+    margin-top: 16px;
+
+}
+
+
+.rm10-build-list > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 13px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.07);
+
+    border-radius: 9px;
+
+    color: #94a3b8;
+
+    background:
+        rgba(15, 23, 42, 0.30);
+
+    font-size: 0.53rem;
+
+}
+
+
+.rm10-build-list span {
+
+    display: grid;
+
+    flex: 0 0 29px;
+
+    width: 29px;
+
+    height: 29px;
+
+    place-items: center;
+
+    border-radius: 7px;
+
+    color: #64748b;
+
+    background:
+        rgba(148, 163, 184, 0.06);
+
+    font-size: 0.46rem;
+
+    font-weight: 900;
+
+}
+
+
+.rm10-build-list .completed {
+
+    border-color:
+        rgba(52, 211, 153, 0.17);
+
+    color: var(--rm10-green-light);
+
+    background:
+        rgba(16, 185, 129, 0.035);
+
+}
+
+
+.rm10-build-list .completed span {
+
+    color: var(--rm10-green-light);
+
+    background:
+        rgba(52, 211, 153, 0.09);
+
+}
+
+
+/* =========================================================
+   BUILD NAVIGATION
+========================================================= */
+
+.risk-bottom-navigation {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 14px;
+
+    margin-top: 30px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        rgba(148, 163, 184, 0.08);
+
+    flex-wrap: wrap;
+
+}
+
+
+.risk-bottom-back,
+.risk-bottom-next,
+.risk-bottom-home {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 40px;
+
+    padding: 0 15px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.12);
+
+    border-radius: 9px;
+
+    color: #94a3b8;
+
+    background:
+        rgba(15, 23, 42, 0.35);
+
+    text-decoration: none;
+
+    font-size: 0.55rem;
+
+    font-weight: 800;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.risk-bottom-back:hover,
+.risk-bottom-next:hover,
+.risk-bottom-home:hover {
+
+    color: #e2e8f0;
+
+    border-color:
+        rgba(96, 165, 250, 0.25);
+
+    background:
+        rgba(59, 130, 246, 0.05);
+
+}
+
+
+.risk-bottom-next {
+
+    color: var(--rm10-green-light);
+
+    border-color:
+        rgba(52, 211, 153, 0.15);
+
+}
+
+
+.risk-bottom-next:hover {
+
+    border-color:
+        rgba(52, 211, 153, 0.28);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .rm10-review-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm10-rules-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm10-options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm10-build-list {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .rm10-completion-card {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .risk-bottom-navigation {
+
+        flex-direction: column;
+
+    }
+
+
+    .risk-bottom-back,
+    .risk-bottom-next,
+    .risk-bottom-home {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .rm10-question-card {
+
+        padding: 15px;
+
+    }
+
+
+    .rm10-result-card {
+
+        padding: 22px 15px;
+
+    }
+
+
+    .rm10-review-card,
+    .rm10-rule-card {
+
+        padding: 14px;
+
+    }
+
+
+    .rm10-assessment-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 6px;
+
+    }
+
+}

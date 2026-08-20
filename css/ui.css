@@ -1,0 +1,452 @@
+/* ==========================================================================
+   STRATIVO UI KIT v0.1 - CORE UTILITY COMPONENTS
+========================================================================== */
+
+/* =========================================
+   BUTTON SYSTEM
+========================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+/* Primary Action Button */
+.btn-primary {
+    background: #00E5A8;
+    color: #07111F;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 229, 168, .35);
+}
+
+/* Secondary Navigation Button */
+.btn-secondary {
+    background: #162437;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #22344d;
+}
+
+/* Outline Accented Button */
+.btn-outline {
+    background: transparent;
+    border: 2px solid #00E5A8;
+    color: #00E5A8;
+}
+
+.btn-outline:hover {
+    background: #00E5A8;
+    color: #07111F;
+}
+
+/* Full Width Structural Modifier */
+.btn-block {
+    width: 100%;
+}
+
+/* =========================================
+   STRATIVO CARD SYSTEM
+========================================= */
+.card {
+    background: #101C2D;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 20px;
+    padding: 30px;
+    transition: .3s;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #00E5A8;
+    box-shadow: 0 15px 40px rgba(0, 229, 168, .18);
+}
+
+.card-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    color: #cfcfcf;
+    line-height: 1.8;
+}
+
+/* =========================================
+   LESSON HEADER WIDGET
+========================================= */
+.lesson-header {
+    background: #101C2D;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.lesson-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.meta-item {
+    background: #162437;
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.lesson-progress {
+    margin-top: 20px;
+}
+
+.lesson-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #22344d;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.lesson-progress-fill {
+    width: 10%; /* Fallback initializer overridden by runtime scripts */
+    height: 100%;
+    background: #00E5A8;
+    transition: .5s;
+}
+
+/* =========================================
+   SIDEBAR MENU INTERFACES
+========================================= */
+.lesson-sidebar ul {
+    list-style: none;
+}
+
+.lesson-sidebar li {
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    color: #cccccc;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.lesson-sidebar li:hover {
+    background: #162437;
+    color: #ffffff;
+    transform: translateX(6px);
+}
+
+.lesson-sidebar li.active {
+    background: #00E5A8;
+    color: #07111F;
+    font-weight: 700;
+}
+/* ==========================================
+   STRATIVO UI KIT - INTERACTION ENFORCEMENT
+========================================== */
+
+/* Automatically styles locked roadmap lesson cards visually and safely blocks clicks */
+.start-btn.locked, 
+.roadmap-btn.locked {
+    background: #1e293b !important;
+    color: #64748b !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+    pointer-events: none; /* Disables all standard hover and click mechanics natively */
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Smooth-scroll tracking configuration */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   STRATIVO ACADEMY - SYSTEM MODALS, CHECKLISTS, AND TIMELINES
+========================================================================== */
+
+/* Optimized Full-Chart Overlay Panel System */
+.chart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #07111F;
+    z-index: 99999;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.modal-content-wrapper {
+    width: 100%;
+    height: calc(100% - 50px);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #101C2D;
+    border: 1px solid rgba(0, 229, 168, 0.15);
+}
+
+.modal-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.close-modal-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.close-modal-btn:hover {
+    background: #dc2626;
+}
+
+.full-chart-trigger-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #00e5a8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 15px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 229, 168, 0.3);
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: rgba(0, 229, 168, 0.05);
+    transition: all 0.2s;
+}
+
+.full-chart-trigger-link:hover {
+    background: #00e5a8;
+    color: #07111F;
+}
+
+/* Modern Quiz Scores Section Styling */
+.score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #0a1424;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.score-value {
+    font-weight: 700;
+    color: #00e5a8;
+}
+
+.not-taken {
+    color: #64748b;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Practice Checklist Styling */
+.practice-box {
+    margin-top: 20px;
+    background: #0a1424;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid rgba(255,255,255,0.02);
+}
+
+.practice-title {
+    font-size: 14px;
+    color: #00e5a8;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #cfcfcf;
+    font-size: 13px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checklist-item input[type="checkbox"] {
+    accent-color: #00e5a8;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+}
+
+/* Journey Timeline Styles */
+.timeline-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #101C2D;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.timeline-step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.timeline-step:not(:last-child)::after {
+    content: "➔";
+    position: absolute;
+    top: 25%;
+    right: -10px;
+    color: rgba(0, 229, 168, 0.3);
+    font-size: 18px;
+}
+
+.timeline-label {
+    display: block;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.timeline-subtitle {
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Beginner Card UX Meta Headers */
+.card-meta-badge {
+    display: inline-block;
+    background: rgba(0, 229, 168, 0.08);
+    color: #00e5a8;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-stats-list {
+    margin: 15px 0 20px 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 15px;
+}
+
+.card-stats-item {
+    font-size: 13px;
+    color: #cfcfcf;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Timeline Responsive Adjustment */
+@media (max-width: 768px) {
+    .timeline-container {
+        flex-direction: column;
+        gap: 25px;
+        text-align: left;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+    .timeline-step {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .timeline-step:not(:last-child)::after {
+        content: "↓";
+        left: 12px;
+        top: auto;
+        bottom: -22px;
+    }
+}
+/* --- Strativo Premium Full-Chart Trigger Layout --- */
+.premium-chart-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #cfcfcf;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 18px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 18px;
+    border-radius: 8px;
+    background: #162437;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+.premium-chart-btn:hover {
+    background: #00e5a8;
+    color: #07111F;
+    border-color: #00e5a8;
+    box-shadow: 0 0 15px rgba(0, 229, 168, 0.3);
+}
+
+.premium-btn-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.8;
+}
+
+.premium-chart-btn:hover .premium-btn-icons {
+    opacity: 1;
+}

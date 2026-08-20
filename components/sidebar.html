@@ -1,0 +1,339 @@
+<!--
+============================================================
+STRATIVO ACADEMY
+Shared Sidebar Component
+============================================================
+
+Purpose:
+- Reusable sidebar structure for Module and Lesson pages
+- Supports the existing module-sidebar and lesson-sidebar
+  styling systems
+- Lesson/module content can be populated dynamically
+- Does not hard-code lesson paths
+- Designed for future progress and unlock systems
+
+Supported modes:
+- module
+- lesson
+
+The component loader can set:
+data-sidebar-mode="module"
+or
+data-sidebar-mode="lesson"
+============================================================
+-->
+
+<aside
+  class="academy-sidebar"
+  id="academy-sidebar"
+  data-component="sidebar"
+  data-sidebar-mode="module"
+  aria-label="Academy navigation"
+>
+
+  <!-- ==================================================
+       SIDEBAR HEADER
+       ================================================== -->
+
+  <div class="sidebar-header">
+
+    <div class="sidebar-heading">
+
+      <span
+        class="sidebar-eyebrow"
+        id="sidebar-eyebrow"
+      >
+        COURSE
+      </span>
+
+      <h2
+        class="sidebar-module-title"
+        id="sidebar-title"
+      >
+        Module 1: Forex Basics
+      </h2>
+
+    </div>
+
+    <!-- Mobile Sidebar Close -->
+    <button
+      type="button"
+      class="sidebar-close-button"
+      id="sidebar-close-button"
+      aria-label="Close sidebar"
+      title="Close sidebar"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+    <!-- ==================================================
+       SIDEBAR NAVIGATION
+       ================================================== -->
+
+  <nav
+    class="sidebar-nav"
+    id="sidebar-navigation"
+    aria-label="Course navigation"
+  >
+
+    <!-- ==================================================
+         MODULE MODE
+         Used by module.js
+         ================================================== -->
+
+    <div
+      class="sidebar-mode sidebar-module-mode"
+      id="sidebar-module-mode"
+      data-sidebar-content="module"
+    >
+
+      <ul
+        class="lesson-navigation-list"
+        id="sidebar-lesson-list"
+      >
+        <!--
+          module.js dynamically inserts the module lessons here.
+        -->
+      </ul>
+
+    </div>
+
+
+    <!-- ==================================================
+         LESSON MODE
+         Used by lesson.js
+         ================================================== -->
+
+    <div
+      class="sidebar-mode sidebar-lesson-mode"
+      id="sidebar-lesson-mode"
+      data-sidebar-content="lesson"
+      hidden
+    >
+
+      <ul
+        class="lesson-navigation-list lesson-step-list"
+        id="lesson-sidebar-list"
+      >
+
+        <li
+          onclick="showStep(1)"
+          class="active"
+          data-step="1"
+        >
+          👋 Welcome
+        </li>
+
+        <li
+          onclick="showStep(2)"
+          data-step="2"
+        >
+          📖 What is Forex?
+        </li>
+
+        <li
+          onclick="showStep(3)"
+          data-step="3"
+        >
+          🌍 Why Forex Exists
+        </li>
+
+        <li
+          onclick="showStep(4)"
+          data-step="4"
+        >
+          🏦 Who Trades Forex?
+        </li>
+
+        <li
+          onclick="showStep(5)"
+          data-step="5"
+        >
+          💱 Real-Life Example
+        </li>
+
+        <li
+          onclick="showStep(6)"
+          data-step="6"
+        >
+          📚 Important Terms
+        </li>
+
+        <li
+          onclick="showStep(7)"
+          data-step="7"
+        >
+          📝 Notebook Notes
+        </li>
+
+        <li
+          onclick="showStep(8)"
+          data-step="8"
+        >
+          🎯 Practice Challenge
+        </li>
+
+        <li
+          onclick="showStep(9)"
+          data-step="9"
+        >
+          🧠 Quiz
+        </li>
+
+        <li
+          onclick="showStep(10)"
+          data-step="10"
+        >
+          🏁 Summary
+        </li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
+    <!-- ==================================================
+       SIDEBAR WIDGETS
+       ================================================== -->
+
+  <div
+    class="sidebar-widgets"
+    id="sidebar-widgets"
+  >
+
+    <!-- ==================================================
+         DAILY GOAL
+         ================================================== -->
+
+    <section
+      class="daily-goal-widget"
+      aria-labelledby="daily-goal-title"
+    >
+
+      <div class="dg-header">
+
+        <span id="daily-goal-title">
+          Today's Goal
+        </span>
+
+        <span
+          class="dg-counter"
+          id="dg-counter"
+        >
+          0/2
+        </span>
+
+      </div>
+
+      <label
+        class="dg-item"
+        id="dg-task-1"
+      >
+        <input
+          type="checkbox"
+          id="dg-check-1"
+          data-goal="study-time"
+        >
+
+        <span>
+          Study 20 Minutes
+        </span>
+      </label>
+
+      <label
+        class="dg-item"
+        id="dg-task-2"
+      >
+        <input
+          type="checkbox"
+          id="dg-check-2"
+          data-goal="finish-lesson"
+        >
+
+        <span>
+          Finish a Lesson
+        </span>
+      </label>
+
+      <div class="dg-reward">
+        🎁 Reward: +25 Bonus XP
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         ACTIVITY HEATMAP
+         ================================================== -->
+
+    <section
+      class="heatmap-widget"
+      aria-labelledby="heatmap-title"
+    >
+
+      <div
+        class="hm-header"
+        id="heatmap-title"
+      >
+        Activity Heatmap
+      </div>
+
+      <div
+        class="hm-grid"
+        id="heatmap-grid"
+        aria-label="Learning activity history"
+      >
+        <!-- Heatmap cells are generated by JavaScript. -->
+      </div>
+
+    </section>
+
+  </div>
+
+    <!-- ==================================================
+       SIDEBAR OVERLAY
+       ================================================== -->
+
+  <div
+    class="sidebar-overlay"
+    id="sidebar-overlay"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- ==================================================
+       SIDEBAR STATUS
+       ================================================== -->
+
+  <div
+    class="sidebar-status"
+    id="sidebar-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></div>
+
+
+  <!-- ==================================================
+       SIDEBAR DATA
+       ==================================================
+
+       These attributes allow JavaScript to control the
+       sidebar without changing its HTML structure.
+       ================================================== -->
+
+  <div
+    class="sidebar-config"
+    id="sidebar-config"
+    data-mode="module"
+    data-module-id="module1"
+    data-current-lesson=""
+    data-total-lessons="10"
+    hidden
+  ></div>
+
+</aside>

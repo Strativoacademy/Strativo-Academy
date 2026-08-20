@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Strativo Academy Module 1 — complete educational notes on pips and points in Forex.">
+<title>Pips &amp; Points | Strativo Academy</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+<style>
+:root{
+ --pp-bg:#020617;--pp-panel:#08111f;--pp-panel2:#0d1728;--pp-line:rgba(148,163,184,.15);
+ --pp-text:#e5e7eb;--pp-heading:#f8fafc;--pp-muted:#9aa9bd;--pp-blue:#60a5fa;
+ --pp-green:#34d399;--pp-red:#f87171;--pp-yellow:#facc15;--pp-purple:#a78bfa;--pp-cyan:#22d3ee;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 8% 0%,rgba(37,99,235,.11),transparent 30%),radial-gradient(circle at 92% 12%,rgba(16,185,129,.06),transparent 28%),var(--pp-bg);color:var(--pp-text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.78}
+.pp-page{width:min(1180px,calc(100% - 30px));margin:0 auto;padding:42px 0 80px}
+.pp-hero{position:relative;overflow:hidden;min-height:430px;padding:65px 46px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--pp-line);border-radius:30px;background:linear-gradient(135deg,rgba(11,18,32,.98),rgba(2,6,23,.98));box-shadow:0 35px 100px rgba(0,0,0,.3)}
+.pp-kicker{color:var(--pp-blue);font-weight:800;letter-spacing:.15em;text-transform:uppercase;font-size:13px}
+.pp-hero h1{font-size:clamp(48px,7vw,86px);line-height:1.02;margin:18px 0;color:var(--pp-heading);letter-spacing:-.04em}
+.pp-hero p{max-width:880px;color:#b8c4d6;font-size:20px}
+.pp-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.pp-tag{padding:8px 14px;border:1px solid var(--pp-line);border-radius:999px;background:rgba(15,23,42,.7);color:#cbd5e1;font-size:14px}
+.pp-section{margin-top:24px;padding:34px 38px;border:1px solid var(--pp-line);border-radius:24px;background:linear-gradient(180deg,rgba(8,17,31,.96),rgba(5,12,23,.96))}
+.pp-section h2{display:flex;align-items:center;gap:14px;margin:0 0 18px;color:var(--pp-heading);font-size:32px;line-height:1.2}
+.pp-num{display:inline-grid;place-items:center;min-width:42px;height:42px;border-radius:12px;background:rgba(37,99,235,.18);border:1px solid rgba(96,165,250,.25);color:#bfdbfe;font-size:15px}
+.pp-section p{color:#b8c4d6;font-size:17px}
+.pp-example{margin:22px 0;padding:20px 22px;border-left:4px solid var(--pp-blue);border-radius:0 14px 14px 0;background:rgba(30,41,59,.42);color:#dbeafe}
+.pp-warning{border-left-color:var(--pp-yellow);color:#fef3c7}
+.pp-good{border-left-color:var(--pp-green);color:#d1fae5}
+.pp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.pp-card{padding:22px;border:1px solid var(--pp-line);border-radius:18px;background:rgba(15,23,42,.55)}
+.pp-card h3,.pp-card h4{margin:0 0 8px;color:var(--pp-heading)}
+.pp-card p{margin:0;font-size:15px}
+.pp-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:15px}
+.pp-table th,.pp-table td{padding:13px 14px;border:1px solid var(--pp-line);text-align:left}
+.pp-table th{background:rgba(30,41,59,.7);color:#dbeafe}
+.pp-table td{color:#cbd5e1}
+.pp-diagram{margin:28px 0;padding:16px;border:1px solid var(--pp-line);border-radius:22px;background:#030914;overflow:hidden}
+.pp-diagram-title{padding:5px 8px 14px;color:#e2e8f0;font-size:16px;font-weight:800}
+.pp-diagram svg{display:block;width:100%;height:auto}
+.pp-nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:28px}
+.pp-nav a{display:block;padding:18px 20px;border:1px solid var(--pp-line);border-radius:18px;background:#08111f;color:#e2e8f0;text-decoration:none;transition:.2s}
+.pp-nav a:hover{transform:translateY(-2px);border-color:rgba(96,165,250,.4)}
+.pp-nav .center{text-align:center}.pp-nav .right{text-align:right}
+.pp-nav small{display:block;color:#8ea0b8;margin-bottom:5px}.pp-nav strong{font-size:16px}
+.pp-checklist{list-style:none;padding:0;margin:18px 0}
+.pp-checklist li{padding:11px 14px;margin:8px 0;border:1px solid var(--pp-line);border-radius:12px;background:rgba(15,23,42,.45);color:#cbd5e1}
+.pp-checklist li::before{content:"✓";color:var(--pp-green);font-weight:900;margin-right:10px}
+@media(max-width:800px){.pp-section{padding:25px 20px}.pp-hero{padding:42px 24px}.pp-grid,.pp-nav{grid-template-columns:1fr}.pp-nav .right,.pp-nav .center{text-align:left}.pp-section h2{font-size:27px}}
+</style>
+</head>
+<body>
+<div data-component="header"></div>
+<main class="pp-page">
+<section class="pp-hero">
+<div class="pp-kicker">STRATIVO ACADEMY • MODULE 1 • FOUNDATION</div>
+<h1>Pips &amp; Points</h1>
+<p>Learn how Forex price movement is measured, how pips differ from points and pipettes, and how price distance connects to spread, position size, stop-loss, targets and risk.</p>
+<div class="pp-tags">
+<span class="pp-tag">📏 Price Measurement</span><span class="pp-tag">💱 Forex Foundation</span><span class="pp-tag">🧮 Calculations</span><span class="pp-tag">🛡️ Risk Awareness</span>
+</div>
+</section>
+
+<section class="pp-section" id="section-01">
+<h2><span class="pp-num">01</span>What Is a Pip?</h2>
+<p>A pip is a standardized unit used to describe a small change in the quoted price of a Forex pair. For most traditional currency pairs, a pip is the fourth decimal place. For many JPY pairs, a pip is the second decimal place.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Example: if EUR/USD moves from 1.1050 to 1.1051, the change is 1 pip.</div>
+<p><strong>Why this matters:</strong> The first goal is not to memorize a decimal position. The goal is to understand that a pip is a standardized way of describing a small amount of price movement. Once this unit is clear, later lessons about stops, targets and risk become much easier to follow.</p>
+<p><strong>Practical habit:</strong> Whenever you open a new instrument, identify its conventional pip size before making any stop, target or volatility calculation.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">1. Pip position on a four-digit quote</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="1. Pip position on a four-digit quote">
+    
+<rect x="55" y="70" width="790" height="150" rx="22" fill="#08111f" stroke="#334155"/>
+<text x="110" y="135" fill="#f8fafc" font-size="48" font-weight="700">EUR / USD&nbsp;&nbsp; 1.1050</text>
+<rect x="645" y="90" width="105" height="90" rx="14" fill="#14532d" opacity=".85"/>
+<text x="697" y="147" text-anchor="middle" fill="#bbf7d0" font-size="26" font-weight="700">PIP</text>
+<text x="697" y="177" text-anchor="middle" fill="#bbf7d0" font-size="18">4th decimal</text>
+<path d="M697 185 V245 H490" stroke="#34d399" stroke-width="5" fill="none"/>
+<text x="110" y="260" fill="#94a3b8" font-size="22">1.1050 → 1.1051 = 1 pip</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-02">
+<h2><span class="pp-num">02</span>Why Pips Matter</h2>
+<p>Pips give traders a common language for describing price movement, stop-loss distance, target distance, spread and historical volatility. Instead of saying that a pair moved by a tiny decimal amount, traders can describe the move in pips.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The number of pips is a distance in price; it is not automatically the amount of money gained or lost.</div>
+<p><strong>Why this matters:</strong> Pips are useful because traders need a consistent language. A statement such as “the market moved 30 pips” describes price distance without assuming a particular account balance or lot size.</p>
+<p><strong>Practical habit:</strong> Record price movement in pips first, and only then calculate its monetary effect.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-03">
+<h2><span class="pp-num">03</span>The Standard Pip Position</h2>
+<p>For pairs quoted to four decimal places, the pip normally sits in the fourth decimal place. EUR/USD 1.1050 → 1.1051 is one pip.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Always inspect the instrument&#x27;s quote precision rather than blindly counting decimal places.</div>
+<p><strong>Why this matters:</strong> Decimal formatting can make the same movement look different on different platforms. The conventional pip position stays tied to the instrument's quotation convention, not to how large the number looks on screen.</p>
+<p><strong>Practical habit:</strong> Identify the conventional pip digit before doing mental arithmetic.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">1. Pip position on a four-digit quote</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="1. Pip position on a four-digit quote">
+    
+<rect x="55" y="70" width="790" height="150" rx="22" fill="#08111f" stroke="#334155"/>
+<text x="110" y="135" fill="#f8fafc" font-size="48" font-weight="700">EUR / USD&nbsp;&nbsp; 1.1050</text>
+<rect x="645" y="90" width="105" height="90" rx="14" fill="#14532d" opacity=".85"/>
+<text x="697" y="147" text-anchor="middle" fill="#bbf7d0" font-size="26" font-weight="700">PIP</text>
+<text x="697" y="177" text-anchor="middle" fill="#bbf7d0" font-size="18">4th decimal</text>
+<path d="M697 185 V245 H490" stroke="#34d399" stroke-width="5" fill="none"/>
+<text x="110" y="260" fill="#94a3b8" font-size="22">1.1050 → 1.1051 = 1 pip</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-04">
+<h2><span class="pp-num">04</span>JPY Pairs and the Pip</h2>
+<p>For many JPY pairs, the conventional pip is the second decimal place. USD/JPY 150.20 → 150.21 is one pip.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The extra decimal often shown by modern brokers is commonly called a pipette or fractional pip.</div>
+<p><strong>Why this matters:</strong> JPY pairs are the classic case where beginners count the wrong decimal. The important habit is to identify the conventional pip increment for the pair before doing any calculation.</p>
+<p><strong>Practical habit:</strong> Treat JPY pairs as a reminder to verify the instrument instead of applying a one-size-fits-all rule.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">3. JPY pip position</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="3. JPY pip position">
+    
+<rect x="55" y="65" width="790" height="170" rx="22" fill="#08111f" stroke="#334155"/>
+<text x="100" y="145" fill="#f8fafc" font-size="50" font-weight="700">USD / JPY&nbsp;&nbsp; 150.20</text>
+<rect x="545" y="90" width="120" height="85" rx="14" fill="#7f1d1d"/>
+<text x="605" y="142" text-anchor="middle" fill="#fecaca" font-size="26" font-weight="700">0.01</text>
+<text x="100" y="205" fill="#94a3b8" font-size="21">150.20 → 150.21 = 1 pip</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-05">
+<h2><span class="pp-num">05</span>Pipettes / Fractional Pips</h2>
+<p>A pipette is one-tenth of a conventional pip. A five-digit EUR/USD quote such as 1.10507 contains the fourth-decimal pip plus a fifth-decimal fractional pip.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> If EUR/USD moves from 1.10500 to 1.10510, that is 1 pip, or 10 pipettes.</div>
+<p><strong>Why this matters:</strong> Fractional pricing gives brokers and traders more precision. A pipette can therefore be useful for describing small execution differences even though the traditional pip remains the larger reference unit.</p>
+<p><strong>Practical habit:</strong> When a broker shows an extra decimal, verify the platform's fractional-pip convention.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">2. Pipette on a five-digit quote</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="2. Pipette on a five-digit quote">
+    
+<rect x="55" y="60" width="790" height="180" rx="22" fill="#08111f" stroke="#334155"/>
+<text x="100" y="140" fill="#f8fafc" font-size="46" font-weight="700">EUR / USD&nbsp;&nbsp; 1.10507</text>
+<rect x="665" y="85" width="125" height="105" rx="14" fill="#172554" stroke="#60a5fa"/>
+<text x="727" y="128" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="700">FRACTION</text>
+<text x="727" y="160" text-anchor="middle" fill="#bfdbfe" font-size="21">Pipette</text>
+<text x="100" y="205" fill="#94a3b8" font-size="21">1.10500 → 1.10510 = 1 pip = 10 pipettes</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-06">
+<h2><span class="pp-num">06</span>Pip vs Point</h2>
+<p>The word point can mean different things depending on the platform or market. In many retail Forex platforms, a point is the smallest displayed price increment, so a five-digit quote may move in one point while ten points equal one pip.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> For Strativo Academy, always define the quote precision before converting points to pips.</div>
+<p><strong>Why this matters:</strong> The word point is especially dangerous when used without context. Different platforms and instruments can use the term differently, so students should learn the platform definition before making a calculation.</p>
+<p><strong>Practical habit:</strong> If someone says “10 points,” ask what one point means on that specific platform.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">2. Pipette on a five-digit quote</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="2. Pipette on a five-digit quote">
+    
+<rect x="55" y="60" width="790" height="180" rx="22" fill="#08111f" stroke="#334155"/>
+<text x="100" y="140" fill="#f8fafc" font-size="46" font-weight="700">EUR / USD&nbsp;&nbsp; 1.10507</text>
+<rect x="665" y="85" width="125" height="105" rx="14" fill="#172554" stroke="#60a5fa"/>
+<text x="727" y="128" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="700">FRACTION</text>
+<text x="727" y="160" text-anchor="middle" fill="#bfdbfe" font-size="21">Pipette</text>
+<text x="100" y="205" fill="#94a3b8" font-size="21">1.10500 → 1.10510 = 1 pip = 10 pipettes</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-07">
+<h2><span class="pp-num">07</span>Four-Digit Quote Example</h2>
+<p>Consider EUR/USD at 1.0840. A move to 1.0860 is 20 pips because 0.0020 divided by 0.0001 equals 20.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The direction does not change the distance: 1.0840 → 1.0860 is +20 pips; 1.0860 → 1.0840 is -20 pips.</div>
+<p><strong>Why this matters:</strong> A simple four-digit example is useful because the relationship between the quoted price and the pip is visually obvious. Start with the price difference, then convert the difference into pips.</p>
+<p><strong>Practical habit:</strong> Write the price difference explicitly before converting it to pips.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-08">
+<h2><span class="pp-num">08</span>Five-Digit Quote Example</h2>
+<p>Consider EUR/USD at 1.08400. A move to 1.08600 is still 20 pips. The fifth decimal simply provides finer price resolution.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> A 1-pip move is 0.00010 on a five-digit EUR/USD quote.</div>
+<p><strong>Why this matters:</strong> Five-digit quotes do not change the conventional pip concept. They simply provide an additional fractional digit that allows finer pricing and spread display.</p>
+<p><strong>Practical habit:</strong> Remember that extra quote precision does not automatically create extra conventional pips.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-09">
+<h2><span class="pp-num">09</span>JPY Quote Example</h2>
+<p>Consider USD/JPY at 150.20. A move to 150.45 is 25 pips because 0.25 divided by 0.01 equals 25.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> JPY pairs use a different conventional pip position, so their raw decimal change should not be compared directly with EUR/USD.</div>
+<p><strong>Why this matters:</strong> JPY pairs demonstrate why a universal fourth-decimal rule is unsafe. The conventional pip for many JPY pairs is 0.01, so the calculation must use that increment.</p>
+<p><strong>Practical habit:</strong> Verify the JPY convention whenever precision matters.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-10">
+<h2><span class="pp-num">10</span>How to Calculate Pips</h2>
+<p>For a typical non-JPY pair: pips = absolute price change ÷ 0.0001. For a typical JPY pair: pips = absolute price change ÷ 0.01.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The formula is a measurement tool; the correct pip size depends on the instrument&#x27;s quotation convention.</div>
+<p><strong>Why this matters:</strong> The calculation should always begin with the actual price difference. Only after finding that difference should you divide by the appropriate pip size.</p>
+<p><strong>Practical habit:</strong> Use absolute price difference for distance calculations, then apply direction separately.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">4. Price distance → pips</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="4. Price distance → pips">
+    
+<line x1="100" y1="210" x2="800" y2="210" stroke="#64748b" stroke-width="5"/>
+<circle cx="220" cy="210" r="12" fill="#60a5fa"/>
+<circle cx="680" cy="210" r="12" fill="#34d399"/>
+<text x="220" y="165" text-anchor="middle" fill="#bfdbfe" font-size="25">1.0840</text>
+<text x="680" y="165" text-anchor="middle" fill="#a7f3d0" font-size="25">1.0860</text>
+<path d="M240 210 H660" stroke="#facc15" stroke-width="8"/>
+<text x="450" y="125" text-anchor="middle" fill="#fef08a" font-size="30" font-weight="700">20 PIPS</text>
+<text x="450" y="260" text-anchor="middle" fill="#94a3b8" font-size="20">0.0020 ÷ 0.0001 = 20</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-11">
+<h2><span class="pp-num">11</span>Positive and Negative Pip Movement</h2>
+<p>A bullish price move can be expressed as positive pips and a bearish move as negative pips when direction matters. For distance calculations, traders often use the absolute value.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Example: EUR/USD 1.1000 → 1.0975 is -25 pips, while the distance is 25 pips.</div>
+<p><strong>Why this matters:</strong> Direction and distance are separate ideas. A negative pip result can describe direction, while an absolute pip count describes the size of the movement.</p>
+<p><strong>Practical habit:</strong> Use a signed value for direction and an absolute value for distance.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-12">
+<h2><span class="pp-num">12</span>Pips and Trade Direction</h2>
+<p>For a long position, rising price generally creates positive price movement relative to entry; for a short position, falling price generally creates positive movement relative to entry. The monetary result still depends on position size and execution.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Pips describe movement; they do not replace the full profit-and-loss calculation.</div>
+<p><strong>Why this matters:</strong> Pips can describe whether price moved in favor of a position, but the position's actual result depends on direction, size, execution and costs.</p>
+<p><strong>Practical habit:</strong> Ask separately how many pips price moved and what that movement meant for the position.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-13">
+<h2><span class="pp-num">13</span>Pip Value</h2>
+<p>Pip value is the monetary value of one pip for a particular position. It depends on the pair, trade size, quote currency, and sometimes the account currency.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The same 20-pip movement can produce very different money results for different position sizes.</div>
+<p><strong>Why this matters:</strong> Pip value is where price measurement starts becoming account-level information. The same number of pips can have different monetary consequences when position size changes.</p>
+<p><strong>Practical habit:</strong> Never quote monetary pip value without stating pair, position size and account-currency context.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">7. Pips are distance, not money</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="7. Pips are distance, not money">
+    
+<rect x="70" y="55" width="760" height="190" rx="22" fill="#08111f" stroke="#334155"/>
+<text x="450" y="105" text-anchor="middle" fill="#f8fafc" font-size="30" font-weight="700">Same price movement</text>
+<text x="240" y="165" text-anchor="middle" fill="#bfdbfe" font-size="24">20 PIPS</text>
+<text x="660" y="165" text-anchor="middle" fill="#a7f3d0" font-size="24">20 PIPS</text>
+<text x="240" y="205" text-anchor="middle" fill="#94a3b8" font-size="19">smaller position</text>
+<text x="660" y="205" text-anchor="middle" fill="#94a3b8" font-size="19">larger position</text>
+<path d="M330 165 H570" stroke="#facc15" stroke-width="5"/>
+<text x="450" y="235" text-anchor="middle" fill="#fef08a" font-size="18">different monetary result</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-14">
+<h2><span class="pp-num">14</span>Why Lot Size Matters</h2>
+<p>A larger position normally gives each pip a larger monetary impact. Standard, mini and micro lot conventions are commonly used as shorthand for different position sizes.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Never choose position size from a desired profit alone; risk should be tied to account size and stop distance.</div>
+<p><strong>Why this matters:</strong> Position size is the bridge between market distance and account exposure. This is why a stop measured in pips cannot be evaluated properly without knowing the size of the position.</p>
+<p><strong>Practical habit:</strong> Calculate risk from stop distance and position size instead of choosing lot size first.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-15">
+<h2><span class="pp-num">15</span>Standard Lot</h2>
+<p>A standard lot is commonly associated with 100,000 units of the base currency in retail Forex terminology. Pip value varies by pair and account currency, so a memorized number should not be treated as universal.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Broker contract specifications should be checked for the actual instrument.</div>
+<p><strong>Why this matters:</strong> Lot terminology is a convenient shorthand, not a substitute for checking the actual contract specification.</p>
+<p><strong>Practical habit:</strong> Use lot names as shorthand, but check contract specifications for actual trading.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-16">
+<h2><span class="pp-num">16</span>Mini and Micro Lots</h2>
+<p>A mini lot is commonly 10,000 units and a micro lot 1,000 units. These labels help beginners understand how exposure scales.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The monetary value of a pip generally scales with position size, but the exact conversion still depends on the pair and account currency.</div>
+<p><strong>Why this matters:</strong> Mini and micro lots help beginners scale exposure and demonstrate how changing position size changes the monetary impact of the same pip movement.</p>
+<p><strong>Practical habit:</strong> Practice the same pip movement at several position sizes to see how exposure changes.</p>
+
+<div class="pp-grid">
+<div class="pp-card"><h3>Mini lot</h3><p>Common shorthand: 10,000 units of the base currency.</p></div>
+<div class="pp-card"><h3>Micro lot</h3><p>Common shorthand: 1,000 units of the base currency.</p></div>
+</div>
+</section>
+
+<section class="pp-section" id="section-17">
+<h2><span class="pp-num">17</span>Pip Value in Account Currency</h2>
+<p>If the quote currency is different from the trader&#x27;s account currency, the pip value may need to be converted into the account currency.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> This is why two accounts trading the same pair and lot size can display different monetary values when their account currencies differ.</div>
+<p><strong>Why this matters:</strong> Account currency matters because the monetary value of a pip may need conversion. Avoid assuming a remembered pip value is universal.</p>
+<p><strong>Practical habit:</strong> Verify whether the quote currency matches the account currency before assuming pip value.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-18">
+<h2><span class="pp-num">18</span>Pips and Stop Loss</h2>
+<p>A stop-loss distance can be described in pips. For example, an entry at 1.2500 and a stop at 1.2475 represent 25 pips of price distance.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The monetary risk is not known until position size and pip value are known.</div>
+<p><strong>Why this matters:</strong> A stop distance is a market-distance measurement. It becomes a monetary risk figure only after position size and pip value are considered.</p>
+<p><strong>Practical habit:</strong> Write stop distance in pips separately from account-currency risk.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-19">
+<h2><span class="pp-num">19</span>Pips and Take Profit</h2>
+<p>Targets can also be measured in pips. An entry at 1.2500 and a target at 1.2550 represent 50 pips.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> A pip target is a distance, not a guarantee that price will reach that level.</div>
+<p><strong>Why this matters:</strong> Targets use the same measurement system as stops, making it possible to compare potential movement with planned risk.</p>
+<p><strong>Practical habit:</strong> Measure the target from the actual planned entry.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-20">
+<h2><span class="pp-num">20</span>Pips and Risk/Reward</h2>
+<p>If the stop distance is 25 pips and the target distance is 50 pips, the nominal reward-to-risk ratio is 2:1 before considering spread, slippage, commission and execution differences.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Risk/reward is about potential distance and risk structure, not certainty.</div>
+<p><strong>Why this matters:</strong> Risk/reward is a relationship between distances and risk. It is not a prediction of whether the target will be reached.</p>
+<p><strong>Practical habit:</strong> Compare stop and target distances before judging a setup's structure.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-21">
+<h2><span class="pp-num">21</span>Spread Measured in Pips</h2>
+<p>The spread is the difference between bid and ask. Traders often describe that difference in pips or fractional pips.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> A smaller spread generally means less immediate transaction cost, but execution quality and other costs also matter.</div>
+<p><strong>Why this matters:</strong> Spread is an execution cost represented by the difference between bid and ask. Measuring it in pips helps compare trading conditions.</p>
+<p><strong>Practical habit:</strong> Compare spread with the intended target size, especially for short-term trading.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">5. Bid / Ask spread</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="5. Bid / Ask spread">
+    
+<rect x="90" y="70" width="320" height="150" rx="20" fill="#172554" stroke="#60a5fa"/>
+<rect x="490" y="70" width="320" height="150" rx="20" fill="#14532d" stroke="#34d399"/>
+<text x="250" y="125" text-anchor="middle" fill="#bfdbfe" font-size="24">BID</text>
+<text x="250" y="175" text-anchor="middle" fill="#f8fafc" font-size="40" font-weight="700">1.10500</text>
+<text x="650" y="125" text-anchor="middle" fill="#a7f3d0" font-size="24">ASK</text>
+<text x="650" y="175" text-anchor="middle" fill="#f8fafc" font-size="40" font-weight="700">1.10510</text>
+<text x="450" y="260" text-anchor="middle" fill="#facc15" font-size="24" font-weight="700">Difference = 1 pip</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-22">
+<h2><span class="pp-num">22</span>Bid and Ask Example</h2>
+<p>Suppose EUR/USD shows 1.10500 bid and 1.10510 ask. The displayed difference is 0.00010, which is 1 pip on a five-digit quote.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> A trader buying generally interacts with the ask while a seller generally interacts with the bid.</div>
+<p><strong>Why this matters:</strong> The bid and ask represent the two sides of the quoted market and explain why a position can show an initial unrealized difference after entry.</p>
+<p><strong>Practical habit:</strong> Read bid and ask together rather than treating the displayed price as one execution price.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-23">
+<h2><span class="pp-num">23</span>Pips and Entry Cost</h2>
+<p>A market order does not necessarily begin at a zero-cost price distance. The bid/ask spread means the position may begin with an unrealized cost depending on direction.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> This is one reason beginners should not judge a trade only from the chart&#x27;s single displayed price.</div>
+<p><strong>Why this matters:</strong> A trader looking only at a chart's last price may miss execution mechanics. This matters especially for very small targets.</p>
+<p><strong>Practical habit:</strong> Remember that small targets can be heavily affected by spread.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-24">
+<h2><span class="pp-num">24</span>Pips and Slippage</h2>
+<p>Slippage is the difference between expected execution and actual execution. During fast markets, the executed price can differ from the intended price.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> A planned 20-pip stop should therefore be understood as a planned distance, not an absolute guarantee of the final loss.</div>
+<p><strong>Why this matters:</strong> Fast markets can make execution differ from a planned level. Pip calculations remain useful for planning, but actual execution must be considered.</p>
+<p><strong>Practical habit:</strong> Allow for execution uncertainty around fast news or unusually volatile periods.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-25">
+<h2><span class="pp-num">25</span>Pips and Volatility</h2>
+<p>Pip movement can be used to describe volatility over a period. A pair moving 80 pips during a session has traveled a different distance than one moving 20 pips.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Volatility changes over time, so fixed pip expectations should be treated cautiously.</div>
+<p><strong>Why this matters:</strong> Pip movement is one simple way to describe how active a market has been. View it over a defined period rather than treating it as permanent.</p>
+<p><strong>Practical habit:</strong> Describe volatility over a stated period such as a session or day.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-26">
+<h2><span class="pp-num">26</span>Pips Across Timeframes</h2>
+<p>The same pair can move only a few pips on a short timeframe while covering many dozens of pips on a higher timeframe.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Pips measure price distance; timeframe determines the period over which that distance is observed.</div>
+<p><strong>Why this matters:</strong> Timeframe changes the observation window, not the definition of a pip.</p>
+<p><strong>Practical habit:</strong> State the timeframe whenever reporting a pip range.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-27">
+<h2><span class="pp-num">27</span>Pips and Average Range</h2>
+<p>Average range measures how much price typically travels over a selected period. Expressing that range in pips can help traders compare market movement with stop and target distances.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Historical average movement is not a promise of future movement.</div>
+<p><strong>Why this matters:</strong> Average range can put a planned stop or target into context. A fixed pip expectation can mean very different things in quiet and active markets.</p>
+<p><strong>Practical habit:</strong> Compare planned stop or target with recent average movement.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-28">
+<h2><span class="pp-num">28</span>Pips in Scalping</h2>
+<p>Short-term strategies often use relatively small pip distances, but transaction costs become proportionally more important when targets are small.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> A strategy that targets 5 pips must account for spread and execution much more carefully than one targeting 100 pips.</div>
+<p><strong>Why this matters:</strong> Scalping makes transaction costs important because planned movement can be small. Evaluate net movement, not gross pips alone.</p>
+<p><strong>Practical habit:</strong> Include spread and other costs when evaluating a short-term pip target.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-29">
+<h2><span class="pp-num">29</span>Pips in Swing Trading</h2>
+<p>Swing trades can use much larger pip distances because the expected movement may occur over hours or days.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> A larger stop distance usually requires a smaller position size if the monetary risk percentage is kept constant.</div>
+<p><strong>Why this matters:</strong> Swing trading often uses larger price distances. If monetary risk stays constant, a larger stop normally requires a smaller position size.</p>
+<p><strong>Practical habit:</strong> Keep monetary risk consistent when changing stop distance by adjusting position size.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-30">
+<h2><span class="pp-num">30</span>Pips and Market Structure</h2>
+<p>Price-action traders can describe structural movement in pips: a swing may rise 60 pips, retrace 25 pips, and then continue another 90 pips.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Pips describe the size of the movement; structure explains its context.</div>
+<p><strong>Why this matters:</strong> Price action and pip measurement answer different questions. Structure explains what price is doing; pips quantify how far it has moved.</p>
+<p><strong>Practical habit:</strong> Use structure first and pip measurement second when reading price action.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-31">
+<h2><span class="pp-num">31</span>Pips and Pullbacks</h2>
+<p>A pullback can be measured in pips. A 100-pip impulse followed by a 30-pip retracement is different from a 100-pip impulse followed by a 90-pip retracement.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The measurement becomes useful when combined with structure, momentum and context.</div>
+<p><strong>Why this matters:</strong> Measuring pullbacks in pips can help compare examples, especially when combined with the structural level being retraced.</p>
+<p><strong>Practical habit:</strong> Measure a pullback after identifying the impulse and structural level.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-32">
+<h2><span class="pp-num">32</span>Pips and Breakouts</h2>
+<p>A breakout can be described by how far price travels beyond a prior level. For example, price may break resistance and extend 15 pips before retesting.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Distance alone does not determine whether a breakout is valid.</div>
+<p><strong>Why this matters:</strong> A breakout's pip distance describes extension, but distance alone cannot prove that a breakout is genuine.</p>
+<p><strong>Practical habit:</strong> Wait for price behavior around a breakout level instead of declaring validity from distance alone.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-33">
+<h2><span class="pp-num">33</span>Pips and Support/Resistance</h2>
+<p>Support and resistance are zones rather than mathematically perfect single prices. Pip measurements can describe the width of a zone or the distance from an entry to that zone.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Do not turn a zone into a rigid line simply because its boundaries are measured in pips.</div>
+<p><strong>Why this matters:</strong> Support and resistance are better understood as areas. Pip measurements can describe distances around those areas without pretending the market respects one exact price.</p>
+<p><strong>Practical habit:</strong> Use pips to describe zone width or distance without turning the zone into a false exact line.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-34">
+<h2><span class="pp-num">34</span>Pips and Liquidity</h2>
+<p>Equal highs and lows, previous highs/lows and other visible areas can attract attention. A sweep may travel a number of pips beyond a level before reversing.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The pip distance of a sweep should be interpreted with the actual price behavior around the level.</div>
+<p><strong>Why this matters:</strong> A pip count can describe the size of a liquidity sweep, but behavior around the level provides the actual context.</p>
+<p><strong>Practical habit:</strong> Describe a sweep by both its price distance and its behavior after the level is reached.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-35">
+<h2><span class="pp-num">35</span>Pips and Currency Correlation</h2>
+<p>Related pairs can move in similar or opposite directions. Counting pips on multiple positions does not automatically mean the positions have independent risk.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Correlation can cause several trades to express the same underlying currency exposure.</div>
+<p><strong>Why this matters:</strong> Correlation means pip counts from different positions should not automatically be treated as independent risk.</p>
+<p><strong>Practical habit:</strong> Map shared currency exposure before counting pip risk across several trades.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-36">
+<h2><span class="pp-num">36</span>Pip Calculation Practice</h2>
+<p>Practice: EUR/USD 1.1000 → 1.1035 = 35 pips. USD/JPY 149.20 → 149.65 = 45 pips. GBP/USD 1.27000 → 1.26850 = 15 pips.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> The best way to learn is to calculate the distance before thinking about profit.</div>
+<p><strong>Why this matters:</strong> Calculation practice builds speed and reduces decimal-place mistakes. Write the starting price, ending price, difference and pip size.</p>
+<p><strong>Practical habit:</strong> Solve calculations manually before using a calculator.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">4. Price distance → pips</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="4. Price distance → pips">
+    
+<line x1="100" y1="210" x2="800" y2="210" stroke="#64748b" stroke-width="5"/>
+<circle cx="220" cy="210" r="12" fill="#60a5fa"/>
+<circle cx="680" cy="210" r="12" fill="#34d399"/>
+<text x="220" y="165" text-anchor="middle" fill="#bfdbfe" font-size="25">1.0840</text>
+<text x="680" y="165" text-anchor="middle" fill="#a7f3d0" font-size="25">1.0860</text>
+<path d="M240 210 H660" stroke="#facc15" stroke-width="8"/>
+<text x="450" y="125" text-anchor="middle" fill="#fef08a" font-size="30" font-weight="700">20 PIPS</text>
+<text x="450" y="260" text-anchor="middle" fill="#94a3b8" font-size="20">0.0020 ÷ 0.0001 = 20</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-37">
+<h2><span class="pp-num">37</span>Points Calculation Practice</h2>
+<p>On a five-digit EUR/USD quote, 1.10000 → 1.10001 is one displayed point and 0.1 pip. A move to 1.10010 is 10 points and 1 pip.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Always confirm how your broker/platform defines and displays a point.</div>
+<p><strong>Why this matters:</strong> Points are useful when their relationship to the pip is explicitly defined. On many five-digit Forex quotes, ten points correspond to one conventional pip.</p>
+<p><strong>Practical habit:</strong> Verify the platform's point definition once, then use it consistently.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">2. Pipette on a five-digit quote</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="2. Pipette on a five-digit quote">
+    
+<rect x="55" y="60" width="790" height="180" rx="22" fill="#08111f" stroke="#334155"/>
+<text x="100" y="140" fill="#f8fafc" font-size="46" font-weight="700">EUR / USD&nbsp;&nbsp; 1.10507</text>
+<rect x="665" y="85" width="125" height="105" rx="14" fill="#172554" stroke="#60a5fa"/>
+<text x="727" y="128" text-anchor="middle" fill="#bfdbfe" font-size="21" font-weight="700">FRACTION</text>
+<text x="727" y="160" text-anchor="middle" fill="#bfdbfe" font-size="21">Pipette</text>
+<text x="100" y="205" fill="#94a3b8" font-size="21">1.10500 → 1.10510 = 1 pip = 10 pipettes</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-38">
+<h2><span class="pp-num">38</span>Pip Conversion Table</h2>
+<p>Typical non-JPY pairs: 1 pip = 0.0001; 10 pips = 0.0010; 50 pips = 0.0050; 100 pips = 0.0100. Typical JPY pairs: 1 pip = 0.01; 10 pips = 0.10; 50 pips = 0.50; 100 pips = 1.00.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> These are quotation examples, not universal rules for every instrument.</div>
+<p><strong>Why this matters:</strong> A reference table is useful for revision, but it should not replace instrument-specific specifications.</p>
+<p><strong>Practical habit:</strong> Keep the table as a revision aid and use broker specifications for exact values.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">3. JPY pip position</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="3. JPY pip position">
+    
+<rect x="55" y="65" width="790" height="170" rx="22" fill="#08111f" stroke="#334155"/>
+<text x="100" y="145" fill="#f8fafc" font-size="50" font-weight="700">USD / JPY&nbsp;&nbsp; 150.20</text>
+<rect x="545" y="90" width="120" height="85" rx="14" fill="#7f1d1d"/>
+<text x="605" y="142" text-anchor="middle" fill="#fecaca" font-size="26" font-weight="700">0.01</text>
+<text x="100" y="205" fill="#94a3b8" font-size="21">150.20 → 150.21 = 1 pip</text>
+
+  </svg>
+</div>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;"><table class="pp-table"><thead><tr><th>Typical quote</th><th>1 pip</th><th>10 pips</th><th>50 pips</th><th>100 pips</th></tr></thead><tbody>
+<tr><td>EUR/USD-style</td><td>0.0001</td><td>0.0010</td><td>0.0050</td><td>0.0100</td></tr>
+<tr><td>USD/JPY-style</td><td>0.01</td><td>0.10</td><td>0.50</td><td>1.00</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="pp-section" id="section-39">
+<h2><span class="pp-num">39</span>Common Beginner Mistakes</h2>
+<p>Common errors include counting the wrong decimal place, confusing pips with money, ignoring spread, assuming every pair uses the same pip convention, and choosing lot size without calculating risk.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> A good habit is to identify the pair&#x27;s quote precision first, then calculate distance, then calculate monetary exposure.</div>
+<p><strong>Why this matters:</strong> Most beginner mistakes come from mixing price distance, monetary value and execution cost.</p>
+<p><strong>Practical habit:</strong> Label each calculation as price distance, pip distance, monetary value or transaction cost.</p>
+
+
+</section>
+
+<section class="pp-section" id="section-40">
+<h2><span class="pp-num">40</span>Complete Pips &amp; Points Checklist</h2>
+<p>Before using a pip or point measurement, identify the instrument, quote precision, conventional pip size, entry, stop, target, spread and position size. Then calculate price distance before calculating money.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Use broker specifications whenever exact contract, pip-value or point definitions are required.</div>
+<p><strong>Why this matters:</strong> A checklist turns the concept into a repeatable process before calculating stops, targets or exposure.</p>
+<p><strong>Practical habit:</strong> Run the checklist in the same order every time.</p>
+
+<ul class="pp-checklist">
+<li>Identify the currency pair or instrument.</li>
+<li>Check the number of displayed decimal places.</li>
+<li>Identify the conventional pip position.</li>
+<li>Calculate the price distance in pips.</li>
+<li>Distinguish pips from displayed points/pipettes.</li>
+<li>Check bid, ask and spread before evaluating a trade.</li>
+<li>Calculate position size before deciding monetary risk.</li>
+<li>Account for spread, slippage and commission where applicable.</li>
+<li>Use broker specifications when an exact contract value is required.</li>
+<li>Never confuse a pip distance with guaranteed profit or loss.</li>
+</ul>
+</section>
+
+<section class="pp-section" id="section-41">
+<h2><span class="pp-num">41</span>Connection to the Rest of Module 1</h2>
+<p>Pips and points connect the basic Forex lesson to later topics: currency pairs explain what is being quoted; pips measure movement; lots and leverage describe exposure; bid/ask explains execution; risk management converts distance into controlled account risk.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Understanding this chain prevents beginners from treating pips as a standalone trading strategy.</div>
+<p><strong>Why this matters:</strong> Pips are one link in a larger learning chain connecting currency pairs, lots, bid/ask, risk management and price action.</p>
+<p><strong>Practical habit:</strong> Revisit this note whenever a later lesson uses pips, points, lots, stops or targets.</p>
+
+
+<div class="pp-diagram">
+  <div class="pp-diagram-title">8. From quote to risk</div>
+  <svg viewBox="0 0 900 300" role="img" aria-label="8. From quote to risk">
+    
+<rect x="40" y="90" width="190" height="110" rx="18" fill="#172554" stroke="#60a5fa"/>
+<text x="135" y="140" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="700">PRICE</text>
+<text x="135" y="170" text-anchor="middle" fill="#f8fafc" font-size="18">entry / stop</text>
+<path d="M235 145 H315" stroke="#94a3b8" stroke-width="5"/>
+<rect x="315" y="90" width="190" height="110" rx="18" fill="#164e63" stroke="#22d3ee"/>
+<text x="410" y="140" text-anchor="middle" fill="#a5f3fc" font-size="22" font-weight="700">PIPS</text>
+<text x="410" y="170" text-anchor="middle" fill="#f8fafc" font-size="18">distance</text>
+<path d="M510 145 H590" stroke="#94a3b8" stroke-width="5"/>
+<rect x="590" y="90" width="270" height="110" rx="18" fill="#14532d" stroke="#34d399"/>
+<text x="725" y="140" text-anchor="middle" fill="#a7f3d0" font-size="22" font-weight="700">POSITION SIZE</text>
+<text x="725" y="170" text-anchor="middle" fill="#f8fafc" font-size="18">→ monetary risk</text>
+
+  </svg>
+</div>
+
+</section>
+
+<section class="pp-section" id="section-42">
+<h2><span class="pp-num">42</span>Educational Disclaimer</h2>
+<p>These notes are educational material for Strativo Academy. They explain terminology and calculation concepts and do not provide financial advice or guarantee trading results. Forex and leveraged trading involve substantial risk.</p>
+<div class="pp-example"><strong>Example / Key idea:</strong> Actual contract specifications, tick sizes, spreads, commissions, execution and pip values can vary by broker, instrument and account currency.</div>
+<p><strong>Why this matters:</strong> The purpose of this material is education. A correct pip calculation cannot remove market risk, execution risk or the possibility of loss.</p>
+<p><strong>Practical habit:</strong> Treat every example as an educational calculation, not a promised trading outcome.</p>
+
+<div class="pp-example pp-warning"><strong>Important:</strong> Educational information does not remove the financial risk of leveraged trading.</div>
+</section>
+
+
+<section class="pp-section">
+<h2><span class="pp-num">43</span>Quick Reference: Pip vs Point vs Pipette</h2>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;"><table class="pp-table">
+<thead><tr><th>Term</th><th>Meaning</th><th>Typical relationship</th></tr></thead>
+<tbody>
+<tr><td>Pip</td><td>Conventional Forex price unit</td><td>Often 0.0001 on non-JPY pairs; often 0.01 on JPY pairs</td></tr>
+<tr><td>Pipette</td><td>Fractional pip</td><td>Often one-tenth of a pip</td></tr>
+<tr><td>Point</td><td>Smallest displayed increment in many platforms</td><td>Can differ by platform/instrument</td></tr>
+</tbody>
+</table></div>
+<p>Terminology can vary between platforms and markets. When precision matters, use the instrument's contract and quote specifications rather than relying on a universal definition.</p>
+</section>
+
+
+<section class="pp-section">
+<h2><span class="pp-num">44</span>Worked Calculation Examples</h2>
+<div class="pp-grid">
+<div class="pp-card"><h3>EUR/USD — 35 pips</h3><p>1.10000 → 1.10350 gives a price difference of 0.00350. For a typical non-JPY pair, divide by 0.00010: 35 pips.</p></div>
+<div class="pp-card"><h3>USD/JPY — 45 pips</h3><p>149.20 → 149.65 gives a price difference of 0.45. Using 0.01 per pip gives 45 pips.</p></div>
+<div class="pp-card"><h3>Five-digit quote — 1 pip</h3><p>1.25000 → 1.25010 is 0.00010, which is 1 conventional pip and 10 displayed fractional increments when the platform uses that convention.</p></div>
+<div class="pp-card"><h3>Distance vs money</h3><p>A 25-pip stop is still 25 pips whether the position is small or large. The monetary consequence changes with position size and pip value.</p></div>
+</div>
+<p>These examples are intentionally simple. In real execution, spread, slippage, commissions, contract specifications and account-currency conversion may affect the final result.</p>
+</section>
+
+<section class="pp-section">
+<h2><span class="pp-num">45</span>Final Summary</h2>
+<p>A pip is a conventional unit of Forex price movement. A point is often the smallest displayed price increment on a platform, while a pipette commonly describes a fractional pip. The exact terminology and precision should always be checked against the instrument and platform.</p>
+<p>The important learning chain is: <strong>quote → price difference → pip distance → position size → monetary exposure → risk</strong>. Keeping these stages separate makes Forex calculations much easier to understand.</p>
+<div class="pp-example pp-good"><strong>Remember:</strong> Pips tell you how far price moved. They do not by themselves tell you how much money you made or lost.</div>
+</section>
+
+<nav class="pp-nav" aria-label="Lesson navigation">
+<a href="currency-pairs.html"><small>← Previous Note</small><strong>Currency Pairs</strong></a>
+<a href="notes.html" class="center"><small>Module 1</small><strong>Notes Home</strong></a>
+<a href="lots-and-leverage.html" class="right"><small>Next Note →</small><strong>Lots &amp; Leverage</strong></a>
+</nav>
+</main>
+<div data-component="footer"></div>
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+</body>
+</html>

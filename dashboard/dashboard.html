@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Your Strativo Academy learning dashboard."
+    >
+
+    <title>Dashboard | Strativo Academy</title>
+
+
+    <!-- =====================================================
+         GLOBAL APPEARANCE
+    ====================================================== -->
+
+    <script src="../js/appearance-global.js"></script>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         GLOBAL CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/ui.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/header.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/footer.css"
+    >
+
+
+    <!-- =====================================================
+         DASHBOARD CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <div data-component="header"></div>
+
+
+    <!-- =====================================================
+         DASHBOARD BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="dashboard-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN DASHBOARD
+    ====================================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- =================================================
+             WELCOME
+        ================================================== -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="dashboard-eyebrow">
+
+                    <i
+                        class="fas fa-chart-line"
+                        aria-hidden="true"
+                    ></i>
+
+                    STUDENT DASHBOARD
+
+                </span>
+
+
+                <h1>
+                    Your Learning Journey
+                </h1>
+
+
+                <p>
+                    Track your progress, build your skills
+                    and continue your forex education.
+                </p>
+
+            </div>
+
+
+            <!--
+                Connected to Dashboard Engine.
+                This ID allows dashboard.js to update
+                the button dynamically.
+            -->
+
+            <a
+                href="../beginner.html"
+                class="btn btn-primary"
+                id="dashboard-welcome-continue-btn"
+            >
+
+                <i
+                    class="fas fa-play"
+                    aria-hidden="true"
+                ></i>
+
+                Continue Learning
+
+            </a>
+
+        </section>
+
+
+
+        <!-- =================================================
+             OVERVIEW
+        ================================================== -->
+
+        <section class="dashboard-overview-grid">
+
+
+            <!-- =================================================
+                 COURSE PROGRESS
+            ================================================== -->
+
+            <article class="dashboard-main-card">
+
+                <div class="dashboard-card-header">
+
+                    <div>
+
+                        <span class="dashboard-card-label">
+                            COURSE PROGRESS
+                        </span>
+
+                        <h2>
+                            Your Progress
+                        </h2>
+
+                    </div>
+
+
+                    <i
+                        class="fas fa-graduation-cap dashboard-card-header-icon"
+                        aria-hidden="true"
+                    ></i>
+
+                </div>
+
+
+                <div class="dashboard-progress-layout">
+
+
+                    <!-- PROGRESS CIRCLE -->
+
+                    <div class="dashboard-large-circle">
+
+                        <svg
+                            viewBox="0 0 180 180"
+                            aria-hidden="true"
+                        >
+
+                            <circle
+                                class="dashboard-circle-track"
+                                cx="90"
+                                cy="90"
+                                r="76"
+                            ></circle>
+
+
+                            <circle
+                                class="dashboard-circle-fill"
+                                id="dashboard-page-progress-circle"
+                                cx="90"
+                                cy="90"
+                                r="76"
+                            ></circle>
+
+                        </svg>
+
+
+                        <div class="dashboard-large-circle-text">
+
+                            <strong id="dashboard-page-progress">
+                                0%
+                            </strong>
+
+                            <span>
+                                Complete
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROGRESS INFORMATION -->
+
+                    <div class="dashboard-progress-information">
+
+                        <span class="dashboard-status-badge">
+
+                            <i
+                                class="fas fa-bolt"
+                                aria-hidden="true"
+                            ></i>
+
+                            Learning Progress
+
+                        </span>
+
+
+                        <h3 id="dashboard-page-status">
+                            Starting Your Journey
+                        </h3>
+
+
+                        <p id="dashboard-page-status-text">
+                            Complete your lessons and quizzes
+                            to build your learning progress.
+                        </p>
+
+
+                        <div class="dashboard-progress-meta">
+
+
+                            <div>
+
+                                <span>
+                                    Lessons
+                                </span>
+
+                                <strong id="dashboard-page-lessons">
+                                    0 / 10
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Average Grade
+                                </span>
+
+                                <strong id="dashboard-page-grade">
+                                    --%
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="../beginner.html"
+                            class="btn btn-primary"
+                            id="dashboard-continue-btn"
+                        >
+
+                            <span>
+                                Continue Learning
+                            </span>
+
+                            <i
+                                class="fas fa-arrow-right"
+                                aria-hidden="true"
+                            ></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 XP & LEVEL
+            ================================================== -->
+
+            <article class="dashboard-xp-panel">
+
+                <div class="dashboard-card-header">
+
+                    <div>
+
+                        <span class="dashboard-card-label">
+                            GAMIFICATION
+                        </span>
+
+                        <h2>
+                            XP &amp; Level
+                        </h2>
+
+                    </div>
+
+
+                    <i
+                        class="fas fa-star dashboard-card-header-icon"
+                        aria-hidden="true"
+                    ></i>
+
+                </div>
+
+
+                <div class="dashboard-xp-number">
+
+                    <strong id="dashboard-page-xp">
+                        0
+                    </strong>
+
+                    <span>
+                        XP
+                    </span>
+
+                </div>
+
+
+                <div class="dashboard-level-row">
+
+                    <span>
+                        Current Level
+                    </span>
+
+                    <strong id="dashboard-page-level">
+                        Level 1
+                    </strong>
+
+                </div>
+
+
+                <div class="dashboard-xp-progress">
+
+                    <div
+                        id="dashboard-page-xp-fill"
+                        class="dashboard-xp-progress-fill"
+                    ></div>
+
+                </div>
+
+
+                <div class="dashboard-xp-footer">
+
+                    <span id="dashboard-page-xp-next">
+                        500 XP to next level
+                    </span>
+
+                    <strong id="dashboard-page-xp-percent">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <a
+                    href="../settings/achievements.html"
+                    class="dashboard-secondary-link"
+                >
+
+                    View Achievements
+
+                    <i
+                        class="fas fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING STATISTICS
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <span class="dashboard-card-label">
+                        LEARNING STATISTICS
+                    </span>
+
+                    <h2>
+                        Your Activity
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-statistics-grid">
+
+
+                <!-- LESSONS -->
+
+                <article class="dashboard-stat-card">
+
+                    <div class="dashboard-stat-icon">
+
+                        <i
+                            class="fas fa-book-open"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <strong id="dashboard-stat-lessons">
+                        0
+                    </strong>
+
+
+                    <span>
+                        Lessons Completed
+                    </span>
+
+                </article>
+
+
+
+                <!-- QUIZZES -->
+
+                <article class="dashboard-stat-card">
+
+                    <div class="dashboard-stat-icon">
+
+                        <i
+                            class="fas fa-clipboard-check"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <strong id="dashboard-stat-quizzes">
+                        0
+                    </strong>
+
+
+                    <span>
+                        Quizzes Taken
+                    </span>
+
+                </article>
+
+
+
+                <!-- AVERAGE -->
+
+                <article class="dashboard-stat-card">
+
+                    <div class="dashboard-stat-icon">
+
+                        <i
+                            class="fas fa-chart-simple"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <strong id="dashboard-stat-average">
+                        --%
+                    </strong>
+
+
+                    <span>
+                        Average Quiz Score
+                    </span>
+
+                </article>
+
+
+
+                <!-- STREAK -->
+
+                <article class="dashboard-stat-card">
+
+                    <div class="dashboard-stat-icon">
+
+                        <i
+                            class="fas fa-fire"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <strong id="dashboard-stat-streak">
+                        0
+                    </strong>
+
+
+                    <span>
+                        Learning Streak
+                    </span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTINUE LEARNING
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <span class="dashboard-card-label">
+                        CONTINUE LEARNING
+                    </span>
+
+                    <h2>
+                        Pick Up Where You Left Off
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <article class="dashboard-continue-card">
+
+                <div class="dashboard-continue-icon">
+
+                    <i
+                        class="fas fa-book"
+                        aria-hidden="true"
+                    ></i>
+
+                </div>
+
+
+                <div class="dashboard-continue-content">
+
+                    <span>
+                        FOREX BASICS
+                    </span>
+
+
+                    <h3 id="dashboard-next-lesson">
+                        Start Lesson 1
+                    </h3>
+
+
+                    <p id="dashboard-next-description">
+                        Begin your structured forex learning journey.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="../beginner.html"
+                    class="btn btn-primary"
+                    id="dashboard-next-lesson-btn"
+                >
+
+                    Continue
+
+                    <i
+                        class="fas fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING RHYTHM
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <span class="dashboard-card-label">
+                        LEARNING ACTIVITY
+                    </span>
+
+                    <h2>
+                        Your Learning Rhythm
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-learning-grid">
+
+
+                <!-- CURRENT STREAK -->
+
+                <div class="dashboard-learning-card">
+
+                    <div class="dashboard-learning-icon">
+
+                        <i
+                            class="fas fa-fire"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            CURRENT STREAK
+                        </span>
+
+
+                        <strong id="dashboard-learning-streak">
+                            0 Days
+                        </strong>
+
+
+                        <p>
+                            Keep learning every day.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LEARNING DAYS -->
+
+                <div class="dashboard-learning-card">
+
+                    <div class="dashboard-learning-icon">
+
+                        <i
+                            class="fas fa-calendar-check"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            LEARNING DAYS
+                        </span>
+
+
+                        <strong id="dashboard-learning-days">
+                            0 Days
+                        </strong>
+
+
+                        <p>
+                            Days you have studied.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LAST ACTIVITY -->
+
+                <div class="dashboard-learning-card">
+
+                    <div class="dashboard-learning-icon">
+
+                        <i
+                            class="fas fa-clock"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            LAST ACTIVITY
+                        </span>
+
+
+                        <strong id="dashboard-last-activity">
+                            No activity
+                        </strong>
+
+
+                        <p>
+                            Your latest learning day.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACHIEVEMENTS
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <span class="dashboard-card-label">
+                        ACHIEVEMENTS
+                    </span>
+
+                    <h2>
+                        Your Milestones
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="../settings/achievements.html"
+                    class="dashboard-secondary-link"
+                >
+
+                    View All
+
+                    <i
+                        class="fas fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="dashboard-achievement-preview">
+
+
+                <!-- UNLOCKED -->
+
+                <div class="dashboard-achievement-stat">
+
+                    <div class="dashboard-achievement-icon">
+
+                        <i
+                            class="fas fa-trophy"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="dashboard-achievements-unlocked">
+                            0
+                        </strong>
+
+                        <span>
+                            Achievements Unlocked
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOTAL XP -->
+
+                <div class="dashboard-achievement-stat">
+
+                    <div class="dashboard-achievement-icon">
+
+                        <i
+                            class="fas fa-star"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="dashboard-achievement-xp">
+                            0 XP
+                        </strong>
+
+                        <span>
+                            Total XP
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- NEXT MILESTONE -->
+
+                <div class="dashboard-achievement-stat">
+
+                    <div class="dashboard-achievement-icon">
+
+                        <i
+                            class="fas fa-bullseye"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="dashboard-next-achievement">
+                            First Steps
+                        </strong>
+
+                        <span>
+                            Next Milestone
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUICK ACCESS
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <span class="dashboard-card-label">
+                        QUICK ACCESS
+                    </span>
+
+                    <h2>
+                        Your Academy
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-quick-grid">
+
+
+                <!-- COURSES -->
+
+                <a
+                    href="../beginner.html"
+                    class="dashboard-quick-card"
+                >
+
+                    <div class="dashboard-quick-icon">
+
+                        <i
+                            class="fas fa-graduation-cap"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Courses
+                        </h3>
+
+                        <p>
+                            Continue your forex education.
+                        </p>
+
+                    </div>
+
+
+                    <i
+                        class="fas fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+
+
+                <!-- ACHIEVEMENTS -->
+
+                <a
+                    href="../settings/achievements.html"
+                    class="dashboard-quick-card"
+                >
+
+                    <div class="dashboard-quick-icon">
+
+                        <i
+                            class="fas fa-trophy"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Achievements
+                        </h3>
+
+                        <p>
+                            View your learning milestones.
+                        </p>
+
+                    </div>
+
+
+                    <i
+                        class="fas fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+
+
+                <!-- GAMIFICATION -->
+
+                <a
+                    href="../settings/gamification.html"
+                    class="dashboard-quick-card"
+                >
+
+                    <div class="dashboard-quick-icon">
+
+                        <i
+                            class="fas fa-gamepad"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Gamification
+                        </h3>
+
+                        <p>
+                            Manage XP and social visibility.
+                        </p>
+
+                    </div>
+
+
+                    <i
+                        class="fas fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+
+
+                <!-- SETTINGS -->
+
+                <a
+                    href="../settings/settings.html"
+                    class="dashboard-quick-card"
+                >
+
+                    <div class="dashboard-quick-icon">
+
+                        <i
+                            class="fas fa-gear"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Settings
+                        </h3>
+
+                        <p>
+                            Customize your Academy experience.
+                        </p>
+
+                    </div>
+
+
+                    <i
+                        class="fas fa-arrow-right"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         GLOBAL FOOTER
+    ====================================================== -->
+
+    <div data-component="footer"></div>
+
+
+
+    <!-- =====================================================
+         GLOBAL ROUTES
+    ====================================================== -->
+
+    <script src="../js/routes.js"></script>
+
+
+    <!-- =====================================================
+         GLOBAL COMPONENT LOADER
+    ====================================================== -->
+
+    <script src="../js/component-loader.js"></script>
+
+
+    <!-- =====================================================
+         GLOBAL HEADER CONTROLLER
+    ====================================================== -->
+
+    <script src="../js/header.js"></script>
+
+
+    <!-- =====================================================
+         ACHIEVEMENT ENGINE
+    ====================================================== -->
+
+    <script src="../js/achievement-engine.js"></script>
+
+
+    <!-- =====================================================
+         DASHBOARD ENGINE
+    ====================================================== -->
+
+    <script
+        src="dashboard.js"
+        defer
+    ></script>
+
+
+</body>
+
+</html>

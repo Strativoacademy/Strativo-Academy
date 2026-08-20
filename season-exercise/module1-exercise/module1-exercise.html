@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030712">
+    <meta name="description" content="Strativo Academy Module 1 Season Exercise Hub.">
+    <title>Module 1 Season Exercise | Strativo Academy</title>
+
+    <!--
+        FILE LOCATION
+        season-exercise/module1-exercise/module1-exercise.html
+
+        Root shared files are therefore:
+        ../../css/
+        ../../js/
+    -->
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ex-bg: #030712;
+            --ex-panel: #0b1220;
+            --ex-panel-2: #0f172a;
+            --ex-border: rgba(148, 163, 184, 0.12);
+            --ex-text: #f8fafc;
+            --ex-muted: #94a3b8;
+            --ex-blue: #60a5fa;
+            --ex-green: #34d399;
+            --ex-purple: #a78bfa;
+            --ex-yellow: #fbbf24;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--ex-bg);
+            color: var(--ex-text);
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .exercise-page {
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        .exercise-container {
+            width: min(1180px, calc(100% - 30px));
+            margin: 0 auto;
+        }
+
+        /* HERO */
+        .exercise-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 88px 20px 66px;
+            border-bottom: 1px solid var(--ex-border);
+            background:
+                radial-gradient(circle at 12% 20%, rgba(96, 165, 250, 0.14), transparent 33%),
+                radial-gradient(circle at 88% 20%, rgba(52, 211, 153, 0.10), transparent 33%),
+                #030712;
+        }
+
+        .exercise-hero-inner {
+            width: min(980px, 100%);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: var(--ex-blue);
+            font-size: 0.60rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .exercise-hero h1 {
+            margin: 16px 0 0;
+            font-family: Poppins, sans-serif;
+            font-size: clamp(2.15rem, 5vw, 4.25rem);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            color: #f8fafc;
+        }
+
+        .exercise-hero p {
+            max-width: 880px;
+            margin: 18px auto 0;
+            color: #a8b5c7;
+            font-size: 0.76rem;
+            line-height: 1.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 24px;
+        }
+
+        .hero-badge {
+            padding: 8px 13px;
+            border: 1px solid var(--ex-border);
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.72);
+            color: #dbe4ef;
+            font-size: 0.50rem;
+            font-weight: 800;
+        }
+
+        /* INTRO */
+        .intro-panel {
+            margin-top: 28px;
+            padding: 25px;
+            border: 1px solid var(--ex-border);
+            border-radius: 18px;
+            background: var(--ex-panel);
+        }
+
+        .intro-panel h2 {
+            margin: 0;
+            color: var(--ex-text);
+            font-family: Poppins, sans-serif;
+            font-size: 1rem;
+        }
+
+        .intro-panel p {
+            margin: 9px 0 0;
+            color: var(--ex-muted);
+            font-size: 0.60rem;
+            line-height: 1.9;
+        }
+
+        .rule-box {
+            margin-top: 17px;
+            padding: 15px 17px;
+            border-left: 3px solid var(--ex-green);
+            border-radius: 0 12px 12px 0;
+            background: rgba(16, 185, 129, 0.06);
+        }
+
+        .rule-box strong {
+            color: #86efac;
+            font-size: 0.57rem;
+        }
+
+        .rule-box p {
+            margin-top: 6px;
+            color: #cbd5e1;
+        }
+
+        /* SECTION HEADER */
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            color: #f8fafc;
+            font-family: Poppins, sans-serif;
+            font-size: 1rem;
+        }
+
+        .section-heading span {
+            color: #64748b;
+            font-size: 0.52rem;
+            font-weight: 800;
+        }
+
+        /* EXERCISE GRID */
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 17px;
+        }
+
+        .exercise-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 245px;
+            padding: 23px;
+            border: 1px solid var(--ex-border);
+            border-radius: 17px;
+            background: var(--ex-panel);
+            overflow: hidden;
+            text-decoration: none;
+            transition:
+                transform 0.20s ease,
+                border-color 0.20s ease,
+                background 0.20s ease,
+                box-shadow 0.20s ease;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(96, 165, 250, 0.26);
+            background: #0d1727;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+        }
+
+        .exercise-number {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: rgba(96, 165, 250, 0.10);
+            border: 1px solid rgba(96, 165, 250, 0.14);
+            color: #bfdbfe;
+            font-size: 0.64rem;
+            font-weight: 900;
+        }
+
+        .exercise-card h3 {
+            margin: 18px 0 0;
+            color: #f1f5f9;
+            font-family: Poppins, sans-serif;
+            font-size: 0.92rem;
+        }
+
+        .exercise-card p {
+            margin: 10px 0 0;
+            color: #9fb0c4;
+            font-size: 0.58rem;
+            line-height: 1.85;
+        }
+
+        .exercise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 15px;
+        }
+
+        .exercise-tag {
+            padding: 5px 8px;
+            border: 1px solid rgba(148, 163, 184, 0.09);
+            border-radius: 999px;
+            background: rgba(2, 6, 23, 0.45);
+            color: #94a3b8;
+            font-size: 0.43rem;
+            font-weight: 700;
+        }
+
+        .exercise-open {
+            margin-top: auto;
+            padding-top: 17px;
+            color: #93c5fd;
+            font-size: 0.52rem;
+            font-weight: 900;
+        }
+
+        .exercise-card.green .exercise-number {
+            background: rgba(52, 211, 153, 0.09);
+            border-color: rgba(52, 211, 153, 0.14);
+            color: #a7f3d0;
+        }
+
+        .exercise-card.green:hover {
+            border-color: rgba(52, 211, 153, 0.24);
+        }
+
+        .exercise-card.purple .exercise-number {
+            background: rgba(167, 139, 250, 0.09);
+            border-color: rgba(167, 139, 250, 0.14);
+            color: #ddd6fe;
+        }
+
+        .exercise-card.purple:hover {
+            border-color: rgba(167, 139, 250, 0.24);
+        }
+
+        .exercise-card.yellow .exercise-number {
+            background: rgba(251, 191, 36, 0.09);
+            border-color: rgba(251, 191, 36, 0.14);
+            color: #fde68a;
+        }
+
+        .exercise-card.yellow:hover {
+            border-color: rgba(251, 191, 36, 0.24);
+        }
+
+        /* HOW IT WORKS */
+        .process {
+            margin-top: 30px;
+            padding: 25px;
+            border: 1px solid var(--ex-border);
+            border-radius: 18px;
+            background: var(--ex-panel);
+        }
+
+        .process h2 {
+            margin: 0;
+            color: #f8fafc;
+            font-family: Poppins, sans-serif;
+            font-size: 1rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 17px;
+        }
+
+        .process-card {
+            padding: 15px;
+            border: 1px solid rgba(148, 163, 184, 0.09);
+            border-radius: 12px;
+            background: #08111f;
+        }
+
+        .process-card strong {
+            display: block;
+            color: #dbeafe;
+            font-size: 0.56rem;
+        }
+
+        .process-card span {
+            display: block;
+            margin-top: 6px;
+            color: var(--ex-muted);
+            font-size: 0.50rem;
+            line-height: 1.65;
+        }
+
+        /* RETURN TO MODULE */
+        .return-panel {
+            margin-top: 28px;
+            padding: 22px;
+            border: 1px solid rgba(96, 165, 250, 0.14);
+            border-radius: 16px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(59, 130, 246, 0.06),
+                    rgba(16, 185, 129, 0.03)
+                ),
+                var(--ex-panel);
+            text-align: center;
+        }
+
+        .return-panel h2 {
+            margin: 0;
+            color: #f1f5f9;
+            font-family: Poppins, sans-serif;
+            font-size: 0.92rem;
+        }
+
+        .return-panel p {
+            margin: 8px auto 0;
+            max-width: 720px;
+            color: var(--ex-muted);
+            font-size: 0.56rem;
+            line-height: 1.8;
+        }
+
+        .return-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 15px;
+            padding: 11px 16px;
+            border: 1px solid rgba(96, 165, 250, 0.18);
+            border-radius: 10px;
+            background: rgba(59, 130, 246, 0.08);
+            color: #bfdbfe;
+            text-decoration: none;
+            font-size: 0.53rem;
+            font-weight: 900;
+            transition: 0.2s ease;
+        }
+
+        .return-button:hover {
+            background: rgba(59, 130, 246, 0.13);
+            border-color: rgba(96, 165, 250, 0.30);
+        }
+
+        /* BOTTOM NOTE */
+        .bottom-note {
+            margin-top: 18px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.48rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 850px) {
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .exercise-container {
+                width: min(100% - 20px, 680px);
+            }
+
+            .exercise-hero {
+                padding: 70px 15px 54px;
+            }
+
+            .intro-panel,
+            .process,
+            .return-panel {
+                padding: 19px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .exercise-card {
+                min-height: 225px;
+                padding: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         GLOBAL HEADER
+         This page is inside season-exercise/module1-exercise/
+         and uses the shared Strativo Academy component.
+    ========================================================== -->
+    <div data-component="header"></div>
+
+    <main class="exercise-page">
+
+        <!-- HERO -->
+        <section class="exercise-hero">
+            <div class="exercise-hero-inner">
+                <div class="eyebrow">
+                    STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE
+                </div>
+
+                <h1>Module 1 Season Exercise</h1>
+
+                <p>
+                    Test what you learned throughout Module 1 with a structured
+                    set of practical exercises covering Forex fundamentals,
+                    currency pairs, pips, market orders, sessions, candlesticks,
+                    price action, market structure, support, resistance and liquidity.
+                </p>
+
+                <div class="hero-badges">
+                    <span class="hero-badge">🧠 10 Exercises</span>
+                    <span class="hero-badge">📊 Practical Review</span>
+                    <span class="hero-badge">🕯️ Chart Reading</span>
+                    <span class="hero-badge">📚 Module 1</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="exercise-container">
+
+            <!-- INTRO -->
+            <section class="intro-panel">
+                <h2>🎯 How This Exercise Section Works</h2>
+
+                <p>
+                    These exercises are designed to test understanding of the
+                    concepts already taught in Module 1. The goal is not to
+                    memorize definitions only. Students should be able to
+                    identify concepts, read simple chart situations and explain
+                    why an answer is correct.
+                </p>
+
+                <div class="rule-box">
+                    <strong>IMPORTANT</strong>
+                    <p>
+                        Season Exercise is a practice and assessment area.
+                        It is not a replacement for the detailed Notes section.
+                        Review your Notes whenever you are unsure about a question.
+                    </p>
+                </div>
+            </section>
+
+            <!-- EXERCISE LIST -->
+            <div class="section-heading">
+                <h2>Module 1 Exercises</h2>
+                <span>10 EXERCISES</span>
+            </div>
+
+            <section class="exercise-grid">
+
+                <!-- 01 -->
+                <a class="exercise-card"
+                   href="forex-basics.html"
+                   aria-label="Open Exercise 01 Forex Basics">
+                    <div class="exercise-number">01</div>
+
+                    <h3>Forex Fundamentals</h3>
+
+                    <p>
+                        Review the basic foundation of the foreign-exchange
+                        market and test whether you understand what Forex is,
+                        why currencies are exchanged and the basic terminology.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">Forex</span>
+                        <span class="exercise-tag">Basics</span>
+                        <span class="exercise-tag">Terminology</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 02 -->
+                <a class="exercise-card green"
+                   href="currency-pairs.html"
+                   aria-label="Open Exercise 02 Currency Pairs">
+                    <div class="exercise-number">02</div>
+
+                    <h3>Currency Pairs</h3>
+
+                    <p>
+                        Test base currency, quote currency, major pairs,
+                        minor pairs, exotic pairs and how to correctly read
+                        a Forex quote.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">Base / Quote</span>
+                        <span class="exercise-tag">Majors</span>
+                        <span class="exercise-tag">Quotes</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 03 -->
+                <a class="exercise-card yellow"
+                   href="pips-points.html"
+                   aria-label="Open Exercise 03 Pips and Points">
+                    <div class="exercise-number">03</div>
+
+                    <h3>Pips &amp; Points</h3>
+
+                    <p>
+                        Practice identifying pips and points, reading price
+                        movement and understanding how small price changes
+                        are represented in Forex.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">Pips</span>
+                        <span class="exercise-tag">Points</span>
+                        <span class="exercise-tag">Price Movement</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 04 -->
+                <a class="exercise-card purple"
+                   href="market-orders.html"
+                   aria-label="Open Exercise 04 Market Orders">
+                    <div class="exercise-number">04</div>
+
+                    <h3>Market Orders</h3>
+
+                    <p>
+                        Test your understanding of market orders, buying,
+                        selling and the basic execution concepts used when
+                        placing an order.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">Buy</span>
+                        <span class="exercise-tag">Sell</span>
+                        <span class="exercise-tag">Execution</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 05 -->
+                <a class="exercise-card"
+                   href="who-trades-forex.html"
+                   aria-label="Open Exercise 05 Who Trades Forex">
+                    <div class="exercise-number">05</div>
+
+                    <h3>Who Trades Forex?</h3>
+
+                    <p>
+                        Identify the major participants in the Forex market,
+                        including banks, institutions, corporations, central
+                        banks and retail traders.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">Banks</span>
+                        <span class="exercise-tag">Institutions</span>
+                        <span class="exercise-tag">Retail</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 06 -->
+                <a class="exercise-card green"
+                   href="history-sessions.html"
+                   aria-label="Open Exercise 06 History and Sessions">
+                    <div class="exercise-number">06</div>
+
+                    <h3>History &amp; Market Sessions</h3>
+
+                    <p>
+                        Review the evolution of money and Forex and test your
+                        understanding of the major trading sessions and why
+                        session timing matters.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">History</span>
+                        <span class="exercise-tag">Sessions</span>
+                        <span class="exercise-tag">Timing</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 07 -->
+                <a class="exercise-card yellow"
+                   href="candlesticks.html"
+                   aria-label="Open Exercise 07 Candlesticks">
+                    <div class="exercise-number">07</div>
+
+                    <h3>Candlesticks</h3>
+
+                    <p>
+                        Practice reading OHLC, candle bodies, upper and lower
+                        wicks, bullish and bearish candles, range and basic
+                        candle behaviour.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">OHLC</span>
+                        <span class="exercise-tag">Body</span>
+                        <span class="exercise-tag">Wicks</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 08 -->
+                <a class="exercise-card purple"
+                   href="price-action.html"
+                   aria-label="Open Exercise 08 Price Action">
+                    <div class="exercise-number">08</div>
+
+                    <h3>Price Action</h3>
+
+                    <p>
+                        Test how well you can read price behaviour, momentum,
+                        expansion, pullbacks, continuation, rejection and
+                        broader price-action context.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">Momentum</span>
+                        <span class="exercise-tag">Pullback</span>
+                        <span class="exercise-tag">Context</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 09 -->
+                <a class="exercise-card green"
+                   href="market-structure.html"
+                   aria-label="Open Exercise 09 Market Structure">
+                    <div class="exercise-number">09</div>
+
+                    <h3>Market Structure</h3>
+
+                    <p>
+                        Practice identifying swing highs, swing lows, HH, HL,
+                        LH, LL, trends, ranges and basic structural breaks.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">HH / HL</span>
+                        <span class="exercise-tag">LH / LL</span>
+                        <span class="exercise-tag">BOS</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+                <!-- 10 -->
+                <a class="exercise-card yellow"
+                   href="support-resistance-liquidity.html"
+                   aria-label="Open Exercise 10 Support Resistance and Liquidity">
+                    <div class="exercise-number">10</div>
+
+                    <h3>Support, Resistance &amp; Liquidity</h3>
+
+                    <p>
+                        Bring the final Module 1 concepts together: support
+                        and resistance zones, trendlines, channels, breakouts,
+                        rejection, BSL, SSL and liquidity sweeps.
+                    </p>
+
+                    <div class="exercise-tags">
+                        <span class="exercise-tag">S/R</span>
+                        <span class="exercise-tag">Liquidity</span>
+                        <span class="exercise-tag">Sweeps</span>
+                    </div>
+
+                    <div class="exercise-open">
+                        Open Exercise →
+                    </div>
+                </a>
+
+            </section>
+
+            <!-- HOW IT WORKS -->
+            <section class="process">
+                <h2>📝 Suggested Exercise Flow</h2>
+
+                <div class="process-grid">
+                    <div class="process-card">
+                        <strong>01 • Review</strong>
+                        <span>
+                            Read the question carefully and recall the
+                            relevant Module 1 concept.
+                        </span>
+                    </div>
+
+                    <div class="process-card">
+                        <strong>02 • Identify</strong>
+                        <span>
+                            Identify the correct concept, price behaviour,
+                            chart feature or terminology.
+                        </span>
+                    </div>
+
+                    <div class="process-card">
+                        <strong>03 • Answer</strong>
+                        <span>
+                            Complete the exercise and compare your answer with
+                            the explanation provided.
+                        </span>
+                    </div>
+
+                    <div class="process-card">
+                        <strong>04 • Review</strong>
+                        <span>
+                            Return to the relevant Notes page when something
+                            is unclear before moving forward.
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RETURN TO MODULE -->
+            <section class="return-panel">
+                <h2>← Return to Module 1</h2>
+
+                <p>
+                    Finished with the exercise hub or need to return to the
+                    main Module 1 course page?
+                </p>
+
+                <a class="return-button"
+                   href="../../modules/module1.html">
+                    <span>Back to Module 1</span>
+                    <span>→</span>
+                </a>
+            </section>
+
+            <p class="bottom-note">
+                Module 1 Season Exercise • Strativo Academy • V1
+            </p>
+
+        </div>
+    </main>
+
+    <!-- =========================================================
+         GLOBAL FOOTER
+    ========================================================== -->
+    <div data-component="footer"></div>
+
+    <!-- =========================================================
+         GLOBAL COMPONENT SYSTEM
+    ========================================================== -->
+    <script src="../../js/routes.js"></script>
+    <script src="../../js/component-loader.js"></script>
+    <script src="../../js/header.js"></script>
+
+</body>
+</html>

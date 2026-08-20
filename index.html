@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strativo Academy | Master Forex Trading</title>
+
+    <!-- ============================================================
+         GOOGLE FONTS
+    ============================================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ============================================================
+         FONT AWESOME
+    ============================================================= -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ============================================================
+         STRATIVO ACADEMY GLOBAL CSS
+    ============================================================= -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/legal.css">
+   <link rel="stylesheet" href="css/dashboard.css">
+   <link rel="stylesheet" href="css/footer.css">
+   <link rel="stylesheet" href="css/header.css">
+   <link rel="stylesheet" href="css/pip-position-lab.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         HEADER COMPONENT
+    ============================================================= -->
+    <div data-component="header"></div>
+
+    <!-- ============================================================
+         MAIN CONTENT
+    ============================================================= -->
+    <main>
+
+        <!-- ========================================================
+             HERO SECTION
+        ========================================================= -->
+        <section class="container hero-dashboard" id="home">
+            <div class="hero-content">
+                
+                <!-- Welcome Badge -->
+                <span class="badge hero-badge" id="welcome-greeting">
+                    <span class="hero-badge-dot"></span>
+                    WELCOME TO STRATIVO ACADEMY 👋
+                </span>
+
+                <!-- Hero Title -->
+                <h1 class="hero-title">
+                    Master Forex Trading<br>
+                    <span>Step by Step</span>
+                </h1>
+
+                <!-- Hero Description -->
+                <p class="hero-description">
+                    Learn Forex trading from beginner to advanced with our structured curriculum, interactive quizzes, real market practice, and expert guidance.
+                </p>
+
+                <!-- Hero Action Buttons -->
+                <div class="flex gap-4 mb-6 hero-actions">
+                    <a href="beginner.html" class="btn btn-primary btn-lg hero-primary-btn" id="hero-main-cta">
+                        <span>Start Free Course</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                    <a href="#roadmap" class="btn btn-outline btn-lg hero-secondary-btn">
+                        <span>View Roadmap</span>
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <!-- Hero Trust / Benefits -->
+                <div class="hero-features">
+                    <span>
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        <span>Beginner Friendly</span>
+                    </span>
+                    <span>
+                        <i class="fas fa-gift" aria-hidden="true"></i>
+                        <span>Free Course</span>
+                    </span>
+                    <span>
+                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                        <span>Practice Included</span>
+                    </span>
+                    <span>
+                        <i class="fas fa-user-graduate" aria-hidden="true"></i>
+                        <span>No Experience Required</span>
+                    </span>
+                </div>
+                
+            </div>
+
+            <!-- Hero Trading Visual -->
+            <div class="laptop-wrapper hero-visual">
+                <div class="laptop">
+                    <div class="laptop-screen">
+                        <iframe 
+                            src="https://s.tradingview.com/widgetembed/?symbol=OANDA:EURUSD&interval=60&theme=dark&style=1&studies=[]&overrides=%7B%22paneProperties.background%22%3A%22%23000000%22%7D" 
+                            title="EUR/USD TradingView Chart" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="laptop-base"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ========================================================
+             MARKET INTELLIGENCE
+        ========================================================= -->
+        <section class="market-intelligence" id="market-intelligence">
+            <!-- Section Header -->
+            <div class="section-title market-intelligence-heading">
+                <div class="market-intelligence-heading-content">
+                    <span class="section-eyebrow">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        MARKET INTELLIGENCE
+                    </span>
+                    <h2>Stay Connected to the Market</h2>
+                    <p>Follow important economic events and market-moving news while you build your trading knowledge.</p>
+                </div>
+
+                <!-- Live Status -->
+                <div class="market-status" aria-label="Live market data status">
+                    <span class="market-status-dot" aria-hidden="true"></span>
+                    <span>Live Market Data</span>
+                </div>
+            </div>
+
+            <!-- Market Intelligence Grid -->
+            <div class="market-intelligence-grid">
+                
+                <!-- Economic Calendar Card -->
+                <article class="market-intelligence-card market-calendar-card">
+                    <div class="market-card-header">
+                        <div class="market-card-heading">
+                            <span class="market-card-label">
+                                <i class="fas fa-calendar-days" aria-hidden="true"></i>
+                                ECONOMIC EVENTS
+                            </span>
+                            <h3>Economic Calendar</h3>
+                        </div>
+                        <span class="market-card-status" aria-label="Economic calendar is live">LIVE</span>
+                    </div>
+                    <div class="market-card-body">
+                        <div class="widget-iframe-container market-widget-frame">
+                            <iframe 
+                                title="TradingView Economic Calendar" 
+                                scrolling="no" 
+                                allowtransparency="true" 
+                                frameborder="0" 
+                                loading="lazy" 
+                                src="https://s.tradingview.com/embed-widget/events/?locale=en&colorTheme=dark&isTransparent=true&importanceFilter=-1%2C0%2C1">
+                            </iframe>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Market News Card -->
+                <article class="market-intelligence-card market-news-card">
+                    <div class="market-card-header">
+                        <div class="market-card-heading">
+                            <span class="market-card-label">
+                                <i class="fas fa-newspaper" aria-hidden="true"></i>
+                                MARKET NEWS
+                            </span>
+                            <h3>Latest Market News</h3>
+                        </div>
+                        <span class="market-card-status" aria-label="Market news is live">LIVE</span>
+                    </div>
+                    <div class="market-card-body">
+                        <div class="widget-iframe-container market-widget-frame">
+                            <iframe 
+                                title="TradingView Market News" 
+                                scrolling="no" 
+                                allowtransparency="true" 
+                                frameborder="0" 
+                                loading="lazy" 
+                                src="https://s.tradingview.com/embed-widget/timeline/?locale=en&colorTheme=dark&isTransparent=true&displayMode=regular">
+                            </iframe>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+        </section>
+
+        <!-- ========================================================
+             PREMIUM METRICS STRIP
+        ========================================================= -->
+        <section class="metrics-strip" aria-label="Strativo Academy statistics">
+            <div class="container metrics-grid">
+                
+                <div class="metric-item">
+                    <div class="metric-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h4 id="stat-lessons-completed">0 / 80</h4>
+                        <p>Lessons Completed</p>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <div class="metric-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h4>80</h4>
+                        <p>Planned Modules</p>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <div class="metric-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h4 id="stat-quizzes-taken">0 / 80</h4>
+                        <p>Quizzes Taken</p>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <div class="metric-icon">
+                        <i class="fas fa-list-check"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h4>Interactive</h4>
+                        <p>Testing Engine</p>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <div class="metric-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h4>AI Assistant</h4>
+                        <p>24/7 Support</p>
+                    </div>
+                </div>
+
+                <div class="metric-item">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-content">
+                        <h4>Community</h4>
+                        <p>Active Support</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================
+             TRADING JOURNEY ROADMAP
+        ========================================================= -->
+        <section class="container mb-12" id="roadmap" style="padding-top: 3rem;">
+            <div class="section-title">
+                <h2>Your Trading Journey Roadmap</h2>
+            </div>
+            
+            <div class="roadmap-container">
+                <div class="roadmap-step-wrapper">
+                    <div class="roadmap-card">
+                        <div class="roadmap-icon-wrap"><i class="fas fa-seedling"></i></div>
+                        <h4>Foundation</h4>
+                        <p>Learn the absolute basics of Forex trading.</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-step-wrapper">
+                    <div class="roadmap-card">
+                        <div class="roadmap-icon-wrap"><i class="fas fa-chart-line"></i></div>
+                        <h4>Price Action</h4>
+                        <p>Master naked charts and technical analysis.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step-wrapper">
+                    <div class="roadmap-card">
+                        <div class="roadmap-icon-wrap"><i class="fas fa-building"></i></div>
+                        <h4>Smart Money</h4>
+                        <p>Understand institutional orderflow concepts.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-step-wrapper">
+                    <div class="roadmap-card">
+                        <div class="roadmap-icon-wrap"><i class="fas fa-user-tie"></i></div>
+                        <h4>Professional</h4>
+                        <p>Advanced risk modeling and execution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             WHY CHOOSE US
+        ========================================================= -->
+        <section class="container mb-12" id="why-choose">
+            <div class="section-title">
+                <h2>What is Strativo Academy?</h2>
+                <p style="margin-top: 1rem; color: var(--text-secondary); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Strativo Academy is a free educational platform designed to teach the fundamentals of Forex trading. 
+                    Whether you are a complete beginner or looking to refine your market knowledge, our structured curriculum provides informational material to help you understand price action and risk management. 
+                </p>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <strong>Disclaimer:</strong> Strativo Academy provides purely educational content and does NOT offer personalized financial, investment, tax, or legal advice.
+                    If you have any questions, you can <a href="#contact" style="color: var(--accent); text-decoration: underline;">contact us here</a>.
+                </p>
+            </div>
+            <div class="feature-grid-4">
+                <div class="feature-card">
+                    <i class="icon fas fa-map-signs"></i>
+                    <h4>Step-by-Step Roadmap</h4>
+                    <p>Structured learning path from beginner to advanced trader.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="icon fas fa-tasks"></i>
+                    <h4>Interactive Quizzes</h4>
+                    <p>Test your knowledge with real-time quizzes and get results.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="icon fas fa-chart-pie"></i>
+                    <h4>Live Market Practice</h4>
+                    <p>Practice on real charts without risking real money.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="icon fas fa-robot"></i>
+                    <h4>AI Learning Assistant</h4>
+                    <p>Get help anytime with our AI-powered trading assistant.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             TRADING PRINCIPLES & COCKPIT
+        ========================================================= -->
+        <section class="container mb-12" id="trading-principles">
+            <div class="principles-grid">
+                
+                <!-- TRADER'S COCKPIT -->
+                <div class="cockpit-panel" style="margin-top: 0;">
+                    <div class="cockpit-header">
+                        <span><i class="fas fa-gauge-high text-accent"></i> Trader's Cockpit</span>
+                        <span class="xp-badge">LIVE METRICS</span>
+                    </div>
+                    
+                    <div class="cockpit-grid">
+                        <div class="cockpit-metric">
+                            <div class="cockpit-label">Current Session</div>
+                            <div class="cockpit-val" id="cockpit-session-val">Loading...</div>
+                        </div>
+                        <div class="cockpit-metric">
+                            <div class="cockpit-label">Market Bias</div>
+                            <select id="cockpit-bias-select" class="bias-select" onchange="saveBiasPreference()">
+                                <option value="Bullish 🟢">Bullish 🟢</option>
+                                <option value="Bearish 🔴">Bearish 🔴</option>
+                                <option value="Neutral 🟡">Neutral 🟡</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="cockpit-metric" style="margin-bottom: 1rem;">
+                        <div class="flex justify-between items-center">
+                            <span class="cockpit-label">Trade Readiness Score</span>
+                            <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent);" id="cockpit-score-text">85%</span>
+                        </div>
+                        <div class="readiness-bar-bg">
+                            <div class="readiness-bar-fill" id="cockpit-bar-fill"></div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 4px; display: flex; justify-content: space-between;">
+                            <span>Quick Analysis Notes</span>
+                            <span id="notes-save-status" style="color: var(--accent); opacity: 0; transition: opacity 0.3s;">Saved ✓</span>
+                        </div>
+                        <textarea id="trader-quick-notes" class="cockpit-notes" style="flex: 1;" placeholder="Log key levels, invalidation zones, or setup confirmations..." oninput="autoSaveNotes()"></textarea>
+                    </div>
+                </div>
+
+                <!-- PRICE ACTION PILLARS -->
+                <div class="price-action-box" style="margin-top: 0; margin-bottom: 0;">
+                    <div class="pa-title"><i class="fas fa-shield-halved" style="color: var(--accent);"></i> Pure Price Action Pillars</div>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Strativo Academy teaches pure market structure without relying on indicators or oscillators.</p>
+                    
+                    <div class="pa-rule-list" style="margin-top: 15px;">
+                        <div class="pa-rule-item">
+                            <i class="fas fa-circle-check"></i> 
+                            <span><strong>Market Structure:</strong> Identify Higher Highs (HH) & Higher Lows (HL) trend continuity.</span>
+                        </div>
+                        <div class="pa-rule-item" style="margin-top: 10px;">
+                            <i class="fas fa-circle-check"></i> 
+                            <span><strong>Key Zones:</strong> Mark high-probability horizontal Support & Resistance levels.</span>
+                        </div>
+                        <div class="pa-rule-item" style="margin-top: 10px;">
+                            <i class="fas fa-circle-check"></i> 
+                            <span><strong>Candlestick Rejection:</strong> Read wick exhaustion & engulfing momentum candles.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAPITAL DEFENSE & TRIGGERS (STACKED) -->
+                <div class="flex-col gap-4" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                    
+                    <div class="risk-rules-box" style="margin-bottom: 0;">
+                        <div class="risk-header"><i class="fas fa-triangle-exclamation"></i> Capital Defense Rules</div>
+                        <div class="pa-rule-list">
+                            <div class="pa-rule-item">
+                                <i class="fas fa-check" style="color: var(--warning);"></i> 
+                                <span><strong>1% Risk Limit:</strong> Never risk more than 1% of total account capital per trade setup.</span>
+                            </div>
+                            <div class="pa-rule-item">
+                                <i class="fas fa-check" style="color: var(--warning);"></i> 
+                                <span><strong>1:2 Minimum R:R:</strong> Only execute entries where potential profit doubles risk exposure.</span>
+                            </div>
+                            <div class="pa-rule-item">
+                                <i class="fas fa-check" style="color: var(--warning);"></i> 
+                                <span><strong>Strict Invalidation:</strong> Always place Stop Loss beyond structural swings.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="risk-rules-box" style="margin-bottom: 0; border-color: rgba(0, 229, 168, 0.2);">
+                        <div class="risk-header" style="color: var(--accent);"><i class="fas fa-bolt"></i> Key Price Action Triggers</div>
+                        <div class="pa-rule-list">
+                            <div class="pa-rule-item">
+                                <i class="fas fa-arrow-trend-up"></i> 
+                                <span><strong>Rejection Wicks:</strong> Strong rejection off key Support/Resistance zones.</span>
+                            </div>
+                            <div class="pa-rule-item">
+                                <i class="fas fa-chart-bar"></i> 
+                                <span><strong>Engulfing Expansion:</strong> Full candle body engulfs previous range with volume.</span>
+                            </div>
+                            <div class="pa-rule-item">
+                                <i class="fas fa-rotate-right"></i> 
+                                <span><strong>Break & Retest:</strong> Structure breakout followed by a clean retest touch.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================
+             BEGINNER COURSE CURRICULUM
+        ========================================================= -->
+        <section class="container mb-12" id="courses">
+            <div class="card w-full">
+                <div class="section-title">
+                    <h2>Beginner Course Curriculum</h2>
+                    <a href="beginner.html" class="btn btn-outline btn-sm">View All Lessons</a>
+                </div>
+                
+                <div class="curriculum-grid">
+                    
+                    <!-- Lesson 1 -->
+                    <div class="curr-item-detailed">
+                        <div class="curr-details-left">
+                            <span class="curr-badge-level">🟢 Beginner Level</span>
+                            <h4>📖 Lesson 1: What is Forex?</h4>
+                            <p>Understand the basics of the Forex market and how currency trading works.</p>
+                            <div class="curr-meta-pills">
+                                <span>⏱ 15–20 Mins</span>
+                                <span>🎯 10 Steps</span>
+                                <span>📝 10 Question Quiz</span>
+                            </div>
+                        </div>
+                        <a href="lessons/module1/lesson1.html" class="btn btn-primary btn-sm" id="btn-lesson-1">▶ Start Lesson</a>
+                    </div>
+
+                    <!-- Lesson 2 -->
+                    <div class="curr-item-detailed">
+                        <div class="curr-details-left">
+                            <span class="curr-badge-level">🟢 Beginner Level</span>
+                            <h4>💱 Lesson 2: Currency Pairs</h4>
+                            <p>Learn the difference between major, minor and exotic currency pairs.</p>
+                            <div class="curr-meta-pills">
+                                <span>⏱ 15–20 Mins</span>
+                                <span>🎯 10 Steps</span>
+                                <span>📝 10 Question Quiz</span>
+                            </div>
+                        </div>
+                        <a href="lessons/module1/lesson2.html" class="btn btn-outline btn-sm" id="btn-lesson-2">🔒 Locked</a>
+                    </div>
+
+                    <!-- Lesson 3 -->
+                    <div class="curr-item-detailed">
+                        <div class="curr-details-left">
+                            <span class="curr-badge-level">🟢 Beginner Level</span>
+                            <h4>📊 Lesson 3: Bid & Ask Price</h4>
+                            <p>Understand buying price, selling price and how the spread works.</p>
+                            <div class="curr-meta-pills">
+                                <span>⏱ 15–20 Mins</span>
+                                <span>🎯 10 Steps</span>
+                                <span>📝 10 Question Quiz</span>
+                            </div>
+                        </div>
+                        <a href="lessons/module1/lesson3.html" class="btn btn-outline btn-sm" id="btn-lesson-3">🔒 Locked</a>
+                    </div>
+
+                    <!-- Lesson 4 -->
+                    <div class="curr-item-detailed">
+                        <div class="curr-details-left">
+                            <span class="curr-badge-level">🟢 Beginner Level</span>
+                            <h4>📈 Lesson 4: Pips & Lots</h4>
+                            <p>Learn how profits and losses are calculated in Forex trading.</p>
+                            <div class="curr-meta-pills">
+                                <span>⏱ 15–20 Mins</span>
+                                <span>🎯 10 Steps</span>
+                                <span>📝 10 Question Quiz</span>
+                            </div>
+                        </div>
+                        <a href="lessons/module1/lesson4.html" class="btn btn-outline btn-sm" id="btn-lesson-4">🔒 Locked</a>
+                    </div>
+
+                    <!-- Lesson 5 -->
+                    <div class="curr-item-detailed">
+                        <div class="curr-details-left">
+                            <span class="curr-badge-level">🟢 Beginner Level</span>
+                            <h4>⚡ Lesson 5: Leverage & Margin</h4>
+                            <p>Understand leverage, margin requirements, and how to control risk safely.</p>
+                            <div class="curr-meta-pills">
+                                <span>⏱ 15–20 Mins</span>
+                                <span>🎯 10 Steps</span>
+                                <span>📝 10 Question Quiz</span>
+                            </div>
+                        </div>
+                        <a href="lessons/module1/lesson5.html" class="btn btn-outline btn-sm" id="btn-lesson-5">🔒 Locked</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             ESSENTIAL TRADING TOOLS
+        ========================================================= -->
+        <section class="container mb-12">
+            <div class="section-title">
+                <h2>Essential Trading Tools</h2>
+            </div>
+            <div class="grid-4">
+                
+                <a href="#market-intelligence" class="tool-card-interactive">
+                    <div>
+                        <i class="icon fas fa-calendar-alt"></i>
+                        <h4>Economic Calendar</h4>
+                        <p>Track important economic events and news releases in real-time.</p>
+                    </div>
+                    <div class="tool-link-arrow">Open Calendar <i class="fas fa-arrow-right"></i></div>
+                </a>
+                
+                <a href="#pip-calculator" class="tool-card-interactive">
+                    <div>
+                        <i class="icon fas fa-calculator"></i>
+                        <h4>Pip Calculator</h4>
+                        <p>Calculate exact pip values and lot size movements with ease.</p>
+                    </div>
+                    <div class="tool-link-arrow">Launch Calculator <i class="fas fa-arrow-right"></i></div>
+                </a>
+                
+                <div tabindex="0" role="button" onclick="calculatePositionSize()" class="tool-card-interactive">
+                    <div>
+                        <i class="icon fas fa-weight-scale"></i>
+                        <h4>Position Size Calculator</h4>
+                        <p>Determine exact lot sizes based on account risk and stop loss.</p>
+                    </div>
+                    <div class="tool-link-arrow">Calculate Risk <i class="fas fa-arrow-right"></i></div>
+                </div>
+                
+                <div tabindex="0" role="button" onclick="openJournal()" class="tool-card-interactive">
+                    <div>
+                        <i class="icon fas fa-book"></i>
+                        <h4>Trading Journal</h4>
+                        <p>Log trades, document psychology, and analyze win rate statistics.</p>
+                    </div>
+                    <div class="tool-link-arrow">Open Journal <i class="fas fa-arrow-right"></i></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================
+             PIP CALCULATOR
+        ========================================================= -->
+        <section class="container mb-12" id="pip-calculator">
+
+            <div class="section-title">
+                <h2>Pip Calculator</h2>
+                <p>Enter a trade setup and watch your pip value, P/L and risk calculations update instantly.</p>
+            </div>
+
+            <div class="pip-lab-calculator-grid">
+
+                <!-- TRADE SETUP -->
+                <div class="pip-lab-panel">
+
+                    <div class="pip-lab-panel-header">
+                        <div>
+                            <h3>Trade Setup</h3>
+                            <p>Enter a simple example trade.</p>
+                        </div>
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+
+                    <div class="pip-lab-panel-body">
+
+                        <div class="pip-lab-form-grid">
+
+                            <!-- PAIR -->
+                            <div class="pip-lab-field pip-lab-field-full">
+                                <label for="pair">Currency Pair</label>
+                                <select id="pair">
+                                    <option value="EURUSD">EUR/USD</option>
+                                    <option value="GBPUSD">GBP/USD</option>
+                                    <option value="USDJPY">USD/JPY</option>
+                                </select>
+                            </div>
+
+                            <!-- ENTRY -->
+                            <div class="pip-lab-field">
+                                <label for="entryPrice">Entry Price</label>
+                                <input id="entryPrice" type="number" step="0.00001" value="1.10000">
+                                <span>Where the trade starts</span>
+                            </div>
+
+                            <!-- EXIT -->
+                            <div class="pip-lab-field">
+                                <label for="exitPrice">Exit / Current Price</label>
+                                <input id="exitPrice" type="number" step="0.00001" value="1.10500">
+                                <span>Where the trade ends</span>
+                            </div>
+
+                            <!-- LOT -->
+                            <div class="pip-lab-field">
+                                <label for="lots">Position Size — Lots</label>
+                                <input id="lots" type="number" step="0.01" min="0.01" value="0.10">
+                                <span>Example: 0.10 lot</span>
+                            </div>
+
+                            <!-- CONTRACT SIZE -->
+                            <div class="pip-lab-field">
+                                <label for="contractSize">Contract Size</label>
+                                <input id="contractSize" type="number" step="1" min="1" value="100000">
+                                <span>Common Forex standard</span>
+                            </div>
+
+                            <!-- ACCOUNT CURRENCY -->
+                            <div class="pip-lab-field">
+                                <label for="accountCurrency">Account Currency</label>
+                                <select id="accountCurrency">
+                                    <option value="USD">USD</option>
+                                </select>
+                                <span>Simplified example</span>
+                            </div>
+
+                            <!-- STOP LOSS -->
+                            <div class="pip-lab-field">
+                                <label for="stopLoss">Stop Loss — Pips</label>
+                                <input id="stopLoss" type="number" step="1" min="0" value="30">
+                                <span>Planned distance</span>
+                            </div>
+
+                            <!-- TAKE PROFIT -->
+                            <div class="pip-lab-field">
+                                <label for="takeProfit">Take Profit — Pips</label>
+                                <input id="takeProfit" type="number" step="1" min="0" value="60">
+                                <span>Planned target</span>
+                            </div>
+
+                        </div>
+
+                        <div class="pip-lab-explanation">
+                            <div class="pip-lab-explanation-title">
+                                <i class="fa-solid fa-lightbulb"></i>
+                                Why are we using all these numbers?
+                            </div>
+                            <p>
+                                Pips tell us how far price moved.
+                                Position size tells us how large the trade is.
+                                Pip value connects those ideas to money.
+                                Risk and stop-loss distance help us understand
+                                how large the position should be for a planned risk.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RESULTS -->
+                <div class="pip-lab-panel">
+
+                    <div class="pip-lab-panel-header">
+                        <div>
+                            <h3>Live Results</h3>
+                            <p>Your calculation updates automatically.</p>
+                        </div>
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <div class="pip-lab-panel-body">
+
+                        <div class="pip-lab-result-stack">
+
+                            <div class="pip-lab-result-card pip-lab-result-primary">
+                                <div class="pip-lab-result-label">Price Movement</div>
+                                <div class="pip-lab-result-value" id="pipResult">+50.0 pips</div>
+                                <div class="pip-lab-result-description">How far price moved between entry and exit.</div>
+                            </div>
+
+                            <div class="pip-lab-result-card">
+                                <div class="pip-lab-result-label">Quantity / Units</div>
+                                <div class="pip-lab-result-value" id="quantityResult">10,000</div>
+                                <div class="pip-lab-result-description">Approximate base-currency units represented by the position.</div>
+                            </div>
+
+                            <div class="pip-lab-result-card">
+                                <div class="pip-lab-result-label">Pip Value</div>
+                                <div class="pip-lab-result-value" id="pipValueResult">$1.00 / pip</div>
+                                <div class="pip-lab-result-description">Approximate value of one pip for this simplified example.</div>
+                            </div>
+
+                            <div class="pip-lab-result-card">
+                                <div class="pip-lab-result-label">Estimated P/L</div>
+                                <div class="pip-lab-result-value pip-lab-profit" id="plResult">+$50.00</div>
+                                <div class="pip-lab-result-description">Simplified result before trading costs.</div>
+                            </div>
+
+                            <div class="pip-lab-result-card">
+                                <div class="pip-lab-result-label">Planned Stop Risk</div>
+                                <div class="pip-lab-result-value pip-lab-loss" id="riskResult">-$30.00</div>
+                                <div class="pip-lab-result-description">Approximate monetary effect if the specified stop is reached.</div>
+                            </div>
+
+                            <div class="pip-lab-result-card">
+                                <div class="pip-lab-result-label">Risk : Reward</div>
+                                <div class="pip-lab-result-value" id="rrResult">1 : 2</div>
+                                <div class="pip-lab-result-description">Planned reward compared with planned risk.</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================================
+             PRACTICE TERMINAL WORKSTATION
+        ========================================================= -->
+        <section class="container mb-12" id="practice">
+            <div class="card" style="padding: 1.5rem;">
+                
+                <div class="section-title" style="margin-bottom: 1rem;">
+                    <div>
+                        <h2>Practice Terminal Workstation</h2>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Combine real-time price action charts with your execution workspace.</p>
+                    </div>
+                </div>
+
+                <div class="practice-grid-container">
+                    
+                    <!-- LEFT SIDE: TRADER'S WORKSPACE -->
+                    <div class="traders-workspace-panel">
+                        
+                        <!-- 1. Session Clock -->
+                        <div class="workspace-block">
+                            <div class="workspace-block-title">
+                                <span><i class="fas fa-globe"></i> Session Clock</span>
+                                <span style="color: var(--accent);" id="ws-clock-status">ONLINE</span>
+                            </div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); display: flex; justify-content: space-between; align-items: center;">
+                                <span>UTC Time:</span>
+                                <strong style="color: #fff; font-size: 0.85rem;" id="ws-utc-time">00:00:00</strong>
+                            </div>
+                        </div>
+
+                        <!-- 2. Trade Notes -->
+                        <div class="workspace-block">
+                            <div class="workspace-block-title">
+                                <span><i class="fas fa-pen-to-square"></i> Trade Notes</span>
+                            </div>
+                            <textarea id="ws-quick-scratchpad" class="ws-quick-notes" placeholder="Type current support/resistance levels..." oninput="autoSaveWpNotes()"></textarea>
+                        </div>
+
+                        <!-- 3. Quick Rules -->
+                        <div class="workspace-block">
+                            <div class="workspace-block-title">
+                                <span><i class="fas fa-check-double"></i> Quick Rules</span>
+                            </div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 4px;">
+                                <div>• Max Risk: <strong style="color: var(--text-primary);">1.0% Equity</strong></div>
+                                <div>• R:R Ratio: <strong style="color: var(--text-primary);">1:2 Minimum</strong></div>
+                                <div>• Stop Loss: <strong style="color: var(--text-primary);">Behind Swing</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Shortcuts -->
+                        <div class="workspace-block">
+                            <div class="workspace-block-title">
+                                <span><i class="fas fa-folder-open"></i> Shortcuts</span>
+                            </div>
+                            <div style="display: flex; gap: 6px;">
+                                <button onclick="calculatePositionSize()" class="btn btn-outline btn-sm w-full" style="font-size: 0.7rem; padding: 5px;">Risk Calc</button>
+                                <button onclick="openJournal()" class="btn btn-outline btn-sm w-full" style="font-size: 0.7rem; padding: 5px;">Journal</button>
+                            </div>
+                        </div>
+
+                        <!-- 5. Compact Market Watchlist -->
+                        <div class="workspace-block">
+                            <div class="workspace-block-title">
+                                <span><i class="fas fa-chart-line"></i> Market Watchlist</span>
+                                <span style="color:var(--text-muted); font-size: 0.65rem;">LIVE</span>
+                            </div>
+                            <div class="watch-list-compact">
+                                <div class="watch-item-compact">
+                                    <span>EUR/USD</span>
+                                    <span class="bullish">🟢 Bullish</span>
+                                </div>
+                                <div class="watch-item-compact">
+                                    <span>GBP/USD</span>
+                                    <span class="bearish">🔴 Bearish</span>
+                                </div>
+                                <div class="watch-item-compact">
+                                    <span>XAU/USD</span>
+                                    <span class="bullish">🟢 Buy Zone</span>
+                                </div>
+                                <div class="watch-item-compact">
+                                    <span>BTC/USD</span>
+                                    <span class="neutral">🟡 Neutral</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Two Small Split Cards -->
+                        <div class="workspace-split-cards">
+                            <div class="workspace-block split-card">
+                                <div class="workspace-block-title">
+                                    <span><i class="fas fa-lightbulb"></i> Trade Tip</span>
+                                </div>
+                                <p class="split-card-text">Wait for candle confirmation. Never chase price.</p>
+                            </div>
+                            
+                            <div class="workspace-block split-card">
+                                <div class="workspace-block-title">
+                                    <span><i class="fas fa-robot"></i> AI Coach</span>
+                                </div>
+                                <p class="split-card-text">Bias: <strong class="bullish">Bullish</strong><br>Wait for pullback.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT SIDE: LIVE PRACTICE ROOM CHART -->
+                    <div>
+                        <div class="practice-tabs">
+                            <button class="active" onclick="changeChart('OANDA:EURUSD', this)">EUR/USD</button>
+                            <button onclick="changeChart('OANDA:XAUUSD', this)">XAU/USD (Gold)</button>
+                            <button onclick="changeChart('BINANCE:BTCUSDT', this)">BTC/USD</button>
+                        </div>
+
+                        <div class="tv-info-bar">
+                            <div class="tv-left">
+                                <span id="marketStatus">📊 Trading Chart</span>
+                                <span id="tvInterval">15m</span>
+                            </div>
+
+                            <div class="tv-right">
+                                <i class="fas fa-clock"></i>
+                                <span>Candle closes in:</span>
+                                <span id="candleTimer">--:--</span>
+                            </div>
+                        </div>
+
+                        <div class="tv-timeframes">
+                            <button class="tf-btn" onclick="changeTimeframe('1', this)">1m</button>
+                            <button class="tf-btn" onclick="changeTimeframe('5', this)">5m</button>
+                            <button class="tf-btn active" onclick="changeTimeframe('15', this)">15m</button>
+                            <button class="tf-btn" onclick="changeTimeframe('30', this)">30m</button>
+                            <button class="tf-btn" onclick="changeTimeframe('60', this)">1H</button>
+                            <button class="tf-btn" onclick="changeTimeframe('240', this)">4H</button>
+                            <button class="tf-btn" onclick="changeTimeframe('D', this)">1D</button>
+                            <button class="tf-btn" onclick="refreshChart()"><i class="fas fa-rotate-right"></i> Refresh</button>
+                        </div>
+
+                        <div class="chart-box" id="practice-chart-container">
+                            <!-- Widget injects here -->
+                        </div>
+
+                        <div class="flex justify-between items-center mt-4">
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);">
+                                <i class="fas fa-bolt" style="color: var(--accent);"></i> Real-Time Institutional Feed
+                            </span>
+                            <button onclick="openChartModal(TVManager.symbol)" class="btn btn-outline btn-sm">
+                                Full Chart <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             STUDENT DASHBOARD & COMMUNITY / CONTACT
+        ========================================================= -->
+        <section class="container mb-12">
+            
+            <div class="grid-2 mb-6">
+                
+                <!-- DYNAMIC STUDENT DASHBOARD -->
+                <div class="dashboard-progress-card">
+                    <!-- FULL DASHBOARD LINK -->
+                    <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+                        <a href="dashboard/dashboard.html" class="btn btn-outline btn-sm">
+                            <i class="fas fa-chart-line"></i>
+                            View Full Dashboard
+                        </a>
+                    </div>
+
+                    <div class="dashboard-progress-content">
+                        <!-- PROGRESS CIRCLE -->
+                        <div class="dashboard-progress-circle">
+                            <svg viewBox="0 0 150 150" aria-hidden="true">
+                                <circle class="track" cx="75" cy="75" r="65"></circle>
+                                <circle class="fill" id="dashboard-circle-fill" cx="75" cy="75" r="65"></circle>
+                            </svg>
+                            <div class="dashboard-progress-circle-value">
+                                <strong id="dash-percentage-text">0%</strong>
+                                <span>Complete</span>
+                            </div>
+                        </div>
+
+                        <!-- PROGRESS DETAILS -->
+                        <div class="dashboard-progress-details">
+                            <span class="status-label">
+                                <i class="fas fa-route"></i>
+                                Learning Progress
+                            </span>
+                            <h3 id="dash-status-heading">Starting Journey</h3>
+                            <p id="dash-status-desc">Complete your first lesson to begin building your learning progress.</p>
+                            <a href="beginner.html" class="btn btn-primary btn-sm dashboard-progress-action" id="dash-action-btn">
+                                <span>Start Learning</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- DASHBOARD QUICK STATS -->
+                    <div class="dashboard-stat-grid">
+                        
+                        <!-- LESSONS -->
+                        <div class="dashboard-stat-card">
+                            <div class="dashboard-stat-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <strong id="dash-lessons-count">0 / 80</strong>
+                            <span>Lessons Passed</span>
+                        </div>
+
+                        <!-- AVERAGE GRADE -->
+                        <div class="dashboard-stat-card">
+                            <div class="dashboard-stat-icon">
+                                <i class="fas fa-chart-simple"></i>
+                            </div>
+                            <strong id="dash-average-grade">--%</strong>
+                            <span>Average Grade</span>
+                        </div>
+
+                        <!-- STATUS -->
+                        <div class="dashboard-stat-card">
+                            <div class="dashboard-stat-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <strong>Active</strong>
+                            <span>Student Status</span>
+                        </div>
+
+                        <!-- XP -->
+                        <div class="dashboard-stat-card">
+                            <div class="dashboard-stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <strong id="dashboard-xp">0</strong>
+                            <span>XP Earned</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div id="contact" style="max-width: 600px; margin: 0 auto;">
+    <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+        Get in Touch</h2> 
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.2rem;">
+                        <i class="fas fa-envelope" style="color: var(--accent);"></i>
+                        <a href="mailto:strativoacademy@gmail.com" style="color: var(--accent); text-decoration: none;">strativoacademy@gmail.com</a>
+                    </p>
+                    
+                    <div class="contact-form-wrapper">
+                        <form id="contact-form" class="contact-form">
+                            <input class="contact-input" type="text" name="name" placeholder="Your Name" required>
+                            <input class="contact-input" type="email" name="email" placeholder="Your Email" required>
+                            <textarea class="contact-input" name="message" placeholder="Your Message..." required></textarea>
+                            <button id="sendBtn" class="btn btn-primary w-full" style="padding: 0.8rem;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+         NON-INTRUSIVE EDUCATIONAL ADVERTISEMENT BANNER
+    ============================================================= -->
+    <div class="strativo-ad-wrapper">
+        <aside class="strativo-ad-container" aria-label="Advertisement">
+            <span class="strativo-ad-label">Advertisement</span>
+            <ins class="adsbygoogle strativo-ad-slot"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </aside>
+    </div>
+
+    <!-- ============================================================
+         FOOTER COMPONENT
+    ============================================================= -->
+    <div data-component="footer"></div>
+
+    <!-- ============================================================
+         COOKIE CONSENT BANNER
+    ============================================================= -->
+    <div class="compliance-banner" id="cookieBanner">
+        <div>
+            <strong>Cookies & Compliance:</strong> We use cookies to ensure you get the best experience on our website. Our site is strictly for educational simulation purposes and does not issue financial advice.
+        </div>
+        <button onclick="document.getElementById('cookieBanner').style.display='none';" class="btn btn-outline btn-sm">I Understand</button>
+    </div>
+
+    <!-- ============================================================
+         MODAL WORKSPACE
+    ============================================================= -->
+    <div id="chartOverlayModal" class="chart-modal">
+        <div class="flex justify-between items-center mb-4" style="height: 40px;">
+            <h3 id="modalChartTitle" style="color: var(--accent); font-size:1.2rem; font-weight:700;">
+                📊 Advanced Trading Workspace
+            </h3>
+            <button onclick="closeChartModal()" class="btn btn-danger btn-sm">✕ Close Chart</button>
+        </div>
+        <div style="width:100%; height:calc(100% - 50px); border-radius:8px; overflow:hidden; background:#0a0f1e; border:1px solid var(--border-color); display:flex; flex-direction:column;">
+            <div id="advancedInfoBar" class="tv-info-bar">
+                <div class="advanced-timeframes">
+                    <button class="advanced-tf-btn" onclick="changeAdvancedTimeframe('1', this)">1m</button>
+                    <button class="advanced-tf-btn" onclick="changeAdvancedTimeframe('5', this)">5m</button>
+                    <button class="advanced-tf-btn active" onclick="changeAdvancedTimeframe('15', this)">15m</button>
+                    <button class="advanced-tf-btn" onclick="changeAdvancedTimeframe('30', this)">30m</button>
+                    <button class="advanced-tf-btn" onclick="changeAdvancedTimeframe('60', this)">1H</button>
+                    <button class="advanced-tf-btn" onclick="changeAdvancedTimeframe('240', this)">4H</button>
+                    <button class="advanced-tf-btn" onclick="changeAdvancedTimeframe('D', this)">1D</button>
+                </div>
+                <div class="tv-left">
+                    <span id="advancedMarketStatus">📊 Trading Chart</span>
+                    <span id="advancedInterval">15m</span>
+                </div>
+                <div class="tv-right">
+                    <i class="fas fa-clock"></i>
+                    <span>Candle closes in:</span>
+                    <span id="advancedTimer">--:--</span>
+                </div>
+            </div>
+            <div id="advanced_modal_container" style="flex:1;"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SUCCESS TOAST (FALLBACK)
+    ============================================================= -->
+    <div id="successToast" class="success-toast">
+        <div class="toast-icon">✅</div>
+        <div class="toast-content">
+            <h4>Message Sent</h4>
+            <p>Thank you for contacting Strativo Academy.<br>We'll reply within 24 hours.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         GLOBAL TOAST COMPONENT
+    ============================================================= -->
+    <div data-component="toast"></div>
+
+    <!-- ============================================================
+         EXTERNAL LIBRARIES
+    ============================================================= -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    
+    <!-- ============================================================
+         INLINE PAGE LOGIC (MOVED TO EXTERNAL FILE)
+    ============================================================= -->
+    <script src="js/index.js"></script>
+
+    <!-- ============================================================
+         STRATIVO ACADEMY CORE SYSTEMS
+    ============================================================= -->
+    <script>
+    function updateMarketStatus() {
+
+        const now = new Date();
+        const utcHour = now.getUTCHours();
+
+        const marketStatus =
+            document.getElementById("marketStatus");
+
+        const advancedMarketStatus =
+            document.getElementById(
+                "advancedMarketStatus"
+            );
+
+        const cockpitSessionVal =
+            document.getElementById(
+                "cockpit-session-val"
+            );
+
+        let sessionName = "";
+
+
+        /* =====================================================
+           BTC/USD
+           Crypto market operates 24/7.
+           Never show "Market Closed" for BTC.
+        ===================================================== */
+
+        if (
+            TVManager.symbol ===
+            "BINANCE:BTCUSDT"
+        ) {
+
+            sessionName =
+                "🟢 Crypto Market Open 24/7";
+
+        }
+
+
+        /* =====================================================
+           FOREX / GOLD
+           Weekend closure
+        ===================================================== */
+
+        else if (
+            now.getUTCDay() === 6 ||
+            now.getUTCDay() === 0
+        ) {
+
+            sessionName =
+                "🔴 Market Closed";
+
+        }
+
+
+        /* =====================================================
+           FOREX / GOLD SESSIONS
+        ===================================================== */
+
+        else if (
+            utcHour >= 0 &&
+            utcHour < 7
+        ) {
+
+            sessionName =
+                "🟢 Asia Session Open";
+
+        }
+
+        else if (
+            utcHour >= 7 &&
+            utcHour < 12
+        ) {
+
+            sessionName =
+                "🟢 London Session Open";
+
+        }
+
+        else if (
+            utcHour >= 12 &&
+            utcHour < 16
+        ) {
+
+            sessionName =
+                "🟢 London + NY Overlap";
+
+        }
+
+        else if (
+            utcHour >= 16 &&
+            utcHour < 21
+        ) {
+
+            sessionName =
+                "🟢 New York Session Open";
+
+        }
+
+        else {
+
+            sessionName =
+                "🟡 Low Volume Period";
+
+        }
+
+
+        /* =====================================================
+           UPDATE PRACTICE TERMINAL
+        ===================================================== */
+
+        if (marketStatus) {
+
+            marketStatus.textContent =
+                sessionName;
+
+        }
+
+
+        /* =====================================================
+           UPDATE ADVANCED CHART
+        ===================================================== */
+
+        if (advancedMarketStatus) {
+
+            advancedMarketStatus.textContent =
+                sessionName;
+
+        }
+
+
+        /* =====================================================
+           UPDATE TRADER'S COCKPIT
+        ===================================================== */
+
+        if (cockpitSessionVal) {
+
+            cockpitSessionVal.textContent =
+                sessionName;
+
+        }
+
+
+        /* =====================================================
+           UTC CLOCK
+        ===================================================== */
+
+        const wsUtc =
+            document.getElementById(
+                "ws-utc-time"
+            );
+
+
+        if (wsUtc) {
+
+            wsUtc.textContent =
+                now.toUTCString()
+                    .split(" ")[4] +
+                " UTC";
+
+        }
+
+    }
+    </script>
+<script src="js/app.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/component-loader.js"></script>
+<script src="js/header.js"></script>
+<script src="js/disclaimer.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/pip-position-lab.js"></script>
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- =====================================================
+         META
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Manage your Strativo Academy account, learning preferences, privacy and platform settings."
+    >
+
+    <title>Settings | Strativo Academy</title>
+
+
+    <!-- =====================================================
+         GLOBAL APPEARANCE
+    ====================================================== -->
+
+    <script src="../js/appearance-global.js"></script>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         SETTINGS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/settings.css"
+    >
+
+</head>
+
+
+<body class="settings-page">
+
+
+    <!-- =====================================================
+         PAGE BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="settings-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN SETTINGS CONTAINER
+    ====================================================== -->
+
+    <main
+        class="settings-container"
+        id="main-content"
+    >
+
+
+        <!-- =================================================
+             SETTINGS TOP BAR
+        ================================================== -->
+
+        <header class="settings-topbar">
+
+            <a
+                href="../index.html"
+                class="settings-back-link"
+                aria-label="Back to Strativo Academy"
+            >
+
+                <i
+                    class="fas fa-arrow-left"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Back to Academy
+                </span>
+
+            </a>
+
+
+            <div class="settings-version">
+
+                <span
+                    class="settings-version-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span>
+                    v1.0 Beta
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             SETTINGS HERO
+        ================================================== -->
+
+        <section class="settings-hero">
+
+            <div class="settings-eyebrow">
+
+                <i
+                    class="fas fa-sliders"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    STRATIVO ACADEMY
+                </span>
+
+            </div>
+
+
+            <h1>
+                Settings
+            </h1>
+
+
+            <p>
+                Manage your account, learning experience,
+                preferences, privacy and platform settings.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACCOUNT & SECURITY
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="account-security-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        ACCOUNT &amp; SECURITY
+                    </span>
+
+                    <h2 id="account-security-title">
+                        Your Account
+                    </h2>
+
+                    <p>
+                        Manage your profile, account information
+                        and security controls.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-grid">
+
+
+                <!-- ACCOUNT -->
+
+                <a
+                    href="account.html"
+                    class="settings-card settings-card-active"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-user"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Account
+                        </h3>
+
+                        <p>
+                            Manage your profile and account
+                            information.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- SECURITY -->
+
+                <a
+                    href="security.html"
+                    class="settings-card settings-card-active"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-shield-halved"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Security
+                        </h3>
+
+                        <p>
+                            Manage security preferences, alerts
+                            and account protection.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PERSONALIZATION
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="personalization-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        PERSONALIZATION
+                    </span>
+
+                    <h2 id="personalization-title">
+                        Make Strativo Yours
+                    </h2>
+
+                    <p>
+                        Customize how Strativo Academy works
+                        for your learning style.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-grid">
+
+
+                <!-- APPEARANCE -->
+
+                <a
+                    href="appearance.html"
+                    class="settings-card settings-card-active"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-palette"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Appearance &amp; Accessibility
+                        </h3>
+
+                        <p>
+                            Theme, text size, contrast and
+                            navigation preferences.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- LEARNING -->
+
+                <a
+                    href="preferences.html"
+                    class="settings-card settings-card-active"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-graduation-cap"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Learning &amp; Practice
+                        </h3>
+
+                        <p>
+                            Lessons, quizzes, practice and
+                            study preferences.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- NOTES -->
+
+                <div
+                    class="settings-card settings-card-disabled"
+                    aria-disabled="true"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-note-sticky"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Notes &amp; Study Tools
+                        </h3>
+
+                        <p>
+                            Auto-save, note layout and
+                            personal note exports.
+                        </p>
+
+
+                        <span class="settings-coming-soon">
+                            COMING SOON
+                        </span>
+
+                    </div>
+
+
+                    <div class="settings-card-lock">
+
+                        <i
+                            class="fas fa-lock"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACHIEVEMENTS -->
+
+                <a
+                    href="achievements.html"
+                    class="settings-card settings-card-active"
+                    aria-label="Open Achievements"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-trophy"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Achievements
+                        </h3>
+
+                        <p>
+                            View your XP, levels, learning streaks
+                            and unlocked achievements.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- GAMIFICATION -->
+
+                <a
+                    href="gamification.html"
+                    class="settings-card settings-card-active"
+                    aria-label="Open Gamification and Social Visibility"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-users"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Gamification &amp; Social Visibility
+                        </h3>
+
+                        <p>
+                            XP, progress, community visibility
+                            and leaderboard settings.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SYSTEM & ALERTS
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="system-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        SYSTEM &amp; ALERTS
+                    </span>
+
+                    <h2 id="system-title">
+                        Notifications &amp; Audio
+                    </h2>
+
+                    <p>
+                        Control alerts, reminders and
+                        interactive platform feedback.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-grid">
+
+
+                <!-- NOTIFICATIONS -->
+
+                <a
+                    href="notifications.html"
+                    class="settings-card settings-card-active"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-bell"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Notifications
+                        </h3>
+
+                        <p>
+                            Reminders, updates and
+                            learning alerts.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- SOUND -->
+
+                <a
+                    href="sound.html"
+                    class="settings-card settings-card-active"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-volume-high"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Sound &amp; Audio
+                        </h3>
+
+                        <p>
+                            Sound effects, learning sounds,
+                            achievement and notification audio.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATA & PRIVACY
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="privacy-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label">
+                        DATA &amp; PRIVACY
+                    </span>
+
+                    <h2 id="privacy-title">
+                        Your Data
+                    </h2>
+
+                    <p>
+                        Manage privacy controls and understand
+                        how your local learning data is handled.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-grid settings-grid-single">
+
+
+                <!-- PRIVACY -->
+
+                <a
+                    href="privacy.html"
+                    class="settings-card settings-card-active"
+                >
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-lock"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div class="settings-card-content">
+
+                        <h3>
+                            Privacy, Data &amp; Storage
+                        </h3>
+
+                        <p>
+                            Privacy controls, local storage
+                            and data management.
+                        </p>
+
+                    </div>
+
+
+                    <div class="settings-card-arrow">
+
+                        <i
+                            class="fas fa-chevron-right"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DANGER ZONE
+        ================================================== -->
+
+        <section
+            class="settings-section settings-danger-section"
+            aria-labelledby="danger-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <div>
+
+                    <span class="settings-section-label settings-danger-label">
+                        DANGER ZONE
+                    </span>
+
+                    <h2 id="danger-title">
+                        Reset Learning Progress
+                    </h2>
+
+                    <p>
+                        Permanently reset your lessons, progress,
+                        quiz history and learning statistics.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-danger-card">
+
+                <div class="settings-danger-info">
+
+                    <div class="settings-danger-icon">
+
+                        <i
+                            class="fas fa-trash-can"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Reset All Learning Progress
+                        </h3>
+
+                        <p>
+                            This action is permanent and should
+                            only be used if you want to start
+                            your learning journey again.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="settings-reset-button"
+                    id="settings-reset-progress"
+                >
+
+                    <i
+                        class="fas fa-rotate-right"
+                        aria-hidden="true"
+                    ></i>
+
+                    <span>
+                        Reset Progress
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
+        <footer class="settings-about">
+
+            <div class="settings-about-brand">
+
+                <span class="settings-about-name">
+                    STRATIVO
+                </span>
+
+                <span class="settings-about-accent">
+                    ACADEMY
+                </span>
+
+            </div>
+
+
+            <p>
+                Strativo Academy — Structured Forex Trading Education
+            </p>
+
+
+            <span class="settings-about-version">
+                Version 1.0 Beta
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SETTINGS JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="settings.js"
+        defer
+    ></script>
+
+</body>
+
+</html>

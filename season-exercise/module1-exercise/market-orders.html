@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#030712" name="theme-color"/>
+<meta content="Strativo Academy Module 1 Exercise 04 — Market Orders." name="description"/>
+<title>Exercise 04 — Market Orders | Strativo Academy</title>
+<link href="../../css/style.css" rel="stylesheet"/>
+<link href="../../css/ui.css" rel="stylesheet"/>
+<link href="../../css/header.css" rel="stylesheet"/>
+<link href="../../css/footer.css" rel="stylesheet"/>
+<style>
+:root{
+    --bg:#030712;--panel:#0b1220;--panel2:#08111f;
+    --border:rgba(148,163,184,.13);--text:#f8fafc;--muted:#a6b4c6;
+    --blue:#60a5fa;--green:#34d399;--yellow:#fbbf24;--red:#f87171;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+.page{min-height:100vh;padding-bottom:60px}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+
+.hero{
+    padding:76px 20px 54px;text-align:center;border-bottom:1px solid var(--border);
+    background:
+        radial-gradient(circle at 14% 20%,rgba(96,165,250,.14),transparent 34%),
+        radial-gradient(circle at 85% 25%,rgba(52,211,153,.08),transparent 31%),
+        #030712
+}
+.hero-in{width:min(900px,100%);margin:auto}
+.eyebrow{color:#93c5fd;font-size:.58rem;font-weight:900;letter-spacing:.16em}
+.hero h1{margin:15px 0 0;font-family:Poppins,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:1.08}
+.hero p{max-width:850px;margin:16px auto 0;color:#a8b5c7;font-size:.66rem;line-height:1.9}
+.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}
+.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#0f172acc;color:#dbeafe;font-size:.46rem;font-weight:800}
+
+.meta{
+    display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;
+    margin-top:23px;padding:16px 18px;border:1px solid var(--border);
+    border-radius:15px;background:var(--panel)
+}
+.meta strong{display:block;font-size:.56rem}
+.meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.48rem}
+.progress{min-width:150px;text-align:right}
+.bar{width:150px;height:7px;border-radius:999px;background:#162033;overflow:hidden}
+.fill{width:40%;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399)}
+
+.section{
+    margin-top:20px;padding:22px;border:1px solid var(--border);
+    border-radius:17px;background:var(--panel)
+}
+.section h2{margin:0;font-family:Poppins,sans-serif;font-size:.96rem}
+.section h3{margin:18px 0 0;color:#dbeafe;font-size:.67rem}
+.section p{margin:8px 0 0;color:var(--muted);font-size:.57rem;line-height:1.9}
+.list{margin:12px 0;padding-left:20px}
+.list li{margin-top:7px;color:#aebdd0;font-size:.55rem;line-height:1.75}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:16px}
+.card{
+    padding:15px;border:1px solid rgba(148,163,184,.10);
+    border-radius:12px;background:var(--panel2)
+}
+.card strong{display:block;color:#f1f5f9;font-size:.60rem}
+.card span{display:block;margin-top:7px;color:#a8b5c7;font-size:.51rem;line-height:1.75}
+
+.order-flow{
+    display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;
+    gap:10px;margin-top:18px
+}
+.order-box{
+    padding:22px 17px;text-align:center;border-radius:15px;
+    background:var(--panel2);border:1px solid rgba(148,163,184,.12)
+}
+.order-box.buy{border-color:rgba(52,211,153,.21)}
+.order-box.sell{border-color:rgba(248,113,113,.21)}
+.order-box .label{color:#64748b;font-size:.46rem;font-weight:900;letter-spacing:.08em}
+.order-box strong{display:block;margin-top:9px;font-family:Poppins,sans-serif;font-size:1.35rem}
+.buy strong{color:#a7f3d0}.sell strong{color:#fecaca}
+.order-arrow{text-align:center;color:#94a3b8;font-size:1.45rem;font-weight:900}
+
+.diagram{
+    margin-top:18px;border:1px solid rgba(148,163,184,.11);
+    border-radius:14px;overflow:hidden;background:#07101f
+}
+.dtitle{
+    padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);
+    background:#0d1728;color:#dbe4ef;font-size:.49rem;font-weight:900
+}
+.diagram svg{display:block;width:100%;height:auto}
+
+.table-wrap{margin-top:16px;overflow:auto;border:1px solid rgba(148,163,184,.10);border-radius:12px}
+.table{width:100%;min-width:650px;border-collapse:collapse}
+.table th,.table td{
+    padding:11px 12px;border-bottom:1px solid rgba(148,163,184,.07);
+    text-align:left;font-size:.52rem;line-height:1.6
+}
+.table th{color:#dbeafe;background:rgba(59,130,246,.08)}
+.table td{color:#aebdd0;background:#08111f}
+
+.callout{
+    margin-top:16px;padding:15px;border-left:3px solid var(--yellow);
+    border-radius:0 11px 11px 0;background:rgba(245,158,11,.055)
+}
+.callout strong{color:#fde68a;font-size:.52rem}
+.callout p{margin-top:6px!important;color:#cbd5e1!important;font-size:.53rem!important}
+
+.q{
+    margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.qtag{color:#60a5fa;font-size:.47rem;font-weight:900;letter-spacing:.06em}
+.q h3{margin-top:7px;color:#f1f5f9;font-size:.67rem;line-height:1.55}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}
+.opt{padding:12px 13px;border:1px solid rgba(148,163,184,.11);border-radius:10px;background:#0b1627;color:#b9c6d7;font-size:.52rem}
+.ans{
+    margin-top:11px;padding:11px 13px;border-left:3px solid var(--green);
+    border-radius:0 9px 9px 0;background:rgba(16,185,129,.055)
+}
+.ans strong{color:#86efac;font-size:.49rem}
+.ans p{margin-top:5px!important;font-size:.51rem!important}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
+.check{
+    padding:10px 12px;border:1px solid rgba(148,163,184,.09);
+    border-radius:10px;background:var(--panel2);color:#cbd5e1;font-size:.50rem
+}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:22px}
+.nav a{
+    display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;
+    border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;
+    color:#dbeafe;text-decoration:none;font-size:.50rem;font-weight:900;text-align:center
+}
+.nav a:hover{background:#0e1b30}
+.center{background:rgba(59,130,246,.06)!important;color:#bfdbfe!important}
+.next{background:rgba(16,185,129,.055)!important;color:#d1fae5!important}
+.note{text-align:center;margin-top:14px;color:#64748b;font-size:.45rem}
+
+@media(max-width:760px){
+    .meta,.grid3{grid-template-columns:1fr}
+    .progress{text-align:left}.bar{width:100%}
+    .opts,.checks,.nav{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+    .wrap{width:min(100% - 18px,680px)}
+    .section{padding:18px}
+    .order-flow{grid-template-columns:1fr}
+    .order-arrow{transform:rotate(90deg)}
+}
+
+/* =========================================================
+   INTERACTIVE EXERCISE — READABILITY
+========================================================= */
+
+body{
+    font-size:16px;
+    line-height:1.65;
+}
+
+.section h2{
+    font-size:1.45rem !important;
+}
+
+.section h3{
+    font-size:1.02rem !important;
+}
+
+.section p,
+.list li,
+.card span,
+.table th,
+.table td{
+    font-size:.92rem !important;
+    line-height:1.8 !important;
+}
+
+.eyebrow{font-size:.82rem !important}
+.hero p{font-size:1rem !important}
+.badge{font-size:.78rem !important}
+.meta strong{font-size:.92rem !important}
+.meta span{font-size:.82rem !important}
+.progress small{font-size:.72rem !important}
+.dtitle{font-size:.78rem !important}
+.qtag{font-size:.78rem !important}
+.q h3{font-size:1.05rem !important;line-height:1.6 !important}
+.check{font-size:.84rem !important}
+.nav a{font-size:.82rem !important}
+.note{font-size:.72rem !important}
+
+.q .opt{
+    appearance:none;
+    width:100%;
+    padding:14px 15px !important;
+    border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;
+    background:#0b1627;
+    color:#d5deea;
+    text-align:left;
+    font:inherit;
+    font-size:.92rem !important;
+    line-height:1.65 !important;
+    cursor:pointer;
+    transition:transform .16s ease,border-color .16s ease,background .16s ease;
+}
+.q .opt:hover{
+    transform:translateY(-1px);
+    border-color:rgba(96,165,250,.34);
+    background:#0e1b30;
+}
+.q .opt:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:2px;
+}
+.q .opt.correct{
+    border-color:rgba(52,211,153,.55);
+    background:rgba(16,185,129,.11);
+    color:#d1fae5;
+}
+.q .opt.wrong{
+    border-color:rgba(248,113,113,.50);
+    background:rgba(248,113,113,.09);
+    color:#fecaca;
+}
+.q .opt.reveal-correct{
+    border-color:rgba(52,211,153,.35);
+    box-shadow:inset 3px 0 0 #34d399;
+}
+.q .opt:disabled{
+    cursor:default;
+    transform:none;
+}
+
+.mo-feedback{
+    display:none;
+    margin-top:13px;
+    padding:14px 15px;
+    border-left:3px solid #60a5fa;
+    border-radius:0 10px 10px 0;
+    background:rgba(59,130,246,.055);
+}
+.mo-feedback.visible{display:block}
+.mo-feedback.correct{
+    border-left-color:#34d399;
+    background:rgba(16,185,129,.07);
+}
+.mo-feedback.wrong{
+    border-left-color:#f87171;
+    background:rgba(248,113,113,.06);
+}
+.mo-feedback .feedback-title{
+    color:#f8fafc;
+    font-size:.92rem;
+    font-weight:900;
+}
+.mo-feedback.correct .feedback-title{color:#86efac}
+.mo-feedback.wrong .feedback-title{color:#fca5a5}
+.mo-feedback p{
+    margin-top:7px !important;
+    color:#cbd5e1 !important;
+    font-size:.90rem !important;
+    line-height:1.75 !important;
+}
+.mo-feedback .why-wrong{color:#fca5a5 !important}
+.mo-feedback .correct-answer{color:#86efac !important}
+
+.mo-retry{
+    margin-top:10px;
+    padding:8px 12px;
+    border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;
+    background:rgba(15,23,42,.66);
+    color:#cbd5e1;
+    font:inherit;
+    font-size:.78rem;
+    font-weight:800;
+    cursor:pointer;
+}
+.mo-retry:hover{
+    border-color:rgba(96,165,250,.30);
+    background:rgba(59,130,246,.08);
+}
+
+.mo-scorebar{
+    margin-top:18px;
+    padding:14px 16px;
+    border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;
+    background:rgba(59,130,246,.055);
+}
+.mo-scorebar strong{
+    color:#dbeafe;
+    font-size:.90rem;
+}
+.mo-scorebar .score-progress{
+    margin-top:8px;
+    height:7px;
+    border-radius:999px;
+    overflow:hidden;
+    background:#162033;
+}
+.mo-scorebar .score-fill{
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,#60a5fa,#34d399);
+    transition:width .25s ease;
+}
+</style>
+</head>
+<body>
+<div data-component="header"></div>
+<main class="page">
+<section class="hero">
+<div class="hero-in">
+<div class="eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+<h1>Exercise 04 — Market Orders</h1>
+<p>
+            Practice how market orders work, how market buys and sells interact
+            with bid and ask prices, and why spread, liquidity, execution price
+            and slippage matter.
+        </p>
+<div class="badges">
+<span class="badge">⚡ Market Orders</span>
+<span class="badge">↔️ Bid &amp; Ask</span>
+<span class="badge">💧 Liquidity</span>
+<span class="badge">04 / 10</span>
+</div>
+</div>
+</section>
+<div class="wrap">
+<section class="meta">
+<div>
+<strong>Exercise Goal</strong>
+<span>Understand what happens when a market buy or market sell is executed.</span>
+</div>
+<div class="progress">
+<div class="bar"><div class="fill"></div></div>
+<small>Exercise 04 of 10</small>
+</div>
+</section>
+<section class="section">
+<h2>01. What Is a Market Order?</h2>
+<p>
+        A market order is an instruction to execute a buy or sell at the best
+        available price in the market at that moment, subject to available
+        liquidity and the execution conditions of the broker or venue.
+    </p>
+<p>
+        The key idea is that the trader prioritizes getting the order executed
+        rather than specifying one exact execution price. Because the market is
+        moving and liquidity changes, the final execution price can differ from
+        the price visible when the order was sent.
+    </p>
+<div class="order-flow">
+<div class="order-box buy">
+<div class="label">MARKET BUY</div>
+<strong>BUY NOW</strong>
+<div class="label">EXECUTES AGAINST AVAILABLE ASK LIQUIDITY</div>
+</div>
+<div class="order-arrow">→</div>
+<div class="order-box sell">
+<div class="label">MARKET SELL</div>
+<strong>SELL NOW</strong>
+<div class="label">EXECUTES AGAINST AVAILABLE BID LIQUIDITY</div>
+</div>
+</div>
+<div class="callout">
+<strong>IMPORTANT</strong>
+<p>
+            A market order does not mean "guaranteed exact price." It means the
+            order is sent for execution under the current market conditions.
+        </p>
+</div>
+</section>
+<section class="section">
+<h2>02. Market Buy vs Market Sell</h2>
+<div class="grid3">
+<div class="card">
+<strong>Market Buy</strong>
+<span>
+                A buy order is normally executed at the available ask side of
+                the quote, subject to liquidity and execution conditions.
+            </span>
+</div>
+<div class="card">
+<strong>Market Sell</strong>
+<span>
+                A sell order is normally executed at the available bid side of
+                the quote, subject to liquidity and execution conditions.
+            </span>
+</div>
+<div class="card">
+<strong>Price Is Not Static</strong>
+<span>
+                The displayed bid and ask can change between the moment an order
+                is sent and the moment it is executed.
+            </span>
+</div>
+</div>
+<div class="diagram">
+<div class="dtitle">BID / ASK — BASIC EXECUTION MODEL</div>
+<svg aria-label="Bid ask market execution diagram" role="img" viewbox="0 0 900 350">
+<rect fill="#07101f" height="350" width="900"></rect>
+<rect fill="#0b1627" height="190" rx="16" stroke="#f87171" stroke-width="2" width="320" x="75" y="75"></rect>
+<text fill="#fecaca" font-size="20" font-weight="900" text-anchor="middle" x="235" y="120">BID</text>
+<text fill="#f8fafc" font-size="31" font-weight="900" text-anchor="middle" x="235" y="165">1.1000</text>
+<text fill="#94a3b8" font-size="15" text-anchor="middle" x="235" y="211">Market Sell side</text>
+<text fill="#cbd5e1" font-size="14" text-anchor="middle" x="235" y="244">Buyer receives this side of the quote</text>
+<rect fill="#0b1627" height="190" rx="16" stroke="#34d399" stroke-width="2" width="320" x="505" y="75"></rect>
+<text fill="#a7f3d0" font-size="20" font-weight="900" text-anchor="middle" x="665" y="120">ASK</text>
+<text fill="#f8fafc" font-size="31" font-weight="900" text-anchor="middle" x="665" y="165">1.1002</text>
+<text fill="#94a3b8" font-size="15" text-anchor="middle" x="665" y="211">Market Buy side</text>
+<text fill="#cbd5e1" font-size="14" text-anchor="middle" x="665" y="244">Seller receives this side of the quote</text>
+<text fill="#fbbf24" font-size="15" font-weight="900" text-anchor="middle" x="450" y="312">
+                SPREAD = DIFFERENCE BETWEEN BID AND ASK
+            </text>
+</svg>
+</div>
+</section>
+<section class="section">
+<h2>03. Why Execution Price Can Differ</h2>
+<p>
+        The market can change while an order is travelling for execution.
+        Liquidity can also become thinner or more fragmented. This means the
+        requested action may be executed at a different price from the quote
+        the trader saw when pressing Buy or Sell.
+    </p>
+<div class="grid3">
+<div class="card">
+<strong>Spread</strong>
+<span>
+                The bid and ask are different prices. That difference is a
+                transaction cost built into the quoted market.
+            </span>
+</div>
+<div class="card">
+<strong>Slippage</strong>
+<span>
+                Execution can occur at a different price from the price expected
+                or displayed when the order was submitted.
+            </span>
+</div>
+<div class="card">
+<strong>Liquidity</strong>
+<span>
+                Available liquidity affects how easily an order can be matched
+                without moving through multiple available price levels.
+            </span>
+</div>
+</div>
+<div class="diagram">
+<div class="dtitle">WHY A MARKET ORDER MAY MOVE THROUGH AVAILABLE PRICES</div>
+<svg aria-label="Liquidity levels execution diagram" role="img" viewbox="0 0 900 350">
+<rect fill="#07101f" height="350" width="900"></rect>
+<line stroke="#1e2a40" stroke-width="2" x1="120" x2="780" y1="80" y2="80"></line>
+<line stroke="#1e2a40" stroke-width="2" x1="120" x2="780" y1="145" y2="145"></line>
+<line stroke="#1e2a40" stroke-width="2" x1="120" x2="780" y1="210" y2="210"></line>
+<line stroke="#1e2a40" stroke-width="2" x1="120" x2="780" y1="275" y2="275"></line>
+<rect fill="#0b1627" height="52" rx="10" stroke="#60a5fa" stroke-width="2" width="190" x="150" y="48"></rect>
+<text fill="#bfdbfe" font-size="15" font-weight="800" text-anchor="middle" x="245" y="80">PRICE A — 1.1002</text>
+<rect fill="#0b1627" height="52" rx="10" stroke="#60a5fa" stroke-width="2" width="190" x="360" y="113"></rect>
+<text fill="#bfdbfe" font-size="15" font-weight="800" text-anchor="middle" x="455" y="145">PRICE B — 1.1003</text>
+<rect fill="#0b1627" height="52" rx="10" stroke="#fbbf24" stroke-width="2" width="190" x="570" y="178"></rect>
+<text fill="#fde68a" font-size="15" font-weight="800" text-anchor="middle" x="665" y="210">PRICE C — 1.1004</text>
+<text fill="#94a3b8" font-size="15" font-weight="700" text-anchor="middle" x="450" y="312">
+                A larger order may interact with more than one available price level
+            </text>
+</svg>
+</div>
+</section>
+<section class="section">
+<h2>04. What Affects Market-Order Execution?</h2>
+<div class="table-wrap">
+<table class="table">
+<thead>
+<tr>
+<th>Factor</th>
+<th>What It Means</th>
+<th>Why It Matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bid / Ask</td>
+<td>The two sides of the quoted market.</td>
+<td>Buy and sell orders interact with different sides.</td>
+</tr>
+<tr>
+<td>Spread</td>
+<td>Difference between bid and ask.</td>
+<td>Creates an immediate pricing difference between the two sides.</td>
+</tr>
+<tr>
+<td>Liquidity</td>
+<td>Available executable interest around current prices.</td>
+<td>Thin liquidity can make execution less predictable.</td>
+</tr>
+<tr>
+<td>Volatility</td>
+<td>Speed and size of price changes.</td>
+<td>Fast markets can change the quote rapidly.</td>
+</tr>
+<tr>
+<td>Slippage</td>
+<td>Difference between expected and actual execution price.</td>
+<td>The executed price may not equal the displayed/requested price.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="section">
+<h2>05. Knowledge Check</h2><p>Choose an answer first. Your selection is checked immediately. If you are wrong, the exercise explains why your choice is wrong, shows the correct answer, and explains the concept.</p>
+<div class="q">
+<div class="qtag">QUESTION 01</div>
+<h3>What is the main idea of a market order?</h3>
+<div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>Guarantee an exact future price</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Request execution at the best available price under current conditions</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Refuse immediate execution</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Automatically remove the spread</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div class="q">
+<div class="qtag">QUESTION 02</div>
+<h3>Which side of a basic bid/ask quote is normally used when executing a market buy?</h3>
+<div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>Bid</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Ask</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Midpoint only</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Previous candle close</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div class="q">
+<div class="qtag">QUESTION 03</div>
+<h3>Which side is normally involved when executing a market sell?</h3>
+<div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>Ask</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Bid</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Chart midpoint only</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Spread value itself</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div class="q">
+<div class="qtag">QUESTION 04</div>
+<h3>What is the spread?</h3>
+<div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>Difference between bid and ask</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Difference between open and close</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Distance between two candles</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Position size</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div class="q">
+<div class="qtag">QUESTION 05</div>
+<h3>Why can the final market-order execution price differ from the displayed price?</h3>
+<div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>Markets never move</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Price and liquidity can change during execution</button><button class="opt" data-option="C" type="button"><strong>C. </strong>The spread disappears</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Currency pairs have fixed prices</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div class="q">
+<div class="qtag">QUESTION 06</div>
+<h3>What does slippage describe?</h3>
+<div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>A guaranteed profit</button><button class="opt" data-option="B" type="button"><strong>B. </strong>A difference between expected/requested and actual execution price</button><button class="opt" data-option="C" type="button"><strong>C. </strong>The currency pair name</button><button class="opt" data-option="D" type="button"><strong>D. </strong>The lot-size formula</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div aria-live="polite" class="mo-scorebar"><strong>Knowledge Check: 0 / 6 correct</strong><div class="score-progress"><div class="score-fill"></div></div></div></section>
+<section class="section">
+<h2>06. Practical Scenarios</h2>
+<div class="q">
+<div class="qtag">SCENARIO 01</div>
+<h3>
+            EUR/USD shows Bid 1.1000 and Ask 1.1002. A trader presses Buy.
+            Which side is relevant to the market buy?
+        </h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>Bid 1.1000</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Ask 1.1002</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Midpoint only</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Previous candle close</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div class="q">
+<div class="qtag">SCENARIO 02</div>
+<h3>
+            The trader immediately presses Sell using the same quote.
+            Which displayed side is relevant to the sell?
+        </h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>Bid 1.1000</button><button class="opt" data-option="B" type="button"><strong>B. </strong>Ask 1.1002</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Previous candle close</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Spread value itself</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div class="q">
+<div class="qtag">SCENARIO 03</div>
+<h3>
+            A fast market moves between the click and the actual execution.
+            What execution issue might the trader experience?
+        </h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>The displayed price must stay unchanged</button><button class="opt" data-option="B" type="button"><strong>B. </strong>The actual execution price can differ from the displayed price</button><button class="opt" data-option="C" type="button"><strong>C. </strong>The spread disappears</button><button class="opt" data-option="D" type="button"><strong>D. </strong>The currency pair becomes fixed</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+<div class="q">
+<div class="qtag">SCENARIO 04</div>
+<h3>
+            Liquidity becomes thin while a large market order is being executed.
+            Why can execution become less predictable?
+        </h3><div class="opts"><button class="opt" data-option="A" type="button"><strong>A. </strong>The order is guaranteed at one price</button><button class="opt" data-option="B" type="button"><strong>B. </strong>The order may interact with multiple available price levels</button><button class="opt" data-option="C" type="button"><strong>C. </strong>Liquidity no longer matters</button><button class="opt" data-option="D" type="button"><strong>D. </strong>Order size cannot affect execution</button></div>
+
+<div aria-live="polite" class="mo-feedback"></div></div>
+</section>
+<section class="section">
+<h2>07. Student Self-Check</h2>
+<div class="checks">
+<div class="check">☐ I can explain what a market order is.</div>
+<div class="check">☐ I understand market buy vs market sell.</div>
+<div class="check">☐ I know the basic role of bid and ask.</div>
+<div class="check">☐ I understand what the spread represents.</div>
+<div class="check">☐ I understand why execution price can change.</div>
+<div class="check">☐ I understand the basic meaning of slippage.</div>
+<div class="check">☐ I understand why liquidity affects execution.</div>
+<div class="check">☐ I am ready to study who trades Forex next.</div>
+</div>
+</section>
+<section class="section">
+<h2>08. Quick Revision</h2>
+<ul class="list">
+<li>A market order prioritizes execution under current market conditions.</li>
+<li>A market buy normally interacts with available ask liquidity.</li>
+<li>A market sell normally interacts with available bid liquidity.</li>
+<li>The spread is the difference between bid and ask.</li>
+<li>Liquidity affects how easily an order can be executed around current prices.</li>
+<li>Fast price movement can cause the final execution price to differ from the displayed price.</li>
+<li>That execution-price difference is commonly described as slippage.</li>
+</ul>
+</section>
+<nav aria-label="Exercise navigation" class="nav">
+<a href="pips-points.html">← Pips &amp; Points</a>
+<a class="center" href="module1-exercise.html">Exercise Hub</a>
+<a class="next" href="who-trades-forex.html">Next: Who Trades Forex →</a>
+</nav>
+<div class="note">Exercise 04 of 10 • Strativo Academy Module 1 • Next: Who Trades Forex</div>
+</div>
+</main>
+<div data-component="footer"></div>
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const maps = {
+        "QUESTION 01": {
+            correct:"B",
+            explanation:"A market order prioritizes execution under current market conditions instead of guaranteeing one exact price.",
+            wrong:{
+                A:"A market order does not guarantee an exact future price.",
+                C:"A market order is intended to request execution rather than refuse immediate execution.",
+                D:"The spread does not disappear simply because a market order is used."
+            }
+        },
+        "QUESTION 02": {
+            correct:"B",
+            explanation:"A market buy normally interacts with available ask-side liquidity in the basic bid/ask model.",
+            wrong:{
+                A:"The bid is normally the side relevant to a market sell.",
+                C:"The midpoint is not the normal execution side of a market buy.",
+                D:"The previous candle close is chart information, not the normal execution side."
+            }
+        },
+        "QUESTION 03": {
+            correct:"B",
+            explanation:"A market sell normally interacts with available bid-side liquidity.",
+            wrong:{
+                A:"The ask is normally associated with the buy side in the basic model.",
+                C:"A chart midpoint does not define the normal market-sell execution side.",
+                D:"The spread is the difference between bid and ask; it is not itself an execution side."
+            }
+        },
+        "QUESTION 04": {
+            correct:"A",
+            explanation:"The spread is the difference between the bid price and the ask price.",
+            wrong:{
+                B:"Open and close describe candle prices, not the bid/ask spread.",
+                C:"Distance between candles is not the definition of spread.",
+                D:"Position size is separate from the bid/ask relationship."
+            }
+        },
+        "QUESTION 05": {
+            correct:"B",
+            explanation:"Market prices and available liquidity can change while an order is being sent and executed, so the final execution price can differ.",
+            wrong:{
+                A:"Markets do move, and that movement is one reason execution can change.",
+                C:"The spread does not simply disappear during execution.",
+                D:"Currency-pair prices are not fixed."
+            }
+        },
+        "QUESTION 06": {
+            correct:"B",
+            explanation:"Slippage describes a difference between the expected or displayed price and the actual execution price.",
+            wrong:{
+                A:"Slippage is not a guaranteed profit.",
+                C:"Slippage is about execution price, not the currency-pair name.",
+                D:"Slippage is not a lot-size formula."
+            }
+        },
+        "SCENARIO 01": {
+            correct:"B",
+            explanation:"With Bid 1.1000 and Ask 1.1002, a market buy normally interacts with the ask side, so 1.1002 is the relevant displayed side in this simplified example.",
+            wrong:{
+                A:"The bid is normally associated with a market sell in the basic model.",
+                C:"The midpoint is not the normal market-buy execution side.",
+                D:"The previous close does not determine the current market-buy side."
+            }
+        },
+        "SCENARIO 02": {
+            correct:"A",
+            explanation:"A market sell normally interacts with the bid side, so 1.1000 is the relevant displayed side in the simplified example.",
+            wrong:{
+                B:"The ask is normally the side associated with a market buy.",
+                C:"The previous close is not the current market-sell execution side.",
+                D:"The spread itself is not the execution side."
+            }
+        },
+        "SCENARIO 03": {
+            correct:"B",
+            explanation:"If the market changes between the click and execution, the actual execution price can differ. This is the basic idea of slippage.",
+            wrong:{
+                A:"The market moving does not guarantee that the same price remains available.",
+                C:"Price movement does not mean the spread automatically disappears.",
+                D:"Currency pairs do not have fixed prices."
+            }
+        },
+        "SCENARIO 04": {
+            correct:"B",
+            explanation:"With thinner liquidity, a larger market order may interact with multiple available price levels instead of being filled entirely at one nearby level.",
+            wrong:{
+                A:"Thin liquidity generally makes execution less predictable, not more guaranteed.",
+                C:"The spread does not eliminate the effect of available liquidity.",
+                D:"Order size can matter when available liquidity is limited."
+            }
+        }
+    };
+
+    let score = 0;
+    const counted = new Set();
+    const scoreStrong = document.querySelector(".mo-scorebar strong");
+    const scoreFill = document.querySelector(".mo-scorebar .score-fill");
+
+    function updateScore(){
+        if(!scoreStrong || !scoreFill) return;
+        scoreStrong.textContent = "Knowledge Check: " + score + " / 6 correct";
+        scoreFill.style.width = (score / 6 * 100) + "%";
+    }
+
+    function evaluate(q, selected, data){
+        const feedback = q.querySelector(".mo-feedback");
+        const correct = selected === data.correct;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.disabled = true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+
+            if(btn.dataset.option === data.correct){
+                btn.classList.add("reveal-correct");
+            }
+            if(btn.dataset.option === selected){
+                btn.classList.add(correct ? "correct" : "wrong");
+            }
+        });
+
+        feedback.innerHTML = "";
+        feedback.className = "mo-feedback visible " + (correct ? "correct" : "wrong");
+
+        const title = document.createElement("div");
+        title.className = "feedback-title";
+        title.textContent = correct
+            ? "✅ Correct — well done!"
+            : "❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if(!correct){
+            const why = document.createElement("p");
+            why.className = "why-wrong";
+            why.textContent = "Why your answer is wrong: " +
+                (data.wrong[selected] ||
+                 "That option does not match the concept being tested.");
+            feedback.appendChild(why);
+
+            const right = document.createElement("p");
+            right.className = "correct-answer";
+            right.textContent = "Correct answer: " + data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explanation = document.createElement("p");
+        explanation.textContent = "Explanation: " + data.explanation;
+        feedback.appendChild(explanation);
+
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.className = "mo-retry";
+        retry.textContent = "Try Again";
+
+        retry.addEventListener("click", ()=>{
+            q.querySelectorAll(".opt").forEach(btn=>{
+                btn.disabled = false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+
+            feedback.className = "mo-feedback";
+            feedback.innerHTML = "";
+        });
+
+        feedback.appendChild(retry);
+    }
+
+    document.querySelectorAll(".q").forEach(q=>{
+        const tag = q.querySelector(".qtag");
+        const id = tag ? tag.textContent.trim() : "";
+        const data = maps[id];
+        if(!data) return;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.addEventListener("click", ()=>{
+                if(btn.disabled) return;
+
+                const selected = btn.dataset.option;
+
+                if(id.startsWith("QUESTION") && !counted.has(id)){
+                    counted.add(id);
+                    if(selected === data.correct) score += 1;
+                    updateScore();
+                }
+
+                evaluate(q, selected, data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,585 @@
+/* ==========================================================
+   STRATIVO ACADEMY
+   Appearance & Accessibility
+   ========================================================== */
+
+.appearance-page {
+    min-height: 100vh;
+}
+
+
+/* ==========================================================
+   APPEARANCE SETTING CARDS
+   ========================================================== */
+
+.appearance-setting-card {
+    position: relative;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.72);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+.appearance-setting-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.appearance-setting-header h3 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.appearance-setting-header p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   OPTION GROUPS
+   ========================================================== */
+
+.appearance-option-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.appearance-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+    color: #94a3b8;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.appearance-option:hover {
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+}
+
+.appearance-option[aria-pressed="true"] {
+    color: #ffffff;
+    border-color: rgba(59, 130, 246, 0.55);
+    background: rgba(59, 130, 246, 0.14);
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.08);
+}
+
+.appearance-option i {
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================================
+   FONT PREVIEW
+   ========================================================== */
+
+.font-preview-small {
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.font-preview-default {
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+.font-preview-large {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   TOGGLE LIST
+   ========================================================== */
+
+.appearance-toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.appearance-toggle-card,
+.appearance-action-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(15, 23, 42, 0.72);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+.appearance-toggle-info,
+.appearance-action-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    min-width: 0;
+}
+
+.appearance-toggle-info h3,
+.appearance-action-info h3 {
+    margin: 0 0 6px;
+    color: #f8fafc;
+    font-size: 0.98rem;
+    font-weight: 700;
+}
+
+.appearance-toggle-info p,
+.appearance-action-info p {
+    margin: 0;
+    max-width: 680px;
+    color: #94a3b8;
+    font-size: 0.87rem;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   SWITCH
+   ========================================================== */
+
+.appearance-switch {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 50px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.appearance-switch input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+}
+
+.appearance-switch-slider {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.appearance-switch-slider::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 3px;
+    top: 3px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    transition: transform 0.2s ease;
+}
+
+.appearance-switch input:checked + .appearance-switch-slider {
+    background: rgba(59, 130, 246, 0.8);
+    border-color: rgba(59, 130, 246, 0.9);
+}
+
+.appearance-switch input:checked + .appearance-switch-slider::before {
+    transform: translateX(22px);
+    background: #ffffff;
+}
+
+.appearance-switch input:focus-visible + .appearance-switch-slider {
+    outline: 2px solid rgba(96, 165, 250, 0.9);
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   ACTION BUTTON
+   ========================================================== */
+
+.appearance-action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    flex: 0 0 auto;
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 11px;
+    background: rgba(59, 130, 246, 0.1);
+    color: #bfdbfe;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.appearance-action-button:hover {
+    background: rgba(59, 130, 246, 0.18);
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================================
+   LIGHT THEME FOUNDATION
+   ========================================================== */
+
+html[data-theme="light"] .appearance-setting-card,
+html[data-theme="light"] .appearance-toggle-card,
+html[data-theme="light"] .appearance-action-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(15, 23, 42, 0.1);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="light"] .appearance-setting-header h3,
+html[data-theme="light"] .appearance-toggle-info h3,
+html[data-theme="light"] .appearance-action-info h3 {
+    color: #0f172a;
+}
+
+html[data-theme="light"] .appearance-setting-header p,
+html[data-theme="light"] .appearance-toggle-info p,
+html[data-theme="light"] .appearance-action-info p {
+    color: #64748b;
+}
+
+html[data-theme="light"] .appearance-option {
+    color: #64748b;
+    border-color: rgba(15, 23, 42, 0.1);
+    background: rgba(15, 23, 42, 0.025);
+}
+
+html[data-theme="light"] .appearance-option:hover {
+    color: #0f172a;
+    background: rgba(15, 23, 42, 0.05);
+}
+
+
+/* ==========================================================
+   HIGH CONTRAST
+   ========================================================== */
+
+html[data-high-contrast="true"] .appearance-setting-card,
+html[data-high-contrast="true"] .appearance-toggle-card,
+html[data-high-contrast="true"] .appearance-action-card {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+html[data-high-contrast="true"] .appearance-setting-header p,
+html[data-high-contrast="true"] .appearance-toggle-info p,
+html[data-high-contrast="true"] .appearance-action-info p {
+    color: #dbeafe;
+}
+
+html[data-high-contrast="true"] .appearance-option {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #e2e8f0;
+}
+
+
+/* ==========================================================
+   COMPACT LAYOUT
+   ========================================================== */
+
+html[data-compact-layout="true"] .appearance-setting-card {
+    padding: 18px;
+}
+
+html[data-compact-layout="true"] .appearance-toggle-card,
+html[data-compact-layout="true"] .appearance-action-card {
+    padding: 16px 18px;
+}
+
+html[data-compact-layout="true"] .appearance-toggle-list {
+    gap: 8px;
+}
+
+html[data-compact-layout="true"] .appearance-setting-header {
+    margin-bottom: 16px;
+}
+
+
+/* ==========================================================
+   FONT SIZE
+   ========================================================== */
+
+html[data-font-size="small"] {
+    font-size: 93%;
+}
+
+html[data-font-size="default"] {
+    font-size: 100%;
+}
+
+html[data-font-size="large"] {
+    font-size: 108%;
+}
+
+
+/* ==========================================================
+   FOCUS MODE
+   ========================================================== */
+
+html[data-focus-mode="true"] .settings-section-heading {
+    max-width: 760px;
+}
+
+html[data-focus-mode="true"] .settings-background {
+    opacity: 0.45;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 800px) {
+
+    .appearance-option-group {
+        grid-template-columns: 1fr;
+    }
+
+    .appearance-toggle-card,
+    .appearance-action-card {
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .appearance-setting-card,
+    .appearance-toggle-card,
+    .appearance-action-card {
+        padding: 18px;
+        border-radius: 15px;
+    }
+
+    .appearance-toggle-card,
+    .appearance-action-card {
+        flex-direction: column;
+    }
+
+    .appearance-switch,
+    .appearance-action-button {
+        align-self: flex-start;
+    }
+
+}
+
+/* ==========================================================
+   THEME OVERRIDES
+   ========================================================== */
+
+/* LIGHT THEME */
+html[data-theme="light"] body.appearance-page {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+html[data-theme="light"] body.appearance-page .settings-background {
+    opacity: 0.15;
+}
+
+html[data-theme="light"] body.appearance-page .settings-topbar,
+html[data-theme="light"] body.appearance-page .settings-hero,
+html[data-theme="light"] body.appearance-page .settings-section,
+html[data-theme="light"] body.appearance-page .settings-about {
+    color: #0f172a;
+}
+
+html[data-theme="light"] body.appearance-page .settings-back-link {
+    color: #475569;
+}
+
+html[data-theme="light"] body.appearance-page .settings-back-link:hover {
+    color: #2563eb;
+}
+
+html[data-theme="light"] body.appearance-page .settings-version {
+    color: #475569;
+}
+
+html[data-theme="light"] body.appearance-page .settings-eyebrow {
+    color: #2563eb;
+}
+
+html[data-theme="light"] body.appearance-page .settings-hero h1,
+html[data-theme="light"] body.appearance-page .settings-section-heading h2 {
+    color: #0f172a;
+}
+
+html[data-theme="light"] body.appearance-page .settings-hero p,
+html[data-theme="light"] body.appearance-page .settings-section-heading p {
+    color: #64748b;
+}
+
+html[data-theme="light"] body.appearance-page .settings-section-label {
+    color: #2563eb;
+}
+
+html[data-theme="light"] body.appearance-page .settings-about {
+    color: #64748b;
+}
+
+
+/* DARK THEME */
+html[data-theme="dark"] body.appearance-page {
+    background: #030712;
+    color: #f8fafc;
+}
+
+
+/* SYSTEM THEME
+   The JavaScript converts System into the actual
+   light/dark theme, so these selectors handle the
+   final applied theme automatically.
+*/
+html[data-theme="light"] body.appearance-page {
+    color-scheme: light;
+}
+
+html[data-theme="dark"] body.appearance-page {
+    color-scheme: dark;
+}
+
+/* ==========================================================
+   APPEARANCE THEME SYSTEM
+   ========================================================== */
+
+/* --------------------------
+   DARK THEME
+-------------------------- */
+
+html[data-theme="dark"] body.appearance-page {
+    background: #030712;
+    color: #f8fafc;
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] body.appearance-page .appearance-setting-card,
+html[data-theme="dark"] body.appearance-page .appearance-toggle-card,
+html[data-theme="dark"] body.appearance-page .appearance-action-card {
+    background: rgba(15, 23, 42, 0.72);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] body.appearance-page
+.appearance-setting-header h3,
+html[data-theme="dark"] body.appearance-page
+.appearance-toggle-info h3,
+html[data-theme="dark"] body.appearance-page
+.appearance-action-info h3 {
+    color: #f8fafc;
+}
+
+html[data-theme="dark"] body.appearance-page
+.appearance-setting-header p,
+html[data-theme="dark"] body.appearance-page
+.appearance-toggle-info p,
+html[data-theme="dark"] body.appearance-page
+.appearance-action-info p {
+    color: #94a3b8;
+}
+
+
+/* --------------------------
+   LIGHT THEME
+-------------------------- */
+
+html[data-theme="light"] body.appearance-page {
+    background: #f8fafc;
+    color: #0f172a;
+    color-scheme: light;
+}
+
+html[data-theme="light"] body.appearance-page .appearance-setting-card,
+html[data-theme="light"] body.appearance-page .appearance-toggle-card,
+html[data-theme="light"] body.appearance-page .appearance-action-card {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.10);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="light"] body.appearance-page
+.appearance-setting-header h3,
+html[data-theme="light"] body.appearance-page
+.appearance-toggle-info h3,
+html[data-theme="light"] body.appearance-page
+.appearance-action-info h3 {
+    color: #0f172a;
+}
+
+html[data-theme="light"] body.appearance-page
+.appearance-setting-header p,
+html[data-theme="light"] body.appearance-page
+.appearance-toggle-info p,
+html[data-theme="light"] body.appearance-page
+.appearance-action-info p {
+    color: #64748b;
+}
+
+
+/* --------------------------
+   SYSTEM THEME
+-------------------------- */
+
+@media (prefers-color-scheme: dark) {
+
+    html[data-theme-preference="system"]
+    body.appearance-page {
+        background: #030712;
+        color: #f8fafc;
+        color-scheme: dark;
+    }
+
+}
+
+@media (prefers-color-scheme: light) {
+
+    html[data-theme-preference="system"]
+    body.appearance-page {
+        background: #f8fafc;
+        color: #0f172a;
+        color-scheme: light;
+    }
+
+}

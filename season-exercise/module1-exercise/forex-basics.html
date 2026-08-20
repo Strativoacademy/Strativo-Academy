@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#030712" name="theme-color"/>
+<meta content="Strativo Academy Module 1 Exercise 01 — Forex Fundamentals." name="description"/>
+<title>Exercise 01 — Forex Fundamentals | Strativo Academy</title>
+<!--
+        FILE LOCATION
+        season-exercise/module1-exercise/forex-basics.html
+
+        Shared root files:
+        ../../css/
+        ../../js/
+    -->
+<link href="../../css/style.css" rel="stylesheet"/>
+<link href="../../css/ui.css" rel="stylesheet"/>
+<link href="../../css/header.css" rel="stylesheet"/>
+<link href="../../css/footer.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root{
+            --fx-bg:#030712;
+            --fx-panel:#0b1220;
+            --fx-panel-2:#08111f;
+            --fx-border:rgba(148,163,184,.13);
+            --fx-text:#f8fafc;
+            --fx-muted:#a6b4c6;
+            --fx-blue:#60a5fa;
+            --fx-green:#34d399;
+            --fx-yellow:#fbbf24;
+            --fx-red:#f87171;
+            --fx-purple:#a78bfa;
+        }
+
+        *{box-sizing:border-box}
+
+        html{scroll-behavior:smooth}
+
+        body{
+            margin:0;
+            min-height:100vh;
+            background:var(--fx-bg);
+            color:var(--fx-text);
+            font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+        }
+
+        .fx-page{
+            min-height:100vh;
+            padding-bottom:60px;
+        }
+
+        .fx-wrap{
+            width:min(1120px,calc(100% - 28px));
+            margin:0 auto;
+        }
+
+        /* HERO */
+        .fx-hero{
+            position:relative;
+            overflow:hidden;
+            padding:76px 20px 54px;
+            background:
+                radial-gradient(circle at 15% 20%,rgba(96,165,250,.13),transparent 34%),
+                radial-gradient(circle at 85% 25%,rgba(52,211,153,.08),transparent 30%),
+                #030712;
+            border-bottom:1px solid var(--fx-border);
+        }
+
+        .fx-hero-inner{
+            width:min(900px,100%);
+            margin:0 auto;
+            text-align:center;
+        }
+
+        .fx-eyebrow{
+            color:#93c5fd;
+            font-size:.82rem;
+            font-weight:900;
+            letter-spacing:.16em;
+        }
+
+        .fx-hero h1{
+            margin:15px 0 0;
+            font-family:Poppins,sans-serif;
+            font-size:clamp(2rem,5vw,3.8rem);
+            line-height:1.08;
+            letter-spacing:-.04em;
+        }
+
+        .fx-hero p{
+            max-width:820px;
+            margin:16px auto 0;
+            color:#a8b5c7;
+            font-size:1rem;
+            line-height:1.9;
+        }
+
+        .fx-badges{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:8px;
+            margin-top:21px;
+        }
+
+        .fx-badge{
+            padding:7px 11px;
+            border:1px solid var(--fx-border);
+            border-radius:999px;
+            background:rgba(15,23,42,.62);
+            color:#dbeafe;
+            font-size:.78rem;
+            font-weight:800;
+        }
+
+        /* TOP META */
+        .fx-meta{
+            display:grid;
+            grid-template-columns:1fr auto;
+            gap:15px;
+            align-items:center;
+            margin-top:23px;
+            padding:16px 18px;
+            border:1px solid var(--fx-border);
+            border-radius:15px;
+            background:var(--fx-panel);
+        }
+
+        .fx-meta strong{
+            display:block;
+            color:#f1f5f9;
+            font-size:.86rem;
+        }
+
+        .fx-meta span{
+            display:block;
+            margin-top:5px;
+            color:#7f8ea2;
+            font-size:.78rem;
+        }
+
+        .fx-progress{
+            min-width:150px;
+            text-align:right;
+        }
+
+        .fx-progress-bar{
+            width:150px;
+            height:7px;
+            overflow:hidden;
+            border-radius:999px;
+            background:#162033;
+        }
+
+        .fx-progress-fill{
+            width:10%;
+            height:100%;
+            background:linear-gradient(90deg,#60a5fa,#34d399);
+        }
+
+        .fx-progress small{
+            display:block;
+            margin-top:6px;
+            color:#7f8ea2;
+            font-size:.72rem;
+        }
+
+        /* MAIN CONTENT */
+        .fx-section{
+            margin-top:20px;
+            padding:22px;
+            border:1px solid var(--fx-border);
+            border-radius:17px;
+            background:var(--fx-panel);
+        }
+
+        .fx-section h2{
+            margin:0;
+            font-family:Poppins,sans-serif;
+            font-size:1.35rem;
+            color:#f8fafc;
+        }
+
+        .fx-section h3{
+            margin:18px 0 0;
+            color:#dbeafe;
+            font-size:1rem;
+        }
+
+        .fx-section p{
+            margin:8px 0 0;
+            color:var(--fx-muted);
+            font-size:.92rem;
+            line-height:1.9;
+        }
+
+        .fx-list{
+            margin:12px 0 0;
+            padding-left:20px;
+        }
+
+        .fx-list li{
+            margin-top:7px;
+            color:#aebdd0;
+            font-size:.88rem;
+            line-height:1.75;
+        }
+
+        /* DIAGRAM */
+        .fx-diagram{
+            margin-top:18px;
+            border:1px solid rgba(148,163,184,.11);
+            border-radius:14px;
+            overflow:hidden;
+            background:#07101f;
+        }
+
+        .fx-diagram-title{
+            padding:11px 14px;
+            border-bottom:1px solid rgba(148,163,184,.10);
+            background:#0d1728;
+            color:#dbe4ef;
+            font-size:.76rem;
+            font-weight:900;
+            letter-spacing:.03em;
+        }
+
+        .fx-diagram svg{
+            display:block;
+            width:100%;
+            height:auto;
+        }
+
+        /* QUESTIONS */
+        .fx-question{
+            margin-top:17px;
+            padding:17px;
+            border:1px solid rgba(148,163,184,.10);
+            border-radius:14px;
+            background:#08111f;
+        }
+
+        .fx-question:first-of-type{
+            margin-top:14px;
+        }
+
+        .fx-question-number{
+            color:#60a5fa;
+            font-size:.47rem;
+            font-weight:900;
+            letter-spacing:.06em;
+        }
+
+        .fx-question h3{
+            margin-top:7px;
+            color:#f1f5f9;
+            font-size:1rem;
+            line-height:1.55;
+        }
+
+        .fx-options{
+            display:grid;
+            grid-template-columns:repeat(2,minmax(0,1fr));
+            gap:8px;
+            margin-top:11px;
+        }
+
+        .fx-option{
+            padding:12px 13px;
+            border:1px solid rgba(148,163,184,.11);
+            border-radius:10px;
+            background:#0b1627;
+            color:#b9c6d7;
+            font-size:.86rem;
+            line-height:1.65;
+        }
+
+        .fx-option strong{
+            color:#dbeafe;
+        }
+
+        .fx-answer{
+            margin-top:11px;
+            padding:11px 13px;
+            border-left:3px solid var(--fx-green);
+            border-radius:0 9px 9px 0;
+            background:rgba(16,185,129,.055);
+        }
+
+        .fx-answer strong{
+            color:#86efac;
+            font-size:.76rem;
+        }
+
+        .fx-answer p{
+            margin-top:5px;
+            color:#b7c8d8;
+            font-size:.84rem;
+        }
+
+        /* MATCHING / TRUE FALSE */
+        .fx-two-col{
+            display:grid;
+            grid-template-columns:repeat(2,minmax(0,1fr));
+            gap:13px;
+            margin-top:14px;
+        }
+
+        .fx-mini{
+            padding:15px;
+            border:1px solid rgba(148,163,184,.10);
+            border-radius:12px;
+            background:#08111f;
+        }
+
+        .fx-mini h3{
+            margin:0;
+            color:#f1f5f9;
+            font-size:.92rem;
+        }
+
+        .fx-mini p{
+            margin-top:7px;
+            color:#aab8c9;
+            font-size:.86rem;
+            line-height:1.75;
+        }
+
+        /* SELF CHECK */
+        .fx-checklist{
+            margin-top:15px;
+            display:grid;
+            grid-template-columns:repeat(2,minmax(0,1fr));
+            gap:8px;
+        }
+
+        .fx-check{
+            padding:10px 12px;
+            border:1px solid rgba(148,163,184,.09);
+            border-radius:10px;
+            background:#08111f;
+            color:#cbd5e1;
+            font-size:.80rem;
+            line-height:1.65;
+        }
+
+        /* NAV */
+        .fx-navigation{
+            display:grid;
+            grid-template-columns:1fr auto 1fr;
+            gap:10px;
+            align-items:stretch;
+            margin-top:22px;
+        }
+
+        .fx-nav{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            min-height:48px;
+            padding:0 13px;
+            border:1px solid rgba(148,163,184,.11);
+            border-radius:11px;
+            background:#0b1627;
+            color:#dbeafe;
+            text-decoration:none;
+            font-size:.80rem;
+            font-weight:900;
+            text-align:center;
+            transition:.2s ease;
+        }
+
+        .fx-nav:hover{
+            border-color:rgba(96,165,250,.25);
+            background:#0e1b30;
+        }
+
+        .fx-nav.center{
+            background:rgba(59,130,246,.06);
+            color:#bfdbfe;
+        }
+
+        .fx-nav.next{
+            background:rgba(16,185,129,.055);
+            color:#d1fae5;
+        }
+
+        .fx-note{
+            margin-top:14px;
+            color:#64748b;
+            text-align:center;
+            font-size:.70rem;
+            line-height:1.7;
+        }
+
+        @media(max-width:760px){
+            .fx-meta,
+            .fx-two-col{
+                grid-template-columns:1fr;
+            }
+
+            .fx-progress{
+                text-align:left;
+            }
+
+            .fx-progress-bar{
+                width:100%;
+            }
+
+            .fx-options,
+            .fx-checklist{
+                grid-template-columns:1fr;
+            }
+
+            .fx-navigation{
+                grid-template-columns:1fr;
+            }
+        }
+
+        @media(max-width:520px){
+            .fx-wrap{
+                width:min(100% - 18px,680px);
+            }
+
+            .fx-section{
+                padding:18px;
+            }
+
+            .fx-hero{
+                padding:64px 15px 48px;
+            }
+        }
+    
+.fx-section {
+        padding: 20px !important;
+    }
+
+    .fx-section h2 {
+        font-size: 1.25rem !important;
+    }
+
+    .fx-question h3 {
+        font-size: 1rem !important;
+    }
+
+    .fx-option {
+        font-size: .92rem !important;
+    }
+
+
+
+/* =========================================================
+   INTERACTIVE EXERCISE SYSTEM
+========================================================= */
+
+.fx-option {
+    appearance: none;
+    width: 100%;
+    border: 1px solid rgba(148,163,184,.11);
+    border-radius: 10px;
+    background: #0b1627;
+    color: #d5deea;
+    padding: 14px 15px;
+    text-align: left;
+    font: inherit;
+    font-size: 0.92rem !important;
+    line-height: 1.65 !important;
+    cursor: pointer;
+    transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+
+.fx-option:hover {
+    transform: translateY(-1px);
+    border-color: rgba(96,165,250,.34);
+    background: #0e1b30;
+}
+
+.fx-option:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+.fx-option.selected {
+    border-color: rgba(96,165,250,.45);
+    background: rgba(59,130,246,.10);
+}
+
+.fx-option.correct {
+    border-color: rgba(52,211,153,.55);
+    background: rgba(16,185,129,.11);
+    color: #d1fae5;
+}
+
+.fx-option.wrong {
+    border-color: rgba(248,113,113,.50);
+    background: rgba(248,113,113,.09);
+    color: #fecaca;
+}
+
+.fx-option:disabled {
+    cursor: default;
+    transform: none;
+}
+
+.fx-feedback {
+    display: none;
+    margin-top: 13px;
+    padding: 14px 15px;
+    border-left: 3px solid #60a5fa;
+    border-radius: 0 10px 10px 0;
+    background: rgba(59,130,246,.055);
+}
+
+.fx-feedback.visible {
+    display: block;
+}
+
+.fx-feedback.result-correct {
+    border-left-color: #34d399;
+    background: rgba(16,185,129,.07);
+}
+
+.fx-feedback.result-wrong {
+    border-left-color: #f87171;
+    background: rgba(248,113,113,.06);
+}
+
+.fx-feedback .feedback-title {
+    color: #f8fafc;
+    font-size: .90rem;
+    font-weight: 900;
+}
+
+.fx-feedback.result-correct .feedback-title {
+    color: #86efac;
+}
+
+.fx-feedback.result-wrong .feedback-title {
+    color: #fca5a5;
+}
+
+.fx-feedback p {
+    margin-top: 7px !important;
+    color: #cbd5e1 !important;
+    font-size: .88rem !important;
+    line-height: 1.75 !important;
+}
+
+.fx-feedback .why-wrong {
+    color: #fca5a5 !important;
+}
+
+.fx-feedback .correct-answer {
+    color: #86efac !important;
+}
+
+.fx-feedback .retry-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 1px solid rgba(148,163,184,.16);
+    border-radius: 8px;
+    background: rgba(15,23,42,.66);
+    color: #cbd5e1;
+    font: inherit;
+    font-size: .78rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.fx-feedback .retry-button:hover {
+    border-color: rgba(96,165,250,.30);
+    background: rgba(59,130,246,.08);
+}
+
+.fx-scorebar {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 1px solid rgba(96,165,250,.15);
+    border-radius: 12px;
+    background: rgba(59,130,246,.055);
+}
+
+.fx-scorebar strong {
+    color: #dbeafe;
+    font-size: .90rem;
+}
+
+.fx-scorebar span {
+    color: #94a3b8;
+    font-size: .82rem;
+}
+
+.fx-scorebar .score-progress {
+    margin-top: 8px;
+    height: 7px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #162033;
+}
+
+.fx-scorebar .score-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg,#60a5fa,#34d399);
+    transition: width .25s ease;
+}
+</style>
+</head>
+<body>
+<!-- =========================================================
+         GLOBAL HEADER
+    ========================================================== -->
+<div data-component="header"></div>
+<main class="fx-page">
+<!-- HERO -->
+<section class="fx-hero">
+<div class="fx-hero-inner">
+<div class="fx-eyebrow">
+                    STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE
+                </div>
+<h1>Exercise 01 — Forex Fundamentals</h1>
+<p>
+                    Test your understanding of the foundation of the foreign
+                    exchange market. This exercise focuses only on the basic
+                    Forex concepts covered before moving into currency pairs,
+                    pips, orders and chart analysis.
+                </p>
+<div class="fx-badges">
+<span class="fx-badge">📘 Foundation</span>
+<span class="fx-badge">🧠 Knowledge Check</span>
+<span class="fx-badge">🌍 Forex</span>
+<span class="fx-badge">01 / 10</span>
+</div>
+</div>
+</section>
+<div class="fx-wrap">
+<!-- META -->
+<section class="fx-meta">
+<div>
+<strong>Exercise Goal</strong>
+<span>Understand what Forex is and explain its basic purpose.</span>
+</div>
+<div class="fx-progress">
+<div class="fx-progress-bar">
+<div class="fx-progress-fill"></div>
+</div>
+<small>Exercise 01 of 10</small>
+</div>
+</section>
+<!-- PART 1 -->
+<section class="fx-section">
+<h2>01. Before You Answer</h2>
+<p>
+                    Forex, short for foreign exchange, is the global market in
+                    which currencies are exchanged. A currency is not normally
+                    analysed in isolation in Forex; its value is considered in
+                    relation to another currency.
+                </p>
+<p>
+                    The core idea is simple: one currency is exchanged for
+                    another. The price seen on a Forex chart represents a
+                    relationship between currencies, and that relationship
+                    changes as market participants buy and sell.
+                </p>
+<div class="fx-diagram">
+<div class="fx-diagram-title">BASIC FOREX EXCHANGE</div>
+<svg aria-label="Basic foreign exchange diagram" role="img" viewbox="0 0 900 340">
+<rect fill="#07101f" height="340" width="900"></rect>
+<rect fill="#0b1627" height="145" rx="18" stroke="#60a5fa" stroke-width="2" width="250" x="90" y="90"></rect>
+<text fill="#bfdbfe" font-size="24" font-weight="900" text-anchor="middle" x="215" y="140">CURRENCY A</text>
+<text fill="#94a3b8" font-size="17" text-anchor="middle" x="215" y="176">is exchanged</text>
+<text fill="#e2e8f0" font-size="20" font-weight="800" text-anchor="middle" x="215" y="208">↓</text>
+<rect fill="#0b1627" height="145" rx="18" stroke="#34d399" stroke-width="2" width="250" x="560" y="90"></rect>
+<text fill="#a7f3d0" font-size="24" font-weight="900" text-anchor="middle" x="685" y="140">CURRENCY B</text>
+<text fill="#94a3b8" font-size="17" text-anchor="middle" x="685" y="176">is received</text>
+<text fill="#e2e8f0" font-size="20" font-weight="800" text-anchor="middle" x="685" y="208">↓</text>
+<line marker-end="url(#arrow)" stroke="#94a3b8" stroke-width="4" x1="350" x2="548" y1="163" y2="163"></line>
+<defs>
+<marker id="arrow" markerheight="10" markerwidth="10" orient="auto" refx="8" refy="5">
+<polygon fill="#94a3b8" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+</defs>
+<text fill="#64748b" font-size="16" font-weight="700" text-anchor="middle" x="450" y="285">
+                            FOREX = EXCHANGE OF CURRENCIES
+                        </text>
+</svg>
+</div>
+<div class="fx-two-col">
+<div class="fx-mini">
+<h3>What You Should Know</h3>
+<p>
+                            Forex is about currency exchange and relative value.
+                            Prices move because participants continually buy,
+                            sell, hedge, exchange and manage exposure.
+                        </p>
+</div>
+<div class="fx-mini">
+<h3>What This Exercise Is Not</h3>
+<p>
+                            This first exercise is not about predicting the
+                            next candle or choosing a trading strategy. First,
+                            understand the market itself.
+                        </p>
+</div>
+</div>
+</section>
+<!-- QUESTIONS -->
+<section class="fx-section">
+<h2>02. Knowledge Check</h2>
+<p>
+                    Choose your answer first. The correct answer and explanation
+                    stay hidden until you press <strong>Check Answer</strong>.
+                    This lets you test yourself instead of reading the answer
+                    before thinking.
+                </p>
+<div class="fx-question">
+<div class="fx-question-number">QUESTION 01</div>
+<h3>What does Forex primarily refer to?</h3>
+<div class="fx-options">
+<button aria-label="Answer A: Buying only company shares" class="fx-option" data-option="A" type="button"><strong>A. </strong>Buying only company shares</button>
+<button aria-label="Answer B: Exchanging one currency for another" class="fx-option" data-option="B" type="button"><strong>B. </strong>Exchanging one currency for another</button>
+<button aria-label="Answer C: Trading only cryptocurrencies" class="fx-option" data-option="C" type="button"><strong>C. </strong>Trading only cryptocurrencies</button>
+<button aria-label="Answer D: Buying physical gold only" class="fx-option" data-option="D" type="button"><strong>D. </strong>Buying physical gold only</button>
+</div>
+
+<div aria-live="polite" class="fx-feedback"></div></div>
+<div class="fx-question">
+<div class="fx-question-number">QUESTION 02</div>
+<h3>Why are currencies compared with one another in Forex?</h3>
+<div class="fx-options">
+<button aria-label="Answer A: Because currencies have no relationship to value" class="fx-option" data-option="A" type="button"><strong>A. </strong>Because currencies have no relationship to value</button>
+<button aria-label="Answer B: Because Forex measures relative currency value" class="fx-option" data-option="B" type="button"><strong>B. </strong>Because Forex measures relative currency value</button>
+<button aria-label="Answer C: Because only banks can use currencies" class="fx-option" data-option="C" type="button"><strong>C. </strong>Because only banks can use currencies</button>
+<button aria-label="Answer D: Because charts cannot show individual currencies" class="fx-option" data-option="D" type="button"><strong>D. </strong>Because charts cannot show individual currencies</button>
+</div>
+
+<div aria-live="polite" class="fx-feedback"></div></div>
+<div class="fx-question">
+<div class="fx-question-number">QUESTION 03</div>
+<h3>Which statement best describes the Forex market?</h3>
+<div class="fx-options">
+<button aria-label="Answer A: A market involving only retail traders" class="fx-option" data-option="A" type="button"><strong>A. </strong>A market involving only retail traders</button>
+<button aria-label="Answer B: A market where currencies are exchanged by different participants" class="fx-option" data-option="B" type="button"><strong>B. </strong>A market where currencies are exchanged by different participants</button>
+<button aria-label="Answer C: A market that only operates when one stock exchange is open" class="fx-option" data-option="C" type="button"><strong>C. </strong>A market that only operates when one stock exchange is open</button>
+<button aria-label="Answer D: A market where prices never change" class="fx-option" data-option="D" type="button"><strong>D. </strong>A market where prices never change</button>
+</div>
+
+<div aria-live="polite" class="fx-feedback"></div></div>
+<div class="fx-question">
+<div class="fx-question-number">QUESTION 04</div>
+<h3>True or False: A Forex price represents a relationship between currencies.</h3>
+<div class="fx-options">
+<button aria-label="Answer A: True" class="fx-option" data-option="A" type="button"><strong>A. </strong>True</button>
+<button aria-label="Answer B: False" class="fx-option" data-option="B" type="button"><strong>B. </strong>False</button>
+</div>
+
+<div aria-live="polite" class="fx-feedback"></div></div>
+<div class="fx-question">
+<div class="fx-question-number">QUESTION 05</div>
+<h3>Which is the best first step for a beginner?</h3>
+<div class="fx-options">
+<button aria-label="Answer A: Start with a large live account" class="fx-option" data-option="A" type="button"><strong>A. </strong>Start with a large live account</button>
+<button aria-label="Answer B: Memorize one strategy and ignore the market" class="fx-option" data-option="B" type="button"><strong>B. </strong>Memorize one strategy and ignore the market</button>
+<button aria-label="Answer C: Understand how the market works before studying advanced tools" class="fx-option" data-option="C" type="button"><strong>C. </strong>Understand how the market works before studying advanced tools</button>
+<button aria-label="Answer D: Trade immediately after seeing a chart" class="fx-option" data-option="D" type="button"><strong>D. </strong>Trade immediately after seeing a chart</button>
+</div>
+
+<div aria-live="polite" class="fx-feedback"></div></div>
+<div aria-live="polite" class="fx-scorebar"><strong>Knowledge Check: </strong>0 / 5 correct<div class="score-progress"><div class="score-fill"></div></div></div></section>
+<!-- SCENARIO -->
+<section class="fx-section">
+<h2>03. Practical Thinking</h2>
+<p>
+                    Read each situation and decide which basic Forex idea it
+                    tests. These are meant to teach you how to interpret a
+                    statement, not just memorize a definition.
+                </p>
+<div class="fx-question"><div class="fx-question-number">SCENARIO 01</div><h3>A traveller converts Indian rupees into Japanese yen before travelling. What basic Forex idea is being used?</h3><div class="fx-options"><button aria-label="Answer A: Currency exchange" class="fx-option" data-option="A" type="button"><strong>A. </strong>Currency exchange</button><button aria-label="Answer B: Stock ownership" class="fx-option" data-option="B" type="button"><strong>B. </strong>Stock ownership</button><button aria-label="Answer C: Candlestick analysis" class="fx-option" data-option="C" type="button"><strong>C. </strong>Candlestick analysis</button><button aria-label="Answer D: Market structure" class="fx-option" data-option="D" type="button"><strong>D. </strong>Market structure</button></div><div aria-live="polite" class="fx-feedback"></div></div>
+<div class="fx-question"><div class="fx-question-number">SCENARIO 02</div><h3>A company receives revenue in one country but needs to pay suppliers in another currency. Why might it interact with the foreign-exchange market?</h3><div class="fx-options"><button aria-label="Answer A: To create a candlestick" class="fx-option" data-option="A" type="button"><strong>A. </strong>To create a candlestick</button><button aria-label="Answer B: To exchange currencies or manage currency exposure" class="fx-option" data-option="B" type="button"><strong>B. </strong>To exchange currencies or manage currency exposure</button><button aria-label="Answer C: To remove all market risk" class="fx-option" data-option="C" type="button"><strong>C. </strong>To remove all market risk</button><button aria-label="Answer D: To guarantee a profit" class="fx-option" data-option="D" type="button"><strong>D. </strong>To guarantee a profit</button></div><div aria-live="polite" class="fx-feedback"></div></div>
+<div class="fx-question"><div class="fx-question-number">SCENARIO 03</div><h3>A trader says, 'This currency became stronger against another currency.' What does that statement mean?</h3><div class="fx-options"><button aria-label="Answer A: The currency is stronger relative to the currency being compared with it" class="fx-option" data-option="A" type="button"><strong>A. </strong>The currency is stronger relative to the currency being compared with it</button><button aria-label="Answer B: The currency is automatically stronger against every currency" class="fx-option" data-option="B" type="button"><strong>B. </strong>The currency is automatically stronger against every currency</button><button aria-label="Answer C: The currency has become a stock" class="fx-option" data-option="C" type="button"><strong>C. </strong>The currency has become a stock</button><button aria-label="Answer D: The currency can no longer change in value" class="fx-option" data-option="D" type="button"><strong>D. </strong>The currency can no longer change in value</button></div><div aria-live="polite" class="fx-feedback"></div></div>
+</section>
+<!-- MATCHING -->
+<section class="fx-section">
+<h2>04. Match the Idea</h2>
+<div class="fx-two-col">
+<div class="fx-mini">
+<h3>A. Forex</h3>
+<p>
+                            The market and activity involving the exchange of
+                            currencies.
+                        </p>
+</div>
+<div class="fx-mini">
+<h3>B. Relative Value</h3>
+<p>
+                            The value of one currency considered against another.
+                        </p>
+</div>
+<div class="fx-mini">
+<h3>C. Currency Exchange</h3>
+<p>
+                            Converting one form of currency into another.
+                        </p>
+</div>
+<div class="fx-mini">
+<h3>D. Market Participant</h3>
+<p>
+                            A person, company or institution interacting with
+                            the market for a particular purpose.
+                        </p>
+</div>
+</div>
+<div class="fx-question">
+<div class="fx-question-number">SELF-CHECK</div>
+<h3>
+                        Can you explain the four ideas above without reading the
+                        definitions again?
+                    </h3>
+<div class="fx-answer">
+<strong>GOAL</strong>
+<p>
+                            Say the definition in your own words. If you can
+                            explain the idea clearly, you understand it better
+                            than simply memorizing the wording.
+                        </p>
+</div>
+</div>
+</section>
+<!-- MINI REVISION -->
+<section class="fx-section">
+<h2>05. Quick Revision</h2>
+<ul class="fx-list">
+<li>Forex means foreign exchange.</li>
+<li>The foundation of Forex is exchanging one currency for another.</li>
+<li>Forex prices describe relative value between currencies.</li>
+<li>Different participants interact with the market for different reasons.</li>
+<li>Understanding the market comes before advanced chart techniques.</li>
+<li>Currency pairs are the next important step because Forex quotes are expressed as pairs.</li>
+</ul>
+</section>
+<!-- SELF ASSESSMENT -->
+<section class="fx-section">
+<h2>06. Before Moving to Exercise 02</h2>
+<p>
+                    Check yourself honestly. You do not need to memorize every
+                    sentence, but you should understand the concepts.
+                </p>
+<div class="fx-checklist">
+<div class="fx-check">☐ I can explain what Forex means.</div>
+<div class="fx-check">☐ I can explain why currencies are exchanged.</div>
+<div class="fx-check">☐ I understand relative currency value.</div>
+<div class="fx-check">☐ I know Forex is not only for retail traders.</div>
+<div class="fx-check">☐ I can explain a simple real-world currency exchange example.</div>
+<div class="fx-check">☐ I am ready to learn how currency pairs are quoted.</div>
+</div>
+</section>
+<!-- NAVIGATION -->
+<nav aria-label="Exercise navigation" class="fx-navigation">
+<a aria-label="Return to Module 1 Exercise Hub" class="fx-nav" href="module1-exercise.html">
+                    ← Exercise Hub
+                </a>
+<a aria-label="Return to Module 1" class="fx-nav center" href="../../modules/module1.html">
+                    Module 1
+                </a>
+<a aria-label="Next Exercise: Currency Pairs" class="fx-nav next" href="currency-pairs.html">
+                    Next: Currency Pairs →
+                </a>
+</nav>
+<div class="fx-note">
+                Exercise 01 of 10 • Strativo Academy Module 1 • Review the Notes
+                whenever you need to refresh a concept.
+            </div>
+</div>
+</main>
+<!-- =========================================================
+         GLOBAL FOOTER
+    ========================================================== -->
+<div data-component="footer"></div>
+<!-- =========================================================
+         GLOBAL COMPONENT SYSTEM
+    ========================================================== -->
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const questions = document.querySelectorAll(".fx-question");
+
+    questions.forEach(function (question, index) {
+        const answer = question.querySelector(".fx-answer");
+        if (!answer) return;
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer-toggle";
+        button.textContent = "Check Answer";
+        button.setAttribute("aria-expanded", "false");
+
+        button.addEventListener("click", function () {
+            const visible = question.classList.toggle("show-answer");
+            button.textContent = visible ? "Hide Answer" : "Check Answer";
+            button.setAttribute("aria-expanded", visible ? "true" : "false");
+        });
+
+        answer.before(button);
+    });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const questions = Array.from(document.querySelectorAll(".fx-question"));
+    const scoreBar = document.querySelector(".fx-scorebar");
+    const scoreText = scoreBar ? scoreBar.querySelector("strong") : null;
+    const scoreFill = scoreBar ? scoreBar.querySelector(".score-fill") : null;
+
+    const answerMap = {
+        "QUESTION 01": {
+            correct: "B",
+            explanation: "Forex stands for foreign exchange. It is the market in which currencies are exchanged and valued relative to one another.",
+            wrong: {
+                A: "Company shares belong to the stock market. This question asks about the foreign-exchange market.",
+                C: "Cryptocurrency trading is a different market. Forex specifically refers to foreign exchange between currencies.",
+                D: "Gold is a different asset. Forex focuses on currency exchange."
+            }
+        },
+        "QUESTION 02": {
+            correct: "B",
+            explanation: "Forex expresses one currency's value relative to another. That relative relationship is why currencies are compared in pairs.",
+            wrong: {
+                A: "The opposite is true: currencies are compared precisely because their values are related.",
+                C: "Banks are only one group of participants. Comparing currencies is not limited to banks.",
+                D: "Charts can display currency relationships. The reason for the comparison is relative value."
+            }
+        },
+        "QUESTION 03": {
+            correct: "B",
+            explanation: "Forex is a market where different participants exchange and manage currencies for different purposes.",
+            wrong: {
+                A: "Retail traders are only one type of participant; the Forex market also includes institutions, banks and businesses.",
+                C: "Forex is not dependent on one stock exchange being open.",
+                D: "Forex prices change as market conditions and participant activity change."
+            }
+        },
+        "QUESTION 04": {
+            correct: "A",
+            explanation: "A Forex price represents a relationship between two currencies, so the statement is true.",
+            wrong: {
+                B: "The statement is true because Forex prices express relative currency value."
+            }
+        },
+        "QUESTION 05": {
+            correct: "C",
+            explanation: "A beginner should first understand how the market works. Advanced tools make more sense after the foundation is clear.",
+            wrong: {
+                A: "Starting with a large live account increases risk before the learner understands the market.",
+                B: "Memorizing a strategy without understanding the market creates shallow knowledge.",
+                D: "Seeing a chart is not a reason to trade. A learner should understand the market before attempting execution."
+            }
+        },
+        "QUESTION 04": {
+            correct: "A",
+            explanation: "A Forex price represents a relationship between currencies, so the statement is true.",
+            wrong: {
+                B: "The statement is true because Forex prices express relative currency value."
+            }
+        }
+    };
+
+    const scenarioMap = {
+        "SCENARIO 01": {
+            correct: "A",
+            explanation: "One currency is being exchanged for another. That is the basic foundation of foreign exchange.",
+            wrong: {
+                B: "Stock ownership is unrelated to exchanging one currency for another.",
+                C: "Candlesticks are charting tools, not the basic act happening here.",
+                D: "Market structure describes price behaviour on a chart, not the currency conversion itself."
+            }
+        },
+        "SCENARIO 02": {
+            correct: "B",
+            explanation: "Businesses may need to exchange currencies as part of international activity and may also manage their exposure to currency movements.",
+            wrong: {
+                A: "A candlestick is a chart representation; it is not the business reason for exchanging currencies.",
+                C: "Using Forex does not remove all market risk.",
+                D: "Currency exchange does not guarantee a profit."
+            }
+        },
+        "SCENARIO 03": {
+            correct: "A",
+            explanation: "Currency strength in Forex is relative. A currency is stronger relative to the specific currency used for the comparison.",
+            wrong: {
+                B: "Currency strength is relative to the specific currency being compared, not automatically to every currency.",
+                C: "A currency does not become a stock because its relative value changes.",
+                D: "A currency can continue to move after becoming stronger relative to another currency."
+            }
+        }
+    };
+
+    let totalAnswered = 0;
+    let totalCorrect = 0;
+
+    function getMap(question) {
+        const tag = question.querySelector(".fx-question-number");
+        const id = tag ? tag.textContent.trim() : "";
+        return answerMap[id] || scenarioMap[id] || null;
+    }
+
+    function updateScore() {
+        if (!scoreText || !scoreFill) return;
+        scoreText.textContent = "Knowledge Check: " + totalCorrect + " / 5 correct";
+        scoreFill.style.width = Math.min(totalCorrect / 5 * 100, 100) + "%";
+    }
+
+    function resetQuestion(question) {
+        question.classList.remove("answered");
+        question.querySelectorAll(".fx-option").forEach(function (option) {
+            option.disabled = false;
+            option.classList.remove("selected", "correct", "wrong");
+        });
+
+        const feedback = question.querySelector(".fx-feedback");
+        if (feedback) {
+            feedback.className = "fx-feedback";
+            feedback.innerHTML = "";
+        }
+    }
+
+    function showFeedback(question, selected, map) {
+        const feedback = question.querySelector(".fx-feedback");
+        if (!feedback) return;
+
+        const correct = selected === map.correct;
+
+        question.querySelectorAll(".fx-option").forEach(function (option) {
+            option.disabled = true;
+            const optionValue = option.dataset.option;
+
+            if (optionValue === selected) {
+                option.classList.add("selected");
+                option.classList.add(correct ? "correct" : "wrong");
+            }
+
+            if (optionValue === map.correct) {
+                option.classList.add("correct");
+            }
+        });
+
+        feedback.className = "fx-feedback visible " + (correct ? "result-correct" : "result-wrong");
+
+        const title = document.createElement("div");
+        title.className = "feedback-title";
+        title.textContent = correct
+            ? "✅ Correct — well done!"
+            : "❌ Not quite — review this answer.";
+
+        feedback.appendChild(title);
+
+        if (!correct) {
+            const wrong = document.createElement("p");
+            wrong.className = "why-wrong";
+            wrong.textContent = "Why your answer is wrong: " +
+                (map.wrong[selected] || "That option does not match the concept being tested.");
+            feedback.appendChild(wrong);
+
+            const correctAnswer = document.createElement("p");
+            correctAnswer.className = "correct-answer";
+            correctAnswer.textContent = "Correct answer: " + map.correct;
+            feedback.appendChild(correctAnswer);
+        }
+
+        const explanation = document.createElement("p");
+        explanation.textContent = "Explanation: " + map.explanation;
+        feedback.appendChild(explanation);
+
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.className = "retry-button";
+        retry.textContent = "Try Again";
+        retry.addEventListener("click", function () {
+            resetQuestion(question);
+        });
+        feedback.appendChild(retry);
+    }
+
+    questions.forEach(function (question) {
+        const map = getMap(question);
+        if (!map) return;
+
+        const options = question.querySelectorAll(".fx-option");
+        if (!options.length) return;
+
+        options.forEach(function (option) {
+            option.addEventListener("click", function () {
+                if (question.classList.contains("answered")) return;
+
+                question.classList.add("answered");
+                const selected = option.dataset.option;
+
+                // Score only the first attempt on the five Knowledge Check questions.
+                const tag = question.querySelector(".fx-question-number");
+                const id = tag ? tag.textContent.trim() : "";
+                const isKnowledge = id.indexOf("QUESTION") === 0;
+
+                if (isKnowledge) {
+                    totalAnswered += 1;
+                    if (selected === map.correct) totalCorrect += 1;
+                    updateScore();
+                }
+
+                showFeedback(question, selected, map);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+</body>
+</html>

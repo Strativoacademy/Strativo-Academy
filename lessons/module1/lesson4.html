@@ -1,0 +1,3661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4 - Pips & Lots | Strativo Academy</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+
+<style id="lesson4-v1-enhancements">
+.skip-link{
+    position:fixed;
+    top:10px;
+    left:10px;
+    z-index:9999;
+    transform:translateY(-150%);
+    padding:10px 14px;
+    border-radius:9px;
+    background:#0f172a;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    border:1px solid rgba(148,163,184,.25)
+}
+.skip-link:focus{
+    transform:translateY(0)
+}
+
+.lesson-progress-fill{
+    transition:width .3s ease;
+    will-change:width
+}
+
+.quick-check-card{
+    margin-top:18px;
+    padding:18px;
+    border:1px solid rgba(96,165,250,.16);
+    border-radius:14px;
+    background:rgba(59,130,246,.055)
+}
+
+.quick-check-badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:999px;
+    background:rgba(96,165,250,.10);
+    color:#bfdbfe;
+    font-size:.78rem;
+    font-weight:900
+}
+
+.quick-check-card h3{
+    margin:10px 0 0;
+    color:#f8fafc
+}
+
+.quick-check-card p{
+    color:#aebdd0
+}
+
+.quick-check-options{
+    display:grid;
+    gap:8px;
+    margin-top:12px
+}
+
+.quick-check-options button{
+    min-height:44px;
+    padding:10px 13px;
+    border:1px solid rgba(148,163,184,.13);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    text-align:left;
+    font:inherit;
+    font-size:.9rem;
+    cursor:pointer
+}
+
+.quick-check-options button.correct{
+    border-color:rgba(52,211,153,.5);
+    background:rgba(16,185,129,.09)
+}
+
+.quick-check-options button.wrong{
+    border-color:rgba(248,113,113,.5);
+    background:rgba(248,113,113,.08)
+}
+
+.quick-check-feedback{
+    display:none;
+    margin-top:12px;
+    padding:11px 13px;
+    border-left:3px solid #60a5fa;
+    border-radius:0 9px 9px 0;
+    background:rgba(59,130,246,.055);
+    color:#dbeafe;
+    font-size:.88rem;
+    line-height:1.7
+}
+
+.quick-check-feedback.visible{
+    display:block
+}
+
+.quick-check-feedback.correct{
+    border-left-color:#34d399;
+    color:#d1fae5
+}
+
+.quick-check-feedback.wrong{
+    border-left-color:#f87171;
+    color:#fecaca
+}
+
+.lesson-mobile-toggle{
+    display:none;
+    width:100%;
+    min-height:44px;
+    margin:0 0 10px;
+    padding:0 14px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1220;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.82rem;
+    font-weight:800;
+    cursor:pointer
+}
+
+.lesson-sidebar.is-open{
+    display:block
+}
+
+.lesson-sticky-nav{
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    gap:10px;
+    padding:9px;
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:14px;
+    background:rgba(3,7,18,.94);
+    box-shadow:0 14px 40px rgba(0,0,0,.35);
+    backdrop-filter:blur(8px)
+}
+
+.lesson-sticky-nav button{
+    min-height:44px;
+    padding:0 13px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.8rem;
+    font-weight:800;
+    cursor:pointer
+}
+
+.lesson-sticky-nav button:disabled{
+    opacity:.45;
+    cursor:not-allowed
+}
+
+.lesson-sticky-nav span{
+    flex:1;
+    text-align:center;
+    color:#94a3b8;
+    font-size:.78rem;
+    font-weight:700
+}
+
+button:focus-visible,
+a:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:3px
+}
+
+@media(max-width:800px){
+
+    .lesson-mobile-toggle{
+        display:block
+    }
+
+    .lesson-sidebar{
+        display:none
+    }
+
+    .lesson-sidebar.is-open{
+        display:block
+    }
+
+    .lesson-sticky-nav{
+        display:flex
+    }
+
+    .lesson-content{
+        padding-bottom:90px!important
+    }
+}
+
+@media(min-width:801px){
+    .lesson-sticky-nav{
+        display:none!important
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#lesson-content">Skip to content</a>
+
+<div class="global-header-mount" data-component="header"></div>
+
+
+<div data-component="lesson-header"></div>
+
+
+<!-- =========================================================
+     LESSON NAVIGATOR
+========================================================= -->
+
+<div class="lesson-navigator-section">
+
+    <div class="navigator-card">
+
+        <div class="navigator-header">
+
+            <h2>
+                📚 Lesson Navigator
+            </h2>
+
+            <p>
+                Jump directly to any lesson.
+                Quiz scores track mastery separately.
+            </p>
+
+        </div>
+
+
+        <div class="navigator-grid">
+
+            <a href="lesson1.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 1</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+
+            <a href="lesson2.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 2</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+
+            <a href="lesson3.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 3</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+
+            <a
+                href="lesson4.html"
+                class="nav-grid-item current"
+            >
+                <div class="grid-item-top">
+
+                    <span class="lesson-name">
+                        Lesson 4
+                    </span>
+
+                    <span class="lesson-icon">
+                        ✅
+                    </span>
+
+                </div>
+
+                <span class="current-badge">
+                    Current Lesson
+                </span>
+
+            </a>
+
+
+            <a href="lesson5.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 5</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+
+            <a href="lesson6.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 6</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+
+            <a href="lesson7.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 7</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+
+            <a href="lesson8.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 8</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+
+            <a href="lesson9.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 9</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+
+            <a href="lesson10.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 10</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MOBILE LESSON MENU
+========================================================= -->
+
+<button
+    type="button"
+    id="lessonSidebarToggle"
+    class="lesson-mobile-toggle"
+    aria-controls="lessonSidebar"
+    aria-expanded="false"
+>
+    ☰ Lesson Menu
+</button>
+
+
+<!-- =========================================================
+     LESSON LAYOUT
+========================================================= -->
+
+<div class="lesson-layout">
+
+    <aside
+        id="lessonSidebar"
+        class="lesson-sidebar"
+    >
+
+        <h2>
+            Lesson 4
+        </h2>
+
+        <ul id="lessonMenu">
+
+            <li
+                onclick="showStep(1)"
+                class="active"
+            >
+                👋 Welcome
+            </li>
+
+            <li onclick="showStep(2)">
+                📍 What is a Pip?
+            </li>
+
+            <li onclick="showStep(3)">
+                📏 How Pips Measure Movement
+            </li>
+
+            <li onclick="showStep(4)">
+                💰 What is a Lot?
+            </li>
+
+            <li onclick="showStep(5)">
+                📦 Types of Lots
+            </li>
+
+            <li onclick="showStep(6)">
+                🧮 Pip Value
+            </li>
+
+            <li onclick="showStep(7)">
+                💵 Profit &amp; Loss Example
+            </li>
+
+            <li onclick="showStep(8)">
+                💡 Real Trading Example
+            </li>
+
+            <li onclick="showStep(9)">
+                🧠 Quiz
+            </li>
+
+            <li onclick="showStep(10)">
+                🏁 Summary
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <main
+        id="lesson-content"
+        class="lesson-content"
+    >
+
+
+        <!-- =====================================================
+             LESSON HEADER
+        ====================================================== -->
+
+        <div class="lesson-header">
+
+            <h1>
+                Lesson 4 - Pips &amp; Lots
+            </h1>
+
+
+            <div class="lesson-meta">
+
+                <div class="meta-item">
+                    📈 Beginner
+                </div>
+
+                <div class="meta-item">
+                    ⏱ 20 Minutes
+                </div>
+
+                <div class="meta-item">
+                    📚 Module 1
+                </div>
+
+                <div class="meta-item">
+                    📝 10 Steps
+                </div>
+
+            </div>
+
+
+            <div class="lesson-progress">
+
+                <div class="lesson-progress-bar">
+
+                    <div class="lesson-progress-fill"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-container">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+
+        <p class="step-text">
+            Step 1 of 10
+        </p>
+
+
+        <!-- =====================================================
+             STEP 1
+        ====================================================== -->
+
+        <section
+            class="lesson-step active-step"
+            id="step1"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    BEGINNER COURSE
+                </span>
+
+
+                <h1>
+                    Welcome to Lesson 4
+                </h1>
+
+
+                <h2>
+                    Pips &amp; Lots
+                </h2>
+
+
+                <p>
+
+                    In the previous lesson, you learned how to read Forex prices using
+                    <strong>Bid Price</strong>,
+                    <strong>Ask Price</strong>,
+                    and
+                    <strong>Spread</strong>.
+
+                    <br><br>
+
+                    Now it's time to learn how traders measure
+                    <strong>price movement</strong>,
+                    choose the correct
+                    <strong>trade size</strong>,
+                    and calculate their
+                    <strong>profit or loss</strong>.
+
+                    <br><br>
+
+                    By the end of this lesson, you'll understand how professional traders
+                    calculate risk before placing a trade.
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/welcome.png"
+                    alt="Lesson 4 Welcome"
+                    class="lesson-image"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        📘 Simple Definition
+                    </h3>
+
+                    <p>
+
+                        A <strong>Pip</strong>
+                        measures how far the market moves.
+
+                        <br><br>
+
+                        A <strong>Lot</strong>
+                        measures how much you are trading.
+
+                        <br><br>
+
+                        Together, they determine how much money
+                        you can make or lose.
+
+                    </p>
+
+                </div>
+
+
+                <h3>
+                    🎯 Today's Learning Objectives
+                </h3>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        Two traders can enter the exact same trade but make completely
+                        different profits because they use different
+                        <strong>Lot Sizes</strong>.
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Beginner Mistake
+                    </h3>
+
+                    <p>
+
+                        Many beginners think bigger trades always mean bigger success.
+
+                        <br><br>
+
+                        Professional traders focus on protecting their capital first by
+                        choosing the correct
+                        <strong>Lot Size</strong>
+                        and managing risk.
+
+                    </p>
+
+                </div>
+
+
+                <ul class="lesson-list">
+
+                    <li>✔ Understand what a Pip is</li>
+                    <li>✔ Learn how price movement is measured</li>
+                    <li>✔ Understand what a Lot is</li>
+                    <li>✔ Compare different Lot Sizes</li>
+                    <li>✔ Calculate Pip Value</li>
+                    <li>✔ Calculate Profit &amp; Loss</li>
+                    <li>✔ Complete the Lesson Quiz</li>
+
+                </ul>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        disabled
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="nextStep()"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 2
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step2"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 2 OF 10
+                </span>
+
+
+                <h1>
+                    What is a Pip?
+                </h1>
+
+
+                <p>
+
+                    A <strong>Pip</strong>
+                    (Percentage in Point) is the smallest standard
+                    price movement in most Forex currency pairs.
+
+                    <br><br>
+
+                    Traders use Pips to measure how far the market has moved instead of
+                    counting tiny decimal numbers.
+
+                    <br><br>
+
+                    Understanding Pips is one of the most important skills because every
+                    profit, loss, stop loss and take profit is measured in Pips.
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/step2.png"
+                    alt="What is a Pip"
+                    class="lesson-image"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        📘 Simple Definition
+                    </h3>
+
+                    <p>
+
+                        A <strong>Pip</strong>
+                        is simply the unit used to measure
+                        <strong>price movement</strong>
+                        in the Forex market.
+
+                        <br><br>
+
+                        Think of it as the "distance meter" of a currency pair.
+
+                    </p>
+
+                </div>
+
+
+                <h3>
+                    📈 Example
+                </h3>
+
+
+                <p>
+
+                    If EUR/USD moves from
+
+                    <br><br>
+
+                    <strong>
+                        1.1000 → 1.1005
+                    </strong>
+
+                    <br><br>
+
+                    the market has moved
+
+                    <br><br>
+
+                    <strong>
+                        5 Pips.
+                    </strong>
+
+                </p>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        Professional traders rarely say,
+
+                        <br><br>
+
+                        "The market moved from 1.1000 to 1.1005."
+
+                        <br><br>
+
+                        Instead, they simply say,
+
+                        <br><br>
+
+                        <strong>
+                            "The market moved 5 Pips."
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Beginner Mistake
+                    </h3>
+
+                    <p>
+
+                        Many beginners focus only on the price.
+
+                        <br><br>
+
+                        Professional traders focus on
+                        <strong>how many Pips</strong>
+                        the market moved because that's
+                        how trades are planned and evaluated.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        🧠 Memory Trick
+                    </h3>
+
+                    <p>
+
+                        <strong>
+                            Pip = Price Movement.
+                        </strong>
+
+                        <br><br>
+
+                        Whenever you hear
+                        "20 Pips" or "50 Pips,"
+                        think about the
+                        <strong>distance</strong>
+                        the price has traveled,
+                        not the amount of money.
+
+                    </p>
+
+                </div>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="previousStep()"
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="nextStep()"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 3
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step3"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 3 OF 10
+                </span>
+
+
+                <h1>
+                    How Price Moves
+                </h1>
+
+
+                <p>
+
+                    Forex prices are always changing.
+
+                    <br><br>
+
+                    Every time the price goes up or down, the movement is measured in
+                    <strong>Pips</strong>.
+
+                    <br><br>
+
+                    Traders use these Pip movements to calculate entries, exits, profits,
+                    losses, stop losses and take profits.
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/step3.png"
+                    alt="Price Movement"
+                    class="lesson-image"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        📘 Simple Definition
+                    </h3>
+
+                    <p>
+
+                        Price movement is simply the distance the market travels.
+
+                        <br><br>
+
+                        The bigger the movement,
+                        the more Pips the market has moved.
+
+                    </p>
+
+                </div>
+
+
+                <h3>
+                    📈 Example
+                </h3>
+
+
+                <p>
+
+                    EUR/USD opens at
+
+                    <strong>
+                        1.1000
+                    </strong>
+
+                    <br><br>
+
+                    It later reaches
+
+                    <strong>
+                        1.1025
+                    </strong>
+
+                    <br><br>
+
+                    Total movement:
+
+                    <strong>
+                        25 Pips
+                    </strong>
+
+                </p>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        Some currency pairs move only
+                        <strong>20–40 Pips</strong>
+                        in a day,
+
+                        while others can move
+                        <strong>100+ Pips</strong>
+                        during high volatility.
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Beginner Mistake
+                    </h3>
+
+                    <p>
+
+                        Beginners often chase every small price movement.
+
+                        <br><br>
+
+                        Professional traders wait for
+                        high-quality trading opportunities
+                        instead of trading every Pip.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        🧠 Memory Trick
+                    </h3>
+
+                    <p>
+
+                        More Price Movement
+
+                        <br>
+
+                        =
+
+                        <br>
+
+                        More Pips
+
+                        <br>
+
+                        =
+
+                        <br>
+
+                        Bigger Profit or Bigger Loss
+
+                    </p>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🎯 Pro Tip
+                    </h3>
+
+                    <p>
+
+                        Professional traders don't just ask,
+
+                        <br><br>
+
+                        <strong>
+                            "Will price go up?"
+                        </strong>
+
+                        <br><br>
+
+                        They ask,
+
+                        <br><br>
+
+                        <strong>
+                            "How many Pips can this trade realistically move?"
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="previousStep()"
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="nextStep()"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 4
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step4"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 4 OF 10
+                </span>
+
+
+                <h1>
+                    What is a Lot?
+                </h1>
+
+
+                <p>
+
+                    In Forex trading, a
+                    <strong>Lot</strong>
+                    is the standard unit used to
+                    measure the size of your trade.
+
+                    <br><br>
+
+                    Think of a Lot as the "quantity"
+                    of currency you are buying or selling.
+
+                    <br><br>
+
+                    The larger the Lot Size, the greater your potential profit—but also the
+                    greater your potential loss.
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/step4.png"
+                    alt="What is a Lot"
+                    class="lesson-image"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        📘 Simple Definition
+                    </h3>
+
+                    <p>
+
+                        A <strong>Lot</strong>
+                        tells the broker
+                        <strong>how much currency</strong>
+                        you want to trade.
+
+                        <br><br>
+
+                        It does <strong>not</strong>
+                        tell you the direction of the trade—
+                        only the size.
+
+                    </p>
+
+                </div>
+
+
+                <h3>
+                    🏪 Real-Life Example
+                </h3>
+
+
+                <p>
+
+                    Imagine you are buying apples.
+
+                    <br><br>
+
+                    You can buy:
+
+                    <br>
+
+                    🍎 1 Apple
+
+                    <br>
+
+                    🍎🍎 10 Apples
+
+                    <br>
+
+                    🍎🍎🍎 100 Apples
+
+                    <br><br>
+
+                    In Forex, instead of choosing the number of apples,
+                    you choose the
+                    <strong>Lot Size</strong>.
+
+                </p>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        Professional traders rarely use the largest Lot Size.
+
+                        <br><br>
+
+                        They choose a Lot Size based on their
+                        account balance and risk management strategy.
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Beginner Mistake
+                    </h3>
+
+                    <p>
+
+                        Many beginners believe that using a bigger Lot Size
+                        will help them become rich faster.
+
+                        <br><br>
+
+                        In reality, it also increases losses much faster.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        🧠 Memory Trick
+                    </h3>
+
+                    <p>
+
+                        <strong>
+                            Pip = Distance
+                        </strong>
+
+                        <br><br>
+
+                        <strong>
+                            Lot = Trade Size
+                        </strong>
+
+                        <br><br>
+
+                        Remember:
+
+                        <br>
+
+                        Pips tell you
+                        <strong>how far</strong>
+
+                        <br>
+
+                        Lots tell you
+                        <strong>how much</strong>
+
+                    </p>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🎯 Coach's Tip
+                    </h3>
+
+                    <p>
+
+                        Successful traders don't try to trade the biggest position.
+
+                        <br><br>
+
+                        They trade the
+                        <strong>right position size</strong>
+                        for their account.
+
+                    </p>
+
+                </div>
+
+
+                <div class="quick-check-card" id="quickCheckStep4">
+
+                    <span class="quick-check-badge">
+                        🧠 QUICK CHECK — UNGRADED
+                    </span>
+
+                    <h3>
+                        What does a Lot Size tell you?
+                    </h3>
+
+                    <p>
+                        Select an answer to receive immediate feedback.
+                    </p>
+
+                    <div class="quick-check-options">
+
+                        <button
+                            type="button"
+                            data-correct="true"
+                        >
+                            A. The size of your trade
+                        </button>
+
+                        <button
+                            type="button"
+                            data-correct="false"
+                        >
+                            B. How many Pips the market will move
+                        </button>
+
+                        <button
+                            type="button"
+                            data-correct="false"
+                        >
+                            C. Whether the trade will win
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="quick-check-feedback"
+                        aria-live="polite"
+                    ></div>
+
+                </div>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="previousStep()"
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="nextStep()"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 5
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step5"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 5 OF 10
+                </span>
+
+
+                <h1>
+                    Types of Lot Sizes
+                </h1>
+
+
+                <p>
+
+                    Not every trader uses the same Lot Size.
+
+                    <br><br>
+
+                    Forex brokers offer different Lot Sizes so traders with small or large
+                    accounts can manage their risk properly.
+
+                    <br><br>
+
+                    Choosing the correct Lot Size is one of the most important parts of
+                    successful trading.
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/step5.png"
+                    alt="Types of Lot Sizes"
+                    class="lesson-image"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        📘 The Four Main Lot Sizes
+                    </h3>
+
+
+                    <table class="lesson-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Lot Type
+                                </th>
+
+                                <th>
+                                    Units
+                                </th>
+
+                                <th>
+                                    Best For
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        Standard Lot
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    100,000 Units
+                                </td>
+
+                                <td>
+                                    Professional Traders
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        Mini Lot
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    10,000 Units
+                                </td>
+
+                                <td>
+                                    Intermediate Traders
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        Micro Lot
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    1,000 Units
+                                </td>
+
+                                <td>
+                                    Beginners
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        Nano Lot
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    100 Units
+                                </td>
+
+                                <td>
+                                    Practice &amp; Small Accounts
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        Most professional traders risk only a small percentage of
+                        their account on each trade.
+
+                        <br><br>
+
+                        They adjust their
+                        <strong>Lot Size</strong>,
+                        not their emotions.
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Beginner Mistake
+                    </h3>
+
+                    <p>
+
+                        Many beginners open a
+                        <strong>Standard Lot</strong>
+                        because they want bigger profits.
+
+                        <br><br>
+
+                        Unfortunately, bigger Lot Sizes also create much bigger losses.
+
+                        <br><br>
+
+                        Always choose a Lot Size that matches your account size and risk plan.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        🧠 Memory Trick
+                    </h3>
+
+                    <p>
+
+                        📦 Standard = Biggest
+
+                        <br>
+
+                        📦 Mini = Medium
+
+                        <br>
+
+                        📦 Micro = Small
+
+                        <br>
+
+                        📦 Nano = Smallest
+
+                    </p>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🎯 Coach's Tip
+                    </h3>
+
+                    <p>
+
+                        If you're new to Forex,
+
+                        <strong>
+                            Micro Lots
+                        </strong>
+
+                        are usually the safest place to start.
+
+                        <br><br>
+
+                        Learn consistency first.
+
+                        Bigger Lot Sizes can come later as your experience grows.
+
+                    </p>
+
+                </div>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="previousStep()"
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="nextStep()"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 6
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step6"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 6 OF 10
+                </span>
+
+
+                <h1>
+                    What is Pip Value?
+                </h1>
+
+
+                <p>
+
+                    A <strong>Pip Value</strong>
+                    tells you how much money
+                    you gain or lose when the market moves by
+                    <strong>1 Pip</strong>.
+
+                    <br><br>
+
+                    The Pip Value depends mainly on your
+                    <strong>Lot Size</strong>.
+
+                    <br><br>
+
+                    The larger the Lot Size,
+                    the more money each Pip is worth.
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/step6.png"
+                    alt="Pip Value"
+                    class="lesson-image"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        📘 Simple Definition
+                    </h3>
+
+                    <p>
+
+                        Pip Value is the amount of money earned or lost
+                        when the market moves by
+                        <strong>one Pip</strong>.
+
+                    </p>
+
+                </div>
+
+
+                <h3>
+                    💰 Common Pip Values
+                </h3>
+
+
+                <table class="lesson-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Lot Size
+                            </th>
+
+                            <th>
+                                Approx. Pip Value
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Standard Lot
+                            </td>
+
+                            <td>
+                                ≈ $10 per Pip
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Mini Lot
+                            </td>
+
+                            <td>
+                                ≈ $1 per Pip
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Micro Lot
+                            </td>
+
+                            <td>
+                                ≈ $0.10 per Pip
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Nano Lot
+                            </td>
+
+                            <td>
+                                ≈ $0.01 per Pip
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        Two traders can capture the same
+                        <strong>50 Pip</strong>
+                        move,
+
+                        but earn completely different profits
+                        because they use different Lot Sizes.
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Beginner Mistake
+                    </h3>
+
+                    <p>
+
+                        Many beginners only look at
+                        the number of Pips.
+
+                        <br><br>
+
+                        Professional traders always calculate
+                        the <strong>Pip Value</strong>
+                        before opening a trade.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        🧠 Memory Trick
+                    </h3>
+
+                    <p>
+
+                        Bigger Lot
+
+                        <br>
+
+                        =
+
+                        <br>
+
+                        Bigger Pip Value
+
+                        <br>
+
+                        =
+
+                        <br>
+
+                        Bigger Profit
+
+                        <br>
+
+                        <strong>
+                            and
+                        </strong>
+
+                        <br>
+
+                        Bigger Loss
+
+                    </p>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🎯 Coach's Tip
+                    </h3>
+
+                    <p>
+
+                        Never choose your Lot Size
+                        based on how much money
+                        you want to make.
+
+                        <br><br>
+
+                        Choose it based on how much
+                        money you are willing to risk.
+
+                    </p>
+
+                </div>
+
+
+                <div class="note-box">
+
+                    <h3>
+                        📝 Quick Recap
+                    </h3>
+
+                    <ul class="lesson-list">
+
+                        <li>
+                            ✔ Pip = Price Movement
+                        </li>
+
+                        <li>
+                            ✔ Lot = Trade Size
+                        </li>
+
+                        <li>
+                            ✔ Pip Value = Money per Pip
+                        </li>
+
+                        <li>
+                            ✔ Bigger Lot = Bigger Pip Value
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="previousStep()"
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="nextStep()"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 7
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step7"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 7 OF 10
+                </span>
+
+
+                <h1>
+                    Calculating Profit &amp; Loss
+                </h1>
+
+
+                <p>
+
+                    Every Forex trade ends in either a
+                    <strong>Profit</strong>
+                    or a
+                    <strong>Loss</strong>.
+
+                    <br><br>
+
+                    Your final result depends on three simple things:
+
+                    <br><br>
+
+                    ✔ How many Pips the market moved
+
+                    <br>
+
+                    ✔ Your Lot Size
+
+                    <br>
+
+                    ✔ Your Pip Value
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/step7.png"
+                    alt="Profit and Loss Example"
+                    class="lesson-image"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        📘 Simple Formula
+                    </h3>
+
+                    <p>
+
+                        <strong>
+
+                            Profit / Loss
+
+                            <br>
+
+                            =
+
+                            <br>
+
+                            Pips × Pip Value
+
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <h3>
+                    📈 Winning Trade Example
+                </h3>
+
+
+                <div class="success-box">
+
+                    <p>
+
+                        Trade:
+
+                        <strong>
+                            BUY EUR/USD
+                        </strong>
+
+                        <br><br>
+
+                        Market Movement:
+
+                        <strong>
+                            +25 Pips
+                        </strong>
+
+                        <br><br>
+
+                        Lot Size:
+
+                        <strong>
+                            Mini Lot
+                        </strong>
+
+                        <br><br>
+
+                        Pip Value:
+
+                        <strong>
+                            $1 per Pip
+                        </strong>
+
+                        <br><br>
+
+                        Profit
+
+                        <br>
+
+                        =
+
+                        <br>
+
+                        25 × $1
+
+                        <br><br>
+
+                        <strong>
+                            Profit = $25
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <h3>
+                    📉 Losing Trade Example
+                </h3>
+
+
+                <div class="warning-box">
+
+                    <p>
+
+                        Trade:
+
+                        <strong>
+                            SELL GBP/USD
+                        </strong>
+
+                        <br><br>
+
+                        Market Movement:
+
+                        <strong>
+                            -18 Pips
+                        </strong>
+
+                        <br><br>
+
+                        Lot Size:
+
+                        <strong>
+                            Mini Lot
+                        </strong>
+
+                        <br><br>
+
+                        Pip Value:
+
+                        <strong>
+                            $1 per Pip
+                        </strong>
+
+                        <br><br>
+
+                        Loss
+
+                        <br>
+
+                        =
+
+                        <br>
+
+                        18 × $1
+
+                        <br><br>
+
+                        <strong>
+                            Loss = $18
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        Two traders can both make
+                        <strong>25 Pips</strong>
+
+                        but earn completely different profits
+
+                        because they use different Lot Sizes.
+
+                    </p>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        🧠 Memory Trick
+                    </h3>
+
+                    <p>
+
+                        More Pips
+
+                        <br>
+
+                        +
+
+                        <br>
+
+                        Bigger Lot
+
+                        <br>
+
+                        =
+
+                        <br>
+
+                        Bigger Profit
+
+                        <br><br>
+
+                        But remember...
+
+                        <br>
+
+                        Bigger Losses too!
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Beginner Mistake
+                    </h3>
+
+                    <p>
+
+                        Beginners usually think only about
+                        making more money.
+
+                        <br><br>
+
+                        Professional traders first calculate
+                        how much they could lose
+                        before entering any trade.
+
+                    </p>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🎯 Coach's Tip
+                    </h3>
+
+                    <p>
+
+                        Never increase your Lot Size
+                        just because your previous trade was a winner.
+
+                        <br><br>
+
+                        Stay consistent and manage risk
+                        on every single trade.
+
+                    </p>
+
+                </div>
+
+
+                <div class="note-box">
+
+                    <h3>
+                        📝 Quick Recap
+                    </h3>
+
+                    <ul class="lesson-list">
+
+                        <li>
+                            ✔ Pips measure price movement.
+                        </li>
+
+                        <li>
+                            ✔ Lot Size determines trade size.
+                        </li>
+
+                        <li>
+                            ✔ Pip Value tells how much one Pip is worth.
+                        </li>
+
+                        <li>
+                            ✔ Profit/Loss = Pips × Pip Value.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="previousStep()"
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="nextStep()"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 8
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step8"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 8 OF 10
+                </span>
+
+
+                <h1>
+                    Complete Trading Example
+                </h1>
+
+
+                <p>
+
+                    Let's put everything together with a real Forex example.
+
+                    <br><br>
+
+                    By following this trade step by step, you'll see how
+                    <strong>Pips</strong>,
+                    <strong>Lot Size</strong>,
+                    and
+                    <strong>Pip Value</strong>
+                    work together to calculate your final profit.
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/step8.png"
+                    alt="Complete Trading Example"
+                    class="lesson-image"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        📊 Trade Setup
+                    </h3>
+
+                    <ul class="lesson-list">
+
+                        <li>
+                            💱 Currency Pair:
+                            <strong>EUR/USD</strong>
+                        </li>
+
+                        <li>
+                            📈 Trade Type:
+                            <strong>BUY</strong>
+                        </li>
+
+                        <li>
+                            📍 Entry Price:
+                            <strong>1.1000</strong>
+                        </li>
+
+                        <li>
+                            🏁 Exit Price:
+                            <strong>1.1035</strong>
+                        </li>
+
+                        <li>
+                            📦 Lot Size:
+                            <strong>Mini Lot</strong>
+                        </li>
+
+                        <li>
+                            💰 Pip Value:
+                            <strong>$1 per Pip</strong>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <h3>
+                    📝 Step-by-Step Calculation
+                </h3>
+
+
+                <div class="note-box">
+
+                    <p>
+
+                        Step 1️⃣
+
+                        <br><br>
+
+                        Entry Price:
+                        <strong>1.1000</strong>
+
+                        <br><br>
+
+                        Exit Price:
+                        <strong>1.1035</strong>
+
+                        <br><br>
+
+                        Total Movement:
+                        <strong>35 Pips</strong>
+
+                        <br><br>
+
+                        Step 2️⃣
+
+                        <br><br>
+
+                        Pip Value:
+                        <strong>$1</strong>
+
+                        <br><br>
+
+                        Step 3️⃣
+
+                        <br><br>
+
+                        Profit
+
+                        <br>
+
+                        =
+
+                        <br>
+
+                        35 × $1
+
+                        <br><br>
+
+                        <strong>
+                            Total Profit = $35
+                        </strong>
+
+                    </p>
+
+                </div>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        If the same trade used a
+                        <strong>Standard Lot</strong>
+                        instead of a Mini Lot,
+
+                        the same
+                        <strong>35 Pips</strong>
+                        would produce approximately
+
+                        <strong>
+                            $350
+                        </strong>
+
+                        profit.
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Beginner Mistake
+                    </h3>
+
+                    <p>
+
+                        Many beginners only focus on
+
+                        "How much money can I make?"
+
+                        <br><br>
+
+                        Professional traders first ask,
+
+                        <strong>
+                            "How much money can I lose?"
+                        </strong>
+
+                        before placing any trade.
+
+                    </p>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🎯 Key Takeaways
+                    </h3>
+
+                    <ul class="lesson-list">
+
+                        <li>
+                            ✔ Pip measures price movement.
+                        </li>
+
+                        <li>
+                            ✔ Lot Size controls trade size.
+                        </li>
+
+                        <li>
+                            ✔ Pip Value determines money per Pip.
+                        </li>
+
+                        <li>
+                            ✔ Profit = Pips × Pip Value.
+                        </li>
+
+                        <li>
+                            ✔ Risk Management is more important than big profits.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <h3>
+                        🧠 Coach's Advice
+                    </h3>
+
+                    <p>
+
+                        Every professional trader performs these calculations
+                        before entering a trade.
+
+                        <br><br>
+
+                        Make it a habit to calculate your
+
+                        <strong>
+                            Risk,
+                            Pip Value,
+                            and Potential Profit
+                        </strong>
+
+                        before clicking the Buy or Sell button.
+
+                    </p>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🎉 You're Ready!
+                    </h3>
+
+                    <p>
+
+                        Congratulations!
+
+                        <br><br>
+
+                        You now understand:
+
+                        <br><br>
+
+                        ✅ Pips
+
+                        <br>
+
+                        ✅ Lot Sizes
+
+                        <br>
+
+                        ✅ Pip Value
+
+                        <br>
+
+                        ✅ Profit &amp; Loss Calculation
+
+                        <br><br>
+
+                        You're ready to test your knowledge in the Lesson 4 Quiz.
+
+                    </p>
+
+                </div>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="previousStep()"
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="nextStep()"
+                    >
+                        Go to Quiz →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 9
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step9"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 9 OF 10
+                </span>
+
+
+                <h1>
+                    📝 Lesson 4 Quiz
+                </h1>
+
+
+                <p>
+
+                    Test your understanding of
+                    <strong>
+                        Pips, Lot Sizes, Pip Value, and Profit &amp; Loss.
+                    </strong>
+
+                    <br><br>
+
+                    Answer all
+                    <strong>10 questions</strong>.
+
+                    <br><br>
+
+                    Aim for at least
+                    <strong>70%</strong>
+                    to pass the Lesson 4 mastery target and prepare for
+                    <strong>Lesson 5</strong>.
+
+                </p>
+
+
+                <div id="quiz-container">
+
+                    <div
+                        class="question-counter"
+                        id="question-counter"
+                    >
+                        Question 1 of 10
+                    </div>
+
+
+                    <h2 id="question">
+                        Loading Question...
+                    </h2>
+
+
+                    <div class="quiz-options">
+
+                        <button
+                            class="quiz-btn"
+                            onclick="checkAnswer(0)"
+                            id="option0"
+                        ></button>
+
+                        <button
+                            class="quiz-btn"
+                            onclick="checkAnswer(1)"
+                            id="option1"
+                        ></button>
+
+                        <button
+                            class="quiz-btn"
+                            onclick="checkAnswer(2)"
+                            id="option2"
+                        ></button>
+
+                        <button
+                            class="quiz-btn"
+                            onclick="checkAnswer(3)"
+                            id="option3"
+                        ></button>
+
+                    </div>
+
+
+                    <p id="quiz-result"></p>
+
+
+                    <div class="quiz-navigation">
+
+                        <button
+                            class="secondary-btn"
+                            onclick="previousQuestion()"
+                            id="prevQuestionBtn"
+                        >
+                            ← Previous Question
+                        </button>
+
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="nextQuestion()"
+                            id="nextQuestionBtn"
+                        >
+                            Next Question →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="note-box">
+
+                    <h3>
+                        📚 Before You Start
+                    </h3>
+
+                    <ul class="lesson-list">
+
+                        <li>
+                            ✔ Read every question carefully.
+                        </li>
+
+                        <li>
+                            ✔ Think before selecting an answer.
+                        </li>
+
+                        <li>
+                            ✔ Learn from the explanation after each question.
+                        </li>
+
+                        <li>
+                            ✔ You can retry the quiz anytime to improve your score.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        💡 Learning Tip
+                    </h3>
+
+                    <p>
+
+                        Don't worry if you don't get a perfect score on your first attempt.
+
+                        <br><br>
+
+                        Every quiz is designed to reinforce what you've learned.
+
+                        Review the explanations, retry the quiz, and aim to improve each time.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEP 10
+        ====================================================== -->
+
+        <section
+            class="lesson-step"
+            id="step10"
+        >
+
+            <div class="card">
+
+                <span class="lesson-badge">
+                    STEP 10 OF 10
+                </span>
+
+
+                <h1>
+                    🎉 Congratulations!
+                </h1>
+
+
+                <p>
+
+                    You have successfully completed
+                    <strong>
+                        Lesson 4 – Pips &amp; Lots.
+                    </strong>
+
+                    <br><br>
+
+                    You now understand how Forex traders measure price movement,
+                    choose the correct trade size, and calculate profits and losses.
+
+                    <br><br>
+
+                    These are essential skills that every successful Forex trader must master.
+
+                </p>
+
+
+                <img
+                    loading="lazy"
+                    src="../../images/lesson4/step10.png"
+                    class="lesson-image"
+                    alt="Lesson 4 Summary"
+                >
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🏆 Achievement Unlocked
+                    </h3>
+
+                    <p>
+
+                        🎓 Beginner Level
+
+                        <br><br>
+
+                        <strong>
+                            Pips &amp; Lots Master
+                        </strong>
+
+                        <br><br>
+
+                        You have completed Lesson 4 and now understand
+                        how professional traders calculate trade size,
+                        Pip Value, and Profit &amp; Loss.
+
+                    </p>
+
+                </div>
+
+
+                <h2>
+                    📚 What You Learned
+                </h2>
+
+
+                <ul class="lesson-list">
+
+                    <li>
+                        ✅ What a Pip is
+                    </li>
+
+                    <li>
+                        ✅ How price movement is measured
+                    </li>
+
+                    <li>
+                        ✅ What a Lot is
+                    </li>
+
+                    <li>
+                        ✅ Standard, Mini, Micro &amp; Nano Lots
+                    </li>
+
+                    <li>
+                        ✅ What Pip Value means
+                    </li>
+
+                    <li>
+                        ✅ How to calculate Profit &amp; Loss
+                    </li>
+
+                    <li>
+                        ✅ Real trading examples
+                    </li>
+
+                    <li>
+                        ✅ The importance of Risk Management
+                    </li>
+
+                </ul>
+
+
+                <div class="note-box">
+
+                    <h3>
+                        📝 Notebook Review
+                    </h3>
+
+                    <p>
+
+                        Before moving to Lesson 5,
+                        make sure you can answer these questions
+                        without looking at your notes.
+
+                    </p>
+
+
+                    <ul class="lesson-list">
+
+                        <li>
+                            ✔ What is a Pip?
+                        </li>
+
+                        <li>
+                            ✔ What is a Lot?
+                        </li>
+
+                        <li>
+                            ✔ What is Pip Value?
+                        </li>
+
+                        <li>
+                            ✔ What is the difference between Standard and Micro Lots?
+                        </li>
+
+                        <li>
+                            ✔ How do you calculate Profit &amp; Loss?
+                        </li>
+
+                        <li>
+                            ✔ Why is choosing the correct Lot Size important?
+                        </li>
+
+                        <li>
+                            ✔ Why is Risk Management important?
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        💡 Coach's Advice
+                    </h3>
+
+                    <p>
+
+                        Many beginners focus only on making bigger profits.
+
+                        <br><br>
+
+                        Professional traders focus on
+                        protecting their capital first.
+
+                        <br><br>
+
+                        Always calculate your risk,
+                        choose the correct Lot Size,
+                        and understand your Pip Value
+                        before opening any trade.
+
+                    </p>
+
+                </div>
+
+
+                <div class="didyouknow-box">
+
+                    <h3>
+                        🌍 Did You Know?
+                    </h3>
+
+                    <p>
+
+                        Most professional traders risk only
+                        <strong>
+                            1%–2%
+                        </strong>
+                        of their trading account on a single trade.
+
+                        <br><br>
+
+                        Consistent risk management helps traders
+                        survive losing streaks and stay profitable over the long term.
+
+                    </p>
+
+                </div>
+
+
+                <div class="warning-box">
+
+                    <h3>
+                        ⚠ Before You Continue
+                    </h3>
+
+                    <p>
+
+                        Complete the Lesson 4 Quiz first.
+
+                        <br><br>
+
+                        Scoring at least
+                        <strong>
+                            70%
+                        </strong>
+
+                        will help confirm
+                        your understanding of these important concepts.
+
+                    </p>
+
+                </div>
+
+
+                <div class="success-box">
+
+                    <h3>
+                        🚀 Coming Up Next
+                    </h3>
+
+                    <p>
+
+                        Lesson 5 introduces one of the most important concepts
+                        in Forex trading:
+
+                        <br><br>
+
+                        <strong>
+                            Leverage &amp; Margin
+                        </strong>
+
+                    </p>
+
+
+                    <ul class="lesson-list">
+
+                        <li>
+                            ⚡ What is Leverage?
+                        </li>
+
+                        <li>
+                            💰 What is Margin?
+                        </li>
+
+                        <li>
+                            📊 Margin Requirements
+                        </li>
+
+                        <li>
+                            ⚠ Margin Call
+                        </li>
+
+                        <li>
+                            🛡 Safe Use of Leverage
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="lesson-navigation">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="retryQuiz()"
+                    >
+                        🔄 Retry Quiz
+                    </button>
+
+
+                    <a
+                        href="lesson5.html"
+                        class="btn btn-primary"
+                    >
+                        🚀 Continue to Lesson 5
+                    </a>
+
+                </div>
+
+
+                <div class="lesson-signature">
+
+                    "Every professional trader started by mastering the basics."
+
+                    <br><br>
+
+                    <strong>
+                        — Strativo Academy
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     LESSON SCRIPTS
+========================================================= -->
+
+<script src="../../js/progress.js"></script>
+<script src="../../js/lesson.js"></script>
+<script src="../../quizzes/module1/quiz4.js"></script>
+
+
+<!-- =========================================================
+     STICKY MOBILE NAVIGATION
+========================================================= -->
+
+<div
+    id="lessonStickyNav"
+    class="lesson-sticky-nav"
+    aria-label="Lesson step navigation"
+>
+
+    <button
+        type="button"
+        id="stickyPrevBtn"
+    >
+        ← Previous
+    </button>
+
+    <span id="stickyStepLabel">
+        Step 1 of 10
+    </span>
+
+    <button
+        type="button"
+        id="stickyNextBtn"
+    >
+        Next →
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     GLOBAL FOOTER
+========================================================= -->
+
+<div data-component="footer"></div>
+
+
+<!-- =========================================================
+     GLOBAL COMPONENT SYSTEM
+========================================================= -->
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+
+<!-- =========================================================
+     LESSON 4 V1 HELPER
+========================================================= -->
+
+<script id="lesson4-v1-helper">
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        "use strict";
+
+
+        function getActiveStep() {
+
+            const active =
+                document.querySelector(
+                    ".lesson-step.active-step"
+                );
+
+            if (!active) {
+                return 1;
+            }
+
+
+            const match =
+                /^step(\d+)$/.exec(
+                    active.id || ""
+                );
+
+
+            return match
+                ? Number(match[1])
+                : 1;
+        }
+
+
+        function updateProgress() {
+
+            const step =
+                getActiveStep();
+
+            const percent =
+                step * 10;
+
+
+            document
+                .querySelectorAll(
+                    ".lesson-progress-fill"
+                )
+                .forEach(
+                    function (element) {
+
+                        element.style.width =
+                            percent + "%";
+                    }
+                );
+
+
+            const label =
+                document.getElementById(
+                    "stickyStepLabel"
+                );
+
+            if (label) {
+
+                label.textContent =
+                    "Step " +
+                    step +
+                    " of 10";
+            }
+
+
+            const stepText =
+                document.querySelector(
+                    ".step-text"
+                );
+
+            if (stepText) {
+
+                stepText.textContent =
+                    "Step " +
+                    step +
+                    " of 10";
+            }
+
+
+            const previous =
+                document.getElementById(
+                    "stickyPrevBtn"
+                );
+
+            const next =
+                document.getElementById(
+                    "stickyNextBtn"
+                );
+
+
+            if (previous) {
+
+                previous.disabled =
+                    step <= 1;
+            }
+
+
+            if (next) {
+
+                if (step === 9) {
+
+                    next.disabled =
+                        true;
+
+                    next.textContent =
+                        "Finish Quiz Above";
+
+                } else {
+
+                    next.disabled =
+                        false;
+
+                    next.textContent =
+                        step === 10
+                            ? "Back to Course →"
+                            : "Next →";
+                }
+            }
+
+
+            try {
+
+                localStorage.setItem(
+                    "strativo_lesson4_ui_state",
+                    JSON.stringify(
+                        {
+                            currentStep:
+                                step,
+                            savedAt:
+                                Date.now()
+                        }
+                    )
+                );
+
+            } catch (error) {
+
+                console.warn(
+                    "Lesson 4 UI state could not be saved.",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SAVE & EXIT
+        ====================================================== */
+
+        const saveExit =
+            document.getElementById(
+                "saveExitBtn"
+            );
+
+
+        if (saveExit) {
+
+            saveExit.addEventListener(
+                "click",
+                function () {
+
+                    updateProgress();
+
+                    window.location.href =
+                        "../../modules/module1.html";
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           MOBILE SIDEBAR
+        ====================================================== */
+
+        const toggle =
+            document.getElementById(
+                "lessonSidebarToggle"
+            );
+
+        const sidebar =
+            document.getElementById(
+                "lessonSidebar"
+            );
+
+
+        if (toggle && sidebar) {
+
+            toggle.addEventListener(
+                "click",
+                function () {
+
+                    const open =
+                        sidebar.classList.toggle(
+                            "is-open"
+                        );
+
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        open
+                            ? "true"
+                            : "false"
+                    );
+
+
+                    toggle.textContent =
+                        open
+                            ? "✕ Close Lesson Menu"
+                            : "☰ Lesson Menu";
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           QUICK CHECK
+        ====================================================== */
+
+        document
+            .querySelectorAll(
+                "#quickCheckStep4 button[data-correct]"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const wrapper =
+                                document.getElementById(
+                                    "quickCheckStep4"
+                                );
+
+
+                            if (!wrapper) {
+                                return;
+                            }
+
+
+                            wrapper
+                                .querySelectorAll(
+                                    "button[data-correct]"
+                                )
+                                .forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "correct",
+                                            "wrong"
+                                        );
+
+                                    }
+                                );
+
+
+                            const correct =
+                                button.dataset.correct ===
+                                "true";
+
+
+                            button.classList.add(
+                                correct
+                                    ? "correct"
+                                    : "wrong"
+                            );
+
+
+                            const feedback =
+                                wrapper.querySelector(
+                                    ".quick-check-feedback"
+                                );
+
+
+                            if (!feedback) {
+                                return;
+                            }
+
+
+                            feedback.className =
+                                "quick-check-feedback visible " +
+                                (
+                                    correct
+                                        ? "correct"
+                                        : "wrong"
+                                );
+
+
+                            feedback.textContent =
+                                correct
+
+                                    ? "✅ Correct. A Lot Size tells you the size of your trade."
+
+                                    : "❌ Not quite. The correct answer is A — Lot = Trade Size.";
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           CONNECT TO EXISTING LESSON ENGINE
+        ====================================================== */
+
+        if (
+            typeof window.showStep ===
+            "function"
+        ) {
+
+            const originalShowStep =
+                window.showStep;
+
+
+            window.showStep =
+                function (step) {
+
+                    const result =
+                        originalShowStep.apply(
+                            this,
+                            arguments
+                        );
+
+
+                    updateProgress();
+
+
+                    return result;
+                };
+
+        }
+
+
+        /* =====================================================
+           STICKY PREVIOUS
+        ====================================================== */
+
+        const stickyPrevious =
+            document.getElementById(
+                "stickyPrevBtn"
+            );
+
+
+        if (stickyPrevious) {
+
+            stickyPrevious.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        typeof window.previousStep ===
+                            "function" &&
+                        getActiveStep() > 1
+                    ) {
+
+                        window.previousStep();
+
+                        updateProgress();
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           STICKY NEXT
+        ====================================================== */
+
+        const stickyNext =
+            document.getElementById(
+                "stickyNextBtn"
+            );
+
+
+        if (stickyNext) {
+
+            stickyNext.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        getActiveStep() === 9
+                    ) {
+
+                        return;
+                    }
+
+
+                    if (
+                        typeof window.nextStep ===
+                        "function"
+                    ) {
+
+                        window.nextStep();
+
+                    } else if (
+                        getActiveStep() === 10
+                    ) {
+
+                        window.location.href =
+                            "../../beginner.html";
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           AUTO SAVE
+        ====================================================== */
+
+        window.addEventListener(
+            "beforeunload",
+            updateProgress
+        );
+
+
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                if (
+                    document.visibilityState ===
+                    "hidden"
+                ) {
+
+                    updateProgress();
+                }
+
+            }
+        );
+
+
+        updateProgress();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

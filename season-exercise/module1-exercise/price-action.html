@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+<meta name="description" content="Strativo Academy Module 1 Exercise 08 — Price Action.">
+<title>Exercise 08 — Price Action | Strativo Academy</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+
+<style>
+:root{
+    --bg:#030712;--panel:#0b1220;--panel2:#08111f;
+    --border:rgba(148,163,184,.13);--text:#f8fafc;--muted:#a6b4c6;
+    --blue:#60a5fa;--green:#34d399;--yellow:#fbbf24;--red:#f87171;
+    --purple:#a78bfa;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.65
+}
+.page{min-height:100vh;padding-bottom:60px}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+
+.hero{
+    padding:76px 20px 54px;text-align:center;border-bottom:1px solid var(--border);
+    background:
+        radial-gradient(circle at 13% 20%,rgba(96,165,250,.14),transparent 34%),
+        radial-gradient(circle at 86% 24%,rgba(251,191,36,.08),transparent 31%),
+        #030712
+}
+.hero-in{width:min(900px,100%);margin:auto}
+.eyebrow{color:#93c5fd;font-size:.82rem;font-weight:900;letter-spacing:.16em}
+.hero h1{margin:15px 0 0;font-family:Poppins,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:1.08}
+.hero p{max-width:860px;margin:16px auto 0;color:#a8b5c7;font-size:1rem;line-height:1.9}
+.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}
+.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#0f172acc;color:#dbeafe;font-size:.78rem;font-weight:800}
+
+.meta{
+    display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;
+    margin-top:23px;padding:16px 18px;border:1px solid var(--border);
+    border-radius:15px;background:var(--panel)
+}
+.meta strong{display:block;font-size:.92rem}
+.meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.82rem}
+.progress{min-width:150px;text-align:right}
+.bar{width:150px;height:7px;border-radius:999px;background:#162033;overflow:hidden}
+.fill{width:80%;height:100%;background:linear-gradient(90deg,#60a5fa,#fbbf24)}
+.progress small{display:block;margin-top:6px;color:#7f8ea2;font-size:.72rem}
+
+.section{
+    margin-top:20px;padding:22px;border:1px solid var(--border);
+    border-radius:17px;background:var(--panel)
+}
+.section h2{margin:0;font-family:Poppins,sans-serif;font-size:1.45rem}
+.section h3{margin:18px 0 0;color:#dbeafe;font-size:1.02rem}
+.section p{margin:8px 0 0;color:var(--muted);font-size:.92rem;line-height:1.8}
+.list{margin:12px 0;padding-left:20px}
+.list li{margin-top:7px;color:#aebdd0;font-size:.92rem;line-height:1.8}
+
+.cards{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:17px
+}
+.card{
+    padding:16px;border:1px solid rgba(148,163,184,.10);
+    border-radius:13px;background:var(--panel2)
+}
+.card strong{display:block;color:#f1f5f9;font-size:.92rem}
+.card span{display:block;margin-top:7px;color:#aebdd0;font-size:.84rem;line-height:1.75}
+
+.diagram{
+    margin-top:18px;border:1px solid rgba(148,163,184,.11);
+    border-radius:14px;overflow:hidden;background:#07101f
+}
+.dtitle{
+    padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);
+    background:#0d1728;color:#dbe4ef;font-size:.78rem;font-weight:900
+}
+.diagram svg{display:block;width:100%;height:auto}
+
+.q{
+    margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.qtag{color:#60a5fa;font-size:.78rem;font-weight:900;letter-spacing:.06em}
+.q h3{margin-top:7px;color:#f1f5f9;font-size:1.05rem;line-height:1.6}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}
+.opt{
+    appearance:none;width:100%;padding:14px 15px;border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;background:#0b1627;color:#d5deea;text-align:left;font:inherit;
+    font-size:.92rem;line-height:1.65;cursor:pointer;
+    transition:transform .16s ease,border-color .16s ease,background .16s ease
+}
+.opt:hover{transform:translateY(-1px);border-color:rgba(96,165,250,.34);background:#0e1b30}
+.opt:focus-visible{outline:2px solid #60a5fa;outline-offset:2px}
+.opt.correct{border-color:rgba(52,211,153,.55);background:rgba(16,185,129,.11);color:#d1fae5}
+.opt.wrong{border-color:rgba(248,113,113,.50);background:rgba(248,113,113,.09);color:#fecaca}
+.opt.reveal-correct{border-color:rgba(52,211,153,.35);box-shadow:inset 3px 0 0 #34d399}
+.opt:disabled{cursor:default;transform:none}
+
+.feedback{
+    display:none;margin-top:13px;padding:14px 15px;border-left:3px solid #60a5fa;
+    border-radius:0 10px 10px 0;background:rgba(59,130,246,.055)
+}
+.feedback.visible{display:block}
+.feedback.correct{border-left-color:#34d399;background:rgba(16,185,129,.07)}
+.feedback.wrong{border-left-color:#f87171;background:rgba(248,113,113,.06)}
+.feedback .title{color:#f8fafc;font-size:.92rem;font-weight:900}
+.feedback.correct .title{color:#86efac}
+.feedback.wrong .title{color:#fca5a5}
+.feedback p{margin-top:7px!important;color:#cbd5e1!important;font-size:.90rem!important;line-height:1.75!important}
+.feedback .why{color:#fca5a5!important}
+.feedback .correct-answer{color:#86efac!important}
+
+.retry{
+    margin-top:10px;padding:8px 12px;border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;background:rgba(15,23,42,.66);color:#cbd5e1;
+    font:inherit;font-size:.78rem;font-weight:800;cursor:pointer
+}
+.retry:hover{border-color:rgba(96,165,250,.30);background:rgba(59,130,246,.08)}
+
+.scorebar{
+    margin-top:18px;padding:14px 16px;border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;background:rgba(59,130,246,.055)
+}
+.scorebar strong{color:#dbeafe;font-size:.90rem}
+.score-progress{margin-top:8px;height:7px;border-radius:999px;overflow:hidden;background:#162033}
+.score-fill{width:0;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399);transition:width .25s ease}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
+.check{padding:10px 12px;border:1px solid rgba(148,163,184,.09);border-radius:10px;background:var(--panel2);color:#cbd5e1;font-size:.84rem}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:22px}
+.nav a{
+    display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;
+    border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;
+    color:#dbeafe;text-decoration:none;font-size:.82rem;font-weight:900;text-align:center
+}
+.nav a:hover{background:#0e1b30}
+.center{background:rgba(59,130,246,.06)!important;color:#bfdbfe!important}
+.next{background:rgba(16,185,129,.055)!important;color:#d1fae5!important}
+.note{text-align:center;margin-top:14px;color:#64748b;font-size:.72rem}
+
+@media(max-width:850px){
+    .cards{grid-template-columns:1fr}
+    .meta{grid-template-columns:1fr}
+    .progress{text-align:left}.bar{width:100%}
+}
+@media(max-width:760px){
+    .opts,.checks,.nav{grid-template-columns:1fr}
+    .section{padding:20px}
+    .section h2{font-size:1.25rem}
+    .q h3{font-size:1rem}
+}
+</style>
+</head>
+
+<body>
+
+<div data-component="header"></div>
+
+<main class="page">
+
+<section class="hero">
+    <div class="hero-in">
+        <div class="eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+        <h1>Exercise 08 — Price Action</h1>
+        <p>
+            Practice reading how price behaves around important areas and how
+            candles, structure, momentum, breakouts, pullbacks and reactions
+            can be interpreted together.
+        </p>
+        <div class="badges">
+            <span class="badge">⚡ Price Action</span>
+            <span class="badge">📈 Momentum</span>
+            <span class="badge">🔄 Pullbacks</span>
+            <span class="badge">08 / 10</span>
+        </div>
+    </div>
+</section>
+
+<div class="wrap">
+
+<section class="meta">
+    <div>
+        <strong>Exercise Goal</strong>
+        <span>Learn to read price behaviour as a sequence rather than treating one candle as a complete trading signal.</span>
+    </div>
+    <div class="progress">
+        <div class="bar"><div class="fill"></div></div>
+        <small>Exercise 08 of 10</small>
+    </div>
+</section>
+
+<section class="section">
+    <h2>01. What Is Price Action?</h2>
+    <p>
+        Price Action is the study of how price behaves and moves on a chart.
+        In the Module 1 notes, Price Action is connected with candles, market
+        structure, momentum, breakouts, pullbacks and reactions around important
+        areas. The goal is to read these pieces together rather than rely only
+        on one candle.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Context</strong><span>Where is price? Trend, range, support, resistance or another important area?</span></div>
+        <div class="card"><strong>Behaviour</strong><span>How is price moving? Strong expansion, correction, rejection or consolidation?</span></div>
+        <div class="card"><strong>Reaction</strong><span>What happens when price reaches an important area?</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">PRICE ACTION = CONTEXT + BEHAVIOUR + REACTION</div>
+        <svg viewBox="0 0 900 360" role="img" aria-label="Price action context behaviour reaction diagram">
+            <rect width="900" height="360" fill="#07101f"/>
+
+            <rect x="70" y="105" width="220" height="120" rx="15" fill="#0b1627" stroke="#60a5fa" stroke-width="2"/>
+            <text x="180" y="145" text-anchor="middle" fill="#bfdbfe" font-size="20" font-weight="900">CONTEXT</text>
+            <text x="180" y="177" text-anchor="middle" fill="#94a3b8" font-size="14">trend / range / key area</text>
+            <text x="180" y="201" text-anchor="middle" fill="#94a3b8" font-size="14">where is price?</text>
+
+            <rect x="340" y="105" width="220" height="120" rx="15" fill="#0b1627" stroke="#a78bfa" stroke-width="2"/>
+            <text x="450" y="145" text-anchor="middle" fill="#ddd6fe" font-size="20" font-weight="900">BEHAVIOUR</text>
+            <text x="450" y="177" text-anchor="middle" fill="#94a3b8" font-size="14">momentum / correction</text>
+            <text x="450" y="201" text-anchor="middle" fill="#94a3b8" font-size="14">how is price moving?</text>
+
+            <rect x="610" y="105" width="220" height="120" rx="15" fill="#0b1627" stroke="#34d399" stroke-width="2"/>
+            <text x="720" y="145" text-anchor="middle" fill="#a7f3d0" font-size="20" font-weight="900">REACTION</text>
+            <text x="720" y="177" text-anchor="middle" fill="#94a3b8" font-size="14">break / reject / continue</text>
+            <text x="720" y="201" text-anchor="middle" fill="#94a3b8" font-size="14">what happens there?</text>
+
+            <polygon points="300,160 330,166 300,172" fill="#64748b"/>
+            <polygon points="570,160 600,166 570,172" fill="#64748b"/>
+
+            <text x="450" y="285" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="900">
+                READ PRICE AS A PROCESS — NOT A SINGLE CANDLE
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>02. Momentum, Pullback and Continuation</h2>
+    <p>
+        Momentum describes the strength or speed visible in a price movement.
+        A pullback is a temporary movement against a larger directional move.
+        Continuation describes price resuming the prior directional behaviour
+        after a correction or pause.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Momentum</strong><span>Price moves with noticeable strength or expansion in one direction.</span></div>
+        <div class="card"><strong>Pullback</strong><span>Price temporarily moves against the previous directional move.</span></div>
+        <div class="card"><strong>Continuation</strong><span>Price resumes the broader movement after the pullback or pause.</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">IMPULSE → PULLBACK → CONTINUATION</div>
+        <svg viewBox="0 0 900 370" role="img" aria-label="Impulse pullback continuation diagram">
+            <rect width="900" height="370" fill="#07101f"/>
+            <line x1="95" y1="285" x2="350" y2="95" stroke="#34d399" stroke-width="7" stroke-linecap="round"/>
+            <polygon points="350,95 321,104 340,126" fill="#34d399"/>
+            <text x="220" y="80" text-anchor="middle" fill="#a7f3d0" font-size="18" font-weight="900">MOMENTUM / IMPULSE</text>
+
+            <line x1="350" y1="95" x2="485" y2="205" stroke="#fbbf24" stroke-width="7" stroke-linecap="round"/>
+            <polygon points="485,205 476,175 455,195" fill="#fbbf24"/>
+            <text x="430" y="235" text-anchor="middle" fill="#fde68a" font-size="17" font-weight="900">PULLBACK</text>
+
+            <line x1="485" y1="205" x2="790" y2="70" stroke="#34d399" stroke-width="7" stroke-linecap="round"/>
+            <polygon points="790,70 760,77 772,101" fill="#34d399"/>
+            <text x="650" y="58" text-anchor="middle" fill="#a7f3d0" font-size="18" font-weight="900">CONTINUATION</text>
+
+            <text x="450" y="330" text-anchor="middle" fill="#64748b" font-size="14" font-weight="700">
+                A CORRECTION DOES NOT AUTOMATICALLY MEAN THE TREND HAS REVERSED
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>03. Breakout, Rejection and Reaction</h2>
+    <p>
+        Price can react when it reaches an important area. A breakout occurs
+        when price moves through a previously watched area. A rejection shows
+        that price reached an area but moved back away from it. A reaction must
+        be interpreted with context, structure and subsequent price behaviour.
+    </p>
+
+    <div class="cards">
+        <div class="card"><strong>Breakout</strong><span>Price moves through a previously watched boundary or area.</span></div>
+        <div class="card"><strong>Rejection</strong><span>Price reaches an area and moves away, often leaving visible evidence such as a wick or failed push.</span></div>
+        <div class="card"><strong>Reaction</strong><span>The market's response around an important area; the next price behaviour helps provide context.</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">AREA → REACTION → OBSERVE WHAT HAPPENS NEXT</div>
+        <svg viewBox="0 0 900 390" role="img" aria-label="Price action reaction diagram">
+            <rect width="900" height="390" fill="#07101f"/>
+
+            <rect x="95" y="205" width="710" height="62" rx="12" fill="rgba(96,165,250,.06)" stroke="#60a5fa" stroke-width="2"/>
+            <text x="450" y="242" text-anchor="middle" fill="#bfdbfe" font-size="18" font-weight="900">IMPORTANT PRICE AREA</text>
+
+            <line x1="150" y1="165" x2="315" y2="75" stroke="#60a5fa" stroke-width="6" stroke-linecap="round"/>
+            <line x1="315" y1="75" x2="440" y2="205" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+            <line x1="440" y1="205" x2="650" y2="125" stroke="#34d399" stroke-width="6" stroke-linecap="round"/>
+
+            <text x="205" y="60" text-anchor="middle" fill="#93c5fd" font-size="15" font-weight="800">PRICE APPROACHES</text>
+            <text x="440" y="300" text-anchor="middle" fill="#fde68a" font-size="15" font-weight="800">REACTION</text>
+            <text x="650" y="105" text-anchor="middle" fill="#a7f3d0" font-size="15" font-weight="800">OBSERVE FOLLOW-THROUGH</text>
+
+            <text x="450" y="350" text-anchor="middle" fill="#64748b" font-size="14">
+                THE REACTION SHOULD BE READ WITH THE BROADER MARKET CONTEXT
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>04. Knowledge Check</h2>
+    <p>
+        Choose an answer first. Your choice is checked immediately. Wrong
+        answers show why they are wrong, the correct answer and the explanation.
+    </p>
+
+    <div class="q"><div class="qtag">QUESTION 01</div>
+        <h3>What is the basic idea of Price Action?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Studying how price behaves and moves on a chart</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Using only one indicator</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Ignoring price structure</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Predicting every candle with certainty</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 02</div>
+        <h3>Which combination best fits a Price Action reading?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Context, price behaviour and reaction</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Candle colour only</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> One random price level</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> An indicator without price context</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 03</div>
+        <h3>What does momentum describe in basic Price Action analysis?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Noticeable strength or expansion in a price movement</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> A guaranteed reversal</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> A period with no price movement</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> The name of a currency pair</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 04</div>
+        <h3>What is a pullback?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> A temporary movement against the broader directional move</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> A guaranteed trend reversal</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> A new currency pair</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A fixed market price</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 05</div>
+        <h3>What is a breakout in basic Price Action language?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Price moving through a previously watched boundary or area</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Any single candle</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> A period where price cannot move</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A guaranteed continuation</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 06</div>
+        <h3>Why should a trader avoid treating one candle or reaction as the whole Price Action story?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Price Action is read with context, structure, behaviour and subsequent reaction</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Candles contain no information</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Price never changes after a reaction</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> One candle always predicts the next one</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="scorebar" aria-live="polite">
+        <strong>Knowledge Check: 0 / 6 correct</strong>
+        <div class="score-progress"><div class="score-fill"></div></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>05. Practical Price Action Scenarios</h2>
+
+    <div class="q"><div class="qtag">SCENARIO 01</div>
+        <h3>Price is moving strongly upward, then pauses and moves downward for a short period. What is the downward move most likely describing in this simple example?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> A pullback</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> A guaranteed reversal</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> A new currency pair</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> The market closing</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 02</div>
+        <h3>After a pullback, price resumes the earlier upward movement. What does this describe?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Continuation</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Permanent reversal</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> No price action</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A currency conversion</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 03</div>
+        <h3>Price reaches an important area, moves beyond it, and continues trading outside the old area. What concept is being observed?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Breakout</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> A guaranteed failure</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> A pip calculation</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A currency-pair definition</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 04</div>
+        <h3>Price reaches an important area but moves away instead of continuing through it. What should the trader study next?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> The reaction and broader context</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Only the candle colour</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Ignore the structure</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Enter immediately without further information</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>06. Student Self-Check</h2>
+    <div class="checks">
+        <div class="check">☐ I can explain Price Action in my own words.</div>
+        <div class="check">☐ I can separate context from price behaviour.</div>
+        <div class="check">☐ I understand basic momentum.</div>
+        <div class="check">☐ I understand a pullback.</div>
+        <div class="check">☐ I understand continuation.</div>
+        <div class="check">☐ I understand the basic idea of a breakout.</div>
+        <div class="check">☐ I understand rejection/reaction needs context.</div>
+        <div class="check">☐ I am ready for Market Structure next.</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>07. Quick Revision</h2>
+    <ul class="list">
+        <li>Price Action studies how price behaves and moves on a chart.</li>
+        <li>The Module 1 notes connect Price Action with candles, structure, momentum, breakouts, pullbacks and reactions.</li>
+        <li>Momentum describes noticeable strength or expansion in a price movement.</li>
+        <li>A pullback is a temporary movement against the broader directional move.</li>
+        <li>Continuation describes the broader move resuming after a pullback or pause.</li>
+        <li>A breakout is price moving through a previously watched boundary or area.</li>
+        <li>A reaction should be interpreted with context and subsequent price behaviour rather than one candle alone.</li>
+    </ul>
+</section>
+
+<nav class="nav" aria-label="Exercise navigation">
+    <a href="candlesticks.html">← Candlesticks</a>
+    <a class="center" href="module1-exercise.html">Exercise Hub</a>
+    <a class="next" href="market-structure.html">Next: Market Structure →</a>
+</nav>
+
+<div class="note">Exercise 08 of 10 • Strativo Academy Module 1 • Next: Market Structure</div>
+
+</div>
+</main>
+
+<div data-component="footer"></div>
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const maps={
+        "QUESTION 01":{
+            correct:"A",
+            explanation:"Price Action is the study of how price behaves and moves on a chart.",
+            wrong:{
+                B:"Price Action is not limited to a single indicator.",
+                C:"Price structure is an important part of the connected Price Action reading.",
+                D:"Price Action provides information and context; it does not guarantee every candle."
+            }
+        },
+        "QUESTION 02":{
+            correct:"A",
+            explanation:"The Module 1 notes frame Price Action as a combination of context, behaviour and reactions involving candles, structure, momentum and important areas.",
+            wrong:{
+                B:"Candle colour alone does not provide the full Price Action context.",
+                C:"One random level is not a complete reading of price behaviour.",
+                D:"An indicator alone does not replace studying price itself."
+            }
+        },
+        "QUESTION 03":{
+            correct:"A",
+            explanation:"Momentum describes noticeable strength or expansion in a price movement.",
+            wrong:{
+                B:"Momentum does not guarantee a reversal.",
+                C:"A movement with no price change would not show momentum.",
+                D:"Momentum is a price-behaviour concept, not a currency-pair name."
+            }
+        },
+        "QUESTION 04":{
+            correct:"A",
+            explanation:"A pullback is a temporary movement against the broader directional move. It does not automatically mean the larger move has reversed.",
+            wrong:{
+                B:"A pullback is not automatically a trend reversal.",
+                C:"A pullback describes price behaviour, not a currency pair.",
+                D:"A pullback is a movement, not a fixed price."
+            }
+        },
+        "QUESTION 05":{
+            correct:"A",
+            explanation:"A breakout occurs when price moves through a previously watched boundary or area.",
+            wrong:{
+                B:"A single candle is not automatically a breakout.",
+                C:"A market can move during a breakout; it is not defined by no movement.",
+                D:"A breakout does not guarantee continuation."
+            }
+        },
+        "QUESTION 06":{
+            correct:"A",
+            explanation:"The notes emphasize reading candles, structure, momentum, breakouts, pullbacks and reactions together. One candle is only one piece of information.",
+            wrong:{
+                B:"Candles do contain useful information.",
+                C:"Price can continue changing after any reaction.",
+                D:"One candle cannot guarantee the next candle."
+            }
+        },
+        "SCENARIO 01":{
+            correct:"A",
+            explanation:"After a strong upward movement, a short move downward can be a pullback against the broader movement.",
+            wrong:{
+                B:"The short downward move alone does not prove the larger move has reversed.",
+                C:"The currency pair itself has not changed.",
+                D:"A pullback is still active market movement."
+            }
+        },
+        "SCENARIO 02":{
+            correct:"A",
+            explanation:"When price resumes the prior directional movement after a pullback, the behaviour is consistent with continuation.",
+            wrong:{
+                B:"Resuming the prior move is not evidence of permanent reversal.",
+                C:"Price is clearly moving.",
+                D:"This describes price behaviour, not currency conversion."
+            }
+        },
+        "SCENARIO 03":{
+            correct:"A",
+            explanation:"Price moving through a previously watched boundary or area is the basic definition of a breakout.",
+            wrong:{
+                B:"The result after a breakout still needs observation; the event itself is not automatically a failure.",
+                C:"Pips measure price distance; they do not define a breakout.",
+                D:"A currency-pair definition does not describe a boundary being crossed."
+            }
+        },
+        "SCENARIO 04":{
+            correct:"A",
+            explanation:"When price moves away from an important area, the useful next step is to study the reaction together with context and what price does afterward.",
+            wrong:{
+                B:"Candle colour alone is not enough.",
+                C:"Ignoring structure removes important context.",
+                D:"An immediate trade is not justified by one reaction alone."
+            }
+        }
+    };
+
+    let score=0;
+    const counted=new Set();
+    const scoreText=document.querySelector(".scorebar strong");
+    const fill=document.querySelector(".score-fill");
+
+    function updateScore(){
+        scoreText.textContent="Knowledge Check: "+score+" / 6 correct";
+        fill.style.width=(score/6*100)+"%";
+    }
+
+    function evaluate(q,selected,data){
+        const feedback=q.querySelector(".feedback");
+        const correct=selected===data.correct;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.disabled=true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+            if(btn.dataset.option===data.correct)btn.classList.add("reveal-correct");
+            if(btn.dataset.option===selected)btn.classList.add(correct?"correct":"wrong");
+        });
+
+        feedback.className="feedback visible "+(correct?"correct":"wrong");
+        feedback.innerHTML="";
+
+        const title=document.createElement("div");
+        title.className="title";
+        title.textContent=correct?"✅ Correct — well done!":"❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if(!correct){
+            const why=document.createElement("p");
+            why.className="why";
+            why.textContent="Why your answer is wrong: "+data.wrong[selected];
+            feedback.appendChild(why);
+
+            const right=document.createElement("p");
+            right.className="correct-answer";
+            right.textContent="Correct answer: "+data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explanation=document.createElement("p");
+        explanation.textContent="Explanation: "+data.explanation;
+        feedback.appendChild(explanation);
+
+        const retry=document.createElement("button");
+        retry.type="button";
+        retry.className="retry";
+        retry.textContent="Try Again";
+        retry.addEventListener("click",()=>{
+            q.querySelectorAll(".opt").forEach(btn=>{
+                btn.disabled=false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+            feedback.className="feedback";
+            feedback.innerHTML="";
+        });
+        feedback.appendChild(retry);
+    }
+
+    document.querySelectorAll(".q").forEach(q=>{
+        const tag=q.querySelector(".qtag");
+        const id=tag?tag.textContent.trim():"";
+        const data=maps[id];
+        if(!data)return;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.addEventListener("click",()=>{
+                if(btn.disabled)return;
+                const selected=btn.dataset.option;
+
+                if(id.startsWith("QUESTION")&&!counted.has(id)){
+                    counted.add(id);
+                    if(selected===data.correct)score++;
+                    updateScore();
+                }
+                evaluate(q,selected,data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+
+</body>
+</html>

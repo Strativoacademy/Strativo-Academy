@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Manage sound and audio preferences in Strativo Academy."
+    >
+
+    <title>Sound &amp; Audio | Strativo Academy</title>
+
+
+    <!-- =====================================================
+         GLOBAL APPEARANCE
+    ====================================================== -->
+
+    <script src="../js/appearance-global.js"></script>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/settings.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/sound.css"
+    >
+
+</head>
+
+
+<body class="settings-page sound-page">
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="settings-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main
+        class="settings-container"
+        id="main-content"
+    >
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="settings-topbar">
+
+            <a
+                href="settings.html"
+                class="settings-back-link"
+                aria-label="Back to Settings"
+            >
+
+                <i
+                    class="fas fa-arrow-left"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Back to Settings
+                </span>
+
+            </a>
+
+
+            <div class="settings-version">
+
+                <span
+                    class="settings-version-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span>
+                    v1.0 Beta
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="settings-hero">
+
+            <div class="settings-eyebrow">
+
+                <i
+                    class="fas fa-volume-high"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    SOUND &amp; AUDIO
+                </span>
+
+            </div>
+
+
+            <h1>
+                Sound &amp; Audio
+            </h1>
+
+
+            <p>
+                Control learning sounds, achievement sounds
+                and notification audio across Strativo Academy.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AUDIO OVERVIEW
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="audio-overview-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <span class="settings-section-label">
+                    AUDIO
+                </span>
+
+                <h2 id="audio-overview-title">
+                    Audio Preferences
+                </h2>
+
+                <p>
+                    Choose which types of sounds Strativo Academy
+                    is allowed to play.
+                </p>
+
+            </div>
+
+
+            <div class="sound-toggle-list">
+
+
+                <!-- SOUND EFFECTS -->
+
+                <div class="sound-toggle-card">
+
+                    <div class="sound-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-volume-high"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Sound Effects
+                            </h3>
+
+                            <p>
+                                Allow interface and interaction
+                                sounds throughout the Academy.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="sound-switch">
+
+                        <input
+                            type="checkbox"
+                            id="sound-effects-toggle"
+                            checked
+                            aria-label="Enable sound effects"
+                        >
+
+                        <span
+                            class="sound-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- LEARNING SOUNDS -->
+
+                <div class="sound-toggle-card">
+
+                    <div class="sound-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-book-open"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Learning Sounds
+                            </h3>
+
+                            <p>
+                                Allow sounds related to lessons,
+                                practice activities and learning events.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="sound-switch">
+
+                        <input
+                            type="checkbox"
+                            id="learning-sounds-toggle"
+                            checked
+                            aria-label="Enable learning sounds"
+                        >
+
+                        <span
+                            class="sound-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- ACHIEVEMENT SOUNDS -->
+
+                <div class="sound-toggle-card">
+
+                    <div class="sound-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-trophy"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Achievement Sounds
+                            </h3>
+
+                            <p>
+                                Play sounds when achievements,
+                                milestones or XP events are unlocked.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="sound-switch">
+
+                        <input
+                            type="checkbox"
+                            id="achievement-sounds-toggle"
+                            checked
+                            aria-label="Enable achievement sounds"
+                        >
+
+                        <span
+                            class="sound-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- NOTIFICATION SOUNDS -->
+
+                <div class="sound-toggle-card">
+
+                    <div class="sound-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-bell"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Notification Sounds
+                            </h3>
+
+                            <p>
+                                Allow audio for Strativo Academy
+                                notifications and alerts.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="sound-switch">
+
+                        <input
+                            type="checkbox"
+                            id="notification-sounds-toggle"
+                            checked
+                            aria-label="Enable notification sounds"
+                        >
+
+                        <span
+                            class="sound-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MASTER CONTROL
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="master-audio-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <span class="settings-section-label">
+                    MASTER CONTROL
+                </span>
+
+                <h2 id="master-audio-title">
+                    Audio Control
+                </h2>
+
+                <p>
+                    Quickly disable all Strativo Academy sounds
+                    without changing each individual preference.
+                </p>
+
+            </div>
+
+
+            <div class="sound-master-card">
+
+                <div class="sound-toggle-info">
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-volume-xmark"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Mute All Sounds
+                        </h3>
+
+                        <p>
+                            Temporarily prevent all supported
+                            Academy sounds from playing.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="sound-switch">
+
+                    <input
+                        type="checkbox"
+                        id="mute-all-sounds-toggle"
+                        aria-label="Mute all sounds"
+                    >
+
+                    <span
+                        class="sound-switch-slider"
+                        aria-hidden="true"
+                    ></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AUDIO NOTE
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="audio-note-title"
+        >
+
+            <div class="sound-info-card">
+
+                <div class="settings-card-icon">
+
+                    <i
+                        class="fas fa-circle-info"
+                        aria-hidden="true"
+                    ></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3 id="audio-note-title">
+                        Audio Availability
+                    </h3>
+
+                    <p>
+                        These settings control audio preferences.
+                        Actual sound playback will be connected
+                        to the Strativo Academy audio engine as
+                        learning and gamification features are added.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="settings-about">
+
+            <div class="settings-about-brand">
+
+                <span class="settings-about-name">
+                    STRATIVO
+                </span>
+
+                <span class="settings-about-accent">
+                    ACADEMY
+                </span>
+
+            </div>
+
+
+            <p>
+                Strativo Academy — Structured Forex Trading Education
+            </p>
+
+
+            <span class="settings-about-version">
+                Version 1.0 Beta
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SOUND ENGINE
+    ====================================================== -->
+
+    <script src="sound.js"></script>
+
+</body>
+
+</html>

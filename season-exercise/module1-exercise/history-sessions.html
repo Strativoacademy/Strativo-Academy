@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+<meta name="description" content="Strativo Academy Module 1 Exercise 06 — History & Market Sessions.">
+<title>Exercise 06 — History &amp; Market Sessions | Strativo Academy</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+
+<style>
+:root{
+    --bg:#030712;--panel:#0b1220;--panel2:#08111f;
+    --border:rgba(148,163,184,.13);--text:#f8fafc;--muted:#a6b4c6;
+    --blue:#60a5fa;--green:#34d399;--yellow:#fbbf24;--purple:#a78bfa;
+    --red:#f87171;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.65;
+}
+.page{min-height:100vh;padding-bottom:60px}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+
+.hero{
+    padding:76px 20px 54px;text-align:center;border-bottom:1px solid var(--border);
+    background:
+        radial-gradient(circle at 13% 20%,rgba(96,165,250,.14),transparent 34%),
+        radial-gradient(circle at 86% 24%,rgba(251,191,36,.08),transparent 31%),
+        #030712;
+}
+.hero-in{width:min(900px,100%);margin:auto}
+.eyebrow{color:#93c5fd;font-size:.82rem;font-weight:900;letter-spacing:.16em}
+.hero h1{
+    margin:15px 0 0;font-family:Poppins,sans-serif;
+    font-size:clamp(2rem,5vw,3.8rem);line-height:1.08
+}
+.hero p{max-width:860px;margin:16px auto 0;color:#a8b5c7;font-size:1rem;line-height:1.9}
+.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}
+.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#0f172acc;color:#dbeafe;font-size:.78rem;font-weight:800}
+
+.meta{
+    display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;
+    margin-top:23px;padding:16px 18px;border:1px solid var(--border);
+    border-radius:15px;background:var(--panel)
+}
+.meta strong{display:block;font-size:.92rem}
+.meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.82rem}
+.progress{min-width:150px;text-align:right}
+.bar{width:150px;height:7px;border-radius:999px;background:#162033;overflow:hidden}
+.fill{width:60%;height:100%;background:linear-gradient(90deg,#60a5fa,#fbbf24)}
+.progress small{display:block;margin-top:6px;color:#7f8ea2;font-size:.72rem}
+
+.section{
+    margin-top:20px;padding:22px;border:1px solid var(--border);
+    border-radius:17px;background:var(--panel)
+}
+.section h2{margin:0;font-family:Poppins,sans-serif;font-size:1.45rem}
+.section h3{margin:18px 0 0;color:#dbeafe;font-size:1.02rem}
+.section p{margin:8px 0 0;color:var(--muted);font-size:.92rem;line-height:1.8}
+.list{margin:12px 0;padding-left:20px}
+.list li{margin-top:7px;color:#aebdd0;font-size:.92rem;line-height:1.8}
+
+.timeline{
+    position:relative;margin-top:20px;padding-left:26px
+}
+.timeline:before{
+    content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#1e2a40
+}
+.timeline-card{
+    position:relative;margin-bottom:14px;padding:16px 17px;
+    border:1px solid rgba(148,163,184,.10);border-radius:13px;background:var(--panel2)
+}
+.timeline-card:before{
+    content:"";position:absolute;left:-22px;top:20px;width:9px;height:9px;
+    border-radius:50%;background:#60a5fa;box-shadow:0 0 0 4px #07101f
+}
+.timeline-card strong{color:#f1f5f9;font-size:.92rem}
+.timeline-card p{font-size:.84rem}
+
+.session-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:17px
+}
+.session{
+    padding:18px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.session .icon{font-size:1.45rem}
+.session h3{margin-top:9px;font-size:1rem;color:#f1f5f9}
+.session p{font-size:.85rem}
+.session .focus{
+    margin-top:10px;padding:9px 11px;border-radius:9px;
+    background:rgba(96,165,250,.055);color:#bfdbfe;font-size:.80rem
+}
+
+.overlap{
+    margin-top:17px;padding:18px;border:1px solid rgba(52,211,153,.18);
+    border-radius:14px;background:rgba(16,185,129,.045)
+}
+.overlap h3{margin:0;color:#a7f3d0}
+.overlap p{font-size:.86rem}
+
+.diagram{
+    margin-top:18px;border:1px solid rgba(148,163,184,.11);
+    border-radius:14px;overflow:hidden;background:#07101f
+}
+.dtitle{
+    padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);
+    background:#0d1728;color:#dbe4ef;font-size:.78rem;font-weight:900
+}
+.diagram svg{display:block;width:100%;height:auto}
+
+.q{
+    margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.qtag{color:#60a5fa;font-size:.78rem;font-weight:900;letter-spacing:.06em}
+.q h3{margin-top:7px;color:#f1f5f9;font-size:1.05rem;line-height:1.6}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}
+.opt{
+    appearance:none;width:100%;padding:14px 15px;border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;background:#0b1627;color:#d5deea;text-align:left;font:inherit;
+    font-size:.92rem;line-height:1.65;cursor:pointer;
+    transition:transform .16s ease,border-color .16s ease,background .16s ease
+}
+.opt:hover{transform:translateY(-1px);border-color:rgba(96,165,250,.34);background:#0e1b30}
+.opt:focus-visible{outline:2px solid #60a5fa;outline-offset:2px}
+.opt.correct{border-color:rgba(52,211,153,.55);background:rgba(16,185,129,.11);color:#d1fae5}
+.opt.wrong{border-color:rgba(248,113,113,.50);background:rgba(248,113,113,.09);color:#fecaca}
+.opt.reveal-correct{border-color:rgba(52,211,153,.35);box-shadow:inset 3px 0 0 #34d399}
+.opt:disabled{cursor:default;transform:none}
+
+.feedback{
+    display:none;margin-top:13px;padding:14px 15px;
+    border-left:3px solid #60a5fa;border-radius:0 10px 10px 0;background:rgba(59,130,246,.055)
+}
+.feedback.visible{display:block}
+.feedback.correct{border-left-color:#34d399;background:rgba(16,185,129,.07)}
+.feedback.wrong{border-left-color:#f87171;background:rgba(248,113,113,.06)}
+.feedback .title{color:#f8fafc;font-size:.92rem;font-weight:900}
+.feedback.correct .title{color:#86efac}
+.feedback.wrong .title{color:#fca5a5}
+.feedback p{margin-top:7px!important;color:#cbd5e1!important;font-size:.90rem!important;line-height:1.75!important}
+.feedback .why{color:#fca5a5!important}
+.feedback .correct-answer{color:#86efac!important}
+
+.retry{
+    margin-top:10px;padding:8px 12px;border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;background:rgba(15,23,42,.66);color:#cbd5e1;
+    font:inherit;font-size:.78rem;font-weight:800;cursor:pointer
+}
+.retry:hover{border-color:rgba(96,165,250,.30);background:rgba(59,130,246,.08)}
+
+.scorebar{
+    margin-top:18px;padding:14px 16px;border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;background:rgba(59,130,246,.055)
+}
+.scorebar strong{color:#dbeafe;font-size:.90rem}
+.score-progress{margin-top:8px;height:7px;border-radius:999px;overflow:hidden;background:#162033}
+.score-fill{width:0;height:100%;background:linear-gradient(90deg,#60a5fa,#fbbf24);transition:width .25s ease}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
+.check{padding:10px 12px;border:1px solid rgba(148,163,184,.09);border-radius:10px;background:var(--panel2);color:#cbd5e1;font-size:.84rem}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:22px}
+.nav a{
+    display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;
+    border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;
+    color:#dbeafe;text-decoration:none;font-size:.82rem;font-weight:900;text-align:center
+}
+.nav a:hover{background:#0e1b30}
+.center{background:rgba(59,130,246,.06)!important;color:#bfdbfe!important}
+.next{background:rgba(16,185,129,.055)!important;color:#d1fae5!important}
+.note{text-align:center;margin-top:14px;color:#64748b;font-size:.72rem}
+
+@media(max-width:800px){
+    .session-grid{grid-template-columns:1fr}
+    .meta{grid-template-columns:1fr}
+    .progress{text-align:left}.bar{width:100%}
+}
+@media(max-width:760px){
+    .opts,.checks,.nav{grid-template-columns:1fr}
+    .section{padding:20px}
+    .section h2{font-size:1.25rem}
+    .q h3{font-size:1rem}
+}
+</style>
+</head>
+
+<body>
+
+<div data-component="header"></div>
+
+<main class="page">
+
+<section class="hero">
+    <div class="hero-in">
+        <div class="eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+        <h1>Exercise 06 — History &amp; Market Sessions</h1>
+        <p>
+            Review the broad development of money and foreign exchange, then
+            practice identifying the major Forex trading sessions and why timing
+            matters to market activity and liquidity.
+        </p>
+        <div class="badges">
+            <span class="badge">💰 Money</span>
+            <span class="badge">🌍 Forex History</span>
+            <span class="badge">🕐 Sessions</span>
+            <span class="badge">06 / 10</span>
+        </div>
+    </div>
+</section>
+
+<div class="wrap">
+
+<section class="meta">
+    <div>
+        <strong>Exercise Goal</strong>
+        <span>Understand the broad evolution toward modern currency markets and recognize the main trading sessions.</span>
+    </div>
+    <div class="progress">
+        <div class="bar"><div class="fill"></div></div>
+        <small>Exercise 06 of 10</small>
+    </div>
+</section>
+
+<section class="section">
+    <h2>01. A Simple History of Money</h2>
+    <p>
+        Money developed because people needed a more practical way to exchange
+        value than relying only on direct barter. Over time, different forms
+        of money were used, including commodity forms, coins, paper money and
+        modern bank-based payment systems.
+    </p>
+    <p>
+        As trade became more international, people and businesses increasingly
+        needed to exchange one currency for another. That need helped create
+        the foundations for modern foreign-exchange activity.
+    </p>
+
+    <div class="timeline">
+        <div class="timeline-card">
+            <strong>1 • Barter &amp; Direct Exchange</strong>
+            <p>
+                Goods and services could be exchanged directly, but matching
+                two people who wanted exactly what the other offered could be
+                difficult.
+            </p>
+        </div>
+
+        <div class="timeline-card">
+            <strong>2 • Commodity &amp; Metal Money</strong>
+            <p>
+                Items with recognized value, including metals and coins, became
+                important mediums of exchange in many economies.
+            </p>
+        </div>
+
+        <div class="timeline-card">
+            <strong>3 • Paper &amp; Bank Money</strong>
+            <p>
+                Monetary systems developed around paper currency, banks and
+                organized systems for storing, transferring and valuing money.
+            </p>
+        </div>
+
+        <div class="timeline-card">
+            <strong>4 • International Trade</strong>
+            <p>
+                When countries traded with one another, different national
+                currencies had to be converted and valued relative to one another.
+            </p>
+        </div>
+
+        <div class="timeline-card">
+            <strong>5 • Modern Foreign Exchange</strong>
+            <p>
+                Foreign exchange evolved into a global market where currencies
+                are quoted relative to one another and traded by many participant
+                groups.
+            </p>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">FROM EXCHANGE TO MODERN FOREIGN EXCHANGE</div>
+        <svg viewBox="0 0 900 360" role="img" aria-label="History of money and foreign exchange diagram">
+            <rect width="900" height="360" fill="#07101f"/>
+
+            <line x1="95" y1="180" x2="805" y2="180" stroke="#1e2a40" stroke-width="4"/>
+
+            <circle cx="110" cy="180" r="38" fill="#0b1627" stroke="#60a5fa" stroke-width="3"/>
+            <text x="110" y="176" text-anchor="middle" fill="#bfdbfe" font-size="14" font-weight="900">BARTER</text>
+            <text x="110" y="200" text-anchor="middle" fill="#94a3b8" font-size="11">direct exchange</text>
+
+            <circle cx="295" cy="180" r="38" fill="#0b1627" stroke="#60a5fa" stroke-width="3"/>
+            <text x="295" y="176" text-anchor="middle" fill="#bfdbfe" font-size="14" font-weight="900">MONEY</text>
+            <text x="295" y="200" text-anchor="middle" fill="#94a3b8" font-size="11">stored value</text>
+
+            <circle cx="480" cy="180" r="38" fill="#0b1627" stroke="#a78bfa" stroke-width="3"/>
+            <text x="480" y="176" text-anchor="middle" fill="#ddd6fe" font-size="14" font-weight="900">TRADE</text>
+            <text x="480" y="200" text-anchor="middle" fill="#94a3b8" font-size="11">cross-border</text>
+
+            <circle cx="665" cy="180" r="38" fill="#0b1627" stroke="#34d399" stroke-width="3"/>
+            <text x="665" y="176" text-anchor="middle" fill="#a7f3d0" font-size="14" font-weight="900">FX</text>
+            <text x="665" y="200" text-anchor="middle" fill="#94a3b8" font-size="11">currency exchange</text>
+
+            <polygon points="170,173 190,180 170,187" fill="#64748b"/>
+            <polygon points="355,173 375,180 355,187" fill="#64748b"/>
+            <polygon points="540,173 560,180 540,187" fill="#64748b"/>
+            <polygon points="725,173 745,180 725,187" fill="#64748b"/>
+
+            <text x="450" y="55" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="900">
+                BROAD EVOLUTION
+            </text>
+            <text x="450" y="310" text-anchor="middle" fill="#64748b" font-size="14" font-weight="700">
+                INTERNATIONAL TRADE CREATES THE NEED TO EXCHANGE DIFFERENT CURRENCIES
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>02. The Major Forex Trading Sessions</h2>
+    <p>
+        Forex is a global market, so trading activity moves through major
+        financial centers around the world. The four commonly discussed
+        sessions are Sydney, Tokyo, London and New York. Session names describe
+        major financial centers and approximate market activity windows rather
+        than a promise that trading exists only during one city's exact hours.
+    </p>
+
+    <div class="session-grid">
+        <div class="session">
+            <div class="icon">🌏</div>
+            <h3>Tokyo Session</h3>
+            <p>
+                Often referred to as the Asian session. It includes activity
+                centered around Tokyo and the broader Asian market.
+            </p>
+            <div class="focus">Focus: Asian market participation and regional currencies.</div>
+        </div>
+
+        <div class="session">
+            <div class="icon">🇬🇧</div>
+            <h3>London Session</h3>
+            <p>
+                London is one of the world's major financial centers and the
+                session is widely watched for strong participation and liquidity.
+            </p>
+            <div class="focus">Focus: major European activity and large market participation.</div>
+        </div>
+
+        <div class="session">
+            <div class="icon">🇺🇸</div>
+            <h3>New York Session</h3>
+            <p>
+                The New York session covers major North American market activity
+                and is particularly important when it overlaps with London.
+            </p>
+            <div class="focus">Focus: North American participation and London overlap.</div>
+        </div>
+
+        <div class="session">
+            <div class="icon">🇦🇺</div>
+            <h3>Sydney Session</h3>
+            <p>
+                Sydney is commonly used to describe the start of the weekly
+                trading cycle around the Australian financial center.
+            </p>
+            <div class="focus">Focus: Australian and Pacific-market participation.</div>
+        </div>
+    </div>
+
+    <div class="overlap">
+        <h3>⚡ Session Overlap</h3>
+        <p>
+            When major sessions overlap, more market participants may be active
+            at the same time. The London–New York overlap is especially watched
+            because it combines activity from two large financial centers.
+        </p>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">GLOBAL SESSION FLOW — CONCEPTUAL</div>
+        <svg viewBox="0 0 900 350" role="img" aria-label="Conceptual Forex session flow">
+            <rect width="900" height="350" fill="#07101f"/>
+
+            <rect x="70" y="110" width="160" height="90" rx="14" fill="#0b1627" stroke="#60a5fa" stroke-width="2"/>
+            <text x="150" y="145" text-anchor="middle" fill="#bfdbfe" font-size="18" font-weight="900">SYDNEY</text>
+            <text x="150" y="174" text-anchor="middle" fill="#94a3b8" font-size="13">Pacific / Australia</text>
+
+            <rect x="250" y="110" width="160" height="90" rx="14" fill="#0b1627" stroke="#a78bfa" stroke-width="2"/>
+            <text x="330" y="145" text-anchor="middle" fill="#ddd6fe" font-size="18" font-weight="900">TOKYO</text>
+            <text x="330" y="174" text-anchor="middle" fill="#94a3b8" font-size="13">Asia</text>
+
+            <rect x="430" y="110" width="160" height="90" rx="14" fill="#0b1627" stroke="#34d399" stroke-width="2"/>
+            <text x="510" y="145" text-anchor="middle" fill="#a7f3d0" font-size="18" font-weight="900">LONDON</text>
+            <text x="510" y="174" text-anchor="middle" fill="#94a3b8" font-size="13">Europe</text>
+
+            <rect x="610" y="110" width="160" height="90" rx="14" fill="#0b1627" stroke="#fbbf24" stroke-width="2"/>
+            <text x="690" y="145" text-anchor="middle" fill="#fde68a" font-size="18" font-weight="900">NEW YORK</text>
+            <text x="690" y="174" text-anchor="middle" fill="#94a3b8" font-size="13">North America</text>
+
+            <polygon points="235,150 250,155 235,160" fill="#64748b"/>
+            <polygon points="415,150 430,155 415,160" fill="#64748b"/>
+            <polygon points="595,150 610,155 595,160" fill="#64748b"/>
+
+            <rect x="455" y="225" width="165" height="55" rx="12" fill="#0d201a" stroke="#34d399" stroke-width="2"/>
+            <text x="537" y="258" text-anchor="middle" fill="#a7f3d0" font-size="14" font-weight="900">LONDON + NY</text>
+            <text x="537" y="275" text-anchor="middle" fill="#64748b" font-size="10">OVERLAP</text>
+
+            <text x="450" y="70" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="900">
+                ACTIVITY MOVES AROUND GLOBAL FINANCIAL CENTERS
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>03. Knowledge Check</h2>
+    <p>
+        Choose an answer first. The answer is checked immediately. A wrong
+        selection shows why it is wrong, the correct answer, and the concept
+        explanation.
+    </p>
+
+    <div class="q">
+        <div class="qtag">QUESTION 01</div>
+        <h3>Why did international trade contribute to the development of foreign-exchange activity?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Different countries use different currencies that may need to be exchanged</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> International trade removes the need for money</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Every country uses the same currency</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Currency values never change</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 02</div>
+        <h3>Which sequence best represents a broad development toward modern foreign exchange?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Barter → money → international trade → currency exchange</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Currency exchange → barter → no money → trade</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Stocks → cryptocurrency → barter → money</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Central banks → barter → coins → no trade</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 03</div>
+        <h3>Which session is associated with major European financial-center activity?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> London</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Sydney</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Tokyo</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> New York only</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 04</div>
+        <h3>Which pair of sessions is especially watched for an important overlap?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Sydney and Tokyo only</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> London and New York</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Tokyo and New York only</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Sydney and London only</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 05</div>
+        <h3>What can happen when major sessions overlap?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> More market participants may be active at the same time</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> The Forex market must close</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Currency prices become fixed</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Liquidity automatically becomes zero</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 06</div>
+        <h3>Why should a beginner learn about market sessions?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Session timing helps provide context for when different financial centers are active</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> It guarantees which way price will move</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> It removes all trading risk</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> It tells the trader the exact entry price</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="scorebar" aria-live="polite">
+        <strong>Knowledge Check: 0 / 6 correct</strong>
+        <div class="score-progress"><div class="score-fill"></div></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>04. Practical Scenarios</h2>
+
+    <div class="q">
+        <div class="qtag">SCENARIO 01</div>
+        <h3>A business in one country buys goods from a supplier in another country. Why might currency exchange be necessary?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> The buyer and seller may use different currencies</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> All countries use one identical currency</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Currency values never matter in international trade</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> International trade eliminates payment requirements</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">SCENARIO 02</div>
+        <h3>A trader notices that London and New York are active at the same time. What concept is being observed?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> A session overlap</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> A currency pair becoming invalid</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> The end of all market activity</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A guarantee of a bullish market</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">SCENARIO 03</div>
+        <h3>A student says: "The London session means price will definitely move strongly." Is that correct?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> No. A session identifies a period of major-center activity, not a guaranteed price direction</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Yes. Sessions guarantee direction</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Yes. Sessions remove market uncertainty</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> No, because London is not a financial center</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">SCENARIO 04</div>
+        <h3>A beginner knows the session but ignores economic conditions, price structure and liquidity. What is the best conclusion?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Session knowledge is useful context but is not a complete trading method</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Knowing a session guarantees an entry</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Session timing replaces all other analysis</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Liquidity is irrelevant during sessions</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>05. Student Self-Check</h2>
+    <div class="checks">
+        <div class="check">☐ I understand why barter alone had limitations.</div>
+        <div class="check">☐ I understand why money became important for exchange.</div>
+        <div class="check">☐ I understand how international trade creates currency-exchange needs.</div>
+        <div class="check">☐ I can identify Sydney.</div>
+        <div class="check">☐ I can identify Tokyo.</div>
+        <div class="check">☐ I can identify London.</div>
+        <div class="check">☐ I can identify New York.</div>
+        <div class="check">☐ I understand why session overlaps matter as market context.</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>06. Quick Revision</h2>
+    <ul class="list">
+        <li>Money developed as a more practical way to exchange and store value than direct barter alone.</li>
+        <li>International trade created the need to exchange different national currencies.</li>
+        <li>Modern Forex expresses the value of one currency relative to another.</li>
+        <li>The commonly discussed major sessions are Sydney, Tokyo, London and New York.</li>
+        <li>Session names refer to major financial centers and broad periods of market activity.</li>
+        <li>London and New York activity can overlap, creating a period watched closely by traders.</li>
+        <li>Session timing gives context; it does not guarantee a price direction or entry.</li>
+    </ul>
+</section>
+
+<nav class="nav" aria-label="Exercise navigation">
+    <a href="who-trades-forex.html">← Who Trades Forex</a>
+    <a class="center" href="module1-exercise.html">Exercise Hub</a>
+    <a class="next" href="candlesticks.html">Next: Candlesticks →</a>
+</nav>
+
+<div class="note">Exercise 06 of 10 • Strativo Academy Module 1 • Next: Candlesticks</div>
+
+</div>
+</main>
+
+<div data-component="footer"></div>
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const maps = {
+        "QUESTION 01":{
+            correct:"A",
+            explanation:"International trade often involves parties using different national currencies, creating a need to exchange one currency for another.",
+            wrong:{
+                B:"International trade does not remove the need for money.",
+                C:"Countries do not all use one identical currency.",
+                D:"International trade still requires payment and settlement."
+            }
+        },
+        "QUESTION 02":{
+            correct:"A",
+            explanation:"This is a broad conceptual sequence: exchange systems developed into money, international trade increased cross-border currency needs, and modern foreign exchange developed around currency conversion and valuation.",
+            wrong:{
+                B:"The sequence is reversed and does not describe the broad development being tested.",
+                C:"Stocks and cryptocurrency are not the foundation of the history of currency exchange described here.",
+                D:"The sequence does not represent the broad evolution toward FX."
+            }
+        },
+        "QUESTION 03":{
+            correct:"A",
+            explanation:"London is a major European financial center and its market activity is commonly described as the London session.",
+            wrong:{
+                B:"Sydney describes Australian/Pacific activity.",
+                C:"Tokyo describes Asian activity.",
+                D:"New York is a North American financial center."
+            }
+        },
+        "QUESTION 04":{
+            correct:"B",
+            explanation:"The London–New York overlap is widely watched because two major financial centers are active at the same time.",
+            wrong:{
+                A:"Sydney–Tokyo can be an overlap, but it is not the major overlap emphasized in this exercise.",
+                C:"Tokyo and New York are not the pair being emphasized here.",
+                D:"Sydney and London are not the key overlap in this exercise."
+            }
+        },
+        "QUESTION 05":{
+            correct:"A",
+            explanation:"When major sessions overlap, more market participants may be active at the same time, which can affect market activity and liquidity.",
+            wrong:{
+                B:"An overlap does not close the Forex market.",
+                C:"Currency prices are not fixed by an overlap.",
+                D:"Liquidity does not automatically become zero."
+            }
+        },
+        "QUESTION 06":{
+            correct:"A",
+            explanation:"Session timing helps a trader understand which major financial centers are active. It is useful context, not a prediction guarantee.",
+            wrong:{
+                B:"Session timing does not guarantee direction.",
+                C:"Session knowledge does not remove risk.",
+                D:"It does not provide an exact entry price."
+            }
+        },
+        "SCENARIO 01":{
+            correct:"A",
+            explanation:"The buyer and supplier may use different currencies, so a currency conversion may be necessary to complete the international payment.",
+            wrong:{
+                B:"Different countries can and do use different currencies.",
+                C:"Currency values matter to international payments.",
+                D:"International trade still requires payment."
+            }
+        },
+        "SCENARIO 02":{
+            correct:"A",
+            explanation:"When London and New York are both active, the market is in a session overlap.",
+            wrong:{
+                B:"The currencies and pairs remain valid.",
+                C:"The market does not end because two sessions overlap.",
+                D:"An overlap does not guarantee bullish direction."
+            }
+        },
+        "SCENARIO 03":{
+            correct:"A",
+            explanation:"A session describes market-center activity. It does not guarantee that price will move strongly or in a particular direction.",
+            wrong:{
+                B:"Session timing never guarantees direction.",
+                C:"Session timing does not remove uncertainty.",
+                D:"London is a major financial center."
+            }
+        },
+        "SCENARIO 04":{
+            correct:"A",
+            explanation:"Session timing is useful context, but trading decisions require broader understanding. A session is not a complete trading method.",
+            wrong:{
+                B:"A session does not guarantee an entry.",
+                C:"Session timing does not replace all other analysis.",
+                D:"Liquidity remains relevant."
+            }
+        }
+    };
+
+    let score = 0;
+    const counted = new Set();
+    const scoreText = document.querySelector(".scorebar strong");
+    const fill = document.querySelector(".score-fill");
+
+    function updateScore(){
+        scoreText.textContent = "Knowledge Check: " + score + " / 6 correct";
+        fill.style.width = (score / 6 * 100) + "%";
+    }
+
+    function evaluate(q, selected, data){
+        const feedback = q.querySelector(".feedback");
+        const correct = selected === data.correct;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.disabled = true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+            if(btn.dataset.option === data.correct) btn.classList.add("reveal-correct");
+            if(btn.dataset.option === selected) btn.classList.add(correct ? "correct" : "wrong");
+        });
+
+        feedback.className = "feedback visible " + (correct ? "correct" : "wrong");
+        feedback.innerHTML = "";
+
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = correct ? "✅ Correct — well done!" : "❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if(!correct){
+            const why = document.createElement("p");
+            why.className = "why";
+            why.textContent = "Why your answer is wrong: " + data.wrong[selected];
+            feedback.appendChild(why);
+
+            const right = document.createElement("p");
+            right.className = "correct-answer";
+            right.textContent = "Correct answer: " + data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explanation = document.createElement("p");
+        explanation.textContent = "Explanation: " + data.explanation;
+        feedback.appendChild(explanation);
+
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.className = "retry";
+        retry.textContent = "Try Again";
+        retry.addEventListener("click", ()=>{
+            q.querySelectorAll(".opt").forEach(btn=>{
+                btn.disabled = false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+            feedback.className = "feedback";
+            feedback.innerHTML = "";
+        });
+        feedback.appendChild(retry);
+    }
+
+    document.querySelectorAll(".q").forEach(q=>{
+        const tag = q.querySelector(".qtag");
+        const id = tag ? tag.textContent.trim() : "";
+        const data = maps[id];
+        if(!data) return;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.addEventListener("click", ()=>{
+                if(btn.disabled) return;
+
+                const selected = btn.dataset.option;
+
+                if(id.startsWith("QUESTION") && !counted.has(id)){
+                    counted.add(id);
+                    if(selected === data.correct) score += 1;
+                    updateScore();
+                }
+
+                evaluate(q, selected, data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+
+</body>
+</html>

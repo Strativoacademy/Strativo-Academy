@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Strativo Academy Module 1 — complete educational notes on Forex currency pairs.">
+<title>Currency Pairs | Strativo Academy</title>
+
+<!-- Shared Strativo Academy styles -->
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+
+<style>
+/* =========================================================
+   CURRENCY PAIRS — SELF-CONTAINED PAGE LAYER
+   ========================================================= */
+
+:root{
+    --cp-bg:#020617;
+    --cp-panel:#08111f;
+    --cp-panel-2:#0d1728;
+    --cp-panel-3:#111c30;
+    --cp-line:rgba(148,163,184,.14);
+    --cp-line-strong:rgba(96,165,250,.24);
+    --cp-text:#e5e7eb;
+    --cp-heading:#f8fafc;
+    --cp-muted:#9aa9bd;
+    --cp-blue:#60a5fa;
+    --cp-blue-soft:#bfdbfe;
+    --cp-green:#34d399;
+    --cp-green-soft:#a7f3d0;
+    --cp-red:#f87171;
+    --cp-red-soft:#fecaca;
+    --cp-yellow:#facc15;
+    --cp-yellow-soft:#fef08a;
+    --cp-purple:#a78bfa;
+    --cp-cyan:#22d3ee;
+}
+
+*{box-sizing:border-box}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(circle at 8% 0%,rgba(37,99,235,.10),transparent 30%),
+        radial-gradient(circle at 92% 12%,rgba(16,185,129,.055),transparent 27%),
+        var(--cp-bg);
+    color:var(--cp-text);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.78;
+}
+
+.cp-page{
+    width:min(1180px,calc(100% - 30px));
+    margin:0 auto;
+    padding:42px 0 80px;
+}
+
+/* Hero */
+
+.cp-hero{
+    position:relative;
+    overflow:hidden;
+    min-height:420px;
+    padding:65px 46px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border:1px solid var(--cp-line);
+    border-radius:30px;
+    background:
+        linear-gradient(135deg,rgba(11,18,32,.98),rgba(2,6,23,.98));
+    box-shadow:0 35px 100px rgba(0,0,0,.30);
+}
+
+.cp-hero:before{
+    content:"";
+    position:absolute;
+    width:460px;
+    height:460px;
+    right:-190px;
+    top:-190px;
+    border:1px solid rgba(96,165,250,.18);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 45px rgba(96,165,250,.025),
+        0 0 0 90px rgba(96,165,250,.018),
+        0 0 0 135px rgba(96,165,250,.012);
+}
+
+.cp-hero:after{
+    content:"EUR / USD";
+    position:absolute;
+    right:45px;
+    bottom:30px;
+    color:rgba(96,165,250,.055);
+    font-size:5rem;
+    font-weight:950;
+    letter-spacing:-.08em;
+}
+
+.cp-eyebrow{
+    position:relative;
+    z-index:2;
+    color:var(--cp-blue);
+    font-size:.76rem;
+    font-weight:900;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+}
+
+.cp-hero h1{
+    position:relative;
+    z-index:2;
+    margin:13px 0 18px;
+    max-width:950px;
+    color:var(--cp-heading);
+    font-size:clamp(2.7rem,6vw,5rem);
+    line-height:1.02;
+    letter-spacing:-.05em;
+}
+
+.cp-hero p{
+    position:relative;
+    z-index:2;
+    max-width:890px;
+    margin:0;
+    color:#aebbd0;
+    font-size:1.07rem;
+}
+
+.cp-tags{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:26px;
+}
+
+.cp-tag{
+    padding:7px 12px;
+    border:1px solid var(--cp-line);
+    border-radius:999px;
+    background:rgba(15,23,42,.72);
+    color:#cbd5e1;
+    font-size:.78rem;
+}
+
+/* Sections */
+
+.cp-section{
+    margin-top:25px;
+    padding:31px;
+    border:1px solid var(--cp-line);
+    border-radius:23px;
+    background:rgba(8,17,31,.82);
+}
+
+.cp-section h2{
+    margin:0 0 16px;
+    color:var(--cp-heading);
+    font-size:clamp(1.4rem,3vw,2.05rem);
+    line-height:1.2;
+    letter-spacing:-.025em;
+}
+
+.cp-section h3{
+    margin:29px 0 10px;
+    color:#dbeafe;
+    font-size:1.16rem;
+    line-height:1.35;
+}
+
+.cp-section h4{
+    margin:0 0 8px;
+    color:#e2e8f0;
+    font-size:1rem;
+}
+
+.cp-section p{
+    margin:10px 0;
+    color:var(--cp-muted);
+}
+
+.cp-section strong{
+    color:#dbeafe;
+}
+
+.cp-lead{
+    color:#cbd5e1!important;
+    font-size:1.03rem;
+}
+
+.cp-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:33px;
+    height:33px;
+    margin-right:9px;
+    border-radius:9px;
+    border:1px solid rgba(96,165,250,.20);
+    background:rgba(37,99,235,.14);
+    color:#dbeafe;
+    font-size:.78rem;
+    font-weight:900;
+    vertical-align:middle;
+}
+
+/* Information boxes */
+
+.cp-box,
+.cp-memory,
+.cp-warning,
+.cp-definition{
+    margin:20px 0;
+    padding:18px 20px;
+    border-radius:15px;
+}
+
+.cp-box{
+    border-left:4px solid var(--cp-blue);
+    background:rgba(37,99,235,.065);
+}
+
+.cp-memory{
+    border:1px solid rgba(250,204,21,.17);
+    background:rgba(250,204,21,.04);
+}
+
+.cp-warning{
+    border-left:4px solid var(--cp-red);
+    border:1px solid rgba(248,113,113,.15);
+    background:rgba(127,29,29,.08);
+}
+
+.cp-definition{
+    border-left:4px solid var(--cp-purple);
+    background:rgba(124,58,237,.065);
+}
+
+.cp-box strong,
+.cp-memory strong,
+.cp-warning strong,
+.cp-definition strong{
+    display:block;
+    margin-bottom:5px;
+    font-size:.76rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+
+.cp-box strong{color:#bfdbfe}
+.cp-memory strong{color:#fde68a}
+.cp-warning strong{color:#fca5a5}
+.cp-definition strong{color:#ddd6fe}
+
+/* Cards */
+
+.cp-grid-2{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.cp-grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+    margin-top:18px;
+}
+
+.cp-grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+    margin-top:18px;
+}
+
+.cp-card{
+    padding:19px;
+    border:1px solid rgba(148,163,184,.11);
+    border-radius:16px;
+    background:rgba(15,23,42,.55);
+}
+
+.cp-card p{
+    margin:0;
+    font-size:.91rem;
+}
+
+.cp-blue{color:#bfdbfe!important}
+.cp-green{color:#6ee7b7!important}
+.cp-red{color:#fca5a5!important}
+.cp-yellow{color:#fde68a!important}
+.cp-purple{color:#ddd6fe!important}
+.cp-cyan{color:#a5f3fc!important}
+
+/* Diagrams */
+
+.cp-diagram{
+    margin:25px 0;
+    padding:18px;
+    overflow-x:auto;
+    border:1px solid rgba(148,163,184,.12);
+    border-radius:18px;
+    background:#030712;
+}
+
+.cp-diagram-title{
+    margin:0 0 12px;
+    color:#93c5fd;
+    font-size:.76rem;
+    font-weight:900;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+}
+
+.cp-diagram svg{
+    display:block;
+    width:100%;
+    min-width:700px;
+    height:auto;
+}
+
+.cp-caption{
+    margin:12px 0 0!important;
+    color:#64748b!important;
+    font-size:.82rem!important;
+    text-align:center;
+}
+
+/* Tables */
+
+.cp-table-wrap{
+    margin-top:18px;
+    overflow-x:auto;
+    border:1px solid rgba(148,163,184,.11);
+    border-radius:15px;
+}
+
+.cp-table{
+    width:100%;
+    min-width:760px;
+    border-collapse:collapse;
+}
+
+.cp-table th,
+.cp-table td{
+    padding:13px 14px;
+    border-bottom:1px solid rgba(148,163,184,.08);
+    text-align:left;
+    vertical-align:top;
+}
+
+.cp-table th{
+    color:#bfdbfe;
+    background:rgba(37,99,235,.07);
+    font-size:.82rem;
+}
+
+.cp-table td{
+    color:#94a3b8;
+    font-size:.88rem;
+}
+
+.cp-table tr:last-child td{
+    border-bottom:0;
+}
+
+/* Lists */
+
+.cp-section ul,
+.cp-section ol{
+    padding-left:24px;
+    color:var(--cp-muted);
+}
+
+.cp-section li{
+    margin:8px 0;
+}
+
+/* Checklist */
+
+.cp-checklist{
+    display:grid;
+    gap:9px;
+    margin-top:18px;
+}
+
+.cp-check{
+    display:flex;
+    gap:11px;
+    align-items:flex-start;
+    padding:12px 14px;
+    border:1px solid rgba(148,163,184,.08);
+    border-radius:12px;
+    background:rgba(15,23,42,.45);
+    color:#cbd5e1;
+}
+
+.cp-check span{
+    color:var(--cp-green);
+    font-weight:900;
+}
+
+/* Navigation */
+
+.cp-nav{
+    display:grid;
+    grid-template-columns:1fr 1.2fr 1fr;
+    gap:14px;
+    margin-top:29px;
+}
+
+.cp-nav a{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-height:82px;
+    padding:14px 17px;
+    border:1px solid var(--cp-line);
+    border-radius:15px;
+    background:rgba(15,23,42,.72);
+    text-decoration:none;
+    transition:.18s ease;
+}
+
+.cp-nav a:hover{
+    transform:translateY(-2px);
+    border-color:rgba(96,165,250,.34);
+}
+
+.cp-nav small{
+    color:#64748b;
+    font-size:.72rem;
+}
+
+.cp-nav strong{
+    margin-top:3px;
+    color:#e2e8f0;
+}
+
+.cp-nav .center{
+    align-items:center;
+    text-align:center;
+}
+
+.cp-nav .right{
+    align-items:flex-end;
+    text-align:right;
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+    .cp-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:820px){
+    .cp-page{
+        width:calc(100% - 20px);
+        padding-top:20px;
+    }
+
+    .cp-hero{
+        min-height:330px;
+        padding:43px 24px;
+        border-radius:22px;
+    }
+
+    .cp-hero:after{
+        font-size:3rem;
+        right:20px;
+    }
+
+    .cp-section{
+        padding:23px 18px;
+    }
+
+    .cp-grid-2,
+    .cp-grid-3,
+    .cp-nav{
+        grid-template-columns:1fr;
+    }
+
+    .cp-grid-4{
+        grid-template-columns:1fr;
+    }
+
+    .cp-nav .right{
+        align-items:flex-start;
+        text-align:left;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div data-component="header"></div>
+
+<main class="cp-page">
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<section class="cp-hero">
+    <div class="cp-eyebrow">Strativo Academy • Module 1 • Foundation</div>
+
+    <h1>Currency Pairs</h1>
+
+    <p>
+        Build a complete foundation for understanding Forex currency pairs.
+        Learn what a pair actually represents, how the base and quote currencies
+        work, how to read prices, how bid and ask prices interact, how majors,
+        minors and exotics differ, and how currency-pair structure affects the
+        way traders read and plan the market.
+    </p>
+
+    <div class="cp-tags">
+        <span class="cp-tag">💱 Currency Pairs</span>
+        <span class="cp-tag">📖 Beginner Foundation</span>
+        <span class="cp-tag">🔢 Quotes</span>
+        <span class="cp-tag">🏦 Market Participants</span>
+        <span class="cp-tag">📊 Price Reading</span>
+        <span class="cp-tag">🛡️ Risk Awareness</span>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     01
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">01</span>What Is a Currency Pair?</h2>
+
+    <p class="cp-lead">
+        A currency pair is the way the Forex market expresses the value of one
+        currency relative to another currency. Forex does not normally quote a
+        currency in isolation. Instead, one currency is compared directly with
+        another.
+    </p>
+
+    <p>
+        When you see <strong>EUR/USD</strong>, you are not simply seeing the name
+        of a product called "Euro Dollar." You are looking at a relationship between
+        two currencies. The euro is being valued relative to the U.S. dollar.
+    </p>
+
+    <p>
+        This relative structure is the foundation of Forex. The market is constantly
+        comparing one currency with another as participants respond to economic
+        information, interest-rate expectations, central-bank decisions, trade flows,
+        risk sentiment, capital flows, liquidity and changing expectations.
+    </p>
+
+    <div class="cp-definition">
+        <strong>Definition</strong>
+        <p>
+            A currency pair represents the amount of the <strong>quote currency</strong>
+            required to represent one unit of the <strong>base currency</strong>.
+        </p>
+    </div>
+
+    <div class="cp-diagram">
+        <div class="cp-diagram-title">Diagram — The Basic Structure of a Currency Pair</div>
+
+        <svg viewBox="0 0 1000 390" role="img" aria-label="Base currency and quote currency diagram">
+            <rect x="35" y="35" width="930" height="320" rx="24" fill="#0b1220" stroke="#1e293b"/>
+
+            <text x="500" y="82" fill="#94a3b8" font-size="20" text-anchor="middle">
+                Example: EUR / USD
+            </text>
+
+            <rect x="135" y="120" width="290" height="130" rx="20" fill="#0f2b46" stroke="#60a5fa"/>
+            <text x="280" y="168" fill="#93c5fd" font-size="20" font-weight="800" text-anchor="middle">
+                BASE CURRENCY
+            </text>
+            <text x="280" y="218" fill="#f8fafc" font-size="44" font-weight="950" text-anchor="middle">
+                EUR
+            </text>
+
+            <text x="500" y="203" fill="#64748b" font-size="35" font-weight="900" text-anchor="middle">
+                /
+            </text>
+
+            <rect x="575" y="120" width="290" height="130" rx="20" fill="#12342d" stroke="#34d399"/>
+            <text x="720" y="168" fill="#6ee7b7" font-size="20" font-weight="800" text-anchor="middle">
+                QUOTE CURRENCY
+            </text>
+            <text x="720" y="218" fill="#f8fafc" font-size="44" font-weight="950" text-anchor="middle">
+                USD
+            </text>
+
+            <text x="500" y="300" fill="#cbd5e1" font-size="21" text-anchor="middle">
+                EUR/USD = how many USD are required for 1 EUR?
+            </text>
+        </svg>
+
+        <p class="cp-caption">
+            The first currency is the base; the second currency is the quote.
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     02
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">02</span>Base Currency and Quote Currency</h2>
+
+    <p>
+        Every currency pair has two sides. The first currency is the
+        <strong>base currency</strong>. The second currency is the
+        <strong>quote currency</strong>.
+    </p>
+
+    <div class="cp-grid-2">
+        <div class="cp-card">
+            <h4 class="cp-blue">1️⃣ Base Currency</h4>
+            <p>
+                The currency written on the left side. A quoted price tells you
+                how much of the second currency is needed for one unit of the first.
+            </p>
+        </div>
+
+        <div class="cp-card">
+            <h4 class="cp-green">2️⃣ Quote Currency</h4>
+            <p>
+                The currency written on the right side. It is the currency used
+                to express the value of one unit of the base currency.
+            </p>
+        </div>
+    </div>
+
+    <div class="cp-memory">
+        <strong>Easy memory rule</strong>
+        <p>
+            <b>LEFT = BASE. RIGHT = QUOTE.</b>
+        </p>
+    </div>
+
+    <h3>Example: GBP/USD</h3>
+
+    <p>
+        In GBP/USD, GBP is the base currency and USD is the quote currency.
+        If the market shows 1.2500, the basic interpretation is that one British
+        pound is being valued at 1.2500 U.S. dollars.
+    </p>
+
+    <h3>Example: USD/JPY</h3>
+
+    <p>
+        In USD/JPY, USD is the base currency and JPY is the quote currency.
+        If the market shows 150.00, the basic interpretation is that one U.S.
+        dollar is being valued at approximately 150 Japanese yen.
+    </p>
+</section>
+
+
+<!-- =========================================================
+     03
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">03</span>How to Read a Currency-Pair Price</h2>
+
+    <p>
+        The price of a currency pair answers a relative question:
+        <strong>"How much quote currency is needed for one unit of base currency?"</strong>
+    </p>
+
+    <div class="cp-diagram">
+        <div class="cp-diagram-title">Diagram — Reading EUR/USD = 1.1000</div>
+
+        <svg viewBox="0 0 1000 430">
+            <rect x="35" y="35" width="930" height="360" rx="24" fill="#0b1220" stroke="#1e293b"/>
+
+            <text x="500" y="90" fill="#f8fafc" font-size="35" font-weight="900" text-anchor="middle">
+                EUR / USD = 1.1000
+            </text>
+
+            <rect x="115" y="130" width="220" height="115" rx="18" fill="#0f2b46" stroke="#60a5fa"/>
+            <text x="225" y="175" fill="#93c5fd" font-size="20" text-anchor="middle">BASE</text>
+            <text x="225" y="220" fill="#f8fafc" font-size="36" font-weight="900" text-anchor="middle">1 EUR</text>
+
+            <path d="M350 188 H650" stroke="#64748b" stroke-width="4"/>
+            <path d="M375 173 L350 188 L375 203" fill="none" stroke="#64748b" stroke-width="4"/>
+            <path d="M625 173 L650 188 L625 203" fill="none" stroke="#64748b" stroke-width="4"/>
+
+            <rect x="665" y="130" width="220" height="115" rx="18" fill="#12342d" stroke="#34d399"/>
+            <text x="775" y="175" fill="#6ee7b7" font-size="20" text-anchor="middle">QUOTE</text>
+            <text x="775" y="220" fill="#f8fafc" font-size="36" font-weight="900" text-anchor="middle">1.1000 USD</text>
+
+            <text x="500" y="300" fill="#cbd5e1" font-size="21" text-anchor="middle">
+                1 EUR is valued at 1.1000 USD in this example.
+            </text>
+
+            <text x="500" y="340" fill="#64748b" font-size="17" text-anchor="middle">
+                The quoted number changes as the relative market value changes.
+            </text>
+        </svg>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     04
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">04</span>Why Does Forex Use Pairs?</h2>
+
+    <p>
+        A currency has no single universal price. Its value is always relative
+        to something else. One U.S. dollar can be worth a certain amount of euros,
+        yen, pounds or Swiss francs, and those relationships can all change.
+    </p>
+
+    <p>
+        Forex therefore organizes the market around relative value. When one side
+        becomes stronger relative to the other, the quoted pair changes.
+    </p>
+
+    <div class="cp-grid-3">
+        <div class="cp-card">
+            <h4>🌍 Relative value</h4>
+            <p>
+                Currency value is expressed relative to another currency.
+            </p>
+        </div>
+
+        <div class="cp-card">
+            <h4>⚖️ Comparison</h4>
+            <p>
+                A pair lets the market continuously compare two currencies.
+            </p>
+        </div>
+
+        <div class="cp-card">
+            <h4>📈 Price movement</h4>
+            <p>
+                The pair rises or falls as that relative relationship changes.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     05
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">05</span>What Does It Mean When a Pair Goes Up?</h2>
+
+    <p>
+        If EUR/USD rises from 1.1000 to 1.1050, the euro has become more valuable
+        relative to the U.S. dollar over that observed move, or equivalently,
+        the dollar has weakened relative to the euro in that pair.
+    </p>
+
+    <p>
+        The safest way to think about a rising pair is not simply "EUR is strong."
+        The precise statement is that <strong>EUR has strengthened relative to USD
+        within the EUR/USD relationship</strong>.
+    </p>
+
+    <div class="cp-diagram">
+        <div class="cp-diagram-title">Diagram — Rising EUR/USD</div>
+
+        <svg viewBox="0 0 1000 360">
+            <rect x="35" y="35" width="930" height="290" rx="24" fill="#0b1220" stroke="#1e293b"/>
+
+            <text x="500" y="85" fill="#94a3b8" font-size="19" text-anchor="middle">
+                EUR/USD
+            </text>
+
+            <text x="170" y="155" fill="#f8fafc" font-size="32" font-weight="900" text-anchor="middle">
+                1.1000
+            </text>
+
+            <path d="M290 170 C390 90 540 245 690 110" fill="none" stroke="#34d399" stroke-width="7"/>
+            <path d="M680 110 L655 112 L672 132" fill="none" stroke="#34d399" stroke-width="7"/>
+
+            <text x="830" y="155" fill="#6ee7b7" font-size="32" font-weight="900" text-anchor="middle">
+                1.1050
+            </text>
+
+            <text x="500" y="270" fill="#cbd5e1" font-size="20" text-anchor="middle">
+                The base currency is strengthening relative to the quote currency.
+            </text>
+        </svg>
+    </div>
+
+    <div class="cp-box">
+        <strong>Remember</strong>
+        <p>
+            <b>Pair rises → base currency gains relative value against quote currency.</b>
+            Pair falls → base currency loses relative value against quote currency.
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     06
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">06</span>What Does It Mean When a Pair Goes Down?</h2>
+
+    <p>
+        If EUR/USD falls from 1.1000 to 1.0950, one euro is now being valued at
+        fewer U.S. dollars than before.
+    </p>
+
+    <p>
+        In relative terms, EUR has weakened against USD in the observed move,
+        or USD has strengthened relative to EUR.
+    </p>
+
+    <div class="cp-memory">
+        <strong>Simple rule</strong>
+        <p>
+            When reading any pair, identify the base currency first. Then ask:
+            <b>Is the base becoming more or less valuable relative to the quote?</b>
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     07
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">07</span>Currency Codes and ISO Symbols</h2>
+
+    <p>
+        Forex currencies are normally represented by three-letter codes. These
+        standardized codes make it possible to identify currencies consistently
+        across financial markets and platforms.
+    </p>
+
+    <div class="cp-table-wrap">
+        <table class="cp-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Currency</th>
+                    <th>Common name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>USD</td><td>United States dollar</td><td>U.S. dollar</td></tr>
+                <tr><td>EUR</td><td>Euro</td><td>Euro</td></tr>
+                <tr><td>GBP</td><td>Pound sterling</td><td>British pound</td></tr>
+                <tr><td>JPY</td><td>Japanese yen</td><td>Yen</td></tr>
+                <tr><td>CHF</td><td>Swiss franc</td><td>Swiss franc</td></tr>
+                <tr><td>CAD</td><td>Canadian dollar</td><td>Canadian dollar</td></tr>
+                <tr><td>AUD</td><td>Australian dollar</td><td>Australian dollar</td></tr>
+                <tr><td>NZD</td><td>New Zealand dollar</td><td>New Zealand dollar</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        You will encounter many additional currency codes as you progress into
+        minors and exotic pairs. The important beginner skill is recognizing that
+        each pair is built from two currency codes.
+    </p>
+</section>
+
+
+<!-- =========================================================
+     08
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">08</span>Major Currency Pairs</h2>
+
+    <p>
+        The term <strong>major currency pairs</strong> is commonly used for the
+        most heavily traded currency combinations, especially pairs involving
+        the U.S. dollar and other major currencies.
+    </p>
+
+    <div class="cp-grid-4">
+        <div class="cp-card"><h4>EUR/USD</h4><p>Euro vs U.S. dollar</p></div>
+        <div class="cp-card"><h4>GBP/USD</h4><p>British pound vs U.S. dollar</p></div>
+        <div class="cp-card"><h4>USD/JPY</h4><p>U.S. dollar vs Japanese yen</p></div>
+        <div class="cp-card"><h4>USD/CHF</h4><p>U.S. dollar vs Swiss franc</p></div>
+        <div class="cp-card"><h4>AUD/USD</h4><p>Australian dollar vs U.S. dollar</p></div>
+        <div class="cp-card"><h4>USD/CAD</h4><p>U.S. dollar vs Canadian dollar</p></div>
+        <div class="cp-card"><h4>NZD/USD</h4><p>New Zealand dollar vs U.S. dollar</p></div>
+    </div>
+
+    <div class="cp-warning">
+        <strong>Important terminology</strong>
+        <p>
+            Lists of "major pairs" can vary slightly by source. The important concept
+            is that majors generally refer to highly traded currency combinations,
+            with USD playing a central role.
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     09
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">09</span>Minor / Cross Currency Pairs</h2>
+
+    <p>
+        A currency cross is a pair that does not directly include the U.S. dollar.
+        Common examples include EUR/GBP, EUR/JPY and GBP/JPY.
+    </p>
+
+    <div class="cp-grid-3">
+        <div class="cp-card">
+            <h4>EUR/GBP</h4>
+            <p>Euro relative to pound sterling.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>EUR/JPY</h4>
+            <p>Euro relative to Japanese yen.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>GBP/JPY</h4>
+            <p>Pound sterling relative to Japanese yen.</p>
+        </div>
+    </div>
+
+    <p>
+        Crosses are important because traders can analyze relationships between
+        currencies without directly trading a USD pair.
+    </p>
+</section>
+
+
+<!-- =========================================================
+     10
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">10</span>Exotic Currency Pairs</h2>
+
+    <p>
+        Exotic pairs generally combine a major currency with the currency of an
+        emerging or smaller economy. Examples can include USD/TRY, USD/ZAR and
+        USD/MXN.
+    </p>
+
+    <p>
+        Exotic markets can have different liquidity, spreads, volatility and
+        execution characteristics compared with highly traded major pairs.
+    </p>
+
+    <div class="cp-grid-3">
+        <div class="cp-card">
+            <h4>💧 Liquidity</h4>
+            <p>Some exotic pairs may have less market depth than major pairs.</p>
+        </div>
+        <div class="cp-card">
+            <h4>↔️ Spread</h4>
+            <p>Spreads can be wider, particularly under certain market conditions.</p>
+        </div>
+        <div class="cp-card">
+            <h4>⚡ Volatility</h4>
+            <p>Price behavior can be materially different from major pairs.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     11
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">11</span>Why Is USD So Important?</h2>
+
+    <p>
+        The U.S. dollar has a central role in global finance and is present in a
+        large share of foreign-exchange transactions. This makes USD pairs especially
+        important for understanding Forex market relationships.
+    </p>
+
+    <p>
+        USD is also widely used in international trade, reserves, financing and
+        financial markets. Changes in U.S. interest-rate expectations and economic
+        conditions can therefore influence many currency relationships.
+    </p>
+
+    <div class="cp-box">
+        <strong>Foundation idea</strong>
+        <p>
+            When studying a USD pair, do not analyze only the chart. Understand that
+            the pair is a relationship involving both currencies.
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     12
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">12</span>Direct and Indirect Quote Thinking</h2>
+
+    <p>
+        A quote can be understood by asking which currency is being priced in terms
+        of which other currency. This becomes particularly important when converting
+        between currencies or comparing quotations.
+    </p>
+
+    <p>
+        Instead of trying to memorize terminology first, build the habit of reading
+        the actual pair: identify the base, identify the quote, and interpret the
+        numerical price.
+    </p>
+
+    <div class="cp-grid-2">
+        <div class="cp-card">
+            <h4 class="cp-blue">EUR/USD</h4>
+            <p>How many USD units represent one EUR?</p>
+        </div>
+        <div class="cp-card">
+            <h4 class="cp-green">USD/JPY</h4>
+            <p>How many JPY units represent one USD?</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     13
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">13</span>Bid and Ask Prices</h2>
+
+    <p>
+        A Forex platform normally shows at least two relevant prices:
+        <strong>bid</strong> and <strong>ask</strong>.
+    </p>
+
+    <ul>
+        <li><strong>Bid:</strong> the price at which the market can buy the base currency from you under the quote convention.</li>
+        <li><strong>Ask:</strong> the price at which the market can sell the base currency to you under the quote convention.</li>
+        <li><strong>Spread:</strong> the difference between the ask and bid.</li>
+    </ul>
+
+    <div class="cp-diagram">
+        <div class="cp-diagram-title">Diagram — Bid, Ask and Spread</div>
+
+        <svg viewBox="0 0 1000 400">
+            <rect x="35" y="35" width="930" height="330" rx="24" fill="#0b1220" stroke="#1e293b"/>
+
+            <rect x="95" y="120" width="250" height="125" rx="20" fill="#35151a" stroke="#f87171"/>
+            <text x="220" y="165" fill="#fca5a5" font-size="20" font-weight="800" text-anchor="middle">BID</text>
+            <text x="220" y="215" fill="#f8fafc" font-size="38" font-weight="900" text-anchor="middle">1.0999</text>
+
+            <rect x="655" y="120" width="250" height="125" rx="20" fill="#12342d" stroke="#34d399"/>
+            <text x="780" y="165" fill="#6ee7b7" font-size="20" font-weight="800" text-anchor="middle">ASK</text>
+            <text x="780" y="215" fill="#f8fafc" font-size="38" font-weight="900" text-anchor="middle">1.1001</text>
+
+            <path d="M360 182 H640" stroke="#facc15" stroke-width="5"/>
+            <text x="500" y="155" fill="#fde68a" font-size="22" font-weight="900" text-anchor="middle">SPREAD</text>
+
+            <text x="500" y="300" fill="#94a3b8" font-size="18" text-anchor="middle">
+                Illustrative quote. Actual bid/ask values vary with broker and market conditions.
+            </text>
+        </svg>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     14
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">14</span>Why Bid and Ask Matter</h2>
+
+    <p>
+        A beginner may look at one chart price and assume every transaction occurs
+        at exactly that number. In reality, buy and sell execution is connected to
+        the available bid and ask prices.
+    </p>
+
+    <p>
+        This is one reason a trader can see a position start with a small negative
+        result immediately after opening. The spread separates the two sides of the
+        market, and trading costs can therefore affect the position.
+    </p>
+
+    <div class="cp-warning">
+        <strong>Do not ignore spread</strong>
+        <p>
+            A setup can look technically attractive on a chart but still have
+            different execution characteristics when spreads widen.
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     15
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">15</span>Currency Pair Price vs Pip Movement</h2>
+
+    <p>
+        The quoted price tells you the current relative valuation. Pip movement
+        tells you how far that price has changed according to the instrument's
+        quoting convention.
+    </p>
+
+    <div class="cp-table-wrap">
+        <table class="cp-table">
+            <thead>
+                <tr>
+                    <th>Concept</th>
+                    <th>Example</th>
+                    <th>What it tells you</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pair</td>
+                    <td>EUR/USD</td>
+                    <td>Which two currencies are being compared.</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>1.1000</td>
+                    <td>Current quoted relative value in the example.</td>
+                </tr>
+                <tr>
+                    <td>Movement</td>
+                    <td>1.1000 → 1.1050</td>
+                    <td>The observed change in price.</td>
+                </tr>
+                <tr>
+                    <td>Pip distance</td>
+                    <td>50 pips</td>
+                    <td>The standardized movement distance under the relevant convention.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     16
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">16</span>What Makes One Currency Stronger?</h2>
+
+    <p>
+        A currency's relative value can be affected by many factors. These include
+        interest-rate expectations, inflation expectations, economic growth,
+        employment conditions, central-bank policy, government policy, capital
+        flows, geopolitical developments and overall market risk sentiment.
+    </p>
+
+    <p>
+        These factors do not operate in isolation. Markets are forward-looking,
+        meaning participants react not only to what has already happened but also
+        to what they expect may happen next.
+    </p>
+
+    <div class="cp-grid-3">
+        <div class="cp-card">
+            <h4>🏦 Central banks</h4>
+            <p>Policy expectations can influence currency demand and valuation.</p>
+        </div>
+        <div class="cp-card">
+            <h4>📊 Economic data</h4>
+            <p>Inflation, employment and growth data can change expectations.</p>
+        </div>
+        <div class="cp-card">
+            <h4>🌍 Risk sentiment</h4>
+            <p>Global risk appetite can affect flows between currencies.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     17
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">17</span>Currency Pair Is a Relationship, Not a Single Story</h2>
+
+    <p>
+        This is one of the most important ideas in the entire lesson.
+        If EUR/USD rises, it is tempting to say "the euro is going up."
+        But the more precise interpretation is that EUR is gaining relative value
+        against USD in that pair.
+    </p>
+
+    <p>
+        The euro could be strengthening against one currency while weakening
+        against another at the same time. Likewise, the U.S. dollar can behave
+        differently across different currency relationships.
+    </p>
+
+    <div class="cp-diagram">
+        <div class="cp-diagram-title">Diagram — Relative Strength</div>
+
+        <svg viewBox="0 0 1000 410">
+            <rect x="35" y="35" width="930" height="340" rx="24" fill="#0b1220" stroke="#1e293b"/>
+
+            <text x="500" y="82" fill="#f8fafc" font-size="25" font-weight="900" text-anchor="middle">
+                One currency can behave differently across relationships
+            </text>
+
+            <rect x="95" y="125" width="245" height="125" rx="18" fill="#12342d" stroke="#34d399"/>
+            <text x="217" y="170" fill="#6ee7b7" font-size="22" font-weight="900" text-anchor="middle">EUR/USD</text>
+            <text x="217" y="215" fill="#f8fafc" font-size="24" text-anchor="middle">↑ example</text>
+
+            <rect x="378" y="125" width="245" height="125" rx="18" fill="#0f2b46" stroke="#60a5fa"/>
+            <text x="500" y="170" fill="#93c5fd" font-size="22" font-weight="900" text-anchor="middle">EUR/GBP</text>
+            <text x="500" y="215" fill="#f8fafc" font-size="24" text-anchor="middle">→ example</text>
+
+            <rect x="660" y="125" width="245" height="125" rx="18" fill="#35151a" stroke="#f87171"/>
+            <text x="782" y="170" fill="#fca5a5" font-size="22" font-weight="900" text-anchor="middle">EUR/JPY</text>
+            <text x="782" y="215" fill="#f8fafc" font-size="24" text-anchor="middle">↓ example</text>
+
+            <text x="500" y="305" fill="#94a3b8" font-size="19" text-anchor="middle">
+                The direction of one pair does not automatically describe every relationship involving that currency.
+            </text>
+        </svg>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     18
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">18</span>Currency Pair Inversion</h2>
+
+    <p>
+        If a pair is inverted, the relationship changes direction. For example,
+        EUR/USD and USD/EUR describe reciprocal relationships, although the market
+        convention and availability of a quoted instrument may differ.
+    </p>
+
+    <div class="cp-box">
+        <strong>Mathematical idea</strong>
+        <p>
+            If EUR/USD = 1.20, then the reciprocal relationship is approximately
+            USD/EUR = 1 ÷ 1.20 = 0.8333.
+        </p>
+    </div>
+
+    <p>
+        This reciprocal concept becomes useful when understanding currency
+        conversions and cross-rate relationships.
+    </p>
+</section>
+
+
+<!-- =========================================================
+     19
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">19</span>Cross Rates</h2>
+
+    <p>
+        A cross rate describes the relationship between two currencies that can
+        be derived through another currency. Historically, many cross relationships
+        could be calculated through USD.
+    </p>
+
+    <p>
+        For example, if you know EUR/USD and GBP/USD, you can conceptually derive
+        EUR/GBP from the relationship between those two rates.
+    </p>
+
+    <div class="cp-diagram">
+        <div class="cp-diagram-title">Diagram — Conceptual Cross-Rate Relationship</div>
+
+        <svg viewBox="0 0 1000 430">
+            <rect x="35" y="35" width="930" height="360" rx="24" fill="#0b1220" stroke="#1e293b"/>
+
+            <circle cx="500" cy="215" r="75" fill="#0f2b46" stroke="#60a5fa" stroke-width="3"/>
+            <text x="500" y="208" fill="#93c5fd" font-size="27" font-weight="900" text-anchor="middle">USD</text>
+            <text x="500" y="240" fill="#94a3b8" font-size="16" text-anchor="middle">bridge</text>
+
+            <circle cx="190" cy="120" r="65" fill="#12342d" stroke="#34d399" stroke-width="3"/>
+            <text x="190" y="128" fill="#6ee7b7" font-size="27" font-weight="900" text-anchor="middle">EUR</text>
+
+            <circle cx="810" cy="120" r="65" fill="#35151a" stroke="#f87171" stroke-width="3"/>
+            <text x="810" y="128" fill="#fca5a5" font-size="27" font-weight="900" text-anchor="middle">GBP</text>
+
+            <circle cx="500" cy="335" r="65" fill="#241a3d" stroke="#a78bfa" stroke-width="3"/>
+            <text x="500" y="343" fill="#ddd6fe" font-size="27" font-weight="900" text-anchor="middle">EUR/GBP</text>
+
+            <path d="M240 145 C330 155 365 175 430 195" fill="none" stroke="#64748b" stroke-width="4"/>
+            <path d="M760 145 C670 155 635 175 570 195" fill="none" stroke="#64748b" stroke-width="4"/>
+            <path d="M500 290 V270" stroke="#64748b" stroke-width="4"/>
+
+            <text x="500" y="385" fill="#94a3b8" font-size="17" text-anchor="middle">
+                Conceptual relationship — actual calculations depend on quote direction.
+            </text>
+        </svg>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     20
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">20</span>Understanding Pair Direction</h2>
+
+    <p>
+        Before looking for a buy or sell opportunity, first understand what the
+        pair represents. Then determine what a rising or falling price means for
+        the base and quote currencies.
+    </p>
+
+    <div class="cp-grid-2">
+        <div class="cp-card">
+            <h4 class="cp-green">📈 If the pair rises</h4>
+            <p>
+                The base currency is gaining relative value against the quote
+                currency over the observed period.
+            </p>
+        </div>
+
+        <div class="cp-card">
+            <h4 class="cp-red">📉 If the pair falls</h4>
+            <p>
+                The base currency is losing relative value against the quote
+                currency over the observed period.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     21
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">21</span>How Currency Pairs Relate to Trading Sessions</h2>
+
+    <p>
+        Forex is a global market, and different currencies can become particularly
+        active around the economic and financial centers associated with them.
+        Session activity can influence liquidity, volatility and spreads.
+    </p>
+
+    <div class="cp-grid-3">
+        <div class="cp-card">
+            <h4>🌏 Asian hours</h4>
+            <p>
+                Pairs involving JPY, AUD and NZD may receive significant attention
+                from traders watching Asian-market developments.
+            </p>
+        </div>
+
+        <div class="cp-card">
+            <h4>🇬🇧 European hours</h4>
+            <p>
+                EUR and GBP pairs can become highly active as European markets open.
+            </p>
+        </div>
+
+        <div class="cp-card">
+            <h4>🇺🇸 U.S. hours</h4>
+            <p>
+                USD-related pairs can experience significant activity around U.S.
+                economic releases and market participation.
+            </p>
+        </div>
+    </div>
+
+    <div class="cp-warning">
+        <strong>Do not treat sessions as guarantees</strong>
+        <p>
+            A currency pair can move at any time. Session tendencies are context,
+            not a promise of direction or volatility.
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     22
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">22</span>Liquidity and Currency Pairs</h2>
+
+    <p>
+        Liquidity refers broadly to the ability to transact in a market with
+        relatively efficient execution and without causing large price changes
+        from individual orders.
+    </p>
+
+    <p>
+        Highly traded currency pairs generally have deeper participation than
+        many less-traded exotic pairs. However, liquidity can change during the
+        day and around major events.
+    </p>
+
+    <div class="cp-grid-2">
+        <div class="cp-card">
+            <h4>💧 Higher liquidity</h4>
+            <p>
+                Often associated with tighter spreads and more continuous market
+                participation, though conditions can vary.
+            </p>
+        </div>
+
+        <div class="cp-card">
+            <h4>🌊 Changing liquidity</h4>
+            <p>
+                News, market openings, holidays and unusual conditions can change
+                available liquidity.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     23
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">23</span>Spread Differences Between Pairs</h2>
+
+    <p>
+        Not all currency pairs have the same spread. More heavily traded pairs
+        often have tighter spreads during liquid conditions, while less-traded
+        instruments can have wider spreads.
+    </p>
+
+    <p>
+        A trader comparing two setups should therefore consider not only the chart
+        pattern but also the trading conditions of the specific instrument.
+    </p>
+
+    <div class="cp-table-wrap">
+        <table class="cp-table">
+            <thead>
+                <tr>
+                    <th>Factor</th>
+                    <th>Possible effect</th>
+                    <th>What a beginner should do</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Market liquidity</td>
+                    <td>Can affect spread and execution quality.</td>
+                    <td>Check current conditions.</td>
+                </tr>
+                <tr>
+                    <td>Major news</td>
+                    <td>Can cause rapid movement and spread changes.</td>
+                    <td>Know the economic calendar.</td>
+                </tr>
+                <tr>
+                    <td>Trading session</td>
+                    <td>Participation may rise or fall.</td>
+                    <td>Understand when your chosen pair is active.</td>
+                </tr>
+                <tr>
+                    <td>Pair type</td>
+                    <td>Major, cross and exotic pairs can behave differently.</td>
+                    <td>Do not assume all pairs trade identically.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     24
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">24</span>Currency Pair and Volatility</h2>
+
+    <p>
+        Volatility describes the degree and speed of price variation. Different
+        currency pairs can display different volatility characteristics, and the
+        same pair can behave differently under different market conditions.
+    </p>
+
+    <p>
+        Higher volatility can create larger price movement but also larger uncertainty.
+        It should never be interpreted as "more volatility = easier profit."
+    </p>
+
+    <div class="cp-memory">
+        <strong>Important</strong>
+        <p>
+            <b>Movement creates opportunity and risk at the same time.</b>
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     25
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">25</span>Currency Pair and Correlation</h2>
+
+    <p>
+        Some currency pairs can show relationships because they share currencies
+        or are influenced by common macroeconomic factors. These relationships
+        are often called correlations.
+    </p>
+
+    <p>
+        Correlation is not fixed. It can strengthen, weaken or reverse as market
+        conditions change. Therefore, correlation should be treated as context,
+        not as a permanent trading rule.
+    </p>
+
+    <div class="cp-grid-3">
+        <div class="cp-card">
+            <h4>🔗 Positive relationship</h4>
+            <p>Two instruments may sometimes move in similar directions.</p>
+        </div>
+        <div class="cp-card">
+            <h4>↔️ Inverse relationship</h4>
+            <p>Two instruments may sometimes move in opposite directions.</p>
+        </div>
+        <div class="cp-card">
+            <h4>⚠️ Changing relationship</h4>
+            <p>Historical correlation does not guarantee future correlation.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     26
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">26</span>Do Not Double Your Risk Accidentally</h2>
+
+    <p>
+        Because multiple currency pairs can share the same currency, taking several
+        positions can create overlapping exposure. For example, several trades
+        involving USD can all be influenced by the same broad USD movement.
+    </p>
+
+    <p>
+        This means that counting each position separately may underestimate the
+        total economic exposure of a trading plan.
+    </p>
+
+    <div class="cp-warning">
+        <strong>Risk-awareness lesson</strong>
+        <p>
+            Before taking several positions, identify which currencies are shared
+            across those positions. Multiple trades are not always independent.
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     27
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">27</span>Currency Pair and Trading Costs</h2>
+
+    <p>
+        The visible chart is not the complete trading environment. Depending on
+        the broker and account, costs can include spread, commissions and other
+        applicable charges.
+    </p>
+
+    <p>
+        Costs matter particularly when a trader is targeting very small price
+        movements. A strategy that expects a tiny movement must account for the
+        relationship between expected movement and transaction costs.
+    </p>
+
+    <div class="cp-grid-3">
+        <div class="cp-card">
+            <h4>↔️ Spread</h4>
+            <p>Difference between bid and ask.</p>
+        </div>
+        <div class="cp-card">
+            <h4>💳 Commission</h4>
+            <p>May apply depending on the account structure.</p>
+        </div>
+        <div class="cp-card">
+            <h4>⚠️ Slippage</h4>
+            <p>Actual execution can differ from the expected price under some conditions.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     28
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">28</span>Reading a Pair Before Opening a Chart</h2>
+
+    <p>
+        A disciplined beginner can gather basic information before looking for
+        a trade setup.
+    </p>
+
+    <ol>
+        <li>Identify the currency pair.</li>
+        <li>Identify the base currency.</li>
+        <li>Identify the quote currency.</li>
+        <li>Read the current quote.</li>
+        <li>Check the instrument's decimal precision.</li>
+        <li>Check the spread and normal trading conditions.</li>
+        <li>Know the relevant market session.</li>
+        <li>Check for major scheduled economic events.</li>
+        <li>Only then move into chart structure and strategy analysis.</li>
+    </ol>
+</section>
+
+
+<!-- =========================================================
+     29
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">29</span>Example: EUR/USD Step by Step</h2>
+
+    <p>
+        Suppose the displayed quote is <strong>EUR/USD = 1.1000</strong>.
+    </p>
+
+    <div class="cp-table-wrap">
+        <table class="cp-table">
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>What is the pair?</td>
+                    <td>EUR/USD</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>What is the base?</td>
+                    <td>EUR</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>What is the quote?</td>
+                    <td>USD</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>What does 1.1000 mean?</td>
+                    <td>One EUR is valued at 1.1000 USD in the example.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>If price rises?</td>
+                    <td>EUR gains relative value against USD.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>If price falls?</td>
+                    <td>EUR loses relative value against USD.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     30
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">30</span>Example: USD/JPY Step by Step</h2>
+
+    <p>
+        Suppose the displayed quote is <strong>USD/JPY = 150.00</strong>.
+    </p>
+
+    <div class="cp-diagram">
+        <div class="cp-diagram-title">Diagram — USD/JPY Interpretation</div>
+
+        <svg viewBox="0 0 1000 360">
+            <rect x="35" y="35" width="930" height="290" rx="24" fill="#0b1220" stroke="#1e293b"/>
+
+            <rect x="115" y="115" width="280" height="115" rx="18" fill="#0f2b46" stroke="#60a5fa"/>
+            <text x="255" y="160" fill="#93c5fd" font-size="19" font-weight="800" text-anchor="middle">BASE</text>
+            <text x="255" y="208" fill="#f8fafc" font-size="37" font-weight="900" text-anchor="middle">USD</text>
+
+            <text x="500" y="190" fill="#64748b" font-size="35" font-weight="900" text-anchor="middle">/</text>
+
+            <rect x="605" y="115" width="280" height="115" rx="18" fill="#12342d" stroke="#34d399"/>
+            <text x="745" y="160" fill="#6ee7b7" font-size="19" font-weight="800" text-anchor="middle">QUOTE</text>
+            <text x="745" y="208" fill="#f8fafc" font-size="37" font-weight="900" text-anchor="middle">JPY</text>
+
+            <text x="500" y="285" fill="#cbd5e1" font-size="20" text-anchor="middle">
+                USD/JPY = 150.00 → 1 USD is valued at 150 JPY in this example.
+            </text>
+        </svg>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     31
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">31</span>Quote Precision</h2>
+
+    <p>
+        Different instruments can be displayed with different numbers of decimal
+        places. A platform may also display fractional pip information.
+    </p>
+
+    <p>
+        Therefore, never determine the value of a price movement only by counting
+        decimal places from memory. Confirm the instrument specification and the
+        convention being used.
+    </p>
+
+    <div class="cp-memory">
+        <strong>Beginner habit</strong>
+        <p>
+            Before calculating pips or monetary risk, check the pair's quote precision.
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     32
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">32</span>Why Currency Pairs Matter for Price Action</h2>
+
+    <p>
+        Later in Strativo Academy you will study candles, swing highs and lows,
+        higher highs, higher lows, lower highs, lower lows, support, resistance,
+        liquidity and market structure.
+    </p>
+
+    <p>
+        All of those concepts are observed on the price of an instrument. Before
+        interpreting the chart, you must know exactly what that price represents.
+        A chart is not simply "going up or down"; it is showing a changing relative
+        value between two currencies.
+    </p>
+
+    <div class="cp-box">
+        <strong>Connection to Price Action</strong>
+        <p>
+            <b>Currency pair → price → candles → swings → structure → analysis.</b>
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     33
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">33</span>Currency Pair Selection</h2>
+
+    <p>
+        Beginners often make the mistake of selecting a pair only because it is
+        moving quickly. A better approach is to understand the instrument first.
+    </p>
+
+    <div class="cp-grid-2">
+        <div class="cp-card">
+            <h4>Good questions</h4>
+            <ul>
+                <li>Do I understand the currencies involved?</li>
+                <li>Do I understand the normal spread?</li>
+                <li>Do I understand when it is most active?</li>
+                <li>Do I understand the instrument's volatility?</li>
+            </ul>
+        </div>
+
+        <div class="cp-card">
+            <h4>Bad selection logic</h4>
+            <ul>
+                <li>"It moved a lot, so it must be easy."</li>
+                <li>"The candle is large, so I should enter."</li>
+                <li>"This pair always moves in one direction."</li>
+                <li>"A large target guarantees more profit."</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     34
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">34</span>Common Beginner Mistakes With Currency Pairs</h2>
+
+    <div class="cp-grid-2">
+        <div class="cp-card">
+            <h4>❌ Confusing base and quote</h4>
+            <p>Always identify the left and right currencies before interpreting direction.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>❌ Thinking a pair is one currency</h4>
+            <p>A pair is a relationship between two currencies.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>❌ Ignoring the quote price</h4>
+            <p>The number tells you how the base is valued in the quote currency.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>❌ Treating all pairs identically</h4>
+            <p>Majors, crosses and exotics can have different trading characteristics.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>❌ Ignoring spread</h4>
+            <p>Trading costs can matter, especially for short-term strategies.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>❌ Ignoring shared exposure</h4>
+            <p>Several trades can involve the same currency and therefore overlap.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>❌ Assuming correlation is permanent</h4>
+            <p>Relationships between pairs can change with market conditions.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>❌ Confusing movement with profit</h4>
+            <p>Price movement alone does not determine monetary profit or loss.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     35
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">35</span>Complete Currency-Pair Mental Model</h2>
+
+    <div class="cp-diagram">
+        <div class="cp-diagram-title">Diagram — From Currency Pair to Trading Understanding</div>
+
+        <svg viewBox="0 0 1000 620">
+            <rect x="35" y="35" width="930" height="550" rx="24" fill="#0b1220" stroke="#1e293b"/>
+
+            <rect x="355" y="65" width="290" height="75" rx="18" fill="#0f2b46" stroke="#60a5fa"/>
+            <text x="500" y="112" fill="#dbeafe" font-size="24" font-weight="900" text-anchor="middle">
+                CURRENCY PAIR
+            </text>
+
+            <line x1="500" y1="140" x2="500" y2="175" stroke="#475569" stroke-width="4"/>
+
+            <rect x="110" y="175" width="220" height="75" rx="18" fill="#12342d" stroke="#34d399"/>
+            <text x="220" y="222" fill="#d1fae5" font-size="22" font-weight="800" text-anchor="middle">
+                BASE / QUOTE
+            </text>
+
+            <rect x="390" y="175" width="220" height="75" rx="18" fill="#241a3d" stroke="#a78bfa"/>
+            <text x="500" y="222" fill="#ede9fe" font-size="22" font-weight="800" text-anchor="middle">
+                PRICE QUOTE
+            </text>
+
+            <rect x="670" y="175" width="220" height="75" rx="18" fill="#35151a" stroke="#f87171"/>
+            <text x="780" y="222" fill="#fee2e2" font-size="22" font-weight="800" text-anchor="middle">
+                BID / ASK
+            </text>
+
+            <line x1="220" y1="250" x2="220" y2="300" stroke="#475569" stroke-width="4"/>
+            <line x1="500" y1="250" x2="500" y2="300" stroke="#475569" stroke-width="4"/>
+            <line x1="780" y1="250" x2="780" y2="300" stroke="#475569" stroke-width="4"/>
+
+            <rect x="110" y="300" width="220" height="75" rx="18" fill="#0f2b46" stroke="#60a5fa"/>
+            <text x="220" y="347" fill="#dbeafe" font-size="22" font-weight="800" text-anchor="middle">
+                PAIR DIRECTION
+            </text>
+
+            <rect x="390" y="300" width="220" height="75" rx="18" fill="#12342d" stroke="#34d399"/>
+            <text x="500" y="347" fill="#d1fae5" font-size="22" font-weight="800" text-anchor="middle">
+                PRICE MOVEMENT
+            </text>
+
+            <rect x="670" y="300" width="220" height="75" rx="18" fill="#241a3d" stroke="#a78bfa"/>
+            <text x="780" y="347" fill="#ede9fe" font-size="22" font-weight="800" text-anchor="middle">
+                COST / LIQUIDITY
+            </text>
+
+            <line x1="220" y1="375" x2="220" y2="425" stroke="#475569" stroke-width="4"/>
+            <line x1="500" y1="375" x2="500" y2="425" stroke="#475569" stroke-width="4"/>
+            <line x1="780" y1="375" x2="780" y2="425" stroke="#475569" stroke-width="4"/>
+
+            <rect x="265" y="425" width="470" height="85" rx="20" fill="#0f172a" stroke="#facc15"/>
+            <text x="500" y="460" fill="#fde68a" font-size="21" font-weight="800" text-anchor="middle">
+                INFORMED CHART READING
+            </text>
+            <text x="500" y="492" fill="#94a3b8" font-size="17" text-anchor="middle">
+                Understand the instrument before analyzing the setup.
+            </text>
+        </svg>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     36
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">36</span>Quick Knowledge Review</h2>
+
+    <div class="cp-box">
+        <strong>Question 1</strong>
+        <p>What is the first currency in a pair called?</p>
+        <p><b>Answer:</b> The base currency.</p>
+    </div>
+
+    <div class="cp-box">
+        <strong>Question 2</strong>
+        <p>What is the second currency called?</p>
+        <p><b>Answer:</b> The quote currency.</p>
+    </div>
+
+    <div class="cp-box">
+        <strong>Question 3</strong>
+        <p>What does EUR/USD = 1.1000 mean in a basic interpretation?</p>
+        <p><b>Answer:</b> One EUR is valued at 1.1000 USD in the example.</p>
+    </div>
+
+    <div class="cp-box">
+        <strong>Question 4</strong>
+        <p>If EUR/USD rises, what is happening to EUR relative to USD?</p>
+        <p><b>Answer:</b> EUR is gaining relative value against USD over the observed move.</p>
+    </div>
+
+    <div class="cp-box">
+        <strong>Question 5</strong>
+        <p>What is the spread?</p>
+        <p><b>Answer:</b> The difference between the ask and bid prices.</p>
+    </div>
+
+    <div class="cp-box">
+        <strong>Question 6</strong>
+        <p>What is a currency cross?</p>
+        <p><b>Answer:</b> A currency pair that does not directly include USD.</p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     37
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">37</span>Complete Currency-Pair Checklist</h2>
+
+    <div class="cp-checklist">
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I can identify the currency pair.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I know which currency is the base.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I know which currency is the quote.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I can interpret the numerical quote.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I understand what a rising pair means.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I understand what a falling pair means.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I know the difference between majors, crosses and exotics.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I understand the basic role of USD in Forex.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I understand bid, ask and spread.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I understand that liquidity and spreads can vary.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I understand that several trades can share the same currency exposure.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I understand that currency relationships are relative and can change.</div>
+        </div>
+
+        <div class="cp-check">
+            <span>✓</span>
+            <div>I am ready to connect currency pairs with pips, price movement and chart analysis.</div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     38
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">38</span>Final Summary</h2>
+
+    <p class="cp-lead">
+        A Forex currency pair is a relationship between two currencies. The first
+        currency is the base and the second is the quote. The displayed price tells
+        you how much quote currency represents one unit of the base currency.
+    </p>
+
+    <p>
+        Understanding this relationship is more important than memorizing a list
+        of symbols. Once you know how to read the pair, you can correctly interpret
+        whether price movement represents an increase or decrease in the base
+        currency's relative value.
+    </p>
+
+    <p>
+        You also need to understand that different pairs can have different
+        liquidity, spreads, volatility and market behavior. A major pair, a cross
+        and an exotic pair should not automatically be treated as identical.
+    </p>
+
+    <div class="cp-memory">
+        <strong>One sentence to remember</strong>
+        <p>
+            <b>
+                A CURRENCY PAIR IS A RELATIVE-VALUE RELATIONSHIP:
+                THE FIRST CURRENCY IS THE BASE, THE SECOND IS THE QUOTE,
+                AND THE PRICE TELLS YOU HOW MUCH QUOTE CURRENCY REPRESENTS ONE UNIT OF BASE.
+            </b>
+        </p>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     39
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">39</span>What Comes Next?</h2>
+
+    <p>
+        After understanding currency pairs, the next foundation concepts become
+        much easier to understand because you already know what the price represents.
+    </p>
+
+    <div class="cp-grid-3">
+        <div class="cp-card">
+            <h4>📏 Pips &amp; Points</h4>
+            <p>Learn how Forex price movement is measured.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>📦 Lots &amp; Leverage</h4>
+            <p>Learn how position size and leverage affect exposure.</p>
+        </div>
+
+        <div class="cp-card">
+            <h4>↔️ Bid / Ask Spreads</h4>
+            <p>Understand the execution side of a Forex quote.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     40
+     ========================================================= -->
+
+<section class="cp-section">
+    <h2><span class="cp-num">40</span>Educational Disclaimer</h2>
+
+    <p>
+        This page is educational material created for Strativo Academy. It is
+        intended to explain foundational Forex terminology and market concepts.
+        It is not financial, investment or trading advice and does not guarantee
+        any trading result.
+    </p>
+
+    <p>
+        Forex and leveraged trading involve substantial risk, including the
+        possibility of losing money. Examples on this page are simplified
+        educational examples. Actual prices, spreads, liquidity, execution,
+        commissions and other trading conditions can vary by broker, account,
+        instrument and market conditions.
+    </p>
+</section>
+
+
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
+
+<nav class="cp-nav" aria-label="Lesson navigation">
+
+    <a href="introduction-to-forex.html">
+        <small>← Previous Note</small>
+        <strong>Introduction to Forex</strong>
+    </a>
+
+    <a href="notes.html" class="center">
+        <small>Module 1</small>
+        <strong>Notes Home</strong>
+    </a>
+
+    <a href="pips-and-points.html" class="right">
+        <small>Next Note →</small>
+        <strong>Pips &amp; Points</strong>
+    </a>
+
+</nav>
+
+</main>
+
+
+<!-- =========================================================
+     GLOBAL STRATIVO ACADEMY FOOTER
+     ========================================================= -->
+
+<div data-component="footer"></div>
+
+
+<!-- Shared scripts -->
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+</body>
+</html>

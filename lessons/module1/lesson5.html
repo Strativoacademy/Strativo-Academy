@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5 - Leverage & Margin | Strativo Academy</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+
+<style id="lesson5-v1-enhancements">
+
+.skip-link{
+    position:fixed;
+    top:10px;
+    left:10px;
+    z-index:9999;
+    transform:translateY(-150%);
+    padding:10px 14px;
+    border-radius:9px;
+    background:#0f172a;
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    border:1px solid rgba(148,163,184,.25);
+}
+.skip-link:focus{transform:translateY(0)}
+
+.lesson-progress-fill{
+    transition:width .3s ease;
+    will-change:width;
+}
+
+.quick-check-card{
+    margin-top:18px;
+    padding:18px;
+    border:1px solid rgba(96,165,250,.16);
+    border-radius:14px;
+    background:rgba(59,130,246,.055);
+}
+
+.quick-check-badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:999px;
+    background:rgba(96,165,250,.10);
+    color:#bfdbfe;
+    font-size:.78rem;
+    font-weight:900;
+}
+
+.quick-check-card h3{
+    margin:10px 0 0;
+    color:#f8fafc;
+}
+
+.quick-check-card p{
+    color:#aebdd0;
+}
+
+.quick-check-options{
+    display:grid;
+    gap:8px;
+    margin-top:12px;
+}
+
+.quick-check-options button{
+    min-height:44px;
+    padding:10px 13px;
+    border:1px solid rgba(148,163,184,.13);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    text-align:left;
+    font:inherit;
+    font-size:.9rem;
+    cursor:pointer;
+}
+
+.quick-check-options button.correct{
+    border-color:rgba(52,211,153,.5);
+    background:rgba(16,185,129,.09);
+}
+
+.quick-check-options button.wrong{
+    border-color:rgba(248,113,113,.5);
+    background:rgba(248,113,113,.08);
+}
+
+.quick-check-feedback{
+    display:none;
+    margin-top:12px;
+    padding:11px 13px;
+    border-left:3px solid #60a5fa;
+    border-radius:0 9px 9px 0;
+    background:rgba(59,130,246,.055);
+    color:#dbeafe;
+    font-size:.88rem;
+    line-height:1.7;
+}
+
+.quick-check-feedback.visible{
+    display:block;
+}
+
+.quick-check-feedback.correct{
+    border-left-color:#34d399;
+    color:#d1fae5;
+}
+
+.quick-check-feedback.wrong{
+    border-left-color:#f87171;
+    color:#fecaca;
+}
+
+.quiz-options{
+    display:grid;
+    gap:10px;
+    margin-top:18px;
+}
+
+.quiz-btn{
+    width:100%;
+    min-height:48px;
+    padding:12px 14px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    text-align:left;
+    font:inherit;
+    line-height:1.5;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+
+.quiz-btn:hover:not(:disabled){
+    border-color:rgba(96,165,250,.35);
+    background:#0e1b30;
+}
+
+.quiz-btn.correct{
+    border-color:rgba(52,211,153,.6);
+    background:rgba(16,185,129,.12);
+    color:#d1fae5;
+}
+
+.quiz-btn.wrong{
+    border-color:rgba(248,113,113,.6);
+    background:rgba(248,113,113,.10);
+    color:#fecaca;
+}
+
+.quiz-btn:disabled{
+    cursor:not-allowed;
+    opacity:.95;
+}
+
+.lesson-mobile-toggle{
+    display:none;
+    width:100%;
+    min-height:44px;
+    margin:0 0 10px;
+    padding:0 14px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1220;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.82rem;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.lesson-sidebar.is-open{
+    display:block;
+}
+
+.lesson-sticky-nav{
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    gap:10px;
+    padding:9px;
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:14px;
+    background:rgba(3,7,18,.94);
+    box-shadow:0 14px 40px rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+}
+
+.lesson-sticky-nav button{
+    min-height:44px;
+    padding:0 13px;
+    border:1px solid rgba(148,163,184,.14);
+    border-radius:10px;
+    background:#0b1627;
+    color:#dbeafe;
+    font:inherit;
+    font-size:.8rem;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.lesson-sticky-nav button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.lesson-sticky-nav span{
+    flex:1;
+    text-align:center;
+    color:#94a3b8;
+    font-size:.78rem;
+    font-weight:700;
+}
+
+button:focus-visible,
+a:focus-visible{
+    outline:2px solid #60a5fa;
+    outline-offset:3px;
+}
+
+@media(max-width:800px){
+
+    .lesson-mobile-toggle{
+        display:block;
+    }
+
+    .lesson-sidebar{
+        display:none;
+    }
+
+    .lesson-sidebar.is-open{
+        display:block;
+    }
+
+    .lesson-sticky-nav{
+        display:flex;
+    }
+
+    .lesson-content{
+        padding-bottom:90px!important;
+    }
+}
+
+@media(min-width:801px){
+
+    .lesson-sticky-nav{
+        display:none!important;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#lesson-content">Skip to content</a>
+<div class="global-header-mount" data-component="header"></div>
+
+
+<div data-component="lesson-header"></div>
+
+<!-- =========================================================
+     LESSON NAVIGATOR
+========================================================= -->
+<div class="lesson-navigator-section">
+    <div class="navigator-card">
+
+        <div class="navigator-header">
+            <h2>📚 Lesson Navigator</h2>
+            <p>Jump directly to any lesson. Quiz scores track mastery separately.</p>
+        </div>
+
+        <div class="navigator-grid">
+
+            <a href="lesson1.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 1</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+            <a href="lesson2.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 2</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+            <a href="lesson3.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 3</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+            <a href="lesson4.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 4</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+            <a href="lesson5.html" class="nav-grid-item current">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 5</span>
+                    <span class="lesson-icon">✅</span>
+                </div>
+                <span class="current-badge">Current Lesson</span>
+            </a>
+
+            <a href="lesson6.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 6</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+            <a href="lesson7.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 7</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+            <a href="lesson8.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 8</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+            <a href="lesson9.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 9</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+            <a href="lesson10.html" class="nav-grid-item">
+                <div class="grid-item-top">
+                    <span class="lesson-name">Lesson 10</span>
+                    <span class="lesson-icon">▶</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<!-- MOBILE LESSON MENU -->
+<button
+    type="button"
+    id="lessonSidebarToggle"
+    class="lesson-mobile-toggle"
+    aria-controls="lessonSidebar"
+    aria-expanded="false"
+>
+    ☰ Lesson Menu
+</button>
+
+<div class="lesson-layout">
+
+    <aside id="lessonSidebar" class="lesson-sidebar">
+        <h2>Lesson 5</h2>
+        <ul id="lessonMenu">
+            <li onclick="showStep(1)" class="active">👋 Welcome</li>
+            <li onclick="showStep(2)">⚡ What is Leverage?</li>
+            <li onclick="showStep(3)">🏦 What is Margin?</li>
+            <li onclick="showStep(4)">⚖️ How Leverage Works</li>
+            <li onclick="showStep(5)">📊 Common Leverage Ratios</li>
+            <li onclick="showStep(6)">🧮 Margin Calculation</li>
+            <li onclick="showStep(7)">⚠️ Benefits & Risks</li>
+            <li onclick="showStep(8)">💡 Real Trading Example</li>
+            <li onclick="showStep(9)">🧠 Quiz</li>
+            <li onclick="showStep(10)">🏁 Summary</li>
+        </ul>
+    </aside>
+
+    <main id="lesson-content" class="lesson-content">
+        <div class="lesson-header">
+            <h1>Lesson 5 - Leverage & Margin</h1>
+            <div class="lesson-meta">
+                <div class="meta-item">📈 Beginner</div>
+                <div class="meta-item">⏱ 20 Minutes</div>
+                <div class="meta-item">📚 Module 1</div>
+                <div class="meta-item">📝 10 Steps</div>
+            </div>
+            <div class="lesson-progress">
+                <div class="lesson-progress-bar">
+                    <div class="lesson-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <p class="step-text">Step 1 of 10</p>
+
+        <!-- STEP 1 -->
+        <section class="lesson-step active-step" id="step1">
+            <div class="card">
+                <span class="lesson-badge">BEGINNER COURSE</span>
+                <h1>Welcome to Lesson 5</h1>
+                <h2>Leverage & Margin</h2>
+                <p>
+                    Welcome to one of the most important lessons in Forex trading.
+                    <br><br>
+                    <strong>Leverage</strong> allows traders to control a much larger trading position using only a small amount of their own money.
+                    <br><br>
+                    <strong>Margin</strong> is the amount of money required to open and maintain that trade.
+                    <br><br>
+                    While leverage can increase profits, it can also increase losses just as quickly. Learning how to use it responsibly is a key skill for every successful trader.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/welcome.png" alt="Lesson 5 Welcome" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>📘 Simple Definition</h3>
+                    <p>
+                        <strong>Leverage</strong> increases your buying power.
+                        <br><br>
+                        <strong>Margin</strong> is the money you need to access that buying power.
+                    </p>
+                </div>
+
+                <h3>🎯 Today's Learning Objectives</h3>
+                <ul class="lesson-list">
+                    <li>✔ Understand what Leverage is.</li>
+                    <li>✔ Learn what Margin means.</li>
+                    <li>✔ Discover how Leverage works.</li>
+                    <li>✔ Learn common Leverage ratios.</li>
+                    <li>✔ Calculate Margin requirements.</li>
+                    <li>✔ Understand the benefits and risks.</li>
+                    <li>✔ Study a real trading example.</li>
+                    <li>✔ Complete the Lesson 5 Quiz.</li>
+                </ul>
+
+                <div class="didyouknow-box">
+                    <h3>💡 Did You Know?</h3>
+                    <p>
+                        Professional traders don't use high leverage to get rich quickly.
+                        <br><br>
+                        They use leverage carefully as a tool while protecting their trading capital through proper risk management.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠ Beginner Mistake</h3>
+                    <p>
+                        Many beginners think that higher leverage always means higher profits.
+                        <br><br>
+                        In reality, higher leverage also increases the size of potential losses.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🧠 Memory Trick</h3>
+                    <p>
+                        Think of leverage like driving a sports car.
+                        <br><br>
+                        It gives you more power, but you must control it carefully.
+                        <br><br>
+                        More power without control can lead to bigger mistakes.
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 Coach's Tip</h3>
+                    <p>
+                        The best traders don't use the highest leverage available.
+                        <br><br>
+                        They choose the amount of leverage that matches their trading plan and risk management strategy.
+                    </p>
+                </div>
+
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" disabled>← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- STEP 2 -->
+        <section class="lesson-step" id="step2">
+            <div class="card">
+                <span class="lesson-badge">STEP 2 OF 10</span>
+                <h1>What is Leverage?</h1>
+                <p>
+                    <strong>Leverage</strong> is a tool that allows you to control a much larger trading position using a much smaller amount of your own money.
+                    <br><br>
+                    Instead of paying the full value of a trade, your broker lets you borrow the remaining amount.
+                    <br><br>
+                    This increases your buying power, allowing you to trade larger positions than your account balance alone would normally allow.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/step2.png" alt="What is Leverage" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>📘 Simple Definition</h3>
+                    <p>
+                        <strong>Leverage = Borrowed Buying Power</strong>
+                        <br><br>
+                        It helps traders control larger trades while using only a small portion of their own money.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Easy Example</h3>
+                    <p>
+                        Imagine you have only <strong>$100</strong>.
+                        <br><br>
+                        With <strong>1:100 Leverage</strong>, you can control a trade worth approximately <strong>$10,000</strong>.
+                        <br><br>
+                        Your broker provides the extra buying power, but you are still responsible for any profit or loss.
+                    </p>
+                </div>
+
+                <div class="didyouknow-box">
+                    <h3>🌍 Did You Know?</h3>
+                    <p>
+                        Without leverage, many traders would need thousands of dollars to open even a single standard Forex trade.
+                        <br><br>
+                        Leverage makes Forex trading more accessible, especially for smaller accounts.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠ Beginner Mistake</h3>
+                    <p>
+                        Many beginners believe leverage creates free money.
+                        <br><br>
+                        It doesn't.
+                        <br><br>
+                        Leverage only increases your trading power. It also increases the size of both profits and losses.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🧠 Memory Trick</h3>
+                    <p>
+                        🚗 A bigger engine gives a car more power.
+                        <br><br>
+                        📈 Leverage gives your trading account more buying power.
+                        <br><br>
+                        More power always requires more responsibility.
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 Coach's Tip</h3>
+                    <p>
+                        Professional traders don't choose the highest leverage available.
+                        <br><br>
+                        They choose the amount of leverage that fits their trading strategy and risk management plan.
+                    </p>
+                </div>
+
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- STEP 3 -->
+        <section class="lesson-step" id="step3">
+            <div class="card">
+                <span class="lesson-badge">STEP 3 OF 10</span>
+                <h1>What is Margin?</h1>
+                <p>
+                    <strong>Margin</strong> is the amount of money you must have in your trading account to open and maintain a leveraged trade.
+                    <br><br>
+                    It is <strong>not a fee</strong> and it is <strong>not a cost</strong>.
+                    <br><br>
+                    Think of Margin as a security deposit that your broker temporarily sets aside while your trade is open.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/step3.png" alt="What is Margin" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>📘 Simple Definition</h3>
+                    <p>
+                        <strong>Margin = Money Required to Open a Trade</strong>
+                        <br><br>
+                        The higher the leverage, the smaller the margin required.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Easy Example</h3>
+                    <p>
+                        Imagine you want to control a trade worth <strong>$10,000</strong>.
+                        <br><br>
+                        With <strong>1:100 Leverage</strong>, you only need approximately <strong>$100</strong> as Margin.
+                        <br><br>
+                        The broker provides the remaining buying power.
+                    </p>
+                </div>
+
+                <div class="didyouknow-box">
+                    <h3>🌍 Did You Know?</h3>
+                    <p>
+                        Margin remains reserved while your trade is open.
+                        <br><br>
+                        When you close the trade, your used Margin becomes available again.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠ Beginner Mistake</h3>
+                    <p>
+                        Many beginners think Margin is a fee paid to the broker.
+                        <br><br>
+                        This is incorrect.
+                        <br><br>
+                        Margin is simply the amount of your own money set aside to support the trade.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🧠 Memory Trick</h3>
+                    <p>
+                        🏦 Leverage gives you buying power.
+                        <br><br>
+                        💰 Margin unlocks that buying power.
+                        <br><br>
+                        <strong>Leverage + Margin = Larger Trading Position</strong>
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 Coach's Tip</h3>
+                    <p>
+                        Never use all of your account balance as Margin.
+                        <br><br>
+                        Always leave free Margin available to handle normal market fluctuations and reduce the risk of a Margin Call.
+                    </p>
+                </div>
+
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 4 -->
+        <section class="lesson-step" id="step4">
+            <div class="card">
+                <span class="lesson-badge">STEP 4 OF 10</span>
+                <h1>How Leverage Works</h1>
+                <p>
+                    Now that you understand <strong>Leverage</strong> and <strong>Margin</strong>, let's see how they work together.
+                    <br><br>
+                    Leverage allows you to control a much larger trade than the money you actually have in your account.
+                    <br><br>
+                    Your broker temporarily provides the additional buying power, while your Margin acts as a security deposit.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/step4.png" alt="How Leverage Works" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>📘 Simple Example</h3>
+                    <p>
+                        Your Trading Account: <strong>$500</strong>
+                        <br><br>
+                        Leverage: <strong>1:100</strong>
+                        <br><br>
+                        Maximum Position You Can Control: <strong>$50,000</strong>
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🔄 Step-by-Step Process</h3>
+                    <ul class="lesson-list">
+                        <li>1️⃣ Deposit money into your trading account.</li>
+                        <li>2️⃣ Choose your Lot Size.</li>
+                        <li>3️⃣ The broker applies your Leverage.</li>
+                        <li>4️⃣ Margin is reserved from your balance.</li>
+                        <li>5️⃣ Your trade opens with increased buying power.</li>
+                    </ul>
+                </div>
+
+                <div class="didyouknow-box">
+                    <h3>💡 Did You Know?</h3>
+                    <p>
+                        The amount of Leverage does not guarantee larger profits.
+                        <br><br>
+                        It simply allows you to trade larger positions.
+                        <br><br>
+                        Your trading decisions still determine whether you make a profit or a loss.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠ Beginner Mistake</h3>
+                    <p>
+                        Many beginners believe they should always use the maximum Leverage available.
+                        <br><br>
+                        High Leverage also increases the speed at which losses can reduce your account balance.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🧠 Memory Trick</h3>
+                    <p>
+                        💰 Margin<br>↓<br>⚡ Leverage<br>↓<br>📈 Larger Position<br>↓<br>📊 Bigger Opportunity<br>⚠ Bigger Risk
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 Coach's Tip</h3>
+                    <p>
+                        Think of Leverage as a powerful tool—not a shortcut to quick profits.
+                        <br><br>
+                        Professional traders combine Leverage with proper Risk Management, disciplined position sizing, and well-planned trading strategies.
+                    </p>
+                </div>
+
+                <div class="note-box">
+                    <h3>📝 Quick Recap</h3>
+                    <ul class="lesson-list">
+                        <li>✔ Leverage increases buying power.</li>
+                        <li>✔ Margin is the money required to open the trade.</li>
+                        <li>✔ Larger positions mean larger potential profits.</li>
+                        <li>✔ Larger positions also mean larger potential losses.</li>
+                    </ul>
+                </div>
+
+                
+                <div class="quick-check-card" id="quickCheckStep4">
+                    <span class="quick-check-badge">
+                        🧠 QUICK CHECK — UNGRADED
+                    </span>
+
+                    <h3>
+                        What does leverage primarily increase?
+                    </h3>
+
+                    <p>
+                        Select an answer to receive immediate feedback.
+                    </p>
+
+                    <div class="quick-check-options">
+                        <button type="button" data-correct="true">
+                            A. Buying power
+                        </button>
+
+                        <button type="button" data-correct="false">
+                            B. Guaranteed profit
+                        </button>
+
+                        <button type="button" data-correct="false">
+                            C. Your account balance
+                        </button>
+                    </div>
+
+                    <div
+                        class="quick-check-feedback"
+                        aria-live="polite"
+                    ></div>
+                </div>
+
+<div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 5 -->
+        <section class="lesson-step" id="step5">
+            <div class="card">
+                <span class="lesson-badge">STEP 5 OF 10</span>
+                <h1>Common Leverage Ratios</h1>
+                <p>
+                    Brokers offer different leverage ratios depending on their regulations, account type, and the country where they operate.
+                    <br><br>
+                    A leverage ratio shows how much buying power you receive for every <strong>$1</strong> of your own money.
+                    <br><br>
+                    The larger the ratio, the larger the position you can control—but the higher your potential risk.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/step5.png" alt="Common Leverage Ratios" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>📊 Common Leverage Ratios</h3>
+                    <ul class="lesson-list">
+                        <li><strong>1:10</strong> → $1 controls $10</li>
+                        <li><strong>1:30</strong> → $1 controls $30</li>
+                        <li><strong>1:50</strong> → $1 controls $50</li>
+                        <li><strong>1:100</strong> → $1 controls $100</li>
+                        <li><strong>1:200</strong> → $1 controls $200</li>
+                        <li><strong>1:500</strong> → $1 controls $500</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Example</h3>
+                    <p>
+                        If your account balance is <strong>$100</strong>:
+                        <br><br>
+                        • With <strong>1:10</strong> leverage, you can control approximately <strong>$1,000</strong>.
+                        <br><br>
+                        • With <strong>1:100</strong> leverage, you can control approximately <strong>$10,000</strong>.
+                        <br><br>
+                        • With <strong>1:500</strong> leverage, you can control approximately <strong>$50,000</strong>.
+                    </p>
+                </div>
+
+                <div class="didyouknow-box">
+                    <h3>🌍 Did You Know?</h3>
+                    <p>
+                        Many regulated brokers limit the maximum leverage available to retail traders to help reduce excessive trading risk.
+                        <br><br>
+                        Other brokers may offer much higher leverage, but using it responsibly is always important.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠ Bigger Leverage Doesn't Mean Bigger Success</h3>
+                    <p>
+                        High leverage can make profits grow faster.
+                        <br><br>
+                        Unfortunately, it can also make losses grow just as quickly.
+                        <br><br>
+                        Many beginner traders lose money because they focus only on the potential profits and ignore the increased risk.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🧠 Memory Trick</h3>
+                    <p>
+                        Think of leverage as the zoom function on a camera.
+                        <br><br>
+                        A higher zoom makes everything appear bigger.
+                        <br><br>
+                        In trading, higher leverage makes both profits and losses appear bigger.
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 Coach's Tip</h3>
+                    <p>
+                        Professional traders don't choose leverage based on the highest number available.
+                        <br><br>
+                        They choose a leverage level that matches their trading strategy, account size, and risk management plan.
+                    </p>
+                </div>
+
+                <div class="note-box">
+                    <h3>📝 Key Takeaways</h3>
+                    <ul class="lesson-list">
+                        <li>✔ A leverage ratio shows your buying power.</li>
+                        <li>✔ Higher leverage means larger trading positions.</li>
+                        <li>✔ Higher leverage also means higher risk.</li>
+                        <li>✔ Successful traders use leverage carefully, not aggressively.</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 6 -->
+        <section class="lesson-step" id="step6">
+            <div class="card">
+                <span class="lesson-badge">STEP 6 OF 10</span>
+                <h1>Margin Calculation</h1>
+                <p>
+                    Now that you understand <strong>Leverage</strong>, let's learn how to calculate the <strong>Margin</strong> required to open a trade.
+                    <br><br>
+                    Margin depends on two things:
+                    <br><br>
+                    ✔ The size of your trade.
+                    <br>
+                    ✔ The leverage you are using.
+                    <br><br>
+                    The higher the leverage, the less Margin you need.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/step6.png" alt="Margin Calculation" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>📘 Simple Formula</h3>
+                    <p>
+                        <strong>Margin = Trade Size ÷ Leverage</strong>
+                        <br><br>
+                        This formula tells you how much of your own money is required to open a leveraged position.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Example 1</h3>
+                    <p>
+                        Trade Size: <strong>$10,000</strong>
+                        <br><br>
+                        Leverage: <strong>1:100</strong>
+                        <br><br>
+                        Margin Required: <strong>$10,000 ÷ 100 = $100</strong>
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Example 2</h3>
+                    <p>
+                        Trade Size: <strong>$50,000</strong>
+                        <br><br>
+                        Leverage: <strong>1:500</strong>
+                        <br><br>
+                        Margin Required: <strong>$50,000 ÷ 500 = $100</strong>
+                    </p>
+                </div>
+
+                <div class="didyouknow-box">
+                    <h3>🌍 Did You Know?</h3>
+                    <p>
+                        Two traders can control completely different trade sizes while using the same amount of Margin, simply because they are using different leverage ratios.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠ Margin Call</h3>
+                    <p>
+                        If your losses become too large and your available Margin falls below your broker's minimum requirement, you may receive a <strong>Margin Call</strong>.
+                        <br><br>
+                        If you do not add more funds or reduce your position, your broker may automatically close some or all of your trades to prevent further losses.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🧠 Memory Trick</h3>
+                    <p>
+                        📈 Bigger Trade Size = More Margin Needed
+                        <br><br>
+                        ⚡ Higher Leverage = Less Margin Needed
+                        <br><br>
+                        Think of leverage as reducing the amount of money you need to lock in before opening a trade.
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 Coach's Tip</h3>
+                    <p>
+                        Always keep some <strong>Free Margin</strong> in your account.
+                        <br><br>
+                        Using your entire balance as Margin leaves no room for normal market movements and greatly increases the risk of a Margin Call.
+                    </p>
+                </div>
+
+                <div class="note-box">
+                    <h3>📝 Key Takeaways</h3>
+                    <ul class="lesson-list">
+                        <li>✔ Margin is calculated using Trade Size and Leverage.</li>
+                        <li>✔ Higher Leverage reduces the Margin required.</li>
+                        <li>✔ Lower Leverage requires more Margin.</li>
+                        <li>✔ Keep Free Margin available to manage risk safely.</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 7 -->
+        <section class="lesson-step" id="step7">
+            <div class="card">
+                <span class="lesson-badge">STEP 7 OF 10</span>
+                <h1>Benefits & Risks of Leverage</h1>
+                <p>
+                    Leverage is one of the most powerful tools in Forex trading.
+                    <br><br>
+                    When used correctly, it allows traders to participate in larger market movements with a smaller amount of capital.
+                    <br><br>
+                    However, if used carelessly, leverage can also increase losses very quickly.
+                    <br><br>
+                    Successful traders understand both the advantages and the risks before using leverage.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/step7.png" alt="Benefits and Risks of Leverage" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>✅ Benefits of Leverage</h3>
+                    <ul class="lesson-list">
+                        <li>✔ Control larger trading positions with less capital.</li>
+                        <li>✔ Make Forex trading accessible for smaller accounts.</li>
+                        <li>✔ Use your capital more efficiently.</li>
+                        <li>✔ Increase profit potential when trades are managed properly.</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠ Risks of Leverage</h3>
+                    <ul class="lesson-list">
+                        <li>❌ Losses increase just as quickly as profits.</li>
+                        <li>❌ High leverage can empty an account in a short time.</li>
+                        <li>❌ Poor risk management may lead to a Margin Call.</li>
+                        <li>❌ Emotional trading becomes more difficult with oversized positions.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Real-Life Example</h3>
+                    <p>
+                        Imagine using a sharp kitchen knife.
+                        <br><br>
+                        In skilled hands, it prepares food safely and efficiently.
+                        <br><br>
+                        In careless hands, it can cause serious injury.
+                        <br><br>
+                        Leverage works the same way—it is a powerful tool that must be handled with knowledge and discipline.
+                    </p>
+                </div>
+
+                <div class="didyouknow-box">
+                    <h3>🌍 Did You Know?</h3>
+                    <p>
+                        Many professional traders intentionally use lower leverage than their broker allows.
+                        <br><br>
+                        They focus on protecting their capital first and growing their accounts consistently over time.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🧠 Golden Rule</h3>
+                    <p>
+                        <strong>Higher Leverage ≠ Higher Success</strong>
+                        <br><br>
+                        Higher leverage simply means higher exposure to market movements.
+                        <br><br>
+                        Your trading plan, discipline, and risk management determine whether that exposure results in profits or losses.
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 Coach's Tip</h3>
+                    <p>
+                        Never choose leverage because you want to make money faster.
+                        <br><br>
+                        Choose leverage that matches your trading strategy and your ability to manage risk.
+                        <br><br>
+                        Protecting your trading account is always more important than chasing large profits.
+                    </p>
+                </div>
+
+                <div class="note-box">
+                    <h3>📝 Key Takeaways</h3>
+                    <ul class="lesson-list">
+                        <li>✔ Leverage increases buying power.</li>
+                        <li>✔ Leverage increases both profits and losses.</li>
+                        <li>✔ Risk management is more important than high leverage.</li>
+                        <li>✔ Professional traders protect capital before seeking profits.</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 8 -->
+        <section class="lesson-step" id="step8">
+            <div class="card">
+                <span class="lesson-badge">STEP 8 OF 10</span>
+                <h1>Real Trading Example</h1>
+                <p>
+                    Let's bring everything you've learned together with a simple Forex trading example.
+                    <br><br>
+                    This example shows how Leverage, Margin, and Profit or Loss work in a real trading situation.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/step8.png" alt="Real Trading Example" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>📊 Trading Setup</h3>
+                    <ul class="lesson-list">
+                        <li><strong>Account Balance:</strong> $500</li>
+                        <li><strong>Leverage:</strong> 1:100</li>
+                        <li><strong>Trade Size:</strong> $10,000</li>
+                        <li><strong>Margin Required:</strong> $100</li>
+                        <li><strong>Currency Pair:</strong> EUR/USD</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>🚀 Opening the Trade</h3>
+                    <p>
+                        You deposit <strong>$500</strong> into your trading account.
+                        <br><br>
+                        Using <strong>1:100 Leverage</strong>, you open a trade worth <strong>$10,000</strong>.
+                        <br><br>
+                        Only <strong>$100</strong> is reserved as Margin, leaving the remaining balance available as Free Margin.
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>📈 If the Trade Goes in Your Favor</h3>
+                    <p>
+                        The market moves in the direction you predicted.
+                        <br><br>
+                        Your position earns a profit.
+                        <br><br>
+                        After closing the trade:
+                        <br><br>
+                        ✔ Your profit is added to your account.
+                        <br>
+                        ✔ Your reserved Margin is released.
+                        <br>
+                        ✔ Your account balance increases.
+                    </p>
+                </div>
+
+                <div class="warning-box">
+                    <h3>📉 If the Trade Goes Against You</h3>
+                    <p>
+                        If the market moves against your position, your trade begins losing money.
+                        <br><br>
+                        If losses become too large, your Free Margin decreases.
+                        <br><br>
+                        If your account falls below the broker's required Margin level, you may receive a <strong>Margin Call</strong> or your broker may automatically close your trade to limit further losses.
+                    </p>
+                </div>
+
+                <div class="didyouknow-box">
+                    <h3>🌍 Did You Know?</h3>
+                    <p>
+                        Successful traders don't focus on using the highest leverage.
+                        <br><br>
+                        They focus on controlling risk, protecting their capital, and taking high-quality trading opportunities.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🧠 Complete Trading Flow</h3>
+                    <p>
+                        💰 Deposit Funds<br>↓<br>⚡ Select Leverage<br>↓<br>📊 Open Trade<br>↓<br>💵 Margin Reserved<br>↓<br>📈 Market Moves<br>↓<br>✅ Profit or ❌ Loss
+                    </p>
+                </div>
+
+                <div class="success-box">
+                    <h3>🎯 Coach's Final Advice</h3>
+                    <p>
+                        Leverage is designed to increase your buying power—not to encourage unnecessary risk.
+                        <br><br>
+                        The most successful traders survive because they protect their capital first.
+                        <br><br>
+                        Always trade with a plan, manage your risk, and remember that consistency is more valuable than chasing quick profits.
+                    </p>
+                </div>
+
+                <div class="note-box">
+                    <h3>📝 Lesson 5 Summary</h3>
+                    <ul class="lesson-list">
+                        <li>✔ Leverage increases buying power.</li>
+                        <li>✔ Margin is the money required to open a leveraged trade.</li>
+                        <li>✔ Higher leverage reduces the Margin required.</li>
+                        <li>✔ Leverage increases both potential profits and potential losses.</li>
+                        <li>✔ Risk management is essential for long-term success.</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Take Quiz →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 9 (UPDATED QUIZ UI & NO IMAGE) -->
+        
+<section class="lesson-step" id="step9">
+    <div class="card">
+
+        <span class="lesson-badge">STEP 9 OF 10</span>
+
+        <h1>🧠 Lesson 5 Quiz</h1>
+
+        <p>
+            Test your understanding of
+            <strong>Leverage, Margin, Risk, and Position Size.</strong>
+
+            <br><br>
+
+            Answer all
+            <strong>10 questions</strong>.
+
+            <br><br>
+
+            Aim for at least
+            <strong>70%</strong>
+            to pass the Lesson 5 mastery target.
+        </p>
+
+        <div id="quiz-container">
+
+            <div
+                class="question-counter"
+                id="question-counter"
+            >
+                Question 1 of 10
+            </div>
+
+            <h2 id="question">
+                Loading Question...
+            </h2>
+
+            <div class="quiz-options">
+
+                <button
+                    type="button"
+                    class="quiz-btn"
+                    onclick="checkAnswer(0)"
+                    id="option0"
+                ></button>
+
+                <button
+                    type="button"
+                    class="quiz-btn"
+                    onclick="checkAnswer(1)"
+                    id="option1"
+                ></button>
+
+                <button
+                    type="button"
+                    class="quiz-btn"
+                    onclick="checkAnswer(2)"
+                    id="option2"
+                ></button>
+
+                <button
+                    type="button"
+                    class="quiz-btn"
+                    onclick="checkAnswer(3)"
+                    id="option3"
+                ></button>
+
+            </div>
+
+            <p
+                id="quiz-result"
+                aria-live="polite"
+            ></p>
+
+            <div class="quiz-navigation">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="previousQuestion()"
+                    id="prevQuestionBtn"
+                >
+                    ← Previous Question
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="nextQuestion()"
+                    id="nextQuestionBtn"
+                >
+                    Next Question →
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="info-box">
+            <h3>📚 Before You Start</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Read every question carefully.</li>
+                <li>✔ Think before selecting an answer.</li>
+                <li>✔ Learn from the explanation after each question.</li>
+                <li>✔ You can retry the quiz anytime to improve your score.</li>
+            </ul>
+        </div>
+
+        <div class="didyouknow-box">
+            <h3>💡 Learning Tip</h3>
+
+            <p>
+                Don't worry if you don't get a perfect score on your first attempt.
+
+                <br><br>
+
+                Review the explanation, retry the quiz,
+                and focus on understanding the concept rather than memorizing the answer.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="lesson-step" id="step10">
+            <div class="card">
+                <span class="lesson-badge">STEP 10 OF 10</span>
+                <h1>🎉 Congratulations!</h1>
+                <p>
+                    You have successfully completed <strong>Lesson 5 – Leverage & Margin.</strong>
+                    <br><br>
+                    You now understand how traders can control larger market positions using leverage, how margin works, and why proper risk management is essential for long-term trading success.
+                    <br><br>
+                    These concepts are used by traders every day and form an important foundation for professional Forex trading.
+                </p>
+
+                <img loading="lazy" src="../../images/lesson5/step10.png" alt="Lesson 5 Summary" class="lesson-image">
+
+                <div class="success-box">
+                    <h3>🏆 What You Learned</h3>
+                    <p>
+                        ✔ What Leverage is.<br><br>
+                        ✔ What Margin is.<br><br>
+                        ✔ How Leverage works.<br><br>
+                        ✔ Common Leverage Ratios.<br><br>
+                        ✔ How to calculate Margin.<br><br>
+                        ✔ The benefits and risks of Leverage.<br><br>
+                        ✔ A complete real trading example.
+                    </p>
+                </div>
+
+                <div class="didyouknow-box">
+                    <h3>🧠 Lesson Recap</h3>
+                    <p>
+                        Remember these four key ideas:
+                        <br><br>
+                        ⚡ <strong>Leverage</strong> increases your buying power.
+                        <br><br>
+                        💰 <strong>Margin</strong> is the money required to open a leveraged trade.
+                        <br><br>
+                        📈 Higher leverage means larger trading positions.
+                        <br><br>
+                        🛡️ Smart risk management protects your trading account.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Golden Rule</h3>
+                    <p>
+                        Professional traders don't succeed because they use the highest leverage.
+                        <br><br>
+                        They succeed because they understand risk, protect their capital, and stay disciplined in every trade.
+                    </p>
+                </div>
+
+                <div class="pro-box">
+                    <h3>🎓 Coach Strativo Says</h3>
+                    <p>
+                        Leverage is one of the most powerful tools in trading—but only when combined with patience, discipline, and proper risk management.
+                        <br><br>
+                        Never judge a trader by the size of their profits. Judge them by how well they protect their capital.
+                        <br><br>
+                        Consistency always beats taking unnecessary risks.
+                    </p>
+                </div>
+
+                <div class="tip-box">
+                    <h3>🚀 Coming Next</h3>
+                    <p>
+                        In <strong>Lesson 6 – Market Orders</strong>, you'll learn how to enter and exit trades using different order types, including Market Orders, Limit Orders, and Stop Orders.
+                    </p>
+                </div>
+
+                <div class="lesson-navigation">
+                    <button class="secondary-btn" onclick="retryQuiz()">🔄 Retry Quiz</button>
+                    <a href="lesson6.html" class="btn btn-primary">▶ Continue to Lesson 6</a>
+                </div>
+
+                <div class="lesson-signature">
+                    "Great traders don't rely on luck—they rely on knowledge, discipline, and consistent decision-making."
+                    <br><br>
+                    <strong>— Strativo Academy</strong>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="../../js/progress.js"></script>
+<script src="../../js/lesson.js"></script>
+<script src="../../quizzes/module1/quiz5.js"></script>
+
+<!-- STICKY MOBILE NAVIGATION -->
+
+<div
+    id="lessonStickyNav"
+    class="lesson-sticky-nav"
+    aria-label="Lesson step navigation"
+>
+    <button
+        type="button"
+        id="stickyPrevBtn"
+    >
+        ← Previous
+    </button>
+
+    <span id="stickyStepLabel">
+        Step 1 of 10
+    </span>
+
+    <button
+        type="button"
+        id="stickyNextBtn"
+    >
+        Next →
+    </button>
+</div>
+
+
+<!-- GLOBAL FOOTER -->
+
+<div data-component="footer"></div>
+
+
+<!-- GLOBAL COMPONENT SYSTEM -->
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+
+<!-- LESSON 5 V1 HELPER -->
+
+<script id="lesson5-v1-helper">
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        "use strict";
+
+
+        function getActiveStep() {
+
+            const active =
+                document.querySelector(
+                    ".lesson-step.active-step"
+                );
+
+            if (!active) {
+                return 1;
+            }
+
+            const match =
+                /^step(\d+)$/.exec(
+                    active.id || ""
+                );
+
+            return match
+                ? Number(match[1])
+                : 1;
+        }
+
+
+        function updateProgress() {
+
+            const step =
+                getActiveStep();
+
+            const percent =
+                step * 10;
+
+
+            document
+                .querySelectorAll(
+                    ".lesson-progress-fill"
+                )
+                .forEach(
+                    function (element) {
+
+                        element.style.width =
+                            percent + "%";
+                    }
+                );
+
+
+            const label =
+                document.getElementById(
+                    "stickyStepLabel"
+                );
+
+            if (label) {
+                label.textContent =
+                    "Step " +
+                    step +
+                    " of 10";
+            }
+
+
+            const stepText =
+                document.querySelector(
+                    ".step-text"
+                );
+
+            if (stepText) {
+                stepText.textContent =
+                    "Step " +
+                    step +
+                    " of 10";
+            }
+
+
+            const previous =
+                document.getElementById(
+                    "stickyPrevBtn"
+                );
+
+            const next =
+                document.getElementById(
+                    "stickyNextBtn"
+                );
+
+
+            if (previous) {
+                previous.disabled =
+                    step <= 1;
+            }
+
+
+            if (next) {
+
+                if (step === 9) {
+
+                    next.disabled =
+                        true;
+
+                    next.textContent =
+                        "Finish Quiz Above";
+
+                } else {
+
+                    next.disabled =
+                        false;
+
+                    next.textContent =
+                        step === 10
+                            ? "Back to Course →"
+                            : "Next →";
+                }
+            }
+
+
+            try {
+
+                localStorage.setItem(
+                    "strativo_lesson5_ui_state",
+                    JSON.stringify({
+                        currentStep:
+                            step,
+                        savedAt:
+                            Date.now()
+                    })
+                );
+
+            } catch (error) {
+
+                console.warn(
+                    "Lesson 5 UI state could not be saved.",
+                    error
+                );
+            }
+        }
+
+
+        /* SAVE & EXIT */
+
+        const saveExit =
+            document.getElementById(
+                "saveExitBtn"
+            );
+
+        if (saveExit) {
+
+            saveExit.addEventListener(
+                "click",
+                function () {
+
+                    updateProgress();
+
+                    window.location.href =
+                        "../../modules/module1.html";
+                }
+            );
+        }
+
+
+        /* MOBILE SIDEBAR */
+
+        const toggle =
+            document.getElementById(
+                "lessonSidebarToggle"
+            );
+
+        const sidebar =
+            document.getElementById(
+                "lessonSidebar"
+            );
+
+
+        if (toggle && sidebar) {
+
+            toggle.addEventListener(
+                "click",
+                function () {
+
+                    const open =
+                        sidebar.classList.toggle(
+                            "is-open"
+                        );
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        open
+                            ? "true"
+                            : "false"
+                    );
+
+                    toggle.textContent =
+                        open
+                            ? "✕ Close Lesson Menu"
+                            : "☰ Lesson Menu";
+                }
+            );
+        }
+
+
+        /* QUICK CHECK */
+
+        document
+            .querySelectorAll(
+                "#quickCheckStep4 button[data-correct]"
+            )
+            .forEach(
+                function (button) {
+
+                    button.addEventListener(
+                        "click",
+                        function () {
+
+                            const wrapper =
+                                document.getElementById(
+                                    "quickCheckStep4"
+                                );
+
+                            if (!wrapper) {
+                                return;
+                            }
+
+
+                            wrapper
+                                .querySelectorAll(
+                                    "button[data-correct]"
+                                )
+                                .forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "correct",
+                                            "wrong"
+                                        );
+                                    }
+                                );
+
+
+                            const correct =
+                                button.dataset.correct ===
+                                "true";
+
+
+                            button.classList.add(
+                                correct
+                                    ? "correct"
+                                    : "wrong"
+                            );
+
+
+                            const feedback =
+                                wrapper.querySelector(
+                                    ".quick-check-feedback"
+                                );
+
+
+                            if (!feedback) {
+                                return;
+                            }
+
+
+                            feedback.className =
+                                "quick-check-feedback visible " +
+                                (
+                                    correct
+                                        ? "correct"
+                                        : "wrong"
+                                );
+
+
+                            feedback.textContent =
+                                correct
+                                    ? "✅ Correct. Leverage primarily increases buying power."
+                                    : "❌ Not quite. The correct answer is A — Buying power. Leverage does not guarantee profit.";
+                        }
+                    );
+                }
+            );
+
+
+        /* CONNECT TO EXISTING LESSON ENGINE */
+
+        if (
+            typeof window.showStep ===
+            "function"
+        ) {
+
+            const originalShowStep =
+                window.showStep;
+
+
+            window.showStep =
+                function (step) {
+
+                    const result =
+                        originalShowStep.apply(
+                            this,
+                            arguments
+                        );
+
+
+                    updateProgress();
+
+                    return result;
+                };
+        }
+
+
+        /* STICKY PREVIOUS */
+
+        const stickyPrevious =
+            document.getElementById(
+                "stickyPrevBtn"
+            );
+
+
+        if (stickyPrevious) {
+
+            stickyPrevious.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        typeof window.previousStep ===
+                        "function" &&
+                        getActiveStep() > 1
+                    ) {
+
+                        window.previousStep();
+
+                        updateProgress();
+                    }
+                }
+            );
+        }
+
+
+        /* STICKY NEXT */
+
+        const stickyNext =
+            document.getElementById(
+                "stickyNextBtn"
+            );
+
+
+        if (stickyNext) {
+
+            stickyNext.addEventListener(
+                "click",
+                function () {
+
+                    const step =
+                        getActiveStep();
+
+
+                    if (step === 9) {
+                        return;
+                    }
+
+
+                    if (
+                        typeof window.nextStep ===
+                        "function"
+                    ) {
+
+                        window.nextStep();
+
+                    } else if (
+                        step === 10
+                    ) {
+
+                        window.location.href =
+                            "../../beginner.html";
+                    }
+                }
+            );
+        }
+
+
+        /* AUTO SAVE */
+
+        window.addEventListener(
+            "beforeunload",
+            updateProgress
+        );
+
+
+        document.addEventListener(
+            "visibilitychange",
+            function () {
+
+                if (
+                    document.visibilityState ===
+                    "hidden"
+                ) {
+
+                    updateProgress();
+                }
+            }
+        );
+
+
+        updateProgress();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

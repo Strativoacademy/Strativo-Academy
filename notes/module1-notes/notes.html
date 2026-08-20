@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Strativo Academy Module 1 Notes — Quick revision notes for Forex learning."
+    >
+
+    <title>
+        Module 1 Notes | Strativo Academy
+    </title>
+
+
+    <!-- =====================================================
+         MAIN STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/ui.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/header.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/footer.css"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         NOTES PAGE STYLE
+    ====================================================== -->
+
+    <style>
+
+        /* =================================================
+           PAGE
+        ================================================= */
+
+        .notes-page {
+            min-height: 100vh;
+            padding-bottom: 70px;
+        }
+
+
+        /* =================================================
+           HERO
+        ================================================= */
+
+        .notes-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 90px 20px 70px;
+            border-bottom: 1px solid rgba(148,163,184,.08);
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(59,130,246,.10),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(52,211,153,.08),
+                    transparent 35%
+                ),
+                #030712;
+        }
+
+        .notes-hero-content {
+            width: min(1100px, 100%);
+            margin: auto;
+            text-align: center;
+        }
+
+        .notes-eyebrow {
+            display: inline-block;
+            margin-bottom: 14px;
+            color: #60a5fa;
+            font-size: .58rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+        }
+
+        .notes-hero h1 {
+            margin: 0;
+            color: #f8fafc;
+            font-family: Poppins, sans-serif;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            line-height: 1.15;
+        }
+
+        .notes-hero p {
+            max-width: 700px;
+            margin: 18px auto 0;
+            color: #94a3b8;
+            font-size: .78rem;
+            line-height: 1.8;
+        }
+
+
+        /* =================================================
+           HERO BADGES
+        ================================================= */
+
+        .notes-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 25px;
+        }
+
+        .notes-badges span {
+            padding: 8px 12px;
+            border: 1px solid rgba(148,163,184,.10);
+            border-radius: 999px;
+            color: #cbd5e1;
+            background: rgba(15,23,42,.55);
+            font-size: .52rem;
+            font-weight: 700;
+        }
+
+
+        /* =================================================
+           MAIN CONTENT
+        ================================================= */
+
+        .notes-container {
+            width: min(1100px, calc(100% - 30px));
+            margin: 35px auto 0;
+        }
+
+
+        /* =================================================
+           INTRO CARD
+        ================================================= */
+
+        .notes-intro {
+            padding: 22px;
+            border: 1px solid rgba(96,165,250,.10);
+            border-radius: 16px;
+            background: rgba(2,6,23,.45);
+        }
+
+        .notes-intro h2 {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: Poppins, sans-serif;
+            font-size: 1rem;
+        }
+
+        .notes-intro p {
+            margin-top: 10px;
+            color: #94a3b8;
+            font-size: .62rem;
+            line-height: 1.75;
+        }
+
+
+        /* =================================================
+           SEARCH
+        ================================================= */
+
+        .notes-search {
+            position: relative;
+            margin-top: 18px;
+        }
+
+        .notes-search i {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            color: #64748b;
+            font-size: .65rem;
+            transform: translateY(-50%);
+        }
+
+        .notes-search input {
+            width: 100%;
+            min-height: 46px;
+            box-sizing: border-box;
+            padding: 0 15px 0 40px;
+            border: 1px solid rgba(148,163,184,.10);
+            border-radius: 10px;
+            outline: none;
+            color: #f8fafc;
+            background: rgba(15,23,42,.65);
+            font: inherit;
+            font-size: .62rem;
+        }
+
+        .notes-search input:focus {
+            border-color: rgba(96,165,250,.30);
+        }
+
+        .notes-search input::placeholder {
+            color: #64748b;
+        }
+
+
+        /* =================================================
+           SECTION HEADER
+        ================================================= */
+
+        .notes-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 35px 0 15px;
+        }
+
+        .notes-section-header h2 {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: Poppins, sans-serif;
+            font-size: 1rem;
+        }
+
+        .notes-section-header span {
+            color: #64748b;
+            font-size: .52rem;
+            font-weight: 700;
+        }
+
+
+        /* =================================================
+           NOTES GRID
+        ================================================= */
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+
+        /* =================================================
+           NOTE CARD
+        ================================================= */
+
+        .note-card {
+            position: relative;
+            padding: 20px;
+            border: 1px solid rgba(148,163,184,.08);
+            border-radius: 15px;
+            background: rgba(15,23,42,.38);
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+
+        .note-card {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .note-card:focus-visible {
+            outline: 2px solid rgba(96,165,250,.55);
+            outline-offset: 3px;
+        }
+
+        .note-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(96,165,250,.18);
+            background: rgba(15,23,42,.55);
+        }
+
+        .note-icon {
+            display: grid;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            margin-bottom: 15px;
+            border-radius: 11px;
+            background: rgba(59,130,246,.08);
+            font-size: 1rem;
+        }
+
+        .note-card h3 {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: Poppins, sans-serif;
+            font-size: .78rem;
+        }
+
+        .note-card p {
+            margin-top: 8px;
+            color: #94a3b8;
+            font-size: .56rem;
+            line-height: 1.65;
+        }
+
+
+        /* =================================================
+           NOTE TAG
+        ================================================= */
+
+        .note-tag {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 5px 8px;
+            border-radius: 6px;
+            color: #93c5fd;
+            background: rgba(59,130,246,.07);
+            font-size: .45rem;
+            font-weight: 800;
+            letter-spacing: .06em;
+        }
+
+
+        /* =================================================
+           QUICK REVISION
+        ================================================= */
+
+        .quick-revision {
+            margin-top: 35px;
+            padding: 22px;
+            border: 1px solid rgba(52,211,153,.10);
+            border-radius: 16px;
+            background: rgba(16,185,129,.025);
+        }
+
+        .quick-revision h2 {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: Poppins, sans-serif;
+            font-size: 1rem;
+        }
+
+        .quick-revision p {
+            margin-top: 8px;
+            color: #94a3b8;
+            font-size: .56rem;
+            line-height: 1.65;
+        }
+
+        .revision-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 17px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .revision-list li {
+            padding: 12px;
+            border: 1px solid rgba(148,163,184,.07);
+            border-radius: 9px;
+            color: #cbd5e1;
+            background: rgba(2,6,23,.28);
+            font-size: .55rem;
+            line-height: 1.5;
+        }
+
+        .revision-list li strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #6ee7b7;
+        }
+
+
+        /* =================================================
+           BOTTOM NAVIGATION
+        ================================================= */
+
+        .notes-bottom-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(148,163,184,.08);
+        }
+
+        .notes-bottom-navigation a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 40px;
+            padding: 0 15px;
+            border: 1px solid rgba(148,163,184,.10);
+            border-radius: 9px;
+            color: #cbd5e1;
+            background: rgba(15,23,42,.45);
+            text-decoration: none;
+            font-size: .54rem;
+            font-weight: 800;
+            transition: .2s ease;
+        }
+
+        .notes-bottom-navigation a:hover {
+            border-color: rgba(96,165,250,.20);
+            background: rgba(59,130,246,.06);
+        }
+
+
+        /* =================================================
+           NO RESULTS
+        ================================================= */
+
+        .notes-no-results {
+            display: none;
+            padding: 30px;
+            border: 1px solid rgba(148,163,184,.08);
+            border-radius: 14px;
+            color: #64748b;
+            background: rgba(15,23,42,.30);
+            text-align: center;
+            font-size: .58rem;
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+            .notes-hero {
+                padding: 70px 18px 55px;
+            }
+
+            .notes-container {
+                width: min(100% - 24px, 600px);
+            }
+
+            .notes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .revision-list {
+                grid-template-columns: 1fr;
+            }
+
+            .notes-bottom-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .notes-bottom-navigation a {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div
+        data-component="header"
+    ></div>
+
+
+
+    <!-- =====================================================
+         NOTES PAGE
+    ====================================================== -->
+
+    <main class="notes-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="notes-hero">
+
+            <div class="notes-hero-content">
+
+                <span class="notes-eyebrow">
+                    STRATIVO ACADEMY • MODULE 1
+                </span>
+
+
+                <h1>
+                    Module 1 Notes
+                </h1>
+
+
+                <p>
+                    A focused revision area for reviewing the important concepts covered throughout Module 1.
+                </p>
+
+
+                <div class="notes-badges">
+
+                    <span>
+                        📘 Quick Revision
+                    </span>
+
+                    <span>
+                        🧠 Key Concepts
+                    </span>
+
+                    <span>
+                        ⭐ Important Points
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <div class="notes-container">
+
+
+            <!-- =================================================
+                 INTRO
+            ================================================== -->
+
+            <section class="notes-intro">
+
+                <h2>
+                    Welcome to Module 1 Notes
+                </h2>
+
+
+                <p>
+                    Use this section to review the official Module 1 lessons and the additional trading reference notes. These notes support the lessons, exercises, and Risk Management labs.
+                </p>
+
+
+                <!-- SEARCH -->
+
+                <div class="notes-search">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="search"
+                        id="notesSearch"
+                        placeholder="Search Module 1 notes..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 NOTE TOPICS
+            ================================================== -->
+
+            <div class="notes-section-header">
+
+                <h2>
+                    Module 1 Lesson Notes
+                </h2>
+
+                <span id="notesCount">
+                    18 topics
+                </span>
+
+            </div>
+
+
+
+            <section
+                class="notes-grid"
+                id="notesGrid"
+            >
+
+                <!-- NOTE 01 -->
+                <a
+                    class="note-card"
+                    href="introduction-to-forex.html"
+                    data-search="forex basics forex currency market currency pairs"
+                >
+                    <div class="note-icon">📘</div>
+                    <h3>Forex Basics</h3>
+                    <p>
+                        Review the fundamental concepts introduced in Module 1
+                        and build a clear foundation before moving into more
+                        advanced topics.
+                    </p>
+                    <span class="note-tag">01 • FOUNDATION</span>
+                </a>
+
+
+                <!-- NOTE 02 -->
+                <a
+                    class="note-card"
+                    href="history-of-money.html"
+                    data-search="history money barter currency gold standard monetary system foreign exchange history">
+                    <div class="note-icon">🏛️</div>
+                    <h3>The History of Money</h3>
+                    <p>
+                        Review how money developed from barter and early forms
+                        of exchange into modern currencies and the system that
+                        supports today's foreign exchange market.
+                    </p>
+                    <span class="note-tag">02 • OFFICIAL LESSON</span>
+                </a>
+
+
+                <!-- NOTE 03 -->
+                <a
+                    class="note-card"
+                    href="currency-pairs.html"
+                    data-search="currency pairs base currency quote currency major minor exotic"
+                >
+                    <div class="note-icon">💱</div>
+                    <h3>Currency Pairs</h3>
+                    <p>
+                        Understand base and quote currencies, major, minor and
+                        exotic pairs, and how currency-pair pricing works.
+                    </p>
+                    <span class="note-tag">02 • CURRENCY</span>
+                </a>
+
+
+                <!-- NOTE 03 -->
+                <a
+                    class="note-card"
+                    href="notes-candlesticks.html"
+                    data-search="candlestick price action candles open high low close body wick bullish bearish"
+                >
+                    <div class="note-icon">🕯️</div>
+                    <h3>Candlesticks &amp; Price Action</h3>
+                    <p>
+                        Learn what a candlestick shows, including OHLC, bodies,
+                        wicks, bullish and bearish candles, and basic price
+                        movement.
+                    </p>
+                    <span class="note-tag">03 • PRICE ACTION</span>
+                </a>
+
+
+                <!-- NOTE 04 -->
+                <a
+                    class="note-card"
+                    href="notes-market-structure.html"
+                    data-search="market structure swing high swing low higher high higher low lower high lower low hh hl lh ll trend"
+                >
+                    <div class="note-icon">📊</div>
+                    <h3>Market Structure</h3>
+                    <p>
+                        Review Swing Highs, Swing Lows, HH, HL, LH and LL and
+                        learn how structural points describe market direction.
+                    </p>
+                    <span class="note-tag">04 • STRUCTURE</span>
+                </a>
+
+
+                <!-- NOTE 05 -->
+                <a
+                    class="note-card"
+                    href="notes-support-resistance.html"
+                    data-search="support resistance zones levels rejection breakout retest"
+                >
+                    <div class="note-icon">🎯</div>
+                    <h3>Support &amp; Resistance</h3>
+                    <p>
+                        Study important price zones, reactions, rejection,
+                        breakouts and why support and resistance should be
+                        treated as areas rather than perfect lines.
+                    </p>
+                    <span class="note-tag">05 • LEVELS</span>
+                </a>
+
+
+                <!-- NOTE 06 -->
+                <a
+                    class="note-card"
+                    href="notes-liquidity.html"
+                    data-search="liquidity liquidity pools equal highs equal lows sweep stop orders buy side sell side"
+                >
+                    <div class="note-icon">💧</div>
+                    <h3>Liquidity</h3>
+                    <p>
+                        Learn where liquidity can build around obvious highs,
+                        lows and ranges, and how price can interact with those
+                        areas.
+                    </p>
+                    <span class="note-tag">06 • LIQUIDITY</span>
+                </a>
+
+
+                <!-- NOTE 07 -->
+                <a
+                    class="note-card"
+                    href="notes-trend-analysis.html"
+                    data-search="trend analysis uptrend downtrend range trendline impulse correction trend continuation reversal"
+                >
+                    <div class="note-icon">📈</div>
+                    <h3>Trend Analysis</h3>
+                    <p>
+                        Review uptrends, downtrends and ranges and learn how
+                        price structure, impulse and correction help describe
+                        market conditions.
+                    </p>
+                    <span class="note-tag">07 • TREND</span>
+                </a>
+<!-- NOTE 04 -->
+                <a
+                    class="note-card"
+                    href="pips-and-points.html"
+                    data-search="pips points pip value decimal price movement">
+                    <div class="note-icon">📏</div>
+                    <h3>Pips &amp; Points</h3>
+                    <p>
+                        Review how pips and points describe small price
+                        movements and why they matter when reading currency
+                        prices and calculating trading results.
+                    </p>
+                    <span class="note-tag">04 • OFFICIAL LESSON</span>
+                </a>
+
+
+                <!-- NOTE 05 -->
+                <a
+                    class="note-card"
+                    href="lots-and-leverage.html"
+                    data-search="lots leverage position size trading volume margin">
+                    <div class="note-icon">⚖️</div>
+                    <h3>Lots &amp; Leverage</h3>
+                    <p>
+                        Understand trading volume, lot sizes, leverage and the
+                        relationship between position size and market exposure.
+                    </p>
+                    <span class="note-tag">05 • OFFICIAL LESSON</span>
+                </a>
+
+
+                <!-- NOTE 06 -->
+                <a
+                    class="note-card"
+                    href="bid-ask-spreads.html"
+                    data-search="bid ask spread spread cost buy sell price">
+                    <div class="note-icon">↔️</div>
+                    <h3>Bid, Ask &amp; Spreads</h3>
+                    <p>
+                        Learn the difference between bid and ask prices, what
+                        the spread represents and why spread cost matters.
+                    </p>
+                    <span class="note-tag">06 • OFFICIAL LESSON</span>
+                </a>
+
+
+                                <!-- NOTE 07 • MARKET ORDERS -->
+                <a
+                    class="note-card"
+                    href="market-orders.html"
+                    data-search="market orders market order market buy market sell execution bid ask slippage limit order stop order liquidity spread order execution"
+                >
+                    <div class="note-icon">⚡</div>
+                    <h3>Market Orders</h3>
+                    <p>
+                        Learn how market orders are executed, how market buys and
+                        sells interact with bid and ask prices, and why execution
+                        price, spread, slippage and liquidity matter.
+                    </p>
+                    <span class="note-tag">07 • ORDER EXECUTION</span>
+                </a>
+
+
+<!-- NOTE 07 -->
+                <a
+                    class="note-card"
+                    href="market-sessions.html"
+                    data-search="market sessions london new york tokyo sydney trading times">
+                    <div class="note-icon">🕐</div>
+                    <h3>Market Sessions &amp; Times</h3>
+                    <p>
+                        Review the major forex sessions and understand how
+                        session timing can affect market activity and liquidity.
+                    </p>
+                    <span class="note-tag">07 • OFFICIAL LESSON</span>
+                </a>
+
+
+                <!-- NOTE 08 -->
+                <a
+                    class="note-card"
+                    href="who-trades-forex.html"
+                    data-search="who trades forex banks institutions corporations retail traders central banks">
+                    <div class="note-icon">🏦</div>
+                    <h3>Who Trades Forex?</h3>
+                    <p>
+                        Learn about the major participants in the foreign
+                        exchange market and why different participants trade.
+                    </p>
+                    <span class="note-tag">08 • OFFICIAL LESSON</span>
+                </a>
+
+
+                <!-- NOTE 09 -->
+                <a
+                    class="note-card"
+                    href="market-analysis.html"
+                    data-search="market analysis fundamental technical sentiment analysis">
+                    <div class="note-icon">🔎</div>
+                    <h3>Types of Market Analysis</h3>
+                    <p>
+                        Review fundamental, technical and sentiment analysis
+                        and how each approach looks at the market differently.
+                    </p>
+                    <span class="note-tag">09 • OFFICIAL LESSON</span>
+                </a>
+
+
+                <!-- NOTE 10 -->
+                <a
+                    class="note-card"
+                    href="forex-risks.html"
+                    data-search="forex risks trading risk leverage loss volatility risk management">
+                    <div class="note-icon">⚠️</div>
+                    <h3>Forex Trading Risks</h3>
+                    <p>
+                        Understand the major risks of forex trading, including
+                        leverage, volatility, losses and poor risk control.
+                    </p>
+                    <span class="note-tag">10 • OFFICIAL LESSON</span>
+                </a>
+
+
+                <!-- EXTRA • COMPLETE PRICE ACTION -->
+                <a
+                    class="note-card"
+                    href="notes-price-action-complete.html"
+                    data-search="complete price action candlesticks swing high swing low hh hl lh ll market structure bos choch support resistance liquidity breakout false breakout pullback rejection continuation reversal multi timeframe trade planning checklist">
+                    <div class="note-icon">📚</div>
+                    <h3>Complete Price Action</h3>
+                    <p>
+                        A large, detailed reference covering Price Action from
+                        the foundations of candles and swings through structure,
+                        liquidity, breakouts, pullbacks, MTF analysis and
+                        complete chart-reading practice.
+                    </p>
+                    <span class="note-tag">EXTRA • COMPLETE COURSE</span>
+                </a>
+
+
+                <!-- NOTE 09 -->
+                <a
+                    class="note-card"
+                    href="risk-management.html"
+                    data-search="risk management risk percentage stop loss position sizing risk reward planned risk"
+                >
+                    <div class="note-icon">🛡️</div>
+                    <h3>Risk Management</h3>
+                    <p>
+                        Review planned risk, Stop Loss, position sizing and
+                        risk/reward concepts. Use the dedicated Risk Management
+                        builds for detailed interactive practice.
+                    </p>
+                    <span class="note-tag">09 • RISK</span>
+                </a>
+
+            </section>
+
+
+            <!-- =================================================
+                 NO RESULTS
+            ================================================== -->
+
+            <div
+                class="notes-no-results"
+                id="notesNoResults"
+            >
+
+                No matching notes found.
+
+            </div>
+
+
+
+            <!-- =================================================
+                 QUICK REVISION
+            ================================================== -->
+
+            <section class="quick-revision">
+
+                <h2>
+                    ⚡ Quick Revision
+                </h2>
+
+
+                <p>
+                    Before moving to the final exercise, use these reminders to refresh the most important ideas from Module 1.
+                </p>
+
+
+                <ul class="revision-list">
+
+                    <li>
+
+                        <strong>
+                            Market Structure
+                        </strong>
+
+                        HH, HL, LH and LL describe important changes in price structure.
+
+                    </li>
+
+
+                    <li>
+
+                        <strong>
+                            Support & Resistance
+                        </strong>
+
+                        Important areas should be treated as zones rather than assuming every level is an exact line.
+
+                    </li>
+
+
+                    <li>
+
+                        <strong>
+                            Price Action
+                        </strong>
+
+                        Study how price behaves around important areas instead of relying only on a single candle.
+
+                    </li>
+
+
+                    <li>
+
+                        <strong>
+                            Risk Management
+                        </strong>
+
+                        Define planned risk before entering a trade and keep exposure within the intended limit.
+
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 BOTTOM NAVIGATION
+            ================================================== -->
+
+            <div class="notes-bottom-navigation">
+
+
+                <a
+                    href="../../modules/module1.html"
+                >
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to Module 1
+
+                </a>
+
+
+                <a
+                    href="../../index.html"
+                >
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Strativo Academy Home
+
+                </a>
+
+
+                <a
+                    href="../../modules/module1.html"
+                    aria-label="Return to Module 1"
+                >
+
+                    <span>Return to Module 1</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <div
+        data-component="footer"
+    ></div>
+
+
+
+    <!-- =====================================================
+         COMMON JS
+    ====================================================== -->
+
+    <script
+        src="../../js/routes.js"
+    ></script>
+
+    <script
+        src="../../js/component-loader.js"
+    ></script>
+
+    <script
+        src="../../js/header.js"
+    ></script>
+
+
+    <!-- =====================================================
+         NOTES SEARCH
+    ====================================================== -->
+
+    <script>
+
+        (function () {
+
+            "use strict";
+
+
+            const searchInput =
+                document.getElementById(
+                    "notesSearch"
+                );
+
+
+            const notesGrid =
+                document.getElementById(
+                    "notesGrid"
+                );
+
+
+            const noResults =
+                document.getElementById(
+                    "notesNoResults"
+                );
+
+
+            const notesCount =
+                document.getElementById(
+                    "notesCount"
+                );
+
+
+            if (
+                !searchInput ||
+                !notesGrid
+            ) {
+
+                return;
+
+            }
+
+
+            const cards =
+                Array.from(
+                    notesGrid.querySelectorAll(
+                        ".note-card"
+                    )
+                );
+
+
+            function filterNotes() {
+
+                const query =
+                    searchInput.value
+                        .trim()
+                        .toLowerCase();
+
+
+                let visibleCount =
+                    0;
+
+
+                cards.forEach(
+                    function (card) {
+
+                        const searchText =
+                            (
+                                card.dataset.search ||
+                                card.textContent
+                            ).toLowerCase();
+
+
+                        const matches =
+                            query === "" ||
+                            searchText.includes(
+                                query
+                            );
+
+
+                        card.style.display =
+                            matches
+                                ? ""
+                                : "none";
+
+
+                        if (matches) {
+
+                            visibleCount++;
+
+                        }
+
+                    }
+                );
+
+
+                if (notesCount) {
+
+                    notesCount.textContent =
+                        `${visibleCount} ${
+                            visibleCount === 1
+                                ? "topic"
+                                : "topics"
+                        }`;
+
+                }
+
+
+                if (noResults) {
+
+                    noResults.style.display =
+                        visibleCount === 0
+                            ? "block"
+                            : "none";
+
+                }
+
+            }
+
+
+            searchInput.addEventListener(
+                "input",
+                filterNotes
+            );
+
+
+        })();
+
+    </script>
+
+
+</body>
+
+</html>

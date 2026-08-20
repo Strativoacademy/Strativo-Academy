@@ -1,0 +1,456 @@
+/* ==========================================================
+   STRATIVO ACADEMY
+   Sound & Audio Settings
+   ========================================================== */
+
+
+/* ==========================================================
+   SOUND LIST
+   ========================================================== */
+
+.sound-toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* ==========================================================
+   SOUND TOGGLE CARD
+   ========================================================== */
+
+.sound-toggle-card,
+.sound-master-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+
+    background: rgba(15, 23, 42, 0.72);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.14);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.sound-toggle-card:hover,
+.sound-master-card:hover {
+    border-color: rgba(255, 255, 255, 0.13);
+    background: rgba(15, 23, 42, 0.86);
+
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================================
+   SOUND INFORMATION
+   ========================================================== */
+
+.sound-toggle-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    min-width: 0;
+}
+
+.sound-toggle-info h3 {
+    margin: 0 0 6px;
+
+    color: #f8fafc;
+
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.sound-toggle-info p {
+    margin: 0;
+
+    max-width: 720px;
+
+    color: #94a3b8;
+
+    font-size: 0.87rem;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   MASTER CONTROL
+   ========================================================== */
+
+.sound-master-card {
+    border-color: rgba(59, 130, 246, 0.16);
+
+    background: rgba(30, 64, 175, 0.07);
+}
+
+.sound-master-card:hover {
+    border-color: rgba(59, 130, 246, 0.28);
+
+    background: rgba(30, 64, 175, 0.10);
+}
+
+
+/* ==========================================================
+   AUDIO INFORMATION CARD
+   ========================================================== */
+
+.sound-info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    padding: 22px 24px;
+
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    border-radius: 18px;
+
+    background: rgba(30, 64, 175, 0.08);
+}
+
+.sound-info-card h3 {
+    margin: 0 0 6px;
+
+    color: #f8fafc;
+
+    font-size: 0.98rem;
+    font-weight: 700;
+}
+
+.sound-info-card p {
+    margin: 0;
+
+    max-width: 760px;
+
+    color: #94a3b8;
+
+    font-size: 0.87rem;
+    line-height: 1.65;
+}
+
+
+/* ==========================================================
+   SOUND SWITCH
+   ========================================================== */
+
+.sound-switch {
+    position: relative;
+
+    display: inline-flex;
+
+    flex: 0 0 auto;
+
+    width: 50px;
+    height: 28px;
+
+    cursor: pointer;
+}
+
+.sound-switch input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sound-switch-slider {
+    position: absolute;
+
+    inset: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 999px;
+
+    background: rgba(148, 163, 184, 0.22);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.sound-switch-slider::before {
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    top: 3px;
+    left: 3px;
+
+    border-radius: 50%;
+
+    background: #e2e8f0;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.sound-switch input:checked
++ .sound-switch-slider {
+    background: rgba(59, 130, 246, 0.8);
+
+    border-color: rgba(59, 130, 246, 0.9);
+}
+
+.sound-switch input:checked
++ .sound-switch-slider::before {
+    transform: translateX(22px);
+
+    background: #ffffff;
+}
+
+.sound-switch input:focus-visible
++ .sound-switch-slider {
+    outline: 2px solid rgba(96, 165, 250, 0.9);
+
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   MUTE STATE
+   ========================================================== */
+
+.sound-page[data-muted="true"]
+.sound-master-card {
+    border-color: rgba(239, 68, 68, 0.20);
+
+    background: rgba(127, 29, 29, 0.08);
+}
+
+.sound-page[data-muted="true"]
+.sound-master-card:hover {
+    border-color: rgba(239, 68, 68, 0.32);
+
+    background: rgba(127, 29, 29, 0.12);
+}
+
+
+/* ==========================================================
+   LIGHT THEME
+   ========================================================== */
+
+html[data-theme="light"]
+body.sound-page {
+    background: #f8fafc;
+
+    color: #0f172a;
+
+    color-scheme: light;
+}
+
+html[data-theme="light"]
+body.sound-page
+.sound-toggle-card {
+    background: #ffffff;
+
+    border-color: rgba(15, 23, 42, 0.10);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="light"]
+body.sound-page
+.sound-toggle-card:hover {
+    background: #ffffff;
+
+    border-color: rgba(15, 23, 42, 0.16);
+}
+
+html[data-theme="light"]
+body.sound-page
+.sound-toggle-info h3,
+html[data-theme="light"]
+body.sound-page
+.sound-info-card h3 {
+    color: #0f172a;
+}
+
+html[data-theme="light"]
+body.sound-page
+.sound-toggle-info p,
+html[data-theme="light"]
+body.sound-page
+.sound-info-card p {
+    color: #64748b;
+}
+
+html[data-theme="light"]
+body.sound-page
+.sound-master-card {
+    background: rgba(37, 99, 235, 0.05);
+
+    border-color: rgba(37, 99, 235, 0.14);
+}
+
+html[data-theme="light"]
+body.sound-page
+.sound-info-card {
+    background: rgba(37, 99, 235, 0.05);
+
+    border-color: rgba(37, 99, 235, 0.14);
+}
+
+html[data-theme="light"]
+body.sound-page
+.sound-switch-slider {
+    background: rgba(100, 116, 139, 0.18);
+
+    border-color: rgba(15, 23, 42, 0.12);
+}
+
+
+/* ==========================================================
+   SYSTEM THEME
+   ========================================================== */
+
+@media (prefers-color-scheme: light) {
+
+    html[data-theme-preference="system"]
+    body.sound-page {
+        background: #f8fafc;
+
+        color: #0f172a;
+
+        color-scheme: light;
+    }
+
+    html[data-theme-preference="system"]
+    body.sound-page
+    .sound-toggle-card {
+        background: #ffffff;
+
+        border-color: rgba(15, 23, 42, 0.10);
+
+        box-shadow:
+            0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    html[data-theme-preference="system"]
+    body.sound-page
+    .sound-toggle-info h3,
+    html[data-theme-preference="system"]
+    body.sound-page
+    .sound-info-card h3 {
+        color: #0f172a;
+    }
+
+    html[data-theme-preference="system"]
+    body.sound-page
+    .sound-toggle-info p,
+    html[data-theme-preference="system"]
+    body.sound-page
+    .sound-info-card p {
+        color: #64748b;
+    }
+
+}
+
+
+/* ==========================================================
+   HIGH CONTRAST
+   ========================================================== */
+
+html[data-high-contrast="true"]
+body.sound-page
+.sound-toggle-card,
+html[data-high-contrast="true"]
+body.sound-page
+.sound-master-card {
+    border-color: rgba(255, 255, 255, 0.30);
+}
+
+html[data-high-contrast="true"]
+body.sound-page
+.sound-toggle-info p,
+html[data-high-contrast="true"]
+body.sound-page
+.sound-info-card p {
+    color: #dbeafe;
+}
+
+
+/* ==========================================================
+   COMPACT LAYOUT
+   ========================================================== */
+
+html[data-compact-layout="true"]
+body.sound-page
+.sound-toggle-card,
+html[data-compact-layout="true"]
+body.sound-page
+.sound-master-card,
+html[data-compact-layout="true"]
+body.sound-page
+.sound-info-card {
+    padding: 16px 18px;
+}
+
+html[data-compact-layout="true"]
+body.sound-page
+.sound-toggle-list {
+    gap: 8px;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 700px) {
+
+    .sound-toggle-card,
+    .sound-master-card {
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .sound-toggle-card,
+    .sound-master-card,
+    .sound-info-card {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 18px;
+
+        border-radius: 15px;
+    }
+
+    .sound-switch {
+        align-self: flex-start;
+    }
+
+    .sound-toggle-info {
+        gap: 12px;
+    }
+
+    .sound-toggle-info p,
+    .sound-info-card p {
+        font-size: 0.84rem;
+    }
+
+}

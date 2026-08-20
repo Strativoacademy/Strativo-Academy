@@ -1,0 +1,201 @@
+<!--
+============================================================
+STRATIVO ACADEMY
+Shared Modal Component
+============================================================
+
+Purpose:
+- Reusable modal/dialog component
+- Supports confirmations, information messages,
+  quiz results, unlock notifications, and future features
+- Accessible to keyboard and screen-reader users
+- Content is controlled by JavaScript
+
+JavaScript can control:
+- Modal title
+- Modal message
+- Modal content
+- Modal actions
+- Open/close state
+============================================================
+-->
+
+<div
+  class="modal-component"
+  id="global-modal"
+  data-component="modal"
+  data-modal-state="closed"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  aria-describedby="modal-message"
+  aria-hidden="true"
+  hidden
+>
+
+  <!-- ==================================================
+       MODAL OVERLAY
+       ================================================== -->
+
+  <div
+    class="modal-overlay"
+    id="modal-overlay"
+    data-modal-close="true"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- ==================================================
+       MODAL CONTAINER
+       ================================================== -->
+
+  <div
+    class="modal-container"
+    id="modal-container"
+    role="document"
+  >
+
+    <!-- ==================================================
+         MODAL HEADER
+         ================================================== -->
+
+    <div class="modal-header">
+
+      <div class="modal-heading">
+
+        <span
+          class="modal-icon"
+          id="modal-icon"
+          aria-hidden="true"
+        >
+          ℹ️
+        </span>
+
+        <h2
+          class="modal-title"
+          id="modal-title"
+        >
+          Strativo Academy
+        </h2>
+
+      </div>
+
+      <!-- Close Button -->
+      <button
+        type="button"
+        class="modal-close-button"
+        id="modal-close-button"
+        aria-label="Close dialog"
+        title="Close"
+        data-modal-close="true"
+      >
+        ×
+      </button>
+
+    </div>
+        <!-- ==================================================
+         MODAL BODY
+         ================================================== -->
+
+    <div
+      class="modal-body"
+      id="modal-body"
+    >
+
+      <!-- Main Message -->
+      <p
+        class="modal-message"
+        id="modal-message"
+      >
+        This is a Strativo Academy message.
+      </p>
+
+      <!-- Dynamic Content Mount -->
+      <div
+        class="modal-content"
+        id="modal-content"
+      >
+        <!--
+          Dynamic modal content will be inserted here.
+
+          Examples:
+          - Quiz results
+          - Lesson unlock information
+          - Confirmation details
+          - Error information
+          - Achievement information
+        -->
+      </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         MODAL FOOTER
+         ================================================== -->
+
+    <div
+      class="modal-footer"
+      id="modal-footer"
+    >
+
+      <div
+        class="modal-actions"
+        id="modal-actions"
+      >
+
+        <!-- Primary Action -->
+        <button
+          type="button"
+          class="modal-button modal-button-primary"
+          id="modal-primary-button"
+          data-modal-action="primary"
+          hidden
+        >
+          Continue
+        </button>
+
+        <!-- Secondary Action -->
+        <button
+          type="button"
+          class="modal-button modal-button-secondary"
+          id="modal-secondary-button"
+          data-modal-action="secondary"
+          hidden
+        >
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+        <!-- ==================================================
+         MODAL STATUS
+         ================================================== -->
+
+    <div
+      class="modal-status"
+      id="modal-status"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      hidden
+    ></div>
+
+
+    <!-- ==================================================
+         MODAL CONFIGURATION
+         ================================================== -->
+
+    <div
+      class="modal-config"
+      id="modal-config"
+      data-default-action="close"
+      data-close-on-overlay="true"
+      data-close-on-escape="true"
+      hidden
+    ></div>
+
+  </div>
+
+</div>

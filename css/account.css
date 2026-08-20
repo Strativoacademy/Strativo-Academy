@@ -1,0 +1,693 @@
+/* ==========================================================
+   STRATIVO ACADEMY
+   ACCOUNT PAGE
+   Account-specific layout and styling
+========================================================== */
+
+:root {
+    --account-bg: #05080d;
+    --account-card: #0b1422;
+    --account-card-hover: #0e1929;
+    --account-border: rgba(148, 163, 184, 0.14);
+
+    --account-text: #f8fafc;
+    --account-muted: #91a4bb;
+    --account-soft: #6f849d;
+
+    --account-accent: #00e5c3;
+    --account-accent-soft: rgba(0, 229, 195, 0.08);
+    --account-accent-border: rgba(0, 229, 195, 0.28);
+
+    --account-danger: #ff647c;
+
+    --account-radius: 18px;
+}
+
+
+/* ==========================================================
+   PAGE BASE
+========================================================== */
+
+body.account-page {
+    margin: 0;
+    background:
+        radial-gradient(
+            circle at 0% 20%,
+            rgba(0, 229, 195, 0.055),
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            #03070c 0%,
+            #050a11 50%,
+            #03070c 100%
+        );
+
+    color: var(--account-text);
+}
+
+
+/* ==========================================================
+   MAIN ACCOUNT CONTAINER
+========================================================== */
+
+.account-page .settings-container {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+
+/* ==========================================================
+   TOP BAR
+========================================================== */
+
+.account-page .settings-topbar {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 42px;
+    margin-bottom: 58px;
+}
+
+
+.account-page .settings-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    color: #91a4bb;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.account-page .settings-back-link:hover {
+    color: var(--account-accent);
+    transform: translateX(-2px);
+}
+
+
+/* ==========================================================
+   PAGE HEADER
+========================================================== */
+
+.account-page .settings-page-header {
+    position: relative;
+
+    margin: 0 0 72px;
+    padding: 0;
+}
+
+
+.account-page .settings-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    color: var(--account-accent);
+
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+
+.account-page .settings-eyebrow i {
+    font-size: 15px;
+}
+
+
+.account-page .settings-page-header h1 {
+    margin: 0 0 18px;
+
+    color: var(--account-text);
+
+    font-size: clamp(46px, 6vw, 72px);
+    line-height: 0.98;
+    font-weight: 800;
+    letter-spacing: -2.8px;
+}
+
+
+.account-page .settings-page-header > p {
+    max-width: 780px;
+
+    margin: 0;
+
+    color: var(--account-muted);
+
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   SETTINGS SECTIONS
+========================================================== */
+
+.account-page .settings-section {
+    margin: 0 0 76px;
+}
+
+
+.account-page .settings-section:last-of-type {
+    margin-bottom: 40px;
+}
+
+
+.account-page .settings-section-heading {
+    margin-bottom: 26px;
+}
+
+
+.account-page .settings-section-label {
+    display: block;
+
+    margin-bottom: 11px;
+
+    color: var(--account-accent);
+
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+
+.account-page .settings-section-heading h2 {
+    margin: 0 0 9px;
+
+    color: var(--account-text);
+
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+}
+
+
+.account-page .settings-section-heading p {
+    max-width: 720px;
+
+    margin: 0;
+
+    color: var(--account-muted);
+
+    font-size: 15.5px;
+    line-height: 1.65;
+}
+
+
+/* ==========================================================
+   MAIN SETTINGS CARD
+========================================================== */
+
+.account-page .settings-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    min-height: 112px;
+
+    padding: 26px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(13, 25, 41, 0.96),
+            rgba(7, 15, 26, 0.96)
+        );
+
+    border: 1px solid var(--account-border);
+    border-radius: var(--account-radius);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.account-page .settings-card-action:hover {
+    background: var(--account-card-hover);
+    border-color: var(--account-accent-border);
+}
+
+
+/* ==========================================================
+   CARD ICON
+========================================================== */
+
+.account-page .settings-card-icon {
+    flex: 0 0 54px;
+
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    color: var(--account-accent);
+    background: var(--account-accent-soft);
+
+    border: 1px solid var(--account-accent-border);
+
+    font-size: 20px;
+}
+
+
+.account-page .settings-card-disabled .settings-card-icon {
+    color: #718198;
+    background: rgba(113, 129, 152, 0.055);
+    border-color: rgba(113, 129, 152, 0.14);
+}
+
+
+/* ==========================================================
+   CARD CONTENT
+========================================================== */
+
+.account-page .settings-card-content {
+    min-width: 0;
+    flex: 1;
+}
+
+
+.account-page .settings-card-content h3 {
+    margin: 0 0 6px;
+
+    color: var(--account-text);
+
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 750;
+}
+
+
+.account-page .settings-card-content p {
+    margin: 0;
+
+    color: var(--account-muted);
+
+    font-size: 14.5px;
+    line-height: 1.55;
+}
+
+
+/* ==========================================================
+   ACCOUNT STATUS
+========================================================== */
+
+.account-page .account-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 12px;
+
+    color: #8fa6bb;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.account-page .account-status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--account-accent);
+
+    box-shadow:
+        0 0 0 4px rgba(0, 229, 195, 0.08),
+        0 0 12px rgba(0, 229, 195, 0.35);
+}
+
+
+/* ==========================================================
+   CARD ARROW
+========================================================== */
+
+.account-page .settings-card-arrow {
+    flex: 0 0 42px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #72869d;
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.account-page .settings-card-arrow:hover {
+    color: var(--account-accent);
+    background: var(--account-accent-soft);
+    transform: translateX(3px);
+}
+
+
+/* ==========================================================
+   DISABLED CARD
+========================================================== */
+
+.account-page .settings-card-disabled {
+    opacity: 0.72;
+}
+
+
+.account-page .settings-card-lock {
+    flex: 0 0 auto;
+
+    color: #63758b;
+    font-size: 15px;
+}
+
+
+/* ==========================================================
+   COMING SOON
+========================================================== */
+
+.account-page .settings-coming-soon {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 12px;
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    color: #ffb020;
+    background: rgba(255, 176, 32, 0.07);
+    border: 1px solid rgba(255, 176, 32, 0.2);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+}
+
+
+/* ==========================================================
+   INFORMATION GRID
+========================================================== */
+
+.account-page .settings-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+.account-page .settings-info-card {
+    min-height: 105px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 22px 24px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(13, 25, 41, 0.94),
+            rgba(7, 15, 26, 0.94)
+        );
+
+    border: 1px solid var(--account-border);
+    border-radius: 16px;
+}
+
+
+.account-page .settings-info-label {
+    margin-bottom: 9px;
+
+    color: var(--account-soft);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+
+.account-page .settings-info-card strong {
+    color: var(--account-text);
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.account-page .account-active-text {
+    color: var(--account-accent) !important;
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.account-page .settings-about {
+    margin-top: 85px;
+    padding: 30px 0 55px;
+
+    border-top: 1px solid rgba(148, 163, 184, 0.08);
+
+    text-align: center;
+}
+
+
+.account-page .settings-about p {
+    margin: 0 0 8px;
+
+    color: #73879d;
+
+    font-size: 13px;
+}
+
+
+.account-page .settings-about-version {
+    color: #52677e;
+
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   PREVENT OLD SETTINGS HEADER COLLISIONS
+========================================================== */
+
+.account-page .settings-page-header h1::before,
+.account-page .settings-page-header h1::after,
+.account-page .settings-section-heading h2::before,
+.account-page .settings-section-heading h2::after {
+    content: none !important;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 800px) {
+
+    .account-page .settings-container {
+        width: min(100% - 30px, 680px);
+    }
+
+    .account-page .settings-topbar {
+        padding-top: 25px;
+        margin-bottom: 45px;
+    }
+
+    .account-page .settings-page-header {
+        margin-bottom: 55px;
+    }
+
+    .account-page .settings-page-header h1 {
+        font-size: clamp(42px, 12vw, 58px);
+        letter-spacing: -2px;
+    }
+
+    .account-page .settings-page-header > p {
+        font-size: 15px;
+    }
+
+    .account-page .settings-section {
+        margin-bottom: 58px;
+    }
+
+    .account-page .settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .account-page .settings-container {
+        width: calc(100% - 24px);
+    }
+
+    .account-page .settings-topbar {
+        margin-bottom: 38px;
+    }
+
+    .account-page .settings-version {
+        display: none;
+    }
+
+    .account-page .settings-card {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .account-page .settings-card-icon {
+        flex-basis: 46px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .account-page .settings-card-content h3 {
+        font-size: 16px;
+    }
+
+    .account-page .settings-card-content p {
+        font-size: 13.5px;
+    }
+
+    .account-page .settings-card-arrow {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+}
+
+/* ==========================================================
+   ACCOUNT PAGE — HEADER FLOW FIX
+   Prevent section content from overlapping page description
+========================================================== */
+
+.account-page .settings-page-header {
+    display: block !important;
+    position: relative !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin-bottom: 80px !important;
+    padding-bottom: 0 !important;
+
+    overflow: visible !important;
+}
+
+.account-page .settings-page-header h1 {
+    position: relative !important;
+
+    display: block !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+
+    line-height: 1.05 !important;
+}
+
+.account-page .settings-page-header > p {
+    position: relative !important;
+
+    display: block !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    line-height: 1.7 !important;
+}
+
+.account-page .settings-section {
+    position: relative !important;
+
+    display: block !important;
+
+    clear: both !important;
+
+    margin-top: 0 !important;
+    margin-bottom: 76px !important;
+
+    padding-top: 0 !important;
+}
+
+.account-page .settings-section-heading {
+    position: relative !important;
+
+    display: block !important;
+
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.account-page .settings-section-label {
+    position: relative !important;
+
+    display: block !important;
+
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+}
+
+.account-page .settings-page-header {
+    border: none !important;
+}
+
+.account-page .settings-page-header h1 {
+    border: none !important;
+    box-shadow: none !important;
+}

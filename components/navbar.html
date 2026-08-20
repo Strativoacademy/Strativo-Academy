@@ -1,0 +1,168 @@
+<!-- ============================================================
+     STRATIVO ACADEMY
+     SHARED NAVIGATION COMPONENT
+     Version 1.1
+============================================================ -->
+
+<ul
+    class="header-nav-list"
+    id="header-nav-list"
+    aria-label="Main navigation"
+>
+
+    <!-- ========================================================
+         HOME
+    ========================================================= -->
+
+    <li class="header-nav-item">
+
+        <a
+            href="index.html"
+            class="header-nav-link"
+            data-route="home"
+            data-target="home"
+            aria-current="page"
+        >
+            Home
+        </a>
+
+    </li>
+
+
+    <!-- ========================================================
+         COURSES
+    ========================================================= -->
+
+    <li
+        class="header-nav-item dropdown"
+        id="courses-nav-item"
+    >
+
+        <!-- Courses is a dropdown trigger.
+             It does NOT navigate directly. -->
+
+        <button
+            type="button"
+            class="header-nav-link courses-dropdown-trigger"
+            id="courses-nav-link"
+            aria-haspopup="true"
+            aria-expanded="false"
+        >
+
+            <span>Courses</span>
+
+            <span
+                class="dropdown-arrow"
+                aria-hidden="true"
+            >
+                ▾
+            </span>
+
+        </button>
+
+
+        <!-- ====================================================
+             COURSES DROPDOWN
+        ===================================================== -->
+
+        <ul
+            class="dropdown-menu"
+            id="courses-dropdown-menu"
+            aria-label="Course navigation"
+        >
+
+            <!-- ==================================================
+                 BEGINNER
+            =================================================== -->
+
+            <li>
+
+                <a
+                    href="beginner.html"
+                    class="dropdown-link"
+                    data-route="beginner"
+                    data-target="beginner"
+                >
+                    <span aria-hidden="true">🟢</span>
+                    <span>Beginner Lessons</span>
+                </a>
+
+            </li>
+
+        </ul>
+
+    </li>
+
+
+    <!-- ========================================================
+         WHY US
+    ========================================================= -->
+
+    <li class="header-nav-item">
+
+        <a
+            href="index.html#why-choose"
+            class="header-nav-link"
+            data-route="why-us"
+            data-target="why-us"
+        >
+            Why Us
+        </a>
+
+    </li>
+
+
+    <!-- ========================================================
+         TRADING TOOLS
+    ========================================================= -->
+
+    <li class="header-nav-item">
+
+        <a
+            href="index.html#pip-calculator"
+            class="header-nav-link"
+            data-route="trading-tools"
+            data-target="trading-tools"
+        >
+            Trading Tools
+        </a>
+
+    </li>
+
+
+    <!-- ========================================================
+         LIVE CHARTS
+    ========================================================= -->
+
+    <li class="header-nav-item">
+
+        <a
+            href="index.html#practice"
+            class="header-nav-link"
+            data-route="live-charts"
+            data-target="live-charts"
+        >
+            Live Charts
+        </a>
+
+    </li>
+
+
+    <!-- ========================================================
+         CONTACT
+    ========================================================= -->
+
+    <li class="header-nav-item">
+
+        <a
+            href="index.html#contact"
+            class="header-nav-link"
+            data-route="contact"
+            data-target="contact"
+        >
+            Contact
+        </a>
+
+    </li>
+
+</ul>

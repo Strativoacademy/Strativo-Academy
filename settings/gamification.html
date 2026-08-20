@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =====================================================
+         META
+    ====================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Manage gamification and social visibility preferences in Strativo Academy."
+    >
+
+    <title>Gamification | Strativo Academy</title>
+
+
+    <!-- =====================================================
+         GLOBAL APPEARANCE
+    ====================================================== -->
+
+    <script src="../js/appearance-global.js"></script>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/settings.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/gamification.css"
+    >
+
+</head>
+
+
+<body class="settings-page gamification-page">
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="settings-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main
+        class="settings-container"
+        id="main-content"
+    >
+
+
+        <!-- =================================================
+             TOP NAVIGATION
+        ================================================== -->
+
+        <header class="settings-topbar">
+
+            <a
+                href="settings.html"
+                class="settings-back-link"
+                aria-label="Back to Settings"
+            >
+
+                <i
+                    class="fas fa-arrow-left"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Back to Settings
+                </span>
+
+            </a>
+
+
+            <div class="settings-version">
+
+                <span
+                    class="settings-version-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span>
+                    v1.0 Beta
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="settings-hero">
+
+            <div class="settings-eyebrow">
+
+                <i
+                    class="fas fa-gamepad"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    GAMIFICATION
+                </span>
+
+            </div>
+
+
+            <h1>
+                Gamification &amp; Social
+            </h1>
+
+
+            <p>
+                Control how your XP, level, learning progress
+                and community presence are displayed.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GAMIFICATION
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="gamification-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <span class="settings-section-label">
+                    GAMIFICATION
+                </span>
+
+                <h2 id="gamification-title">
+                    Your Learning Progress
+                </h2>
+
+                <p>
+                    Choose how your gamification information
+                    is displayed across supported learning areas.
+                </p>
+
+            </div>
+
+
+            <div class="gamification-toggle-list">
+
+
+                <!-- =================================================
+                     XP & LEVEL
+                ================================================== -->
+
+                <div class="gamification-toggle-card">
+
+                    <div class="gamification-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-star"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Show XP &amp; Level
+                            </h3>
+
+                            <p>
+                                Display your current XP and level
+                                where gamification information is supported.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="gamification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="show-xp-level-toggle"
+                            checked
+                            aria-label="Show XP and level"
+                        >
+
+                        <span
+                            class="gamification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     LEARNING PROGRESS
+                ================================================== -->
+
+                <div class="gamification-toggle-card">
+
+                    <div class="gamification-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-chart-simple"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Show Learning Progress
+                            </h3>
+
+                            <p>
+                                Display course and lesson progress
+                                in supported learning areas.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="gamification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="show-learning-progress-toggle"
+                            checked
+                            aria-label="Show learning progress"
+                        >
+
+                        <span
+                            class="gamification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SOCIAL VISIBILITY
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="social-visibility-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <span class="settings-section-label">
+                    SOCIAL VISIBILITY
+                </span>
+
+                <h2 id="social-visibility-title">
+                    Community Visibility
+                </h2>
+
+                <p>
+                    Control what may be displayed to other
+                    Strativo Academy community members.
+                </p>
+
+            </div>
+
+
+            <div class="gamification-toggle-list">
+
+
+                <!-- =================================================
+                     COMMUNITY PROFILE
+                ================================================== -->
+
+                <div class="gamification-toggle-card">
+
+                    <div class="gamification-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-user"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Community Profile
+                            </h3>
+
+                            <p>
+                                Allow your learning identity to appear
+                                in supported community features.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="gamification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="community-profile-toggle"
+                            checked
+                            aria-label="Show community profile"
+                        >
+
+                        <span
+                            class="gamification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     COMMUNITY ACTIVITY
+                ================================================== -->
+
+                <div class="gamification-toggle-card">
+
+                    <div class="gamification-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-users"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Community Activity
+                            </h3>
+
+                            <p>
+                                Allow your supported learning activity
+                                to appear in future community areas.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="gamification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="community-activity-toggle"
+                            checked
+                            aria-label="Show community activity"
+                        >
+
+                        <span
+                            class="gamification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     LEADERBOARD
+                ================================================== -->
+
+                <div class="gamification-toggle-card">
+
+                    <div class="gamification-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-ranking-star"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Leaderboard Visibility
+                            </h3>
+
+                            <p>
+                                Allow your learning identity to appear
+                                on future community leaderboards.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="gamification-switch">
+
+                        <input
+                            type="checkbox"
+                            id="leaderboard-visibility-toggle"
+                            checked
+                            aria-label="Show on leaderboards"
+                        >
+
+                        <span
+                            class="gamification-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GAMIFICATION INFORMATION
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="gamification-info-title"
+        >
+
+            <div class="gamification-info-card">
+
+                <div class="settings-card-icon">
+
+                    <i
+                        class="fas fa-circle-info"
+                        aria-hidden="true"
+                    ></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3 id="gamification-info-title">
+                        About Gamification
+                    </h3>
+
+                    <p>
+                        Gamification features are designed to make
+                        learning more engaging through XP, levels,
+                        progress and community participation.
+                        Achievement-specific controls are managed
+                        separately in the Achievements section.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SOCIAL VISIBILITY NOTE
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="visibility-note-title"
+        >
+
+            <div class="gamification-info-card">
+
+                <div class="settings-card-icon">
+
+                    <i
+                        class="fas fa-shield-halved"
+                        aria-hidden="true"
+                    ></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3 id="visibility-note-title">
+                        Social Visibility
+                    </h3>
+
+                    <p>
+                        These preferences prepare your account for
+                        future Strativo Academy community features.
+                        Actual visibility to other students will be
+                        enforced by the account backend.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="settings-about">
+
+            <div class="settings-about-brand">
+
+                <span class="settings-about-name">
+                    STRATIVO
+                </span>
+
+                <span class="settings-about-accent">
+                    ACADEMY
+                </span>
+
+            </div>
+
+
+            <p>
+                Strativo Academy — Structured Forex Trading Education
+            </p>
+
+
+            <span class="settings-about-version">
+                Version 1.0 Beta
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         GAMIFICATION ENGINE
+    ====================================================== -->
+
+    <script src="gamification.js"></script>
+
+</body>
+
+</html>

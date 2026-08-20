@@ -1,0 +1,6874 @@
+/* ============================================================
+   STRATIVO ACADEMY
+   GLOBAL STYLE FRAMEWORK
+   PART 1 — FOUNDATION
+============================================================ */
+
+
+/* ============================================================
+   GOOGLE FONT
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ============================================================
+   ROOT VARIABLES
+============================================================ */
+
+:root {
+
+  /* ----------------------------------------------------------
+     Brand
+  ---------------------------------------------------------- */
+
+  --accent: #00e5a8;
+  --accent-hover: #00ffb3;
+
+
+  /* ----------------------------------------------------------
+     Backgrounds
+  ---------------------------------------------------------- */
+
+  --bg-body: #05070d;
+  --bg-dark: #07111f;
+  --bg-card: #11182b;
+  --bg-panel: #0a0f1e;
+
+
+  /* ----------------------------------------------------------
+     Text
+  ---------------------------------------------------------- */
+
+  --text-primary: #ffffff;
+  --text-secondary: #c8d2dc;
+  --text-muted: #7f8a99;
+
+
+  /* ----------------------------------------------------------
+     Borders
+  ---------------------------------------------------------- */
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(0, 229, 168, 0.25);
+
+
+  /* ----------------------------------------------------------
+     Status
+  ---------------------------------------------------------- */
+
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #ef4444;
+
+
+  /* ----------------------------------------------------------
+     Shadows
+  ---------------------------------------------------------- */
+
+  --shadow-sm:
+    0 4px 12px rgba(0, 0, 0, 0.20);
+
+  --shadow-md:
+    0 10px 30px rgba(0, 0, 0, 0.30);
+
+  --shadow-lg:
+    0 20px 50px rgba(0, 0, 0, 0.40);
+
+
+  /* ----------------------------------------------------------
+     Layout
+  ---------------------------------------------------------- */
+
+  --container-width: 1300px;
+
+  --content-width: 1200px;
+
+  --radius-sm: 6px;
+
+  --radius-md: 10px;
+
+  --radius-lg: 16px;
+
+  --radius-xl: 24px;
+
+
+  /* ----------------------------------------------------------
+     Transitions
+  ---------------------------------------------------------- */
+
+  --transition-fast: 0.2s ease;
+
+  --transition-normal: 0.3s ease;
+}
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* ============================================================
+   HTML
+============================================================ */
+
+html {
+  scroll-behavior: smooth;
+
+  font-size: 16px;
+}
+
+
+/* ============================================================
+   BODY
+============================================================ */
+
+body {
+  min-height: 100vh;
+
+  background: var(--bg-body);
+
+  color: var(--text-primary);
+
+  line-height: 1.7;
+
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ============================================================
+   IMAGES
+============================================================ */
+
+img {
+  max-width: 100%;
+
+  height: auto;
+
+  display: block;
+}
+
+
+/* ============================================================
+   LINKS
+============================================================ */
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   FORM ELEMENTS
+============================================================ */
+
+input,
+select,
+textarea {
+  outline: none;
+}
+
+
+/* ============================================================
+   HEADINGS
+============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+
+  line-height: 1.25;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   PARAGRAPHS
+============================================================ */
+
+p {
+  color: var(--text-secondary);
+}
+
+
+/* ============================================================
+   LISTS
+============================================================ */
+
+ul,
+ol {
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* ============================================================
+   GLOBAL CONTAINER
+============================================================ */
+
+.container {
+  width: 90%;
+
+  max-width: var(--container-width);
+
+  margin-left: auto;
+
+  margin-right: auto;
+}
+
+
+/* ============================================================
+   CONTENT CONTAINER
+============================================================ */
+
+.content-container {
+  width: 90%;
+
+  max-width: var(--content-width);
+
+  margin-left: auto;
+
+  margin-right: auto;
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+============================================================ */
+
+main {
+    width: 100%;
+    padding-top: 0;
+}
+
+
+/* ============================================================
+   STANDARD SECTION
+============================================================ */
+
+.section {
+  width: 100%;
+
+  padding-top: 4rem;
+
+  padding-bottom: 4rem;
+}
+
+
+/* ============================================================
+   SECTION TITLE
+============================================================ */
+
+.section-title {
+  margin-bottom: 2rem;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 1.6rem;
+
+  font-weight: 700;
+}
+
+.section-title p {
+  margin-top: 0.5rem;
+
+  color: var(--text-secondary);
+
+  font-size: 0.85rem;
+}
+
+
+/* ============================================================
+   CARD BASE
+============================================================ */
+
+.card {
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-lg);
+
+  padding: 1.5rem;
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* ============================================================
+   BUTTON BASE
+============================================================ */
+
+.btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  min-height: 44px;
+
+  padding: 0.65rem 1.2rem;
+
+  border-radius: var(--radius-sm);
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+/* ============================================================
+   PRIMARY BUTTON
+============================================================ */
+
+.btn-primary {
+  background: var(--accent);
+
+  color: #07111f;
+
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+
+  border-color: var(--accent-hover);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 229, 168, 0.20);
+}
+
+
+/* ============================================================
+   OUTLINE BUTTON
+============================================================ */
+
+.btn-outline {
+  background: transparent;
+
+  color: var(--accent);
+
+  border: 1px solid var(--accent);
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+
+  color: #07111f;
+
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   DANGER BUTTON
+============================================================ */
+
+.btn-danger {
+  background: transparent;
+
+  color: var(--danger);
+
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.10);
+
+  border-color: var(--danger);
+}
+
+
+/* ============================================================
+   FLEX UTILITIES
+============================================================ */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+
+/* ============================================================
+   GAP UTILITIES
+============================================================ */
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+
+/* ============================================================
+   GRID UTILITIES
+============================================================ */
+
+.grid-2 {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1.5rem;
+}
+
+.grid-4 {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 1.5rem;
+}
+
+
+/* ============================================================
+   TEXT UTILITIES
+============================================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+
+/* ============================================================
+   VISIBILITY
+============================================================ */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+============================================================ */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+
+  outline-offset: 3px;
+}
+
+/* Global Header is controlled by css/header.css */
+
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 3 — HERO SECTION
+============================================================ */
+
+
+/* ============================================================
+   HERO — PROFESSIONAL DESKTOP LAYOUT
+============================================================ */
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PREMIUM HERO — STEP 2
+============================================================ */
+
+.hero-dashboard {
+    position: relative;
+
+    min-height: calc(100vh - 82px);
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(420px, 0.9fr)
+        minmax(560px, 1.1fr);
+
+    align-items: center;
+
+    gap: 70px;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   HERO CONTENT
+============================================================ */
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+}
+
+
+/* ============================================================
+   HERO BADGE
+============================================================ */
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 14px;
+
+    border: 1px solid rgba(0, 214, 170, 0.25);
+
+    border-radius: 999px;
+
+    background: rgba(0, 214, 170, 0.055);
+
+    color: var(--accent);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.04em;
+}
+
+
+.hero-badge-dot {
+    width: 7px;
+
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 12px rgba(0, 214, 170, 0.75);
+}
+
+
+/* ============================================================
+   HERO TITLE
+============================================================ */
+
+.hero-title {
+    margin-top: 24px;
+
+    margin-bottom: 24px;
+
+    color: #ffffff;
+
+    font-size: clamp(52px, 5vw, 78px);
+
+    font-weight: 850;
+
+    line-height: 0.99;
+
+    letter-spacing: -0.045em;
+}
+
+
+.hero-title span {
+    display: inline-block;
+
+    color: var(--accent);
+}
+
+
+/* ============================================================
+   HERO DESCRIPTION
+============================================================ */
+
+.hero-description {
+    max-width: 590px;
+
+    margin-bottom: 0;
+
+    color: rgba(226, 232, 240, 0.78);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   HERO BUTTONS
+============================================================ */
+
+.hero-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 32px;
+}
+
+
+.hero-primary-btn,
+.hero-secondary-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    min-height: 54px;
+
+    padding: 0 23px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.hero-primary-btn {
+    background: var(--accent);
+
+    color: #03100d;
+
+    box-shadow:
+        0 12px 35px rgba(0, 214, 170, 0.16);
+}
+
+
+.hero-primary-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 18px 42px rgba(0, 214, 170, 0.25);
+}
+
+
+.hero-secondary-btn {
+    border: 1px solid rgba(0, 214, 170, 0.55);
+
+    background: rgba(0, 214, 170, 0.025);
+
+    color: var(--accent);
+}
+
+
+.hero-secondary-btn:hover {
+    transform: translateY(-2px);
+
+    background: rgba(0, 214, 170, 0.08);
+}
+
+
+/* ============================================================
+   HERO FEATURES
+============================================================ */
+
+.hero-features {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 13px 24px;
+
+    margin-top: 34px;
+}
+
+
+.hero-features span {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: rgba(226, 232, 240, 0.78);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.hero-features i {
+    color: var(--accent);
+
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   TRADINGVIEW / LAPTOP AREA
+============================================================ */
+
+.hero-visual {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 0;
+}
+
+
+.laptop-wrapper {
+    width: 100%;
+}
+
+
+.laptop {
+    position: relative;
+
+    width: 100%;
+
+    transform: translateY(0);
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.laptop:hover {
+    transform: translateY(-4px);
+}
+
+
+.laptop-screen {
+    position: relative;
+
+    width: 100%;
+
+    height: 440px;
+
+    padding: 9px;
+
+    border: 1px solid rgba(148, 163, 184, 0.22);
+
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #182638,
+            #070b11
+        );
+
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.45),
+        0 0 55px rgba(0, 214, 170, 0.045);
+
+    overflow: hidden;
+}
+
+
+.laptop-screen::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    border-radius: 13px;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+}
+
+
+.laptop-screen iframe {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background: #000000;
+}
+
+
+.laptop-base {
+    position: relative;
+
+    width: 108%;
+
+    height: 13px;
+
+    margin-left: -4%;
+
+    margin-top: 0;
+
+    border-radius: 0 0 14px 14px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1b2a3a,
+            #0b131d
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+.laptop-base::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 3px;
+
+    transform: translateX(-50%);
+
+    width: 90px;
+
+    height: 3px;
+
+    border-radius: 999px;
+
+    background: rgba(148, 163, 184, 0.25);
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 1150px) {
+
+    .hero-dashboard {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+        padding-top: 65px;
+    }
+
+
+    .hero-content {
+        max-width: 760px;
+    }
+
+
+    .hero-visual {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 700px) {
+
+    .hero-dashboard {
+        min-height: auto;
+
+        gap: 42px;
+
+        padding-top: 50px;
+
+        padding-bottom: 60px;
+    }
+
+
+    .hero-title {
+        font-size: clamp(42px, 12vw, 60px);
+
+        line-height: 1;
+    }
+
+
+    .hero-description {
+        font-size: 16px;
+
+        line-height: 1.65;
+    }
+
+
+    .hero-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .hero-primary-btn,
+    .hero-secondary-btn {
+        width: 100%;
+    }
+
+
+    .hero-features {
+        gap: 12px 18px;
+    }
+
+
+    .laptop-screen {
+        height: 320px;
+    }
+
+    .laptop-base {
+        width: 100%;
+        margin-left: 0;
+    }
+
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 4 — METRICS & ROADMAP
+============================================================ */
+
+/* ============================================================
+   ROADMAP SECTION
+============================================================ */
+
+.roadmap-section {
+  width: 100%;
+
+  padding:
+    3rem 0;
+}
+
+
+/* ============================================================
+   ROADMAP CONTAINER
+============================================================ */
+
+.roadmap-container {
+  width: 90%;
+
+  max-width: var(--content-width);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 1rem;
+}
+
+
+/* ============================================================
+   ROADMAP STEP WRAPPER
+============================================================ */
+
+.roadmap-step-wrapper {
+  position: relative;
+
+  min-width: 0;
+}
+
+
+/* ============================================================
+   ROADMAP CARD
+============================================================ */
+
+.roadmap-card {
+  height: 100%;
+
+  padding: 1.5rem;
+
+  text-align: center;
+
+  background: var(--bg-card);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.roadmap-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(0, 229, 168, 0.3);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   ROADMAP ICON
+============================================================ */
+
+.roadmap-icon-wrap {
+  width: 52px;
+
+  height: 52px;
+
+  margin: 0 auto 1rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(0, 229, 168, 0.08);
+
+  border:
+    1px solid rgba(0, 229, 168, 0.15);
+
+  border-radius: 50%;
+
+  color: var(--accent);
+
+  font-size: 1rem;
+}
+
+
+/* ============================================================
+   ROADMAP TEXT
+============================================================ */
+
+.roadmap-card h4 {
+  margin: 0 0 0.5rem;
+
+  color: var(--text-primary);
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+}
+
+.roadmap-card p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.75rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   ROADMAP CONNECTOR
+============================================================ */
+
+.roadmap-step-wrapper:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+
+  right: -0.75rem;
+
+  width: 1.5rem;
+
+  height: 2px;
+
+  background:
+    rgba(0, 229, 168, 0.25);
+
+  transform:
+    translateY(-50%);
+
+  z-index: 2;
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 5 — FEATURES & TRADING PRINCIPLES
+============================================================ */
+
+
+/* ============================================================
+   FEATURE GRID
+============================================================ */
+
+.feature-grid-4 {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 1.25rem;
+}
+
+
+/* ============================================================
+   FEATURE CARD
+============================================================ */
+
+.feature-card {
+  min-width: 0;
+
+  padding: 1.35rem;
+
+  background: var(--bg-card);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(0, 229, 168, 0.3);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ============================================================
+   FEATURE ICON
+============================================================ */
+
+.feature-card .icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 42px;
+
+  height: 42px;
+
+  margin-bottom: 0.9rem;
+
+  background:
+    rgba(0, 229, 168, 0.08);
+
+  border:
+    1px solid rgba(0, 229, 168, 0.12);
+
+  border-radius: 10px;
+
+  color: var(--accent);
+
+  font-size: 1rem;
+}
+
+
+/* ============================================================
+   FEATURE CARD TEXT
+============================================================ */
+
+.feature-card h4 {
+  margin: 0 0 0.5rem;
+
+  color: var(--text-primary);
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+}
+
+.feature-card p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.78rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   PRINCIPLES GRID
+============================================================ */
+
+.principles-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.2fr 1fr 1fr;
+
+  gap: 1.25rem;
+
+  align-items: stretch;
+}
+
+
+/* ============================================================
+   TRADER COCKPIT
+============================================================ */
+
+.cockpit-panel {
+  min-width: 0;
+
+  padding: 1.25rem;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(14, 24, 40, 0.98),
+      rgba(6, 10, 20, 0.98)
+    );
+
+  border:
+    1px solid rgba(0, 229, 168, 0.2);
+
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* ============================================================
+   COCKPIT HEADER
+============================================================ */
+
+.cockpit-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding-bottom: 0.8rem;
+
+  margin-bottom: 1rem;
+
+  border-bottom:
+    1px solid var(--border-color);
+}
+
+.cockpit-header h3 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 0.95rem;
+}
+
+.cockpit-header span {
+  color: var(--text-secondary);
+
+  font-size: 0.7rem;
+}
+
+
+/* ============================================================
+   COCKPIT GRID
+============================================================ */
+
+.cockpit-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 0.75rem;
+}
+
+
+/* ============================================================
+   COCKPIT METRIC
+============================================================ */
+
+.cockpit-metric {
+  min-width: 0;
+
+  padding: 0.75rem;
+
+  background:
+    rgba(255, 255, 255, 0.02);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: 8px;
+}
+
+.cockpit-label {
+  display: block;
+
+  margin-bottom: 0.25rem;
+
+  color: var(--text-muted);
+
+  font-size: 0.65rem;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+.cockpit-val {
+  color: var(--text-primary);
+
+  font-size: 0.9rem;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   READINESS BAR
+============================================================ */
+
+.readiness-bar-bg {
+  width: 100%;
+
+  height: 6px;
+
+  margin-top: 0.5rem;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 10px;
+}
+
+.readiness-bar-fill {
+  width: 85%;
+
+  height: 100%;
+
+  background: var(--accent);
+
+  border-radius: inherit;
+}
+
+
+/* ============================================================
+   PRICE ACTION BOX
+============================================================ */
+
+.price-action-box {
+  min-width: 0;
+
+  padding: 1.25rem;
+
+  background: var(--bg-card);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+}
+
+
+/* ============================================================
+   PRICE ACTION TITLE
+============================================================ */
+
+.pa-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  margin-bottom: 0.9rem;
+
+  color: var(--text-primary);
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+}
+
+.pa-title i {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   PRICE ACTION RULES
+============================================================ */
+
+.pa-rule-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.75rem;
+}
+
+.pa-rule-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.6rem;
+
+  color: var(--text-secondary);
+
+  font-size: 0.78rem;
+
+  line-height: 1.5;
+}
+
+.pa-rule-item i {
+  flex: 0 0 auto;
+
+  margin-top: 0.25rem;
+
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   RISK RULES BOX
+============================================================ */
+
+.risk-rules-box {
+  min-width: 0;
+
+  padding: 1.25rem;
+
+  background: var(--bg-card);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+}
+
+
+/* ============================================================
+   RISK HEADER
+============================================================ */
+
+.risk-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  margin-bottom: 0.9rem;
+
+  color: var(--warning);
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+}
+
+.risk-header i {
+  color: var(--warning);
+}
+
+
+/* ============================================================
+   RISK LIST
+============================================================ */
+
+.risk-rules-box ul {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.65rem;
+}
+
+.risk-rules-box li {
+  position: relative;
+
+  padding-left: 1rem;
+
+  color: var(--text-secondary);
+
+  font-size: 0.78rem;
+
+  line-height: 1.5;
+}
+
+.risk-rules-box li::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0.6em;
+
+  width: 5px;
+
+  height: 5px;
+
+  background: var(--warning);
+
+  border-radius: 50%;
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 6 — CURRICULUM / COURSES
+============================================================ */
+
+
+/* ============================================================
+   CURRICULUM GRID
+============================================================ */
+
+.curriculum-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 1.25rem;
+}
+
+
+/* ============================================================
+   CURRICULUM ITEM
+============================================================ */
+
+.curr-item-detailed {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1.25rem;
+
+  min-width: 0;
+
+  padding: 1.25rem;
+
+  background: var(--bg-card);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.curr-item-detailed:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(0, 229, 168, 0.3);
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ============================================================
+   CURRICULUM LEFT CONTENT
+============================================================ */
+
+.curr-details-left {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.curr-details-left h4 {
+  margin: 0 0 0.4rem;
+
+  color: var(--text-primary);
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+}
+
+.curr-details-left p {
+  margin: 0 0 0.75rem;
+
+  color: var(--text-secondary);
+
+  font-size: 0.78rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   CURRICULUM LEVEL BADGE
+============================================================ */
+
+.curr-badge-level {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  margin-bottom: 0.5rem;
+
+  padding: 3px 8px;
+
+  background:
+    rgba(0, 229, 168, 0.08);
+
+  border:
+    1px solid rgba(0, 229, 168, 0.15);
+
+  border-radius: 5px;
+
+  color: var(--accent);
+
+  font-size: 0.62rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* ============================================================
+   CURRICULUM META
+============================================================ */
+
+.curr-meta-pills {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 0.7rem;
+
+  color: var(--text-muted);
+
+  font-size: 0.68rem;
+}
+
+.curr-meta-pills span {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.3rem;
+}
+
+.curr-meta-pills i {
+  color: var(--accent);
+
+  font-size: 0.7rem;
+}
+
+
+/* ============================================================
+   CURRICULUM STATUS
+============================================================ */
+
+.curr-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.4rem;
+
+  flex-shrink: 0;
+
+  min-height: 28px;
+
+  padding: 4px 9px;
+
+  border-radius: 5px;
+
+  font-size: 0.68rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   COMPLETED
+============================================================ */
+
+.status-completed {
+  background:
+    rgba(52, 211, 153, 0.1);
+
+  border:
+    1px solid rgba(52, 211, 153, 0.15);
+
+  color: var(--success);
+}
+
+
+/* ============================================================
+   IN PROGRESS
+============================================================ */
+
+.status-progress {
+  background:
+    rgba(251, 191, 36, 0.1);
+
+  border:
+    1px solid rgba(251, 191, 36, 0.15);
+
+  color: var(--warning);
+}
+
+
+/* ============================================================
+   LOCKED
+============================================================ */
+
+.status-locked {
+  background:
+    rgba(148, 163, 184, 0.05);
+
+  border:
+    1px solid rgba(148, 163, 184, 0.08);
+
+  color: var(--text-muted);
+}
+
+
+/* ============================================================
+   COURSE TIER CARDS
+============================================================ */
+
+.course-tier-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 1.25rem;
+}
+
+.course-tier-card {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 1.5rem;
+
+  background: var(--bg-card);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-lg);
+
+  overflow: hidden;
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+.course-tier-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(0, 229, 168, 0.3);
+}
+
+
+/* ============================================================
+   COURSE TIER ICON
+============================================================ */
+
+.course-tier-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 48px;
+
+  height: 48px;
+
+  margin-bottom: 1rem;
+
+  border-radius: 12px;
+
+  background:
+    rgba(0, 229, 168, 0.08);
+
+  color: var(--accent);
+
+  font-size: 1.1rem;
+}
+
+
+/* ============================================================
+   COURSE TIER TEXT
+============================================================ */
+
+.course-tier-card h3 {
+  margin: 0 0 0.5rem;
+
+  color: var(--text-primary);
+
+  font-size: 1rem;
+}
+
+.course-tier-card p {
+  margin: 0 0 1rem;
+
+  color: var(--text-secondary);
+
+  font-size: 0.78rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   COURSE TIER META
+============================================================ */
+
+.course-tier-meta {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  color: var(--text-muted);
+
+  font-size: 0.7rem;
+}
+
+
+/* ============================================================
+   COURSE PROGRESS
+============================================================ */
+
+.course-progress {
+  width: 100%;
+
+  height: 5px;
+
+  margin-top: 1rem;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  border-radius: 10px;
+}
+
+.course-progress-bar {
+  width: 0;
+
+  height: 100%;
+
+  background: var(--accent);
+
+  border-radius: inherit;
+
+  transition:
+    width 0.5s ease;
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 7 — TRADING TOOLS & PRACTICE TERMINAL
+============================================================ */
+
+
+/* ============================================================
+   TRADING TOOLS GRID
+============================================================ */
+
+.tool-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 1.25rem;
+}
+
+
+/* ============================================================
+   INTERACTIVE TOOL CARD
+============================================================ */
+
+.tool-card-interactive {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  min-width: 0;
+
+  min-height: 150px;
+
+  padding: 1.2rem;
+
+  background: var(--bg-card);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+
+  cursor: pointer;
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.tool-card-interactive:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--accent);
+
+  box-shadow:
+    0 8px 20px rgba(0, 229, 168, 0.1);
+}
+
+
+/* ============================================================
+   TOOL CARD CONTENT
+============================================================ */
+
+.tool-card-interactive h4 {
+  margin: 0 0 0.5rem;
+
+  color: var(--text-primary);
+
+  font-size: 0.9rem;
+
+  font-weight: 700;
+}
+
+.tool-card-interactive p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.75rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   TOOL ICON
+============================================================ */
+
+.tool-card-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 40px;
+
+  height: 40px;
+
+  margin-bottom: 0.8rem;
+
+  background:
+    rgba(0, 229, 168, 0.08);
+
+  border:
+    1px solid rgba(0, 229, 168, 0.12);
+
+  border-radius: 9px;
+
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   TOOL LINK ARROW
+============================================================ */
+
+.tool-link-arrow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 10px;
+
+  color: var(--accent);
+
+  font-size: 0.75rem;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   PRACTICE GRID
+============================================================ */
+
+.practice-grid-container {
+  display: grid;
+
+  grid-template-columns:
+    320px minmax(0, 1fr);
+
+  gap: 1.5rem;
+
+  align-items: stretch;
+
+  min-width: 0;
+}
+
+.practice-grid-container > * {
+  min-width: 0;
+}
+
+
+/* ============================================================
+   TRADER WORKSPACE PANEL
+============================================================ */
+
+.traders-workspace-panel {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.65rem;
+
+  min-width: 0;
+
+  padding: 0.85rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--bg-body),
+      #080d19
+    );
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+}
+
+
+/* ============================================================
+   WORKSPACE BLOCK
+============================================================ */
+
+.workspace-block {
+  min-width: 0;
+
+  padding: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.015);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: 8px;
+}
+
+
+/* ============================================================
+   WORKSPACE BLOCK TITLE
+============================================================ */
+
+.workspace-block-title {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 0.5rem;
+
+  margin-bottom: 6px;
+
+  color: var(--accent);
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* ============================================================
+   WATCHLIST
+============================================================ */
+
+.watch-list-compact {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+/* ============================================================
+   WATCHLIST ITEM
+============================================================ */
+
+.watch-item-compact {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  min-width: 0;
+
+  padding: 6px 8px;
+
+  background:
+    rgba(0, 0, 0, 0.2);
+
+  border:
+    1px solid transparent;
+
+  border-radius: 6px;
+
+  color: var(--text-primary);
+
+  font-size: 0.75rem;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.watch-item-compact:hover {
+  background:
+    rgba(255, 255, 255, 0.03);
+
+  border-color:
+    rgba(255, 255, 255, 0.05);
+}
+
+
+/* ============================================================
+   MARKET BIAS
+============================================================ */
+
+.bullish {
+  color: var(--success);
+
+  font-weight: 600;
+}
+
+.bearish {
+  color: var(--danger);
+
+  font-weight: 600;
+}
+
+.neutral {
+  color: var(--warning);
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   WORKSPACE SPLIT CARDS
+============================================================ */
+
+.workspace-split-cards {
+  display: flex;
+
+  gap: 0.65rem;
+}
+
+.split-card {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.split-card-text {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.7rem;
+
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   WORKSPACE FORM ELEMENTS
+============================================================ */
+
+.workspace-block input,
+.workspace-block select,
+.workspace-block textarea {
+  width: 100%;
+
+  max-width: 100%;
+
+  padding: 7px 9px;
+
+  background: #060a14;
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: 6px;
+
+  color: var(--text-primary);
+
+  font-family: inherit;
+
+  font-size: 0.78rem;
+
+  outline: none;
+
+  transition:
+    border-color var(--transition-fast);
+}
+
+.workspace-block input:focus,
+.workspace-block select:focus,
+.workspace-block textarea:focus {
+  border-color: var(--accent);
+}
+
+
+/* ============================================================
+   QUICK NOTES
+============================================================ */
+
+.ws-quick-notes {
+  min-height: 50px;
+
+  resize: vertical;
+}
+
+
+/* ============================================================
+   WORKSPACE ACTIONS
+============================================================ */
+
+.workspace-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+.workspace-actions .btn {
+  flex: 1;
+}
+
+
+/* ============================================================
+   PRACTICE TERMINAL
+============================================================ */
+
+.practice-terminal {
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: var(--bg-card);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+}
+
+
+/* ============================================================
+   PRACTICE TERMINAL HEADER
+============================================================ */
+
+.practice-terminal-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 10px 14px;
+
+  border-bottom:
+    1px solid var(--border-color);
+}
+
+
+/* ============================================================
+   PRACTICE TERMINAL BODY
+============================================================ */
+
+.practice-terminal-body {
+  width: 100%;
+
+  min-width: 0;
+
+  min-height: 420px;
+
+  overflow: hidden;
+
+  background: #060a14;
+}
+
+
+/* ============================================================
+   PRACTICE TABS
+============================================================ */
+
+.practice-tabs {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  margin-bottom: 1rem;
+}
+
+.practice-tabs button {
+  min-height: 38px;
+
+  padding: 0.4rem 1rem;
+
+  background: transparent;
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: 6px;
+
+  color: var(--text-secondary);
+
+  cursor: pointer;
+
+  font-size: 0.8rem;
+
+  font-weight: 600;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.practice-tabs button:hover,
+.practice-tabs button.active {
+  background:
+    rgba(0, 229, 168, 0.05);
+
+  border-color: var(--accent);
+
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   WORKSPACE STATUS
+============================================================ */
+
+.workspace-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  color: var(--text-muted);
+
+  font-size: 0.7rem;
+}
+
+.workspace-status::before {
+  content: "";
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--success);
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 8 — CHART SYSTEM
+============================================================ */
+
+
+/* ============================================================
+   CHART BOX
+============================================================ */
+
+.chart-box {
+  width: 100%;
+
+  height: 460px;
+
+  overflow: hidden;
+
+  margin-bottom: 1rem;
+
+  background: #0a0f1e;
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: 8px;
+}
+
+
+/* ============================================================
+   CHART IFRAME
+============================================================ */
+
+.chart-box iframe {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  border: 0;
+}
+
+
+/* ============================================================
+   TRADINGVIEW INFO BAR
+============================================================ */
+
+.tv-info-bar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 12px 18px;
+
+  margin-bottom: 12px;
+
+  background: #101c2d;
+
+  border:
+    1px solid rgba(0, 229, 168, 0.2);
+
+  border-radius: 10px;
+}
+
+
+/* ============================================================
+   CHART INFO LEFT
+============================================================ */
+
+.tv-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+
+/* ============================================================
+   CHART INFO RIGHT
+============================================================ */
+
+.tv-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #cfd8dc;
+
+  font-size: 14px;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   ACTIVE INTERVAL
+============================================================ */
+
+#tvInterval {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 24px;
+
+  padding: 2px 8px;
+
+  background: var(--accent);
+
+  color: #000;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   CANDLE TIMER
+============================================================ */
+
+#candleTimer,
+#advancedTimer {
+  color: var(--accent);
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ============================================================
+   STANDARD TIMEFRAME BAR
+============================================================ */
+
+.tv-timeframes {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin: 12px 0;
+}
+
+
+/* ============================================================
+   STANDARD TIMEFRAME BUTTON
+============================================================ */
+
+.tf-btn {
+  min-height: 38px;
+
+  padding: 8px 14px;
+
+  background: #101c2d;
+
+  border:
+    1px solid rgba(0, 229, 168, 0.2);
+
+  border-radius: 8px;
+
+  color: #cfd8dc;
+
+  cursor: pointer;
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.tf-btn:hover {
+  border-color: var(--accent);
+
+  color: var(--accent);
+}
+
+.tf-btn:active {
+  transform: scale(0.97);
+}
+
+.tf-btn.active {
+  background: var(--accent);
+
+  border-color: var(--accent);
+
+  color: #000;
+}
+
+
+/* ============================================================
+   ADVANCED TIMEFRAME BAR
+============================================================ */
+
+.advanced-timeframes {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  padding: 10px 15px;
+
+  background: #101827;
+
+  border-bottom:
+    1px solid var(--border-color);
+}
+
+
+/* ============================================================
+   ADVANCED TIMEFRAME BUTTON
+============================================================ */
+
+.advanced-tf-btn {
+  min-height: 34px;
+
+  padding: 6px 14px;
+
+  background: #1b2638;
+
+  border: 0;
+
+  border-radius: 6px;
+
+  color: #ddd;
+
+  cursor: pointer;
+
+  font-size: 0.78rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.advanced-tf-btn:hover,
+.advanced-tf-btn.active {
+  background: var(--accent);
+
+  color: #000;
+}
+
+
+/* ============================================================
+   CHART TOOLBAR
+============================================================ */
+
+.chart-toolbar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 10px;
+}
+
+.chart-toolbar-left,
+.chart-toolbar-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+/* ============================================================
+   CHART STATUS
+============================================================ */
+
+.chart-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: var(--text-muted);
+
+  font-size: 0.7rem;
+}
+
+.chart-status::before {
+  content: "";
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--success);
+
+  box-shadow:
+    0 0 8px rgba(52, 211, 153, 0.6);
+}
+
+
+/* ============================================================
+   CHART MODAL
+============================================================ */
+
+.chart-modal {
+  position: fixed;
+
+  inset: 0;
+
+  display: none;
+
+  width: 100vw;
+
+  height: 100vh;
+
+  padding: 15px;
+
+  background: #07111f;
+
+  box-sizing: border-box;
+
+  z-index: 99999;
+}
+
+.chart-modal.active {
+  display: block;
+}
+
+
+/* ============================================================
+   CHART MODAL CONTENT
+============================================================ */
+
+.chart-modal-content {
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #060a14;
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+}
+
+
+/* ============================================================
+   CHART MODAL CLOSE
+============================================================ */
+
+.chart-modal-close {
+  position: absolute;
+
+  top: 12px;
+
+  right: 12px;
+
+  z-index: 2;
+
+  width: 36px;
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 50%;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 1rem;
+}
+
+.chart-modal-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+
+  color: var(--danger);
+}
+
+
+/* ============================================================
+   CHART MODAL IFRAME
+============================================================ */
+
+.chart-modal iframe {
+  width: 100%;
+
+  height: 100%;
+
+  border: 0;
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 9 — COMMUNITY & CONTACT
+============================================================ */
+
+
+/* ============================================================
+   COMMUNITY LIST
+============================================================ */
+
+.community-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.8rem;
+}
+
+
+/* ============================================================
+   COMMUNITY LINK
+============================================================ */
+
+.comm-link {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  width: 100%;
+
+  padding: 1rem;
+
+  background: var(--bg-body);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  color: var(--text-primary);
+
+  font-size: 0.9rem;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.comm-link:hover {
+  background:
+    rgba(0, 229, 168, 0.04);
+
+  border-color:
+    rgba(0, 229, 168, 0.25);
+
+  color: var(--accent);
+
+  transform: translateX(2px);
+}
+
+
+/* ============================================================
+   COMMUNITY ICON
+============================================================ */
+
+.comm-link i {
+  flex: 0 0 auto;
+
+  width: 24px;
+
+  text-align: center;
+
+  font-size: 1.2rem;
+}
+
+
+/* ============================================================
+   COMMUNITY "COMING SOON" BADGE
+============================================================ */
+
+.comm-link .badge-soon {
+  margin-left: auto;
+
+  padding: 2px 6px;
+
+  background:
+    var(--border-color);
+
+  border-radius: 4px;
+
+  color: var(--text-muted);
+
+  font-size: 0.65rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   COMMUNITY STATUS
+============================================================ */
+
+.community-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  color: var(--text-muted);
+
+  font-size: 0.7rem;
+}
+
+.community-status::before {
+  content: "";
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+}
+
+
+/* ============================================================
+   CONTACT SECTION
+============================================================ */
+
+.contact-section {
+  width: 100%;
+
+  padding:
+    3rem 0;
+}
+
+
+/* ============================================================
+   CONTACT GRID
+============================================================ */
+
+.contact-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 2rem;
+
+  align-items: start;
+}
+
+
+/* ============================================================
+   CONTACT INFORMATION
+============================================================ */
+
+.contact-info {
+  min-width: 0;
+}
+
+.contact-info h2 {
+  margin: 0 0 0.5rem;
+
+  color: var(--text-primary);
+
+  font-size: 1.2rem;
+
+  font-weight: 700;
+}
+
+.contact-info > p {
+  margin: 0 0 1.2rem;
+
+  color: var(--text-secondary);
+
+  font-size: 0.9rem;
+
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   CONTACT EMAIL
+============================================================ */
+
+.contact-email {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  margin-bottom: 1.2rem;
+
+  color: var(--accent);
+
+  font-size: 0.85rem;
+
+  text-decoration: none;
+
+  max-width: 100%;
+
+  overflow-wrap: anywhere;
+
+  word-break: break-word;
+}
+
+.contact-email:hover {
+  text-decoration: underline;
+}
+
+.contact-email i {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   CONTACT FORM WRAPPER
+============================================================ */
+
+.contact-form-wrapper {
+  width: 100%;
+
+  padding: 1.5rem;
+
+  background: var(--bg-body);
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: 12px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* ============================================================
+   CONTACT FORM
+============================================================ */
+
+.contact-form {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* ============================================================
+   CONTACT INPUT
+============================================================ */
+
+.contact-input {
+  width: 100%;
+
+  padding:
+    0.8rem 1rem;
+
+  margin-bottom: 1rem;
+
+  background: #0a0f1e;
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  color: var(--text-primary);
+
+  font-family: inherit;
+
+  font-size: 0.9rem;
+
+  line-height: 1.5;
+
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.contact-input::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-input:focus {
+  outline: none;
+
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(0, 229, 168, 0.15);
+}
+
+
+/* ============================================================
+   CONTACT TEXTAREA
+============================================================ */
+
+textarea.contact-input {
+  min-height: 120px;
+
+  resize: vertical;
+}
+
+
+/* ============================================================
+   CONTACT SEND BUTTON
+============================================================ */
+
+#sendBtn {
+  width: 100%;
+
+  min-height: 44px;
+
+  padding:
+    0.8rem 1rem;
+}
+
+
+/* ============================================================
+   SUCCESS TOAST
+============================================================ */
+
+.success-toast {
+  position: fixed;
+
+  top: 25px;
+
+  right: 25px;
+
+  z-index: 99999;
+
+  width: 340px;
+  max-width: calc(100vw - 32px);
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  background:
+    rgba(18, 22, 34, 0.95);
+
+  backdrop-filter: blur(18px);
+
+  border:
+    1px solid rgba(0, 255, 136, 0.25);
+
+  border-left:
+    5px solid #00ff88;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.45);
+
+  color: #ffffff;
+
+  transform:
+    translateY(-20px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+
+/* ============================================================
+   SUCCESS TOAST — ACTIVE
+============================================================ */
+
+.success-toast.show {
+  transform: translateY(0);
+
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* ============================================================
+   TOAST ICON
+============================================================ */
+
+.toast-icon {
+  flex: 0 0 auto;
+
+  font-size: 28px;
+
+  line-height: 1;
+}
+
+
+/* ============================================================
+   TOAST CONTENT
+============================================================ */
+
+.toast-content {
+  min-width: 0;
+}
+
+.toast-content h4 {
+  margin: 0 0 6px;
+
+  color: #00ff88;
+
+  font-size: 18px;
+
+  line-height: 1.3;
+}
+
+.toast-content p {
+  margin: 0;
+
+  color: #c8d2dc;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 10 — FOOTER & COMPLIANCE
+============================================================ */
+
+
+/* ============================================================
+   SITE FOOTER
+============================================================ */
+
+.site-footer,
+footer {
+  width: 100%;
+
+  margin-top: 4rem;
+
+  padding: 4rem 0 2rem;
+
+  background: var(--bg-body);
+
+  border-top:
+    1px solid var(--border-color);
+}
+
+
+/* ============================================================
+   FOOTER GRID
+============================================================ */
+
+.footer-grid {
+  display: grid;
+
+  grid-template-columns:
+    2fr 1fr 1fr 1.5fr;
+
+  gap: 3rem;
+
+  align-items: start;
+}
+
+
+/* ============================================================
+   FOOTER BRAND
+============================================================ */
+
+.footer-brand {
+  min-width: 0;
+}
+
+
+/* ============================================================
+   FOOTER LOGO
+============================================================ */
+
+.footer-logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom: 1rem;
+
+  color: var(--text-primary);
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+
+  text-decoration: none;
+}
+
+.footer-logo-text {
+  color: var(--text-primary);
+}
+
+.footer-logo-accent {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   FOOTER DESCRIPTION
+============================================================ */
+
+.footer-description {
+  max-width: 420px;
+
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.85rem;
+
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   FOOTER COLUMNS
+============================================================ */
+
+.footer-column {
+  min-width: 0;
+}
+
+.footer-column-title,
+footer h4 {
+  margin: 0 0 1.2rem;
+
+  color: var(--text-primary);
+
+  font-size: 1rem;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   FOOTER LINK LIST
+============================================================ */
+
+.footer-link-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.6rem;
+}
+
+.footer-link-list li {
+  margin: 0;
+}
+
+.footer-link-list a {
+  color: var(--text-secondary);
+
+  font-size: 0.85rem;
+
+  text-decoration: none;
+
+  transition:
+    color var(--transition-fast);
+}
+
+.footer-link-list a:hover {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   STANDARD FOOTER LIST
+============================================================ */
+
+footer ul li {
+  margin-bottom: 0.6rem;
+}
+
+footer ul li a {
+  color: var(--text-secondary);
+
+  font-size: 0.85rem;
+
+  transition:
+    color var(--transition-fast);
+}
+
+footer ul li a:hover {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   FOOTER BOTTOM
+============================================================ */
+
+.footer-bottom-container {
+  width: 90%;
+
+  max-width: var(--content-width);
+
+  margin: 3rem auto 0;
+
+  padding-top: 1.25rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  border-top:
+    1px solid var(--border-color);
+}
+
+
+/* ============================================================
+   COPYRIGHT
+============================================================ */
+
+.footer-copyright {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 0.72rem;
+}
+
+
+/* ============================================================
+   VERSION
+============================================================ */
+
+.footer-version {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 0.7rem;
+}
+
+
+/* ============================================================
+   LEGAL LINKS
+============================================================ */
+
+.footer-legal-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  }
+
+.footer-legal-links a {
+  color: var(--text-muted);
+
+  font-size: 0.72rem;
+
+  text-decoration: none;
+
+  transition:
+    color var(--transition-fast);
+}
+
+.footer-legal-links a:hover {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   FOOTER RISK WARNING
+============================================================ */
+
+.footer-risk-warning {
+  max-width: 700px;
+
+  margin-top: 1rem;
+
+  color: var(--text-secondary);
+
+  font-size: 0.8rem;
+
+  line-height: 1.7;
+}
+
+.footer-risk-warning strong {
+  color: var(--text-primary);
+}
+
+
+/* ============================================================
+   FOOTER META
+============================================================ */
+
+.footer-meta {
+  margin-top: 15px;
+
+  color: var(--text-muted);
+
+  font-size: 0.8rem;
+}
+
+.footer-meta p {
+  margin: 0 0 0.4rem;
+
+  color: var(--text-muted);
+
+  font-size: 0.8rem;
+}
+
+.footer-meta i {
+  color: var(--accent);
+
+  margin-right: 4px;
+}
+
+
+/* ============================================================
+   COMPLIANCE BANNER
+============================================================ */
+
+.compliance-banner {
+  width: 100%;
+
+  padding: 1rem 1.25rem;
+
+  background:
+    rgba(251, 191, 36, 0.06);
+
+  border:
+    1px solid rgba(251, 191, 36, 0.18);
+
+  border-radius: var(--radius-md);
+}
+
+
+/* ============================================================
+   COMPLIANCE CONTENT
+============================================================ */
+
+.compliance-content {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 0.75rem;
+}
+
+.compliance-content i {
+  flex: 0 0 auto;
+
+  margin-top: 3px;
+
+  color: var(--warning);
+}
+
+.compliance-content p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.75rem;
+
+  line-height: 1.6;
+}
+
+.compliance-content strong {
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 11 — STUDENT DASHBOARD & PROGRESS
+============================================================ */
+
+
+/* ============================================================
+   CIRCLE PROGRESS
+============================================================ */
+
+.circle-progress {
+  position: relative;
+
+  width: 90px;
+
+  height: 90px;
+
+  flex: 0 0 90px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* ============================================================
+   CIRCLE PROGRESS SVG
+============================================================ */
+
+.circle-progress svg {
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  transform: rotate(-90deg);
+}
+
+
+/* ============================================================
+   CIRCLE PROGRESS CIRCLES
+============================================================ */
+
+.circle-progress circle {
+  fill: none;
+
+  stroke-width: 8;
+
+  stroke: var(--border-color);
+}
+
+
+/* ============================================================
+   CIRCLE PROGRESS FILL
+============================================================ */
+
+.circle-progress .fill {
+  stroke: var(--accent);
+
+  stroke-dasharray: 251;
+
+  stroke-dashoffset: 251;
+
+  stroke-linecap: round;
+
+  transition:
+    stroke-dashoffset 0.8s ease;
+}
+
+
+/* ============================================================
+   CIRCLE PROGRESS TEXT
+============================================================ */
+
+.circle-progress span {
+  position: relative;
+
+  z-index: 1;
+
+  color: #ffffff;
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   DASHBOARD CONTENT
+============================================================ */
+
+.dashboard-content {
+  min-width: 0;
+}
+
+
+/* ============================================================
+   DASHBOARD HEADER
+============================================================ */
+
+.dashboard-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+
+/* ============================================================
+   DASHBOARD STATUS
+============================================================ */
+
+.dashboard-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+}
+
+
+/* ============================================================
+   DASHBOARD STATUS TEXT
+============================================================ */
+
+.dashboard-status-text {
+  min-width: 0;
+}
+
+.dashboard-status-text h4 {
+  margin: 0 0 0.35rem;
+
+  color: var(--text-primary);
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+}
+
+.dashboard-status-text p {
+  max-width: 240px;
+
+  margin: 0 0 0.7rem;
+
+  color: var(--text-secondary);
+
+  font-size: 0.8rem;
+
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   DASHBOARD STAT COLUMN
+============================================================ */
+
+.dashboard-stat-column {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+
+  padding-left: 1.5rem;
+
+  border-left:
+    1px solid var(--border-color);
+}
+
+
+/* ============================================================
+   DASHBOARD STAT
+============================================================ */
+
+.dashboard-stat {
+  color: var(--text-primary);
+
+  font-size: 0.85rem;
+}
+
+.dashboard-stat span {
+  color: var(--text-secondary);
+}
+
+.dashboard-stat strong {
+  color: var(--text-primary);
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   DASHBOARD AVERAGE GRADE
+============================================================ */
+
+.dashboard-stat .grade {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   DASHBOARD ACTIVE STATUS
+============================================================ */
+
+.dashboard-stat .active-status {
+  color: var(--warning);
+}
+
+
+/* ============================================================
+   DASHBOARD REVIEW CARD
+============================================================ */
+
+.dashboard-review-card {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 230px;
+
+  padding: 2rem;
+
+  text-align: center;
+}
+
+.dashboard-review-card i {
+  margin-bottom: 1rem;
+
+  color: var(--accent);
+
+  font-size: 2.5rem;
+}
+
+.dashboard-review-card h3 {
+  margin: 0 0 0.5rem;
+
+  color: var(--text-primary);
+
+  font-size: 1.2rem;
+
+  font-weight: 700;
+}
+
+.dashboard-review-card p {
+  max-width: 400px;
+
+  margin: 0 auto;
+
+  color: var(--text-secondary);
+
+  font-size: 0.85rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   GENERAL PROGRESS BAR
+============================================================ */
+
+.progress-bar {
+  width: 100%;
+
+  height: 6px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  border-radius: 10px;
+}
+
+.progress-bar-fill {
+  width: 0;
+
+  height: 100%;
+
+  background: var(--accent);
+
+  border-radius: inherit;
+
+  transition:
+    width 0.5s ease;
+}
+
+
+/* ============================================================
+   SMALL STATUS DOT
+============================================================ */
+
+.status-dot {
+  display: inline-block;
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--success);
+
+  box-shadow:
+    0 0 8px rgba(52, 211, 153, 0.55);
+}
+
+
+/* ============================================================
+   LOCKED STATUS
+============================================================ */
+
+.locked {
+  opacity: 0.65;
+}
+
+
+/* ============================================================
+   ACTIVE STATUS
+============================================================ */
+
+.active-status {
+  color: var(--success);
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   COMPLETION STATUS
+============================================================ */
+
+.completed-status {
+  color: var(--success);
+
+  font-weight: 600;
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 12 — SHARED LAYOUT UTILITIES
+============================================================ */
+
+/* ============================================================
+   CARD HOVER
+============================================================ */
+
+.card.card-hover {
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.card.card-hover:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(0, 229, 168, 0.25);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   FLEX UTILITIES
+============================================================ */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* ============================================================
+   ALIGNMENT
+============================================================ */
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+
+/* ============================================================
+   JUSTIFICATION
+============================================================ */
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+
+/* ============================================================
+   FLEX WRAP
+============================================================ */
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+
+/* ============================================================
+   GAP UTILITIES
+============================================================ */
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+
+/* ============================================================
+   WIDTH UTILITIES
+============================================================ */
+
+.w-full {
+  width: 100%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+
+/* ============================================================
+   POSITION UTILITIES
+============================================================ */
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+
+/* ============================================================
+   TEXT ALIGNMENT
+============================================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+/* ============================================================
+   TEXT COLORS
+============================================================ */
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   SPACING — MARGIN BOTTOM
+============================================================ */
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+
+/* ============================================================
+   SPACING — MARGIN TOP
+============================================================ */
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
+
+/* ============================================================
+   SPACING — PADDING
+============================================================ */
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+
+/* ============================================================
+   OVERFLOW
+============================================================ */
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   SMALL BUTTON
+============================================================ */
+
+.btn-sm {
+  min-height: 32px;
+
+  padding: 0.45rem 0.75rem;
+
+  font-size: 0.72rem;
+}
+
+
+/* ============================================================
+   LARGE BUTTON
+============================================================ */
+
+.btn-lg {
+  min-height: 46px;
+
+  padding: 0.75rem 1.25rem;
+
+  font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   DISABLED BUTTON
+============================================================ */
+
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* ============================================================
+   BADGE
+============================================================ */
+
+.badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 5px 10px;
+
+  background:
+    rgba(0, 229, 168, 0.08);
+
+  border:
+    1px solid rgba(0, 229, 168, 0.18);
+
+  border-radius: 50px;
+
+  color: var(--accent);
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+
+/* ============================================================
+   XP BADGE
+============================================================ */
+
+.xp-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 3px 7px;
+
+  background:
+    rgba(0, 229, 168, 0.08);
+
+  border:
+    1px solid rgba(0, 229, 168, 0.12);
+
+  border-radius: 4px;
+
+  color: var(--accent);
+
+  font-size: 0.6rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* ============================================================
+   HIDDEN UTILITY
+============================================================ */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ============================================================
+   VISUALLY HIDDEN
+============================================================ */
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+
+  height: 1px;
+
+  padding: 0;
+
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PART 13 — FINAL RESPONSIVE SYSTEM
+============================================================ */
+
+
+/* ============================================================
+   TABLET — 1100px
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  /* -----------------------------
+     ROADMAP
+  ----------------------------- */
+
+  .roadmap-container {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .roadmap-step-wrapper:nth-child(2)::after {
+    display: none;
+  }
+
+
+  /* -----------------------------
+     FEATURES
+  ----------------------------- */
+
+  .feature-grid-4 {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  /* -----------------------------
+     PRINCIPLES
+  ----------------------------- */
+
+  .principles-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .cockpit-panel {
+    grid-column: 1 / -1;
+  }
+
+
+  /* -----------------------------
+     CURRICULUM
+  ----------------------------- */
+
+  .course-tier-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  /* -----------------------------
+     TRADING TOOLS
+  ----------------------------- */
+
+  .grid-4,
+  .tool-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+
+  /* -----------------------------
+     PRACTICE TERMINAL
+  ----------------------------- */
+
+  .practice-grid-container {
+    grid-template-columns:
+      280px minmax(0, 1fr);
+  }
+
+
+  /* -----------------------------
+     FOOTER
+  ----------------------------- */
+
+  .footer-grid {
+    grid-template-columns:
+      1.5fr 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* ============================================================
+   TABLET / MOBILE — 900px
+============================================================ */
+
+@media (max-width: 900px) {
+
+  /* -----------------------------
+     PRINCIPLES
+  ----------------------------- */
+
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cockpit-panel {
+    grid-column: auto;
+  }
+
+
+  /* -----------------------------
+     PRACTICE
+  ----------------------------- */
+
+  .practice-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -----------------------------
+     CONTACT
+  ----------------------------- */
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -----------------------------
+     FOOTER
+  ----------------------------- */
+
+  .footer-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* ============================================================
+   MOBILE — 768px
+============================================================ */
+
+@media (max-width: 768px) {
+
+  /* -----------------------------
+     ROADMAP
+  ----------------------------- */
+
+  .roadmap-container {
+    width: 92%;
+
+    grid-template-columns: 1fr;
+
+    gap: 1rem;
+  }
+
+  .roadmap-step-wrapper::after {
+    display: none !important;
+  }
+
+
+  /* -----------------------------
+     FEATURES
+  ----------------------------- */
+
+  .feature-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -----------------------------
+     CURRICULUM
+  ----------------------------- */
+
+  .curriculum-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-tier-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .curr-item-detailed {
+    align-items: flex-start;
+  }
+
+
+  /* -----------------------------
+     TRADING TOOLS
+  ----------------------------- */
+
+  .grid-4,
+  .tool-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .tool-card-interactive {
+    min-height: auto;
+    padding: 1.4rem 1.25rem;
+  }
+
+  .tool-card-interactive h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .tool-card-interactive p {
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .tool-link-arrow {
+    margin-top: 14px;
+    font-size: 0.82rem;
+  }
+
+
+  /* -----------------------------
+     CHART
+  ----------------------------- */
+
+  .tv-info-bar {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .tv-right {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+
+  .tv-timeframes {
+    display: flex;
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    justify-content: flex-start;
+
+    padding: 4px 1.5rem 8px 2px;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tv-timeframes::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tf-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .chart-box {
+    height: 380px;
+  }
+
+
+  /* -----------------------------
+     DASHBOARD
+  ----------------------------- */
+
+  .card > .flex.gap-8 {
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 1.5rem;
+  }
+
+  .card .flex-col {
+    align-items: center;
+  }
+
+  .dashboard-stat-column {
+    width: 100%;
+
+    padding-left: 0;
+
+    padding-top: 1.5rem;
+
+    border-left: 0;
+
+    border-top:
+      1px solid var(--border-color);
+
+    align-items: center;
+  }
+
+
+  /* -----------------------------
+     CONTACT
+  ----------------------------- */
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -----------------------------
+     COMPLIANCE
+  ----------------------------- */
+
+  .compliance-banner {
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 15px;
+
+    padding: 15px;
+  }
+
+  .compliance-banner .btn {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+
+  /* -----------------------------
+     TOAST
+  ----------------------------- */
+
+  .success-toast {
+    width: 90%;
+
+    right: 5%;
+
+    left: 5%;
+  }
+}
+
+
+/* ============================================================
+   MOBILE PORTRAIT — 600px
+============================================================ */
+
+@media (max-width: 600px) {
+
+  /* -----------------------------
+     COCKPIT
+  ----------------------------- */
+
+  .cockpit-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -----------------------------
+     TOOLS
+  ----------------------------- */
+
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* -----------------------------
+     CHART
+  ----------------------------- */
+
+  .chart-box {
+    height: 350px;
+  }
+
+
+  /* -----------------------------
+     CURRICULUM
+  ----------------------------- */
+
+  .curr-meta-pills {
+    flex-wrap: wrap;
+  }
+
+
+  /* -----------------------------
+     COURSE ITEM
+  ----------------------------- */
+
+  .curr-item-detailed {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .curr-status {
+    align-self: flex-start;
+  }
+
+
+  /* -----------------------------
+     SECTION TITLE
+  ----------------------------- */
+
+  .section-title {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE — 480px
+============================================================ */
+
+@media (max-width: 480px) {
+
+  .container {
+    width: 92%;
+
+    padding-left: 0;
+
+    padding-right: 0;
+  }
+
+
+  /* -----------------------------
+     CARDS
+  ----------------------------- */
+
+  .card {
+    padding: 1.2rem;
+  }
+
+
+  /* -----------------------------
+     PROGRESS
+  ----------------------------- */
+
+  .circle-progress {
+    width: 80px;
+
+    height: 80px;
+
+    flex-basis: 80px;
+  }
+
+  .circle-progress svg {
+    width: 80px;
+
+    height: 80px;
+  }
+
+
+  /* -----------------------------
+     SECTION TITLE
+  ----------------------------- */
+
+  .section-title h2 {
+    font-size: 1.25rem;
+  }
+
+
+  /* -----------------------------
+     BUTTONS
+  ----------------------------- */
+
+  .btn {
+    min-height: 36px;
+
+    font-size: 0.75rem;
+
+    padding:
+      0.5rem 0.75rem;
+  }
+
+
+  /* -----------------------------
+     CONTACT
+  ----------------------------- */
+
+  .contact-form-wrapper {
+    padding: 1rem;
+  }
+}
+
+
+/* ============================================================
+   EXTRA SMALL — 360px
+============================================================ */
+
+@media (max-width: 360px) {
+
+  h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+
+    padding:
+      0.5rem 1rem;
+  }
+
+  .chart-box {
+    height: 300px;
+  }
+
+  .footer-bottom-container {
+    gap: 0.75rem;
+  }
+
+  .footer-legal-links {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   MARKET INTELLIGENCE — PREMIUM SECTION
+   STEP 3B
+============================================================ */
+
+
+/* ============================================================
+   MAIN SECTION
+============================================================ */
+
+.market-intelligence {
+    position: relative;
+
+    width: min(1380px, calc(100% - 48px));
+
+    margin: 0 auto;
+
+    padding: 110px 0 120px;
+
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   SECTION HEADER
+============================================================ */
+
+.market-intelligence-heading {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    width: 100%;
+
+    margin-bottom: 42px;
+}
+
+
+/* LEFT SIDE */
+
+.market-intelligence-heading-content {
+    min-width: 0;
+
+    max-width: 850px;
+}
+
+
+/* ============================================================
+   EYEBROW
+============================================================ */
+
+.market-intelligence .section-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 16px;
+
+    color: var(--accent);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+.market-intelligence .section-eyebrow i {
+    font-size: 13px;
+
+    color: var(--accent);
+}
+
+
+/* ============================================================
+   SECTION TITLE
+============================================================ */
+
+.market-intelligence-heading h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(38px, 4vw, 58px);
+
+    font-weight: 850;
+
+    line-height: 1.04;
+
+    letter-spacing: -0.045em;
+}
+
+
+/* ============================================================
+   SECTION DESCRIPTION
+============================================================ */
+
+.market-intelligence-heading p {
+    max-width: 760px;
+
+    margin: 18px 0 0;
+
+    color: rgba(226, 232, 240, 0.72);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   LIVE MARKET STATUS
+============================================================ */
+
+.market-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    flex-shrink: 0;
+
+    min-height: 42px;
+
+    padding: 0 16px;
+
+    border: 1px solid rgba(0, 214, 170, 0.28);
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 214, 170, 0.07),
+            rgba(0, 214, 170, 0.025)
+        );
+
+    color: rgba(236, 253, 250, 0.9);
+
+    font-size: 13px;
+
+    font-weight: 750;
+
+    white-space: nowrap;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025),
+        0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+
+/* STATUS DOT */
+
+.market-status-dot {
+    width: 8px;
+
+    height: 8px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow:
+        0 0 0 4px rgba(0, 214, 170, 0.08),
+        0 0 14px rgba(0, 214, 170, 0.75);
+}
+
+
+/* ============================================================
+   MARKET GRID
+============================================================ */
+
+.market-intelligence-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 26px;
+
+    width: 100%;
+}
+
+
+/* ============================================================
+   MARKET CARD
+============================================================ */
+
+.market-intelligence-card {
+    position: relative;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(148, 163, 184, 0.14);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 27, 42, 0.98),
+            rgba(8, 13, 22, 0.98)
+        );
+
+    box-shadow:
+        0 24px 65px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* CARD HOVER */
+
+.market-intelligence-card:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(0, 214, 170, 0.26);
+
+    box-shadow:
+        0 30px 75px rgba(0, 0, 0, 0.35),
+        0 0 35px rgba(0, 214, 170, 0.035);
+}
+
+
+/* ============================================================
+   CARD HEADER
+============================================================ */
+
+.market-card-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    min-height: 104px;
+
+    padding: 24px 24px 22px;
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(24, 35, 52, 0.72),
+            rgba(15, 23, 36, 0.58)
+        );
+}
+
+
+/* ============================================================
+   CARD HEADING
+============================================================ */
+
+.market-card-heading {
+    min-width: 0;
+}
+
+
+/* ============================================================
+   CARD LABEL
+============================================================ */
+
+.market-card-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+
+    color: var(--accent);
+
+    font-size: 11px;
+
+    font-weight: 850;
+
+    letter-spacing: 0.12em;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+}
+
+.market-card-label i {
+    font-size: 11px;
+
+    color: var(--accent);
+}
+
+
+/* ============================================================
+   CARD TITLE
+============================================================ */
+
+.market-card-header h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.02em;
+}
+
+
+/* ============================================================
+   LIVE CARD BADGE
+============================================================ */
+
+.market-card-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    min-width: 52px;
+
+    height: 32px;
+
+    padding: 0 11px;
+
+    border: 1px solid rgba(0, 214, 170, 0.28);
+
+    border-radius: 999px;
+
+    background: rgba(0, 214, 170, 0.055);
+
+    color: var(--accent);
+
+    font-size: 10px;
+
+    font-weight: 850;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* ============================================================
+   CARD BODY
+============================================================ */
+
+.market-card-body {
+    position: relative;
+
+    width: 100%;
+
+    min-width: 0;
+
+    background: #05070b;
+}
+
+
+/* ============================================================
+   TRADINGVIEW WIDGET CONTAINER
+============================================================ */
+
+.market-widget-frame {
+    position: relative;
+
+    width: 100%;
+
+    height: 520px;
+
+    overflow: hidden;
+
+    background: #050505;
+}
+
+
+/* ============================================================
+   TRADINGVIEW IFRAME
+============================================================ */
+
+.market-widget-frame iframe {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    min-width: 0;
+
+    border: 0;
+
+    background: #050505;
+}
+
+
+/* ============================================================
+   ECONOMIC CALENDAR
+============================================================ */
+
+.market-calendar-card .market-widget-frame {
+    height: 520px;
+}
+
+
+/* ============================================================
+   MARKET NEWS
+============================================================ */
+
+.market-news-card .market-widget-frame {
+    height: 520px;
+}
+
+
+/* ============================================================
+   SUBTLE CARD TOP GLOW
+============================================================ */
+
+.market-intelligence-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 12%;
+
+    width: 76%;
+
+    height: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 214, 170, 0.22),
+            transparent
+        );
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 1100px) {
+
+    .market-intelligence {
+        width: min(100% - 36px, 900px);
+
+        padding-top: 90px;
+
+        padding-bottom: 100px;
+    }
+
+
+    .market-intelligence-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 24px;
+    }
+
+
+    .market-intelligence-heading-content {
+        max-width: 760px;
+    }
+
+
+    .market-intelligence-grid {
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+    }
+
+
+    .market-widget-frame,
+    .market-calendar-card .market-widget-frame,
+    .market-news-card .market-widget-frame {
+        height: 500px;
+    }
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 700px) {
+
+    .market-intelligence {
+        width: calc(100% - 28px);
+
+        padding-top: 70px;
+
+        padding-bottom: 80px;
+    }
+
+
+    .market-intelligence-heading {
+        margin-bottom: 28px;
+
+        gap: 20px;
+    }
+
+
+    .market-intelligence-heading h2 {
+        font-size: clamp(34px, 10vw, 46px);
+
+        line-height: 1.05;
+    }
+
+
+    .market-intelligence-heading p {
+        margin-top: 14px;
+
+        font-size: 15px;
+
+        line-height: 1.65;
+    }
+
+
+    .market-status {
+        min-height: 40px;
+
+        padding: 0 14px;
+
+        font-size: 12px;
+    }
+
+
+    .market-intelligence-grid {
+        gap: 18px;
+    }
+
+
+    .market-intelligence-card {
+        border-radius: 15px;
+    }
+
+
+    .market-card-header {
+        min-height: 88px;
+
+        padding: 19px 18px;
+    }
+
+
+    .market-card-header h3 {
+        font-size: 18px;
+    }
+
+
+    .market-card-label {
+        font-size: 10px;
+    }
+
+
+    .market-card-status {
+        min-width: 46px;
+
+        height: 29px;
+
+        padding: 0 9px;
+
+        font-size: 9px;
+    }
+
+
+    .market-widget-frame,
+    .market-calendar-card .market-widget-frame,
+    .market-news-card .market-widget-frame {
+        height: 440px;
+    }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 430px) {
+
+    .market-intelligence {
+        width: calc(100% - 20px);
+
+        padding-top: 55px;
+
+        padding-bottom: 65px;
+    }
+
+
+    .market-intelligence-heading h2 {
+        font-size: 32px;
+    }
+
+
+    .market-card-header {
+        padding: 17px 15px;
+    }
+
+
+    .market-widget-frame,
+    .market-calendar-card .market-widget-frame,
+    .market-news-card .market-widget-frame {
+        height: 400px;
+    }
+}
+
+/* ============================================================
+   STRATIVO ACADEMY
+   PREMIUM METRICS STRIP — STEP 2
+============================================================ */
+
+.metrics-strip {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 0;
+
+    padding: 22px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10, 16, 29, 0.98),
+            rgba(7, 12, 23, 0.98)
+        );
+
+    border-top: 1px solid rgba(148, 163, 184, 0.10);
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.10);
+
+    box-shadow:
+        0 -15px 40px rgba(0, 0, 0, 0.18),
+        0 15px 40px rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   SUBTLE ACCENT GLOW
+============================================================ */
+
+.metrics-strip::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 420px;
+    max-width: 100%;
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background: var(--accent);
+
+    opacity: 0.45;
+
+    box-shadow:
+        0 0 25px rgba(0, 214, 170, 0.45);
+}
+
+
+/* ============================================================
+   GRID
+============================================================ */
+
+.metrics-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    align-items: center;
+
+    gap: 0;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+   METRIC ITEM
+============================================================ */
+
+.metric-item {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    min-height: 58px;
+
+    padding: 8px 20px;
+}
+
+
+/* ============================================================
+   DIVIDER
+============================================================ */
+
+.metric-item:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 50%;
+
+    width: 1px;
+    height: 38px;
+
+    transform: translateY(-50%);
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(148, 163, 184, 0.18),
+            transparent
+        );
+}
+
+
+/* ============================================================
+   ICON
+============================================================ */
+
+.metric-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(0, 214, 170, 0.18);
+
+    border-radius: 11px;
+
+    background:
+        rgba(0, 214, 170, 0.055);
+
+    color: var(--accent);
+
+    font-size: 16px;
+
+    box-shadow:
+        inset 0 0 18px rgba(0, 214, 170, 0.025);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* ============================================================
+   HOVER
+============================================================ */
+
+.metric-item:hover .metric-icon {
+    transform: translateY(-2px);
+
+    background:
+        rgba(0, 214, 170, 0.10);
+
+    border-color:
+        rgba(0, 214, 170, 0.38);
+
+    box-shadow:
+        0 8px 25px rgba(0, 214, 170, 0.08);
+}
+
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.metric-content {
+    min-width: 0;
+}
+
+
+.metric-content h4 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.01em;
+
+    white-space: nowrap;
+}
+
+
+.metric-content p {
+    margin: 4px 0 0;
+
+    color: rgba(148, 163, 184, 0.78);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 1100px) {
+
+    .metrics-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    .metric-item {
+        padding: 12px 18px;
+    }
+
+
+    .metric-item:nth-child(3):after {
+        display: none;
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 650px) {
+
+    .metrics-strip {
+        padding: 16px 0;
+    }
+
+
+    .metrics-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .metric-item {
+        justify-content: flex-start;
+
+        min-height: 56px;
+
+        padding: 10px 14px;
+    }
+
+
+    .metric-item:nth-child(2)::after,
+    .metric-item:nth-child(4)::after,
+    .metric-item:nth-child(6)::after {
+        display: none;
+    }
+
+
+    .metric-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 14px;
+    }
+
+
+    .metric-content h4 {
+        font-size: 14px;
+    }
+
+
+    .metric-content p {
+        font-size: 10px;
+    }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 420px) {
+
+    .metric-item {
+        gap: 9px;
+
+        padding: 9px 10px;
+    }
+
+
+    .metric-icon {
+        width: 34px;
+        height: 34px;
+
+        border-radius: 9px;
+    }
+
+
+    .metric-content h4 {
+        font-size: 13px;
+    }
+
+}
+
+/* Prevent hero from hiding under sticky header */
+.hero-dashboard {
+    scroll-margin-top: 90px;
+}
+
+
+/* ==========================================================
+   STRATIVO ACADEMY
+   HOMEPAGE STUDENT DASHBOARD
+   Compact Layout Fix
+   ----------------------------------------------------------
+   IMPORTANT:
+   This is ONLY for the dashboard section inside index.html.
+   Do not confuse it with css/dashboard.css, which belongs
+   to dashboard/dashboard.html.
+========================================================== */
+
+
+/* ==========================================================
+   MAIN DASHBOARD / REVIEWS ROW
+========================================================== */
+
+.dashboard-page .grid-2,
+main .container .grid-2:has(.dashboard-progress-card) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.85fr);
+    gap: 1.25rem;
+    align-items: start;
+}
+
+
+/* ==========================================================
+   STUDENT DASHBOARD CARD
+========================================================== */
+
+.dashboard-progress-card {
+    min-width: 0;
+    min-height: 0;
+
+    padding: 1.35rem;
+
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 26, 42, 0.96),
+            rgba(8, 16, 28, 0.96)
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+
+/* ==========================================================
+   DASHBOARD SECTION TITLE
+========================================================== */
+
+.dashboard-progress-card .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    margin-bottom: 1rem;
+}
+
+
+.dashboard-progress-card .section-title h2 {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   PROGRESS AREA
+========================================================== */
+
+.dashboard-progress-card > .flex {
+    align-items: center;
+    gap: 1.25rem;
+}
+
+
+/* ==========================================================
+   CIRCLE PROGRESS
+========================================================== */
+
+.dashboard-progress-card .circle-progress {
+    position: relative;
+
+    width: 105px;
+    height: 105px;
+
+    flex: 0 0 105px;
+}
+
+
+.dashboard-progress-card .circle-progress svg {
+    width: 105px;
+    height: 105px;
+
+    transform: rotate(-90deg);
+}
+
+
+.dashboard-progress-card .circle-progress circle {
+    fill: none;
+    stroke-width: 8;
+}
+
+
+.dashboard-progress-card .circle-progress circle:first-child {
+    stroke: rgba(255, 255, 255, 0.08);
+}
+
+
+.dashboard-progress-card .circle-progress .fill {
+    stroke: var(--accent);
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 251;
+    stroke-dashoffset: 251;
+
+    transition:
+        stroke-dashoffset 0.8s ease;
+}
+
+
+.dashboard-progress-card .circle-progress span {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-primary);
+
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   DASHBOARD TEXT AREA
+========================================================== */
+
+.dashboard-progress-card .flex-col {
+    min-width: 0;
+}
+
+
+.dashboard-progress-card .flex-col h4 {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+
+.dashboard-progress-card .flex-col p {
+    margin: 0.3rem 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.76rem;
+
+    line-height: 1.45;
+}
+
+
+/* ==========================================================
+   DASHBOARD SIDE STATISTICS
+========================================================== */
+
+.dashboard-progress-card .flex > .flex.flex-col {
+    min-width: 190px;
+
+    padding-left: 1.25rem;
+
+    border-left:
+        1px solid var(--border-color);
+}
+
+
+.dashboard-progress-card .flex > .flex.flex-col > div {
+    font-size: 0.78rem !important;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   HOMEPAGE STAT GRID
+========================================================== */
+
+.dashboard-stat-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 0.75rem;
+
+    margin-top: 1rem;
+}
+
+
+.dashboard-stat-card {
+    min-width: 0;
+
+    padding: 0.9rem;
+
+    border:
+        1px solid var(--border-color);
+
+    border-radius: 13px;
+
+    background:
+        rgba(15, 26, 42, 0.82);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.dashboard-stat-icon {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 0.55rem;
+
+    border-radius: 9px;
+
+    background:
+        rgba(0, 229, 168, 0.08);
+
+    color: var(--accent);
+
+    font-size: 0.85rem;
+}
+
+
+.dashboard-stat-card strong {
+    display: block;
+
+    color: var(--text-primary);
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+
+.dashboard-stat-card span {
+    display: block;
+
+    margin-top: 0.2rem;
+
+    color: var(--text-muted);
+
+    font-size: 0.65rem;
+}
+
+
+/* ==========================================================
+   REVIEWS CARD
+========================================================== */
+
+main .container .grid-2 > .card:last-child {
+    min-height: 0;
+
+    height: auto;
+
+    align-self: start;
+
+    padding: 1.5rem;
+}
+
+
+/* ==========================================================
+   COMMUNITY / CONTACT
+========================================================== */
+
+#community {
+    align-items: start;
+}
+
+
+#community > div {
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    #community {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+
+/* ==========================================================
+   HOMEPAGE DASHBOARD RESPONSIVE
+========================================================== */
+
+@media (max-width: 1000px) {
+
+    .dashboard-page .grid-2,
+    main .container .grid-2:has(.dashboard-progress-card) {
+        grid-template-columns: 1fr;
+    }
+
+
+    .dashboard-progress-card .flex > .flex.flex-col {
+        min-width: 0;
+    }
+}
+
+
+@media (max-width: 760px) {
+
+    .dashboard-stat-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .dashboard-progress-card > .flex {
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+    }
+
+
+    .dashboard-progress-card .flex > .flex.flex-col {
+        width: 100%;
+
+        padding-left: 0;
+
+        padding-top: 1rem;
+
+        border-left: 0;
+
+        border-top:
+            1px solid var(--border-color);
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .dashboard-progress-card {
+        padding: 1rem;
+    }
+
+
+    .dashboard-progress-card .section-title {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .dashboard-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .dashboard-progress-card .circle-progress {
+        width: 90px;
+        height: 90px;
+
+        flex-basis: 90px;
+    }
+
+
+    .dashboard-progress-card .circle-progress svg {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* ==========================================================
+   STRATIVO ACADEMY
+   SEARCH PANEL
+   ========================================================== */
+
+.strativo-search-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 110px 20px 40px;
+
+    background: rgba(3, 8, 15, 0.72);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    overflow-y: auto;
+}
+
+
+.strativo-search-panel-inner {
+    width: min(680px, 100%);
+
+    max-height: calc(100vh - 150px);
+
+    overflow: hidden;
+
+    border: 1px solid var(--border-color, rgba(255,255,255,0.1));
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 26, 42, 0.98),
+            rgba(7, 14, 25, 0.98)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.strativo-search-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px 18px;
+
+    border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.08));
+}
+
+
+.strativo-search-eyebrow {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--accent, #00e5a8);
+
+    font-size: 0.68rem;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+
+.strativo-search-panel-header h2 {
+    margin: 0;
+
+    color: var(--text-primary, #ffffff);
+
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   CLOSE BUTTON
+   ========================================================== */
+
+.strativo-search-close {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 38px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.04);
+
+    color: var(--text-secondary, #aab4c3);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.strativo-search-close:hover {
+    background: rgba(255,255,255,0.08);
+
+    color: var(--text-primary, #ffffff);
+
+    transform: rotate(3deg);
+}
+
+
+/* ==========================================================
+   INPUT
+   ========================================================== */
+
+.strativo-search-input-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    margin: 18px 24px;
+}
+
+
+.strativo-search-input-wrapper > i {
+    position: absolute;
+    left: 17px;
+
+    color: var(--accent, #00e5a8);
+
+    pointer-events: none;
+}
+
+
+.strativo-search-input-wrapper input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px 16px 14px 46px;
+
+    border: 1px solid var(--border-color, rgba(255,255,255,0.1));
+    border-radius: 12px;
+
+    outline: none;
+
+    background: rgba(255,255,255,0.04);
+
+    color: var(--text-primary, #ffffff);
+
+    font-size: 0.9rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.strativo-search-input-wrapper input::placeholder {
+    color: var(--text-muted, #788394);
+}
+
+
+.strativo-search-input-wrapper input:focus {
+    border-color: rgba(0, 229, 168, 0.45);
+
+    background: rgba(255,255,255,0.06);
+}
+
+
+/* ==========================================================
+   RESULTS
+   ========================================================== */
+
+.strativo-search-results {
+    max-height: 480px;
+
+    overflow-y: auto;
+
+    padding: 0 12px 14px;
+}
+
+
+.strativo-search-result {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 13px 12px;
+
+    margin-bottom: 6px;
+
+    border: 1px solid transparent;
+    border-radius: 12px;
+
+    background: transparent;
+
+    color: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.strativo-search-result:hover {
+    background: rgba(0, 229, 168, 0.06);
+
+    border-color: rgba(0, 229, 168, 0.14);
+
+    transform: translateX(2px);
+}
+
+
+/* ==========================================================
+   RESULT ICON
+   ========================================================== */
+
+.strativo-search-result-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 40px;
+
+    border-radius: 10px;
+
+    background: rgba(0, 229, 168, 0.08);
+
+    color: var(--accent, #00e5a8);
+}
+
+
+.strativo-search-result-content {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.strativo-search-result-content strong {
+    display: block;
+
+    color: var(--text-primary, #ffffff);
+
+    font-size: 0.86rem;
+    font-weight: 750;
+}
+
+
+.strativo-search-result-content small {
+    display: block;
+
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    color: var(--text-muted, #788394);
+
+    font-size: 0.72rem;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.strativo-search-result-type {
+    flex: 0 0 auto;
+
+    color: var(--text-muted, #788394);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   EMPTY / NO RESULTS
+   ========================================================== */
+
+.strativo-search-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    min-height: 170px;
+
+    padding: 25px;
+
+    text-align: center;
+}
+
+
+.strativo-search-empty i {
+    margin-bottom: 12px;
+
+    color: var(--accent, #00e5a8);
+
+    font-size: 1.5rem;
+}
+
+
+.strativo-search-empty strong {
+    color: var(--text-primary, #ffffff);
+
+    font-size: 0.9rem;
+}
+
+
+.strativo-search-empty span {
+    margin-top: 5px;
+
+    color: var(--text-muted, #788394);
+
+    font-size: 0.72rem;
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+    .strativo-search-panel {
+        padding: 80px 12px 20px;
+    }
+
+    .strativo-search-panel-inner {
+        max-height: calc(100vh - 100px);
+
+        border-radius: 16px;
+    }
+
+    .strativo-search-panel-header {
+        padding: 18px;
+    }
+
+    .strativo-search-input-wrapper {
+        margin: 14px 18px;
+    }
+
+    .strativo-search-result-type {
+        display: none;
+    }
+
+}
+
+/* ==========================================================
+   STRATIVO ACADEMY
+   MINIMAL AD CONTAINER STYLES (NON-INTRUSIVE)
+   ========================================================== */
+
+.strativo-ad-wrapper {
+    width: 100%;
+    margin: 28px auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    clear: both;
+}
+
+.strativo-ad-container {
+    width: 100%;
+    max-width: 970px;
+    min-height: 90px;
+    background: rgba(14, 24, 40, 0.4);
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.strativo-ad-label {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted, #788394);
+    margin-bottom: 6px;
+}
+
+.strativo-ad-slot {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}

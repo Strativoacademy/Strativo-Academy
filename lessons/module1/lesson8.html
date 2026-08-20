@@ -1,0 +1,2837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lesson 8 - Support & Resistance | Strativo Academy</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <style>
+        /* ===== MASTER TEMPLATE STYLES ===== */
+        /* ---------------- Global ---------------- */
+        body {
+            padding-top: 0;
+        }
+
+        .lesson-step {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .lesson-step.active-step {
+            display: block;
+            opacity: 1;
+        }
+
+        .lesson-sidebar {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+        }
+
+        /* ---------------- Cards & Boxes ---------------- */
+        .info-box {
+            background: #162437;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-left: 6px solid #64748b;
+            color: #cfcfcf;
+        }
+        .info-box.success { border-left-color: #00e5a8; }
+        .info-box.warning { border-left-color: #ef4444; }
+        .info-box.note { border-left-color: #fbbf24; }
+        .info-box.remember { border-left-color: #818cf8; }
+        .info-box.didyouknow { border-left-color: #2dd4bf; }
+        .info-box h3 { color: #ffffff; margin-top: 0; }
+
+        /* ---------------- Dynamic Lesson Button ---------------- */
+        .lesson-action-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .lesson-action-btn.unlocked {
+            background: #00e5a8;
+            color: #0a1424;
+            box-shadow: 0 4px 14px rgba(0, 229, 168, 0.25);
+        }
+        .lesson-action-btn.unlocked:hover {
+            background: #00cc94;
+            transform: translateY(-1px);
+        }
+        .lesson-action-btn.locked {
+            background: #1e293b;
+            color: #64748b;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        .lesson-action-btn.coming-soon {
+            background: #64748b;
+            color: #ffffff;
+            cursor: default;
+            box-shadow: none;
+        }
+        .lesson-action-btn.coming-soon:hover {
+            background: #64748b;
+            transform: none;
+        }
+
+        /* ---------------- Quiz ---------------- */
+        .quiz-options button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 18px;
+            margin: 8px 0;
+            background: #162437;
+            border: 2px solid #1e293b;
+            border-radius: 8px;
+            color: #cfcfcf;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-options button:hover:not(:disabled) {
+            background: #1e293b;
+            border-color: #64748b;
+        }
+        .quiz-options button.correct {
+            background: #00e5a8;
+            border-color: #00e5a8;
+            color: #0a1424;
+        }
+        .quiz-options button.wrong {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: #ffffff;
+        }
+        .quiz-options button:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        .quiz-result {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 12px 0;
+        }
+        .quiz-result.correct { color: #00e5a8; }
+        .quiz-result.wrong { color: #ef4444; }
+        .quiz-explanation {
+            background: #162437;
+            padding: 14px 18px;
+            border-radius: 8px;
+            border-left: 4px solid #fbbf24;
+            margin: 12px 0;
+            color: #cfcfcf;
+        }
+
+        /* ---------------- Checklist ---------------- */
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            color: #cfcfcf;
+            cursor: pointer;
+        }
+        .checklist-item input[type="checkbox"] {
+            accent-color: #00e5a8;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* ---------------- Image Display ---------------- */
+        .lesson-image {
+            display: block;
+            margin: 20px auto;
+            background: #0a1424;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px dashed #1e293b;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+        }
+
+        /* ---------------- Responsive ---------------- */
+        @media (max-width: 700px) {
+            .lesson-sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+
+    /* ===== V1 LESSON 8 RESPONSIVE / ACCESSIBILITY FIXES ===== */
+    button:focus-visible,
+    a:focus-visible {
+        outline: 2px solid #60a5fa;
+        outline-offset: 3px;
+    }
+
+    .lesson-mobile-toggle {
+        display: none;
+        width: 100%;
+        min-height: 44px;
+        margin: 12px 0 10px;
+        padding: 0 14px;
+        border: 1px solid rgba(148, 163, 184, 0.14);
+        border-radius: 10px;
+        background: #0b1220;
+        color: #dbeafe;
+        font: inherit;
+        font-size: 0.82rem;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .lesson-sidebar.is-open {
+        display: block;
+    }
+
+    .lesson-sticky-nav {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 1000;
+        display: none;
+        align-items: center;
+        gap: 10px;
+        padding: 9px;
+        border: 1px solid rgba(148, 163, 184, 0.15);
+        border-radius: 14px;
+        background: rgba(3, 7, 18, 0.94);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(10px);
+    }
+
+    .lesson-sticky-nav button {
+        min-height: 44px;
+        padding: 0 13px;
+        border: 1px solid rgba(148, 163, 184, 0.14);
+        border-radius: 10px;
+        background: #0b1627;
+        color: #dbeafe;
+        font: inherit;
+        font-size: 0.80rem;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .lesson-sticky-nav button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    .lesson-sticky-nav span {
+        flex: 1;
+        text-align: center;
+        color: #94a3b8;
+        font-size: 0.78rem;
+        font-weight: 700;
+    }
+
+    .lesson-next-action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-width: 800px) {
+        .lesson-mobile-toggle {
+            display: block;
+        }
+
+        .lesson-sidebar {
+            display: none;
+            position: relative;
+            top: 0;
+        }
+
+        .lesson-sidebar.is-open {
+            display: block;
+        }
+
+        .lesson-sticky-nav {
+            display: flex;
+        }
+
+        .lesson-content {
+            padding-bottom: 90px !important;
+        }
+    }
+
+    @media (min-width: 801px) {
+        .lesson-sticky-nav {
+            display: none !important;
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- GLOBAL HEADER -->
+    <div data-component="header"></div>
+
+    <div data-component="lesson-header"></div>
+
+    <!-- LESSON NAVIGATOR -->
+    <div class="lesson-navigator-section">
+        <div class="navigator-card">
+            <div class="navigator-header">
+                <h2>📚 Lesson Navigator</h2>
+                <p>
+                    Jump directly to any lesson.
+                    Quiz scores track mastery separately.
+                </p>
+            </div>
+
+            <div class="navigator-grid">
+                <a href="lesson1.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 1</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson2.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 2</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson3.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 3</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson4.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 4</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson5.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 5</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson6.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 6</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson7.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 7</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson8.html" class="nav-grid-item current" aria-current="page">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 8</span>
+                        <span class="lesson-icon">✅</span>
+                    </div>
+                    <span class="current-badge">Current Lesson</span>
+                </a>
+
+                <a href="lesson9.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 9</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+
+                <a href="lesson10.html" class="nav-grid-item">
+                    <div class="grid-item-top">
+                        <span class="lesson-name">Lesson 10</span>
+                        <span class="lesson-icon">▶</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <button
+        type="button"
+        id="lessonSidebarToggle"
+        class="lesson-mobile-toggle"
+        aria-controls="lessonSidebar"
+        aria-expanded="false"
+    >
+        ☰ Lesson Menu
+    </button>
+
+    <div class="lesson-layout">
+
+       <aside id="lessonSidebar" class="lesson-sidebar">
+    <h2>Lesson 8</h2>
+
+    <ul id="lessonMenu">
+        <li onclick="showStep(1)" class="active">👋 Welcome</li>
+
+        <li onclick="showStep(2)">📉 What is Support?</li>
+
+        <li onclick="showStep(3)">📈 What is Resistance?</li>
+
+        <li onclick="showStep(4)">🟩 Support & Resistance Zones</li>
+
+        <li onclick="showStep(5)">✏️ How to Draw Support & Resistance</li>
+
+        <li onclick="showStep(6)">💪 Strong vs Weak Levels</li>
+
+        <li onclick="showStep(7)">🔄 Role Reversal</li>
+
+        <li onclick="showStep(8)">🚀 Breakouts vs False Breakouts</li>
+
+        <li onclick="showStep(9)">📊 Trading with Support & Resistance</li>
+
+        <li onclick="showStep(10)">🕒 Multi-Timeframe Analysis</li>
+
+        <li onclick="showStep(11)">⚠️ Common Mistakes</li>
+
+        <li onclick="showStep(12)">🏆 Best Practices & Pro Tips</li>
+
+        <li onclick="showStep(13)">📚 Lesson Summary</li>
+
+        <li onclick="showStep(14)">📝 Final Quiz</li>
+    </ul>
+</aside>
+
+        <main id="lesson-content" class="lesson-content">
+            <div class="lesson-header">
+                <h1>Lesson 8 — Support & Resistance</h1>
+                <div class="lesson-meta">
+                    <div class="meta-item">📈 Beginner</div>
+                    <div class="meta-item">⏱ 45–60 Minutes</div>
+                    <div class="meta-item">📚 Module 1</div>
+                    <div class="meta-item">📝 14 Steps</div>
+                    <!-- IMPROVED: Descriptive Difficulty Indicator -->
+                    <div class="meta-item">Difficulty: Beginner ⭐☆☆☆☆</div>
+                </div>
+                <div class="lesson-progress">
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+
+            <p class="step-text">Step 1 of 14</p>
+
+           
+           <section class="lesson-step active-step" id="step1">
+    <div class="card">
+
+        <span class="lesson-badge">BEGINNER COURSE</span>
+
+        <h1>Welcome to Lesson 8</h1>
+        <h2>Support & Resistance</h2>
+
+        <p>
+            Congratulations on reaching Lesson 8! By completing the previous lessons, you have learned the basics of the Forex market, how currency pairs move, how charts work, and how to read candlesticks. Now it's time to learn one of the most important concepts in technical analysis—Support and Resistance.
+        </p>
+
+        <p>
+            Almost every professional trader begins their chart analysis by identifying Support and Resistance levels. Before placing a trade, they first ask a simple question:
+            <strong>"Where is price likely to react?"</strong>
+            The answer usually lies at Support or Resistance.
+        </p>
+
+        <p>
+            These areas help traders understand where buyers may become active, where sellers may take control, and where the market could reverse, pause, or continue its trend. Whether you trade Forex, Gold, Crypto, Stocks, or Indices, Support and Resistance are used in every financial market around the world.
+        </p>
+
+        <p>
+            In this lesson, you won't just memorize definitions. You will learn why these levels work, the psychology behind them, how professionals draw them correctly, and how to avoid the common mistakes that many beginners make.
+        </p>
+
+        <img src="../../images/lesson8/welcome.png"
+             alt="Support and Resistance Introduction"
+             class="lesson-image">
+
+        <div class="info-box warning">
+            <h3>⚠️ Important Before You Start</h3>
+
+            <p>
+                Do not try to memorize Support and Resistance like school notes.
+                Instead, focus on understanding why price reacts at certain areas.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Learn the psychology behind every price movement.</li>
+                <li>✔ Practice drawing levels on historical charts.</li>
+                <li>✔ Don't rush into live trading.</li>
+                <li>✔ Build confidence through practice first.</li>
+            </ul>
+        </div>
+
+        <div class="info-box success">
+            <h3>📚 What You Will Learn</h3>
+
+            <ul class="lesson-list">
+                <li>✔ What Support is.</li>
+                <li>✔ What Resistance is.</li>
+                <li>✔ Why price reacts at these areas.</li>
+                <li>✔ Why Support and Resistance are zones instead of single lines.</li>
+                <li>✔ How to draw strong levels correctly.</li>
+                <li>✔ Strong vs Weak Support & Resistance.</li>
+                <li>✔ Role Reversal.</li>
+                <li>✔ Bounce Trading.</li>
+                <li>✔ Breakout Trading.</li>
+                <li>✔ False Breakouts.</li>
+                <li>✔ Real chart analysis.</li>
+                <li>✔ Hands-on practice before the quiz.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>⭐ Why This Lesson Matters</h3>
+
+            <p>
+                Support and Resistance are the foundation of technical analysis.
+                Every advanced trading concept—including Price Action,
+                Supply & Demand, Order Blocks, Liquidity, Smart Money Concepts,
+                Trend Trading, and Breakout Strategies—builds upon these levels.
+            </p>
+
+            <p>
+                If you understand Support and Resistance properly, every future lesson in this course will become much easier to understand.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🎯 After Completing This Lesson You Will Be Able To</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Draw Support correctly.</li>
+                <li>✔ Draw Resistance correctly.</li>
+                <li>✔ Identify important market zones.</li>
+                <li>✔ Recognize strong and weak levels.</li>
+                <li>✔ Understand buyer and seller psychology.</li>
+                <li>✔ Spot potential market reversals.</li>
+                <li>✔ Avoid common beginner mistakes.</li>
+                <li>✔ Read charts with greater confidence.</li>
+            </ul>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💡 Strativo Academy Tip</h3>
+
+            <p>
+                Open TradingView after completing this lesson and practice drawing
+                Support and Resistance on old charts. Don't worry about taking
+                trades yet. Focus on improving your chart-reading skills first.
+                Consistent practice is what separates beginners from professional traders.
+            </p>
+        </div>
+
+        <div class="lesson-signature">
+            "The market doesn't reward people who guess.<br>
+            It rewards people who prepare."<br><br>
+
+            <strong>— Strativo Academy</strong>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" disabled>← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+</section>
+           
+           <section class="lesson-step" id="step2">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 2 OF 14</span>
+
+        <h1>📉 What is Support?</h1>
+
+        <p>
+            Support is one of the most important concepts in technical analysis.
+            It is an area on the chart where the price has a higher chance of
+            stopping its fall and moving upward again because buyers become more active.
+        </p>
+
+        <p>
+            Think of Support as a <strong>floor beneath the market.</strong>
+            Just as a floor supports your body and prevents you from falling through,
+            a Support area often prevents price from falling further.
+        </p>
+
+        <img src="../../images/lesson8/step2.png"
+             alt="Support Level Illustration"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 Simple Definition</h3>
+
+            <p>
+                <strong>Support is a price area where buying pressure becomes stronger
+                than selling pressure, causing the market to slow down, stop falling,
+                or reverse upward.</strong>
+            </p>
+        </div>
+
+        <div class="info-box note">
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                Imagine EUR/USD falls from 1.1200 to 1.1000.
+                Many traders believe that 1.1000 is a good buying price.
+            </p>
+
+            <p>
+                As price reaches this area:
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Buyers begin placing Buy orders.</li>
+                <li>✔ Sellers start closing their Sell trades.</li>
+                <li>✔ Buying pressure increases.</li>
+                <li>✔ Selling pressure decreases.</li>
+            </ul>
+
+            <p>
+                Because there are now more buyers than sellers,
+                price often reacts upward from this area.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine dropping a rubber ball onto the floor.
+            </p>
+
+            <p>
+                The floor stops the ball from falling and pushes it back upward.
+            </p>
+
+            <p>
+                Support works in a very similar way.
+                The market falls until buyers become strong enough
+                to push the price higher.
+            </p>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                Suppose GBP/USD falls three different times to
+                <strong>1.2500</strong>.
+            </p>
+
+            <p>
+                Each time the price reaches this level,
+                buyers enter the market and the price rises again.
+            </p>
+
+            <p>
+                This tells us that 1.2500 is acting as a
+                <strong>Support level.</strong>
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistake</h3>
+
+            <p>
+                Many beginners think Support guarantees that price will always go up.
+            </p>
+
+            <p>
+                This is not true.
+            </p>
+
+            <p>
+                Support increases the probability of a bounce,
+                but it does not guarantee one.
+                Sometimes Support breaks and the market continues falling.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                Professional traders rarely buy the instant price touches Support.
+            </p>
+
+            <p>
+                They wait for confirmation,
+                such as bullish candlesticks,
+                strong buying pressure,
+                or other signals before entering a trade.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 Remember</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Support is where buyers become stronger.</li>
+                <li>✔ Price may bounce upward.</li>
+                <li>✔ Support is an area, not a guarantee.</li>
+                <li>✔ Always wait for confirmation before trading.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Support is not a magic line that always stops price.
+                It is an area where buying pressure often becomes stronger than
+                selling pressure, increasing the chance of an upward reaction.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            
+           <section class="lesson-step" id="step3">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 3 OF 14</span>
+
+        <h1>📈 What is Resistance?</h1>
+
+        <p>
+            Now that you understand Support, it's time to learn Resistance.
+            Resistance is simply the opposite of Support. Instead of stopping
+            the market from falling, Resistance is an area where the price has
+            a higher chance of stopping its rise and moving downward because
+            sellers become more active.
+        </p>
+
+        <p>
+            Imagine a <strong>ceiling above the market.</strong>
+            Just as a ceiling stops you from moving higher, a Resistance area
+            often prevents price from moving further upward.
+        </p>
+
+        <img src="../../images/lesson8/step3.png"
+             alt="Resistance Level Illustration"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 Simple Definition</h3>
+
+            <p>
+                <strong>Resistance is a price area where selling pressure becomes
+                stronger than buying pressure, causing the market to slow down,
+                stop rising, or reverse downward.</strong>
+            </p>
+        </div>
+
+        <div class="info-box note">
+            <h3>🧠 Market Psychology</h3>
+
+            <p>
+                Imagine EUR/USD rises from 1.1000 to 1.1200.
+                Many traders believe that 1.1200 is a good place to sell.
+            </p>
+
+            <p>
+                As price reaches this area:
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Sellers begin opening Sell orders.</li>
+                <li>✔ Buyers begin taking profits.</li>
+                <li>✔ Selling pressure increases.</li>
+                <li>✔ Buying pressure becomes weaker.</li>
+            </ul>
+
+            <p>
+                Because sellers become stronger than buyers,
+                price often reacts downward from this area.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine throwing a rubber ball toward the ceiling.
+            </p>
+
+            <p>
+                The ball rises until it hits the ceiling,
+                then falls back down.
+            </p>
+
+            <p>
+                Resistance behaves in a similar way.
+                Price rises until sellers become strong enough
+                to push the market lower.
+            </p>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                Suppose GBP/USD rises to
+                <strong>1.2800</strong>
+                three different times.
+            </p>
+
+            <p>
+                Each time price reaches this level,
+                sellers enter the market and the price falls again.
+            </p>
+
+            <p>
+                This tells us that
+                <strong>1.2800 is acting as a Resistance level.</strong>
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistake</h3>
+
+            <p>
+                Many beginners believe Resistance will always force the market
+                to move downward.
+            </p>
+
+            <p>
+                That is incorrect.
+            </p>
+
+            <p>
+                Sometimes buyers become stronger than sellers and price breaks
+                above Resistance. This is called a <strong>breakout</strong>,
+                which we will study later in this lesson.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                Professional traders usually wait for confirmation before
+                selling at Resistance.
+            </p>
+
+            <p>
+                They look for bearish candlestick patterns,
+                rejection wicks,
+                lower highs,
+                or other signs that sellers are taking control.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 Remember</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Resistance is where sellers become stronger.</li>
+                <li>✔ Price may reverse downward.</li>
+                <li>✔ Resistance is an area, not a guarantee.</li>
+                <li>✔ Wait for confirmation before entering a trade.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Resistance is an area where selling pressure often becomes
+                stronger than buying pressure, increasing the probability of a
+                downward reaction. However, no Resistance level is perfect, so
+                traders should always wait for confirmation before trading.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            
+            <section class="lesson-step" id="step4">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 4 OF 14</span>
+
+        <h1>🟩 Support & Resistance Are Zones, Not Lines</h1>
+
+        <p>
+            One of the biggest mistakes new traders make is drawing Support and
+            Resistance as a single thin line. While this may look neat on a chart,
+            it does not reflect how the market actually behaves.
+        </p>
+
+        <p>
+            The Forex market is driven by millions of buyers and sellers placing
+            orders at slightly different prices. Because of this, price rarely
+            reacts at one exact level. Instead, it reacts within an area. This is
+            why professional traders think in terms of <strong>zones</strong>
+            rather than exact lines.
+        </p>
+
+        <img src="../../images/lesson8/step4.png"
+             alt="Support and Resistance Zones"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 What is a Zone?</h3>
+
+            <p>
+                A <strong>zone</strong> is a small price area where buyers or
+                sellers are likely to become active.
+            </p>
+
+            <p>
+                Instead of expecting price to reverse at one exact number,
+                traders allow a small range where the reaction may happen.
+            </p>
+
+            <p>
+                This makes chart analysis much more realistic and accurate.
+            </p>
+        </div>
+
+        <div class="info-box note">
+            <h3>🧠 Why Do Zones Work?</h3>
+
+            <p>
+                Imagine 1,000 traders want to buy EUR/USD.
+            </p>
+
+            <p>
+                Not everyone will place their order at exactly 1.10000.
+            </p>
+
+            <ul class="lesson-list">
+                <li>Trader A buys at 1.0998</li>
+                <li>Trader B buys at 1.1000</li>
+                <li>Trader C buys at 1.1002</li>
+                <li>Trader D buys at 1.1004</li>
+            </ul>
+
+            <p>
+                Together these orders create a buying <strong>zone</strong>,
+                not a single line.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine a parking space.
+            </p>
+
+            <p>
+                You don't have to park your car on one exact painted point.
+                You simply need to park inside the parking area.
+            </p>
+
+            <p>
+                Support and Resistance work in a similar way.
+                Price only needs to enter the zone for buyers or sellers
+                to begin reacting.
+            </p>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                Suppose EUR/USD reaches 1.1000 several times.
+            </p>
+
+            <p>
+                Sometimes price reverses at 1.0998,
+                sometimes at 1.1002,
+                and sometimes at 1.1005.
+            </p>
+
+            <p>
+                Instead of drawing three different lines,
+                professional traders draw one Support
+                <strong>zone</strong> covering the entire area.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistake</h3>
+
+            <p>
+                Beginners often become frustrated because price moves a few pips
+                beyond their Support or Resistance line before reversing.
+            </p>
+
+            <p>
+                They think their analysis was wrong.
+            </p>
+
+            <p>
+                In reality, the market simply reacted within the zone instead of
+                on the exact line.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                Draw your Support and Resistance as rectangles instead of thin
+                horizontal lines whenever possible.
+            </p>
+
+            <p>
+                This gives price room to move naturally and reduces false trading
+                decisions caused by tiny market fluctuations.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 Remember</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Price rarely reacts at one exact level.</li>
+                <li>✔ Buyers and sellers create areas, not points.</li>
+                <li>✔ Think in zones, not lines.</li>
+                <li>✔ Small breaks of a line do not always mean the level has failed.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Professional traders focus on price zones because markets are
+                driven by groups of orders placed at different prices. Learning
+                to identify zones instead of exact lines will make your chart
+                analysis more accurate and more realistic.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+           
+            <section class="lesson-step" id="step5">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 5 OF 14</span>
+
+        <h1>✏️ How to Draw Support & Resistance</h1>
+
+        <p>
+            Knowing what Support and Resistance are is only the first step.
+            The next skill every trader must learn is how to identify and draw
+            these important zones correctly on a chart.
+        </p>
+
+        <p>
+            Professional traders do not randomly place Support and Resistance.
+            They carefully study how price behaved in the past to find areas
+            where buyers or sellers repeatedly took control.
+        </p>
+
+        <img src="../../images/lesson8/step5.png"
+             alt="Drawing Support and Resistance"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 Step-by-Step Guide</h3>
+
+            <ol class="lesson-list">
+                <li>✔ Open your trading chart.</li>
+                <li>✔ Zoom out to see more price history.</li>
+                <li>✔ Look for areas where price reversed multiple times.</li>
+                <li>✔ Mark those areas using a rectangle (zone).</li>
+                <li>✔ Do not draw extremely wide zones.</li>
+                <li>✔ Wait for future price reactions before trading.</li>
+            </ol>
+        </div>
+
+        <div class="info-box note">
+            <h3>🧠 What Should You Look For?</h3>
+
+            <p>
+                A good Support or Resistance zone usually has several signs that
+                make it important.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Multiple price touches.</li>
+                <li>✔ Strong market reversals.</li>
+                <li>✔ Long rejection wicks.</li>
+                <li>✔ Large bullish or bearish candles.</li>
+                <li>✔ High trading activity around the area.</li>
+            </ul>
+
+            <p>
+                The more evidence you have, the stronger the level becomes.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine walking through a city every day.
+            </p>
+
+            <p>
+                If you notice that traffic always slows down at one particular
+                intersection, you know that area is important.
+            </p>
+
+            <p>
+                Support and Resistance work the same way.
+                If price keeps reacting at one area, that area deserves your
+                attention.
+            </p>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                Imagine USD/JPY reaches the 145.00 area four different times.
+            </p>
+
+            <p>
+                Every time price reaches that zone, buyers push the market
+                higher again.
+            </p>
+
+            <p>
+                Instead of drawing four different lines, draw one Support zone
+                that covers the entire reaction area.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistakes</h3>
+
+            <ul class="lesson-list">
+                <li>❌ Drawing too many Support and Resistance levels.</li>
+                <li>❌ Marking every small candle reaction.</li>
+                <li>❌ Drawing extremely wide zones.</li>
+                <li>❌ Ignoring the higher timeframe.</li>
+                <li>❌ Trading immediately after drawing a level without confirmation.</li>
+            </ul>
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                Always begin your analysis from a higher timeframe such as the
+                Daily or 4-Hour chart.
+            </p>
+
+            <p>
+                Strong Support and Resistance levels found on higher timeframes
+                are usually more reliable than levels found only on lower
+                timeframes.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 Golden Rules</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Draw zones, not lines.</li>
+                <li>✔ Focus on important price reactions.</li>
+                <li>✔ Use multiple touches for confirmation.</li>
+                <li>✔ Higher timeframe levels are usually stronger.</li>
+                <li>✔ Wait for confirmation before entering a trade.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Drawing Support and Resistance is about identifying areas where
+                the market has repeatedly reacted in the past. The goal is not
+                to predict the future perfectly, but to recognize locations
+                where price has a higher probability of reacting again.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            
+           <section class="lesson-step" id="step6">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 6 OF 14</span>
+
+        <h1>💪 Strong vs Weak Support & Resistance Levels</h1>
+
+        <p>
+            After learning how to draw Support and Resistance, the next question is:
+            <strong>"Are all levels equally important?"</strong>
+        </p>
+
+        <p>
+            The answer is <strong>No.</strong> Some Support and Resistance levels are very reliable,
+            while others are weak and easily broken. Learning to tell the difference
+            helps you avoid poor trading decisions and focus only on high-probability setups.
+        </p>
+
+        <img src="../../images/lesson8/step6.png"
+             alt="Strong vs Weak Support and Resistance"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 What Makes a Level Strong?</h3>
+
+            <p>
+                A strong Support or Resistance level has proven itself by stopping
+                or reversing price multiple times in the past.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Price has reacted several times.</li>
+                <li>✔ Strong bullish or bearish reversals occurred.</li>
+                <li>✔ Large rejection wicks are visible.</li>
+                <li>✔ The level is visible on higher timeframes.</li>
+                <li>✔ Many traders are watching the same area.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>📉 What Makes a Level Weak?</h3>
+
+            <p>
+                Weak levels have very little market history and do not show strong
+                buying or selling pressure.
+            </p>
+
+            <ul class="lesson-list">
+                <li>❌ Only one price reaction.</li>
+                <li>❌ Small candles with little momentum.</li>
+                <li>❌ Very recent level with no confirmation.</li>
+                <li>❌ No clear rejection from buyers or sellers.</li>
+                <li>❌ Difficult to identify on higher timeframes.</li>
+            </ul>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine two bridges crossing a river.
+            </p>
+
+            <p>
+                One bridge is built with strong steel and has carried heavy traffic
+                safely for many years. The other is old, weak, and has only been
+                used a few times.
+            </p>
+
+            <p>
+                Which bridge would you trust more?
+            </p>
+
+            <p>
+                Strong Support and Resistance levels are like the stronger bridge—
+                they have already proven they can handle pressure.
+            </p>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                Imagine EUR/USD reaches the 1.1000 area five different times over
+                several weeks, and each time buyers push the price higher.
+            </p>
+
+            <p>
+                Compare that with another level where price only reacted once.
+            </p>
+
+            <p>
+                The first level is much stronger because it has a history of repeated
+                market reactions.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistakes</h3>
+
+            <ul class="lesson-list">
+                <li>❌ Treating every level as equally important.</li>
+                <li>❌ Trading after only one touch.</li>
+                <li>❌ Ignoring higher timeframe levels.</li>
+                <li>❌ Drawing too many weak zones.</li>
+                <li>❌ Forgetting to wait for confirmation.</li>
+            </ul>
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                Professional traders don't look for the highest number of Support
+                and Resistance levels—they look for the highest quality levels.
+            </p>
+
+            <p>
+                One strong level is usually more valuable than ten weak ones.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 Quick Comparison</h3>
+
+            <table class="lesson-table">
+                <thead>
+                    <tr>
+                        <th>Strong Level</th>
+                        <th>Weak Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Multiple reactions</td>
+                        <td>One reaction only</td>
+                    </tr>
+                    <tr>
+                        <td>Large rejection candles</td>
+                        <td>Small weak candles</td>
+                    </tr>
+                    <tr>
+                        <td>Visible on higher timeframes</td>
+                        <td>Visible only on lower timeframes</td>
+                    </tr>
+                    <tr>
+                        <td>High probability</td>
+                        <td>Lower probability</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Every Support or Resistance level deserves attention, but not every
+                level deserves a trade. The strongest levels are those with repeated
+                reactions, clear rejection, and confirmation from higher timeframes.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            
+            <section class="lesson-step" id="step7">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 7 OF 14</span>
+
+        <h1>🔄 Role Reversal: Support Becomes Resistance & Resistance Becomes Support</h1>
+
+        <p>
+            One of the most important concepts in technical analysis is that
+            Support and Resistance can change roles after a breakout.
+        </p>
+
+        <p>
+            This is known as <strong>Role Reversal</strong>. It happens because
+            traders react differently after a key price level is broken.
+        </p>
+
+        <img src="../../images/lesson8/step7.png"
+             alt="Support and Resistance Role Reversal"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 Resistance Becomes Support</h3>
+
+            <p>
+                Imagine price repeatedly fails to move above a Resistance zone.
+                Eventually, buyers become stronger and break above it.
+            </p>
+
+            <p>
+                When price later returns to that same area, the old Resistance
+                often acts as a new Support because buyers defend the breakout.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>📚 Support Becomes Resistance</h3>
+
+            <p>
+                The opposite can also happen.
+            </p>
+
+            <p>
+                If price breaks below a strong Support zone, sellers take control.
+                When price later moves back to that area, the old Support often
+                acts as a new Resistance, stopping the market from moving higher.
+            </p>
+        </div>
+
+        <div class="info-box note">
+            <h3>🧠 Why Does This Happen?</h3>
+
+            <p>
+                Market psychology changes after a breakout.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Some traders close losing positions.</li>
+                <li>✔ New traders join the breakout.</li>
+                <li>✔ Buyers and sellers change their expectations.</li>
+                <li>✔ The old level becomes important again from the opposite side.</li>
+            </ul>
+
+            <p>
+                This change in trader behavior creates the role reversal.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine a door that was locked for many days.
+            </p>
+
+            <p>
+                Once someone unlocks it and walks through, the door can now be
+                used from the opposite direction as well.
+            </p>
+
+            <p>
+                In the market, once price breaks an important level, that same
+                area often serves a new purpose.
+            </p>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                EUR/USD cannot break above 1.1200 for several days.
+            </p>
+
+            <p>
+                Finally, buyers push price above 1.1200.
+            </p>
+
+            <p>
+                A few hours later, price falls back to 1.1200, finds buyers
+                again, and continues moving upward.
+            </p>
+
+            <p>
+                The old Resistance has now become new Support.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistakes</h3>
+
+            <ul class="lesson-list">
+                <li>❌ Assuming every breakout is real.</li>
+                <li>❌ Trading immediately after a breakout without waiting for a retest.</li>
+                <li>❌ Ignoring false breakouts.</li>
+                <li>❌ Forgetting that confirmation is still required.</li>
+            </ul>
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                Many professional traders prefer to wait for a breakout and then
+                a retest of the broken level before entering a trade.
+            </p>
+
+            <p>
+                This approach can provide stronger confirmation than trading the
+                initial breakout alone.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 Remember</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Old Resistance can become new Support.</li>
+                <li>✔ Old Support can become new Resistance.</li>
+                <li>✔ Wait for confirmation after a breakout.</li>
+                <li>✔ Not every breakout leads to a role reversal.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Role Reversal is a powerful concept that helps traders understand
+                how the market behaves after breaking important levels. Instead of
+                chasing every breakout, watch how price reacts when it returns to
+                the broken zone.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            
+            <section class="lesson-step" id="step8">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 8 OF 14</span>
+
+        <h1>🚀 Breakouts vs False Breakouts</h1>
+
+        <p>
+            A breakout happens when price moves beyond an important Support or
+            Resistance zone with enough strength to continue in the same direction.
+            However, not every breakout is real. Sometimes price briefly moves
+            beyond a level and then quickly reverses back. This is called a
+            <strong>false breakout</strong>.
+        </p>
+
+        <p>
+            Learning to recognize the difference can help you avoid entering
+            trades too early.
+        </p>
+
+        <img src="../../images/lesson8/step8.png"
+             alt="Breakout vs False Breakout"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 What is a Real Breakout?</h3>
+
+            <p>
+                A real breakout occurs when buyers or sellers gain enough
+                momentum to push price beyond a key level and continue moving in
+                that direction.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Strong momentum.</li>
+                <li>✔ Large breakout candle.</li>
+                <li>✔ Price closes beyond the zone.</li>
+                <li>✔ Follow-through in the breakout direction.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box note">
+            <h3>📚 What is a False Breakout?</h3>
+
+            <p>
+                A false breakout happens when price briefly moves above
+                Resistance or below Support but cannot continue.
+            </p>
+
+            <p>
+                Instead, price quickly returns inside the zone, trapping traders
+                who entered too early.
+            </p>
+
+            <ul class="lesson-list">
+                <li>❌ Short move beyond the level.</li>
+                <li>❌ Weak follow-through.</li>
+                <li>❌ Price quickly reverses.</li>
+                <li>❌ Often traps impatient traders.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine someone opens a door, steps outside for a moment, then
+                immediately comes back inside.
+            </p>
+
+            <p>
+                They didn't truly leave—they only made a brief move.
+            </p>
+
+            <p>
+                A false breakout behaves in a similar way. Price moves outside
+                the level but fails to continue.
+            </p>
+
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                EUR/USD breaks above a Resistance zone at 1.1200.
+            </p>
+
+            <p>
+                Many traders immediately buy.
+            </p>
+
+            <p>
+                A few candles later, price falls back below 1.1200 and continues
+                downward. The breakout failed, making it a false breakout.
+            </p>
+
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistakes</h3>
+
+            <ul class="lesson-list">
+                <li>❌ Buying or selling immediately after every breakout.</li>
+                <li>❌ Ignoring candle closes.</li>
+                <li>❌ Trading without confirmation.</li>
+                <li>❌ Chasing the market after a large candle.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                Many professional traders wait for the breakout candle to close
+                and often wait for a retest of the broken level before entering
+                a trade.
+            </p>
+
+            <p>
+                Waiting for confirmation can reduce the chance of being trapped
+                by a false breakout.
+            </p>
+
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 How to Increase Confidence</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Wait for candle closes.</li>
+                <li>✔ Look for strong momentum.</li>
+                <li>✔ Watch for a successful retest.</li>
+                <li>✔ Combine with other forms of analysis.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Not every breakout is a trading opportunity. Strong breakouts
+                usually show momentum and follow-through, while false breakouts
+                quickly return inside the previous zone. Patience and
+                confirmation are often more valuable than entering first.
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            
+            <section class="lesson-step" id="step9">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 9 OF 14</span>
+
+        <h1>📊 Trading with Support & Resistance</h1>
+
+        <p>
+            Now that you understand how to identify Support and Resistance,
+            it's time to learn how traders use these zones when planning trades.
+        </p>
+
+        <p>
+            Support and Resistance do not tell you exactly what the market will do.
+            Instead, they highlight areas where price has a higher probability of
+            reacting. Successful traders use these zones together with confirmation
+            before making a trading decision.
+        </p>
+
+        <img src="../../images/lesson8/step9.png"
+             alt="Trading with Support and Resistance"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 Buying Near Support</h3>
+
+            <p>
+                When price approaches a strong Support zone, traders watch for
+                signs that buyers are taking control.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Bullish candlestick patterns.</li>
+                <li>✔ Strong rejection wicks.</li>
+                <li>✔ Higher lows forming.</li>
+                <li>✔ Increasing buying momentum.</li>
+            </ul>
+
+            <p>
+                These signs may increase confidence that price could move upward.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>📚 Selling Near Resistance</h3>
+
+            <p>
+                When price reaches a strong Resistance zone, traders look for
+                evidence that sellers are becoming stronger.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Bearish candlestick patterns.</li>
+                <li>✔ Long upper rejection wicks.</li>
+                <li>✔ Lower highs forming.</li>
+                <li>✔ Increasing selling pressure.</li>
+            </ul>
+
+            <p>
+                These signals may suggest that price could move lower.
+            </p>
+        </div>
+
+        <div class="info-box note">
+            <h3>🧠 Wait for Confirmation</h3>
+
+            <p>
+                A Support or Resistance zone is not an automatic buy or sell signal.
+            </p>
+
+            <p>
+                Instead of entering immediately when price touches a zone,
+                many experienced traders wait for confirmation from price action
+                before opening a trade.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine crossing a busy road.
+            </p>
+
+            <p>
+                Even if the traffic light turns green, you still look left and
+                right before crossing.
+            </p>
+
+            <p>
+                In trading, confirmation is like checking the road before you move.
+                It helps reduce unnecessary risk.
+            </p>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                GBP/USD reaches a strong Support zone that has held several times.
+            </p>
+
+            <p>
+                Instead of buying immediately, a trader waits for a bullish
+                engulfing candle to appear.
+            </p>
+
+            <p>
+                The candlestick provides additional confirmation that buyers may
+                be taking control.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistakes</h3>
+
+            <ul class="lesson-list">
+                <li>❌ Buying every time price touches Support.</li>
+                <li>❌ Selling every time price touches Resistance.</li>
+                <li>❌ Ignoring confirmation signals.</li>
+                <li>❌ Entering trades because of fear of missing out (FOMO).</li>
+                <li>❌ Forgetting that no setup guarantees success.</li>
+            </ul>
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                The best trading opportunities often occur when several factors
+                support the same idea—for example, a strong Support zone,
+                a bullish candlestick pattern, and an overall uptrend.
+            </p>
+
+            <p>
+                When multiple signals align, traders call this
+                <strong>confluence</strong>, which can increase confidence in a setup.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 Trading Checklist</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Is the Support or Resistance level strong?</li>
+                <li>✔ Has price reacted there before?</li>
+                <li>✔ Do you have confirmation?</li>
+                <li>✔ Does the trade fit the overall market trend?</li>
+                <li>✔ Have you planned your risk before entering?</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Support and Resistance help traders identify areas of interest,
+                but successful trading depends on patience, confirmation, and
+                proper risk management. Use these zones as part of a complete
+                trading plan rather than relying on them alone.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            
+            <section class="lesson-step" id="step10">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 10 OF 14</span>
+
+        <h1>🕒 Multi-Timeframe Support & Resistance</h1>
+
+        <p>
+            Not all Support and Resistance levels have the same importance.
+            Levels identified on higher timeframes, such as the Daily or 4-Hour chart,
+            are often watched by more traders and may carry greater significance than
+            levels found only on lower timeframes.
+        </p>
+
+        <p>
+            Many experienced traders first identify major zones on higher
+            timeframes and then switch to lower timeframes to look for
+            confirmation before entering a trade.
+        </p>
+
+        <img src="../../images/lesson8/step10.png"
+             alt="Multi-Timeframe Support and Resistance"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>📚 Why Higher Timeframes Matter</h3>
+
+            <p>
+                Higher timeframe charts contain more historical price data and
+                often show the most important Support and Resistance zones.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Daily levels are often stronger than 5-minute levels.</li>
+                <li>✔ 4-Hour zones are watched by many swing traders.</li>
+                <li>✔ Higher timeframe zones often influence lower timeframe price movements.</li>
+                <li>✔ Major market reversals frequently begin at higher timeframe levels.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box note">
+            <h3>📊 A Simple Multi-Timeframe Process</h3>
+
+            <ol class="lesson-list">
+                <li>1️⃣ Open the Daily chart and mark major Support and Resistance zones.</li>
+                <li>2️⃣ Move to the 4-Hour chart and refine those zones.</li>
+                <li>3️⃣ Switch to the 1-Hour or 15-Minute chart.</li>
+                <li>4️⃣ Wait for confirmation before entering a trade.</li>
+            </ol>
+
+            <p>
+                This approach helps traders see the bigger picture before focusing
+                on precise entry opportunities.
+            </p>
+
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine you're planning a road trip.
+            </p>
+
+            <p>
+                First, you look at a country map to understand the overall route.
+                Then you use a city map to find the exact street.
+            </p>
+
+            <p>
+                Trading works in a similar way.
+                Higher timeframes provide the overall direction, while lower
+                timeframes help you plan a more precise entry.
+            </p>
+
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                EUR/USD reaches a Daily Support zone that has held several times
+                over the past few months.
+            </p>
+
+            <p>
+                Instead of buying immediately, a trader switches to the
+                15-minute chart and waits for a bullish candlestick pattern
+                before entering.
+            </p>
+
+            <p>
+                This combines higher timeframe context with lower timeframe confirmation.
+            </p>
+
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Common Beginner Mistakes</h3>
+
+            <ul class="lesson-list">
+                <li>❌ Trading using only the 1-minute or 5-minute chart.</li>
+                <li>❌ Ignoring strong Daily or 4-Hour zones.</li>
+                <li>❌ Drawing different levels on every timeframe without prioritizing them.</li>
+                <li>❌ Entering trades without checking the bigger picture.</li>
+            </ul>
+
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tip</h3>
+
+            <p>
+                Begin every trading session by marking the important Support and
+                Resistance zones on higher timeframes first.
+            </p>
+
+            <p>
+                Then allow lower timeframe price action to guide your entry.
+                This creates a more structured trading process.
+            </p>
+
+        </div>
+
+        <div class="info-box remember">
+            <h3>📌 Best Timeframe Guide</h3>
+
+            <table class="lesson-table">
+                <thead>
+                    <tr>
+                        <th>Timeframe</th>
+                        <th>Main Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Daily (D1)</td>
+                        <td>Major market structure and key zones.</td>
+                    </tr>
+                    <tr>
+                        <td>4-Hour (H4)</td>
+                        <td>Strong Support & Resistance confirmation.</td>
+                    </tr>
+                    <tr>
+                        <td>1-Hour (H1)</td>
+                        <td>Trade planning.</td>
+                    </tr>
+                    <tr>
+                        <td>15-Minute (M15)</td>
+                        <td>Entry confirmation.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Multi-timeframe analysis helps traders combine the bigger market
+                picture with precise entry opportunities. Higher timeframe Support
+                and Resistance zones often carry more weight, while lower
+                timeframes can provide confirmation before entering a trade.
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            <section class="lesson-step" id="step11">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 11 OF 14</span>
+
+        <h1>⚠️ Common Mistakes with Support & Resistance</h1>
+
+        <p>
+            Support and Resistance are powerful tools, but they are often used
+            incorrectly. Many beginner traders make the same mistakes, leading to
+            poor trading decisions.
+        </p>
+
+        <p>
+            By understanding these common mistakes, you can build better trading
+            habits and improve the quality of your analysis.
+        </p>
+
+        <img src="../../images/lesson8/step11.png"
+             alt="Common Support and Resistance Mistakes"
+             class="lesson-image">
+
+        <div class="info-box warning">
+            <h3>❌ Mistake 1: Drawing Too Many Levels</h3>
+
+            <p>
+                Some traders mark every small price reaction on the chart.
+                This creates confusion and makes it difficult to identify the
+                most important Support and Resistance zones.
+            </p>
+
+            <p>
+                Focus only on the major areas where price has reacted multiple times.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Mistake 2: Treating Zones as Exact Prices</h3>
+
+            <p>
+                Support and Resistance are areas, not exact prices.
+            </p>
+
+            <p>
+                Price may move slightly above or below a zone before reacting.
+                This does not automatically mean the level has failed.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Mistake 3: Trading Without Confirmation</h3>
+
+            <p>
+                Entering a trade immediately when price touches a Support or
+                Resistance zone can be risky.
+            </p>
+
+            <p>
+                Wait for confirmation from price action before making a decision.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Mistake 4: Ignoring the Higher Timeframe</h3>
+
+            <p>
+                A strong Daily Support level may be more significant than a weak
+                5-minute level.
+            </p>
+
+            <p>
+                Always check the higher timeframe before making a trade.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>❌ Mistake 5: Believing Every Level Will Hold</h3>
+
+            <p>
+                No Support or Resistance level is guaranteed to stop price.
+            </p>
+
+            <p>
+                Markets change, and strong momentum can break even important levels.
+            </p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine using an old map to drive through a modern city.
+            </p>
+
+            <p>
+                Roads change over time, so relying on outdated information can
+                lead you in the wrong direction.
+            </p>
+
+            <p>
+                Similarly, traders must adapt to current market conditions instead
+                of assuming every historical level will always work.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>💡 Pro Trader Tips</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Keep your charts clean and simple.</li>
+                <li>✔ Focus on quality, not quantity.</li>
+                <li>✔ Wait for confirmation before entering.</li>
+                <li>✔ Always check higher timeframes.</li>
+                <li>✔ Accept that no setup has a 100% success rate.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Most mistakes happen because traders rush their decisions.
+                Patience, confirmation, and disciplined chart analysis are more
+                important than trying to predict every market move.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+             <section class="lesson-step" id="step12">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 12 OF 14</span>
+
+        <h1>🏆 Best Practices & Pro Tips</h1>
+
+        <p>
+            Throughout this lesson, you've learned what Support and Resistance
+            are, how to draw them, how to identify strong levels, and how to
+            avoid common mistakes.
+        </p>
+
+        <p>
+            The next step is developing good trading habits. Professional traders
+            follow a consistent process every time they analyze a chart instead
+            of making random decisions.
+        </p>
+
+        <img src="../../images/lesson8/step12.png"
+             alt="Best Practices for Support and Resistance"
+             class="lesson-image">
+
+        <div class="info-box success">
+            <h3>✅ Best Practice 1: Start with Higher Timeframes</h3>
+
+            <p>
+                Begin your analysis on the Daily or 4-Hour chart to identify the
+                most important Support and Resistance zones.
+            </p>
+
+            <p>
+                Then move to lower timeframes for confirmation and trade planning.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>✅ Best Practice 2: Keep Your Chart Clean</h3>
+
+            <p>
+                Mark only the most important Support and Resistance zones.
+            </p>
+
+            <p>
+                Too many lines and zones make chart analysis confusing and may
+                reduce your confidence.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>✅ Best Practice 3: Wait for Confirmation</h3>
+
+            <p>
+                Never assume price will reverse simply because it reaches a
+                Support or Resistance zone.
+            </p>
+
+            <p>
+                Look for confirmation such as bullish or bearish candlestick
+                patterns, rejection wicks, or strong momentum before considering
+                a trade.
+            </p>
+        </div>
+
+        <div class="info-box success">
+            <h3>✅ Best Practice 4: Combine Multiple Signals</h3>
+
+            <p>
+                Strong trading setups often occur when several factors point in
+                the same direction.
+            </p>
+
+            <ul class="lesson-list">
+                <li>✔ Strong Support or Resistance zone.</li>
+                <li>✔ Confirmation from price action.</li>
+                <li>✔ Trend agrees with the trade idea.</li>
+                <li>✔ Higher timeframe supports the setup.</li>
+            </ul>
+        </div>
+
+        <div class="info-box remember">
+            <h3>🏠 Real-Life Example</h3>
+
+            <p>
+                Imagine building a house.
+            </p>
+
+            <p>
+                A strong house is not built using only one brick. It requires a
+                solid foundation, quality materials, and careful planning.
+            </p>
+
+            <p>
+                Trading is similar. The strongest setups usually come from
+                combining several pieces of evidence rather than relying on a
+                single signal.
+            </p>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>💹 Forex Example</h3>
+
+            <p>
+                EUR/USD reaches a strong Daily Support zone.
+            </p>
+
+            <p>
+                On the 15-minute chart, a bullish engulfing candle forms while
+                the overall trend remains upward.
+            </p>
+
+            <p>
+                Multiple factors now support the same trading idea, giving the
+                trader more confidence than relying on only one signal.
+            </p>
+        </div>
+
+        <div class="info-box warning">
+            <h3>⚠️ Remember These Rules</h3>
+
+            <ul class="lesson-list">
+                <li>❌ Don't force trades.</li>
+                <li>❌ Don't chase every breakout.</li>
+                <li>❌ Don't ignore risk management.</li>
+                <li>❌ Don't expect every setup to work.</li>
+            </ul>
+        </div>
+
+        <div class="info-box remember">
+            <h3>📋 Professional Trading Checklist</h3>
+
+            <ul class="lesson-list">
+                <li>✅ Identify major Support and Resistance zones.</li>
+                <li>✅ Check higher timeframe structure.</li>
+                <li>✅ Wait for confirmation.</li>
+                <li>✅ Trade with the trend when possible.</li>
+                <li>✅ Plan your risk before entering.</li>
+                <li>✅ Stay patient and disciplined.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Key Takeaway</h3>
+
+            <p>
+                Successful trading is built on consistency, patience, and
+                discipline. Support and Resistance become much more effective
+                when combined with confirmation, higher timeframe analysis,
+                and proper risk management.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+    </div>
+
+</section>
+
+            <section class="lesson-step" id="step13">
+
+    <div class="card">
+
+        <span class="lesson-badge">STEP 13 OF 14</span>
+
+        <h1>📚 Lesson Summary & Key Points</h1>
+
+        <p>
+            Congratulations! You have completed the learning portion of
+            <strong>Lesson 8: Support & Resistance.</strong>
+        </p>
+
+        <p>
+            You now understand one of the most important foundations of technical
+            analysis. These concepts are used by traders around the world to
+            identify important price areas and plan trades with greater confidence.
+        </p>
+
+        <div class="info-box success">
+            <h3>✅ What You Learned</h3>
+
+            <ul class="lesson-list">
+                <li>✔ What Support is.</li>
+                <li>✔ What Resistance is.</li>
+                <li>✔ Why price reacts at these zones.</li>
+                <li>✔ Why Support & Resistance are zones, not exact lines.</li>
+                <li>✔ How to draw Support & Resistance correctly.</li>
+                <li>✔ How to identify strong and weak levels.</li>
+                <li>✔ The Role Reversal concept.</li>
+                <li>✔ Real vs False Breakouts.</li>
+                <li>✔ How traders use Support & Resistance.</li>
+                <li>✔ Multi-Timeframe analysis.</li>
+                <li>✔ Common mistakes to avoid.</li>
+                <li>✔ Professional trading best practices.</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+            <h3>🧠 Important Things to Remember</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Support and Resistance increase probability, not certainty.</li>
+                <li>✔ Always think in zones instead of exact prices.</li>
+                <li>✔ Higher timeframe levels are generally more significant.</li>
+                <li>✔ Wait for confirmation before entering a trade.</li>
+                <li>✔ Combine multiple signals for stronger trade ideas.</li>
+                <li>✔ Protect your capital with proper risk management.</li>
+            </ul>
+        </div>
+
+        <div class="info-box remember">
+            <h3>💡 Strativo Academy Golden Rules</h3>
+
+            <ul class="lesson-list">
+                <li>🥇 Be patient.</li>
+                <li>🥈 Trade with a plan.</li>
+                <li>🥉 Never chase the market.</li>
+                <li>🏆 Keep learning and practicing.</li>
+                <li>🛡️ Preserve your trading capital.</li>
+            </ul>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>📈 Practice Challenge</h3>
+
+            <p>
+                Before moving to the next lesson, open your trading platform and
+                choose any Forex pair.
+            </p>
+
+            <ol class="lesson-list">
+                <li>1️⃣ Mark three major Support zones.</li>
+                <li>2️⃣ Mark three major Resistance zones.</li>
+                <li>3️⃣ Check the Daily and 4-Hour charts.</li>
+                <li>4️⃣ Watch how price reacts when it reaches those zones.</li>
+                <li>5️⃣ Do not rush into trades—focus on observation and practice.</li>
+            </ol>
+        </div>
+
+        <div class="info-box success">
+            <h3>🌟 Final Advice</h3>
+
+            <p>
+                Every successful trader started as a beginner. The difference is
+                that they practiced consistently, followed a trading plan, and
+                continued learning from both wins and losses.
+            </p>
+
+            <p>
+                Mastering Support and Resistance takes time, so be patient with
+                your progress and keep practicing on historical and live charts.
+            </p>
+        </div>
+
+        <div class="info-box note">
+            <h3>🎯 Ready for the Quiz?</h3>
+
+            <p>
+                Great job! It's now time to test your understanding of Support
+                & Resistance. The next step contains a quiz that will help you
+                review the key concepts from this lesson.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" onclick="nextStep()">Start Quiz →</button>
+        </div>
+
+    </div>
+
+</section>
+
+              <section class="lesson-step" id="step14">
+
+    <div class="card">
+
+        <span class="lesson-badge">FINAL STEP</span>
+
+        <h1>📝 Lesson 8 Quiz</h1>
+
+        <p>
+            Congratulations on completing <strong>Lesson 8: Support & Resistance!</strong>
+        </p>
+
+        <p>
+            Before moving to the next lesson, complete this quiz to check your
+            understanding of the concepts you've learned.
+        </p>
+
+        <div class="info-box success">
+            <h3>📚 Quiz Information</h3>
+
+            <ul class="lesson-list">
+                <li>✔ 10 Multiple Choice Questions</li>
+                <li>✔ One correct answer per question</li>
+                <li>✔ Instant feedback after submission</li>
+                <li>✔ Review incorrect answers</li>
+                <li>✔ Score shown at the end</li>
+            </ul>
+        </div>
+
+        <div class="info-box note">
+           <h3>🎯 Passing Requirement</h3>
+
+<p>
+    Score at least <strong>70%</strong> to pass this lesson and unlock the next lesson.
+</p>
+
+<p>
+    If you don't pass, review the lesson, learn from your mistakes,
+    and try again. Every attempt helps you become a better trader.
+</p>
+        </div>
+
+        <div class="info-box remember">
+            <h3>💡 Before You Start</h3>
+
+            <ul class="lesson-list">
+                <li>✔ Read every question carefully.</li>
+                <li>✔ Think before selecting an answer.</li>
+                <li>✔ Don't rush.</li>
+                <li>✔ Use what you've learned throughout this lesson.</li>
+            </ul>
+        </div>
+
+        <div class="info-box didyouknow">
+            <h3>🏆 Strativo Academy Tip</h3>
+
+            <p>
+                The goal of the quiz isn't just to pass—it's to identify areas
+                where you can improve. Every mistake is an opportunity to learn.
+            </p>
+        </div>
+
+        <!-- Quiz loads here -->
+        <div id="quiz-container"></div>
+
+        <div
+            id="lesson9ButtonContainer"
+            class="lesson-next-action"
+            style="margin-top:20px;"
+            aria-live="polite"
+        ></div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" onclick="previousStep()">← Previous</button>
+            <button class="btn btn-primary" type="button" onclick="document.getElementById('quiz-container').scrollIntoView({behavior:'smooth', block:'start'})">
+                Start Quiz →
+            </button>
+        </div>
+
+    </div>
+
+</section>
+        </main>
+    </div>
+
+
+    <div
+        id="lessonStickyNav"
+        class="lesson-sticky-nav"
+        aria-label="Lesson step navigation"
+    >
+        <button type="button" id="stickyPrevBtn">← Previous</button>
+        <span id="stickyStepLabel">Step 1 of 14</span>
+        <button type="button" id="stickyNextBtn">Next →</button>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/lesson.js"></script>
+    <script src="../../quizzes/module1/quiz8.js"></script>
+
+    <!-- GLOBAL FOOTER -->
+    <div data-component="footer"></div>
+
+    <!-- GLOBAL COMPONENT SYSTEM -->
+    <script src="../../js/routes.js"></script>
+    <script src="../../js/component-loader.js"></script>
+    <script src="../../js/header.js"></script>
+
+    <!-- ===== DYNAMIC LESSON 9 BUTTON ===== -->
+<script>
+const lesson9Config = {
+    status: 'coming-soon',
+    url: 'lesson9.html',
+    labelUnlocked: '🚀 Continue to Lesson 9',
+    labelLocked: '🔒 Lesson 9 Locked',
+    labelComingSoon: '📚 Coming Soon (Back to Courses)',
+    minScore: 70,
+};
+
+function renderLesson9Button() {
+    const container = document.getElementById('lesson9ButtonContainer');
+    if (!container) return;
+
+    const {
+        status,
+        url,
+        labelUnlocked,
+        labelLocked,
+        labelComingSoon
+    } = lesson9Config;
+
+    let btnHtml = '';
+
+    if (status === 'unlocked') {
+        btnHtml = `<a href="${url}" class="lesson-action-btn unlocked">${labelUnlocked}</a>`;
+    } else if (status === 'locked') {
+        btnHtml = `<span class="lesson-action-btn locked">${labelLocked}</span>`;
+    } else {
+        btnHtml = `<a href="../../beginner.html" class="lesson-action-btn coming-soon">${labelComingSoon}</a>`;
+    }
+
+    container.innerHTML = btnHtml;
+}
+
+document.addEventListener('DOMContentLoaded', renderLesson9Button);
+</script>
+
+
+    <!-- ===== LESSON 8 V1 UI HELPER ===== -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        "use strict";
+
+        const STORAGE_KEY = "strativo_lesson8_ui_state";
+
+        const state = {
+            currentStep: 1
+        };
+
+        function getActiveStep() {
+            const active = document.querySelector(".lesson-step.active-step");
+            if (!active) return 1;
+
+            const match = /^step(\d+)$/.exec(active.id || "");
+            return match ? Number(match[1]) : 1;
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem(
+                    STORAGE_KEY,
+                    JSON.stringify({
+                        currentStep: state.currentStep,
+                        savedAt: Date.now()
+                    })
+                );
+            } catch (error) {
+                console.warn("Lesson 8 state could not be saved.", error);
+            }
+        }
+
+        function updateProgress(step) {
+            if (!Number.isInteger(step) || step < 1 || step > 14) return;
+
+            state.currentStep = step;
+
+            const percent = Math.round((step / 14) * 100);
+
+            document.querySelectorAll(
+                ".lesson-progress-fill, .progress-bar"
+            ).forEach(function (element) {
+                element.style.width = percent + "%";
+            });
+
+            const stepText = document.querySelector(".step-text");
+            if (stepText) {
+                stepText.textContent =
+                    "Step " + step + " of 14";
+            }
+
+            const stickyLabel =
+                document.getElementById("stickyStepLabel");
+
+            if (stickyLabel) {
+                stickyLabel.textContent =
+                    "Step " + step + " of 14";
+            }
+
+            const stickyPrev =
+                document.getElementById("stickyPrevBtn");
+
+            const stickyNext =
+                document.getElementById("stickyNextBtn");
+
+            if (stickyPrev) {
+                stickyPrev.disabled = step <= 1;
+            }
+
+            if (stickyNext) {
+                stickyNext.disabled = step >= 14;
+                stickyNext.textContent =
+                    step >= 14 ? "Quiz Above" : "Next →";
+            }
+
+            saveState();
+        }
+
+        const originalShowStep =
+            window.showStep;
+
+        if (typeof originalShowStep === "function") {
+            window.showStep = function (step) {
+                const result =
+                    originalShowStep.apply(this, arguments);
+
+                window.setTimeout(function () {
+                    updateProgress(getActiveStep());
+                }, 0);
+
+                return result;
+            };
+        }
+
+        const toggle =
+            document.getElementById("lessonSidebarToggle");
+
+        const sidebar =
+            document.getElementById("lessonSidebar");
+
+        if (toggle && sidebar) {
+            toggle.addEventListener("click", function () {
+                const open =
+                    sidebar.classList.toggle("is-open");
+
+                toggle.setAttribute(
+                    "aria-expanded",
+                    open ? "true" : "false"
+                );
+
+                toggle.textContent =
+                    open
+                        ? "✕ Close Lesson Menu"
+                        : "☰ Lesson Menu";
+            });
+
+            sidebar.addEventListener("click", function (event) {
+                const item =
+                    event.target.closest("li");
+
+                if (!item || window.innerWidth > 800) {
+                    return;
+                }
+
+                window.setTimeout(function () {
+                    sidebar.classList.remove("is-open");
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    toggle.textContent =
+                        "☰ Lesson Menu";
+                }, 50);
+            });
+        }
+
+        const saveExit =
+            document.getElementById("saveExitBtn");
+
+        if (saveExit) {
+            saveExit.addEventListener("click", function () {
+                updateProgress(getActiveStep());
+                window.location.href =
+                    "../../modules/module1.html";
+            });
+        }
+
+        const stickyPrev =
+            document.getElementById("stickyPrevBtn");
+
+        const stickyNext =
+            document.getElementById("stickyNextBtn");
+
+        if (stickyPrev) {
+            stickyPrev.addEventListener("click", function () {
+                const step = getActiveStep();
+
+                if (
+                    step > 1 &&
+                    typeof window.previousStep === "function"
+                ) {
+                    window.previousStep();
+                }
+            });
+        }
+
+        if (stickyNext) {
+            stickyNext.addEventListener("click", function () {
+                const step = getActiveStep();
+
+                if (
+                    step < 14 &&
+                    typeof window.nextStep === "function"
+                ) {
+                    window.nextStep();
+                }
+            });
+        }
+
+        updateProgress(getActiveStep());
+
+        window.addEventListener("beforeunload", function () {
+            updateProgress(getActiveStep());
+        });
+
+        document.addEventListener("visibilitychange", function () {
+            if (document.visibilityState === "hidden") {
+                updateProgress(getActiveStep());
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

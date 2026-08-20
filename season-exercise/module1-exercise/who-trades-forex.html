@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+<meta name="description" content="Strativo Academy Module 1 Exercise 05 — Who Trades Forex?">
+<title>Exercise 05 — Who Trades Forex? | Strativo Academy</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+
+<style>
+:root{
+    --bg:#030712;--panel:#0b1220;--panel2:#08111f;
+    --border:rgba(148,163,184,.13);--text:#f8fafc;--muted:#a6b4c6;
+    --blue:#60a5fa;--green:#34d399;--yellow:#fbbf24;--red:#f87171;
+    --purple:#a78bfa;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.65;
+}
+.page{min-height:100vh;padding-bottom:60px}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+
+.hero{
+    padding:76px 20px 54px;text-align:center;border-bottom:1px solid var(--border);
+    background:
+        radial-gradient(circle at 13% 20%,rgba(96,165,250,.14),transparent 34%),
+        radial-gradient(circle at 86% 24%,rgba(167,139,250,.08),transparent 31%),
+        #030712;
+}
+.hero-in{width:min(900px,100%);margin:auto}
+.eyebrow{color:#93c5fd;font-size:.82rem;font-weight:900;letter-spacing:.16em}
+.hero h1{
+    margin:15px 0 0;font-family:Poppins,sans-serif;
+    font-size:clamp(2rem,5vw,3.8rem);line-height:1.08
+}
+.hero p{max-width:850px;margin:16px auto 0;color:#a8b5c7;font-size:1rem;line-height:1.9}
+.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}
+.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#0f172acc;color:#dbeafe;font-size:.78rem;font-weight:800}
+
+.meta{
+    display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;
+    margin-top:23px;padding:16px 18px;border:1px solid var(--border);
+    border-radius:15px;background:var(--panel)
+}
+.meta strong{display:block;font-size:.92rem}
+.meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.82rem}
+.progress{min-width:150px;text-align:right}
+.bar{width:150px;height:7px;border-radius:999px;background:#162033;overflow:hidden}
+.fill{width:50%;height:100%;background:linear-gradient(90deg,#60a5fa,#a78bfa)}
+.progress small{display:block;margin-top:6px;color:#7f8ea2;font-size:.72rem}
+
+.section{
+    margin-top:20px;padding:22px;border:1px solid var(--border);
+    border-radius:17px;background:var(--panel)
+}
+.section h2{margin:0;font-family:Poppins,sans-serif;font-size:1.45rem}
+.section h3{margin:18px 0 0;color:#dbeafe;font-size:1.02rem}
+.section p{margin:8px 0 0;color:var(--muted);font-size:.92rem;line-height:1.8}
+.list{margin:12px 0;padding-left:20px}
+.list li{margin-top:7px;color:#aebdd0;font-size:.92rem;line-height:1.8}
+
+.participant-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:17px}
+.participant{
+    padding:18px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.participant .icon{font-size:1.55rem}
+.participant h3{margin-top:10px;color:#f1f5f9;font-size:1rem}
+.participant p{font-size:.88rem}
+.participant .role{
+    margin-top:10px;padding:9px 11px;border-radius:9px;
+    background:rgba(59,130,246,.055);color:#bfdbfe;font-size:.80rem
+}
+
+.flow{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:17px
+}
+.flow-card{
+    padding:15px;border:1px solid rgba(148,163,184,.10);
+    border-radius:12px;background:var(--panel2);text-align:center
+}
+.flow-card strong{display:block;color:#f1f5f9;font-size:.86rem}
+.flow-card span{display:block;margin-top:7px;color:#9fb0c4;font-size:.76rem;line-height:1.7}
+
+.diagram{
+    margin-top:18px;border:1px solid rgba(148,163,184,.11);
+    border-radius:14px;overflow:hidden;background:#07101f
+}
+.dtitle{
+    padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);
+    background:#0d1728;color:#dbe4ef;font-size:.78rem;font-weight:900
+}
+.diagram svg{display:block;width:100%;height:auto}
+
+.q{
+    margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.qtag{color:#60a5fa;font-size:.78rem;font-weight:900;letter-spacing:.06em}
+.q h3{margin-top:7px;color:#f1f5f9;font-size:1.05rem;line-height:1.6}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}
+.opt{
+    appearance:none;width:100%;padding:14px 15px;border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;background:#0b1627;color:#d5deea;text-align:left;font:inherit;
+    font-size:.92rem;line-height:1.65;cursor:pointer;
+    transition:transform .16s ease,border-color .16s ease,background .16s ease
+}
+.opt:hover{transform:translateY(-1px);border-color:rgba(96,165,250,.34);background:#0e1b30}
+.opt:focus-visible{outline:2px solid #60a5fa;outline-offset:2px}
+.opt.correct{border-color:rgba(52,211,153,.55);background:rgba(16,185,129,.11);color:#d1fae5}
+.opt.wrong{border-color:rgba(248,113,113,.50);background:rgba(248,113,113,.09);color:#fecaca}
+.opt.reveal-correct{border-color:rgba(52,211,153,.35);box-shadow:inset 3px 0 0 #34d399}
+.opt:disabled{cursor:default;transform:none}
+
+.feedback{
+    display:none;margin-top:13px;padding:14px 15px;
+    border-left:3px solid #60a5fa;border-radius:0 10px 10px 0;
+    background:rgba(59,130,246,.055)
+}
+.feedback.visible{display:block}
+.feedback.correct{border-left-color:#34d399;background:rgba(16,185,129,.07)}
+.feedback.wrong{border-left-color:#f87171;background:rgba(248,113,113,.06)}
+.feedback .title{color:#f8fafc;font-size:.92rem;font-weight:900}
+.feedback.correct .title{color:#86efac}
+.feedback.wrong .title{color:#fca5a5}
+.feedback p{margin-top:7px!important;color:#cbd5e1!important;font-size:.90rem!important;line-height:1.75!important}
+.feedback .why{color:#fca5a5!important}
+.feedback .correct-answer{color:#86efac!important}
+.retry{
+    margin-top:10px;padding:8px 12px;border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;background:rgba(15,23,42,.66);color:#cbd5e1;
+    font:inherit;font-size:.78rem;font-weight:800;cursor:pointer
+}
+.retry:hover{border-color:rgba(96,165,250,.30);background:rgba(59,130,246,.08)}
+
+.scorebar{
+    margin-top:18px;padding:14px 16px;border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;background:rgba(59,130,246,.055)
+}
+.scorebar strong{color:#dbeafe;font-size:.90rem}
+.score-progress{margin-top:8px;height:7px;border-radius:999px;overflow:hidden;background:#162033}
+.score-fill{width:0;height:100%;background:linear-gradient(90deg,#60a5fa,#a78bfa);transition:width .25s ease}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
+.check{padding:10px 12px;border:1px solid rgba(148,163,184,.09);border-radius:10px;background:var(--panel2);color:#cbd5e1;font-size:.84rem}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:22px}
+.nav a{
+    display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;
+    border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;
+    color:#dbeafe;text-decoration:none;font-size:.82rem;font-weight:900;text-align:center
+}
+.nav a:hover{background:#0e1b30}
+.center{background:rgba(59,130,246,.06)!important;color:#bfdbfe!important}
+.next{background:rgba(16,185,129,.055)!important;color:#d1fae5!important}
+.note{text-align:center;margin-top:14px;color:#64748b;font-size:.72rem}
+
+@media(max-width:800px){
+    .participant-grid,.flow{grid-template-columns:1fr}
+    .meta{grid-template-columns:1fr}
+    .progress{text-align:left}.bar{width:100%}
+}
+@media(max-width:760px){
+    .opts,.checks,.nav{grid-template-columns:1fr}
+    .section{padding:20px}
+    .section h2{font-size:1.25rem}
+    .q h3{font-size:1rem}
+}
+</style>
+</head>
+
+<body>
+
+<div data-component="header"></div>
+
+<main class="page">
+
+<section class="hero">
+    <div class="hero-in">
+        <div class="eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+        <h1>Exercise 05 — Who Trades Forex?</h1>
+        <p>
+            Learn to identify the major participants in the foreign-exchange
+            market and understand that different participants interact with
+            Forex for different purposes.
+        </p>
+        <div class="badges">
+            <span class="badge">🏦 Banks</span>
+            <span class="badge">🏛️ Institutions</span>
+            <span class="badge">🏢 Corporations</span>
+            <span class="badge">👤 Retail</span>
+            <span class="badge">05 / 10</span>
+        </div>
+    </div>
+</section>
+
+<div class="wrap">
+
+<section class="meta">
+    <div>
+        <strong>Exercise Goal</strong>
+        <span>Identify who participates in Forex and understand the basic reason each group interacts with the market.</span>
+    </div>
+    <div class="progress">
+        <div class="bar"><div class="fill"></div></div>
+        <small>Exercise 05 of 10</small>
+    </div>
+</section>
+
+<section class="section">
+    <h2>01. Forex Is Not Only Retail Trading</h2>
+    <p>
+        The foreign-exchange market includes different types of participants.
+        They can have very different objectives: exchanging currencies for
+        business, managing currency exposure, providing liquidity, managing
+        monetary policy, investing, hedging or trading.
+    </p>
+    <p>
+        For a beginner, the important lesson is that the market is not made by
+        retail traders alone. Understanding the participants helps explain why
+        Forex activity can be large, liquid and constantly changing.
+    </p>
+
+    <div class="participant-grid">
+        <div class="participant">
+            <div class="icon">🏦</div>
+            <h3>Commercial &amp; Investment Banks</h3>
+            <p>
+                Banks participate in currency markets for their own activity and
+                to provide services and execution to clients.
+            </p>
+            <div class="role">Role: banking activity, client transactions and market participation.</div>
+        </div>
+
+        <div class="participant">
+            <div class="icon">🏛️</div>
+            <h3>Central Banks</h3>
+            <p>
+                Central banks can interact with foreign exchange in connection
+                with monetary policy, reserves and broader economic objectives.
+            </p>
+            <div class="role">Role: monetary policy and management of official reserves.</div>
+        </div>
+
+        <div class="participant">
+            <div class="icon">🏢</div>
+            <h3>Corporations &amp; Businesses</h3>
+            <p>
+                Businesses operating internationally may need to exchange
+                currencies when receiving income or paying expenses in another
+                currency.
+            </p>
+            <div class="role">Role: international payments and currency exposure management.</div>
+        </div>
+
+        <div class="participant">
+            <div class="icon">📊</div>
+            <h3>Investment Institutions</h3>
+            <p>
+                Funds and other investment institutions can use currency markets
+                while investing internationally, managing portfolios or
+                managing currency exposure.
+            </p>
+            <div class="role">Role: investment, portfolio activity and hedging.</div>
+        </div>
+
+        <div class="participant">
+            <div class="icon">💱</div>
+            <h3>Market Makers &amp; Liquidity Providers</h3>
+            <p>
+                Market-making and liquidity activity helps create executable
+                prices and supports transactions between participants.
+            </p>
+            <div class="role">Role: providing prices and available liquidity.</div>
+        </div>
+
+        <div class="participant">
+            <div class="icon">👤</div>
+            <h3>Retail Traders</h3>
+            <p>
+                Individual traders participate through brokers or trading
+                platforms for speculative or educational trading purposes.
+            </p>
+            <div class="role">Role: individual trading and speculation.</div>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">A SIMPLE VIEW OF MARKET PARTICIPANTS</div>
+        <svg viewBox="0 0 900 460" role="img" aria-label="Forex market participants diagram">
+            <rect width="900" height="460" fill="#07101f"/>
+
+            <circle cx="450" cy="230" r="85" fill="#0b1627" stroke="#60a5fa" stroke-width="3"/>
+            <text x="450" y="220" text-anchor="middle" fill="#bfdbfe" font-size="22" font-weight="900">FOREX</text>
+            <text x="450" y="250" text-anchor="middle" fill="#94a3b8" font-size="15">CURRENCY MARKET</text>
+
+            <line x1="365" y1="210" x2="180" y2="110" stroke="#60a5fa" stroke-width="3"/>
+            <line x1="365" y1="250" x2="180" y2="350" stroke="#60a5fa" stroke-width="3"/>
+            <line x1="535" y1="210" x2="720" y2="110" stroke="#a78bfa" stroke-width="3"/>
+            <line x1="535" y1="250" x2="720" y2="350" stroke="#a78bfa" stroke-width="3"/>
+
+            <text x="155" y="94" text-anchor="middle" fill="#dbeafe" font-size="17" font-weight="800">BANKS</text>
+            <text x="155" y="122" text-anchor="middle" fill="#94a3b8" font-size="13">banking / client activity</text>
+
+            <text x="155" y="350" text-anchor="middle" fill="#dbeafe" font-size="17" font-weight="800">CORPORATIONS</text>
+            <text x="155" y="378" text-anchor="middle" fill="#94a3b8" font-size="13">payments / exposure</text>
+
+            <text x="745" y="94" text-anchor="middle" fill="#ddd6fe" font-size="17" font-weight="800">CENTRAL BANKS</text>
+            <text x="745" y="122" text-anchor="middle" fill="#94a3b8" font-size="13">policy / reserves</text>
+
+            <text x="745" y="350" text-anchor="middle" fill="#ddd6fe" font-size="17" font-weight="800">RETAIL &amp; FUNDS</text>
+            <text x="745" y="378" text-anchor="middle" fill="#94a3b8" font-size="13">trading / investment</text>
+
+            <text x="450" y="430" text-anchor="middle" fill="#64748b" font-size="14" font-weight="700">
+                DIFFERENT PARTICIPANTS • DIFFERENT OBJECTIVES • SAME CURRENCY MARKET
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>02. Why Do They Participate?</h2>
+
+    <div class="flow">
+        <div class="flow-card">
+            <strong>Exchange</strong>
+            <span>Convert one currency into another for real economic activity.</span>
+        </div>
+        <div class="flow-card">
+            <strong>Hedge</strong>
+            <span>Manage exposure to currency movements.</span>
+        </div>
+        <div class="flow-card">
+            <strong>Invest</strong>
+            <span>Manage international portfolios and investment exposure.</span>
+        </div>
+        <div class="flow-card">
+            <strong>Trade</strong>
+            <span>Seek opportunities from changing currency prices.</span>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>03. Knowledge Check</h2>
+    <p>
+        Choose an answer first. Your selection is checked immediately. If you
+        are wrong, you will see why your answer was wrong, the correct answer,
+        and the explanation.
+    </p>
+
+    <div class="q">
+        <div class="qtag">QUESTION 01</div>
+        <h3>Which statement best describes the participants in Forex?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Only retail traders participate</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Different participants interact with the market for different purposes</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Only central banks participate</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Only corporations participate</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 02</div>
+        <h3>Which participant is associated with monetary policy and official reserves?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Retail trader</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Corporation</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Central bank</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Individual tourist only</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 03</div>
+        <h3>Why might an international corporation interact with Forex?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> To exchange currencies for international payments or manage exposure</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> To create a new stock exchange</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> To guarantee profit</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> To prevent every currency from moving</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 04</div>
+        <h3>Which participant group most directly represents individual traders using a broker?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Retail traders</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Central banks</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Multinational corporations</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Government reserve managers</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 05</div>
+        <h3>Which group can participate in Forex as part of international investment and portfolio activity?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Investment institutions</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Only retail traders</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Only tourists</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Nobody</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">QUESTION 06</div>
+        <h3>Why is it useful for a beginner to understand who trades Forex?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> It explains that different market participants can have different objectives</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> It guarantees the direction of the next candle</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> It removes all trading risk</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> It tells you exactly when to buy</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="scorebar" aria-live="polite">
+        <strong>Knowledge Check: 0 / 6 correct</strong>
+        <div class="score-progress"><div class="score-fill"></div></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>04. Practical Scenarios</h2>
+    <p>
+        The goal of these questions is to connect a participant with a realistic
+        reason for interacting with the foreign-exchange market.
+    </p>
+
+    <div class="q">
+        <div class="qtag">SCENARIO 01</div>
+        <h3>A company in one country must pay a supplier in another currency. What is the most relevant reason to interact with Forex?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Currency exchange for international payment</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Candlestick creation</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Guaranteed speculation profit</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Eliminating all economic risk</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">SCENARIO 02</div>
+        <h3>An individual trader places a speculative Forex trade through a broker. Which participant category describes the trader?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Retail trader</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Central bank</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Corporate treasury department</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Monetary authority</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">SCENARIO 03</div>
+        <h3>An institution has investments in another country and wants to manage currency exposure. Which reason best fits?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Hedging or managing currency exposure</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Changing a candlestick pattern</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Making the currency price fixed</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Removing every market participant</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q">
+        <div class="qtag">SCENARIO 04</div>
+        <h3>Why can the Forex market contain buying and selling activity for completely different reasons at the same time?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Different participants have different objectives</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Only one participant exists</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Every participant follows the same strategy</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Forex prices never change</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>05. Student Self-Check</h2>
+    <div class="checks">
+        <div class="check">☐ I know Forex is not only retail trading.</div>
+        <div class="check">☐ I can identify the role of banks.</div>
+        <div class="check">☐ I understand the basic role of central banks.</div>
+        <div class="check">☐ I know why corporations may use Forex.</div>
+        <div class="check">☐ I understand investment institutions can have currency exposure.</div>
+        <div class="check">☐ I understand the basic role of liquidity providers.</div>
+        <div class="check">☐ I can identify a retail trader.</div>
+        <div class="check">☐ I understand that different participants have different objectives.</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>06. Quick Revision</h2>
+    <ul class="list">
+        <li>Forex includes many different types of participants.</li>
+        <li>Banks can participate for banking and client-related activity.</li>
+        <li>Central banks can interact with Forex in connection with monetary policy and official reserves.</li>
+        <li>Corporations may exchange currencies for international payments and manage currency exposure.</li>
+        <li>Investment institutions can interact with currencies through international investing and hedging.</li>
+        <li>Market makers and liquidity providers support executable prices and available liquidity.</li>
+        <li>Retail traders are individual market participants using brokers or trading platforms.</li>
+        <li>Different participants can interact with the same market for very different reasons.</li>
+    </ul>
+</section>
+
+<nav class="nav" aria-label="Exercise navigation">
+    <a href="market-orders.html">← Market Orders</a>
+    <a class="center" href="module1-exercise.html">Exercise Hub</a>
+    <a class="next" href="history-sessions.html">Next: History &amp; Sessions →</a>
+</nav>
+
+<div class="note">Exercise 05 of 10 • Strativo Academy Module 1 • Next: History &amp; Sessions</div>
+
+</div>
+</main>
+
+<div data-component="footer"></div>
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const maps = {
+        "QUESTION 01":{
+            correct:"B",
+            explanation:"Forex includes different participants with different objectives, rather than only retail traders.",
+            wrong:{
+                A:"Retail traders are only one participant group.",
+                C:"Central banks are one participant group, not the only one.",
+                D:"Corporations are one group among many."
+            }
+        },
+        "QUESTION 02":{
+            correct:"C",
+            explanation:"Central banks can interact with foreign exchange in connection with monetary policy and official reserves.",
+            wrong:{
+                A:"A retail trader is an individual participant.",
+                B:"Corporations use Forex for business-related currency needs and exposure.",
+                D:"An individual tourist is not a central bank."
+            }
+        },
+        "QUESTION 03":{
+            correct:"A",
+            explanation:"International businesses may need to exchange currencies and may also manage exposure created by changing exchange rates.",
+            wrong:{
+                B:"Creating a stock exchange is not the reason a corporation needs foreign currency.",
+                C:"Forex does not guarantee profit.",
+                D:"Using Forex does not prevent currencies from moving."
+            }
+        },
+        "QUESTION 04":{
+            correct:"A",
+            explanation:"An individual trading through a broker is a retail trader in this learning framework.",
+            wrong:{
+                B:"Central banks are official monetary institutions.",
+                C:"A multinational corporation is a business entity, not an individual retail trader.",
+                D:"A government reserve manager is part of an official institution."
+            }
+        },
+        "QUESTION 05":{
+            correct:"A",
+            explanation:"Investment institutions can interact with Forex when investing internationally or managing currency exposure.",
+            wrong:{
+                B:"Retail traders are not the only participants involved in international currency activity.",
+                C:"Tourists can exchange currency, but this answer does not describe institutional portfolio activity.",
+                D:"Investment institutions do participate in international investment activity."
+            }
+        },
+        "QUESTION 06":{
+            correct:"A",
+            explanation:"Understanding participants shows that the market contains participants with different objectives, which helps build a more realistic foundation.",
+            wrong:{
+                B:"Knowing participants does not guarantee the direction of the next candle.",
+                C:"It does not remove trading risk.",
+                D:"It does not tell a beginner exactly when to buy."
+            }
+        },
+        "SCENARIO 01":{
+            correct:"A",
+            explanation:"The company needs another currency for an international payment, so currency exchange is the relevant reason.",
+            wrong:{
+                B:"Candlesticks are chart representations, not the business need.",
+                C:"Currency exchange does not guarantee a speculative profit.",
+                D:"Forex does not eliminate all economic risk."
+            }
+        },
+        "SCENARIO 02":{
+            correct:"A",
+            explanation:"An individual trading through a broker for speculation is a retail trader.",
+            wrong:{
+                B:"A central bank is an official monetary institution.",
+                C:"A corporate treasury department belongs to a business.",
+                D:"A monetary authority is a government/central-bank type institution."
+            }
+        },
+        "SCENARIO 03":{
+            correct:"A",
+            explanation:"Managing currency exposure is a common reason an institution may use currency markets in connection with international investments.",
+            wrong:{
+                B:"Candlestick patterns are chart concepts, not the purpose of managing exposure.",
+                C:"Currency prices are not fixed by participating in the market.",
+                D:"A market contains many participants rather than removing them."
+            }
+        },
+        "SCENARIO 04":{
+            correct:"A",
+            explanation:"Banks, businesses, investors, central banks and retail traders can all have different reasons for buying or selling currencies.",
+            wrong:{
+                B:"Forex contains many participant groups.",
+                C:"Participants do not all follow the same strategy or objective.",
+                D:"Forex prices can change continuously as market conditions change."
+            }
+        }
+    };
+
+    let score = 0;
+    const counted = new Set();
+    const scoreText = document.querySelector(".scorebar strong");
+    const fill = document.querySelector(".score-fill");
+
+    function updateScore(){
+        scoreText.textContent = "Knowledge Check: " + score + " / 6 correct";
+        fill.style.width = (score / 6 * 100) + "%";
+    }
+
+    function evaluate(q, selected, data){
+        const feedback = q.querySelector(".feedback");
+        const correct = selected === data.correct;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.disabled = true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+            if(btn.dataset.option === data.correct) btn.classList.add("reveal-correct");
+            if(btn.dataset.option === selected) btn.classList.add(correct ? "correct" : "wrong");
+        });
+
+        feedback.className = "feedback visible " + (correct ? "correct" : "wrong");
+        feedback.innerHTML = "";
+
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = correct ? "✅ Correct — well done!" : "❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if(!correct){
+            const why = document.createElement("p");
+            why.className = "why";
+            why.textContent = "Why your answer is wrong: " + data.wrong[selected];
+            feedback.appendChild(why);
+
+            const right = document.createElement("p");
+            right.className = "correct-answer";
+            right.textContent = "Correct answer: " + data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explanation = document.createElement("p");
+        explanation.textContent = "Explanation: " + data.explanation;
+        feedback.appendChild(explanation);
+
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.className = "retry";
+        retry.textContent = "Try Again";
+        retry.addEventListener("click", ()=>{
+            q.querySelectorAll(".opt").forEach(btn=>{
+                btn.disabled = false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+            feedback.className = "feedback";
+            feedback.innerHTML = "";
+        });
+        feedback.appendChild(retry);
+    }
+
+    document.querySelectorAll(".q").forEach(q=>{
+        const tag = q.querySelector(".qtag");
+        const id = tag ? tag.textContent.trim() : "";
+        const data = maps[id];
+        if(!data) return;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.addEventListener("click", ()=>{
+                if(btn.disabled) return;
+                const selected = btn.dataset.option;
+
+                if(id.startsWith("QUESTION") && !counted.has(id)){
+                    counted.add(id);
+                    if(selected === data.correct) score += 1;
+                    updateScore();
+                }
+
+                evaluate(q, selected, data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+
+</body>
+</html>

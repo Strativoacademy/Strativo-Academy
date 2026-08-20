@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030712">
+<meta name="description" content="Strativo Academy Module 1 Exercise 07 — Candlesticks.">
+<title>Exercise 07 — Candlesticks | Strativo Academy</title>
+
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/ui.css">
+<link rel="stylesheet" href="../../css/header.css">
+<link rel="stylesheet" href="../../css/footer.css">
+
+<style>
+:root{
+    --bg:#030712;--panel:#0b1220;--panel2:#08111f;
+    --border:rgba(148,163,184,.13);--text:#f8fafc;--muted:#a6b4c6;
+    --blue:#60a5fa;--green:#34d399;--yellow:#fbbf24;--red:#f87171;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin:0;min-height:100vh;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px;line-height:1.65
+}
+.page{min-height:100vh;padding-bottom:60px}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+
+.hero{
+    padding:76px 20px 54px;text-align:center;border-bottom:1px solid var(--border);
+    background:
+        radial-gradient(circle at 13% 20%,rgba(96,165,250,.14),transparent 34%),
+        radial-gradient(circle at 86% 24%,rgba(52,211,153,.08),transparent 31%),
+        #030712
+}
+.hero-in{width:min(900px,100%);margin:auto}
+.eyebrow{color:#93c5fd;font-size:.82rem;font-weight:900;letter-spacing:.16em}
+.hero h1{margin:15px 0 0;font-family:Poppins,sans-serif;font-size:clamp(2rem,5vw,3.8rem);line-height:1.08}
+.hero p{max-width:860px;margin:16px auto 0;color:#a8b5c7;font-size:1rem;line-height:1.9}
+.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:21px}
+.badge{padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:#0f172acc;color:#dbeafe;font-size:.78rem;font-weight:800}
+
+.meta{
+    display:grid;grid-template-columns:1fr auto;gap:15px;align-items:center;
+    margin-top:23px;padding:16px 18px;border:1px solid var(--border);
+    border-radius:15px;background:var(--panel)
+}
+.meta strong{display:block;font-size:.92rem}
+.meta span{display:block;margin-top:5px;color:#7f8ea2;font-size:.82rem}
+.progress{min-width:150px;text-align:right}
+.bar{width:150px;height:7px;border-radius:999px;background:#162033;overflow:hidden}
+.fill{width:70%;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399)}
+.progress small{display:block;margin-top:6px;color:#7f8ea2;font-size:.72rem}
+
+.section{
+    margin-top:20px;padding:22px;border:1px solid var(--border);
+    border-radius:17px;background:var(--panel)
+}
+.section h2{margin:0;font-family:Poppins,sans-serif;font-size:1.45rem}
+.section h3{margin:18px 0 0;color:#dbeafe;font-size:1.02rem}
+.section p{margin:8px 0 0;color:var(--muted);font-size:.92rem;line-height:1.8}
+.list{margin:12px 0;padding-left:20px}
+.list li{margin-top:7px;color:#aebdd0;font-size:.92rem;line-height:1.8}
+
+.candle-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:17px
+}
+.candle-card{
+    padding:18px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.candle-card strong{display:block;color:#f1f5f9;font-size:.94rem}
+.candle-card span{display:block;margin-top:7px;color:#aebdd0;font-size:.84rem;line-height:1.75}
+
+.diagram{
+    margin-top:18px;border:1px solid rgba(148,163,184,.11);
+    border-radius:14px;overflow:hidden;background:#07101f
+}
+.dtitle{
+    padding:11px 14px;border-bottom:1px solid rgba(148,163,184,.10);
+    background:#0d1728;color:#dbe4ef;font-size:.78rem;font-weight:900
+}
+.diagram svg{display:block;width:100%;height:auto}
+
+.ohlc{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:15px
+}
+.ohlc-box{
+    padding:13px;border:1px solid rgba(148,163,184,.10);
+    border-radius:11px;background:var(--panel2);text-align:center
+}
+.ohlc-box strong{display:block;color:#f8fafc;font-size:.82rem}
+.ohlc-box span{display:block;margin-top:4px;color:#94a3b8;font-size:.76rem}
+
+.q{
+    margin-top:17px;padding:17px;border:1px solid rgba(148,163,184,.10);
+    border-radius:14px;background:var(--panel2)
+}
+.qtag{color:#60a5fa;font-size:.78rem;font-weight:900;letter-spacing:.06em}
+.q h3{margin-top:7px;color:#f1f5f9;font-size:1.05rem;line-height:1.6}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}
+.opt{
+    appearance:none;width:100%;padding:14px 15px;border:1px solid rgba(148,163,184,.11);
+    border-radius:10px;background:#0b1627;color:#d5deea;text-align:left;font:inherit;
+    font-size:.92rem;line-height:1.65;cursor:pointer;transition:transform .16s ease,border-color .16s ease,background .16s ease
+}
+.opt:hover{transform:translateY(-1px);border-color:rgba(96,165,250,.34);background:#0e1b30}
+.opt:focus-visible{outline:2px solid #60a5fa;outline-offset:2px}
+.opt.correct{border-color:rgba(52,211,153,.55);background:rgba(16,185,129,.11);color:#d1fae5}
+.opt.wrong{border-color:rgba(248,113,113,.50);background:rgba(248,113,113,.09);color:#fecaca}
+.opt.reveal-correct{border-color:rgba(52,211,153,.35);box-shadow:inset 3px 0 0 #34d399}
+.opt:disabled{cursor:default;transform:none}
+
+.feedback{
+    display:none;margin-top:13px;padding:14px 15px;border-left:3px solid #60a5fa;
+    border-radius:0 10px 10px 0;background:rgba(59,130,246,.055)
+}
+.feedback.visible{display:block}
+.feedback.correct{border-left-color:#34d399;background:rgba(16,185,129,.07)}
+.feedback.wrong{border-left-color:#f87171;background:rgba(248,113,113,.06)}
+.feedback .title{color:#f8fafc;font-size:.92rem;font-weight:900}
+.feedback.correct .title{color:#86efac}
+.feedback.wrong .title{color:#fca5a5}
+.feedback p{margin-top:7px!important;color:#cbd5e1!important;font-size:.90rem!important;line-height:1.75!important}
+.feedback .why{color:#fca5a5!important}
+.feedback .correct-answer{color:#86efac!important}
+
+.retry{
+    margin-top:10px;padding:8px 12px;border:1px solid rgba(148,163,184,.16);
+    border-radius:8px;background:rgba(15,23,42,.66);color:#cbd5e1;
+    font:inherit;font-size:.78rem;font-weight:800;cursor:pointer
+}
+.retry:hover{border-color:rgba(96,165,250,.30);background:rgba(59,130,246,.08)}
+
+.scorebar{
+    margin-top:18px;padding:14px 16px;border:1px solid rgba(96,165,250,.15);
+    border-radius:12px;background:rgba(59,130,246,.055)
+}
+.scorebar strong{color:#dbeafe;font-size:.90rem}
+.score-progress{margin-top:8px;height:7px;border-radius:999px;overflow:hidden;background:#162033}
+.score-fill{width:0;height:100%;background:linear-gradient(90deg,#60a5fa,#34d399);transition:width .25s ease}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
+.check{padding:10px 12px;border:1px solid rgba(148,163,184,.09);border-radius:10px;background:var(--panel2);color:#cbd5e1;font-size:.84rem}
+
+.nav{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:22px}
+.nav a{
+    display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 13px;
+    border:1px solid rgba(148,163,184,.11);border-radius:11px;background:#0b1627;
+    color:#dbeafe;text-decoration:none;font-size:.82rem;font-weight:900;text-align:center
+}
+.nav a:hover{background:#0e1b30}
+.center{background:rgba(59,130,246,.06)!important;color:#bfdbfe!important}
+.next{background:rgba(16,185,129,.055)!important;color:#d1fae5!important}
+.note{text-align:center;margin-top:14px;color:#64748b;font-size:.72rem}
+
+@media(max-width:800px){
+    .candle-grid{grid-template-columns:1fr}
+    .meta{grid-template-columns:1fr}.progress{text-align:left}.bar{width:100%}
+    .ohlc{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+    .opts,.checks,.nav{grid-template-columns:1fr}
+    .section{padding:20px}
+    .section h2{font-size:1.25rem}
+    .q h3{font-size:1rem}
+}
+</style>
+</head>
+
+<body>
+
+<div data-component="header"></div>
+
+<main class="page">
+
+<section class="hero">
+    <div class="hero-in">
+        <div class="eyebrow">STRATIVO ACADEMY • MODULE 1 • SEASON EXERCISE</div>
+        <h1>Exercise 07 — Candlesticks</h1>
+        <p>
+            Practice reading what a candlestick shows: Open, High, Low and Close,
+            the candle body, upper and lower wicks, bullish and bearish candles,
+            and basic price movement.
+        </p>
+        <div class="badges">
+            <span class="badge">🕯️ OHLC</span>
+            <span class="badge">⬆️ Bullish</span>
+            <span class="badge">⬇️ Bearish</span>
+            <span class="badge">07 / 10</span>
+        </div>
+    </div>
+</section>
+
+<div class="wrap">
+
+<section class="meta">
+    <div>
+        <strong>Exercise Goal</strong>
+        <span>Identify the main parts of a candlestick and interpret basic bullish, bearish and wick behaviour.</span>
+    </div>
+    <div class="progress">
+        <div class="bar"><div class="fill"></div></div>
+        <small>Exercise 07 of 10</small>
+    </div>
+</section>
+
+<section class="section">
+    <h2>01. What Does a Candlestick Show?</h2>
+    <p>
+        A candlestick summarizes price movement during one selected period.
+        The four basic prices are Open, High, Low and Close — commonly called
+        OHLC. The candle body shows the relationship between open and close,
+        while the wicks show the high and low reached during the period.
+    </p>
+
+    <div class="ohlc">
+        <div class="ohlc-box"><strong>OPEN</strong><span>Where the period began.</span></div>
+        <div class="ohlc-box"><strong>HIGH</strong><span>Highest price reached.</span></div>
+        <div class="ohlc-box"><strong>LOW</strong><span>Lowest price reached.</span></div>
+        <div class="ohlc-box"><strong>CLOSE</strong><span>Where the period ended.</span></div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">BASIC CANDLE — OHLC, BODY AND WICKS</div>
+        <svg viewBox="0 0 900 470" role="img" aria-label="Candlestick parts diagram">
+            <rect width="900" height="470" fill="#07101f"/>
+
+            <line x1="450" y1="75" x2="450" y2="395" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+            <rect x="365" y="150" width="170" height="175" rx="5" fill="#142338" stroke="#60a5fa" stroke-width="3"/>
+
+            <line x1="540" y1="150" x2="680" y2="150" stroke="#64748b" stroke-width="2"/>
+            <text x="700" y="155" fill="#93c5fd" font-size="20" font-weight="900">OPEN</text>
+
+            <line x1="540" y1="325" x2="680" y2="325" stroke="#64748b" stroke-width="2"/>
+            <text x="700" y="330" fill="#93c5fd" font-size="20" font-weight="900">CLOSE</text>
+
+            <line x1="450" y1="75" x2="290" y2="75" stroke="#64748b" stroke-width="2"/>
+            <text x="80" y="81" fill="#f8fafc" font-size="20" font-weight="900">HIGH</text>
+
+            <line x1="450" y1="395" x2="290" y2="395" stroke="#64748b" stroke-width="2"/>
+            <text x="80" y="401" fill="#f8fafc" font-size="20" font-weight="900">LOW</text>
+
+            <text x="450" y="235" text-anchor="middle" fill="#bfdbfe" font-size="20" font-weight="900">BODY</text>
+            <text x="450" y="262" text-anchor="middle" fill="#94a3b8" font-size="14">open ↔ close</text>
+
+            <text x="450" y="40" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="900">CANDLE RANGE</text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>02. Bullish vs Bearish Candles</h2>
+    <p>
+        A bullish candle closes above its open. A bearish candle closes below
+        its open. The body therefore gives a quick visual clue about the
+        direction of price movement during that candle's period.
+    </p>
+
+    <div class="candle-grid">
+        <div class="candle-card">
+            <strong>⬆️ Bullish Candle</strong>
+            <span>
+                Close is above Open. The body represents the distance between
+                the open and close, while the wicks represent prices reached
+                above and below the body.
+            </span>
+        </div>
+        <div class="candle-card">
+            <strong>⬇️ Bearish Candle</strong>
+            <span>
+                Close is below Open. The same OHLC structure applies, but the
+                relationship between open and close is reversed.
+            </span>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">BULLISH AND BEARISH CANDLE COMPARISON</div>
+        <svg viewBox="0 0 900 390" role="img" aria-label="Bullish and bearish candle comparison">
+            <rect width="900" height="390" fill="#07101f"/>
+
+            <line x1="270" y1="65" x2="270" y2="315" stroke="#94a3b8" stroke-width="5"/>
+            <rect x="205" y="125" width="130" height="130" rx="4" fill="#0e2b22" stroke="#34d399" stroke-width="3"/>
+            <text x="270" y="100" text-anchor="middle" fill="#a7f3d0" font-size="21" font-weight="900">BULLISH</text>
+            <text x="270" y="185" text-anchor="middle" fill="#d1fae5" font-size="18" font-weight="900">CLOSE</text>
+            <text x="270" y="212" text-anchor="middle" fill="#86efac" font-size="14">above OPEN</text>
+
+            <line x1="630" y1="65" x2="630" y2="315" stroke="#94a3b8" stroke-width="5"/>
+            <rect x="565" y="125" width="130" height="130" rx="4" fill="#321a1f" stroke="#f87171" stroke-width="3"/>
+            <text x="630" y="100" text-anchor="middle" fill="#fecaca" font-size="21" font-weight="900">BEARISH</text>
+            <text x="630" y="185" text-anchor="middle" fill="#fee2e2" font-size="18" font-weight="900">CLOSE</text>
+            <text x="630" y="212" text-anchor="middle" fill="#fca5a5" font-size="14">below OPEN</text>
+
+            <text x="450" y="360" text-anchor="middle" fill="#64748b" font-size="14" font-weight="700">
+                THE BODY SHOWS THE OPEN–CLOSE RELATIONSHIP
+            </text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>03. Wicks and Basic Price Movement</h2>
+    <p>
+        Wicks extend away from the candle body and show that price reached
+        levels beyond the open-close area during the period. A wick by itself
+        should not be treated as a complete trading signal; it is information
+        about the range and price behaviour of the candle.
+    </p>
+
+    <div class="candle-grid">
+        <div class="candle-card">
+            <strong>Upper Wick</strong>
+            <span>
+                Shows the distance from the top of the body to the highest price
+                reached during that candle.
+            </span>
+        </div>
+        <div class="candle-card">
+            <strong>Lower Wick</strong>
+            <span>
+                Shows the distance from the bottom of the body to the lowest
+                price reached during that candle.
+            </span>
+        </div>
+    </div>
+
+    <div class="diagram">
+        <div class="dtitle">UNDERSTANDING THE WICKS</div>
+        <svg viewBox="0 0 900 370" role="img" aria-label="Upper and lower wick diagram">
+            <rect width="900" height="370" fill="#07101f"/>
+
+            <line x1="450" y1="55" x2="450" y2="315" stroke="#cbd5e1" stroke-width="6"/>
+            <rect x="370" y="130" width="160" height="115" rx="4" fill="#142338" stroke="#60a5fa" stroke-width="3"/>
+
+            <line x1="450" y1="55" x2="640" y2="55" stroke="#64748b" stroke-width="2"/>
+            <text x="660" y="61" fill="#bfdbfe" font-size="19" font-weight="900">UPPER WICK</text>
+            <text x="660" y="88" fill="#94a3b8" font-size="13">highest price → body</text>
+
+            <line x1="450" y1="315" x2="640" y2="315" stroke="#64748b" stroke-width="2"/>
+            <text x="660" y="321" fill="#bfdbfe" font-size="19" font-weight="900">LOWER WICK</text>
+            <text x="660" y="348" fill="#94a3b8" font-size="13">body → lowest price</text>
+
+            <text x="450" y="195" text-anchor="middle" fill="#dbeafe" font-size="19" font-weight="900">BODY</text>
+            <text x="450" y="220" text-anchor="middle" fill="#94a3b8" font-size="13">OPEN ↔ CLOSE</text>
+        </svg>
+    </div>
+</section>
+
+<section class="section">
+    <h2>04. Knowledge Check</h2>
+    <p>
+        Choose an answer first. Your choice is checked immediately. If you are
+        wrong, you will see why it is wrong, the correct answer and the concept
+        explanation.
+    </p>
+
+    <div class="q"><div class="qtag">QUESTION 01</div>
+        <h3>What does OHLC stand for?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Open, High, Low, Close</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Only High, Low, Close</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Open, Low, Liquidity, Close</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Order, High, Low, Cost</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 02</div>
+        <h3>What does the body of a candlestick primarily show?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> The relationship between Open and Close</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Only the highest price</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Only the lowest price</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> The trading session name</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 03</div>
+        <h3>When is a candle generally described as bullish?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> When Close is above Open</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> When Close is below Open</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> When the candle has no wick</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> When price does not move</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 04</div>
+        <h3>What does an upper wick tell you?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> The highest price reached above the body</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> The exact next entry price</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> The opening price only</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> The next candle's direction</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 05</div>
+        <h3>Which statement about a bearish candle is correct?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Close is below Open</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Close is always at the Low</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> It cannot have an upper wick</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> It means price must continue falling</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">QUESTION 06</div>
+        <h3>Why should a beginner avoid treating one wick as a complete trading signal?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> A wick is only one piece of price information and needs context</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Wicks have no information at all</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Wicks are not part of a candlestick</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A wick guarantees the next move</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="scorebar" aria-live="polite">
+        <strong>Knowledge Check: 0 / 6 correct</strong>
+        <div class="score-progress"><div class="score-fill"></div></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>05. Practical Candlestick Reading</h2>
+
+    <div class="q"><div class="qtag">SCENARIO 01</div>
+        <h3>A candle opens at 1.1000 and closes at 1.1050. How is the candle generally described?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Bullish</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Bearish</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> No candle</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> Impossible to know</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 02</div>
+        <h3>A candle opens at 1.1050 and closes at 1.1000. What does that tell you about the candle?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> It is generally bearish</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> It is generally bullish</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> It has no body</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> It automatically signals a reversal</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 03</div>
+        <h3>A candle has a long upper wick. What basic information can you safely take from it?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> Price reached a higher level above the body during the period</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> The next candle must fall</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> The market has guaranteed resistance</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> A trade must be placed immediately</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div class="q"><div class="qtag">SCENARIO 04</div>
+        <h3>A student looks only at candle colour and ignores Open, Close and wicks. What is missing?</h3>
+        <div class="opts">
+            <button class="opt" data-option="A" type="button"><strong>A.</strong> The rest of the OHLC and price-range information</button>
+            <button class="opt" data-option="B" type="button"><strong>B.</strong> Nothing; colour is the entire candle</button>
+            <button class="opt" data-option="C" type="button"><strong>C.</strong> Only the trading session</button>
+            <button class="opt" data-option="D" type="button"><strong>D.</strong> The currency pair name only</button>
+        </div><div class="feedback" aria-live="polite"></div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>06. Student Self-Check</h2>
+    <div class="checks">
+        <div class="check">☐ I know what OHLC means.</div>
+        <div class="check">☐ I can identify Open, High, Low and Close.</div>
+        <div class="check">☐ I understand what the body represents.</div>
+        <div class="check">☐ I understand upper and lower wicks.</div>
+        <div class="check">☐ I can identify a bullish candle.</div>
+        <div class="check">☐ I can identify a bearish candle.</div>
+        <div class="check">☐ I understand that one candle should be read in context.</div>
+        <div class="check">☐ I am ready for the Price Action exercise.</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>07. Quick Revision</h2>
+    <ul class="list">
+        <li>A candlestick summarizes price movement during one selected period.</li>
+        <li>OHLC means Open, High, Low and Close.</li>
+        <li>The body shows the relationship between Open and Close.</li>
+        <li>Wicks show prices reached beyond the body during the period.</li>
+        <li>A bullish candle closes above its open.</li>
+        <li>A bearish candle closes below its open.</li>
+        <li>A wick provides information about price movement, but one wick alone is not a complete trading signal.</li>
+    </ul>
+</section>
+
+<nav class="nav" aria-label="Exercise navigation">
+    <a href="history-sessions.html">← History &amp; Sessions</a>
+    <a class="center" href="module1-exercise.html">Exercise Hub</a>
+    <a class="next" href="price-action.html">Next: Price Action →</a>
+</nav>
+
+<div class="note">Exercise 07 of 10 • Strativo Academy Module 1 • Next: Price Action</div>
+
+</div>
+</main>
+
+<div data-component="footer"></div>
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    const maps = {
+        "QUESTION 01":{
+            correct:"A",
+            explanation:"OHLC stands for Open, High, Low and Close — the four basic prices represented by a candlestick.",
+            wrong:{
+                B:"OHLC includes Open as well as High, Low and Close.",
+                C:"Liquidity is not the L in OHLC.",
+                D:"Order and Cost are not the standard meanings of OHLC."
+            }
+        },
+        "QUESTION 02":{
+            correct:"A",
+            explanation:"The body represents the relationship between the opening price and the closing price of the period.",
+            wrong:{
+                B:"The highest price is represented by the top of the total candle range, including the wick.",
+                C:"The lowest price is represented by the bottom of the total candle range.",
+                D:"A candlestick does not show the session name through its body."
+            }
+        },
+        "QUESTION 03":{
+            correct:"A",
+            explanation:"A bullish candle closes above its open.",
+            wrong:{
+                B:"Close below Open describes a bearish candle.",
+                C:"A candle can have wicks and still be bullish.",
+                D:"A bullish candle involves price movement during the period."
+            }
+        },
+        "QUESTION 04":{
+            correct:"A",
+            explanation:"The upper wick shows how high price reached above the candle body during the period.",
+            wrong:{
+                B:"A wick does not provide an exact future entry price.",
+                C:"Opening price is one part of OHLC, not the definition of an upper wick.",
+                D:"One wick cannot guarantee the next candle's direction."
+            }
+        },
+        "QUESTION 05":{
+            correct:"A",
+            explanation:"A bearish candle closes below its open.",
+            wrong:{
+                B:"The close does not have to equal the low.",
+                C:"A bearish candle can have an upper wick.",
+                D:"A bearish candle does not guarantee that price will continue falling."
+            }
+        },
+        "QUESTION 06":{
+            correct:"A",
+            explanation:"A wick is one piece of price information. It should be interpreted together with the body, OHLC and broader market context.",
+            wrong:{
+                B:"Wicks do contain information about the prices reached during the period.",
+                C:"Wicks are a normal part of a candlestick.",
+                D:"A wick does not guarantee the next price move."
+            }
+        },
+        "SCENARIO 01":{
+            correct:"A",
+            explanation:"The close at 1.1050 is above the open at 1.1000, so the candle is generally bullish.",
+            wrong:{
+                B:"Bearish means the close is below the open.",
+                C:"It is clearly a candlestick because it has an open and a close.",
+                D:"The open and close are enough to determine the basic bullish/bearish relationship."
+            }
+        },
+        "SCENARIO 02":{
+            correct:"A",
+            explanation:"The close at 1.1000 is below the open at 1.1050, so the candle is generally bearish.",
+            wrong:{
+                B:"Bullish means the close is above the open.",
+                C:"A bearish candle can have a normal body.",
+                D:"The candle's direction alone does not automatically signal a reversal."
+            }
+        },
+        "SCENARIO 03":{
+            correct:"A",
+            explanation:"A long upper wick tells you that price reached higher levels above the body during that period.",
+            wrong:{
+                B:"The wick alone does not guarantee the next candle's direction.",
+                C:"A wick alone does not prove a specific support or resistance level.",
+                D:"One candle does not automatically require a trade."
+            }
+        },
+        "SCENARIO 04":{
+            correct:"A",
+            explanation:"Colour or bullish/bearish classification is only part of the candle. OHLC, body size and wick structure provide additional price information.",
+            wrong:{
+                B:"Colour is not the entire candle.",
+                C:"Session timing is separate from the candle's OHLC structure.",
+                D:"The currency pair is context, not a replacement for OHLC information."
+            }
+        }
+    };
+
+    let score=0;
+    const counted=new Set();
+    const scoreText=document.querySelector(".scorebar strong");
+    const fill=document.querySelector(".score-fill");
+
+    function updateScore(){
+        scoreText.textContent="Knowledge Check: "+score+" / 6 correct";
+        fill.style.width=(score/6*100)+"%";
+    }
+
+    function evaluate(q,selected,data){
+        const feedback=q.querySelector(".feedback");
+        const correct=selected===data.correct;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.disabled=true;
+            btn.classList.remove("correct","wrong","reveal-correct");
+            if(btn.dataset.option===data.correct)btn.classList.add("reveal-correct");
+            if(btn.dataset.option===selected)btn.classList.add(correct?"correct":"wrong");
+        });
+
+        feedback.className="feedback visible "+(correct?"correct":"wrong");
+        feedback.innerHTML="";
+
+        const title=document.createElement("div");
+        title.className="title";
+        title.textContent=correct?"✅ Correct — well done!":"❌ Not correct — let's learn why.";
+        feedback.appendChild(title);
+
+        if(!correct){
+            const why=document.createElement("p");
+            why.className="why";
+            why.textContent="Why your answer is wrong: "+data.wrong[selected];
+            feedback.appendChild(why);
+
+            const right=document.createElement("p");
+            right.className="correct-answer";
+            right.textContent="Correct answer: "+data.correct;
+            feedback.appendChild(right);
+        }
+
+        const explanation=document.createElement("p");
+        explanation.textContent="Explanation: "+data.explanation;
+        feedback.appendChild(explanation);
+
+        const retry=document.createElement("button");
+        retry.type="button";
+        retry.className="retry";
+        retry.textContent="Try Again";
+        retry.addEventListener("click",()=>{
+            q.querySelectorAll(".opt").forEach(btn=>{
+                btn.disabled=false;
+                btn.classList.remove("correct","wrong","reveal-correct");
+            });
+            feedback.className="feedback";
+            feedback.innerHTML="";
+        });
+        feedback.appendChild(retry);
+    }
+
+    document.querySelectorAll(".q").forEach(q=>{
+        const tag=q.querySelector(".qtag");
+        const id=tag?tag.textContent.trim():"";
+        const data=maps[id];
+        if(!data)return;
+
+        q.querySelectorAll(".opt").forEach(btn=>{
+            btn.addEventListener("click",()=>{
+                if(btn.disabled)return;
+                const selected=btn.dataset.option;
+
+                if(id.startsWith("QUESTION")&&!counted.has(id)){
+                    counted.add(id);
+                    if(selected===data.correct)score++;
+                    updateScore();
+                }
+                evaluate(q,selected,data);
+            });
+        });
+    });
+
+    updateScore();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3 - Bid Price, Ask Price & Spread | Strativo Academy</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/ui.css">
+    <link rel="stylesheet" href="../../css/lesson.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+
+<style id="lesson3-v1-enhancements">
+.skip-link{position:fixed;top:10px;left:10px;z-index:9999;transform:translateY(-150%);padding:10px 14px;border-radius:9px;background:#0f172a;color:#fff;text-decoration:none;font-weight:800;border:1px solid rgba(148,163,184,.25)}
+.skip-link:focus{transform:translateY(0)}
+.lesson-progress-fill{transition:width .3s ease;will-change:width}
+.quick-check-card{margin-top:18px;padding:18px;border:1px solid rgba(96,165,250,.16);border-radius:14px;background:rgba(59,130,246,.055)}
+.quick-check-badge{display:inline-block;padding:5px 9px;border-radius:999px;background:rgba(96,165,250,.10);color:#bfdbfe;font-size:.78rem;font-weight:900}
+.quick-check-card h3{margin:10px 0 0;color:#f8fafc}.quick-check-card p{color:#aebdd0}
+.quick-check-options{display:grid;gap:8px;margin-top:12px}.quick-check-options button{min-height:44px;padding:10px 13px;border:1px solid rgba(148,163,184,.13);border-radius:10px;background:#0b1627;color:#dbeafe;text-align:left;font:inherit;font-size:.9rem;cursor:pointer}
+.quick-check-options button.correct{border-color:rgba(52,211,153,.5);background:rgba(16,185,129,.09)}
+.quick-check-options button.wrong{border-color:rgba(248,113,113,.5);background:rgba(248,113,113,.08)}
+.quick-check-feedback{display:none;margin-top:12px;padding:11px 13px;border-left:3px solid #60a5fa;border-radius:0 9px 9px 0;background:rgba(59,130,246,.055);color:#dbeafe;font-size:.88rem;line-height:1.7}
+.quick-check-feedback.visible{display:block}.quick-check-feedback.correct{border-left-color:#34d399;color:#d1fae5}.quick-check-feedback.wrong{border-left-color:#f87171;color:#fecaca}
+.lesson-mobile-toggle{display:none;width:100%;min-height:44px;margin:0 0 10px;padding:0 14px;border:1px solid rgba(148,163,184,.14);border-radius:10px;background:#0b1220;color:#dbeafe;font:inherit;font-size:.82rem;font-weight:800;cursor:pointer}
+.lesson-sidebar.is-open{display:block}
+.lesson-sticky-nav{position:fixed;left:12px;right:12px;bottom:12px;z-index:1000;display:none;align-items:center;gap:10px;padding:9px;border:1px solid rgba(148,163,184,.15);border-radius:14px;background:rgba(3,7,18,.94);box-shadow:0 14px 40px rgba(0,0,0,.35);backdrop-filter:blur(8px)}
+.lesson-sticky-nav button{min-height:44px;padding:0 13px;border:1px solid rgba(148,163,184,.14);border-radius:10px;background:#0b1627;color:#dbeafe;font:inherit;font-size:.8rem;font-weight:800;cursor:pointer}
+.lesson-sticky-nav button:disabled{opacity:.45;cursor:not-allowed}.lesson-sticky-nav span{flex:1;text-align:center;color:#94a3b8;font-size:.78rem;font-weight:700}
+button:focus-visible,a:focus-visible{outline:2px solid #60a5fa;outline-offset:3px}
+@media (max-width:800px){.lesson-mobile-toggle{display:block}.lesson-sidebar{display:none}.lesson-sidebar.is-open{display:block}.lesson-sticky-nav{display:flex}.lesson-content{padding-bottom:90px!important}}
+@media (min-width:801px){.lesson-sticky-nav{display:none!important}}
+</style>
+
+</head>
+
+<body>
+<a class="skip-link" href="#lesson-content">Skip to content</a>
+<div class="global-header-mount" data-component="header"></div>
+
+
+<div data-component="lesson-header"></div>
+
+<div class="lesson-navigator-section">
+  <div class="navigator-card">
+    <div class="navigator-header">
+      <h2>📚 Lesson Navigator</h2>
+      <p>Jump directly to any lesson. Quiz scores track mastery separately.</p>
+    </div>
+    <div class="navigator-grid">
+
+      <a href="lesson1.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 1</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+      <a href="lesson2.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 2</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+      <a href="lesson3.html" class="nav-grid-item current">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 3</span><span class="lesson-icon">✅</span></div>
+        <span class='current-badge'>Current Lesson</span>
+      </a>
+
+      <a href="lesson4.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 4</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+      <a href="lesson5.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 5</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+      <a href="lesson6.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 6</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+      <a href="lesson7.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 7</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+      <a href="lesson8.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 8</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+      <a href="lesson9.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 9</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+      <a href="lesson10.html" class="nav-grid-item">
+        <div class="grid-item-top"><span class="lesson-name">Lesson 10</span><span class="lesson-icon">▶</span></div>
+        
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<button type="button" id="lessonSidebarToggle" class="lesson-mobile-toggle"
+        aria-controls="lessonSidebar" aria-expanded="false">☰ Lesson Menu</button>
+<div class="lesson-layout">
+
+    <aside id="lessonSidebar" class="lesson-sidebar">
+        <h2>Lesson 3</h2>
+        <ul id="lessonMenu">
+            <li onclick="showStep(1)" class="active">👋 Welcome</li>
+            <li onclick="showStep(2)">💰 What is Bid Price?</li>
+            <li onclick="showStep(3)">💵 What is Ask Price?</li>
+            <li onclick="showStep(4)">⚖ Difference Between Bid & Ask</li>
+            <li onclick="showStep(5)">📏 What is Spread?</li>
+            <li onclick="showStep(6)">📊 Types of Spread</li>
+            <li onclick="showStep(7)">🧮 Spread Calculation</li>
+            <li onclick="showStep(8)">💡 Trading Example</li>
+            <li onclick="showStep(9)">🧠 Quiz</li>
+            <li onclick="showStep(10)">🏁 Summary</li>
+        </ul>
+    </aside>
+
+    <main id="lesson-content" class="lesson-content">
+        <div class="lesson-header">
+            <h1>Lesson 3 - Bid Price, Ask Price & Spread</h1>
+            <div class="lesson-meta">
+                <div class="meta-item">📈 Beginner</div>
+                <div class="meta-item">⏱ 20 Minutes</div>
+                <div class="meta-item">📚 Module 1</div>
+                <div class="meta-item">📝 10 Steps</div>
+            </div>
+            <div class="lesson-progress">
+                <div class="lesson-progress-bar">
+                    <div class="lesson-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <p class="step-text">Step 1 of 10</p>
+
+       <section class="lesson-step active-step" id="step1">
+    <div class="card">
+
+        <span class="lesson-badge">BEGINNER COURSE</span>
+
+        <h1>Welcome to Lesson 3</h1>
+        <h2>Bid Price, Ask Price &amp; Spread</h2>
+
+        <p>
+            Every Forex trade begins with two prices:
+            the <strong>Bid Price</strong> and the
+            <strong>Ask Price</strong>.
+
+            Understanding these prices is one of the most
+            important skills for every trader.
+
+            In this lesson, you'll learn how brokers display prices,
+            what the <strong>Spread</strong> is,
+            and why every trade starts with a small trading cost.
+
+            By the end of this lesson,
+            you'll be able to read Forex prices like a professional.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson3/welcome.png"
+             alt="Lesson 3 Welcome"
+             class="lesson-image">
+
+        <div class="success-box">
+            <h3>📘 Simple Definition</h3>
+            <p>
+                Every Forex price has two values:
+                <strong>Bid Price</strong> and
+                <strong>Ask Price</strong>.
+
+                The difference between them is called the
+                <strong>Spread</strong>.
+            </p>
+        </div>
+
+        <h3>🎯 Today's Learning Objectives</h3>
+
+        <ul class="lesson-list">
+            <li>✅ Understand Bid Price</li>
+            <li>✅ Understand Ask Price</li>
+            <li>✅ Learn What Spread Is</li>
+            <li>✅ Calculate Spread</li>
+            <li>✅ Read Real Forex Prices</li>
+            <li>✅ Complete the Lesson Quiz</li>
+        </ul>
+
+        <div class="didyouknow-box">
+            <h3>💡 Did You Know?</h3>
+            <p>
+                Every Forex trade starts with a small cost
+                called the <strong>Spread</strong>.
+
+                Understanding Bid Price,
+                Ask Price and Spread is one of the first
+                skills every professional trader learns.
+            </p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠ Beginner Mistake</h3>
+            <p>
+                Many beginners think the market moved
+                against them immediately after opening
+                a trade.
+
+                In reality,
+                Buy trades open at the
+                <strong>Ask Price</strong>,
+                while charts usually display the
+                <strong>Bid Price</strong>.
+
+                This small difference is called the
+                <strong>Spread</strong>.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn" disabled>
+                ← Previous
+            </button>
+
+            <button class="btn btn-primary"
+                    onclick="nextStep()">
+                Next →
+            </button>
+        </div>
+
+    </div>
+</section>
+        
+        <section class="lesson-step" id="step2">
+    <div class="card">
+
+        <span class="lesson-badge">STEP 2 OF 10</span>
+
+        <h1>What is the Bid Price?</h1>
+
+        <p>
+            The <strong>Bid Price</strong> is the highest price that a buyer
+            is willing to pay for a currency pair at a particular moment.
+
+            In Forex trading, the Bid Price is the price at which you can
+            <strong>SELL</strong> a currency pair.
+
+            Whenever you place a Sell order,
+            your trade is executed at the
+            <strong>Bid Price</strong>.
+
+            Think of the Bid Price as the price the market is offering to buy
+            your currency.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson3/step2.png"
+             alt="What is Bid Price"
+             class="lesson-image">
+
+        <h2>📖 Real-Life Example</h2>
+
+        <p>
+            Imagine you want to sell your old smartphone.
+
+            A buyer offers you
+            <strong>₹20,000</strong>.
+
+            That offer is the
+            <strong>Bid Price</strong>
+            because it is the price someone is willing to pay.
+        </p>
+
+        <div class="success-box">
+            <h3>📘 Simple Definition</h3>
+
+            <p>
+                <strong>Bid Price</strong> is simply the
+                <strong>selling price</strong> in Forex.
+
+                Whenever you press the
+                <strong>SELL</strong> button,
+                your order is executed at the Bid Price.
+            </p>
+        </div>
+
+        <div class="note-box">
+            <h3>📝 Remember</h3>
+
+            <p>
+                A simple memory trick:
+
+                <br><br>
+
+                <strong>Bid = Sell</strong>
+
+                <br><br>
+
+                Whenever you sell,
+                you always receive the
+                <strong>Bid Price</strong>.
+            </p>
+        </div>
+
+        <div class="didyouknow-box">
+            <h3>💡 Did You Know?</h3>
+
+            <p>
+                Professional traders check the
+                <strong>Bid Price</strong>
+                before placing every Sell trade because
+                it determines the exact price at which
+                their order will be executed.
+            </p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠ Beginner Mistake</h3>
+
+            <p>
+                Many beginners think both Buy and Sell
+                orders execute at the same price.
+
+                They don't.
+
+                Sell orders always execute at the
+                <strong>Bid Price</strong>.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+            <button class="secondary-btn"
+                    onclick="previousStep()">
+                ← Previous
+            </button>
+
+            <button class="btn btn-primary"
+                    onclick="nextStep()">
+                Next →
+            </button>
+        </div>
+
+    </div>
+</section>
+
+        <section class="lesson-step" id="step3">
+    <div class="card">
+
+        <span class="lesson-badge">STEP 3 OF 10</span>
+
+        <h1>What is the Ask Price?</h1>
+
+        <p>
+            The <strong>Ask Price</strong> is the lowest price at which a seller
+            is willing to sell a currency pair.
+
+            In Forex trading, the Ask Price is the price at which you can
+            <strong>BUY</strong> a currency pair.
+
+            Whenever you place a Buy order,
+            your trade is executed at the
+            <strong>Ask Price</strong>.
+
+            Think of the Ask Price as the price you must pay to purchase a currency pair.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson3/step3.png"
+             alt="What is Ask Price"
+             class="lesson-image">
+
+        <h2>📖 Real-Life Example</h2>
+
+        <p>
+            Imagine you want to buy a new smartphone.
+
+            The shopkeeper says the price is
+            <strong>₹25,000</strong>.
+
+            That selling price is similar to the
+            <strong>Ask Price</strong> because it is the price
+            you must pay to buy the product.
+        </p>
+
+        <div class="success-box">
+            <h3>📘 Simple Definition</h3>
+
+            <p>
+                The <strong>Ask Price</strong> is simply the
+                <strong>buying price</strong> in Forex.
+
+                Whenever you press the
+                <strong>BUY</strong> button,
+                your order is executed at the Ask Price.
+            </p>
+        </div>
+
+        <div class="note-box">
+            <h3>📝 Remember</h3>
+
+            <p>
+
+                A simple memory trick:
+
+                <br><br>
+
+                <strong>Ask = Buy</strong>
+
+                <br><br>
+
+                Whenever you buy,
+                you always pay the
+                <strong>Ask Price</strong>.
+
+            </p>
+        </div>
+
+        <div class="didyouknow-box">
+            <h3>💡 Did You Know?</h3>
+
+            <p>
+                Every Buy trade starts at the
+                <strong>Ask Price</strong>.
+
+                That's why your trade may show a small negative value immediately after opening.
+                This happens because of the
+                <strong>Spread</strong>.
+            </p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠ Beginner Mistake</h3>
+
+            <p>
+                Many beginners think they are buying at the price shown on the chart.
+
+                However, most trading charts display the
+                <strong>Bid Price</strong>.
+
+                Your Buy order is actually opened at the
+                <strong>Ask Price</strong>,
+                which is usually slightly higher.
+            </p>
+        </div>
+
+        <div class="pro-box">
+            <h3>🎯 Pro Tip</h3>
+
+            <p>
+                Before placing a Buy trade,
+                always check the Ask Price instead of only looking at the chart.
+
+                Professional traders understand both prices before entering the market.
+            </p>
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button class="secondary-btn"
+                    onclick="previousStep()">
+                ← Previous
+            </button>
+
+            <button class="btn btn-primary"
+                    onclick="nextStep()">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+        <section class="lesson-step" id="step4">
+    <div class="card">
+
+        <span class="lesson-badge">STEP 4 OF 10</span>
+
+        <h1>Difference Between Bid Price & Ask Price</h1>
+
+        <p>
+            Every Forex currency pair always has
+            <strong>two different prices</strong>.
+
+            Although they belong to the same currency pair,
+            they are used for different trading actions.
+
+            The <strong>Bid Price</strong> is the price at which
+            you can <strong>SELL</strong>.
+
+            The <strong>Ask Price</strong> is the price at which
+            you can <strong>BUY</strong>.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson3/step4.png"
+             alt="Difference Between Bid and Ask"
+             class="lesson-image">
+
+        <div class="success-box">
+            <h3>📘 Quick Comparison</h3>
+
+            <table class="lesson-table">
+                <tr>
+                    <th>Bid Price</th>
+                    <th>Ask Price</th>
+                </tr>
+
+                <tr>
+                    <td>Used for SELL orders</td>
+                    <td>Used for BUY orders</td>
+                </tr>
+
+                <tr>
+                    <td>Price buyers pay</td>
+                    <td>Price sellers ask</td>
+                </tr>
+
+                <tr>
+                    <td>Usually Lower</td>
+                    <td>Usually Higher</td>
+                </tr>
+
+                <tr>
+                    <td>Chart normally shows this price</td>
+                    <td>Trading platform uses this for Buy orders</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="note-box">
+            <h3>📝 Easy Memory Trick</h3>
+
+            <p>
+
+                💰 <strong>Bid = Sell</strong>
+
+                <br><br>
+
+                💵 <strong>Ask = Buy</strong>
+
+                <br><br>
+
+                Remember these two rules and you will never confuse them again.
+
+            </p>
+        </div>
+
+        <div class="didyouknow-box">
+            <h3>💡 Did You Know?</h3>
+
+            <p>
+
+                The difference between the
+                <strong>Bid Price</strong>
+                and the
+                <strong>Ask Price</strong>
+
+                is called the
+
+                <strong>Spread</strong>.
+
+                You will learn more about it in the next lesson step.
+
+            </p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠ Beginner Mistake</h3>
+
+            <p>
+
+                Many beginners accidentally buy or sell without
+                understanding which price is being used.
+
+                Always remember:
+
+                <br><br>
+
+                ✅ BUY → Ask Price
+
+                <br>
+
+                ✅ SELL → Bid Price
+
+            </p>
+        </div>
+
+        <div class="pro-box">
+            <h3>🎯 Pro Tip</h3>
+
+            <p>
+
+                Professional traders always check both prices
+                before entering a trade.
+
+                Understanding the difference between Bid and Ask
+                helps you avoid confusion and calculate trading
+                costs correctly.
+
+            </p>
+        </div>
+
+        
+<div class="quick-check-card" id="quickCheckStep4">
+  <span class="quick-check-badge">🧠 QUICK CHECK — UNGRADED</span>
+  <h3>What is the main difference between Bid and Ask?</h3>
+  <p>Select an answer to receive immediate feedback.</p>
+  <div class="quick-check-options">
+    <button type="button" data-correct="true">A. Bid is used for Sell; Ask is used for Buy</button>
+    <button type="button" data-correct="false">B. Bid is used for Buy; Ask is used for Sell</button>
+    <button type="button" data-correct="false">C. Bid and Ask are always the same price</button>
+  </div>
+  <div class="quick-check-feedback" aria-live="polite"></div>
+</div>
+
+<div class="lesson-navigation">
+
+            <button class="secondary-btn"
+                    onclick="previousStep()">
+                ← Previous
+            </button>
+
+            <button class="btn btn-primary"
+                    onclick="nextStep()">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+        <section class="lesson-step" id="step5">
+    <div class="card">
+
+        <span class="lesson-badge">STEP 5 OF 10</span>
+
+        <h1>📏 What is the Spread?</h1>
+
+        <h2 style="color:#00e5a8;">The Cost of Entering a Trade</h2>
+
+        <p>
+            The <strong>Spread</strong> is the difference between the
+            <strong>Bid Price</strong> and the
+            <strong>Ask Price</strong>.
+
+            Every time you open a Forex trade,
+            you automatically pay this small difference.
+
+            Think of the Spread as the cost of entering the market.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson3/step5.png"
+             class="lesson-image"
+             alt="What is Spread">
+
+        <div class="success-box">
+
+            <h3>📘 Simple Definition</h3>
+
+            <p>
+
+                The <strong>Spread</strong> is simply the difference between the
+                <strong>Ask Price</strong> and the
+                <strong>Bid Price</strong>.
+
+                It represents the broker's trading cost.
+
+            </p>
+
+        </div>
+
+        <div class="success-box">
+
+            <h3>📌 Spread Formula</h3>
+
+            <p style="font-size:24px;">
+
+                <strong>Spread = Ask Price − Bid Price</strong>
+
+            </p>
+
+        </div>
+
+        <h2>📊 Real Market Example</h2>
+
+        <p>
+
+            Suppose the market shows:
+
+            <br><br>
+
+            💰 Bid Price = <strong>1.1050</strong>
+
+            <br>
+
+            💵 Ask Price = <strong>1.1052</strong>
+
+            <br><br>
+
+            Spread =
+
+            <strong>1.1052 − 1.1050 = 0.0002</strong>
+
+        </p>
+
+        <div class="note-box">
+
+            <h3>💡 Easy Memory Trick</h3>
+
+            <p>
+
+                Think of the Spread as an
+                <strong>entry fee</strong>.
+
+                Every trader pays it before entering the market.
+
+            </p>
+
+        </div>
+
+        <div class="didyouknow-box">
+
+            <h3>🌍 Did You Know?</h3>
+
+            <p>
+
+                Currency pairs with high trading volume,
+                like <strong>EUR/USD</strong>,
+                usually have smaller spreads.
+
+                Exotic currency pairs often have much larger spreads.
+
+            </p>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠ Beginner Mistake</h3>
+
+            <p>
+
+                Many beginners think they lose money immediately after opening a trade.
+
+                In reality,
+
+                the trade starts slightly negative because the
+                <strong>Spread</strong>
+                has already been paid.
+
+            </p>
+
+        </div>
+
+        <div class="pro-box">
+
+            <h3>🎯 Pro Tip</h3>
+
+            <p>
+
+                Professional traders always pay attention to the Spread.
+
+                Lower spreads mean lower trading costs,
+                which can make a big difference over hundreds of trades.
+
+            </p>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button class="secondary-btn"
+                    onclick="previousStep()">
+                ← Previous
+            </button>
+
+            <button class="btn btn-primary"
+                    onclick="nextStep()">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+        <section class="lesson-step" id="step6">
+    <div class="card">
+
+        <span class="lesson-badge">STEP 6 OF 10</span>
+
+        <h1>📊 Types of Spread</h1>
+
+        <h2 style="color:#00e5a8;">Fixed Spread vs Variable Spread</h2>
+
+        <p>
+            Not all Forex spreads are the same.
+
+            Depending on your broker and current market conditions,
+            you may see either a
+            <strong>Fixed Spread</strong>
+            or a
+            <strong>Variable Spread</strong>.
+
+            Understanding the difference helps you choose the right trading environment.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson3/step6.png"
+             class="lesson-image"
+             alt="Types of Spread">
+
+        <div class="success-box">
+
+            <h3>📘 Simple Definition</h3>
+
+            <p>
+
+                <strong>Fixed Spread</strong>
+                stays almost the same all the time.
+
+                <br><br>
+
+                <strong>Variable Spread</strong>
+                changes depending on market activity and volatility.
+
+            </p>
+
+        </div>
+
+        <h2>📋 Comparison Table</h2>
+
+        <table class="lesson-table">
+
+            <tr>
+                <th>Fixed Spread</th>
+                <th>Variable Spread</th>
+            </tr>
+
+            <tr>
+                <td>Almost always the same</td>
+                <td>Changes with the market</td>
+            </tr>
+
+            <tr>
+                <td>Easy to predict</td>
+                <td>Can become very small or very large</td>
+            </tr>
+
+            <tr>
+                <td>Good for beginners</td>
+                <td>Preferred by many experienced traders</td>
+            </tr>
+
+            <tr>
+                <td>Stable trading cost</td>
+                <td>Trading cost changes frequently</td>
+            </tr>
+
+        </table>
+
+        <div class="note-box">
+
+            <h3>💡 Easy Memory Trick</h3>
+
+            <p>
+
+                <strong>Fixed</strong> = Fixed Cost
+
+                <br><br>
+
+                <strong>Variable</strong> = Changing Cost
+
+            </p>
+
+        </div>
+
+        <div class="didyouknow-box">
+
+            <h3>🌍 Did You Know?</h3>
+
+            <p>
+
+                During major economic news,
+                Variable Spreads can become much wider than normal.
+
+                This increases trading costs for a short period of time.
+
+            </p>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠ Beginner Mistake</h3>
+
+            <p>
+
+                Many beginners think every broker offers the same spread.
+
+                In reality,
+
+                spreads can vary between brokers,
+                account types,
+                and market conditions.
+
+            </p>
+
+        </div>
+
+        <div class="pro-box">
+
+            <h3>🎯 Pro Tip</h3>
+
+            <p>
+
+                Before opening a live account,
+
+                compare spreads offered by different brokers.
+
+                Lower spreads can reduce your trading costs over time.
+
+            </p>
+
+        </div>
+
+        <div class="success-box">
+
+            <h3>📝 Quick Recap</h3>
+
+            <ul class="lesson-list">
+
+                <li>✅ Fixed Spread stays almost the same.</li>
+
+                <li>✅ Variable Spread changes with market conditions.</li>
+
+                <li>✅ Variable Spreads usually widen during high volatility.</li>
+
+                <li>✅ Lower spreads mean lower trading costs.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button class="secondary-btn"
+                    onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button class="btn btn-primary"
+                    onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+        <section class="lesson-step" id="step7">
+    <div class="card">
+
+        <span class="lesson-badge">STEP 7 OF 10</span>
+
+        <h1>🧮 How to Calculate the Spread</h1>
+
+        <h2 style="color:#00e5a8;">Calculate the Cost of a Trade</h2>
+
+        <p>
+            Now that you understand what the Spread is,
+            let's learn how to calculate it.
+
+            The calculation is very simple and every Forex trader should know it.
+
+            Once you understand this formula,
+            you'll always know the cost of entering a trade.
+        </p>
+
+        <img loading="lazy" src="../../images/lesson3/step7.png"
+             class="lesson-image"
+             alt="Spread Calculation">
+
+        <div class="success-box">
+
+            <h3>📘 Spread Formula</h3>
+
+            <p style="font-size:24px;">
+
+                <strong>Spread = Ask Price − Bid Price</strong>
+
+            </p>
+
+        </div>
+
+        <h2>📊 Real Market Example</h2>
+
+        <div class="note-box">
+
+            <p>
+
+                💰 Bid Price =
+                <strong>1.2508</strong>
+
+                <br><br>
+
+                💵 Ask Price =
+                <strong>1.2510</strong>
+
+                <br><br>
+
+                Spread =
+
+                <strong>1.2510 − 1.2508 = 0.0002</strong>
+
+            </p>
+
+        </div>
+
+        <div class="success-box">
+
+            <h3>📖 Step-by-Step Calculation</h3>
+
+            <ol class="lesson-list">
+
+                <li>✅ Look at the Ask Price.</li>
+
+                <li>✅ Look at the Bid Price.</li>
+
+                <li>✅ Subtract the Bid Price from the Ask Price.</li>
+
+                <li>✅ The result is called the Spread.</li>
+
+            </ol>
+
+        </div>
+
+        <div class="note-box">
+
+            <h3>💡 Easy Memory Trick</h3>
+
+            <p>
+
+                Always remember:
+
+                <br><br>
+
+                <strong>Higher Price − Lower Price</strong>
+
+                <br><br>
+
+                =
+                <strong>Spread</strong>
+
+            </p>
+
+        </div>
+
+        <div class="didyouknow-box">
+
+            <h3>🌍 Did You Know?</h3>
+
+            <p>
+
+                Most popular currency pairs,
+                such as
+                <strong>EUR/USD</strong>,
+                usually have very small spreads.
+
+                Exotic pairs often have much larger spreads.
+
+            </p>
+
+        </div>
+
+        <div class="warning-box">
+
+            <h3>⚠ Beginner Mistake</h3>
+
+            <p>
+
+                Some beginners accidentally subtract the prices in the wrong order.
+
+                Always calculate:
+
+                <br><br>
+
+                <strong>Ask Price − Bid Price</strong>
+
+                <br><br>
+
+                Never the other way around.
+
+            </p>
+
+        </div>
+
+        <div class="pro-box">
+
+            <h3>🎯 Pro Tip</h3>
+
+            <p>
+
+                Professional traders always check the spread
+                before entering a trade.
+
+                Smaller spreads reduce trading costs,
+                especially for scalping strategies.
+
+            </p>
+
+        </div>
+
+        <div class="success-box">
+
+            <h3>📝 Quick Recap</h3>
+
+            <ul class="lesson-list">
+
+                <li>✅ Spread = Ask Price − Bid Price.</li>
+
+                <li>✅ Spread is the cost of entering a trade.</li>
+
+                <li>✅ Lower spreads mean lower trading costs.</li>
+
+                <li>✅ Always subtract Ask minus Bid.</li>
+
+            </ul>
+
+        </div>
+
+        <div class="lesson-navigation">
+
+            <button class="secondary-btn"
+                    onclick="previousStep()">
+
+                ← Previous
+
+            </button>
+
+            <button class="btn btn-primary"
+                    onclick="nextStep()">
+
+                Next →
+
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+        <section class="lesson-step" id="step8">
+
+<div class="card">
+
+<span class="lesson-badge">STEP 8 OF 10</span>
+
+<h1>💡 Real Trading Example</h1>
+
+<h2 style="color:#00e5a8;">Putting Everything Together</h2>
+
+<p>
+
+Now let's combine everything you've learned in this lesson.
+
+We'll use a real Forex example to understand how the
+<strong>Bid Price</strong>,
+<strong>Ask Price</strong>,
+and
+<strong>Spread</strong>
+work together when you place a trade.
+
+</p>
+
+<img loading="lazy" src="../../images/lesson3/step8.png"
+class="lesson-image"
+alt="Real Trading Example">
+
+<div class="success-box">
+
+<h3>📊 Market Prices</h3>
+
+<p>
+
+Currency Pair:
+<strong>EUR/USD</strong>
+
+<br><br>
+
+💰 Bid Price =
+<strong>1.1050</strong>
+
+<br>
+
+💵 Ask Price =
+<strong>1.1052</strong>
+
+<br><br>
+
+📏 Spread =
+<strong>0.0002</strong>
+
+</p>
+
+</div>
+
+<div class="success-box">
+
+<h3>📈 Scenario 1 — You Buy EUR/USD</h3>
+
+<p>
+
+When you click
+<strong>BUY</strong>,
+
+your trade opens at the
+<strong>Ask Price (1.1052)</strong>.
+
+Because the chart usually shows the
+<strong>Bid Price (1.1050)</strong>,
+
+your trade immediately starts with a small negative value equal to the Spread.
+
+</p>
+
+</div>
+
+<div class="success-box">
+
+<h3>📉 Scenario 2 — You Sell EUR/USD</h3>
+
+<p>
+
+When you click
+<strong>SELL</strong>,
+
+your trade opens at the
+<strong>Bid Price (1.1050)</strong>.
+
+The market is currently willing to buy your currency at this price.
+
+</p>
+
+</div>
+
+<div class="note-box">
+
+<h3>💡 Easy Memory Trick</h3>
+
+<p>
+
+🟢 BUY →
+
+<strong>Ask Price</strong>
+
+<br><br>
+
+🔴 SELL →
+
+<strong>Bid Price</strong>
+
+<br><br>
+
+📏 Difference →
+
+<strong>Spread</strong>
+
+</p>
+
+</div>
+
+<div class="didyouknow-box">
+
+<h3>🌍 Did You Know?</h3>
+
+<p>
+
+Every Forex broker displays both the
+<strong>Bid Price</strong>
+and
+<strong>Ask Price</strong>,
+
+even though many trading charts only display the
+<strong>Bid Price</strong>.
+
+</p>
+
+</div>
+
+<div class="warning-box">
+
+<h3>⚠ Beginner Mistake</h3>
+
+<p>
+
+Many beginners think their Buy trade lost money immediately.
+
+Actually,
+
+the trade begins slightly negative because the
+<strong>Spread</strong>
+has already been paid.
+
+This is completely normal.
+
+</p>
+
+</div>
+
+<div class="pro-box">
+
+<h3>🎯 Pro Tip</h3>
+
+<p>
+
+Professional traders always check the current Spread before opening a trade.
+
+Lower spreads reduce trading costs,
+especially for scalping and short-term trading.
+
+</p>
+
+</div>
+
+<div class="success-box">
+
+<h3>📝 Lesson 3 Summary</h3>
+
+<ul class="lesson-list">
+
+<li>✅ Bid Price is used for SELL orders.</li>
+
+<li>✅ Ask Price is used for BUY orders.</li>
+
+<li>✅ Spread = Ask Price − Bid Price.</li>
+
+<li>✅ Every trade begins by paying the Spread.</li>
+
+<li>✅ Lower spreads mean lower trading costs.</li>
+
+</ul>
+
+</div>
+
+<div class="success-box">
+
+<h3>🎯 Ready for the Quiz?</h3>
+
+<p>
+
+Excellent work!
+
+You now understand how Forex prices are displayed and how the Spread affects every trade.
+
+The next step is to test your knowledge with the Lesson 3 Quiz.
+
+Try answering every question without looking back at the lesson.
+
+</p>
+
+</div>
+
+<div class="lesson-navigation">
+
+<button class="secondary-btn"
+onclick="previousStep()">
+
+← Previous
+
+</button>
+
+<button class="btn btn-primary"
+onclick="nextStep()">
+
+Start Quiz →
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+        <section class="lesson-step" id="step9">
+
+<div class="card">
+
+<span class="lesson-badge">STEP 9 OF 10</span>
+
+<h1>🧠 Lesson 3 Quiz</h1>
+
+<h2 style="color:#00e5a8;">Test Your Knowledge</h2>
+
+<p>
+
+Congratulations!
+
+You have completed all the learning sections of
+<strong>Lesson 3 – Bid Price, Ask Price & Spread.</strong>
+
+Now it's time to test your understanding.
+
+Answer all
+<strong>10 questions</strong>
+without looking back at the lesson.
+
+Take your time and choose the best answer.
+
+</p>
+
+<div class="success-box">
+
+<h3>🎯 Quiz Rules</h3>
+
+<ul class="lesson-list">
+
+<li>✅ 10 Multiple Choice Questions</li>
+
+<li>✅ One Correct Answer Per Question</li>
+
+<li>✅ Instant Explanation After Every Answer</li>
+
+<li>✅ Minimum Score: <strong>70%</strong> to Pass</li>
+
+<li>✅ You can retry the quiz anytime.</li>
+
+<li>✅ Passing records your Lesson 3 mastery and prepares you for Lesson 4.</li>
+
+</ul>
+
+</div>
+
+<div class="note-box">
+
+<h3>💡 Coach's Tip</h3>
+
+<p>
+
+Don't memorize the answers.
+
+Instead,
+
+understand when Buy uses the Ask Price,
+
+when Sell uses the Bid Price,
+
+and how the Spread is calculated.
+
+That's what professional traders do.
+
+</p>
+
+</div>
+
+<hr style="margin:35px 0;opacity:.25;">
+
+<div id="quiz-container">
+
+<div class="question-counter"
+id="question-counter">
+
+Question 1 of 10
+
+</div>
+
+<h2 id="question">
+
+Loading Question...
+
+</h2>
+
+<div class="quiz-options">
+
+<button class="quiz-btn"
+onclick="checkAnswer(0)"
+id="option0"></button>
+
+<button class="quiz-btn"
+onclick="checkAnswer(1)"
+id="option1"></button>
+
+<button class="quiz-btn"
+onclick="checkAnswer(2)"
+id="option2"></button>
+
+<button class="quiz-btn"
+onclick="checkAnswer(3)"
+id="option3"></button>
+
+</div>
+
+<div id="quiz-result"
+style="margin-top:25px;"></div>
+
+<div class="quiz-navigation">
+
+<button
+class="secondary-btn"
+onclick="previousQuestion()"
+id="prevQuestionBtn">
+
+← Previous Question
+
+</button>
+
+<button
+class="btn btn-primary"
+onclick="nextQuestion()"
+id="nextQuestionBtn">
+
+Next Question →
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+        <section class="lesson-step" id="step10">
+
+<div class="card">
+
+<span class="lesson-badge">STEP 10 OF 10</span>
+
+<h1>🎉 Congratulations!</h1>
+
+<p>
+
+You have successfully completed
+<strong>Lesson 3 – Bid Price, Ask Price & Spread.</strong>
+
+You now understand how Forex prices work and why every trade begins with two prices.
+
+This knowledge is one of the most important foundations of Forex trading.
+
+</p>
+
+<img loading="lazy" src="../../images/lesson3/step10.png"
+class="lesson-image"
+alt="Lesson 3 Completed">
+
+<div class="success-box">
+
+<h3>🏆 Achievement Unlocked</h3>
+
+<p>
+
+🎓 Beginner Level
+
+<b>Bid, Ask & Spread Expert</b>
+
+You have completed Lesson 3 and can now understand how every Forex trade is executed.
+
+</p>
+
+</div>
+
+<h2>📚 What You Learned</h2>
+
+<ul class="lesson-list">
+
+<li>✅ What the Bid Price is</li>
+
+<li>✅ What the Ask Price is</li>
+
+<li>✅ The difference between Bid and Ask</li>
+
+<li>✅ What the Spread is</li>
+
+<li>✅ Types of Spread</li>
+
+<li>✅ How to calculate the Spread</li>
+
+<li>✅ Real trading examples</li>
+
+<li>✅ How trading costs affect every trade</li>
+
+</ul>
+
+<div class="note-box">
+
+<h3>📝 Notebook Review</h3>
+
+<p>
+
+Before moving to Lesson 4,
+make sure you can answer these questions without looking at your notes.
+
+</p>
+
+<ul class="lesson-list">
+
+<li>✔ What is the Bid Price?</li>
+
+<li>✔ What is the Ask Price?</li>
+
+<li>✔ Which price is used for BUY orders?</li>
+
+<li>✔ Which price is used for SELL orders?</li>
+
+<li>✔ What is the Spread?</li>
+
+<li>✔ How do you calculate the Spread?</li>
+
+<li>✔ Why do Buy trades start with a small loss?</li>
+
+</ul>
+
+</div>
+
+<div class="success-box">
+
+<h3>💡 Coach's Advice</h3>
+
+<p>
+
+Many beginners ignore the Spread.
+
+Professional traders never do.
+
+Always check the Bid Price,
+Ask Price,
+and Spread before opening a trade.
+
+Understanding trading costs will help you become a smarter trader over time.
+
+</p>
+
+</div>
+
+<div class="didyouknow-box">
+
+<h3>🌍 Did You Know?</h3>
+
+<p>
+
+Professional scalpers often trade only currency pairs with very low spreads because reducing trading costs can significantly improve long-term performance.
+
+</p>
+
+</div>
+
+<div class="warning-box">
+
+<h3>⚠ Before You Continue</h3>
+
+<p>
+
+Complete the Lesson 3 Quiz first.
+
+Scoring at least
+
+<strong>70%</strong>
+
+will help ensure you understand these concepts before moving to Lesson 4.
+
+</p>
+
+</div>
+
+<div class="success-box">
+
+<h3>🚀 Coming Up Next</h3>
+
+<p>
+
+Lesson 4 will introduce one of the most important Forex concepts:
+
+<strong>Pips & Lot Sizes</strong>
+
+</p>
+
+<ul class="lesson-list">
+
+<li>📏 What is a Pip?</li>
+
+<li>📦 What is a Lot?</li>
+
+<li>💰 Pip Value</li>
+
+<li>📊 Standard, Mini & Micro Lots</li>
+
+<li>⚖ Position Size Basics</li>
+
+</ul>
+
+</div>
+
+<div class="lesson-navigation">
+
+<button
+class="secondary-btn"
+onclick="retryQuiz()">
+
+🔄 Retry Quiz
+
+</button>
+
+<a href="lesson4.html"
+class="btn btn-primary">
+
+🚀 Continue to Lesson 4
+
+</a>
+
+</div>
+
+<div class="lesson-signature">
+
+"Knowledge grows one lesson at a time."
+
+<br><br>
+
+<strong>— Strativo Academy</strong>
+
+</div>
+
+</div>
+
+</section>
+
+    </main>
+</div>
+
+<script src="../../js/progress.js"></script>
+<script src="../../js/lesson.js"></script>
+<script src="../../quizzes/module1/quiz3.js"></script>
+
+<div id="lessonStickyNav" class="lesson-sticky-nav" aria-label="Lesson step navigation">
+  <button type="button" id="stickyPrevBtn">← Previous</button>
+  <span id="stickyStepLabel">Step 1 of 10</span>
+  <button type="button" id="stickyNextBtn">Next →</button>
+</div>
+
+<div data-component="footer"></div>
+
+<script src="../../js/routes.js"></script>
+<script src="../../js/component-loader.js"></script>
+<script src="../../js/header.js"></script>
+
+<script id="lesson3-v1-helper">
+document.addEventListener("DOMContentLoaded",function(){
+  "use strict";
+
+  function activeStep(){
+    const active=document.querySelector(".lesson-step.active-step");
+    if(!active)return 1;
+    const match=/^step(\d+)$/.exec(active.id||"");
+    return match?Number(match[1]):1;
+  }
+
+  function updateProgress(){
+    const step=activeStep(), percent=step*10;
+    document.querySelectorAll(".lesson-progress-fill").forEach(function(el){
+      el.style.width=percent+"%";
+    });
+
+    const label=document.getElementById("stickyStepLabel");
+    if(label)label.textContent="Step "+step+" of 10";
+
+    const stepText=document.querySelector(".step-text");
+    if(stepText)stepText.textContent="Step "+step+" of 10";
+
+    const prev=document.getElementById("stickyPrevBtn");
+    const next=document.getElementById("stickyNextBtn");
+
+    if(prev)prev.disabled=step<=1;
+
+    if(next){
+      if(step===9){
+        next.disabled=true;
+        next.textContent="Finish Quiz Above";
+      }else{
+        next.disabled=false;
+        next.textContent=step===10?"Back to Course →":"Next →";
+      }
+    }
+
+    try{
+      localStorage.setItem("strativo_lesson3_ui_state",JSON.stringify({
+        currentStep:step,savedAt:Date.now()
+      }));
+    }catch(error){
+      console.warn("Lesson 3 state could not be saved.",error);
+    }
+  }
+
+  const saveExit=document.getElementById("saveExitBtn");
+  if(saveExit){
+    saveExit.addEventListener("click",function(){
+      updateProgress();
+      window.location.href="../../modules/module1.html";
+    });
+  }
+
+  const toggle=document.getElementById("lessonSidebarToggle");
+  const sidebar=document.getElementById("lessonSidebar");
+
+  if(toggle&&sidebar){
+    toggle.addEventListener("click",function(){
+      const open=sidebar.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded",open?"true":"false");
+      toggle.textContent=open?"✕ Close Lesson Menu":"☰ Lesson Menu";
+    });
+  }
+
+  document.querySelectorAll("#quickCheckStep4 button[data-correct]").forEach(function(button){
+    button.addEventListener("click",function(){
+      const wrapper=document.getElementById("quickCheckStep4");
+      if(!wrapper)return;
+
+      wrapper.querySelectorAll("button[data-correct]").forEach(function(item){
+        item.classList.remove("correct","wrong");
+      });
+
+      const correct=button.dataset.correct==="true";
+      button.classList.add(correct?"correct":"wrong");
+
+      const feedback=wrapper.querySelector(".quick-check-feedback");
+      if(!feedback)return;
+
+      feedback.className="quick-check-feedback visible "+(correct?"correct":"wrong");
+      feedback.textContent=correct
+        ?"✅ Correct. Bid is used for Sell orders and Ask is used for Buy orders."
+        :"❌ Not quite. The correct answer is A — Bid is used for Sell and Ask is used for Buy.";
+    });
+  });
+
+  if(typeof window.showStep==="function"){
+    const originalShowStep=window.showStep;
+    window.showStep=function(step){
+      const result=originalShowStep.apply(this,arguments);
+      updateProgress();
+      return result;
+    };
+  }
+
+  const stickyPrev=document.getElementById("stickyPrevBtn");
+  const stickyNext=document.getElementById("stickyNextBtn");
+
+  if(stickyPrev){
+    stickyPrev.addEventListener("click",function(){
+      if(typeof window.previousStep==="function"&&activeStep()>1){
+        window.previousStep();
+        updateProgress();
+      }
+    });
+  }
+
+  if(stickyNext){
+    stickyNext.addEventListener("click",function(){
+      if(activeStep()===9)return;
+
+      if(typeof window.nextStep==="function"){
+        window.nextStep();
+      }else if(activeStep()===10){
+        window.location.href="../../beginner.html";
+      }
+    });
+  }
+
+  window.addEventListener("beforeunload",updateProgress);
+  document.addEventListener("visibilitychange",function(){
+    if(document.visibilityState==="hidden")updateProgress();
+  });
+
+  updateProgress();
+});
+</script>
+
+</body>
+</html>

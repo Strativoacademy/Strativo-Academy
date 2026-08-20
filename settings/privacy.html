@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#030712"
+    >
+
+    <meta
+        name="description"
+        content="Manage privacy and data settings in Strativo Academy."
+    >
+
+    <title>Privacy &amp; Data | Strativo Academy</title>
+
+
+    <!-- Global Appearance -->
+    <script src="../js/appearance-global.js"></script>
+
+
+    <!-- Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- Main Styles -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/settings.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/privacy.css"
+    >
+
+</head>
+
+
+<body class="settings-page privacy-page">
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div
+        class="settings-background"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main
+        class="settings-container"
+        id="main-content"
+    >
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="settings-topbar">
+
+            <a
+                href="settings.html"
+                class="settings-back-link"
+                aria-label="Back to Settings"
+            >
+
+                <i
+                    class="fas fa-arrow-left"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Back to Settings
+                </span>
+
+            </a>
+
+
+            <div class="settings-version">
+
+                <span
+                    class="settings-version-dot"
+                    aria-hidden="true"
+                ></span>
+
+                <span>
+                    v1.0 Beta
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="settings-hero">
+
+            <div class="settings-eyebrow">
+
+                <i
+                    class="fas fa-shield-halved"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    PRIVACY &amp; DATA
+                </span>
+
+            </div>
+
+
+            <h1>
+                Your Privacy &amp; Data
+            </h1>
+
+
+            <p>
+                Understand and manage the learning data stored
+                by Strativo Academy.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRIVACY OVERVIEW
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="privacy-overview-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <span class="settings-section-label">
+                    PRIVACY
+                </span>
+
+                <h2 id="privacy-overview-title">
+                    Privacy Overview
+                </h2>
+
+                <p>
+                    Your learning preferences and progress are
+                    currently stored locally while Strativo
+                    Academy is in development.
+                </p>
+
+            </div>
+
+
+            <div class="privacy-info-card">
+
+                <div class="settings-card-icon">
+
+                    <i
+                        class="fas fa-lock"
+                        aria-hidden="true"
+                    ></i>
+
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Local Development Storage
+                    </h3>
+
+                    <p>
+                        Some settings and learning progress are
+                        currently stored in your browser using
+                        local storage. Full account synchronization
+                        will be added with the Strativo backend.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LEARNING DATA
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="learning-data-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <span class="settings-section-label">
+                    LEARNING DATA
+                </span>
+
+                <h2 id="learning-data-title">
+                    Learning Data
+                </h2>
+
+                <p>
+                    Control optional learning data stored on
+                    this device.
+                </p>
+
+            </div>
+
+
+            <div class="privacy-toggle-list">
+
+
+                <!-- PROGRESS -->
+
+                <div class="privacy-toggle-card">
+
+                    <div class="privacy-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-chart-line"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Save Learning Progress
+                            </h3>
+
+                            <p>
+                                Allow lesson progress and completion
+                                information to be saved on this device.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="privacy-switch">
+
+                        <input
+                            type="checkbox"
+                            id="save-progress-toggle"
+                            checked
+                            aria-label="Save learning progress"
+                        >
+
+                        <span
+                            class="privacy-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- QUIZ DATA -->
+
+                <div class="privacy-toggle-card">
+
+                    <div class="privacy-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-clipboard-check"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Save Quiz Results
+                            </h3>
+
+                            <p>
+                                Allow quiz results and practice
+                                history to be saved on this device.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="privacy-switch">
+
+                        <input
+                            type="checkbox"
+                            id="save-quiz-data-toggle"
+                            checked
+                            aria-label="Save quiz results"
+                        >
+
+                        <span
+                            class="privacy-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- ACHIEVEMENT DATA -->
+
+                <div class="privacy-toggle-card">
+
+                    <div class="privacy-toggle-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-trophy"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Save Achievement Progress
+                            </h3>
+
+                            <p>
+                                Allow achievement, XP and milestone
+                                progress to be stored on this device.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="privacy-switch">
+
+                        <input
+                            type="checkbox"
+                            id="save-achievement-data-toggle"
+                            checked
+                            aria-label="Save achievement progress"
+                        >
+
+                        <span
+                            class="privacy-switch-slider"
+                            aria-hidden="true"
+                        ></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DATA ACTIONS
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="data-actions-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <span class="settings-section-label">
+                    DATA ACTIONS
+                </span>
+
+                <h2 id="data-actions-title">
+                    Manage Your Data
+                </h2>
+
+                <p>
+                    Manage locally stored learning information
+                    on this device.
+                </p>
+
+            </div>
+
+
+            <div class="privacy-action-list">
+
+
+                <!-- EXPORT -->
+
+                <div class="privacy-action-card">
+
+                    <div class="privacy-action-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-file-export"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Export Your Data
+                            </h3>
+
+                            <p>
+                                Download a copy of your learning
+                                data. Full export support will be
+                                available with the account system.
+                            </p>
+
+                            <span class="privacy-coming-soon">
+                                COMING SOON
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <i
+                        class="fas fa-lock privacy-action-lock"
+                        aria-hidden="true"
+                    ></i>
+
+                </div>
+
+
+
+                <!-- CLEAR LOCAL DATA -->
+
+                <div class="privacy-action-card privacy-danger-card">
+
+                    <div class="privacy-action-info">
+
+                        <div class="settings-card-icon">
+
+                            <i
+                                class="fas fa-trash-can"
+                                aria-hidden="true"
+                            ></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Clear Local Learning Data
+                            </h3>
+
+                            <p>
+                                Remove locally stored learning
+                                progress, quiz data and achievement
+                                data from this browser.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="clear-local-data-button"
+                        class="privacy-danger-button"
+                    >
+
+                        <i
+                            class="fas fa-trash-can"
+                            aria-hidden="true"
+                        ></i>
+
+                        <span>
+                            Clear Data
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACCOUNT DATA
+        ================================================== -->
+
+        <section
+            class="settings-section"
+            aria-labelledby="account-data-title"
+        >
+
+            <div class="settings-section-heading">
+
+                <span class="settings-section-label">
+                    ACCOUNT
+                </span>
+
+                <h2 id="account-data-title">
+                    Account Data
+                </h2>
+
+                <p>
+                    Account-level privacy controls will become
+                    available when the Strativo account backend
+                    is connected.
+                </p>
+
+            </div>
+
+
+            <div class="privacy-action-card privacy-disabled-card">
+
+                <div class="privacy-action-info">
+
+                    <div class="settings-card-icon">
+
+                        <i
+                            class="fas fa-user-shield"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Account Data Management
+                        </h3>
+
+                        <p>
+                            Account deletion, server-side data
+                            export and advanced privacy controls
+                            will be available in a future version.
+                        </p>
+
+                        <span class="privacy-coming-soon">
+                            COMING SOON
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <i
+                    class="fas fa-lock privacy-action-lock"
+                    aria-hidden="true"
+                ></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="settings-about">
+
+            <div class="settings-about-brand">
+
+                <span class="settings-about-name">
+                    STRATIVO
+                </span>
+
+                <span class="settings-about-accent">
+                    ACADEMY
+                </span>
+
+            </div>
+
+
+            <p>
+                Strativo Academy — Structured Forex Trading Education
+            </p>
+
+
+            <span class="settings-about-version">
+                Version 1.0 Beta
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         PRIVACY ENGINE
+    ====================================================== -->
+
+    <script src="privacy.js"></script>
+
+</body>
+
+</html>
