@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
@@ -12,6 +11,300 @@
         <loc>https://dynamic-melba-131c1b.netlify.app/beginner.html</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/faq.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/help.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/modules/module1.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/modules/module1quiz.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson1.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson2.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson3.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson4.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson5.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson6.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson7.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson8.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson9.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/lessons/module1/lesson10.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/bid-ask-spreads.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/currency-pairs.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/forex-risks.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/history-of-money.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/introduction-to-forex.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/lots-and-leverage.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/market-analysis.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/market-orders.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/market-sessions.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/notes-candlesticks.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/notes-liquidity.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/notes-market-structure.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/notes-price-action-complete.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/notes-support-resistance.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/notes-trend-analysis.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/notes.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/pips-and-points.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/risk-management.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/notes/module1-notes/who-trades-forex.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/candlesticks.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/currency-pairs.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/forex-basics.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/history-sessions.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/market-orders.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/market-structure.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/module1-exercise.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/pips-points.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/price-action.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/support-resistance-liquidity.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/season-exercise/module1-exercise/who-trades-forex.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/legal/privacy-policy.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/legal/risk-disclosure.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/legal/terms.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/tools/pip-calculator.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://dynamic-melba-131c1b.netlify.app/tools/risk-management.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
 
 </urlset>
