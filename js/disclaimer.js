@@ -23,13 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.pathname.toLowerCase();
 
     const isRiskDisclosurePage =
-        currentPath.includes("risk-disclosure.html");
+        currentPath.includes("risk-disclosure");
 
     const isPrivacyPolicyPage =
-        currentPath.includes("privacy-policy.html");
+        currentPath.includes("privacy-policy");
 
         const isTermsPage =
-    currentPath.includes("terms.html");
+    currentPath.includes("terms");
 
     /* ======================================================================
        CHECK ACCEPTANCE
