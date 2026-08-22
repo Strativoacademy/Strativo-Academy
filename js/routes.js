@@ -20,6 +20,10 @@
 
         dashboard: "dashboard/dashboard.html",
 
+        about: "about.html",
+
+        editorialPolicy: "editorial-policy.html",
+
 
         /* ==============================================================
            MODULE 1 — FOREX BASICS
