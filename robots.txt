@@ -6,4 +6,4 @@
 
 User-agent: *
 
-Allow: /
+Allow: /\nSitemap: https://dynamic-melba-131c1b.netlify.app/sitemap.xml\n
