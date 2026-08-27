@@ -20,6 +20,8 @@
 
         dashboard: "dashboard/dashboard.html",
 
+        worldHub: "games/hub.html",
+
         about: "about.html",
 
         editorialPolicy: "editorial-policy.html",

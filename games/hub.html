@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030712">
+    <meta name="description" content="Strativo World Hub — Play, Learn, and Master Forex Trading in a gamified interactive learning metaverse.">
+    <meta name="robots" content="noindex">
+
+    <title>Strativo World Hub | Play + Learn + Progress</title>
+
+    <!-- Global Appearance -->
+    <script src="../js/appearance-global.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/ui.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/world-hub.css">
+</head>
+
+<body class="world-hub-page">
+
+    <!-- ====================================================================
+         SHARED HEADER MOUNT
+         ==================================================================== -->
+    <div data-component="header"></div>
+
+    <!-- ====================================================================
+         MAIN WORLD HUB CONTAINER
+         ==================================================================== -->
+    <main class="world-hub-container" id="main-content">
+
+        <!-- ================================================================
+             1. TOP PLAYER COCKPIT
+             ================================================================ -->
+        <section class="world-player-cockpit" aria-label="Player Status">
+            <div class="cockpit-main">
+
+                <!-- Left: Avatar & Identity -->
+                <div class="player-identity-group">
+                    <div class="player-avatar-wrapper">
+                        <div class="player-avatar-box" id="hub-avatar">
+                            <i class="fas fa-user-astronaut" aria-hidden="true"></i>
+                        </div>
+                        <span class="player-avatar-badge" id="hub-avatar-level">Lv 1</span>
+                    </div>
+
+                    <div class="player-meta">
+                        <h1 id="hub-player-name">Student</h1>
+                        <div class="player-rank-pill" id="hub-rank-badge">
+                            <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                            <span id="hub-rank-title">Novice Chartist</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center: XP Progress Bar -->
+                <div class="cockpit-xp-block">
+                    <div class="xp-header-row">
+                        <span class="xp-level-badge">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                            <span id="hub-level-text">Level 1</span>
+                        </span>
+                        <span class="xp-count-label">
+                            <strong id="hub-current-xp">0</strong> / <span id="hub-next-xp">100</span> XP
+                        </span>
+                    </div>
+
+                    <div class="xp-progress-track" role="progressbar" aria-label="XP to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="hub-xp-track">
+                        <div class="xp-progress-fill" id="hub-xp-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Right: Quick Stat Chips -->
+                <div class="cockpit-stats-group">
+                    <div class="cockpit-stat-chip">
+                        <i class="fas fa-fire cockpit-stat-icon flame" aria-hidden="true"></i>
+                        <div class="cockpit-stat-text">
+                            <span class="cockpit-stat-title">Streak</span>
+                            <span class="cockpit-stat-val" id="hub-streak-val">0 Days</span>
+                        </div>
+                    </div>
+
+                    <div class="cockpit-stat-chip">
+                        <i class="fas fa-medal cockpit-stat-icon trophy" aria-hidden="true"></i>
+                        <div class="cockpit-stat-text">
+                            <span class="cockpit-stat-title">Badges</span>
+                            <span class="cockpit-stat-val" id="hub-badge-val">0 / 5</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================================================================
+             2. PLAY MODE PORTALS (SOLO & MULTIPLAYER)
+             ================================================================ -->
+        <section class="world-portals-section" aria-label="Play Modes">
+
+            <!-- Solo Mode Portal -->
+            <article class="portal-card solo-portal">
+                <div class="portal-badge-row">
+                    <span class="portal-type-badge">
+                        <i class="fas fa-gamepad" aria-hidden="true"></i> Solo World
+                    </span>
+                    <span class="portal-status-tag">
+                        <i class="fas fa-clock" aria-hidden="true"></i> Phase 2 Coming Soon
+                    </span>
+                </div>
+
+                <div class="portal-content">
+                    <h2>Practice, Train &amp; Master</h2>
+                    <p>Challenge timed speed drills, candlestick recognition blitzes, and risk management scenario simulators.</p>
+                </div>
+
+                <button type="button" class="portal-btn btn-solo" id="btn-enter-solo">
+                    <i class="fas fa-gamepad" aria-hidden="true"></i>
+                    <span>SOLO (COMING SOON)</span>
+                </button>
+            </article>
+
+            <!-- Multiplayer Mode Portal -->
+            <article class="portal-card multiplayer-portal">
+                <div class="portal-badge-row">
+                    <span class="portal-type-badge">
+                        <i class="fas fa-swords" aria-hidden="true"></i> Multiplayer Arena
+                    </span>
+                    <span class="portal-status-tag">
+                        <i class="fas fa-clock" aria-hidden="true"></i> Phase 2 Coming Soon
+                    </span>
+                </div>
+
+                <div class="portal-content">
+                    <h2>Head-to-Head Chart Duels</h2>
+                    <p>Compete with other learners in asynchronous chart battles, speed pip math duels, and global tournaments.</p>
+                </div>
+
+                <button type="button" class="portal-btn btn-multiplayer" id="btn-enter-multiplayer">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <span>MULTIPLAYER</span>
+                </button>
+            </article>
+
+        </section>
+
+        <!-- ================================================================
+             3. WORLD MAP — 7 DISTRICTS
+             ================================================================ -->
+        <section class="world-districts-section" aria-labelledby="world-map-title">
+            <div class="world-section-header">
+                <div class="section-title-group">
+                    <span class="section-eyebrow">WORLD MAP</span>
+                    <h2 id="world-map-title">Strativo Districts</h2>
+                </div>
+                <span class="section-hint">Explore and unlock trading realms</span>
+            </div>
+
+            <div class="world-map-grid">
+
+                <!-- 1. Candle City (UNLOCKED) -->
+                <article class="district-card is-unlocked" id="district-candle-city">
+                    <div class="district-top">
+                        <div class="district-icon-box">
+                            <i class="fas fa-fire-flame-curved" aria-hidden="true"></i>
+                        </div>
+                        <span class="district-badge">UNLOCKED</span>
+                    </div>
+
+                    <div class="district-info">
+                        <h3>1. Candle City</h3>
+                        <p>Master price action, candlestick anatomy, and multi-bar patterns under real market pressure.</p>
+                    </div>
+
+                    <div class="district-footer">
+                        <span class="district-unlock-req">
+                            <i class="fas fa-check-circle" style="color: #00E5A8;"></i> Available
+                        </span>
+                        <button type="button" class="district-action-btn" data-district="candle-city">
+                            <span>Enter</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 2. Pip District (LOCKED) -->
+                <article class="district-card is-locked" id="district-pip-district">
+                    <div class="district-top">
+                        <div class="district-icon-box">
+                            <i class="fas fa-calculator" aria-hidden="true"></i>
+                        </div>
+                        <span class="district-badge">LOCKED</span>
+                    </div>
+
+                    <div class="district-info">
+                        <h3>2. Pip District</h3>
+                        <p>High-velocity lot sizing, stop loss distances, and pip value calculation drills.</p>
+                    </div>
+
+                    <div class="district-footer">
+                        <span class="district-unlock-req">
+                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 3
+                        </span>
+                        <button type="button" class="district-action-btn" data-district="pip-district">
+                            <span>Locked</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 3. Market Arena (LOCKED) -->
+                <article class="district-card is-locked" id="district-market-arena">
+                    <div class="district-top">
+                        <div class="district-icon-box">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        </div>
+                        <span class="district-badge">LOCKED</span>
+                    </div>
+
+                    <div class="district-info">
+                        <h3>3. Market Arena</h3>
+                        <p>Order flow timing, bid/ask spreads, and live liquidity execution challenges.</p>
+                    </div>
+
+                    <div class="district-footer">
+                        <span class="district-unlock-req">
+                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 5
+                        </span>
+                        <button type="button" class="district-action-btn" data-district="market-arena">
+                            <span>Locked</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 4. Chart District (LOCKED) -->
+                <article class="district-card is-locked" id="district-chart-district">
+                    <div class="district-top">
+                        <div class="district-icon-box">
+                            <i class="fas fa-chart-simple" aria-hidden="true"></i>
+                        </div>
+                        <span class="district-badge">LOCKED</span>
+                    </div>
+
+                    <div class="district-info">
+                        <h3>4. Chart District</h3>
+                        <p>Chart patterns, breakout identification, and multi-timeframe structural mapping.</p>
+                    </div>
+
+                    <div class="district-footer">
+                        <span class="district-unlock-req">
+                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 7
+                        </span>
+                        <button type="button" class="district-action-btn" data-district="chart-district">
+                            <span>Locked</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 5. Risk Lab (LOCKED) -->
+                <article class="district-card is-locked" id="district-risk-lab">
+                    <div class="district-top">
+                        <div class="district-icon-box">
+                            <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                        </div>
+                        <span class="district-badge">LOCKED</span>
+                    </div>
+
+                    <div class="district-info">
+                        <h3>5. Risk Lab</h3>
+                        <p>Capital preservation, risk-to-reward optimization, and drawdown survival gauntlets.</p>
+                    </div>
+
+                    <div class="district-footer">
+                        <span class="district-unlock-req">
+                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 9
+                        </span>
+                        <button type="button" class="district-action-btn" data-district="risk-lab">
+                            <span>Locked</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 6. Psychology Zone (LOCKED) -->
+                <article class="district-card is-locked" id="district-psychology-zone">
+                    <div class="district-top">
+                        <div class="district-icon-box">
+                            <i class="fas fa-brain" aria-hidden="true"></i>
+                        </div>
+                        <span class="district-badge">LOCKED</span>
+                    </div>
+
+                    <div class="district-info">
+                        <h3>6. Psychology Zone</h3>
+                        <p>Emotional discipline, overcoming FOMO, revenge trading filters, and mindset mastery.</p>
+                    </div>
+
+                    <div class="district-footer">
+                        <span class="district-unlock-req">
+                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 10
+                        </span>
+                        <button type="button" class="district-action-btn" data-district="psychology-zone">
+                            <span>Locked</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 7. Strategy Fortress (LOCKED) -->
+                <article class="district-card is-locked featured-fortress" id="district-strategy-fortress">
+                    <div class="district-top">
+                        <div class="district-icon-box">
+                            <i class="fas fa-chess-rook" aria-hidden="true"></i>
+                        </div>
+                        <span class="district-badge">LOCKED</span>
+                    </div>
+
+                    <div class="district-info">
+                        <h3>7. Strategy Fortress</h3>
+                        <p>The ultimate endgame fortress. Combine confluence, backtesting, and full execution strategy.</p>
+                    </div>
+
+                    <div class="district-footer">
+                        <span class="district-unlock-req">
+                            <i class="fas fa-lock" aria-hidden="true"></i> Master All Modules
+                        </span>
+                        <button type="button" class="district-action-btn" data-district="strategy-fortress">
+                            <span>Locked</span>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================================================================
+             4. SKILL MASTERY PROGRESS MATRIX
+             ================================================================ -->
+        <section class="world-mastery-section" aria-labelledby="mastery-title">
+            <div class="world-section-header">
+                <div class="section-title-group">
+                    <span class="section-eyebrow">SKILL RADAR</span>
+                    <h2 id="mastery-title">Skill Mastery</h2>
+                </div>
+                <span class="section-hint">Performance across core trading disciplines</span>
+            </div>
+
+            <div class="mastery-grid">
+
+                <!-- Candlesticks -->
+                <article class="mastery-card">
+                    <div class="mastery-card-header">
+                        <div class="mastery-title-group">
+                            <div class="mastery-icon"><i class="fas fa-fire" aria-hidden="true"></i></div>
+                            <h3>Candlesticks</h3>
+                        </div>
+                        <span class="mastery-pct" id="mastery-candlesticks-val">0%</span>
+                    </div>
+                    <div class="mastery-bar-track">
+                        <div class="mastery-bar-fill" id="mastery-candlesticks-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="mastery-card-meta">
+                        <span>Price Action</span>
+                        <span id="mastery-candlesticks-tier">Tier I: Novice</span>
+                    </div>
+                </article>
+
+                <!-- Pip & Position -->
+                <article class="mastery-card">
+                    <div class="mastery-card-header">
+                        <div class="mastery-title-group">
+                            <div class="mastery-icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+                            <h3>Pip &amp; Position</h3>
+                        </div>
+                        <span class="mastery-pct" id="mastery-pipposition-val">0%</span>
+                    </div>
+                    <div class="mastery-bar-track">
+                        <div class="mastery-bar-fill" id="mastery-pipposition-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="mastery-card-meta">
+                        <span>Lot Math</span>
+                        <span id="mastery-pipposition-tier">Tier I: Novice</span>
+                    </div>
+                </article>
+
+                <!-- Market Structure -->
+                <article class="mastery-card">
+                    <div class="mastery-card-header">
+                        <div class="mastery-title-group">
+                            <div class="mastery-icon"><i class="fas fa-sitemap" aria-hidden="true"></i></div>
+                            <h3>Market Structure</h3>
+                        </div>
+                        <span class="mastery-pct" id="mastery-marketstructure-val">0%</span>
+                    </div>
+                    <div class="mastery-bar-track">
+                        <div class="mastery-bar-fill" id="mastery-marketstructure-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="mastery-card-meta">
+                        <span>Trend &amp; Flow</span>
+                        <span id="mastery-marketstructure-tier">Tier I: Novice</span>
+                    </div>
+                </article>
+
+                <!-- Chart Reading -->
+                <article class="mastery-card">
+                    <div class="mastery-card-header">
+                        <div class="mastery-title-group">
+                            <div class="mastery-icon"><i class="fas fa-chart-area" aria-hidden="true"></i></div>
+                            <h3>Chart Reading</h3>
+                        </div>
+                        <span class="mastery-pct" id="mastery-chartreading-val">0%</span>
+                    </div>
+                    <div class="mastery-bar-track">
+                        <div class="mastery-bar-fill" id="mastery-chartreading-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="mastery-card-meta">
+                        <span>Patterns</span>
+                        <span id="mastery-chartreading-tier">Tier I: Novice</span>
+                    </div>
+                </article>
+
+                <!-- Risk Management -->
+                <article class="mastery-card">
+                    <div class="mastery-card-header">
+                        <div class="mastery-title-group">
+                            <div class="mastery-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                            <h3>Risk Management</h3>
+                        </div>
+                        <span class="mastery-pct" id="mastery-riskmanagement-val">0%</span>
+                    </div>
+                    <div class="mastery-bar-track">
+                        <div class="mastery-bar-fill" id="mastery-riskmanagement-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="mastery-card-meta">
+                        <span>Capital Defense</span>
+                        <span id="mastery-riskmanagement-tier">Tier I: Novice</span>
+                    </div>
+                </article>
+
+                <!-- Trading Psychology -->
+                <article class="mastery-card">
+                    <div class="mastery-card-header">
+                        <div class="mastery-title-group">
+                            <div class="mastery-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+                            <h3>Trading Psychology</h3>
+                        </div>
+                        <span class="mastery-pct" id="mastery-psychology-val">0%</span>
+                    </div>
+                    <div class="mastery-bar-track">
+                        <div class="mastery-bar-fill" id="mastery-psychology-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="mastery-card-meta">
+                        <span>Discipline</span>
+                        <span id="mastery-psychology-tier">Tier I: Novice</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ================================================================
+             5. STREAK TRACKER & ACHIEVEMENTS SHOWCASE
+             ================================================================ -->
+        <section class="world-two-column-layout">
+
+            <!-- Weekly Activity & Streak -->
+            <div class="hub-panel-box">
+                <h3>
+                    <i class="fas fa-calendar-check" style="color: #f59e0b;" aria-hidden="true"></i>
+                    <span>Streak &amp; Activity</span>
+                </h3>
+
+                <div class="streak-tracker-content">
+                    <div class="streak-hero-display">
+                        <div class="streak-big-stat">
+                            <i class="fas fa-fire streak-flame-icon" aria-hidden="true"></i>
+                            <div class="streak-numbers">
+                                <strong id="hub-streak-number">0 Days</strong>
+                                <span>Current Learning Streak</span>
+                            </div>
+                        </div>
+                        <span class="streak-best-badge" id="hub-best-streak">Best: 0 Days</span>
+                    </div>
+
+                    <div class="streak-week-row" id="hub-week-row">
+                        <div class="streak-day-item"><span class="day-label">M</span><div class="day-dot" data-day="1"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                        <div class="streak-day-item"><span class="day-label">T</span><div class="day-dot" data-day="2"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                        <div class="streak-day-item"><span class="day-label">W</span><div class="day-dot" data-day="3"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                        <div class="streak-day-item"><span class="day-label">T</span><div class="day-dot" data-day="4"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                        <div class="streak-day-item"><span class="day-label">F</span><div class="day-dot" data-day="5"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                        <div class="streak-day-item"><span class="day-label">S</span><div class="day-dot" data-day="6"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                        <div class="streak-day-item"><span class="day-label">S</span><div class="day-dot" data-day="0"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Preview -->
+            <div class="hub-panel-box">
+                <h3>
+                    <i class="fas fa-trophy" style="color: #8b5cf6;" aria-hidden="true"></i>
+                    <span>Achievements Preview</span>
+                </h3>
+
+                <div class="achievements-preview-list" id="hub-achievements-list">
+                    <!-- Dynamic rendering by JS controller -->
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ====================================================================
+         INFO MODAL DIALOG
+         ==================================================================== -->
+    <div class="world-modal-backdrop" id="world-info-modal" aria-hidden="true">
+        <div class="world-modal-box">
+            <button type="button" class="world-modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
+                <i class="fas fa-xmark" aria-hidden="true"></i>
+            </button>
+            <div class="world-modal-icon" id="modal-icon">
+                <i class="fas fa-gamepad" aria-hidden="true"></i>
+            </div>
+            <h3 id="modal-title">District Information</h3>
+            <p id="modal-message">Information message goes here.</p>
+            <button type="button" class="world-modal-action" id="modal-action-btn">Got It</button>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         SHARED FOOTER MOUNT
+         ==================================================================== -->
+    <div data-component="footer"></div>
+
+    <!-- ====================================================================
+         SCRIPTS
+         ==================================================================== -->
+    <script src="../js/component-loader.js"></script>
+    <script src="../js/routes.js"></script>
+    <script src="js/core/world-state.js"></script>
+    <script src="js/core/world-xp-engine.js"></script>
+
+    <!-- HUB CONTROLLER -->
+    <script>
+        "use strict";
+
+        (function () {
+            // Modal helpers
+            const modalBackdrop = document.getElementById("world-info-modal");
+            const modalIcon = document.getElementById("modal-icon");
+            const modalTitle = document.getElementById("modal-title");
+            const modalMessage = document.getElementById("modal-message");
+            const modalCloseBtn = document.getElementById("modal-close-btn");
+            const modalActionBtn = document.getElementById("modal-action-btn");
+
+            function showModal(iconClass, title, message) {
+                if (modalIcon) modalIcon.innerHTML = `<i class="fas ${iconClass}"></i>`;
+                if (modalTitle) modalTitle.textContent = title;
+                if (modalMessage) modalMessage.textContent = message;
+                if (modalBackdrop) {
+                    modalBackdrop.classList.add("is-open");
+                    modalBackdrop.setAttribute("aria-hidden", "false");
+                }
+            }
+
+            function hideModal() {
+                if (modalBackdrop) {
+                    modalBackdrop.classList.remove("is-open");
+                    modalBackdrop.setAttribute("aria-hidden", "true");
+                }
+            }
+
+            if (modalCloseBtn) modalCloseBtn.addEventListener("click", hideModal);
+            if (modalActionBtn) modalActionBtn.addEventListener("click", hideModal);
+            if (modalBackdrop) {
+                modalBackdrop.addEventListener("click", function (e) {
+                    if (e.target === modalBackdrop) hideModal();
+                });
+            }
+
+            // Sync UI with Engine
+            function updateHubUI() {
+                if (!window.StrativoWorldXPEngine) return;
+
+                const state = window.StrativoWorldXPEngine.getWorldState();
+                if (!state) return;
+
+                const levelInfo = window.StrativoWorldXPEngine.getLevelProgress(state.xp);
+
+                // Player area
+                const levelAvatar = document.getElementById("hub-avatar-level");
+                if (levelAvatar) levelAvatar.textContent = `Lv ${levelInfo.level}`;
+
+                const rankTitle = document.getElementById("hub-rank-title");
+                if (rankTitle) rankTitle.textContent = levelInfo.rank;
+
+                const levelText = document.getElementById("hub-level-text");
+                if (levelText) levelText.textContent = `Level ${levelInfo.level}`;
+
+                const currentXP = document.getElementById("hub-current-xp");
+                if (currentXP) currentXP.textContent = state.xp.toLocaleString();
+
+                const nextXP = document.getElementById("hub-next-xp");
+                if (nextXP) nextXP.textContent = levelInfo.nextLevelXP.toLocaleString();
+
+                const xpFill = document.getElementById("hub-xp-fill");
+                const xpTrack = document.getElementById("hub-xp-track");
+                if (xpFill) xpFill.style.width = `${levelInfo.percentage}%`;
+                if (xpTrack) xpTrack.setAttribute("aria-valuenow", levelInfo.percentage.toString());
+
+                // Streak
+                const streakVal = document.getElementById("hub-streak-val");
+                const streakNum = document.getElementById("hub-streak-number");
+                const bestStreak = document.getElementById("hub-best-streak");
+                const streakStr = `${state.streak || 0} ${state.streak === 1 ? "Day" : "Days"}`;
+
+                if (streakVal) streakVal.textContent = streakStr;
+                if (streakNum) streakNum.textContent = streakStr;
+                if (bestStreak) bestStreak.textContent = `Best: ${state.bestStreak || 0} Days`;
+
+                // Weekly tracker dots (mark active today if visited)
+                const todayDow = new Date().getDay(); // 0 = Sun, 1 = Mon...
+                const dots = document.querySelectorAll(".day-dot");
+                dots.forEach(dot => {
+                    const dayNum = parseInt(dot.getAttribute("data-day"), 10);
+                    if (state.streak > 0 && dayNum === todayDow) {
+                        dot.classList.add("active");
+                    }
+                });
+
+                // Mastery Grid
+                const masteryKeys = [
+                    { key: "candlesticks", prefix: "candlesticks", title: "Price Action" },
+                    { key: "pipPosition", prefix: "pipposition", title: "Lot Math" },
+                    { key: "marketStructure", prefix: "marketstructure", title: "Trend & Flow" },
+                    { key: "chartReading", prefix: "chartreading", title: "Patterns" },
+                    { key: "riskManagement", prefix: "riskmanagement", title: "Capital Defense" },
+                    { key: "psychology", prefix: "psychology", title: "Discipline" }
+                ];
+
+                masteryKeys.forEach(item => {
+                    const val = state.mastery ? (state.mastery[item.key] || 0) : 0;
+                    const valEl = document.getElementById(`mastery-${item.prefix}-val`);
+                    const barEl = document.getElementById(`mastery-${item.prefix}-bar`);
+                    const tierEl = document.getElementById(`mastery-${item.prefix}-tier`);
+
+                    if (valEl) valEl.textContent = `${val}%`;
+                    if (barEl) barEl.style.width = `${val}%`;
+                    if (tierEl) {
+                        let tier = "Tier I: Novice";
+                        if (val >= 80) tier = "Tier IV: Master";
+                        else if (val >= 50) tier = "Tier III: Specialist";
+                        else if (val >= 25) tier = "Tier II: Practitioner";
+                        tierEl.textContent = tier;
+                    }
+                });
+
+                // Achievements Preview
+                const achList = document.getElementById("hub-achievements-list");
+                const badgeCount = document.getElementById("hub-badge-val");
+                const allAchievements = window.StrativoWorldXPEngine.ACHIEVEMENTS_LIST || [];
+                const unlockedSet = new Set(state.achievements || []);
+
+                if (badgeCount) {
+                    badgeCount.textContent = `${unlockedSet.size} / ${allAchievements.length}`;
+                }
+
+                if (achList) {
+                    achList.innerHTML = "";
+                    allAchievements.forEach(ach => {
+                        const isUnlocked = unlockedSet.has(ach.id);
+                        const card = document.createElement("div");
+                        card.className = `achievement-mini-card ${isUnlocked ? "unlocked" : "locked"}`;
+                        card.innerHTML = `
+                            <div class="achievement-mini-left">
+                                <div class="achievement-mini-icon">
+                                    <i class="fas ${ach.icon}"></i>
+                                </div>
+                                <div class="achievement-mini-text">
+                                    <strong>${ach.title}</strong>
+                                    <span>${ach.description}</span>
+                                </div>
+                            </div>
+                            <span class="achievement-mini-status">
+                                ${isUnlocked ? '<i class="fas fa-check"></i> Unlocked' : '<i class="fas fa-lock"></i> Locked'}
+                            </span>
+                        `;
+                        achList.appendChild(card);
+                    });
+                }
+            }
+
+            // Button Event Bindings
+            function setupInteractions() {
+                // Solo Portal
+                const soloBtn = document.getElementById("btn-enter-solo");
+                if (soloBtn) {
+                    soloBtn.addEventListener("click", function () {
+                        showModal(
+                            "fa-gamepad",
+                            "Solo World — Phase 2 Coming Soon",
+                            "Solo mode training drills (including Candle Blitz and Pip Sprint) are currently under development for Phase 2. Explore the World Map below in the meantime!"
+                        );
+                    });
+                }
+
+                // Multiplayer Portal
+                const mpBtn = document.getElementById("btn-enter-multiplayer");
+                if (mpBtn) {
+                    mpBtn.addEventListener("click", function () {
+                        showModal(
+                            "fa-swords",
+                            "Multiplayer Arena — Coming Soon",
+                            "Asynchronous 1v1 chart battles, speed duels, and ghost sparring matches are scheduled for Phase 4. Practice your skills in Solo mode first!"
+                        );
+                    });
+                }
+
+                // District Buttons
+                const districtBtns = document.querySelectorAll(".district-action-btn");
+                districtBtns.forEach(btn => {
+                    btn.addEventListener("click", function () {
+                        const district = this.getAttribute("data-district");
+                        if (district === "candle-city") {
+                            showModal(
+                                "fa-fire-flame-curved",
+                                "Candle City District",
+                                "Welcome to Candle City! Candlestick recognition drills and breakout pattern tests will be available in the upcoming Sprint. Your access is unlocked."
+                            );
+                        } else {
+                            showModal(
+                                "fa-lock",
+                                "District Locked",
+                                "This district is locked. Complete the prerequisite Academy lessons and earn more World XP to unlock access."
+                            );
+                        }
+                    });
+                });
+            }
+
+            // Listen to state changes
+            window.addEventListener("strativo:worldStateChanged", updateHubUI);
+            window.addEventListener("strativo:worldXPChanged", updateHubUI);
+
+            // Initial load
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", () => {
+                    updateHubUI();
+                    setupInteractions();
+                });
+            } else {
+                updateHubUI();
+                setupInteractions();
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
