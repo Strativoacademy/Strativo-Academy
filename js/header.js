@@ -791,7 +791,11 @@
                 "Learn the fundamentals of the Forex market.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson1
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson1)
+                    ? window.StrativoRoutes.module1.lesson1
+                    : "lessons/module1/lesson1.html"
         },
 
 
@@ -802,7 +806,11 @@
                 "Understand major, minor and exotic currency pairs.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson2
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson2)
+                    ? window.StrativoRoutes.module1.lesson2
+                    : "lessons/module1/lesson2.html"
         },
 
 
@@ -813,7 +821,11 @@
                 "Learn when the major Forex sessions operate.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson3
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson3)
+                    ? window.StrativoRoutes.module1.lesson3
+                    : "lessons/module1/lesson3.html"
         },
 
 
@@ -824,7 +836,11 @@
                 "Learn about the participants in the Forex market.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson4
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson4)
+                    ? window.StrativoRoutes.module1.lesson4
+                    : "lessons/module1/lesson4.html"
         },
 
 
@@ -835,7 +851,11 @@
                 "Understand pips and Forex price movement.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson5
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson5)
+                    ? window.StrativoRoutes.module1.lesson5
+                    : "lessons/module1/lesson5.html"
         },
 
 
@@ -846,7 +866,11 @@
                 "Learn lot sizes and position sizing in Forex.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson6
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson6)
+                    ? window.StrativoRoutes.module1.lesson6
+                    : "lessons/module1/lesson6.html"
         },
 
 
@@ -857,7 +881,11 @@
                 "Understand leverage, margin and trading risk.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson7
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson7)
+                    ? window.StrativoRoutes.module1.lesson7
+                    : "lessons/module1/lesson7.html"
         },
 
 
@@ -868,7 +896,11 @@
                 "Understand bid price, ask price and the spread.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson8
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson8)
+                    ? window.StrativoRoutes.module1.lesson8
+                    : "lessons/module1/lesson8.html"
         },
 
 
@@ -879,7 +911,11 @@
                 "Learn the main Forex order types.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson9
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson9)
+                    ? window.StrativoRoutes.module1.lesson9
+                    : "lessons/module1/lesson9.html"
         },
 
 
@@ -890,7 +926,11 @@
                 "Learn the basics of using MetaTrader.",
             type: "Lesson • Module 1",
             url:
-                window.StrativoRoutes.module1.lesson10
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.module1 &&
+                 window.StrativoRoutes.module1.lesson10)
+                    ? window.StrativoRoutes.module1.lesson10
+                    : "lessons/module1/lesson10.html"
         },
 
 
@@ -905,7 +945,10 @@
                 "Open your Strativo Academy student dashboard.",
             type: "Platform",
             url:
-                window.StrativoRoutes.dashboard
+                (window.StrativoRoutes &&
+                 window.StrativoRoutes.dashboard)
+                    ? window.StrativoRoutes.dashboard
+                    : "dashboard/dashboard.html"
         },
 
 
