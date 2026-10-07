@@ -1,0 +1,246 @@
+{
+  "version": "1.0.0",
+  "district": "pip-district",
+  "missions": [
+    {
+      "id": "first_measurement",
+      "title": "First Measurement",
+      "giver": "mentor_pip",
+      "giverName": "Pip Mentor",
+      "description": "Complete 3 basic pip measurement challenges in the Pip Academy or Measurement Lab.",
+      "category": "measurement",
+      "objective": {
+        "type": "pip_measurement",
+        "target": 3,
+        "label": "Measurements Completed"
+      },
+      "reward": {
+        "xp": 25,
+        "masteryBoost": 6,
+        "title": "Precision Novice"
+      },
+      "dialogue": {
+        "offered": "Welcome to Pip District, initiate! Every price fluctuation on a currency pair is measured in pips. Visit the Pip Academy or Price Ladder and accurately measure 3 price movements.",
+        "in_progress": "You're learning how price distance is calculated. Continue measuring pip movements in the Academy or Price Ladder until you reach 3.",
+        "ready_to_claim": "Outstanding accuracy! You have proven you can calculate price movement in standard 4-decimal format. Claim your World XP!",
+        "completed": "You have mastered the foundational First Measurement directive. Talk to Precision Instructor next for non-standard formats."
+      }
+    },
+    {
+      "id": "precision_test",
+      "title": "Precision Test",
+      "giver": "instructor_precision",
+      "giverName": "Precision Instructor",
+      "description": "Correctly solve 10 pip movement questions across training drills and Pip Blitz Arena matches.",
+      "category": "drills",
+      "objective": {
+        "type": "precision_quiz",
+        "target": 10,
+        "label": "Correct Solutions"
+      },
+      "reward": {
+        "xp": 35,
+        "masteryBoost": 10,
+        "title": "Precision Analyst"
+      },
+      "dialogue": {
+        "offered": "Precision requires consistency under market pressure. Correctly solve 10 pip calculation questions across our drills or Pip Blitz matches.",
+        "in_progress": "Stay focused! Pay close attention to direction (bullish vs bearish) and the fourth decimal place. Reach 10 correct solutions.",
+        "ready_to_claim": "Target achieved! 10 accurate pip calculations verified. Your measurement instincts are getting sharp.",
+        "completed": "10 confirmed solutions logged! You're ready to tackle currency pairs with different decimal conventions."
+      }
+    },
+    {
+      "id": "jpy_zone",
+      "title": "JPY Zone",
+      "giver": "instructor_precision",
+      "giverName": "Precision Instructor",
+      "description": "Complete the JPY Precision Zone challenge to master 2-decimal and 3-decimal pricing conventions.",
+      "category": "specialized",
+      "objective": {
+        "type": "jpy_challenge",
+        "target": 1,
+        "label": "JPY Zone Completed"
+      },
+      "reward": {
+        "xp": 30,
+        "masteryBoost": 8,
+        "title": "Yen Specialist"
+      },
+      "dialogue": {
+        "offered": "Traders who treat USD/JPY like EUR/USD suffer heavy losses! Japanese Yen pairs quote 1 pip at the 2nd decimal place (0.01). Step into the JPY Precision Zone and complete the challenge.",
+        "in_progress": "The JPY Precision Zone is in the Precision Lab. Practice measuring 150.20 -> 150.30 (10 pips) and finish the session.",
+        "ready_to_claim": "Superb work! You now instinctively identify the pip place on Yen crosses. Claim your specialist commendation.",
+        "completed": "You know your JPY quoting conventions. Always remember the 0.01 pip rule when trading Yen pairs."
+      }
+    },
+    {
+      "id": "fractional_precision",
+      "title": "Fractional Precision",
+      "giver": "instructor_precision",
+      "giverName": "Precision Instructor",
+      "description": "Complete 5 pipette/fractional pip challenges (1 pipette = 0.1 pip = 1 point).",
+      "category": "fractional",
+      "objective": {
+        "type": "fractional_challenge",
+        "target": 5,
+        "label": "Fractional Challenges"
+      },
+      "reward": {
+        "xp": 30,
+        "masteryBoost": 8,
+        "title": "Point Master"
+      },
+      "dialogue": {
+        "offered": "Modern electronic brokers quote 5 decimal places (and 3 for JPY). The 5th digit is a pipette (0.1 pip or 1 point). Complete 5 fractional pip exercises in the Precision Lab.",
+        "in_progress": "Keep practicing: 1.10520 to 1.10527 is 7 points (0.7 pips). Complete 5 fractional calculations.",
+        "ready_to_claim": "Fractional precision confirmed! You can convert points and fractional pipettes seamlessly. Claim your reward.",
+        "completed": "You've mastered fractional quoting. You'll never get confused between points and full pips."
+      }
+    },
+    {
+      "id": "know_your_instrument",
+      "title": "Know Your Instrument",
+      "giver": "coordinator_pip",
+      "giverName": "Mission Coordinator",
+      "description": "Complete the Instrument Rules Lab to understand tick sizes, point conventions, and market-specific increments.",
+      "category": "rules",
+      "objective": {
+        "type": "instrument_rules",
+        "target": 1,
+        "label": "Instrument Rules Lab"
+      },
+      "reward": {
+        "xp": 25,
+        "masteryBoost": 6,
+        "title": "Instrument Scholar"
+      },
+      "dialogue": {
+        "offered": "Forex pairs, commodities like Gold (XAU/USD), and indices like US30 use different tick values and point rules. Visit the Instrument Rules section in the Precision Lab to learn these critical differences.",
+        "in_progress": "Explore the Instrument Rules terminal in the Precision Lab. Learn why one universal rule cannot be blindly applied to all financial assets.",
+        "ready_to_claim": "Excellent! You now understand contract specifications and tick sizes across major asset classes.",
+        "completed": "Always check your broker's contract specs before placing an order on an unfamiliar instrument."
+      }
+    },
+    {
+      "id": "risk_engineer",
+      "title": "Risk Engineer",
+      "giver": "engineer_risk",
+      "giverName": "Risk Engineer",
+      "description": "Complete 3 simulated lot-sizing scenarios in the Risk & Position Forge.",
+      "category": "risk_forge",
+      "objective": {
+        "type": "risk_forge_complete",
+        "target": 3,
+        "label": "Forge Scenarios Solved"
+      },
+      "reward": {
+        "xp": 40,
+        "masteryBoost": 12,
+        "title": "Position Architect"
+      },
+      "dialogue": {
+        "offered": "Capital preservation is the only law of professional trading. Enter the Risk & Position Forge. Calculate correct lot sizing based on 1-2% account risk and stop-loss distance across 3 scenarios.",
+        "in_progress": "Head to the Risk & Position Forge in the east wing. Solve 3 sizing scenarios using the formula: Position Size = (Account × Risk%) / (Stop Pips × Pip Value).",
+        "ready_to_claim": "Flawless mathematical discipline! You sized your position to protect capital, not to gamble. Claim your reward!",
+        "completed": "Position sizing is your primary defense shield. Never risk more than your pre-defined percentage."
+      }
+    },
+    {
+      "id": "leverage_check",
+      "title": "Leverage Check",
+      "giver": "engineer_risk",
+      "giverName": "Risk Engineer",
+      "description": "Complete the interactive Leverage Tower simulation to observe margin requirements and exposure changes.",
+      "category": "leverage",
+      "objective": {
+        "type": "leverage_tower_complete",
+        "target": 1,
+        "label": "Leverage Simulation Complete"
+      },
+      "reward": {
+        "xp": 35,
+        "masteryBoost": 10,
+        "title": "Leverage Master"
+      },
+      "dialogue": {
+        "offered": "Leverage is a double-edged sword. It amplifies both purchasing power and the speed of capital destruction. Ascend the Leverage Tower and simulate margin requirements under 1:10, 1:50, and 1:100 leverage.",
+        "in_progress": "Enter the Leverage Tower at the north end of Pip Plaza. Adjust balance and leverage parameters to observe required margin and liquidation risk.",
+        "ready_to_claim": "Tower trial completed! You now clearly understand the difference between purchasing exposure and margin safety.",
+        "completed": "Leverage is a tool for capital efficiency, not an excuse to overtrade. Keep your risk strictly controlled."
+      }
+    },
+    {
+      "id": "pip_blitz",
+      "title": "Pip Blitz",
+      "giver": "coordinator_pip",
+      "giverName": "Mission Coordinator",
+      "description": "Complete one full 10-round match in the Pip Blitz Arena under countdown pressure.",
+      "category": "arena",
+      "objective": {
+        "type": "pip_blitz_complete",
+        "target": 1,
+        "label": "Blitz Matches Completed"
+      },
+      "reward": {
+        "xp": 35,
+        "masteryBoost": 10,
+        "title": "Blitz Tactician"
+      },
+      "dialogue": {
+        "offered": "Put your measurement reflexes to the test! Step into the Pip Blitz Arena in the northeast sector and complete a 10-round procedural match.",
+        "in_progress": "The Pip Blitz Arena is waiting. Clear all 10 rounds of Measure, Direction, Speed, and Matching targets.",
+        "ready_to_claim": "Match finished! You maintained rapid precision through all 10 procedural rounds. Take your well-earned reward!",
+        "completed": "Blitz match logged! Replay anytime to push your combo multiplier and Pip Mastery to 100%."
+      }
+    },
+    {
+      "id": "city_explorer_pip",
+      "title": "City Explorer",
+      "giver": "coordinator_pip",
+      "giverName": "Mission Coordinator",
+      "description": "Physically navigate Pip District and interact with 6 unique facilities, labs, and terminals.",
+      "category": "exploration",
+      "objective": {
+        "type": "interact_locations",
+        "target": 6,
+        "label": "Facilities Visited"
+      },
+      "reward": {
+        "xp": 40,
+        "masteryBoost": 10,
+        "title": "Pip District Pioneer"
+      },
+      "dialogue": {
+        "offered": "Get familiar with our precision metropolis! Visit Pip Academy, Precision Lab, Leverage Tower, Risk & Position Forge, Risk Arena, and Mission HQ.",
+        "in_progress": "Walk the avenues of Pip District! Check in at all major learning facilities and arenas to map out the district.",
+        "ready_to_claim": "District mapped! You have explored every corner of Pip District. Claim your Pioneer commendation.",
+        "completed": "You know the entire district layout. Use each facility regularly to hone your precision math."
+      }
+    },
+    {
+      "id": "precision_master",
+      "title": "Precision Master",
+      "giver": "mentor_pip",
+      "giverName": "Pip Mentor",
+      "description": "Complete the advanced precision and position sizing trial to prove comprehensive market measurement mastery.",
+      "category": "mastery",
+      "objective": {
+        "type": "precision_master_complete",
+        "target": 1,
+        "label": "Mastery Trial Completed"
+      },
+      "reward": {
+        "xp": 50,
+        "masteryBoost": 15,
+        "title": "Precision Master"
+      },
+      "dialogue": {
+        "offered": "This is the final trial of Pip District. You must combine pip distance calculation, JPY quoting, fractional pipettes, and position lot sizing in a comprehensive multi-step trial.",
+        "in_progress": "Visit the Pip Mentor terminal in Pip Plaza or the Risk Arena to execute the full Precision Master trial.",
+        "ready_to_claim": "Mastery trial passed with flying colors! You have conquered the mathematics of price movement and risk control.",
+        "completed": "You are an officially certified Precision Master of Strativo World. Wear your title with pride!"
+      }
+    }
+  ]
+}

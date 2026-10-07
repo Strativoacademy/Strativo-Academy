@@ -1,0 +1,2682 @@
+{
+  "version": "2.0.0",
+  "chambers": {
+    "uptrend": [
+      {
+        "id": "stadium_up_1",
+        "title": "Uptrend Expansion #1",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #1: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 102,
+            "high": 107,
+            "low": 101,
+            "close": 106,
+            "swing": "HL0"
+          },
+          {
+            "open": 106,
+            "high": 112,
+            "low": 105,
+            "close": 111,
+            "swing": "HH1"
+          },
+          {
+            "open": 111,
+            "high": 112,
+            "low": 107,
+            "close": 108,
+            "swing": null
+          },
+          {
+            "open": 108,
+            "high": 110,
+            "low": 106,
+            "close": 109,
+            "swing": "HL1"
+          },
+          {
+            "open": 109,
+            "high": 117,
+            "low": 108,
+            "close": 116,
+            "swing": "HH2"
+          },
+          {
+            "open": 116,
+            "high": 117,
+            "low": 113,
+            "close": 114,
+            "swing": "HL2"
+          },
+          {
+            "open": 114,
+            "high": 122,
+            "low": 113,
+            "close": 121,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      },
+      {
+        "id": "stadium_up_2",
+        "title": "Uptrend Expansion #2",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #2: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 104,
+            "high": 109,
+            "low": 103,
+            "close": 108,
+            "swing": "HL0"
+          },
+          {
+            "open": 108,
+            "high": 114,
+            "low": 107,
+            "close": 113,
+            "swing": "HH1"
+          },
+          {
+            "open": 113,
+            "high": 114,
+            "low": 109,
+            "close": 110,
+            "swing": null
+          },
+          {
+            "open": 110,
+            "high": 112,
+            "low": 108,
+            "close": 111,
+            "swing": "HL1"
+          },
+          {
+            "open": 111,
+            "high": 119,
+            "low": 110,
+            "close": 118,
+            "swing": "HH2"
+          },
+          {
+            "open": 118,
+            "high": 119,
+            "low": 115,
+            "close": 116,
+            "swing": "HL2"
+          },
+          {
+            "open": 116,
+            "high": 124,
+            "low": 115,
+            "close": 123,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      },
+      {
+        "id": "stadium_up_3",
+        "title": "Uptrend Expansion #3",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #3: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 106,
+            "high": 111,
+            "low": 105,
+            "close": 110,
+            "swing": "HL0"
+          },
+          {
+            "open": 110,
+            "high": 116,
+            "low": 109,
+            "close": 115,
+            "swing": "HH1"
+          },
+          {
+            "open": 115,
+            "high": 116,
+            "low": 111,
+            "close": 112,
+            "swing": null
+          },
+          {
+            "open": 112,
+            "high": 114,
+            "low": 110,
+            "close": 113,
+            "swing": "HL1"
+          },
+          {
+            "open": 113,
+            "high": 121,
+            "low": 112,
+            "close": 120,
+            "swing": "HH2"
+          },
+          {
+            "open": 120,
+            "high": 121,
+            "low": 117,
+            "close": 118,
+            "swing": "HL2"
+          },
+          {
+            "open": 118,
+            "high": 126,
+            "low": 117,
+            "close": 125,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      },
+      {
+        "id": "stadium_up_4",
+        "title": "Uptrend Expansion #4",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #4: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 108,
+            "high": 113,
+            "low": 107,
+            "close": 112,
+            "swing": "HL0"
+          },
+          {
+            "open": 112,
+            "high": 118,
+            "low": 111,
+            "close": 117,
+            "swing": "HH1"
+          },
+          {
+            "open": 117,
+            "high": 118,
+            "low": 113,
+            "close": 114,
+            "swing": null
+          },
+          {
+            "open": 114,
+            "high": 116,
+            "low": 112,
+            "close": 115,
+            "swing": "HL1"
+          },
+          {
+            "open": 115,
+            "high": 123,
+            "low": 114,
+            "close": 122,
+            "swing": "HH2"
+          },
+          {
+            "open": 122,
+            "high": 123,
+            "low": 119,
+            "close": 120,
+            "swing": "HL2"
+          },
+          {
+            "open": 120,
+            "high": 128,
+            "low": 119,
+            "close": 127,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      },
+      {
+        "id": "stadium_up_5",
+        "title": "Uptrend Expansion #5",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #5: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 110,
+            "high": 115,
+            "low": 109,
+            "close": 114,
+            "swing": "HL0"
+          },
+          {
+            "open": 114,
+            "high": 120,
+            "low": 113,
+            "close": 119,
+            "swing": "HH1"
+          },
+          {
+            "open": 119,
+            "high": 120,
+            "low": 115,
+            "close": 116,
+            "swing": null
+          },
+          {
+            "open": 116,
+            "high": 118,
+            "low": 114,
+            "close": 117,
+            "swing": "HL1"
+          },
+          {
+            "open": 117,
+            "high": 125,
+            "low": 116,
+            "close": 124,
+            "swing": "HH2"
+          },
+          {
+            "open": 124,
+            "high": 125,
+            "low": 121,
+            "close": 122,
+            "swing": "HL2"
+          },
+          {
+            "open": 122,
+            "high": 130,
+            "low": 121,
+            "close": 129,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      },
+      {
+        "id": "stadium_up_6",
+        "title": "Uptrend Expansion #6",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #6: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 112,
+            "high": 117,
+            "low": 111,
+            "close": 116,
+            "swing": "HL0"
+          },
+          {
+            "open": 116,
+            "high": 122,
+            "low": 115,
+            "close": 121,
+            "swing": "HH1"
+          },
+          {
+            "open": 121,
+            "high": 122,
+            "low": 117,
+            "close": 118,
+            "swing": null
+          },
+          {
+            "open": 118,
+            "high": 120,
+            "low": 116,
+            "close": 119,
+            "swing": "HL1"
+          },
+          {
+            "open": 119,
+            "high": 127,
+            "low": 118,
+            "close": 126,
+            "swing": "HH2"
+          },
+          {
+            "open": 126,
+            "high": 127,
+            "low": 123,
+            "close": 124,
+            "swing": "HL2"
+          },
+          {
+            "open": 124,
+            "high": 132,
+            "low": 123,
+            "close": 131,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      },
+      {
+        "id": "stadium_up_7",
+        "title": "Uptrend Expansion #7",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #7: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 114,
+            "high": 119,
+            "low": 113,
+            "close": 118,
+            "swing": "HL0"
+          },
+          {
+            "open": 118,
+            "high": 124,
+            "low": 117,
+            "close": 123,
+            "swing": "HH1"
+          },
+          {
+            "open": 123,
+            "high": 124,
+            "low": 119,
+            "close": 120,
+            "swing": null
+          },
+          {
+            "open": 120,
+            "high": 122,
+            "low": 118,
+            "close": 121,
+            "swing": "HL1"
+          },
+          {
+            "open": 121,
+            "high": 129,
+            "low": 120,
+            "close": 128,
+            "swing": "HH2"
+          },
+          {
+            "open": 128,
+            "high": 129,
+            "low": 125,
+            "close": 126,
+            "swing": "HL2"
+          },
+          {
+            "open": 126,
+            "high": 134,
+            "low": 125,
+            "close": 133,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      },
+      {
+        "id": "stadium_up_8",
+        "title": "Uptrend Expansion #8",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #8: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 116,
+            "high": 121,
+            "low": 115,
+            "close": 120,
+            "swing": "HL0"
+          },
+          {
+            "open": 120,
+            "high": 126,
+            "low": 119,
+            "close": 125,
+            "swing": "HH1"
+          },
+          {
+            "open": 125,
+            "high": 126,
+            "low": 121,
+            "close": 122,
+            "swing": null
+          },
+          {
+            "open": 122,
+            "high": 124,
+            "low": 120,
+            "close": 123,
+            "swing": "HL1"
+          },
+          {
+            "open": 123,
+            "high": 131,
+            "low": 122,
+            "close": 130,
+            "swing": "HH2"
+          },
+          {
+            "open": 130,
+            "high": 131,
+            "low": 127,
+            "close": 128,
+            "swing": "HL2"
+          },
+          {
+            "open": 128,
+            "high": 136,
+            "low": 127,
+            "close": 135,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      },
+      {
+        "id": "stadium_up_9",
+        "title": "Uptrend Expansion #9",
+        "category": "UPTREND",
+        "badge": "HH + HL FLOW",
+        "description": "Bullish structure #9: Buyers establish higher swing lows and advance past prior swing highs.",
+        "candles": [
+          {
+            "open": 118,
+            "high": 123,
+            "low": 117,
+            "close": 122,
+            "swing": "HL0"
+          },
+          {
+            "open": 122,
+            "high": 128,
+            "low": 121,
+            "close": 127,
+            "swing": "HH1"
+          },
+          {
+            "open": 127,
+            "high": 128,
+            "low": 123,
+            "close": 124,
+            "swing": null
+          },
+          {
+            "open": 124,
+            "high": 126,
+            "low": 122,
+            "close": 125,
+            "swing": "HL1"
+          },
+          {
+            "open": 125,
+            "high": 133,
+            "low": 124,
+            "close": 132,
+            "swing": "HH2"
+          },
+          {
+            "open": 132,
+            "high": 133,
+            "low": 129,
+            "close": 130,
+            "swing": "HL2"
+          },
+          {
+            "open": 130,
+            "high": 138,
+            "low": 129,
+            "close": 137,
+            "swing": "HH3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 1?",
+        "options": [
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Horizontal Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_trap",
+            "text": "Liquidity Trap",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 1 demonstrates clean bullish market structure with persistent Higher Highs and Higher Lows."
+      }
+    ],
+    "downtrend": [
+      {
+        "id": "stadium_down_1",
+        "title": "Downtrend Cascade #1",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #1: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 118,
+            "high": 119,
+            "low": 113,
+            "close": 114,
+            "swing": "LH0"
+          },
+          {
+            "open": 114,
+            "high": 115,
+            "low": 108,
+            "close": 109,
+            "swing": "LL1"
+          },
+          {
+            "open": 109,
+            "high": 113,
+            "low": 108,
+            "close": 112,
+            "swing": "LH1"
+          },
+          {
+            "open": 112,
+            "high": 112,
+            "low": 104,
+            "close": 105,
+            "swing": "LL2"
+          },
+          {
+            "open": 105,
+            "high": 108,
+            "low": 104,
+            "close": 107,
+            "swing": "LH2"
+          },
+          {
+            "open": 107,
+            "high": 107,
+            "low": 99,
+            "close": 100,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      },
+      {
+        "id": "stadium_down_2",
+        "title": "Downtrend Cascade #2",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #2: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 116,
+            "high": 117,
+            "low": 111,
+            "close": 112,
+            "swing": "LH0"
+          },
+          {
+            "open": 112,
+            "high": 113,
+            "low": 106,
+            "close": 107,
+            "swing": "LL1"
+          },
+          {
+            "open": 107,
+            "high": 111,
+            "low": 106,
+            "close": 110,
+            "swing": "LH1"
+          },
+          {
+            "open": 110,
+            "high": 110,
+            "low": 102,
+            "close": 103,
+            "swing": "LL2"
+          },
+          {
+            "open": 103,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH2"
+          },
+          {
+            "open": 105,
+            "high": 105,
+            "low": 97,
+            "close": 98,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      },
+      {
+        "id": "stadium_down_3",
+        "title": "Downtrend Cascade #3",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #3: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 114,
+            "high": 115,
+            "low": 109,
+            "close": 110,
+            "swing": "LH0"
+          },
+          {
+            "open": 110,
+            "high": 111,
+            "low": 104,
+            "close": 105,
+            "swing": "LL1"
+          },
+          {
+            "open": 105,
+            "high": 109,
+            "low": 104,
+            "close": 108,
+            "swing": "LH1"
+          },
+          {
+            "open": 108,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "LL2"
+          },
+          {
+            "open": 101,
+            "high": 104,
+            "low": 100,
+            "close": 103,
+            "swing": "LH2"
+          },
+          {
+            "open": 103,
+            "high": 103,
+            "low": 95,
+            "close": 96,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      },
+      {
+        "id": "stadium_down_4",
+        "title": "Downtrend Cascade #4",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #4: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 112,
+            "high": 113,
+            "low": 107,
+            "close": 108,
+            "swing": "LH0"
+          },
+          {
+            "open": 108,
+            "high": 109,
+            "low": 102,
+            "close": 103,
+            "swing": "LL1"
+          },
+          {
+            "open": 103,
+            "high": 107,
+            "low": 102,
+            "close": 106,
+            "swing": "LH1"
+          },
+          {
+            "open": 106,
+            "high": 106,
+            "low": 98,
+            "close": 99,
+            "swing": "LL2"
+          },
+          {
+            "open": 99,
+            "high": 102,
+            "low": 98,
+            "close": 101,
+            "swing": "LH2"
+          },
+          {
+            "open": 101,
+            "high": 101,
+            "low": 93,
+            "close": 94,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      },
+      {
+        "id": "stadium_down_5",
+        "title": "Downtrend Cascade #5",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #5: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 110,
+            "high": 111,
+            "low": 105,
+            "close": 106,
+            "swing": "LH0"
+          },
+          {
+            "open": 106,
+            "high": 107,
+            "low": 100,
+            "close": 101,
+            "swing": "LL1"
+          },
+          {
+            "open": 101,
+            "high": 105,
+            "low": 100,
+            "close": 104,
+            "swing": "LH1"
+          },
+          {
+            "open": 104,
+            "high": 104,
+            "low": 96,
+            "close": 97,
+            "swing": "LL2"
+          },
+          {
+            "open": 97,
+            "high": 100,
+            "low": 96,
+            "close": 99,
+            "swing": "LH2"
+          },
+          {
+            "open": 99,
+            "high": 99,
+            "low": 91,
+            "close": 92,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      },
+      {
+        "id": "stadium_down_6",
+        "title": "Downtrend Cascade #6",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #6: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 108,
+            "high": 109,
+            "low": 103,
+            "close": 104,
+            "swing": "LH0"
+          },
+          {
+            "open": 104,
+            "high": 105,
+            "low": 98,
+            "close": 99,
+            "swing": "LL1"
+          },
+          {
+            "open": 99,
+            "high": 103,
+            "low": 98,
+            "close": 102,
+            "swing": "LH1"
+          },
+          {
+            "open": 102,
+            "high": 102,
+            "low": 94,
+            "close": 95,
+            "swing": "LL2"
+          },
+          {
+            "open": 95,
+            "high": 98,
+            "low": 94,
+            "close": 97,
+            "swing": "LH2"
+          },
+          {
+            "open": 97,
+            "high": 97,
+            "low": 89,
+            "close": 90,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      },
+      {
+        "id": "stadium_down_7",
+        "title": "Downtrend Cascade #7",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #7: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 106,
+            "high": 107,
+            "low": 101,
+            "close": 102,
+            "swing": "LH0"
+          },
+          {
+            "open": 102,
+            "high": 103,
+            "low": 96,
+            "close": 97,
+            "swing": "LL1"
+          },
+          {
+            "open": 97,
+            "high": 101,
+            "low": 96,
+            "close": 100,
+            "swing": "LH1"
+          },
+          {
+            "open": 100,
+            "high": 100,
+            "low": 92,
+            "close": 93,
+            "swing": "LL2"
+          },
+          {
+            "open": 93,
+            "high": 96,
+            "low": 92,
+            "close": 95,
+            "swing": "LH2"
+          },
+          {
+            "open": 95,
+            "high": 95,
+            "low": 87,
+            "close": 88,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      },
+      {
+        "id": "stadium_down_8",
+        "title": "Downtrend Cascade #8",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #8: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 104,
+            "high": 105,
+            "low": 99,
+            "close": 100,
+            "swing": "LH0"
+          },
+          {
+            "open": 100,
+            "high": 101,
+            "low": 94,
+            "close": 95,
+            "swing": "LL1"
+          },
+          {
+            "open": 95,
+            "high": 99,
+            "low": 94,
+            "close": 98,
+            "swing": "LH1"
+          },
+          {
+            "open": 98,
+            "high": 98,
+            "low": 90,
+            "close": 91,
+            "swing": "LL2"
+          },
+          {
+            "open": 91,
+            "high": 94,
+            "low": 90,
+            "close": 93,
+            "swing": "LH2"
+          },
+          {
+            "open": 93,
+            "high": 93,
+            "low": 85,
+            "close": 86,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      },
+      {
+        "id": "stadium_down_9",
+        "title": "Downtrend Cascade #9",
+        "category": "DOWNTREND",
+        "badge": "LH + LL FLOW",
+        "description": "Bearish structure #9: Sellers defend lower highs and drive price beneath prior swing lows.",
+        "candles": [
+          {
+            "open": 102,
+            "high": 103,
+            "low": 97,
+            "close": 98,
+            "swing": "LH0"
+          },
+          {
+            "open": 98,
+            "high": 99,
+            "low": 92,
+            "close": 93,
+            "swing": "LL1"
+          },
+          {
+            "open": 93,
+            "high": 97,
+            "low": 92,
+            "close": 96,
+            "swing": "LH1"
+          },
+          {
+            "open": 96,
+            "high": 96,
+            "low": 88,
+            "close": 89,
+            "swing": "LL2"
+          },
+          {
+            "open": 89,
+            "high": 92,
+            "low": 88,
+            "close": 91,
+            "swing": "LH2"
+          },
+          {
+            "open": 91,
+            "high": 91,
+            "low": 83,
+            "close": 84,
+            "swing": "LL3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 2?",
+        "options": [
+          {
+            "id": "opt_down",
+            "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Uptrend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Sideways Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_bot",
+            "text": "V-Bottom Reversal",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 2 verifies that consecutive Lower Highs and Lower Lows establish dominant bearish market structure."
+      }
+    ],
+    "range": [
+      {
+        "id": "stadium_range_1",
+        "title": "Consolidation Range #1",
+        "category": "RANGE",
+        "badge": "EQUAL S/R BOUNDARIES",
+        "description": "Range structure #1: Price is trapped between horizontal ceiling and floor boundaries.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "High 1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 1"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107,
+            "swing": "High 2"
+          },
+          {
+            "open": 107,
+            "high": 107.5,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 2"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107.5,
+            "swing": "High 3"
+          },
+          {
+            "open": 107.5,
+            "high": 108,
+            "low": 100,
+            "close": 101.5,
+            "swing": "Low 3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 3?",
+        "options": [
+          {
+            "id": "opt_range",
+            "text": "Horizontal Trading Range (Consolidation)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_break",
+            "text": "Breakout Expansion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 3 demonstrates market equilibrium where price oscillates horizontally without establishing new highs or lows."
+      },
+      {
+        "id": "stadium_range_2",
+        "title": "Consolidation Range #2",
+        "category": "RANGE",
+        "badge": "EQUAL S/R BOUNDARIES",
+        "description": "Range structure #2: Price is trapped between horizontal ceiling and floor boundaries.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "High 1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 1"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107,
+            "swing": "High 2"
+          },
+          {
+            "open": 107,
+            "high": 107.5,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 2"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107.5,
+            "swing": "High 3"
+          },
+          {
+            "open": 107.5,
+            "high": 108,
+            "low": 100,
+            "close": 101.5,
+            "swing": "Low 3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 3?",
+        "options": [
+          {
+            "id": "opt_range",
+            "text": "Horizontal Trading Range (Consolidation)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_break",
+            "text": "Breakout Expansion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 3 demonstrates market equilibrium where price oscillates horizontally without establishing new highs or lows."
+      },
+      {
+        "id": "stadium_range_3",
+        "title": "Consolidation Range #3",
+        "category": "RANGE",
+        "badge": "EQUAL S/R BOUNDARIES",
+        "description": "Range structure #3: Price is trapped between horizontal ceiling and floor boundaries.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "High 1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 1"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107,
+            "swing": "High 2"
+          },
+          {
+            "open": 107,
+            "high": 107.5,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 2"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107.5,
+            "swing": "High 3"
+          },
+          {
+            "open": 107.5,
+            "high": 108,
+            "low": 100,
+            "close": 101.5,
+            "swing": "Low 3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 3?",
+        "options": [
+          {
+            "id": "opt_range",
+            "text": "Horizontal Trading Range (Consolidation)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_break",
+            "text": "Breakout Expansion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 3 demonstrates market equilibrium where price oscillates horizontally without establishing new highs or lows."
+      },
+      {
+        "id": "stadium_range_4",
+        "title": "Consolidation Range #4",
+        "category": "RANGE",
+        "badge": "EQUAL S/R BOUNDARIES",
+        "description": "Range structure #4: Price is trapped between horizontal ceiling and floor boundaries.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "High 1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 1"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107,
+            "swing": "High 2"
+          },
+          {
+            "open": 107,
+            "high": 107.5,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 2"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107.5,
+            "swing": "High 3"
+          },
+          {
+            "open": 107.5,
+            "high": 108,
+            "low": 100,
+            "close": 101.5,
+            "swing": "Low 3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 3?",
+        "options": [
+          {
+            "id": "opt_range",
+            "text": "Horizontal Trading Range (Consolidation)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_break",
+            "text": "Breakout Expansion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 3 demonstrates market equilibrium where price oscillates horizontally without establishing new highs or lows."
+      },
+      {
+        "id": "stadium_range_5",
+        "title": "Consolidation Range #5",
+        "category": "RANGE",
+        "badge": "EQUAL S/R BOUNDARIES",
+        "description": "Range structure #5: Price is trapped between horizontal ceiling and floor boundaries.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "High 1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 1"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107,
+            "swing": "High 2"
+          },
+          {
+            "open": 107,
+            "high": 107.5,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 2"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107.5,
+            "swing": "High 3"
+          },
+          {
+            "open": 107.5,
+            "high": 108,
+            "low": 100,
+            "close": 101.5,
+            "swing": "Low 3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 3?",
+        "options": [
+          {
+            "id": "opt_range",
+            "text": "Horizontal Trading Range (Consolidation)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_break",
+            "text": "Breakout Expansion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 3 demonstrates market equilibrium where price oscillates horizontally without establishing new highs or lows."
+      },
+      {
+        "id": "stadium_range_6",
+        "title": "Consolidation Range #6",
+        "category": "RANGE",
+        "badge": "EQUAL S/R BOUNDARIES",
+        "description": "Range structure #6: Price is trapped between horizontal ceiling and floor boundaries.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "High 1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 1"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107,
+            "swing": "High 2"
+          },
+          {
+            "open": 107,
+            "high": 107.5,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 2"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107.5,
+            "swing": "High 3"
+          },
+          {
+            "open": 107.5,
+            "high": 108,
+            "low": 100,
+            "close": 101.5,
+            "swing": "Low 3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 3?",
+        "options": [
+          {
+            "id": "opt_range",
+            "text": "Horizontal Trading Range (Consolidation)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_break",
+            "text": "Breakout Expansion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 3 demonstrates market equilibrium where price oscillates horizontally without establishing new highs or lows."
+      },
+      {
+        "id": "stadium_range_7",
+        "title": "Consolidation Range #7",
+        "category": "RANGE",
+        "badge": "EQUAL S/R BOUNDARIES",
+        "description": "Range structure #7: Price is trapped between horizontal ceiling and floor boundaries.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "High 1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 1"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107,
+            "swing": "High 2"
+          },
+          {
+            "open": 107,
+            "high": 107.5,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 2"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107.5,
+            "swing": "High 3"
+          },
+          {
+            "open": 107.5,
+            "high": 108,
+            "low": 100,
+            "close": 101.5,
+            "swing": "Low 3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 3?",
+        "options": [
+          {
+            "id": "opt_range",
+            "text": "Horizontal Trading Range (Consolidation)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_break",
+            "text": "Breakout Expansion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 3 demonstrates market equilibrium where price oscillates horizontally without establishing new highs or lows."
+      },
+      {
+        "id": "stadium_range_8",
+        "title": "Consolidation Range #8",
+        "category": "RANGE",
+        "badge": "EQUAL S/R BOUNDARIES",
+        "description": "Range structure #8: Price is trapped between horizontal ceiling and floor boundaries.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "High 1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 1"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107,
+            "swing": "High 2"
+          },
+          {
+            "open": 107,
+            "high": 107.5,
+            "low": 100,
+            "close": 101,
+            "swing": "Low 2"
+          },
+          {
+            "open": 101,
+            "high": 108,
+            "low": 101,
+            "close": 107.5,
+            "swing": "High 3"
+          },
+          {
+            "open": 107.5,
+            "high": 108,
+            "low": 100,
+            "close": 101.5,
+            "swing": "Low 3"
+          }
+        ],
+        "question": "What market environment is verified in Chamber 3?",
+        "options": [
+          {
+            "id": "opt_range",
+            "text": "Horizontal Trading Range (Consolidation)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Bullish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_down",
+            "text": "Bearish Trend",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_break",
+            "text": "Breakout Expansion",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 3 demonstrates market equilibrium where price oscillates horizontally without establishing new highs or lows."
+      }
+    ],
+    "transition": [
+      {
+        "id": "stadium_trans_1",
+        "title": "Structure Shift & Transition #1",
+        "category": "STRUCTURAL_SHIFT",
+        "badge": "BOS / CHOCH SHIFT",
+        "description": "Transition #1: Trend exhaustion and break of previous structural swing levels.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "HH1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 103,
+            "close": 104,
+            "swing": "HL1"
+          },
+          {
+            "open": 104,
+            "high": 114,
+            "low": 104,
+            "close": 113,
+            "swing": "HH2"
+          },
+          {
+            "open": 113,
+            "high": 113.5,
+            "low": 107,
+            "close": 108,
+            "swing": "HL2 (108)"
+          },
+          {
+            "open": 108,
+            "high": 111,
+            "low": 107,
+            "close": 109,
+            "swing": "Lower High (LH)"
+          },
+          {
+            "open": 109,
+            "high": 109.5,
+            "low": 101,
+            "close": 102,
+            "swing": "BOS: Break of HL2 (108)"
+          },
+          {
+            "open": 102,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH Retest"
+          }
+        ],
+        "question": "What market event is verified in Chamber 4?",
+        "options": [
+          {
+            "id": "opt_trans",
+            "text": "Structural Shift / Break of Structure (BOS)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Standard Bullish Pullback",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Quiet Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_fake",
+            "text": "Liquidity Sweep",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 4 verifies the critical transition where failure to make a higher high leads to a break of the prior higher low."
+      },
+      {
+        "id": "stadium_trans_2",
+        "title": "Structure Shift & Transition #2",
+        "category": "STRUCTURAL_SHIFT",
+        "badge": "BOS / CHOCH SHIFT",
+        "description": "Transition #2: Trend exhaustion and break of previous structural swing levels.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "HH1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 103,
+            "close": 104,
+            "swing": "HL1"
+          },
+          {
+            "open": 104,
+            "high": 114,
+            "low": 104,
+            "close": 113,
+            "swing": "HH2"
+          },
+          {
+            "open": 113,
+            "high": 113.5,
+            "low": 107,
+            "close": 108,
+            "swing": "HL2 (108)"
+          },
+          {
+            "open": 108,
+            "high": 111,
+            "low": 107,
+            "close": 109,
+            "swing": "Lower High (LH)"
+          },
+          {
+            "open": 109,
+            "high": 109.5,
+            "low": 101,
+            "close": 102,
+            "swing": "BOS: Break of HL2 (108)"
+          },
+          {
+            "open": 102,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH Retest"
+          }
+        ],
+        "question": "What market event is verified in Chamber 4?",
+        "options": [
+          {
+            "id": "opt_trans",
+            "text": "Structural Shift / Break of Structure (BOS)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Standard Bullish Pullback",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Quiet Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_fake",
+            "text": "Liquidity Sweep",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 4 verifies the critical transition where failure to make a higher high leads to a break of the prior higher low."
+      },
+      {
+        "id": "stadium_trans_3",
+        "title": "Structure Shift & Transition #3",
+        "category": "STRUCTURAL_SHIFT",
+        "badge": "BOS / CHOCH SHIFT",
+        "description": "Transition #3: Trend exhaustion and break of previous structural swing levels.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "HH1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 103,
+            "close": 104,
+            "swing": "HL1"
+          },
+          {
+            "open": 104,
+            "high": 114,
+            "low": 104,
+            "close": 113,
+            "swing": "HH2"
+          },
+          {
+            "open": 113,
+            "high": 113.5,
+            "low": 107,
+            "close": 108,
+            "swing": "HL2 (108)"
+          },
+          {
+            "open": 108,
+            "high": 111,
+            "low": 107,
+            "close": 109,
+            "swing": "Lower High (LH)"
+          },
+          {
+            "open": 109,
+            "high": 109.5,
+            "low": 101,
+            "close": 102,
+            "swing": "BOS: Break of HL2 (108)"
+          },
+          {
+            "open": 102,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH Retest"
+          }
+        ],
+        "question": "What market event is verified in Chamber 4?",
+        "options": [
+          {
+            "id": "opt_trans",
+            "text": "Structural Shift / Break of Structure (BOS)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Standard Bullish Pullback",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Quiet Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_fake",
+            "text": "Liquidity Sweep",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 4 verifies the critical transition where failure to make a higher high leads to a break of the prior higher low."
+      },
+      {
+        "id": "stadium_trans_4",
+        "title": "Structure Shift & Transition #4",
+        "category": "STRUCTURAL_SHIFT",
+        "badge": "BOS / CHOCH SHIFT",
+        "description": "Transition #4: Trend exhaustion and break of previous structural swing levels.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "HH1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 103,
+            "close": 104,
+            "swing": "HL1"
+          },
+          {
+            "open": 104,
+            "high": 114,
+            "low": 104,
+            "close": 113,
+            "swing": "HH2"
+          },
+          {
+            "open": 113,
+            "high": 113.5,
+            "low": 107,
+            "close": 108,
+            "swing": "HL2 (108)"
+          },
+          {
+            "open": 108,
+            "high": 111,
+            "low": 107,
+            "close": 109,
+            "swing": "Lower High (LH)"
+          },
+          {
+            "open": 109,
+            "high": 109.5,
+            "low": 101,
+            "close": 102,
+            "swing": "BOS: Break of HL2 (108)"
+          },
+          {
+            "open": 102,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH Retest"
+          }
+        ],
+        "question": "What market event is verified in Chamber 4?",
+        "options": [
+          {
+            "id": "opt_trans",
+            "text": "Structural Shift / Break of Structure (BOS)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Standard Bullish Pullback",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Quiet Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_fake",
+            "text": "Liquidity Sweep",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 4 verifies the critical transition where failure to make a higher high leads to a break of the prior higher low."
+      },
+      {
+        "id": "stadium_trans_5",
+        "title": "Structure Shift & Transition #5",
+        "category": "STRUCTURAL_SHIFT",
+        "badge": "BOS / CHOCH SHIFT",
+        "description": "Transition #5: Trend exhaustion and break of previous structural swing levels.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "HH1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 103,
+            "close": 104,
+            "swing": "HL1"
+          },
+          {
+            "open": 104,
+            "high": 114,
+            "low": 104,
+            "close": 113,
+            "swing": "HH2"
+          },
+          {
+            "open": 113,
+            "high": 113.5,
+            "low": 107,
+            "close": 108,
+            "swing": "HL2 (108)"
+          },
+          {
+            "open": 108,
+            "high": 111,
+            "low": 107,
+            "close": 109,
+            "swing": "Lower High (LH)"
+          },
+          {
+            "open": 109,
+            "high": 109.5,
+            "low": 101,
+            "close": 102,
+            "swing": "BOS: Break of HL2 (108)"
+          },
+          {
+            "open": 102,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH Retest"
+          }
+        ],
+        "question": "What market event is verified in Chamber 4?",
+        "options": [
+          {
+            "id": "opt_trans",
+            "text": "Structural Shift / Break of Structure (BOS)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Standard Bullish Pullback",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Quiet Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_fake",
+            "text": "Liquidity Sweep",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 4 verifies the critical transition where failure to make a higher high leads to a break of the prior higher low."
+      },
+      {
+        "id": "stadium_trans_6",
+        "title": "Structure Shift & Transition #6",
+        "category": "STRUCTURAL_SHIFT",
+        "badge": "BOS / CHOCH SHIFT",
+        "description": "Transition #6: Trend exhaustion and break of previous structural swing levels.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "HH1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 103,
+            "close": 104,
+            "swing": "HL1"
+          },
+          {
+            "open": 104,
+            "high": 114,
+            "low": 104,
+            "close": 113,
+            "swing": "HH2"
+          },
+          {
+            "open": 113,
+            "high": 113.5,
+            "low": 107,
+            "close": 108,
+            "swing": "HL2 (108)"
+          },
+          {
+            "open": 108,
+            "high": 111,
+            "low": 107,
+            "close": 109,
+            "swing": "Lower High (LH)"
+          },
+          {
+            "open": 109,
+            "high": 109.5,
+            "low": 101,
+            "close": 102,
+            "swing": "BOS: Break of HL2 (108)"
+          },
+          {
+            "open": 102,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH Retest"
+          }
+        ],
+        "question": "What market event is verified in Chamber 4?",
+        "options": [
+          {
+            "id": "opt_trans",
+            "text": "Structural Shift / Break of Structure (BOS)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Standard Bullish Pullback",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Quiet Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_fake",
+            "text": "Liquidity Sweep",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 4 verifies the critical transition where failure to make a higher high leads to a break of the prior higher low."
+      },
+      {
+        "id": "stadium_trans_7",
+        "title": "Structure Shift & Transition #7",
+        "category": "STRUCTURAL_SHIFT",
+        "badge": "BOS / CHOCH SHIFT",
+        "description": "Transition #7: Trend exhaustion and break of previous structural swing levels.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "HH1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 103,
+            "close": 104,
+            "swing": "HL1"
+          },
+          {
+            "open": 104,
+            "high": 114,
+            "low": 104,
+            "close": 113,
+            "swing": "HH2"
+          },
+          {
+            "open": 113,
+            "high": 113.5,
+            "low": 107,
+            "close": 108,
+            "swing": "HL2 (108)"
+          },
+          {
+            "open": 108,
+            "high": 111,
+            "low": 107,
+            "close": 109,
+            "swing": "Lower High (LH)"
+          },
+          {
+            "open": 109,
+            "high": 109.5,
+            "low": 101,
+            "close": 102,
+            "swing": "BOS: Break of HL2 (108)"
+          },
+          {
+            "open": 102,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH Retest"
+          }
+        ],
+        "question": "What market event is verified in Chamber 4?",
+        "options": [
+          {
+            "id": "opt_trans",
+            "text": "Structural Shift / Break of Structure (BOS)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Standard Bullish Pullback",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Quiet Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_fake",
+            "text": "Liquidity Sweep",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 4 verifies the critical transition where failure to make a higher high leads to a break of the prior higher low."
+      },
+      {
+        "id": "stadium_trans_8",
+        "title": "Structure Shift & Transition #8",
+        "category": "STRUCTURAL_SHIFT",
+        "badge": "BOS / CHOCH SHIFT",
+        "description": "Transition #8: Trend exhaustion and break of previous structural swing levels.",
+        "candles": [
+          {
+            "open": 100,
+            "high": 108,
+            "low": 99,
+            "close": 107,
+            "swing": "HH1"
+          },
+          {
+            "open": 107,
+            "high": 108,
+            "low": 103,
+            "close": 104,
+            "swing": "HL1"
+          },
+          {
+            "open": 104,
+            "high": 114,
+            "low": 104,
+            "close": 113,
+            "swing": "HH2"
+          },
+          {
+            "open": 113,
+            "high": 113.5,
+            "low": 107,
+            "close": 108,
+            "swing": "HL2 (108)"
+          },
+          {
+            "open": 108,
+            "high": 111,
+            "low": 107,
+            "close": 109,
+            "swing": "Lower High (LH)"
+          },
+          {
+            "open": 109,
+            "high": 109.5,
+            "low": 101,
+            "close": 102,
+            "swing": "BOS: Break of HL2 (108)"
+          },
+          {
+            "open": 102,
+            "high": 106,
+            "low": 102,
+            "close": 105,
+            "swing": "LH Retest"
+          }
+        ],
+        "question": "What market event is verified in Chamber 4?",
+        "options": [
+          {
+            "id": "opt_trans",
+            "text": "Structural Shift / Break of Structure (BOS)",
+            "isCorrect": true
+          },
+          {
+            "id": "opt_up",
+            "text": "Standard Bullish Pullback",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_range",
+            "text": "Quiet Range",
+            "isCorrect": false
+          },
+          {
+            "id": "opt_fake",
+            "text": "Liquidity Sweep",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Chamber 4 verifies the critical transition where failure to make a higher high leads to a break of the prior higher low."
+      }
+    ]
+  }
+}

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Studio | Strativo Academy</title>
+    <meta name="description" content="Discover and launch Strativo Academy interactive learning games and simulated trading worlds.">
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/game-studio.css">
+</head>
+<body class="game-studio-body">
+
+    <!-- Shared Header Component -->
+    <div data-component="header"></div>
+
+    <main class="game-studio-main" id="main-content">
+
+        <!-- ============================================================
+             HERO SECTION
+             ============================================================ -->
+        <section class="gs-hero-section" aria-label="Game Studio Hero">
+            <div class="gs-hero-container">
+                <div class="gs-badge">
+                    <span class="gs-badge-dot" aria-hidden="true"></span>
+                    <span>Interactive Game Ecosystem</span>
+                </div>
+
+                <h1 class="gs-hero-title">GAME STUDIO</h1>
+
+                <p class="gs-hero-subtitle">
+                    Interactive learning experiences built for Strativo Academy.
+                </p>
+
+                <p class="gs-hero-desc">
+                    Learn trading concepts through exploration, challenges, simulations, and game-based practice.
+                </p>
+
+                <div class="gs-hero-actions">
+                    <a href="hub.html" class="gs-btn-primary" id="btn-enter-world-hero">
+                        <i class="fa-solid fa-earth-americas" aria-hidden="true"></i>
+                        <span>ENTER STRATIVO WORLD →</span>
+                    </a>
+                    <a href="#districts-preview" class="gs-btn-secondary">
+                        <i class="fa-solid fa-compass" aria-hidden="true"></i>
+                        <span>Explore 7 Districts</span>
+                    </a>
+                </div>
+
+                <div class="gs-disclaimer">
+                    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                    <span>Educational simulation — no real-money trading.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             FLAGSHIP: STRATIVO WORLD
+             ============================================================ -->
+        <div class="gs-content-container">
+            <section class="gs-section-header">
+                <div>
+                    <h2 class="gs-section-title">
+                        <i class="fa-solid fa-crown" style="color: var(--gs-accent-gold);" aria-hidden="true"></i>
+                        Featured Flagship Experience
+                    </h2>
+                    <p class="gs-section-subtitle">Our flagship 2D RPG gamified educational universe</p>
+                </div>
+            </section>
+
+            <article class="gs-flagship-card" id="strativo-world-card">
+                <div class="gs-flagship-info">
+                    <div class="gs-flagship-meta">
+                        <span class="gs-status-pill"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> V1 Complete & Playable</span>
+                        <span style="font-size: 0.8rem; color: var(--gs-text-muted);">RPG Learning World</span>
+                    </div>
+
+                    <h3 class="gs-flagship-title">🌍 STRATIVO WORLD</h3>
+
+                    <p class="gs-flagship-desc">
+                        Explore a 7-district interactive learning world where trading concepts become playable experiences. Master candlestick physics, pip mechanics, market structure, chart precision, capital defense, trader psychology, and confluence execution.
+                    </p>
+
+                    <div class="gs-stats-grid">
+                        <div class="gs-stat-box">
+                            <span class="gs-stat-num">7</span>
+                            <span class="gs-stat-label">Playable Districts</span>
+                        </div>
+                        <div class="gs-stat-box">
+                            <span class="gs-stat-num">1,030</span>
+                            <span class="gs-stat-label">Active Scenarios</span>
+                        </div>
+                        <div class="gs-stat-box">
+                            <span class="gs-stat-num">100%</span>
+                            <span class="gs-stat-label">Interactive Sandbox</span>
+                        </div>
+                        <div class="gs-stat-box">
+                            <span class="gs-stat-num">Free</span>
+                            <span class="gs-stat-label">Educational Simulation</span>
+                        </div>
+                    </div>
+
+                    <a href="hub.html" class="gs-btn-primary" id="btn-enter-world-flagship">
+                        <span>ENTER WORLD →</span>
+                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="gs-flagship-visual">
+                    <div class="gs-visual-badge-row">
+                        <span class="gs-visual-title"><i class="fa-solid fa-map" aria-hidden="true"></i> 7-District World Map</span>
+                        <span style="font-size: 0.75rem; color: var(--gs-accent-gold); font-weight: 700;">ALL DISTRICTS READY</span>
+                    </div>
+
+                    <ul class="gs-mini-district-list" aria-label="District list">
+                        <li class="gs-mini-district-item">
+                            <span><i class="fa-solid fa-fire" aria-hidden="true"></i> District 1: Candle City</span>
+                            <span class="gs-mini-district-status">PLAYABLE</span>
+                        </li>
+                        <li class="gs-mini-district-item">
+                            <span><i class="fa-solid fa-calculator" aria-hidden="true"></i> District 2: Pip District</span>
+                            <span class="gs-mini-district-status">PLAYABLE</span>
+                        </li>
+                        <li class="gs-mini-district-item">
+                            <span><i class="fa-solid fa-chart-line" aria-hidden="true"></i> District 3: Market Arena</span>
+                            <span class="gs-mini-district-status">PLAYABLE</span>
+                        </li>
+                        <li class="gs-mini-district-item">
+                            <span><i class="fa-solid fa-chart-pie" aria-hidden="true"></i> District 4: Chart District</span>
+                            <span class="gs-mini-district-status">PLAYABLE</span>
+                        </li>
+                        <li class="gs-mini-district-item">
+                            <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> District 5: Risk Lab</span>
+                            <span class="gs-mini-district-status">PLAYABLE</span>
+                        </li>
+                        <li class="gs-mini-district-item">
+                            <span><i class="fa-solid fa-brain" aria-hidden="true"></i> District 6: Psychology Zone</span>
+                            <span class="gs-mini-district-status">PLAYABLE</span>
+                        </li>
+                        <li class="gs-mini-district-item">
+                            <span><i class="fa-solid fa-chess-rook" aria-hidden="true"></i> District 7: Strategy Fortress</span>
+                            <span class="gs-mini-district-status" style="color: var(--gs-accent-gold);">ENDGAME</span>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- ============================================================
+                 7-DISTRICT CURRICULUM PREVIEW
+                 ============================================================ -->
+            <section class="gs-section-header" id="districts-preview">
+                <div>
+                    <h2 class="gs-section-title">
+                        <i class="fa-solid fa-layer-group" style="color: var(--gs-accent-cyan);" aria-hidden="true"></i>
+                        The 7 Districts of Strativo World
+                    </h2>
+                    <p class="gs-section-subtitle">Curriculum progression from candlestick fundamentals to endgame strategy</p>
+                </div>
+            </section>
+
+            <div class="gs-districts-grid">
+                <!-- District 1 -->
+                <article class="gs-district-card">
+                    <div class="gs-card-top">
+                        <div class="gs-card-header-row">
+                            <span class="gs-district-num">District 1</span>
+                            <div class="gs-district-icon"><i class="fa-solid fa-fire" aria-hidden="true"></i></div>
+                        </div>
+                        <h3 class="gs-district-title">Candle City</h3>
+                        <div class="gs-district-topic">Candlestick & Price Action</div>
+                        <p class="gs-district-desc">Master the anatomy of candles, body/wick proportions, buyer/seller rejection, and single/multi-bar formations.</p>
+                    </div>
+                    <div class="gs-card-bottom">
+                        <span class="gs-card-tag">44 Scenarios</span>
+                        <a href="hub.html" class="gs-card-link">Explore in World <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <!-- District 2 -->
+                <article class="gs-district-card">
+                    <div class="gs-card-top">
+                        <div class="gs-card-header-row">
+                            <span class="gs-district-num">District 2</span>
+                            <div class="gs-district-icon"><i class="fa-solid fa-calculator" aria-hidden="true"></i></div>
+                        </div>
+                        <h3 class="gs-district-title">Pip District</h3>
+                        <div class="gs-district-topic">Pips, Precision & Position Concepts</div>
+                        <p class="gs-district-desc">Master pip arithmetic, lot sizing (Standard, Mini, Micro), point calculations, and quote conversions in real time.</p>
+                    </div>
+                    <div class="gs-card-bottom">
+                        <span class="gs-card-tag">56 Scenarios</span>
+                        <a href="hub.html" class="gs-card-link">Explore in World <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <!-- District 3 -->
+                <article class="gs-district-card">
+                    <div class="gs-card-top">
+                        <div class="gs-card-header-row">
+                            <span class="gs-district-num">District 3</span>
+                            <div class="gs-district-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+                        </div>
+                        <h3 class="gs-district-title">Market Arena</h3>
+                        <div class="gs-district-topic">Structure, Support/Resistance & Breakouts</div>
+                        <p class="gs-district-desc">Learn swing highs/lows, higher-highs/higher-lows trends, consolidation ranges, genuine breakouts, and liquidity traps.</p>
+                    </div>
+                    <div class="gs-card-bottom">
+                        <span class="gs-card-tag">138 Scenarios</span>
+                        <a href="hub.html" class="gs-card-link">Explore in World <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <!-- District 4 -->
+                <article class="gs-district-card">
+                    <div class="gs-card-top">
+                        <div class="gs-card-header-row">
+                            <span class="gs-district-num">District 4</span>
+                            <div class="gs-district-icon"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i></div>
+                        </div>
+                        <h3 class="gs-district-title">Chart District</h3>
+                        <div class="gs-district-topic">Chart Reading & Market Analysis</div>
+                        <p class="gs-district-desc">Multi-timeframe analysis, key support/resistance zones, trendlines, channel geometry, and annotation precision.</p>
+                    </div>
+                    <div class="gs-card-bottom">
+                        <span class="gs-card-tag">125 Scenarios</span>
+                        <a href="hub.html" class="gs-card-link">Explore in World <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <!-- District 5 -->
+                <article class="gs-district-card">
+                    <div class="gs-card-top">
+                        <div class="gs-card-header-row">
+                            <span class="gs-district-num">District 5</span>
+                            <div class="gs-district-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                        </div>
+                        <h3 class="gs-district-title">Risk Lab</h3>
+                        <div class="gs-district-topic">Risk Management & Capital Protection</div>
+                        <p class="gs-district-desc">1% risk rule, asymmetric Risk-to-Reward (R:R), drawdown mitigation, position size algorithms, and survival challenge.</p>
+                    </div>
+                    <div class="gs-card-bottom">
+                        <span class="gs-card-tag">222 Scenarios</span>
+                        <a href="hub.html" class="gs-card-link">Explore in World <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <!-- District 6 -->
+                <article class="gs-district-card">
+                    <div class="gs-card-top">
+                        <div class="gs-card-header-row">
+                            <span class="gs-district-num">District 6</span>
+                            <div class="gs-district-icon"><i class="fa-solid fa-brain" aria-hidden="true"></i></div>
+                        </div>
+                        <h3 class="gs-district-title">Psychology Zone</h3>
+                        <div class="gs-district-topic">Trading Psychology & Discipline</div>
+                        <p class="gs-district-desc">Emotional discipline, FOMO suppression, revenge trading defense, plan adherence, and loss recovery protocols.</p>
+                    </div>
+                    <div class="gs-card-bottom">
+                        <span class="gs-card-tag">222 Scenarios</span>
+                        <a href="hub.html" class="gs-card-link">Explore in World <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+
+                <!-- District 7 -->
+                <article class="gs-district-card" style="border-color: rgba(245, 158, 11, 0.3);">
+                    <div class="gs-card-top">
+                        <div class="gs-card-header-row">
+                            <span class="gs-district-num" style="color: var(--gs-accent-gold);">District 7 • Endgame</span>
+                            <div class="gs-district-icon" style="background: rgba(245, 158, 11, 0.15); border-color: var(--gs-accent-gold);"><i class="fa-solid fa-chess-rook" aria-hidden="true"></i></div>
+                        </div>
+                        <h3 class="gs-district-title">Strategy Fortress</h3>
+                        <div class="gs-district-topic">Strategy & Confluence Mastery</div>
+                        <p class="gs-district-desc">The ultimate culmination: synthesize trend, structure, risk, and psychology across multi-factor confluence setups.</p>
+                    </div>
+                    <div class="gs-card-bottom">
+                        <span class="gs-card-tag">223 Scenarios</span>
+                        <a href="hub.html" class="gs-card-link">Explore in World <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ============================================================
+                 FUTURE GAME MODES (ROADMAP / COMING SOON)
+                 ============================================================ -->
+            <section class="gs-section-header">
+                <div>
+                    <h2 class="gs-section-title">
+                        <i class="fa-solid fa-gamepad" style="color: var(--gs-text-secondary);" aria-hidden="true"></i>
+                        Game Studio Categories
+                    </h2>
+                    <p class="gs-section-subtitle">Strativo Academy interactive roadmap</p>
+                </div>
+            </section>
+
+            <div class="gs-future-grid">
+                <article class="gs-future-card" style="border-style: solid; border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.03);">
+                    <span class="gs-future-badge" style="color: #10B981; border-color: #10B981; background: rgba(16, 185, 129, 0.1);">ACTIVE</span>
+                    <div class="gs-future-icon" style="color: var(--gs-accent-gold);"><i class="fa-solid fa-earth-americas" aria-hidden="true"></i></div>
+                    <h3 class="gs-future-title">WORLD</h3>
+                    <p class="gs-future-desc">Strativo World 2D RPG interactive learning adventure across 7 districts with 1,030 scenarios.</p>
+                </article>
+
+                <article class="gs-future-card">
+                    <span class="gs-future-badge">COMING SOON</span>
+                    <div class="gs-future-icon"><i class="fa-solid fa-stopwatch" aria-hidden="true"></i></div>
+                    <h3 class="gs-future-title">CHALLENGES</h3>
+                    <p class="gs-future-desc">Timed candlestick identification and pip calculation rapid-fire sprint modes.</p>
+                </article>
+
+                <article class="gs-future-card">
+                    <span class="gs-future-badge">COMING SOON</span>
+                    <div class="gs-future-icon"><i class="fa-solid fa-flask" aria-hidden="true"></i></div>
+                    <h3 class="gs-future-title">PRACTICE</h3>
+                    <p class="gs-future-desc">Isolated setup replay simulators focusing on high-probability support/resistance tests.</p>
+                </article>
+
+                <article class="gs-future-card">
+                    <span class="gs-future-badge">COMING SOON</span>
+                    <div class="gs-future-icon"><i class="fa-solid fa-trophy" aria-hidden="true"></i></div>
+                    <h3 class="gs-future-title">COMPETITIVE</h3>
+                    <p class="gs-future-desc">Educational tournaments and strategy leaderboard seasons for academy students.</p>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared Footer Component -->
+    <div data-component="footer"></div>
+
+    <!-- Component Loader -->
+    <script src="../js/component-loader.js"></script>
+</body>
+</html>

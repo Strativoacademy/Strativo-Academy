@@ -1,0 +1,928 @@
+{
+  "version": "1.1.0",
+  "scenarios": [
+    {
+      "id": "blitz_meas_01",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "instrument": "EUR/USD",
+      "startPrice": 1.082,
+      "endPrice": 1.0855,
+      "questionText": "EUR/USD moves from 1.0820 to 1.0855. What is the total price distance in pips?",
+      "options": [
+        "35 Pips",
+        "3.5 Pips",
+        "350 Pips",
+        "0.35 Pips"
+      ],
+      "correctAnswer": "35 Pips",
+      "explanation": "1.0855 - 1.0820 = 0.0035. On 4-decimal pairs, 0.0001 = 1 pip. Therefore, 0.0035 = 35 pips."
+    },
+    {
+      "id": "blitz_meas_02",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "instrument": "GBP/USD",
+      "startPrice": 1.261,
+      "endPrice": 1.267,
+      "questionText": "GBP/USD moves from 1.2610 to 1.2670. How many pips did price travel?",
+      "options": [
+        "60 Pips",
+        "6 Pips",
+        "600 Pips",
+        "0.6 Pips"
+      ],
+      "correctAnswer": "60 Pips",
+      "explanation": "1.2670 - 1.2610 = 0.0060 = 60 pips."
+    },
+    {
+      "id": "blitz_meas_03",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "instrument": "AUD/USD",
+      "startPrice": 0.654,
+      "endPrice": 0.6515,
+      "questionText": "AUD/USD drops from 0.6540 to 0.6515. What is the pip decline?",
+      "options": [
+        "25 Pips",
+        "2.5 Pips",
+        "250 Pips",
+        "0.25 Pips"
+      ],
+      "correctAnswer": "25 Pips",
+      "explanation": "0.6540 - 0.6515 = 0.0025 = 25 pips down."
+    },
+    {
+      "id": "blitz_meas_04",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "instrument": "USD/CAD",
+      "startPrice": 1.352,
+      "endPrice": 1.3565,
+      "questionText": "USD/CAD advances from 1.3520 to 1.3565. How many pips did it gain?",
+      "options": [
+        "45 Pips",
+        "4.5 Pips",
+        "450 Pips",
+        "0.45 Pips"
+      ],
+      "correctAnswer": "45 Pips",
+      "explanation": "1.3565 - 1.3520 = 0.0045 = 45 pips."
+    },
+    {
+      "id": "blitz_meas_05",
+      "category": "MEASURE",
+      "difficulty": "intermediate",
+      "instrument": "NZD/USD",
+      "startPrice": 0.6085,
+      "endPrice": 0.6175,
+      "questionText": "NZD/USD rallies from 0.6085 to 0.6175. What is the pip expansion?",
+      "options": [
+        "90 Pips",
+        "9 Pips",
+        "900 Pips",
+        "0.9 Pips"
+      ],
+      "correctAnswer": "90 Pips",
+      "explanation": "0.6175 - 0.6085 = 0.0090 = 90 pips."
+    },
+    {
+      "id": "blitz_dir_01",
+      "category": "DIRECTION",
+      "difficulty": "beginner",
+      "instrument": "EUR/USD",
+      "startPrice": 1.088,
+      "endPrice": 1.083,
+      "questionText": "EUR/USD moves from 1.0880 to 1.0830 (-50 pips). What market vector is this?",
+      "options": [
+        "BEARISH (DOWN)",
+        "BULLISH (UP)",
+        "CONSOLIDATION",
+        "NEUTRAL"
+      ],
+      "correctAnswer": "BEARISH (DOWN)",
+      "explanation": "Ending price (1.0830) is lower than starting price (1.0880), representing a 50-pip downward (bearish) vector."
+    },
+    {
+      "id": "blitz_dir_02",
+      "category": "DIRECTION",
+      "difficulty": "beginner",
+      "instrument": "GBP/USD",
+      "startPrice": 1.255,
+      "endPrice": 1.261,
+      "questionText": "GBP/USD climbs from 1.2550 to 1.2610 (+60 pips). What vector is this?",
+      "options": [
+        "BULLISH (UP)",
+        "BEARISH (DOWN)",
+        "SIDEWAYS",
+        "REVERSAL"
+      ],
+      "correctAnswer": "BULLISH (UP)",
+      "explanation": "Price moved from 1.2550 up to 1.2610 (+60 pips), indicating an upward bullish movement."
+    },
+    {
+      "id": "blitz_dir_03",
+      "category": "DIRECTION",
+      "difficulty": "beginner",
+      "instrument": "USD/CHF",
+      "startPrice": 0.884,
+      "endPrice": 0.879,
+      "questionText": "USD/CHF falls from 0.8840 to 0.8790. What is the directional bias?",
+      "options": [
+        "BEARISH (DOWN)",
+        "BULLISH (UP)",
+        "MEAN REVERSION",
+        "BREAKOUT"
+      ],
+      "correctAnswer": "BEARISH (DOWN)",
+      "explanation": "0.8840 to 0.8790 is a drop of 50 pips (bearish direction)."
+    },
+    {
+      "id": "blitz_dir_04",
+      "category": "DIRECTION",
+      "difficulty": "intermediate",
+      "instrument": "EUR/GBP",
+      "startPrice": 0.852,
+      "endPrice": 0.8565,
+      "questionText": "EUR/GBP rises from 0.8520 to 0.8565 (+45 pips). What vector is confirmed?",
+      "options": [
+        "BULLISH (UP)",
+        "BEARISH (DOWN)",
+        "FALSE BREAK",
+        "LIQUIDITY RUN"
+      ],
+      "correctAnswer": "BULLISH (UP)",
+      "explanation": "A 45-pip increase represents bullish expansion."
+    },
+    {
+      "id": "blitz_jpy_01",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "instrument": "USD/JPY",
+      "startPrice": 150.2,
+      "endPrice": 150.75,
+      "questionText": "USD/JPY moves from 150.20 to 150.75. On Japanese Yen pairs, how many pips is this?",
+      "options": [
+        "55 Pips",
+        "5.5 Pips",
+        "550 Pips",
+        "0.55 Pips"
+      ],
+      "correctAnswer": "55 Pips",
+      "explanation": "On JPY pairs, 1 pip is the 2nd decimal place (0.01). 150.75 - 150.20 = 0.55 = 55 pips."
+    },
+    {
+      "id": "blitz_jpy_02",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "instrument": "GBP/JPY",
+      "startPrice": 189.5,
+      "endPrice": 188.9,
+      "questionText": "GBP/JPY drops from 189.50 to 188.90. How many pips did it decline?",
+      "options": [
+        "60 Pips",
+        "6 Pips",
+        "600 Pips",
+        "0.6 Pips"
+      ],
+      "correctAnswer": "60 Pips",
+      "explanation": "189.50 - 188.90 = 0.60 = 60 pips down."
+    },
+    {
+      "id": "blitz_jpy_03",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "instrument": "EUR/JPY",
+      "startPrice": 162.1,
+      "endPrice": 162.95,
+      "questionText": "EUR/JPY advances from 162.10 to 162.95. What is the pip gain?",
+      "options": [
+        "85 Pips",
+        "8.5 Pips",
+        "850 Pips",
+        "0.85 Pips"
+      ],
+      "correctAnswer": "85 Pips",
+      "explanation": "162.95 - 162.10 = 0.85 = 85 pips."
+    },
+    {
+      "id": "blitz_jpy_04",
+      "category": "JPY",
+      "difficulty": "advanced",
+      "instrument": "CAD/JPY",
+      "startPrice": 111.4,
+      "endPrice": 110.65,
+      "questionText": "CAD/JPY moves from 111.40 to 110.65. How many pips was the drop?",
+      "options": [
+        "75 Pips",
+        "7.5 Pips",
+        "750 Pips",
+        "0.75 Pips"
+      ],
+      "correctAnswer": "75 Pips",
+      "explanation": "111.40 - 110.65 = 0.75 = 75 pips."
+    },
+    {
+      "id": "blitz_jpy_05",
+      "category": "JPY",
+      "difficulty": "advanced",
+      "instrument": "USD/JPY",
+      "startPrice": 154,
+      "endPrice": 155.2,
+      "questionText": "USD/JPY climbs from 154.00 to 155.20. What is the total pip travel?",
+      "options": [
+        "120 Pips",
+        "12 Pips",
+        "1,200 Pips",
+        "1.2 Pips"
+      ],
+      "correctAnswer": "120 Pips",
+      "explanation": "155.20 - 154.00 = 1.20 = 120 pips."
+    },
+    {
+      "id": "blitz_frac_01",
+      "category": "PIPETTE",
+      "difficulty": "intermediate",
+      "instrument": "EUR/USD",
+      "startPrice": 1.1052,
+      "endPrice": 1.10528,
+      "questionText": "EUR/USD ticks from 1.10520 to 1.10528. In fractional pipettes / points, what is this change?",
+      "options": [
+        "0.8 Pips (8 Points)",
+        "8 Pips",
+        "80 Pips",
+        "0.08 Pips"
+      ],
+      "correctAnswer": "0.8 Pips (8 Points)",
+      "explanation": "1.10528 - 1.10520 = 0.00008 = 0.8 pips or 8 fractional points (pipettes)."
+    },
+    {
+      "id": "blitz_frac_02",
+      "category": "PIPETTE",
+      "difficulty": "intermediate",
+      "instrument": "GBP/USD",
+      "startPrice": 1.2745,
+      "endPrice": 1.27471,
+      "questionText": "GBP/USD shifts from 1.27450 to 1.27471. How many pips / points is this?",
+      "options": [
+        "2.1 Pips (21 Points)",
+        "21 Pips",
+        "0.21 Pips",
+        "210 Points"
+      ],
+      "correctAnswer": "2.1 Pips (21 Points)",
+      "explanation": "1.27471 - 1.27450 = 0.00021 = 2.1 pips (21 points)."
+    },
+    {
+      "id": "blitz_frac_03",
+      "category": "PIPETTE",
+      "difficulty": "advanced",
+      "instrument": "USD/JPY",
+      "startPrice": 151.25,
+      "endPrice": 151.265,
+      "questionText": "USD/JPY ticks from 151.250 to 151.265 (3rd decimal). What is the fractional pip distance?",
+      "options": [
+        "1.5 Pips (15 Points)",
+        "15 Pips",
+        "0.15 Pips",
+        "150 Points"
+      ],
+      "correctAnswer": "1.5 Pips (15 Points)",
+      "explanation": "On 3-decimal JPY quotes, the 3rd decimal is a pipette. 151.265 - 151.250 = 0.015 = 1.5 pips (15 points)."
+    },
+    {
+      "id": "blitz_frac_04",
+      "category": "PIPETTE",
+      "difficulty": "advanced",
+      "instrument": "AUD/USD",
+      "startPrice": 0.658,
+      "endPrice": 0.65837,
+      "questionText": "AUD/USD moves from 0.65800 to 0.65837. What is the fractional distance?",
+      "options": [
+        "3.7 Pips (37 Points)",
+        "37 Pips",
+        "0.37 Pips",
+        "370 Points"
+      ],
+      "correctAnswer": "3.7 Pips (37 Points)",
+      "explanation": "0.65837 - 0.65800 = 0.00037 = 3.7 pips."
+    },
+    {
+      "id": "blitz_speed_01",
+      "category": "SPEED",
+      "difficulty": "beginner",
+      "instrument": "EUR/USD",
+      "startPrice": 1.09,
+      "endPrice": 1.091,
+      "questionText": "Quick calculation: EUR/USD from 1.0900 to 1.0910 is how many pips?",
+      "options": [
+        "10 Pips",
+        "1 Pip",
+        "100 Pips",
+        "0.1 Pips"
+      ],
+      "correctAnswer": "10 Pips",
+      "explanation": "1.0910 - 1.0900 = 0.0010 = 10 pips."
+    },
+    {
+      "id": "blitz_speed_02",
+      "category": "SPEED",
+      "difficulty": "beginner",
+      "instrument": "GBP/USD",
+      "startPrice": 1.28,
+      "endPrice": 1.282,
+      "questionText": "Quick calculation: GBP/USD from 1.2800 to 1.2820 is how many pips?",
+      "options": [
+        "20 Pips",
+        "2 Pips",
+        "200 Pips",
+        "0.2 Pips"
+      ],
+      "correctAnswer": "20 Pips",
+      "explanation": "1.2820 - 1.2800 = 0.0020 = 20 pips."
+    },
+    {
+      "id": "blitz_speed_03",
+      "category": "SPEED",
+      "difficulty": "intermediate",
+      "instrument": "USD/JPY",
+      "startPrice": 149,
+      "endPrice": 149.3,
+      "questionText": "Quick calculation: USD/JPY from 149.00 to 149.30 is how many pips?",
+      "options": [
+        "30 Pips",
+        "3 Pips",
+        "300 Pips",
+        "0.3 Pips"
+      ],
+      "correctAnswer": "30 Pips",
+      "explanation": "149.30 - 149.00 = 0.30 = 30 pips."
+    },
+    {
+      "id": "blitz_inst_01",
+      "category": "INSTRUMENT",
+      "difficulty": "intermediate",
+      "instrument": "XAU/USD (Gold)",
+      "startPrice": 2030,
+      "endPrice": 2035,
+      "questionText": "Spot Gold (XAU/USD) rises from $2,030.00 to $2,035.00. How many dollars and pips (where $0.10 = 1 pip) is this?",
+      "options": [
+        "$5.00 (50 Pips)",
+        "$5.00 (5 Pips)",
+        "$50.00 (500 Pips)",
+        "$0.50 (5 Pips)"
+      ],
+      "correctAnswer": "$5.00 (50 Pips)",
+      "explanation": "$2035 - $2030 = $5.00 move. In standard FX broker convention ($0.10 = 1 pip), $5.00 = 50 pips."
+    },
+    {
+      "id": "blitz_inst_02",
+      "category": "INSTRUMENT",
+      "difficulty": "advanced",
+      "instrument": "US30 (Dow Jones)",
+      "startPrice": 38900,
+      "endPrice": 38950,
+      "questionText": "US30 index moves from 38,900 to 38,950. How many index points did it advance?",
+      "options": [
+        "50 Points",
+        "5 Points",
+        "500 Points",
+        "0.5 Points"
+      ],
+      "correctAnswer": "50 Points",
+      "explanation": "Stock index CFDs are measured directly in whole index points (38950 - 38900 = 50 points)."
+    },
+    {
+      "id": "blitz_inst_03",
+      "category": "INSTRUMENT",
+      "difficulty": "advanced",
+      "instrument": "NAS100 (Nasdaq)",
+      "startPrice": 17900,
+      "endPrice": 17925,
+      "questionText": "NAS100 rises from 17,900 to 17,925. What is the point movement?",
+      "options": [
+        "25 Points",
+        "2.5 Points",
+        "250 Points",
+        "0.25 Points"
+      ],
+      "correctAnswer": "25 Points",
+      "explanation": "17925 - 17900 = 25 points."
+    },
+    {
+      "id": "blitz_risk_01",
+      "category": "RISK_POSITION",
+      "difficulty": "intermediate",
+      "instrument": "Account Risk Limit",
+      "questionText": "On a $10,000 account, what is the maximum dollar risk permitted under strict 2% risk management?",
+      "options": [
+        "$200",
+        "$100",
+        "$500",
+        "$20"
+      ],
+      "correctAnswer": "$200",
+      "explanation": "$10,000 * 0.02 = $200 maximum risk on a single trade."
+    },
+    {
+      "id": "blitz_risk_02",
+      "category": "RISK_POSITION",
+      "difficulty": "intermediate",
+      "instrument": "Account Risk Limit",
+      "questionText": "On a $5,000 account, what is the max dollar loss under a conservative 1% risk limit?",
+      "options": [
+        "$50",
+        "$100",
+        "$25",
+        "$500"
+      ],
+      "correctAnswer": "$50",
+      "explanation": "$5,000 * 0.01 = $50."
+    },
+    {
+      "id": "blitz_risk_03",
+      "category": "RISK_POSITION",
+      "difficulty": "advanced",
+      "instrument": "Lot Sizing",
+      "questionText": "You want to risk $200 with a 20-pip stop loss on EUR/USD ($10/pip per standard lot). What is the recommended lot size?",
+      "options": [
+        "1.00 Lot (Standard)",
+        "0.10 Lot (Mini)",
+        "2.00 Lots",
+        "0.50 Lot"
+      ],
+      "correctAnswer": "1.00 Lot (Standard)",
+      "explanation": "Lot size = Max Risk ($200) / (Stop Pips (20) * $10) = $200 / $200 = 1.00 standard lot."
+    },
+    {
+      "id": "blitz_risk_04",
+      "category": "RISK_POSITION",
+      "difficulty": "advanced",
+      "instrument": "Lot Sizing",
+      "questionText": "You want to risk $100 with a 25-pip stop loss on GBP/USD ($10/pip per lot). What is the lot size?",
+      "options": [
+        "0.40 Lots",
+        "0.25 Lots",
+        "0.10 Lots",
+        "1.00 Lot"
+      ],
+      "correctAnswer": "0.40 Lots",
+      "explanation": "$100 / (25 pips * $10) = $100 / $250 = 0.40 lots."
+    },
+    {
+      "id": "blitz_risk_05",
+      "category": "RISK_POSITION",
+      "difficulty": "expert",
+      "instrument": "Leverage & Margin",
+      "questionText": "Opening 1.0 standard lot ($100,000 notional) of EUR/USD at 1:50 leverage requires what minimum margin deposit?",
+      "options": [
+        "$2,000",
+        "$1,000",
+        "$5,000",
+        "$10,000"
+      ],
+      "correctAnswer": "$2,000",
+      "explanation": "Required Margin = $100,000 / 50 = $2,000."
+    },
+    {
+      "id": "blitz_risk_06",
+      "category": "RISK_POSITION",
+      "difficulty": "expert",
+      "instrument": "Leverage & Margin",
+      "questionText": "Opening 1.0 standard lot ($100,000 notional) at 1:100 leverage requires how much margin?",
+      "options": [
+        "$1,000",
+        "$2,000",
+        "$500",
+        "$100"
+      ],
+      "correctAnswer": "$1,000",
+      "explanation": "$100,000 / 100 = $1,000."
+    },
+    {
+      "id": "blitz_match_01",
+      "category": "MATCH",
+      "difficulty": "beginner",
+      "questionText": "Which of the following represents the largest pip movement?",
+      "options": [
+        "EUR/USD moving 40 pips",
+        "EUR/USD moving 0.0030",
+        "USD/JPY moving 25 pips",
+        "GBP/USD moving 150 pipettes (15 pips)"
+      ],
+      "correctAnswer": "EUR/USD moving 40 pips",
+      "explanation": "40 pips > 30 pips (0.0030) > 25 pips > 15 pips (150 pipettes)."
+    },
+    {
+      "id": "blitz_match_02",
+      "category": "MATCH",
+      "difficulty": "intermediate",
+      "questionText": "What is 150 pipettes equal to in standard pips?",
+      "options": [
+        "15 Pips",
+        "1.5 Pips",
+        "150 Pips",
+        "0.15 Pips"
+      ],
+      "correctAnswer": "15 Pips",
+      "explanation": "10 pipettes (points) = 1 standard pip. 150 / 10 = 15 pips."
+    },
+    {
+      "id": "blitz_mix_01",
+      "category": "MIXED",
+      "difficulty": "intermediate",
+      "instrument": "EUR/USD",
+      "startPrice": 1.085,
+      "endPrice": 1.0815,
+      "questionText": "EUR/USD falls from 1.0850 to 1.0815. What is the pip decline and vector?",
+      "options": [
+        "35 Pips Bearish",
+        "35 Pips Bullish",
+        "3.5 Pips Bearish",
+        "350 Pips Bearish"
+      ],
+      "correctAnswer": "35 Pips Bearish",
+      "explanation": "1.0850 - 1.0815 = 0.0035 = 35 pips downward (bearish)."
+    },
+    {
+      "id": "blitz_mix_02",
+      "category": "MIXED",
+      "difficulty": "advanced",
+      "instrument": "USD/JPY",
+      "startPrice": 150.8,
+      "endPrice": 151.25,
+      "questionText": "USD/JPY rises from 150.80 to 151.25. What is the pip gain and vector?",
+      "options": [
+        "45 Pips Bullish",
+        "45 Pips Bearish",
+        "4.5 Pips Bullish",
+        "450 Pips Bullish"
+      ],
+      "correctAnswer": "45 Pips Bullish",
+      "explanation": "151.25 - 150.80 = 0.45 = 45 pips upward (bullish)."
+    },
+    {
+      "id": "blitz_mix_03",
+      "category": "MIXED",
+      "difficulty": "advanced",
+      "instrument": "GBP/JPY",
+      "startPrice": 190.2,
+      "endPrice": 189.4,
+      "questionText": "GBP/JPY plummets from 190.20 to 189.40. What is the pip decline and vector?",
+      "options": [
+        "80 Pips Bearish",
+        "80 Pips Bullish",
+        "8 Pips Bearish",
+        "800 Pips Bearish"
+      ],
+      "correctAnswer": "80 Pips Bearish",
+      "explanation": "190.20 - 189.40 = 0.80 = 80 pips downward."
+    },
+    {
+      "id": "blitz_mix_04",
+      "category": "MIXED",
+      "difficulty": "expert",
+      "instrument": "EUR/GBP",
+      "startPrice": 0.855,
+      "endPrice": 0.8585,
+      "questionText": "EUR/GBP rises from 0.8550 to 0.8585. What is the pip expansion and vector?",
+      "options": [
+        "35 Pips Bullish",
+        "35 Pips Bearish",
+        "3.5 Pips Bullish",
+        "350 Pips Bullish"
+      ],
+      "correctAnswer": "35 Pips Bullish",
+      "explanation": "0.8585 - 0.8550 = 0.0035 = 35 pips bullish."
+    },
+    {
+      "id": "blitz_meas_06",
+      "category": "MEASURE",
+      "difficulty": "intermediate",
+      "instrument": "EUR/AUD",
+      "startPrice": 1.642,
+      "endPrice": 1.6495,
+      "questionText": "EUR/AUD climbs from 1.6420 to 1.6495. What is the pip difference?",
+      "options": [
+        "75 Pips",
+        "7.5 Pips",
+        "750 Pips",
+        "0.75 Pips"
+      ],
+      "correctAnswer": "75 Pips",
+      "explanation": "1.6495 - 1.6420 = 0.0075 = 75 pips."
+    },
+    {
+      "id": "blitz_meas_07",
+      "category": "MEASURE",
+      "difficulty": "intermediate",
+      "instrument": "GBP/CAD",
+      "startPrice": 1.71,
+      "endPrice": 1.703,
+      "questionText": "GBP/CAD falls from 1.7100 to 1.7030. What is the pip loss?",
+      "options": [
+        "70 Pips",
+        "7 Pips",
+        "700 Pips",
+        "0.7 Pips"
+      ],
+      "correctAnswer": "70 Pips",
+      "explanation": "1.7100 - 1.7030 = 0.0070 = 70 pips."
+    },
+    {
+      "id": "blitz_jpy_06",
+      "category": "JPY",
+      "difficulty": "advanced",
+      "instrument": "AUD/JPY",
+      "startPrice": 98.4,
+      "endPrice": 97.9,
+      "questionText": "AUD/JPY falls from 98.40 to 97.90. How many pips is this drop?",
+      "options": [
+        "50 Pips",
+        "5 Pips",
+        "500 Pips",
+        "0.5 Pips"
+      ],
+      "correctAnswer": "50 Pips",
+      "explanation": "98.40 - 97.90 = 0.50 = 50 pips."
+    },
+    {
+      "id": "blitz_jpy_07",
+      "category": "JPY",
+      "difficulty": "expert",
+      "instrument": "CHF/JPY",
+      "startPrice": 168.1,
+      "endPrice": 169.25,
+      "questionText": "CHF/JPY advances from 168.10 to 169.25. What is the pip increase?",
+      "options": [
+        "115 Pips",
+        "11.5 Pips",
+        "1,150 Pips",
+        "1.15 Pips"
+      ],
+      "correctAnswer": "115 Pips",
+      "explanation": "169.25 - 168.10 = 1.15 = 115 pips."
+    },
+    {
+      "id": "blitz_frac_05",
+      "category": "PIPETTE",
+      "difficulty": "advanced",
+      "instrument": "NZD/USD",
+      "startPrice": 0.612,
+      "endPrice": 0.61214,
+      "questionText": "NZD/USD shifts from 0.61200 to 0.61214. How many fractional points/pipettes is this?",
+      "options": [
+        "1.4 Pips (14 Points)",
+        "14 Pips",
+        "0.14 Pips",
+        "140 Points"
+      ],
+      "correctAnswer": "1.4 Pips (14 Points)",
+      "explanation": "0.61214 - 0.61200 = 0.00014 = 1.4 pips (14 fractional points)."
+    },
+    {
+      "id": "blitz_risk_07",
+      "category": "RISK_POSITION",
+      "difficulty": "advanced",
+      "instrument": "Position Sizing",
+      "questionText": "With a $25,000 account and a 1% risk limit ($250), what lot size should you use for a 50-pip stop loss on EUR/USD ($10/pip)?",
+      "options": [
+        "0.50 Lots",
+        "1.00 Lot",
+        "0.25 Lots",
+        "2.50 Lots"
+      ],
+      "correctAnswer": "0.50 Lots",
+      "explanation": "$250 / (50 pips * $10) = $250 / $500 = 0.50 lots."
+    },
+    {
+      "id": "blitz_risk_08",
+      "category": "RISK_POSITION",
+      "difficulty": "expert",
+      "instrument": "Account Margin",
+      "questionText": "If your account equity is $5,000 and used margin is $1,500, what is your free margin and margin utilization?",
+      "options": [
+        "$3,500 (30% Utilization)",
+        "$3,500 (70% Utilization)",
+        "$6,500 (30% Utilization)",
+        "$1,500 (50% Utilization)"
+      ],
+      "correctAnswer": "$3,500 (30% Utilization)",
+      "explanation": "Free margin = $5,000 - $1,500 = $3,500. Margin utilization = $1,500 / $5,000 = 30%."
+    },
+    {
+      "id": "blitz_speed_04",
+      "category": "SPEED",
+      "difficulty": "beginner",
+      "instrument": "USD/CAD",
+      "startPrice": 1.36,
+      "endPrice": 1.364,
+      "questionText": "Fast calculation: USD/CAD moves from 1.3600 to 1.3640. How many pips?",
+      "options": [
+        "40 Pips",
+        "4 Pips",
+        "400 Pips",
+        "0.4 Pips"
+      ],
+      "correctAnswer": "40 Pips",
+      "explanation": "1.3640 - 1.3600 = 0.0040 = 40 pips."
+    },
+    {
+      "id": "blitz_meas_08",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "instrument": "EUR/USD",
+      "startPrice": 1.078,
+      "endPrice": 1.084,
+      "questionText": "EUR/USD moves from 1.0780 to 1.0840. What is the pip distance?",
+      "options": [
+        "60 Pips",
+        "6 Pips",
+        "600 Pips",
+        "0.6 Pips"
+      ],
+      "correctAnswer": "60 Pips",
+      "explanation": "1.0840 - 1.0780 = 0.0060 = 60 pips."
+    },
+    {
+      "id": "blitz_meas_09",
+      "category": "MEASURE",
+      "difficulty": "intermediate",
+      "instrument": "GBP/USD",
+      "startPrice": 1.252,
+      "endPrice": 1.2635,
+      "questionText": "GBP/USD climbs from 1.2520 to 1.2635. How many pips did it expand?",
+      "options": [
+        "115 Pips",
+        "11.5 Pips",
+        "1,150 Pips",
+        "1.15 Pips"
+      ],
+      "correctAnswer": "115 Pips",
+      "explanation": "1.2635 - 1.2520 = 0.0115 = 115 pips."
+    },
+    {
+      "id": "blitz_dir_05",
+      "category": "DIRECTION",
+      "difficulty": "beginner",
+      "instrument": "USD/JPY",
+      "startPrice": 151.5,
+      "endPrice": 150.8,
+      "questionText": "USD/JPY drops from 151.50 to 150.80 (-70 pips). What market vector is this?",
+      "options": [
+        "BEARISH (DOWN)",
+        "BULLISH (UP)",
+        "NEUTRAL",
+        "RANGE"
+      ],
+      "correctAnswer": "BEARISH (DOWN)",
+      "explanation": "Price moved down 70 pips (bearish vector)."
+    },
+    {
+      "id": "blitz_dir_06",
+      "category": "DIRECTION",
+      "difficulty": "beginner",
+      "instrument": "AUD/USD",
+      "startPrice": 0.645,
+      "endPrice": 0.652,
+      "questionText": "AUD/USD moves from 0.6450 to 0.6520 (+70 pips). What vector is this?",
+      "options": [
+        "BULLISH (UP)",
+        "BEARISH (DOWN)",
+        "CONSOLIDATION",
+        "FALSE BREAK"
+      ],
+      "correctAnswer": "BULLISH (UP)",
+      "explanation": "Price advanced 70 pips (bullish vector)."
+    },
+    {
+      "id": "blitz_jpy_08",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "instrument": "USD/JPY",
+      "startPrice": 149.8,
+      "endPrice": 150.6,
+      "questionText": "USD/JPY rallies from 149.80 to 150.60. How many JPY pips is this?",
+      "options": [
+        "80 Pips",
+        "8 Pips",
+        "800 Pips",
+        "0.8 Pips"
+      ],
+      "correctAnswer": "80 Pips",
+      "explanation": "150.60 - 149.80 = 0.80 = 80 pips."
+    },
+    {
+      "id": "blitz_jpy_09",
+      "category": "JPY",
+      "difficulty": "advanced",
+      "instrument": "EUR/JPY",
+      "startPrice": 163.5,
+      "endPrice": 162.4,
+      "questionText": "EUR/JPY plummets from 163.50 to 162.40. What is the pip drop?",
+      "options": [
+        "110 Pips",
+        "11 Pips",
+        "1,100 Pips",
+        "1.1 Pips"
+      ],
+      "correctAnswer": "110 Pips",
+      "explanation": "163.50 - 162.40 = 1.10 = 110 pips."
+    },
+    {
+      "id": "blitz_frac_06",
+      "category": "PIPETTE",
+      "difficulty": "intermediate",
+      "instrument": "EUR/USD",
+      "startPrice": 1.082,
+      "endPrice": 1.08225,
+      "questionText": "EUR/USD shifts from 1.08200 to 1.08225. How many pipettes/points is this?",
+      "options": [
+        "2.5 Pips (25 Pipettes)",
+        "25 Pips",
+        "250 Pipettes",
+        "0.25 Pips"
+      ],
+      "correctAnswer": "2.5 Pips (25 Pipettes)",
+      "explanation": "0.00025 = 2.5 pips = 25 pipettes."
+    },
+    {
+      "id": "blitz_risk_07",
+      "category": "RISK_POSITION",
+      "difficulty": "advanced",
+      "instrument": "Lot Sizing",
+      "questionText": "Account: $20,000 | 1% Risk ($200) | Stop: 25 Pips ($10/pip). What is the recommended lot size?",
+      "options": [
+        "0.80 Lots",
+        "0.40 Lots",
+        "1.60 Lots",
+        "1.00 Lot"
+      ],
+      "correctAnswer": "0.80 Lots",
+      "explanation": "$200 / (25 * $10) = $200 / $250 = 0.80 Lots."
+    },
+    {
+      "id": "blitz_risk_08",
+      "category": "RISK_POSITION",
+      "difficulty": "advanced",
+      "instrument": "Lot Sizing",
+      "questionText": "Account: $50,000 | 1% Risk ($500) | Stop: 50 Pips ($10/pip). What is the lot size?",
+      "options": [
+        "1.00 Lot",
+        "2.00 Lots",
+        "0.50 Lots",
+        "5.00 Lots"
+      ],
+      "correctAnswer": "1.00 Lot",
+      "explanation": "$500 / (50 * $10) = $500 / $500 = 1.00 Lot."
+    },
+    {
+      "id": "blitz_inst_04",
+      "category": "INSTRUMENT",
+      "difficulty": "intermediate",
+      "instrument": "XAU/USD (Gold)",
+      "startPrice": 2035,
+      "endPrice": 2042.5,
+      "questionText": "Gold (XAU/USD) advances from $2035.00 to $2042.50. What is the move in dollars and pips?",
+      "options": [
+        "$7.50 Move (75 Pips)",
+        "$75.00 Move",
+        "$0.75 Move",
+        "$750 Move"
+      ],
+      "correctAnswer": "$7.50 Move (75 Pips)",
+      "explanation": "$7.50 / $0.10 per pip = 75 pips."
+    },
+    {
+      "id": "blitz_inst_05",
+      "category": "INSTRUMENT",
+      "difficulty": "intermediate",
+      "instrument": "US30",
+      "startPrice": 38800,
+      "endPrice": 38920,
+      "questionText": "US30 Index rallies from 38,800 to 38,920. How many index points did it gain?",
+      "options": [
+        "120 Points",
+        "12 Points",
+        "1,200 Points",
+        "1.2 Points"
+      ],
+      "correctAnswer": "120 Points",
+      "explanation": "38,920 - 38,800 = 120 index points."
+    },
+    {
+      "id": "blitz_match_03",
+      "category": "MATCH",
+      "difficulty": "intermediate",
+      "questionText": "Which statement is TRUE regarding position sizing and stop loss distance?",
+      "options": [
+        "Wider stop loss distances require smaller lot sizes to maintain fixed dollar risk",
+        "Wider stop loss distances require larger lot sizes",
+        "Stop loss distance has no effect on lot size",
+        "Lot size is always fixed at 1.0 lot"
+      ],
+      "correctAnswer": "Wider stop loss distances require smaller lot sizes to maintain fixed dollar risk",
+      "explanation": "Because Risk ($) = Lots * Stop * $10, increasing stop distance requires decreasing lot size."
+    }
+  ]
+}

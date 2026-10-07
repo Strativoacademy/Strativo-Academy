@@ -1,0 +1,405 @@
+{
+  "version": "1.0.0",
+  "scenarios": [
+    {
+      "id": "lev_scen_01",
+      "lots": 1,
+      "notional": 100000,
+      "leverage": 50,
+      "pair": "EUR/USD",
+      "questionText": "Opening 1.0 standard lot ($100,000 notional) of EUR/USD at 1:50 leverage requires what minimum margin deposit?",
+      "options": [
+        "$2,000",
+        "$1,000",
+        "$5,000",
+        "$10,000"
+      ],
+      "correctAnswer": "$2,000",
+      "explanation": "Required Margin = Notional ($100,000) / Leverage (50) = $2,000 (2.0% of position value)."
+    },
+    {
+      "id": "lev_scen_02",
+      "lots": 1,
+      "notional": 100000,
+      "leverage": 100,
+      "pair": "EUR/USD",
+      "questionText": "Opening 1.0 standard lot ($100,000 notional) at 1:100 leverage requires how much margin?",
+      "options": [
+        "$1,000",
+        "$2,000",
+        "$500",
+        "$100"
+      ],
+      "correctAnswer": "$1,000",
+      "explanation": "$100,000 / 100 = $1,000 (1.0% margin)."
+    },
+    {
+      "id": "lev_scen_03",
+      "lots": 1,
+      "notional": 100000,
+      "leverage": 200,
+      "pair": "EUR/USD",
+      "questionText": "Opening 1.0 standard lot ($100,000 notional) at 1:200 leverage requires what margin?",
+      "options": [
+        "$500",
+        "$1,000",
+        "$250",
+        "$2,000"
+      ],
+      "correctAnswer": "$500",
+      "explanation": "$100,000 / 200 = $500 (0.5% margin)."
+    },
+    {
+      "id": "lev_scen_04",
+      "lots": 1,
+      "notional": 100000,
+      "leverage": 30,
+      "pair": "EUR/USD",
+      "questionText": "Under strict regulatory 1:30 retail leverage, what margin is required for 1.0 standard lot ($100,000)?",
+      "options": [
+        "$3,333.33",
+        "$3,000.00",
+        "$1,500.00",
+        "$5,000.00"
+      ],
+      "correctAnswer": "$3,333.33",
+      "explanation": "$100,000 / 30 = $3,333.33 (3.33% margin requirement)."
+    },
+    {
+      "id": "lev_scen_05",
+      "lots": 1,
+      "notional": 100000,
+      "leverage": 10,
+      "pair": "EUR/USD",
+      "questionText": "At conservative 1:10 institutional leverage, what is required margin for 1.0 lot ($100,000)?",
+      "options": [
+        "$10,000",
+        "$1,000",
+        "$5,000",
+        "$20,000"
+      ],
+      "correctAnswer": "$10,000",
+      "explanation": "$100,000 / 10 = $10,000 (10.0% margin)."
+    },
+    {
+      "id": "lev_scen_06",
+      "lots": 0.1,
+      "notional": 10000,
+      "leverage": 50,
+      "pair": "EUR/USD",
+      "questionText": "Opening 0.10 mini lot ($10,000 notional) at 1:50 leverage requires what margin?",
+      "options": [
+        "$200",
+        "$100",
+        "$500",
+        "$50"
+      ],
+      "correctAnswer": "$200",
+      "explanation": "$10,000 / 50 = $200."
+    },
+    {
+      "id": "lev_scen_07",
+      "lots": 0.5,
+      "notional": 50000,
+      "leverage": 100,
+      "pair": "GBP/USD",
+      "questionText": "Opening 0.50 lots ($50,000 notional) at 1:100 leverage requires how much margin?",
+      "options": [
+        "$500",
+        "$250",
+        "$1,000",
+        "$50"
+      ],
+      "correctAnswer": "$500",
+      "explanation": "$50,000 / 100 = $500."
+    },
+    {
+      "id": "lev_scen_08",
+      "lots": 2,
+      "notional": 200000,
+      "leverage": 50,
+      "pair": "EUR/USD",
+      "questionText": "Opening 2.0 standard lots ($200,000 notional) at 1:50 leverage requires what margin deposit?",
+      "options": [
+        "$4,000",
+        "$2,000",
+        "$10,000",
+        "$1,000"
+      ],
+      "correctAnswer": "$4,000",
+      "explanation": "$200,000 / 50 = $4,000."
+    },
+    {
+      "id": "lev_scen_09",
+      "category": "FREE_MARGIN",
+      "questionText": "Account Equity is $10,000 and Used Margin for open positions is $2,000. What is your Free Margin?",
+      "options": [
+        "$8,000",
+        "$12,000",
+        "$2,000",
+        "$5,000"
+      ],
+      "correctAnswer": "$8,000",
+      "explanation": "Free Margin = Equity ($10,000) - Used Margin ($2,000) = $8,000 available for new positions or drawdown buffer."
+    },
+    {
+      "id": "lev_scen_10",
+      "category": "UTILIZATION",
+      "questionText": "Account Equity is $5,000 and Used Margin is $2,500. What is your Margin Utilization percentage?",
+      "options": [
+        "50%",
+        "25%",
+        "100%",
+        "20%"
+      ],
+      "correctAnswer": "50%",
+      "explanation": "Margin Utilization = (Used Margin / Equity) * 100 = ($2,500 / $5,000) * 100 = 50%."
+    },
+    {
+      "id": "lev_scen_11",
+      "category": "UTILIZATION",
+      "questionText": "Account Equity is $20,000 and Used Margin is $2,000. What is your Margin Utilization percentage?",
+      "options": [
+        "10%",
+        "20%",
+        "5%",
+        "50%"
+      ],
+      "correctAnswer": "10%",
+      "explanation": "($2,000 / $20,000) * 100 = 10% (Healthy, conservative buffer)."
+    },
+    {
+      "id": "lev_scen_12",
+      "category": "NOTIONAL",
+      "questionText": "What is the total Notional Value controlled when buying 2.0 standard lots of EUR/USD at 1.0850?",
+      "options": [
+        "€200,000 ($217,000 USD)",
+        "$20,000",
+        "$2,000",
+        "€20,000"
+      ],
+      "correctAnswer": "€200,000 ($217,000 USD)",
+      "explanation": "2.0 standard lots = 200,000 base currency units (€200,000). At 1.0850, notional is $217,000 USD."
+    },
+    {
+      "id": "lev_scen_13",
+      "category": "MECHANICS",
+      "questionText": "Does using 1:500 high leverage cause market prices to move faster or increase your statistical win rate?",
+      "options": [
+        "No. Leverage only reduces collateral required; pip price movement and probability remain identical",
+        "Yes, 1:500 makes price move 10x faster",
+        "Yes, it increases your win rate",
+        "Yes, it lowers spread fees"
+      ],
+      "correctAnswer": "No. Leverage only reduces collateral required; pip price movement and probability remain identical",
+      "explanation": "Leverage does not change price action. It only reduces collateral requirements and amplifies speed of equity gain or loss."
+    },
+    {
+      "id": "lev_scen_14",
+      "category": "LIQUIDATION",
+      "questionText": "A trader has $1,000 equity, uses $900 in margin, and the market moves 15 pips against a 1.0 lot position (-$150). What happens?",
+      "options": [
+        "Equity drops to $850, triggering Margin Call / Automated Liquidation (Stop-Out)",
+        "The position doubles in size automatically",
+        "The broker loans more margin with zero consequences",
+        "Price automatically bounces"
+      ],
+      "correctAnswer": "Equity drops to $850, triggering Margin Call / Automated Liquidation (Stop-Out)",
+      "explanation": "Because equity drops below required margin ($850 < $900), Margin Level breaches the stop-out threshold and the broker liquidates the trade."
+    },
+    {
+      "id": "lev_scen_15",
+      "category": "THEORY",
+      "questionText": "What is a 'Margin Call' in financial brokerage accounts?",
+      "options": [
+        "A warning that account equity has fallen close to the minimum required margin threshold",
+        "A bonus payout from high leverage",
+        "A call to withdraw profits",
+        "An automated profit-taking order"
+      ],
+      "correctAnswer": "A warning that account equity has fallen close to the minimum required margin threshold",
+      "explanation": "A Margin Call alerts the trader that equity is insufficient to support open positions."
+    },
+    {
+      "id": "lev_scen_16",
+      "category": "THEORY",
+      "questionText": "What is a 'Stop-Out Level' (Automated Liquidation)?",
+      "options": [
+        "The exact margin level percentage at which the broker forcibly closes open positions at market prices",
+        "The level where you take profit",
+        "A discount on trading commissions",
+        "A limit order type"
+      ],
+      "correctAnswer": "The exact margin level percentage at which the broker forcibly closes open positions at market prices",
+      "explanation": "When Margin Level falls below stop-out (e.g. 50%), the broker liquidates trades to protect against negative balances."
+    },
+    {
+      "id": "lev_scen_17",
+      "lots": 3,
+      "notional": 300000,
+      "leverage": 100,
+      "questionText": "Opening 3.0 standard lots ($300,000 notional) at 1:100 leverage requires what margin?",
+      "options": [
+        "$3,000",
+        "$1,500",
+        "$6,000",
+        "$300"
+      ],
+      "correctAnswer": "$3,000",
+      "explanation": "$300,000 / 100 = $3,000."
+    },
+    {
+      "id": "lev_scen_18",
+      "lots": 0.2,
+      "notional": 20000,
+      "leverage": 50,
+      "questionText": "Opening 0.20 lots ($20,000 notional) at 1:50 leverage requires what margin?",
+      "options": [
+        "$400",
+        "$200",
+        "$1,000",
+        "$100"
+      ],
+      "correctAnswer": "$400",
+      "explanation": "$20,000 / 50 = $400."
+    },
+    {
+      "id": "lev_scen_19",
+      "category": "FREE_MARGIN",
+      "questionText": "Account Equity is $15,000 and Used Margin is $3,000. What is your Free Margin?",
+      "options": [
+        "$12,000",
+        "$18,000",
+        "$3,000",
+        "$6,000"
+      ],
+      "correctAnswer": "$12,000",
+      "explanation": "$15,000 - $3,000 = $12,000."
+    },
+    {
+      "id": "lev_scen_20",
+      "category": "UTILIZATION",
+      "questionText": "Account Equity is $10,000 and Used Margin is $1,500. What is your Margin Utilization?",
+      "options": [
+        "15%",
+        "30%",
+        "7.5%",
+        "50%"
+      ],
+      "correctAnswer": "15%",
+      "explanation": "($1,500 / $10,000) * 100 = 15%."
+    },
+    {
+      "id": "lev_scen_21",
+      "lots": 0.5,
+      "notional": 50000,
+      "leverage": 50,
+      "pair": "EUR/USD",
+      "questionText": "Opening 0.50 lots ($50,000 notional) at 1:50 leverage requires what margin?",
+      "options": [
+        "$1,000",
+        "$500",
+        "$2,000",
+        "$250"
+      ],
+      "correctAnswer": "$1,000",
+      "explanation": "$50,000 / 50 = $1,000."
+    },
+    {
+      "id": "lev_scen_22",
+      "lots": 1.5,
+      "notional": 150000,
+      "leverage": 100,
+      "pair": "GBP/USD",
+      "questionText": "Opening 1.50 lots ($150,000 notional) at 1:100 leverage requires how much margin?",
+      "options": [
+        "$1,500",
+        "$3,000",
+        "$750",
+        "$150"
+      ],
+      "correctAnswer": "$1,500",
+      "explanation": "$150,000 / 100 = $1,500."
+    },
+    {
+      "id": "lev_scen_23",
+      "category": "FREE_MARGIN",
+      "questionText": "Account Equity is $8,000 and Used Margin is $1,200. What is your Free Margin?",
+      "options": [
+        "$6,800",
+        "$9,200",
+        "$1,200",
+        "$4,000"
+      ],
+      "correctAnswer": "$6,800",
+      "explanation": "$8,000 - $1,200 = $6,800."
+    },
+    {
+      "id": "lev_scen_24",
+      "category": "MARGIN_LEVEL",
+      "questionText": "If Equity is $2,000 and Used Margin is $1,000, what is your Margin Level percentage?",
+      "options": [
+        "200%",
+        "50%",
+        "100%",
+        "500%"
+      ],
+      "correctAnswer": "200%",
+      "explanation": "Margin Level % = (Equity / Used Margin) * 100 = ($2,000 / $1,000) * 100 = 200%."
+    },
+    {
+      "id": "lev_scen_25",
+      "category": "MARGIN_LEVEL",
+      "questionText": "If Equity drops to $500 while Used Margin is $1,000, what is the Margin Level?",
+      "options": [
+        "50% (Liquidation / Stop-Out Warning)",
+        "100%",
+        "200%",
+        "25%"
+      ],
+      "correctAnswer": "50% (Liquidation / Stop-Out Warning)",
+      "explanation": "($500 / $1,000) * 100 = 50%, which triggers broker automated stop-out."
+    },
+    {
+      "id": "lev_scen_26",
+      "category": "NOTIONAL",
+      "questionText": "What is the notional value of 0.25 standard lots of EUR/USD?",
+      "options": [
+        "€25,000 ($27,125 USD at 1.0850)",
+        "€2,500",
+        "€250,000",
+        "$250"
+      ],
+      "correctAnswer": "€25,000 ($27,125 USD at 1.0850)",
+      "explanation": "0.25 * 100,000 = 25,000 base currency units (€25,000)."
+    },
+    {
+      "id": "lev_scen_27",
+      "category": "THEORY",
+      "questionText": "Why is high leverage considered a 'double-edged sword' by market regulators?",
+      "options": [
+        "It magnifies percentage losses at the exact same rate it magnifies percentage gains",
+        "It charges double spread fees",
+        "It slows execution speed",
+        "It requires dual broker accounts"
+      ],
+      "correctAnswer": "It magnifies percentage losses at the exact same rate it magnifies percentage gains",
+      "explanation": "High leverage allows large positions on small capital; small adverse price moves can rapidly wipe out account equity."
+    },
+    {
+      "id": "lev_scen_28",
+      "lots": 5,
+      "notional": 500000,
+      "leverage": 100,
+      "questionText": "Opening 5.0 standard lots ($500,000 notional) at 1:100 leverage requires what margin?",
+      "options": [
+        "$5,000",
+        "$10,000",
+        "$2,500",
+        "$500"
+      ],
+      "correctAnswer": "$5,000",
+      "explanation": "$500,000 / 100 = $5,000."
+    }
+  ]
+}

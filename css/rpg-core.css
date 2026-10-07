@@ -1,0 +1,687 @@
+/* ==========================================================================
+   STRATIVO WORLD — 2D RPG CORE STYLESHEET
+   Theme: Cyberpunk Trading Metaverse RPG
+   Namespace: .rpg-*
+   ========================================================================== */
+
+:root {
+    --rpg-bg-dark: #030712;
+    --rpg-surface: rgba(15, 23, 42, 0.85);
+    --rpg-surface-border: rgba(255, 255, 255, 0.1);
+    --rpg-neon-cyan: #00F0FF;
+    --rpg-neon-emerald: #00E5A8;
+    --rpg-neon-purple: #A855F7;
+    --rpg-neon-amber: #F59E0B;
+    --rpg-neon-rose: #F43F5E;
+    --rpg-text-main: #F8FAFC;
+    --rpg-text-muted: #94A3B8;
+}
+
+/* ==========================================================================
+   1. RPG PAGE LAYOUT
+   ========================================================================== */
+.rpg-page {
+    min-height: 100vh;
+    background-color: var(--rpg-bg-dark);
+    background-image:
+        radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.08), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(168, 85, 247, 0.08), transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(0, 229, 168, 0.06), transparent 50%),
+        linear-gradient(180deg, #030712 0%, #060d1d 100%);
+    color: var(--rpg-text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.rpg-layout-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+/* ==========================================================================
+   2. TOP HUD BAR
+   ========================================================================== */
+.rpg-top-hud {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--rpg-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--rpg-surface-border);
+    border-radius: 16px;
+    padding: 0.75rem 1.25rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.rpg-hud-player-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rpg-hud-avatar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 229, 168, 0.2));
+    border: 1.5px solid var(--rpg-neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rpg-neon-cyan);
+    font-size: 1.25rem;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+.rpg-hud-player-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.rpg-hud-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rpg-hud-handle {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #FFF;
+    letter-spacing: 0.3px;
+}
+
+.rpg-hud-level-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    background: rgba(0, 229, 168, 0.15);
+    color: var(--rpg-neon-emerald);
+    border: 1px solid rgba(0, 229, 168, 0.4);
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.rpg-hud-rank {
+    font-size: 0.8rem;
+    color: var(--rpg-text-muted);
+}
+
+.rpg-hud-district-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.rpg-district-beacon-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rpg-neon-emerald);
+    box-shadow: 0 0 8px var(--rpg-neon-emerald);
+    animation: rpg-pulse 2s infinite ease-in-out;
+}
+
+@keyframes rpg-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+.rpg-hud-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rpg-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--rpg-surface-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--rpg-text-main);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.rpg-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.rpg-btn-cyan {
+    background: rgba(0, 240, 255, 0.12);
+    border-color: rgba(0, 240, 255, 0.4);
+    color: var(--rpg-neon-cyan);
+}
+
+.rpg-btn-cyan:hover {
+    background: rgba(0, 240, 255, 0.25);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+/* ==========================================================================
+   3. VIEWPORT & CANVAS CONTAINER
+   ========================================================================== */
+.rpg-viewport-wrapper {
+    position: relative;
+    width: 100%;
+    height: 620px;
+    min-height: 480px;
+    max-height: 75vh;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1.5px solid rgba(0, 240, 255, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 240, 255, 0.12);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+
+.rpg-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    outline: none;
+}
+
+/* Scanlines overlay on viewport */
+.rpg-viewport-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.12) 0px,
+        rgba(0, 0, 0, 0.12) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    opacity: 0.5;
+    z-index: 5;
+}
+
+/* ==========================================================================
+   4. INTERACTION FLOATING PROMPT
+   ========================================================================== */
+.rpg-interact-prompt {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(3, 7, 18, 0.92);
+    border: 1.5px solid var(--rpg-neon-cyan);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 0.6rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 8px 30px rgba(0, 240, 255, 0.35);
+    z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
+}
+
+.rpg-interact-prompt.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.rpg-key-badge {
+    background: var(--rpg-neon-cyan);
+    color: #030712;
+    font-weight: 900;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px var(--rpg-neon-cyan);
+}
+
+.rpg-interact-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #FFF;
+}
+
+.rpg-interact-action {
+    font-size: 0.8rem;
+    color: var(--rpg-neon-emerald);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   5. MOBILE TOUCH CONTROLS OVERLAY
+   ========================================================================== */
+.rpg-touch-controls-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.rpg-touch-action-btn {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(0, 229, 168, 0.3));
+    border: 2px solid var(--rpg-neon-cyan);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 240, 255, 0.4);
+    pointer-events: auto;
+    touch-action: none;
+    transition: transform 0.1s ease, background 0.1s ease;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.rpg-touch-action-btn:active {
+    transform: scale(0.92);
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.5), rgba(0, 229, 168, 0.5));
+}
+
+.rpg-touch-action-btn i {
+    font-size: 1.2rem;
+    color: var(--rpg-neon-cyan);
+}
+
+.rpg-mobile-joystick-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    display: none;
+}
+
+@media (pointer: coarse), (max-width: 768px) {
+    .rpg-mobile-joystick-hint {
+        display: block;
+    }
+}
+
+/* ==========================================================================
+   6. DIALOG & INTERACTION MODAL
+   ========================================================================== */
+.rpg-dialog-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(3, 7, 18, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+}
+
+.rpg-dialog-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rpg-dialog-card {
+    background: #0F172A;
+    border: 1.5px solid var(--rpg-neon-cyan);
+    border-radius: 18px;
+    padding: 1.5rem;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.25);
+    transform: scale(0.94);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rpg-dialog-backdrop.active .rpg-dialog-card {
+    transform: scale(1);
+}
+
+.rpg-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.rpg-dialog-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rpg-dialog-body {
+    font-size: 0.9rem;
+    color: var(--rpg-text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.rpg-dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+/* ==========================================================================
+   7. CONTROLS GUIDE & METRICS PANELS
+   ========================================================================== */
+.rpg-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+    .rpg-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.rpg-card {
+    background: var(--rpg-surface);
+    border: 1px solid var(--rpg-surface-border);
+    border-radius: 16px;
+    padding: 1.25rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.rpg-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rpg-controls-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.rpg-control-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--rpg-text-muted);
+}
+
+.rpg-kbd {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--rpg-neon-cyan);
+    font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   8. TRANSITION SCREEN SPINNER
+   ========================================================================== */
+.rpg-transition-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #030712;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.rpg-transition-screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rpg-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(0, 240, 255, 0.15);
+    border-top-color: var(--rpg-neon-cyan);
+    border-radius: 50%;
+    animation: rpg-spin 0.8s linear infinite;
+}
+
+@keyframes rpg-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   9. REUSABLE NPC DIALOGUE SYSTEM OVERLAY
+   ========================================================================== */
+.strativo-dialogue-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 7, 18, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    animation: strativoFadeIn 0.2s ease-out;
+}
+
+.strativo-dialogue-overlay.active {
+    display: flex;
+}
+
+.strativo-dialogue-card {
+    width: 100%;
+    max-width: 680px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.15);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+    animation: strativoSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.strativo-dialogue-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.85rem;
+    position: relative;
+}
+
+.strativo-speaker-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #030712;
+    border: 2px solid var(--rpg-neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+}
+
+.strativo-speaker-meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.strativo-speaker-name {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #FFF;
+    letter-spacing: -0.01em;
+}
+
+.strativo-speaker-role {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--rpg-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.strativo-dialogue-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--rpg-text-muted);
+    font-size: 1.15rem;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.strativo-dialogue-close-btn:hover {
+    color: #FFF;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.strativo-dialogue-body {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #E2E8F0;
+}
+
+.strativo-dialogue-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.85rem;
+}
+
+.strativo-dialogue-btn {
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all 0.15s ease;
+    text-decoration: none;
+}
+
+.strativo-dialogue-btn.primary {
+    background: linear-gradient(135deg, var(--rpg-neon-cyan), #0284c7);
+    color: #030712;
+}
+
+.strativo-dialogue-btn.primary:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+}
+
+.strativo-dialogue-btn.secondary,
+.strativo-dialogue-btn.default {
+    background: rgba(255, 255, 255, 0.08);
+    color: #F8FAFC;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.strativo-dialogue-btn.secondary:hover,
+.strativo-dialogue-btn.default:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFF;
+}
+
+@keyframes strativoFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes strativoSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

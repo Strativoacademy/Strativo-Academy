@@ -1,0 +1,150 @@
+{
+  "version": "1.0.0",
+  "district": "candle-city",
+  "missions": [
+    {
+      "id": "first_light",
+      "title": "First Light",
+      "giver": "mentor_kael",
+      "giverName": "Candle Mentor Kael",
+      "description": "Inspect three different candlestick formations in the Archive or interactive exhibit pods to build your foundational chart literacy.",
+      "category": "exploration",
+      "objective": {
+        "type": "pattern_view",
+        "target": 3,
+        "label": "Patterns Inspected"
+      },
+      "reward": {
+        "xp": 25,
+        "masteryBoost": 5,
+        "title": "Foundational Reader"
+      },
+      "dialogue": {
+        "offered": "Welcome to Candle City, initiate. Price charts speak in candles. Before stepping onto the trading floor, you must learn to read the basic formations. Inspect at least 3 distinct patterns in our Archive or exhibit pods.",
+        "in_progress": "You are making progress. Continue inspecting candle formations across the district. Return to me once you have examined 3 distinct patterns.",
+        "ready_to_claim": "Outstanding work! You have begun deciphering the language of the market. Claim your reward and prepare for deeper drills.",
+        "completed": "You have mastered the First Light drill. Check with Instructor Val at the Blitz Arena when you're ready for speed drills."
+      }
+    },
+    {
+      "id": "rapid_eye",
+      "title": "Rapid Eye",
+      "giver": "instructor_val",
+      "giverName": "Range Instructor Val",
+      "description": "Step into the Candle Blitz Arena and complete one full 10-round candlestick recognition match under time pressure.",
+      "category": "gameplay",
+      "objective": {
+        "type": "blitz_complete",
+        "target": 1,
+        "label": "Blitz Matches Completed"
+      },
+      "reward": {
+        "xp": 30,
+        "masteryBoost": 8,
+        "title": "Rapid Reflexes"
+      },
+      "dialogue": {
+        "offered": "Speed and precision separate real traders from amateurs. Enter the Candle Blitz Arena in the northeast sector and complete a full 10-round match.",
+        "in_progress": "The arena is waiting. Head to the Candle Blitz Terminal and finish all 10 rounds of recognition targets.",
+        "ready_to_claim": "Impressive reaction times! You held your focus under the countdown timer. Here is your combat drill reward.",
+        "completed": "Your reflexes are sharp. Keep practicing in Blitz mode to push your recognition accuracy and combo multipliers even higher."
+      }
+    },
+    {
+      "id": "pattern_hunter",
+      "title": "Pattern Hunter",
+      "giver": "instructor_val",
+      "giverName": "Range Instructor Val",
+      "description": "Correctly identify 10 candlestick patterns across your training drills and arena target sessions.",
+      "category": "recognition",
+      "objective": {
+        "type": "recognition",
+        "target": 10,
+        "label": "Correct Identifications"
+      },
+      "reward": {
+        "xp": 35,
+        "masteryBoost": 10,
+        "title": "Pattern Hunter"
+      },
+      "dialogue": {
+        "offered": "A true hunter never misidentifies their target. Correctly recognize 10 distinct formations during your drills to prove your pattern recall.",
+        "in_progress": "Keep hunting! Lock onto the key features—wicks, bodies, and color biases. Reach 10 correct identifications.",
+        "ready_to_claim": "Target confirmed! 10 accurate identifications locked in. You are developing a disciplined trading eye.",
+        "completed": "10 confirmed targets down! You're ready to tackle more complex multi-candle formations."
+      }
+    },
+    {
+      "id": "candle_scholar",
+      "title": "Candle Scholar",
+      "giver": "mentor_kael",
+      "giverName": "Candle Mentor Kael",
+      "description": "Expand your chart vocabulary by exploring at least 20 unique candlestick patterns in the Master Candlestick Archive.",
+      "category": "mastery",
+      "objective": {
+        "type": "unique_pattern_view",
+        "target": 20,
+        "label": "Unique Formations Explored"
+      },
+      "reward": {
+        "xp": 50,
+        "masteryBoost": 15,
+        "title": "Candle Scholar"
+      },
+      "dialogue": {
+        "offered": "There are 44 canonical candlestick formations in our master encyclopedia. Single candles, dual tweezers, and triple star patterns. Expand your knowledge by studying at least 20 unique formations.",
+        "in_progress": "Knowledge is leverage. Open the Candle Archive and examine single, double, and triple candle setups until you reach 20 patterns.",
+        "ready_to_claim": "Exceptional scholarly dedication! 20 unique patterns committed to memory. Take your World XP and mastery bonus.",
+        "completed": "You are now a recognized Candle Scholar in this district. Continue towards full 44-pattern mastery!"
+      }
+    },
+    {
+      "id": "context_matters",
+      "title": "Context Matters",
+      "giver": "analyst_soren",
+      "giverName": "Market Analyst Soren",
+      "description": "Visit the Context Chamber or Mistake Lab and complete an interactive analysis challenge on trend location and fakeouts.",
+      "category": "analysis",
+      "objective": {
+        "type": "challenge_complete",
+        "target": 1,
+        "label": "Context Analysis Completed"
+      },
+      "reward": {
+        "xp": 30,
+        "masteryBoost": 8,
+        "title": "Context Analyst"
+      },
+      "dialogue": {
+        "offered": "A hammer at resistance is not a buy signal—it's a trap. Patterns only have meaning when read inside macro trend context. Complete a session at the Context Chamber to learn proper confirmation rules.",
+        "in_progress": "Head to the Context Chamber in the southwest sector. Test your ability to separate valid setups from market fakeouts.",
+        "ready_to_claim": "Superb analysis! You understand that location and confluence validate the pattern. Here is your reward.",
+        "completed": "Always check the prevailing trend before pulling the trigger. Context is king."
+      }
+    },
+    {
+      "id": "city_explorer",
+      "title": "City Explorer",
+      "giver": "coordinator_aria",
+      "giverName": "Coordinator Aria",
+      "description": "Physically navigate Candle City and interact with 5 distinct district stations, pods, or arena terminals.",
+      "category": "exploration",
+      "objective": {
+        "type": "interact_locations",
+        "target": 5,
+        "label": "Locations Visited"
+      },
+      "reward": {
+        "xp": 40,
+        "masteryBoost": 10,
+        "title": "District Scout"
+      },
+      "dialogue": {
+        "offered": "Welcome to Strativo World's premier candlestick training ground. Get your bearings by visiting at least 5 different facilities across Candle City.",
+        "in_progress": "Walk the district avenues! Visit the Archive, Recognition Range, Blitz Arena, Context Chamber, and Mistake Lab.",
+        "ready_to_claim": "District mapped! You know every corner of Candle City. Take your Explorer commendation.",
+        "completed": "You know the layout like the back of your hand. Use all facilities to hone your trading edge."
+      }
+    }
+  ]
+}

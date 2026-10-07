@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#030712">
-    <meta name="description" content="Strativo World Hub — Play, Learn, and Master Forex Trading in a gamified interactive learning metaverse.">
+    <meta name="description" content="Strativo World — a parallel trading metaverse where students PLAY + LEARN. Explore connected districts, master price action, and conquer the markets.">
     <meta name="robots" content="noindex">
 
-    <title>Strativo World Hub | Play + Learn + Progress</title>
+    <title>Strativo World | Learn. Play. Compete. Master.</title>
 
     <!-- Global Appearance -->
     <script src="../js/appearance-global.js"></script>
@@ -33,7 +33,7 @@
 <body class="world-hub-page">
 
     <!-- ====================================================================
-         SHARED HEADER MOUNT
+         SHARED ACADEMY HEADER MOUNT
          ==================================================================== -->
     <div data-component="header"></div>
 
@@ -41,63 +41,461 @@
          MAIN WORLD HUB CONTAINER
          ==================================================================== -->
     <main class="world-hub-container" id="main-content">
-
         <!-- ================================================================
-             1. TOP PLAYER COCKPIT
+             HERO WORLD MAP (CONNECTED TRADING WORLD)
              ================================================================ -->
-        <section class="world-player-cockpit" aria-label="Player Status">
-            <div class="cockpit-main">
+        <section class="hero-world-map-section" aria-labelledby="world-map-title">
+            <div class="world-map-frame">
 
-                <!-- Left: Avatar & Identity -->
-                <div class="player-identity-group">
-                    <div class="player-avatar-wrapper">
-                        <div class="player-avatar-box" id="hub-avatar">
-                            <i class="fas fa-user-astronaut" aria-hidden="true"></i>
+                <div class="world-map-header">
+                    <div class="map-title-group" style="display: flex; align-items: center; justify-content: space-between; width: 100%; flex-wrap: wrap; gap: 0.5rem;">
+                        <h2 id="world-map-title" style="margin: 0;">
+                            <i class="fas fa-globe" style="color: var(--sw-neon-emerald);" aria-hidden="true"></i>
+                            <span>Strativo World Map</span>
+                        </h2>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <a href="index.html" style="padding: 4px 12px; font-size: 0.8rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); color: #F59E0B; border-radius: 8px; font-weight: 600;">
+                                <i class="fas fa-gamepad" aria-hidden="true"></i> Game Studio
+                            </a>
+                            <a href="settings.html" style="padding: 4px 12px; font-size: 0.8rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 240, 255, 0.12); border: 1px solid rgba(0, 240, 255, 0.35); color: var(--sw-neon-cyan); border-radius: 8px; font-weight: 600;">
+                                <i class="fas fa-gear" aria-hidden="true"></i> Settings
+                            </a>
+                            <div class="map-beacon-indicator">
+                                <span class="map-beacon-dot" aria-hidden="true"></span>
+                                <span>Connected Orbital Realm</span>
+                            </div>
                         </div>
-                        <span class="player-avatar-badge" id="hub-avatar-level">Lv 1</span>
+                    </div>
+                </div>
+
+                <!-- 4A. DESKTOP INTERACTIVE MAP CANVAS (>= 992px) -->
+                <div class="world-map-canvas">
+
+                    <!-- Glowing SVG Circuit Connecting Lines -->
+                    <svg class="world-map-svg-circuits" viewBox="0 0 1000 820" preserveAspectRatio="none">
+                        <defs>
+                            <filter id="emerald-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="4" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                            <filter id="violet-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="4" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                            <filter id="gold-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="4" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+
+                        <!-- Academy Gate to Avatar Base Camp -->
+                        <path d="M 500 730 L 500 410" class="map-path-line gate-path" />
+
+                        <!-- Avatar Base Camp to Candle City (Active Glowing Circuit) -->
+                        <path d="M 450 410 C 360 410, 300 270, 240 254" class="map-path-line active-emerald" filter="url(#emerald-glow)" />
+
+                        <!-- Avatar Base Camp to Pip District -->
+                        <path d="M 550 410 C 640 410, 700 270, 760 254" class="map-path-line locked-path" />
+
+                        <!-- Avatar Base Camp to Market Arena -->
+                        <path d="M 440 410 C 330 420, 260 435, 190 451" class="map-path-line locked-path" />
+
+                        <!-- Avatar Base Camp to Chart District -->
+                        <path d="M 560 410 C 670 420, 740 435, 810 451" class="map-path-line locked-path" />
+
+                        <!-- Avatar Base Camp to Psychology Zone -->
+                        <path d="M 450 430 C 380 490, 320 545, 280 598" class="map-path-line active-violet" filter="url(#violet-glow)" />
+
+                        <!-- Avatar Base Camp to Risk Lab -->
+                        <path d="M 550 430 C 620 490, 680 545, 720 598" class="map-path-line active-emerald" filter="url(#emerald-glow)" />
+
+                        <!-- Candle City & Pip District to Strategy Fortress Citadel -->
+                        <path d="M 240 220 C 320 145, 420 106, 480 106" class="map-path-line active-gold" filter="url(#gold-glow)" />
+                        <path d="M 760 220 C 680 145, 580 106, 520 106" class="map-path-line active-gold" filter="url(#gold-glow)" />
+                    </svg>
+
+                    <!-- Center Avatar Base Camp Node -->
+                    <div class="map-canvas-node node-avatar-camp">
+                        <div class="avatar-base-camp-card">
+                            <div class="avatar-character-stage">
+                                <img src="images/avatar-fullbody.png" alt="Player Avatar Character" class="avatar-fullbody-img" />
+                            </div>
+                            <div class="avatar-camp-details">
+                                <div class="avatar-camp-header">
+                                    <h3>YOUR AVATAR</h3>
+                                    <span class="avatar-camp-lvl-badge" id="hub-avatar-center-lvl">LVL 1</span>
+                                </div>
+                                <p>🟢 Base Camp • Active</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="player-meta">
-                        <h1 id="hub-player-name">Student</h1>
-                        <div class="player-rank-pill" id="hub-rank-badge">
+                    <!-- 7. Strategy Fortress (Apex Citadel) -->
+                    <div class="map-canvas-node node-strategy-fortress">
+                        <article class="tactical-node-card active-node" data-district="strategy-fortress">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-chess-rook" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE CITADEL</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>7. Strategy Fortress</h3>
+                                <p>Endgame Citadel. Confluence mastery &amp; Apex Throne.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span class="level-indicator">Level 7 • Active</span>
+                                <a href="districts/strategy-fortress.html" class="tactical-node-btn enter-btn">Enter Fortress <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 1. Candle City (Active Starting Zone) -->
+                    <div class="map-canvas-node node-candle-city">
+                        <article class="tactical-node-card unlocked-node" data-district="candle-city">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-fire-flame-curved" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">UNLOCKED</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>1. Candle City</h3>
+                                <p>Read the tape. Master candlestick anatomy.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span class="level-indicator">Level 1 • Active</span>
+                                <a href="districts/candle-city.html" class="tactical-node-btn enter-btn">Enter City <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2. Pip District -->
+                    <div class="map-canvas-node node-pip-district">
+                        <article class="tactical-node-card active-node" data-district="pip-district">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">UNLOCKED</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>2. Pip District</h3>
+                                <p>Master lot sizing, price distance &amp; precision mechanics.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span class="level-indicator">Level 2 • Active</span>
+                                <a href="districts/pip-district.html" class="tactical-node-btn enter-btn">Enter District <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 3. Market Arena -->
+                    <div class="map-canvas-node node-market-arena">
+                        <article class="tactical-node-card active-node" data-district="market-arena">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>3. Market Arena</h3>
+                                <p>Market Structure, Swings, Trends &amp; Breakouts.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span><i class="fas fa-satellite-dish" aria-hidden="true"></i> Online • District 3</span>
+                                <a href="districts/market-arena.html" class="tactical-node-btn active-btn">Enter District</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 4. Chart District -->
+                    <div class="map-canvas-node node-chart-district">
+                        <article class="tactical-node-card active-node" data-district="chart-district">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-chart-simple" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>4. Chart District</h3>
+                                <p>Read the whole chart: Swings, Structure, Multi-Timeframe &amp; Replay.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span class="level-indicator">Level 4 • Active</span>
+                                <a href="districts/chart-district.html" class="tactical-node-btn enter-btn">Enter District <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 5. Risk Lab -->
+                    <div class="map-canvas-node node-risk-lab">
+                        <article class="tactical-node-card active-node" data-district="risk-lab">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>5. Risk Lab</h3>
+                                <p>Position Sizing, R:R, Expectancy &amp; Drawdown Survival.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span class="level-indicator">Level 5 • Active</span>
+                                <a href="districts/risk-lab.html" class="tactical-node-btn enter-btn">Enter District <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 6. Psychology Zone -->
+                    <div class="map-canvas-node node-psychology-zone">
+                        <article class="tactical-node-card active-node" data-district="psychology-zone">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>6. Psychology Zone</h3>
+                                <p>Emotional Discipline, Tilt Defense &amp; Mind Fortress.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span class="level-indicator">Level 6 • Active</span>
+                                <a href="districts/psychology-zone.html" class="tactical-node-btn enter-btn">Enter Zone <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Academy Gateway (South Portal) -->
+                    <div class="map-canvas-node node-academy-gate">
+                        <a href="../index.html" class="tactical-gateway-node" data-route="home" title="Return to Strativo Academy">
+                            <div class="gateway-icon"><i class="fas fa-door-open" aria-hidden="true"></i></div>
+                            <div class="gateway-text">
+                                <span>ACADEMY GATE</span>
+                                <small>Main Campus</small>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- 4B. MOBILE / TABLET ADAPTIVE VERTICAL MAP (< 992px) -->
+                <div class="world-map-mobile-stack">
+
+                    <!-- Academy Gateway -->
+                    <div class="mobile-map-node-wrapper">
+                        <a href="../index.html" class="mobile-gateway-card" data-route="home" title="Return to Strativo Academy">
+                            <div class="gateway-icon"><i class="fas fa-door-open" aria-hidden="true"></i></div>
+                            <div class="gateway-text">
+                                <h3>ACADEMY GATEWAY</h3>
+                                <p>Main Campus Entrance • Connected</p>
+                            </div>
+                            <span class="gateway-status-pill">Connected</span>
+                        </a>
+                    </div>
+
+                    <div class="mobile-map-spine-connector" aria-hidden="true"><span class="spine-arrow-badge"><i class="fas fa-chevron-down"></i></span></div>
+
+                    <!-- Center Avatar Base Camp -->
+                    <div class="mobile-map-node-wrapper">
+                        <div class="mobile-avatar-camp-card">
+                            <div class="avatar-character-stage mobile-stage">
+                                <img src="images/avatar-fullbody.png" alt="Player Avatar Character" class="avatar-fullbody-img" />
+                            </div>
+                            <div class="avatar-camp-details">
+                                <div class="avatar-camp-header">
+                                    <h3>YOUR AVATAR</h3>
+                                    <span class="avatar-camp-lvl-badge" id="hub-avatar-mobile-lvl">LVL 1</span>
+                                </div>
+                                <p>🟢 Base Camp • Active</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-map-spine-connector" aria-hidden="true"><span class="spine-arrow-badge active-glow"><i class="fas fa-chevron-down"></i></span></div>
+
+                    <!-- 1. Candle City -->
+                    <div class="mobile-map-node-wrapper">
+                        <article class="tactical-node-card unlocked-node mobile-node" data-district="candle-city">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-fire-flame-curved" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">UNLOCKED</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>1. Candle City</h3>
+                                <p>Read the tape. Master candlestick anatomy &amp; price action.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span class="level-indicator">Level 1 • Active</span>
+                                <a href="districts/candle-city.html" class="tactical-node-btn enter-btn">Enter City <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mobile-map-spine-connector" aria-hidden="true"><span class="spine-arrow-badge"><i class="fas fa-chevron-down"></i></span></div>
+
+                    <!-- 2. Pip District -->
+                    <div class="mobile-map-node-wrapper">
+                        <article class="tactical-node-card active-node mobile-node" data-district="pip-district">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">UNLOCKED</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>2. Pip District</h3>
+                                <p>Master lot sizing, price distance &amp; precision pip mechanics.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span class="level-indicator">Level 2 • Active</span>
+                                <a href="districts/pip-district.html" class="tactical-node-btn enter-btn">Enter District <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mobile-map-spine-connector" aria-hidden="true"><span class="spine-arrow-badge"><i class="fas fa-chevron-down"></i></span></div>
+
+                    <!-- 3. Market Arena -->
+                    <div class="mobile-map-node-wrapper">
+                        <article class="tactical-node-card active-node mobile-node" data-district="market-arena">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>3. Market Arena</h3>
+                                <p>Market Structure, Swings, Trends &amp; Breakouts.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span><i class="fas fa-satellite-dish" aria-hidden="true"></i> Online • District 3</span>
+                                <a href="districts/market-arena.html" class="tactical-node-btn active-btn">Enter District</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mobile-map-spine-connector" aria-hidden="true"><span class="spine-arrow-badge"><i class="fas fa-chevron-down"></i></span></div>
+
+                    <!-- 4. Chart District -->
+                    <div class="mobile-map-node-wrapper">
+                        <article class="tactical-node-card active-node mobile-node" data-district="chart-district">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-chart-simple" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag">ACTIVE SECTOR</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>4. Chart District</h3>
+                                <p>Support, resistance, &amp; structural chart dynamics.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span><i class="fas fa-signal" aria-hidden="true"></i> Open 24/7</span>
+                                <a href="districts/chart-district.html" class="tactical-node-btn enter-btn">Enter District <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mobile-map-spine-connector" aria-hidden="true"><span class="spine-arrow-badge"><i class="fas fa-chevron-down"></i></span></div>
+
+                    <!-- 5. Risk Lab -->
+                    <div class="mobile-map-node-wrapper">
+                        <article class="tactical-node-card active-node mobile-node" data-district="risk-lab">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>5. Risk Lab</h3>
+                                <p>Position sizing, R:R, expectancy &amp; capital drawdown defense.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span><i class="fas fa-shield-halved" aria-hidden="true"></i> Active • District 5</span>
+                                <a href="districts/risk-lab.html" class="tactical-node-btn enter-btn">Enter District <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mobile-map-spine-connector" aria-hidden="true"><span class="spine-arrow-badge"><i class="fas fa-chevron-down"></i></span></div>
+
+                    <!-- 6. Psychology Zone -->
+                    <div class="mobile-map-node-wrapper">
+                        <article class="tactical-node-card active-node mobile-node" data-district="psychology-zone">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>6. Psychology Zone</h3>
+                                <p>Emotional discipline, tilt defense &amp; Mind Fortress training.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span><i class="fas fa-brain" aria-hidden="true"></i> Active • District 6</span>
+                                <a href="districts/psychology-zone.html" class="tactical-node-btn enter-btn">Enter Zone <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mobile-map-spine-connector" aria-hidden="true"><span class="spine-arrow-badge"><i class="fas fa-chevron-down"></i></span></div>
+
+                    <!-- 7. Strategy Fortress -->
+                    <div class="mobile-map-node-wrapper">
+                        <article class="tactical-node-card active-node mobile-node" data-district="strategy-fortress">
+                            <div class="tactical-node-header">
+                                <div class="tactical-node-icon"><i class="fas fa-chess-rook" aria-hidden="true"></i></div>
+                                <span class="tactical-node-tag active-tag">ACTIVE</span>
+                            </div>
+                            <div class="tactical-node-body">
+                                <h3>7. Strategy Fortress</h3>
+                                <p>Endgame Citadel. Confluence mastery &amp; Apex Throne.</p>
+                            </div>
+                            <div class="tactical-node-footer">
+                                <span><i class="fas fa-chess-rook" aria-hidden="true"></i> Active • District 7</span>
+                                <a href="districts/strategy-fortress.html" class="tactical-node-btn enter-btn">Enter Fortress <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================================================================
+             ZONE D: PLAYER OVERVIEW COCKPIT
+             ================================================================ -->
+        <section class="world-player-overview-card" aria-label="Player Status Overview">
+            <div class="cockpit-grid-row">
+
+                <!-- Profile Info -->
+                <div class="cockpit-profile-summary">
+                    <div class="cockpit-avatar-icon" id="hub-avatar">
+                        <i class="fas fa-user-astronaut" aria-hidden="true"></i>
+                    </div>
+                    <div class="cockpit-profile-info">
+                        <h3 id="hub-player-name">Student</h3>
+                        <div class="cockpit-rank-tag">
                             <i class="fas fa-shield-halved" aria-hidden="true"></i>
                             <span id="hub-rank-title">Novice Chartist</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Center: XP Progress Bar -->
-                <div class="cockpit-xp-block">
-                    <div class="xp-header-row">
-                        <span class="xp-level-badge">
-                            <i class="fas fa-bolt" aria-hidden="true"></i>
-                            <span id="hub-level-text">Level 1</span>
-                        </span>
-                        <span class="xp-count-label">
+                <!-- XP Bar & Detailed Metrics -->
+                <div class="cockpit-xp-container">
+                    <div class="cockpit-xp-meta">
+                        <span class="cockpit-xp-level" id="hub-level-text">Level 1</span>
+                        <span class="cockpit-xp-counts">
                             <strong id="hub-current-xp">0</strong> / <span id="hub-next-xp">100</span> XP
                         </span>
                     </div>
 
-                    <div class="xp-progress-track" role="progressbar" aria-label="XP to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="hub-xp-track">
-                        <div class="xp-progress-fill" id="hub-xp-fill"></div>
+                    <div class="cockpit-xp-track" role="progressbar" aria-label="XP to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="hub-xp-track">
+                        <div class="cockpit-xp-fill" id="hub-xp-fill"></div>
                     </div>
-                </div>
 
-                <!-- Right: Quick Stat Chips -->
-                <div class="cockpit-stats-group">
-                    <div class="cockpit-stat-chip">
-                        <i class="fas fa-fire cockpit-stat-icon flame" aria-hidden="true"></i>
-                        <div class="cockpit-stat-text">
-                            <span class="cockpit-stat-title">Streak</span>
-                            <span class="cockpit-stat-val" id="hub-streak-val">0 Days</span>
+                    <div class="cockpit-stats-matrix">
+                        <div class="matrix-stat-item">
+                            <span class="lbl">Current Streak</span>
+                            <strong class="val" id="matrix-current-streak">0 Days</strong>
                         </div>
-                    </div>
-
-                    <div class="cockpit-stat-chip">
-                        <i class="fas fa-medal cockpit-stat-icon trophy" aria-hidden="true"></i>
-                        <div class="cockpit-stat-text">
-                            <span class="cockpit-stat-title">Badges</span>
-                            <span class="cockpit-stat-val" id="hub-badge-val">0 / 5</span>
+                        <div class="matrix-stat-item">
+                            <span class="lbl">Best Streak</span>
+                            <strong class="val" id="matrix-best-streak">0 Days</strong>
+                        </div>
+                        <div class="matrix-stat-item">
+                            <span class="lbl">Districts Open</span>
+                            <strong class="val" id="matrix-districts-open">7 / 7</strong>
+                        </div>
+                        <div class="matrix-stat-item">
+                            <span class="lbl">Games Played</span>
+                            <strong class="val" id="matrix-games-played">0</strong>
                         </div>
                     </div>
                 </div>
@@ -106,236 +504,85 @@
         </section>
 
         <!-- ================================================================
-             2. PLAY MODE PORTALS (SOLO & MULTIPLAYER)
+             ZONE F: MISSIONS & QUESTS
              ================================================================ -->
-        <section class="world-portals-section" aria-label="Play Modes">
-
-            <!-- Solo Mode Portal -->
-            <article class="portal-card solo-portal">
-                <div class="portal-badge-row">
-                    <span class="portal-type-badge">
-                        <i class="fas fa-gamepad" aria-hidden="true"></i> Solo World
-                    </span>
-                    <span class="portal-status-tag">
-                        <i class="fas fa-clock" aria-hidden="true"></i> Phase 2 Coming Soon
-                    </span>
-                </div>
-
-                <div class="portal-content">
-                    <h2>Practice, Train &amp; Master</h2>
-                    <p>Challenge timed speed drills, candlestick recognition blitzes, and risk management scenario simulators.</p>
-                </div>
-
-                <button type="button" class="portal-btn btn-solo" id="btn-enter-solo">
-                    <i class="fas fa-gamepad" aria-hidden="true"></i>
-                    <span>SOLO (COMING SOON)</span>
-                </button>
-            </article>
-
-            <!-- Multiplayer Mode Portal -->
-            <article class="portal-card multiplayer-portal">
-                <div class="portal-badge-row">
-                    <span class="portal-type-badge">
-                        <i class="fas fa-swords" aria-hidden="true"></i> Multiplayer Arena
-                    </span>
-                    <span class="portal-status-tag">
-                        <i class="fas fa-clock" aria-hidden="true"></i> Phase 2 Coming Soon
-                    </span>
-                </div>
-
-                <div class="portal-content">
-                    <h2>Head-to-Head Chart Duels</h2>
-                    <p>Compete with other learners in asynchronous chart battles, speed pip math duels, and global tournaments.</p>
-                </div>
-
-                <button type="button" class="portal-btn btn-multiplayer" id="btn-enter-multiplayer">
-                    <i class="fas fa-users" aria-hidden="true"></i>
-                    <span>MULTIPLAYER</span>
-                </button>
-            </article>
-
-        </section>
-
-        <!-- ================================================================
-             3. WORLD MAP — 7 DISTRICTS
-             ================================================================ -->
-        <section class="world-districts-section" aria-labelledby="world-map-title">
+        <section class="world-missions-section" aria-labelledby="missions-title">
             <div class="world-section-header">
                 <div class="section-title-group">
-                    <span class="section-eyebrow">WORLD MAP</span>
-                    <h2 id="world-map-title">Strativo Districts</h2>
+                    <span class="section-eyebrow">OBJECTIVES</span>
+                    <h2 id="missions-title">Missions &amp; Quests</h2>
                 </div>
-                <span class="section-hint">Explore and unlock trading realms</span>
+                <span class="section-hint">Complete measurable activities to earn World XP</span>
             </div>
 
-            <div class="world-map-grid">
+            <div class="missions-grid">
 
-                <!-- 1. Candle City (UNLOCKED) -->
-                <article class="district-card is-unlocked" id="district-candle-city">
-                    <div class="district-top">
-                        <div class="district-icon-box">
-                            <i class="fas fa-fire-flame-curved" aria-hidden="true"></i>
+                <!-- Daily Mission -->
+                <article class="mission-card active">
+                    <div class="mission-header">
+                        <span class="mission-type-tag">Daily Mission</span>
+                        <span class="mission-reward-badge">+20 World XP</span>
+                    </div>
+
+                    <div class="mission-content">
+                        <h3>Daily Activity</h3>
+                        <p>Complete at least 1 learning activity or lesson in the Academy today.</p>
+                    </div>
+
+                    <div class="mission-progress-row">
+                        <div class="mission-progress-track">
+                            <div class="mission-progress-fill" id="mission-daily-fill" style="width: 0%;"></div>
                         </div>
-                        <span class="district-badge">UNLOCKED</span>
-                    </div>
-
-                    <div class="district-info">
-                        <h3>1. Candle City</h3>
-                        <p>Master price action, candlestick anatomy, and multi-bar patterns under real market pressure.</p>
-                    </div>
-
-                    <div class="district-footer">
-                        <span class="district-unlock-req">
-                            <i class="fas fa-check-circle" style="color: #00E5A8;"></i> Available
-                        </span>
-                        <button type="button" class="district-action-btn" data-district="candle-city">
-                            <span>Enter</span>
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </button>
+                        <div class="mission-progress-label">
+                            <span>Progress</span>
+                            <span id="mission-daily-label">0 / 1 Completed</span>
+                        </div>
                     </div>
                 </article>
 
-                <!-- 2. Pip District (LOCKED) -->
-                <article class="district-card is-locked" id="district-pip-district">
-                    <div class="district-top">
-                        <div class="district-icon-box">
-                            <i class="fas fa-calculator" aria-hidden="true"></i>
+                <!-- Weekly Quest -->
+                <article class="mission-card">
+                    <div class="mission-header">
+                        <span class="mission-type-tag">Weekly Quest</span>
+                        <span class="mission-reward-badge">+100 World XP</span>
+                    </div>
+
+                    <div class="mission-content">
+                        <h3>Streak Builder</h3>
+                        <p>Build and maintain a 5-day continuous learning streak.</p>
+                    </div>
+
+                    <div class="mission-progress-row">
+                        <div class="mission-progress-track">
+                            <div class="mission-progress-fill" id="mission-weekly-fill" style="width: 0%;"></div>
                         </div>
-                        <span class="district-badge">LOCKED</span>
-                    </div>
-
-                    <div class="district-info">
-                        <h3>2. Pip District</h3>
-                        <p>High-velocity lot sizing, stop loss distances, and pip value calculation drills.</p>
-                    </div>
-
-                    <div class="district-footer">
-                        <span class="district-unlock-req">
-                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 3
-                        </span>
-                        <button type="button" class="district-action-btn" data-district="pip-district">
-                            <span>Locked</span>
-                        </button>
+                        <div class="mission-progress-label">
+                            <span>Progress</span>
+                            <span id="mission-weekly-label">0 / 5 Days</span>
+                        </div>
                     </div>
                 </article>
 
-                <!-- 3. Market Arena (LOCKED) -->
-                <article class="district-card is-locked" id="district-market-arena">
-                    <div class="district-top">
-                        <div class="district-icon-box">
-                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                <!-- World Quest -->
+                <article class="mission-card completed">
+                    <div class="mission-header">
+                        <span class="mission-type-tag">World Quest</span>
+                        <span class="mission-reward-badge">+50 World XP</span>
+                    </div>
+
+                    <div class="mission-content">
+                        <h3>Frontier Pioneer</h3>
+                        <p>Unlock your first trading district in Strativo World.</p>
+                    </div>
+
+                    <div class="mission-progress-row">
+                        <div class="mission-progress-track">
+                            <div class="mission-progress-fill" style="width: 100%;"></div>
                         </div>
-                        <span class="district-badge">LOCKED</span>
-                    </div>
-
-                    <div class="district-info">
-                        <h3>3. Market Arena</h3>
-                        <p>Order flow timing, bid/ask spreads, and live liquidity execution challenges.</p>
-                    </div>
-
-                    <div class="district-footer">
-                        <span class="district-unlock-req">
-                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 5
-                        </span>
-                        <button type="button" class="district-action-btn" data-district="market-arena">
-                            <span>Locked</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- 4. Chart District (LOCKED) -->
-                <article class="district-card is-locked" id="district-chart-district">
-                    <div class="district-top">
-                        <div class="district-icon-box">
-                            <i class="fas fa-chart-simple" aria-hidden="true"></i>
+                        <div class="mission-progress-label">
+                            <span style="color: var(--sw-neon-emerald);"><i class="fas fa-check"></i> Unlocked</span>
+                            <span>1 / 1 District</span>
                         </div>
-                        <span class="district-badge">LOCKED</span>
-                    </div>
-
-                    <div class="district-info">
-                        <h3>4. Chart District</h3>
-                        <p>Chart patterns, breakout identification, and multi-timeframe structural mapping.</p>
-                    </div>
-
-                    <div class="district-footer">
-                        <span class="district-unlock-req">
-                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 7
-                        </span>
-                        <button type="button" class="district-action-btn" data-district="chart-district">
-                            <span>Locked</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- 5. Risk Lab (LOCKED) -->
-                <article class="district-card is-locked" id="district-risk-lab">
-                    <div class="district-top">
-                        <div class="district-icon-box">
-                            <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                        </div>
-                        <span class="district-badge">LOCKED</span>
-                    </div>
-
-                    <div class="district-info">
-                        <h3>5. Risk Lab</h3>
-                        <p>Capital preservation, risk-to-reward optimization, and drawdown survival gauntlets.</p>
-                    </div>
-
-                    <div class="district-footer">
-                        <span class="district-unlock-req">
-                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 9
-                        </span>
-                        <button type="button" class="district-action-btn" data-district="risk-lab">
-                            <span>Locked</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- 6. Psychology Zone (LOCKED) -->
-                <article class="district-card is-locked" id="district-psychology-zone">
-                    <div class="district-top">
-                        <div class="district-icon-box">
-                            <i class="fas fa-brain" aria-hidden="true"></i>
-                        </div>
-                        <span class="district-badge">LOCKED</span>
-                    </div>
-
-                    <div class="district-info">
-                        <h3>6. Psychology Zone</h3>
-                        <p>Emotional discipline, overcoming FOMO, revenge trading filters, and mindset mastery.</p>
-                    </div>
-
-                    <div class="district-footer">
-                        <span class="district-unlock-req">
-                            <i class="fas fa-lock" aria-hidden="true"></i> Requires Lesson 10
-                        </span>
-                        <button type="button" class="district-action-btn" data-district="psychology-zone">
-                            <span>Locked</span>
-                        </button>
-                    </div>
-                </article>
-
-                <!-- 7. Strategy Fortress (LOCKED) -->
-                <article class="district-card is-locked featured-fortress" id="district-strategy-fortress">
-                    <div class="district-top">
-                        <div class="district-icon-box">
-                            <i class="fas fa-chess-rook" aria-hidden="true"></i>
-                        </div>
-                        <span class="district-badge">LOCKED</span>
-                    </div>
-
-                    <div class="district-info">
-                        <h3>7. Strategy Fortress</h3>
-                        <p>The ultimate endgame fortress. Combine confluence, backtesting, and full execution strategy.</p>
-                    </div>
-
-                    <div class="district-footer">
-                        <span class="district-unlock-req">
-                            <i class="fas fa-lock" aria-hidden="true"></i> Master All Modules
-                        </span>
-                        <button type="button" class="district-action-btn" data-district="strategy-fortress">
-                            <span>Locked</span>
-                        </button>
                     </div>
                 </article>
 
@@ -343,15 +590,15 @@
         </section>
 
         <!-- ================================================================
-             4. SKILL MASTERY PROGRESS MATRIX
+             ZONE E: SKILL MASTERY
              ================================================================ -->
         <section class="world-mastery-section" aria-labelledby="mastery-title">
             <div class="world-section-header">
                 <div class="section-title-group">
-                    <span class="section-eyebrow">SKILL RADAR</span>
+                    <span class="section-eyebrow">RADAR MATRIX</span>
                     <h2 id="mastery-title">Skill Mastery</h2>
                 </div>
-                <span class="section-hint">Performance across core trading disciplines</span>
+                <span class="section-hint">Performance across 6 core trading disciplines</span>
             </div>
 
             <div class="mastery-grid">
@@ -468,50 +715,219 @@
         </section>
 
         <!-- ================================================================
-             5. STREAK TRACKER & ACHIEVEMENTS SHOWCASE
+             ZONE G: GAME MODE PORTALS (SOLO & MULTIPLAYER)
              ================================================================ -->
-        <section class="world-two-column-layout">
+        <section class="world-portals-section" aria-label="Game Mode Portals">
 
-            <!-- Weekly Activity & Streak -->
-            <div class="hub-panel-box">
-                <h3>
-                    <i class="fas fa-calendar-check" style="color: #f59e0b;" aria-hidden="true"></i>
-                    <span>Streak &amp; Activity</span>
-                </h3>
+            <!-- Solo Mode Portal -->
+            <article class="portal-card solo-portal">
+                <div class="portal-badge-row">
+                    <span class="portal-type-badge">
+                        <i class="fas fa-gamepad" aria-hidden="true"></i> Solo World
+                    </span>
+                    <span class="portal-status-tag">
+                        <i class="fas fa-clock" aria-hidden="true"></i> Phase 2 — Coming Soon
+                    </span>
+                </div>
 
-                <div class="streak-tracker-content">
-                    <div class="streak-hero-display">
-                        <div class="streak-big-stat">
-                            <i class="fas fa-fire streak-flame-icon" aria-hidden="true"></i>
-                            <div class="streak-numbers">
-                                <strong id="hub-streak-number">0 Days</strong>
-                                <span>Current Learning Streak</span>
-                            </div>
+                <div class="portal-content">
+                    <h2>Practice, Train &amp; Master</h2>
+                    <p>Challenge timed speed drills, candlestick recognition blitzes, and risk management scenario simulators.</p>
+                </div>
+
+                <button type="button" class="portal-btn btn-solo" id="btn-enter-solo">
+                    <i class="fas fa-play" aria-hidden="true"></i>
+                    <span>ENTER SOLO</span>
+                </button>
+            </article>
+
+            <!-- Multiplayer Mode Portal -->
+            <article class="portal-card multiplayer-portal">
+                <div class="portal-badge-row">
+                    <span class="portal-type-badge">
+                        <i class="fas fa-swords" aria-hidden="true"></i> Multiplayer Arena
+                    </span>
+                    <span class="portal-status-tag">
+                        <i class="fas fa-shield-halved" aria-hidden="true"></i> Future Feature
+                    </span>
+                </div>
+
+                <div class="portal-content">
+                    <h2>Compete With Other Learners</h2>
+                    <p>Challenge peers in asynchronous chart battles, speed pip math duels, and scheduled academy tournaments.</p>
+                </div>
+
+                <button type="button" class="portal-btn btn-multiplayer" id="btn-enter-multiplayer">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <span>MULTIPLAYER</span>
+                </button>
+            </article>
+
+        </section>
+
+        <!-- ================================================================
+             ZONE J: YOUR TRADING JOURNEY (PROGRESSION PATH)
+             ================================================================ -->
+        <section class="world-journey-section" aria-labelledby="journey-title">
+            <div class="world-section-header">
+                <div class="section-title-group">
+                    <span class="section-eyebrow">ROADMAP</span>
+                    <h2 id="journey-title">Your Trading Journey</h2>
+                </div>
+                <span class="section-hint">Progressive mastery pathway from novice to master</span>
+            </div>
+
+            <div class="journey-track-wrapper">
+                <div class="journey-steps-row">
+                    <div class="journey-node-step active">
+                        <div class="journey-step-circle"><i class="fas fa-book-open"></i></div>
+                        <div class="journey-step-text">
+                            <strong>Forex Basics</strong>
+                            <span>Academy</span>
                         </div>
-                        <span class="streak-best-badge" id="hub-best-streak">Best: 0 Days</span>
                     </div>
+                    <span class="journey-connector-arrow"><i class="fas fa-chevron-right"></i></span>
 
-                    <div class="streak-week-row" id="hub-week-row">
-                        <div class="streak-day-item"><span class="day-label">M</span><div class="day-dot" data-day="1"><i class="fas fa-check" aria-hidden="true"></i></div></div>
-                        <div class="streak-day-item"><span class="day-label">T</span><div class="day-dot" data-day="2"><i class="fas fa-check" aria-hidden="true"></i></div></div>
-                        <div class="streak-day-item"><span class="day-label">W</span><div class="day-dot" data-day="3"><i class="fas fa-check" aria-hidden="true"></i></div></div>
-                        <div class="streak-day-item"><span class="day-label">T</span><div class="day-dot" data-day="4"><i class="fas fa-check" aria-hidden="true"></i></div></div>
-                        <div class="streak-day-item"><span class="day-label">F</span><div class="day-dot" data-day="5"><i class="fas fa-check" aria-hidden="true"></i></div></div>
-                        <div class="streak-day-item"><span class="day-label">S</span><div class="day-dot" data-day="6"><i class="fas fa-check" aria-hidden="true"></i></div></div>
-                        <div class="streak-day-item"><span class="day-label">S</span><div class="day-dot" data-day="0"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                    <div class="journey-node-step active">
+                        <div class="journey-step-circle"><i class="fas fa-fire-flame-curved"></i></div>
+                        <div class="journey-step-text">
+                            <strong>Candle City</strong>
+                            <span>Unlocked</span>
+                        </div>
+                    </div>
+                    <span class="journey-connector-arrow"><i class="fas fa-chevron-right"></i></span>
+
+                    <div class="journey-node-step active">
+                        <div class="journey-step-circle"><i class="fas fa-calculator"></i></div>
+                        <div class="journey-step-text">
+                            <strong>Pip District</strong>
+                            <span>Unlocked</span>
+                        </div>
+                    </div>
+                    <span class="journey-connector-arrow"><i class="fas fa-chevron-right"></i></span>
+
+                    <div class="journey-node-step active">
+                        <div class="journey-step-circle"><i class="fas fa-chart-line"></i></div>
+                        <div class="journey-step-text">
+                            <strong>Market Arena</strong>
+                            <span>Unlocked</span>
+                        </div>
+                    </div>
+                    <span class="journey-connector-arrow"><i class="fas fa-chevron-right"></i></span>
+
+                    <div class="journey-node-step active">
+                        <div class="journey-step-circle"><i class="fas fa-chart-simple"></i></div>
+                        <div class="journey-step-text">
+                            <strong>Chart District</strong>
+                            <span>Unlocked</span>
+                        </div>
+                    </div>
+                    <span class="journey-connector-arrow"><i class="fas fa-chevron-right"></i></span>
+
+                    <div class="journey-node-step active">
+                        <div class="journey-step-circle"><i class="fas fa-shield-halved"></i></div>
+                        <div class="journey-step-text">
+                            <strong>Risk Lab</strong>
+                            <span>Unlocked</span>
+                        </div>
+                    </div>
+                    <span class="journey-connector-arrow"><i class="fas fa-chevron-right"></i></span>
+
+                    <div class="journey-node-step active">
+                        <div class="journey-step-circle"><i class="fas fa-brain"></i></div>
+                        <div class="journey-step-text">
+                            <strong>Psychology Zone</strong>
+                            <span>Unlocked</span>
+                        </div>
+                    </div>
+                    <span class="journey-connector-arrow"><i class="fas fa-chevron-right"></i></span>
+
+                    <div class="journey-node-step active">
+                        <div class="journey-step-circle"><i class="fas fa-chess-rook"></i></div>
+                        <div class="journey-step-text">
+                            <strong>Fortress</strong>
+                            <span>Unlocked</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Achievements Preview -->
-            <div class="hub-panel-box">
+        <!-- ================================================================
+             ZONE H, I, K: STREAK, ACHIEVEMENTS & UPDATES
+             ================================================================ -->
+        <section class="world-multi-panel-row">
+
+            <!-- Streak Tracker Panel -->
+            <div class="hub-card-box">
                 <h3>
-                    <i class="fas fa-trophy" style="color: #8b5cf6;" aria-hidden="true"></i>
-                    <span>Achievements Preview</span>
+                    <i class="fas fa-calendar-check" style="color: var(--sw-neon-amber);" aria-hidden="true"></i>
+                    <span>Streak Tracker</span>
                 </h3>
 
-                <div class="achievements-preview-list" id="hub-achievements-list">
-                    <!-- Dynamic rendering by JS controller -->
+                <div class="streak-hero-compact">
+                    <div class="streak-hero-stat">
+                        <i class="fas fa-fire streak-flame-icon" aria-hidden="true"></i>
+                        <div>
+                            <strong style="font-size: 1.25rem; color: #FFFFFF; display: block;" id="hub-streak-number">0 Days</strong>
+                            <span style="font-size: 0.76rem; color: var(--sw-text-muted);">Current Activity Streak</span>
+                        </div>
+                    </div>
+                    <span class="top-stat-pill streak-pill" id="hub-best-streak" style="padding: 4px 10px; font-size: 0.74rem;">Best: 0 Days</span>
+                </div>
+
+                <div class="streak-week-matrix" id="hub-week-row">
+                    <div class="day-item-col"><span class="lbl">M</span><div class="dot" data-day="1"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                    <div class="day-item-col"><span class="lbl">T</span><div class="dot" data-day="2"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                    <div class="day-item-col"><span class="lbl">W</span><div class="dot" data-day="3"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                    <div class="day-item-col"><span class="lbl">T</span><div class="dot" data-day="4"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                    <div class="day-item-col"><span class="lbl">F</span><div class="dot" data-day="5"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                    <div class="day-item-col"><span class="lbl">S</span><div class="dot" data-day="6"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                    <div class="day-item-col"><span class="lbl">S</span><div class="dot" data-day="0"><i class="fas fa-check" aria-hidden="true"></i></div></div>
+                </div>
+            </div>
+
+            <!-- Achievements Preview Panel -->
+            <div class="hub-card-box">
+                <h3>
+                    <i class="fas fa-trophy" style="color: var(--sw-neon-purple);" aria-hidden="true"></i>
+                    <span>Achievements</span>
+                </h3>
+
+                <div class="achievements-preview-strip" id="hub-achievements-list">
+                    <!-- Dynamically populated from World state -->
+                </div>
+            </div>
+
+            <!-- World Updates Notice Panel -->
+            <div class="hub-card-box">
+                <h3>
+                    <i class="fas fa-satellite-dish" style="color: var(--sw-neon-cyan);" aria-hidden="true"></i>
+                    <span>World Updates</span>
+                </h3>
+
+                <div class="world-updates-list">
+                    <div class="update-item">
+                        <i class="fas fa-circle-dot update-item-icon" aria-hidden="true"></i>
+                        <div class="update-item-text">
+                            <strong>Candle City Development</strong>
+                            <span>Candle Blitz minigame engine scheduled for Phase 2 kickoff.</span>
+                        </div>
+                    </div>
+                    <div class="update-item">
+                        <i class="fas fa-circle-dot update-item-icon" aria-hidden="true"></i>
+                        <div class="update-item-text">
+                            <strong>Pip District Blueprint</strong>
+                            <span>Interactive lot sizing and stop-loss calculations underway.</span>
+                        </div>
+                    </div>
+                    <div class="update-item">
+                        <i class="fas fa-circle-dot update-item-icon" aria-hidden="true"></i>
+                        <div class="update-item-text">
+                            <strong>Multiplayer Roadmap</strong>
+                            <span>Asynchronous chart duels planned for Phase 4 release.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -542,10 +958,13 @@
     <div data-component="footer"></div>
 
     <!-- ====================================================================
-         SCRIPTS
+         SCRIPTS & CONTROLLER
          ==================================================================== -->
     <script src="../js/component-loader.js"></script>
     <script src="../js/routes.js"></script>
+    <script src="js/settings/world-settings.js"></script>
+    <script src="js/settings/haptics.js"></script>
+    <script src="js/audio/audio-manager.js"></script>
     <script src="js/core/world-state.js"></script>
     <script src="js/core/world-xp-engine.js"></script>
 
@@ -554,7 +973,7 @@
         "use strict";
 
         (function () {
-            // Modal helpers
+            // Modal DOM references
             const modalBackdrop = document.getElementById("world-info-modal");
             const modalIcon = document.getElementById("modal-icon");
             const modalTitle = document.getElementById("modal-title");
@@ -587,7 +1006,7 @@
                 });
             }
 
-            // Sync UI with Engine
+            // Sync UI with World Engine
             function updateHubUI() {
                 if (!window.StrativoWorldXPEngine) return;
 
@@ -596,15 +1015,25 @@
 
                 const levelInfo = window.StrativoWorldXPEngine.getLevelProgress(state.xp);
 
-                // Player area
-                const levelAvatar = document.getElementById("hub-avatar-level");
-                if (levelAvatar) levelAvatar.textContent = `Lv ${levelInfo.level}`;
+                // Top bar chips
+                const topStreak = document.getElementById("top-streak-val");
+                if (topStreak) topStreak.textContent = `${state.streak || 0} Day Streak`;
 
+                const topXP = document.getElementById("top-xp-val");
+                if (topXP) topXP.textContent = `${(state.xp || 0).toLocaleString()} World XP`;
+
+                // Player cockpit
                 const rankTitle = document.getElementById("hub-rank-title");
                 if (rankTitle) rankTitle.textContent = levelInfo.rank;
 
                 const levelText = document.getElementById("hub-level-text");
                 if (levelText) levelText.textContent = `Level ${levelInfo.level}`;
+
+                const centerLvl = document.getElementById("hub-avatar-center-lvl");
+                if (centerLvl) centerLvl.textContent = `LVL ${levelInfo.level}`;
+
+                const mobileLvl = document.getElementById("hub-avatar-mobile-lvl");
+                if (mobileLvl) mobileLvl.textContent = `LVL ${levelInfo.level}`;
 
                 const currentXP = document.getElementById("hub-current-xp");
                 if (currentXP) currentXP.textContent = state.xp.toLocaleString();
@@ -617,34 +1046,60 @@
                 if (xpFill) xpFill.style.width = `${levelInfo.percentage}%`;
                 if (xpTrack) xpTrack.setAttribute("aria-valuenow", levelInfo.percentage.toString());
 
-                // Streak
-                const streakVal = document.getElementById("hub-streak-val");
+                // Cockpit Matrix Stats
                 const streakNum = document.getElementById("hub-streak-number");
-                const bestStreak = document.getElementById("hub-best-streak");
-                const streakStr = `${state.streak || 0} ${state.streak === 1 ? "Day" : "Days"}`;
+                const matrixCurrentStreak = document.getElementById("matrix-current-streak");
+                const matrixBestStreak = document.getElementById("matrix-best-streak");
+                const bestStreakText = document.getElementById("hub-best-streak");
+                const streakStr = `${state.streak || 0} Days`;
 
-                if (streakVal) streakVal.textContent = streakStr;
                 if (streakNum) streakNum.textContent = streakStr;
-                if (bestStreak) bestStreak.textContent = `Best: ${state.bestStreak || 0} Days`;
+                if (matrixCurrentStreak) matrixCurrentStreak.textContent = streakStr;
+                if (matrixBestStreak) matrixBestStreak.textContent = `${state.bestStreak || 0} Days`;
+                if (bestStreakText) bestStreakText.textContent = `Best: ${state.bestStreak || 0} Days`;
+                const matrixDistrictsOpen = document.getElementById("matrix-districts-open");
+                if (matrixDistrictsOpen) matrixDistrictsOpen.textContent = "7 / 7";
 
-                // Weekly tracker dots (mark active today if visited)
+                // Daily Mission dynamic sync (only completed if activity occurred today)
+                const dailyFill = document.getElementById("mission-daily-fill");
+                const dailyLbl = document.getElementById("mission-daily-label");
+                const today = new Date().toISOString().slice(0, 10);
+                const hasDoneActivityToday = (state.activityDates || []).includes(today);
+
+                if (hasDoneActivityToday) {
+                    if (dailyFill) dailyFill.style.width = "100%";
+                    if (dailyLbl) dailyLbl.innerHTML = '<span style="color: var(--sw-neon-emerald);"><i class="fas fa-check"></i> 1 / 1 Done</span>';
+                } else {
+                    if (dailyFill) dailyFill.style.width = "0%";
+                    if (dailyLbl) dailyLbl.textContent = "0 / 1 Completed";
+                }
+
+                // Weekly Quest dynamic sync
+                const weeklyFill = document.getElementById("mission-weekly-fill");
+                const weeklyLbl = document.getElementById("mission-weekly-label");
+                const streakCount = state.streak || 0;
+                const weeklyPct = Math.min(100, Math.round((streakCount / 5) * 100));
+                if (weeklyFill) weeklyFill.style.width = `${weeklyPct}%`;
+                if (weeklyLbl) weeklyLbl.textContent = `${Math.min(5, streakCount)} / 5 Days`;
+
+                // Weekly calendar matrix dots
                 const todayDow = new Date().getDay(); // 0 = Sun, 1 = Mon...
-                const dots = document.querySelectorAll(".day-dot");
+                const dots = document.querySelectorAll(".day-item-col .dot");
                 dots.forEach(dot => {
                     const dayNum = parseInt(dot.getAttribute("data-day"), 10);
-                    if (state.streak > 0 && dayNum === todayDow) {
+                    if (hasDoneActivityToday && dayNum === todayDow) {
                         dot.classList.add("active");
                     }
                 });
 
                 // Mastery Grid
                 const masteryKeys = [
-                    { key: "candlesticks", prefix: "candlesticks", title: "Price Action" },
-                    { key: "pipPosition", prefix: "pipposition", title: "Lot Math" },
-                    { key: "marketStructure", prefix: "marketstructure", title: "Trend & Flow" },
-                    { key: "chartReading", prefix: "chartreading", title: "Patterns" },
-                    { key: "riskManagement", prefix: "riskmanagement", title: "Capital Defense" },
-                    { key: "psychology", prefix: "psychology", title: "Discipline" }
+                    { key: "candlesticks", prefix: "candlesticks" },
+                    { key: "pipPosition", prefix: "pipposition" },
+                    { key: "marketStructure", prefix: "marketstructure" },
+                    { key: "chartReading", prefix: "chartreading" },
+                    { key: "riskManagement", prefix: "riskmanagement" },
+                    { key: "psychology", prefix: "psychology" }
                 ];
 
                 masteryKeys.forEach(item => {
@@ -666,12 +1121,12 @@
 
                 // Achievements Preview
                 const achList = document.getElementById("hub-achievements-list");
-                const badgeCount = document.getElementById("hub-badge-val");
+                const topBadgeVal = document.getElementById("top-badge-val");
                 const allAchievements = window.StrativoWorldXPEngine.ACHIEVEMENTS_LIST || [];
                 const unlockedSet = new Set(state.achievements || []);
 
-                if (badgeCount) {
-                    badgeCount.textContent = `${unlockedSet.size} / ${allAchievements.length}`;
+                if (topBadgeVal) {
+                    topBadgeVal.textContent = `${unlockedSet.size} / ${allAchievements.length} Badges`;
                 }
 
                 if (achList) {
@@ -679,19 +1134,19 @@
                     allAchievements.forEach(ach => {
                         const isUnlocked = unlockedSet.has(ach.id);
                         const card = document.createElement("div");
-                        card.className = `achievement-mini-card ${isUnlocked ? "unlocked" : "locked"}`;
+                        card.className = `ach-mini-card ${isUnlocked ? "unlocked" : "locked"}`;
                         card.innerHTML = `
-                            <div class="achievement-mini-left">
-                                <div class="achievement-mini-icon">
-                                    <i class="fas ${ach.icon}"></i>
+                            <div class="ach-mini-left">
+                                <div class="ach-mini-icon">
+                                    <i class="fas ${ach.icon}" aria-hidden="true"></i>
                                 </div>
-                                <div class="achievement-mini-text">
+                                <div class="ach-mini-text">
                                     <strong>${ach.title}</strong>
                                     <span>${ach.description}</span>
                                 </div>
                             </div>
-                            <span class="achievement-mini-status">
-                                ${isUnlocked ? '<i class="fas fa-check"></i> Unlocked' : '<i class="fas fa-lock"></i> Locked'}
+                            <span class="ach-mini-status" style="color: ${isUnlocked ? 'var(--sw-neon-emerald)' : 'var(--sw-text-dim)'}; font-size: 0.74rem; font-weight: 700;">
+                                ${isUnlocked ? '<i class="fas fa-check" aria-hidden="true"></i> Unlocked' : '<i class="fas fa-lock" aria-hidden="true"></i> Locked'}
                             </span>
                         `;
                         achList.appendChild(card);
@@ -699,7 +1154,26 @@
                 }
             }
 
-            // Button Event Bindings
+            // District Click Helper
+            function handleDistrictClick(districtKey) {
+                if (districtKey === "candle-city") {
+                    window.location.href = "districts/candle-city.html";
+                } else if (districtKey === "pip-district") {
+                    window.location.href = "districts/pip-district.html";
+                } else if (districtKey === "market-arena") {
+                    window.location.href = "districts/market-arena.html";
+                } else if (districtKey === "chart-district") {
+                    window.location.href = "districts/chart-district.html";
+                } else if (districtKey === "risk-lab") {
+                    window.location.href = "districts/risk-lab.html";
+                } else if (districtKey === "psychology-zone") {
+                    window.location.href = "districts/psychology-zone.html";
+                } else if (districtKey === "strategy-fortress") {
+                    window.location.href = "districts/strategy-fortress.html";
+                }
+            }
+
+            // Button & Interactive Node Bindings
             function setupInteractions() {
                 // Solo Portal
                 const soloBtn = document.getElementById("btn-enter-solo");
@@ -719,35 +1193,32 @@
                     mpBtn.addEventListener("click", function () {
                         showModal(
                             "fa-swords",
-                            "Multiplayer Arena — Coming Soon",
-                            "Asynchronous 1v1 chart battles, speed duels, and ghost sparring matches are scheduled for Phase 4. Practice your skills in Solo mode first!"
+                            "Multiplayer Arena — Future Feature",
+                            "Multiplayer is being developed. Asynchronous chart duels and speed matches are planned for a future release. Practice your skills in Solo mode first!"
                         );
                     });
                 }
 
-                // District Buttons
-                const districtBtns = document.querySelectorAll(".district-action-btn");
-                districtBtns.forEach(btn => {
-                    btn.addEventListener("click", function () {
+                // Desktop Tactical Node Cards Click
+                const tacticalCards = document.querySelectorAll(".tactical-node-card");
+                tacticalCards.forEach(card => {
+                    card.addEventListener("click", function () {
                         const district = this.getAttribute("data-district");
-                        if (district === "candle-city") {
-                            showModal(
-                                "fa-fire-flame-curved",
-                                "Candle City District",
-                                "Welcome to Candle City! Candlestick recognition drills and breakout pattern tests will be available in the upcoming Sprint. Your access is unlocked."
-                            );
-                        } else {
-                            showModal(
-                                "fa-lock",
-                                "District Locked",
-                                "This district is locked. Complete the prerequisite Academy lessons and earn more World XP to unlock access."
-                            );
-                        }
+                        if (district) handleDistrictClick(district);
+                    });
+                });
+
+                // Mobile District Cards Click
+                const mobileCards = document.querySelectorAll(".mobile-district-card");
+                mobileCards.forEach(card => {
+                    card.addEventListener("click", function () {
+                        const district = this.getAttribute("data-district");
+                        if (district) handleDistrictClick(district);
                     });
                 });
             }
 
-            // Listen to state changes
+            // Listen to reactive World state events
             window.addEventListener("strativo:worldStateChanged", updateHubUI);
             window.addEventListener("strativo:worldXPChanged", updateHubUI);
 

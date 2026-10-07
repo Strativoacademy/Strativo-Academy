@@ -2,3 +2,5 @@
 .git/**
 .wrangler
 .wrangler/**
+scratch
+scratch/**

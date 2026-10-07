@@ -1,0 +1,406 @@
+/* ==========================================================================
+   STRATIVO WORLD — SHARED GAME SETTINGS STYLESHEET (PHASE 2.4)
+   ========================================================================== */
+
+:root {
+    --ws-bg: #030712;
+    --ws-surface: rgba(13, 24, 41, 0.88);
+    --ws-surface-elevated: rgba(15, 23, 42, 0.95);
+    --ws-surface-hover: rgba(30, 41, 59, 0.85);
+    --ws-border: rgba(0, 240, 255, 0.18);
+    --ws-border-focus: rgba(0, 240, 255, 0.55);
+    --ws-neon-cyan: #00F0FF;
+    --ws-neon-emerald: #00E5A8;
+    --ws-neon-gold: #FCD34D;
+    --ws-neon-rose: #F43F5E;
+    --ws-neon-purple: #A855F7;
+    --ws-text-main: #F8FAFC;
+    --ws-text-muted: #94A3B8;
+    --ws-font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    --ws-font-heading: 'Poppins', var(--ws-font-main);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.world-settings-page {
+    background-color: var(--ws-bg);
+    color: var(--ws-text-main);
+    font-family: var(--ws-font-main);
+    min-height: 100vh;
+    padding: 1.5rem 1rem 3rem 1rem;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 240, 255, 0.12), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0, 229, 168, 0.08), transparent 70%);
+    background-attachment: fixed;
+    line-height: 1.5;
+}
+
+.ws-container {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ==========================================================================
+   HEADER HUD & ACTIONS
+   ========================================================================== */
+.ws-header {
+    background: var(--ws-surface);
+    border: 1px solid var(--ws-border);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.ws-header-title-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ws-header-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(0, 229, 168, 0.2));
+    border: 1.5px solid var(--ws-neon-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ws-neon-cyan);
+    font-size: 1.35rem;
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+}
+
+.ws-header-meta h1 {
+    font-family: var(--ws-font-heading);
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #FFF;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.ws-header-meta p {
+    font-size: 0.82rem;
+    color: var(--ws-text-muted);
+    margin: 0;
+}
+
+.ws-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.ws-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.15rem;
+    border-radius: 10px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    border: 1px solid var(--ws-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--ws-text-main);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    user-select: none;
+}
+
+.ws-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.ws-btn-cyan {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: rgba(0, 240, 255, 0.45);
+    color: var(--ws-neon-cyan);
+}
+
+.ws-btn-cyan:hover {
+    background: rgba(0, 240, 255, 0.28);
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+}
+
+.ws-btn-rose {
+    background: rgba(244, 63, 94, 0.15);
+    border-color: rgba(244, 63, 94, 0.45);
+    color: var(--ws-neon-rose);
+}
+
+.ws-btn-rose:hover {
+    background: rgba(244, 63, 94, 0.28);
+    box-shadow: 0 0 16px rgba(244, 63, 94, 0.35);
+}
+
+/* ==========================================================================
+   SETTINGS SECTIONS GRID (2-Column Desktop, 1-Column Mobile)
+   ========================================================================== */
+.ws-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .ws-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ws-card {
+    background: var(--ws-surface);
+    border: 1px solid var(--ws-border);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 1.25rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ws-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ws-card-header i {
+    font-size: 1.1rem;
+}
+
+.ws-card-header h2 {
+    font-family: var(--ws-font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #FFF;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* Row Setting Item */
+.ws-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.ws-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.ws-item-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #FFF;
+}
+
+.ws-item-desc {
+    font-size: 0.76rem;
+    color: var(--ws-text-muted);
+}
+
+.ws-val-pill {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--ws-neon-cyan);
+    background: rgba(0, 240, 255, 0.12);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Sliders */
+.ws-range-input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.12);
+    outline: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.ws-range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ws-neon-cyan);
+    border: 2px solid #030712;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.ws-range-input::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.ws-range-input::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ws-neon-cyan);
+    border: 2px solid #030712;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+    cursor: pointer;
+}
+
+/* Custom Cyber Toggle Switch */
+.ws-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.ws-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ws-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.14);
+    border: 1px solid var(--ws-border);
+    transition: 0.25s ease;
+    border-radius: 24px;
+}
+
+.ws-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #FFF;
+    transition: 0.25s ease;
+    border-radius: 50%;
+}
+
+.ws-switch input:checked + .ws-slider {
+    background-color: rgba(0, 229, 168, 0.35);
+    border-color: var(--ws-neon-emerald);
+    box-shadow: 0 0 12px rgba(0, 229, 168, 0.4);
+}
+
+.ws-switch input:checked + .ws-slider:before {
+    transform: translateX(20px);
+    background-color: var(--ws-neon-emerald);
+}
+
+/* Select Dropdown */
+.ws-select {
+    width: 100%;
+    padding: 0.55rem 0.85rem;
+    border-radius: 10px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--ws-border);
+    color: #FFF;
+    font-size: 0.85rem;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.ws-select:focus {
+    border-color: var(--ws-neon-cyan);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+/* Save / Status Toast */
+.ws-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid var(--ws-neon-emerald);
+    color: #FFF;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateY(120%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 9999;
+}
+
+.ws-toast.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ==========================================================================
+   GLOBAL ACCESSIBILITY & MOTION MODES
+   ========================================================================== */
+html.strativo-large-text {
+    font-size: 115% !important;
+}
+
+html.strativo-high-contrast {
+    --ws-bg: #000000 !important;
+    --ws-surface: #0a0a0a !important;
+    --ws-surface-elevated: #111111 !important;
+    --ws-border: #00F0FF !important;
+    --ws-text-main: #FFFFFF !important;
+    --ws-text-muted: #E2E8F0 !important;
+}
+
+html.strativo-high-contrast .ws-card,
+html.strativo-high-contrast .ws-header {
+    border: 2px solid #00F0FF !important;
+}
+
+html.strativo-reduced-motion *,
+html.strativo-reduced-motion *::before,
+html.strativo-reduced-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+}

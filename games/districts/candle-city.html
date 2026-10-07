@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#030712">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Strativo World — Candle City District</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Candle City Stylesheet -->
+    <link rel="stylesheet" href="../../css/candle-city.css">
+</head>
+
+<body class="candle-city-page">
+
+    <div class="candle-city-container">
+
+        <!-- ================================================================
+             1. TOP DISTRICT HUD
+             ================================================================ -->
+        <header class="candle-city-hud">
+            <div class="cc-hud-left">
+                <!-- Player Profile Pill -->
+                <div class="cc-player-badge">
+                    <div class="cc-player-avatar-icon">
+                        <i class="fas fa-user-astronaut" id="hud-avatar-icon"></i>
+                    </div>
+                    <div class="cc-player-meta">
+                        <div class="cc-player-name-row">
+                            <span class="cc-player-handle" id="hud-player-handle">Student</span>
+                            <span class="cc-player-lvl-tag" id="hud-player-level">LVL 1</span>
+                        </div>
+                        <span class="cc-player-rank" id="hud-player-rank">Novice Chartist</span>
+                    </div>
+                </div>
+
+                <!-- District Active Beacon -->
+                <div class="cc-district-status-badge">
+                    <span class="cc-beacon-dot" aria-hidden="true"></span>
+                    <span>CANDLE CITY • ACTIVE</span>
+                </div>
+
+                <!-- Dynamic Encyclopedia Counter -->
+                <div class="cc-btn cc-btn-cyan" id="hud-archive-counter-btn" style="cursor: pointer;" title="Open Master Encyclopedia">
+                    <i class="fas fa-book-bookmark"></i>
+                    <span id="hud-pattern-counter">44 Patterns</span>
+                </div>
+
+                <!-- Active Detective Quest HUD Pill -->
+                <div class="cc-quest-active-pill" id="cc-detective-pill">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span id="cc-detective-target-text">BOUNTY: Hammer</span>
+                </div>
+            </div>
+
+            <div class="cc-hud-actions">
+                <button type="button" class="cc-btn" id="btn-open-missions" title="Open Missions & Directives Journal">
+                    <i class="fas fa-scroll" style="color: var(--cc-neon-cyan);"></i> <span id="hud-missions-btn-label">Missions</span>
+                </button>
+                <button type="button" class="cc-btn" id="btn-toggle-debug" title="Toggle Debug Inspector (F3)">
+                    <i class="fas fa-bug"></i> <span id="debug-label">Debug: Off</span>
+                </button>
+                <button type="button" class="cc-btn" id="btn-fullscreen" title="Toggle Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <a href="../settings.html" class="cc-btn" title="Open Game Settings">
+                    <i class="fas fa-gear"></i> Settings
+                </a>
+                <a href="../hub.html" class="cc-btn cc-btn-cyan" title="Return to Strativo World Hub">
+                    <i class="fas fa-arrow-left"></i> World Hub
+                </a>
+            </div>
+        </header>
+
+        <!-- ================================================================
+             1B. CANDLE CITY REAL PROGRESSION HUD BAR (PHASE 2.3)
+             ================================================================ -->
+        <section class="cc-profile-progress-bar" id="cc-progress-bar">
+            <div class="cc-profile-stat-item">
+                <span class="cc-stat-label"><i class="fas fa-eye" style="color: var(--cc-neon-cyan);"></i> Explored</span>
+                <span class="cc-stat-val" id="stat-explored-val">0 / 44</span>
+            </div>
+            <div class="cc-profile-stat-item">
+                <span class="cc-stat-label"><i class="fas fa-crosshairs" style="color: var(--cc-neon-emerald);"></i> Accuracy</span>
+                <span class="cc-stat-val" id="stat-accuracy-val">0%</span>
+            </div>
+            <div class="cc-profile-stat-item">
+                <span class="cc-stat-label"><i class="fas fa-fire-flame-curved" style="color: var(--cc-neon-gold);"></i> Best Combo</span>
+                <span class="cc-stat-val" id="stat-combo-val">0x</span>
+            </div>
+            <div class="cc-profile-stat-item">
+                <span class="cc-stat-label"><i class="fas fa-crown" style="color: var(--cc-neon-purple);"></i> Mastery</span>
+                <span class="cc-stat-val" id="stat-mastery-val">0%</span>
+            </div>
+            <div class="cc-profile-stat-item">
+                <span class="cc-stat-label"><i class="fas fa-calendar-day" style="color: var(--cc-neon-blue);"></i> Daily Streak</span>
+                <span class="cc-stat-val" id="stat-streak-val">0 Days</span>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             2. PLAYABLE GAME VIEWPORT (COMPACT 1600x1000)
+             ================================================================ -->
+        <main class="candle-city-viewport-wrapper" id="candle-city-viewport">
+            <canvas id="candle-city-canvas" class="candle-city-canvas" tabindex="0" aria-label="Candle City Playable Viewport"></canvas>
+
+            <!-- Floating Tracked Mission HUD -->
+            <div class="cc-mission-tracker-hud" id="cc-mission-tracker">
+                <div class="cc-tracker-title">
+                    <span>Active Directive</span>
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <div class="cc-tracker-name" id="cc-tracker-name">First Light</div>
+                <div class="cc-tracker-prog-wrap">
+                    <div class="cc-tracker-bar">
+                        <div class="cc-tracker-fill" id="cc-tracker-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="cc-tracker-count" id="cc-tracker-count">0 / 3</span>
+                </div>
+            </div>
+
+            <!-- In-World Interaction Floating Prompt -->
+            <div class="cc-interact-prompt" id="cc-prompt" aria-live="polite">
+                <span class="cc-key-badge">E</span>
+                <span class="cc-interact-title" id="prompt-title">Location</span>
+                <span class="cc-interact-action" id="prompt-subtitle">• Interact</span>
+            </div>
+
+            <!-- Mobile Touch Controls Layer -->
+            <div class="cc-touch-layer">
+                <button type="button" class="cc-touch-action-btn" id="cc-touch-action-btn" aria-label="Interact with Location">
+                    <i class="fas fa-hand-pointer"></i>
+                    <span>ACTION</span>
+                </button>
+                <div class="cc-joystick-hint">
+                    <i class="fas fa-arrows-up-down-left-right"></i> Touch & drag left side to move
+                </div>
+            </div>
+
+            <!-- District Interaction Dialog Modal -->
+            <div class="cc-dialog-backdrop" id="cc-dialog" role="dialog" aria-modal="true" aria-hidden="true">
+                <div class="cc-dialog-card">
+                    <div class="cc-dialog-header">
+                        <h3 id="dialog-heading"><i class="fas fa-city"></i> Location Title</h3>
+                        <button type="button" class="cc-btn" id="dialog-close-btn" aria-label="Close dialog">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <!-- Candle Visual Diagram Canvas -->
+                    <div class="cc-candle-diagram-box" id="dialog-candle-box" style="display: none;">
+                        <canvas id="dialog-candle-canvas" width="240" height="130"></canvas>
+                    </div>
+
+                    <div class="cc-dialog-body" id="dialog-body-text">
+                        Loading district data...
+                    </div>
+                    <div class="cc-dialog-footer" id="dialog-action-container">
+                        <button type="button" class="cc-btn cc-btn-cyan" id="dialog-primary-btn">Acknowledge</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 3. CANDLE ARCHIVE ENCYCLOPEDIA BROWSER MODAL
+                 ============================================================ -->
+            <div class="cc-dialog-backdrop" id="cc-archive-modal" role="dialog" aria-modal="true" aria-hidden="true">
+                <div class="cc-archive-modal-card">
+                    <div class="cc-archive-header">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <h3 style="margin:0; font-size: 1.25rem; color:#FFF; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-book-bookmark" style="color: var(--cc-neon-cyan);"></i> Candle Archive
+                            </h3>
+                            <span class="cc-archive-count-badge" id="archive-count-badge">44 Patterns in Encyclopedia</span>
+                        </div>
+                        <button type="button" class="cc-btn" id="archive-close-btn" aria-label="Close Archive">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <!-- Search & Filter Controls -->
+                    <div class="cc-archive-controls">
+                        <div class="cc-search-input-wrap">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="archive-search-input" class="cc-search-input" placeholder="Search patterns by name, alias, or tag (e.g. Hammer, Doji, Reversal)...">
+                        </div>
+                        <div class="cc-filter-tabs" id="archive-category-tabs">
+                            <button type="button" class="cc-filter-tab active" data-cat="all">All</button>
+                            <button type="button" class="cc-filter-tab" data-cat="single">Single</button>
+                            <button type="button" class="cc-filter-tab" data-cat="double">Two-Candle</button>
+                            <button type="button" class="cc-filter-tab" data-cat="triple">Three-Candle</button>
+                            <button type="button" class="cc-filter-tab" data-cat="multi">Multi-Candle</button>
+                            <button type="button" class="cc-filter-tab" data-cat="reversal">Reversal</button>
+                            <button type="button" class="cc-filter-tab" data-cat="continuation">Continuation</button>
+                            <button type="button" class="cc-filter-tab" data-cat="indecision">Indecision</button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Pattern Cards Grid -->
+                    <div class="cc-archive-grid" id="archive-grid">
+                        <!-- Populated dynamically via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================
+                 4. CANDLE BLITZ 2D RPG ARENA UPGRADE (PHASE 2.2 + 2.3)
+                 ============================================================ -->
+            <div class="cc-game-overlay" id="cc-blitz-overlay" aria-hidden="true">
+
+                <!-- Countdown Intro Overlay -->
+                <div class="cc-blitz-countdown-screen" id="blitz-countdown-screen">
+                    <div class="cc-countdown-circle" id="blitz-countdown-num">3</div>
+                    <div class="cc-countdown-title">CALIBRATING TARGETING GRID...</div>
+                </div>
+
+                <!-- Arena Header HUD -->
+                <div class="cc-game-header">
+                    <span class="cc-game-round-tag" id="blitz-round-indicator">ROUND 1 / 10</span>
+                    <span class="cc-game-diff-tag" id="blitz-diff-indicator">BEGINNER</span>
+                    <div class="cc-game-timer-pill">
+                        <i class="fas fa-stopwatch" style="color: var(--cc-neon-cyan);"></i>
+                        <span id="blitz-timer-val">0.0s</span>
+                    </div>
+                    <span class="cc-game-combo-pill" id="blitz-combo-indicator">COMBO x0</span>
+                    <span class="cc-game-score-tag" id="blitz-score-indicator">0 PTS</span>
+                    <button type="button" class="cc-btn" id="blitz-quit-btn" style="padding: 2px 10px; font-size: 0.75rem;">
+                        <i class="fas fa-door-open"></i> Exit
+                    </button>
+                </div>
+
+                <!-- Main Arena Stage -->
+                <div class="cc-game-stage" id="blitz-game-stage">
+                    <div class="cc-game-prompt-text" id="blitz-prompt-title">Target the Matching Candlestick Pattern</div>
+
+                    <div class="cc-game-canvas-screen-wrap">
+                        <canvas id="blitz-screen-canvas" class="cc-game-canvas-screen" width="280" height="170"></canvas>
+                        <div class="cc-screen-scanline" aria-hidden="true"></div>
+                    </div>
+
+                    <!-- Learning Feedback Bar -->
+                    <div class="cc-game-feedback-bar" id="blitz-feedback-bar">
+                        <div class="cc-feedback-header">
+                            <span id="blitz-feedback-title">CORRECT HIT!</span>
+                            <span id="blitz-feedback-timer-note" style="font-size:0.75rem; font-weight:600; opacity:0.85;">Next target loading...</span>
+                        </div>
+                        <div class="cc-feedback-details" id="blitz-feedback-msg">
+                            <!-- Populated on answer -->
+                        </div>
+                    </div>
+
+                    <!-- Holographic Target Grid -->
+                    <div class="cc-target-grid" id="blitz-target-grid">
+                        <button type="button" class="cc-target-card" data-index="0">
+                            <span class="cc-target-key">1</span>
+                            <span class="opt-label">Option A</span>
+                        </button>
+                        <button type="button" class="cc-target-card" data-index="1">
+                            <span class="cc-target-key">2</span>
+                            <span class="opt-label">Option B</span>
+                        </button>
+                        <button type="button" class="cc-target-card" data-index="2">
+                            <span class="cc-target-key">3</span>
+                            <span class="opt-label">Option C</span>
+                        </button>
+                        <button type="button" class="cc-target-card" data-index="3">
+                            <span class="cc-target-key">4</span>
+                            <span class="opt-label">Option D</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- End-of-Match Scorecard -->
+                <div class="cc-scorecard" id="blitz-scorecard">
+                    <div style="font-weight: 900; font-size: 1.25rem; color: #FFF; letter-spacing: 1px;">
+                        <i class="fas fa-trophy" style="color: var(--cc-neon-gold);"></i> CANDLE BLITZ EVALUATION
+                    </div>
+                    <div class="cc-scorecard-rank" id="scorecard-grade">S</div>
+                    <div class="cc-scorecard-stats">
+                        <div>Score: <strong id="scorecard-score" style="color: var(--cc-neon-gold);">0</strong></div>
+                        <div>Accuracy: <strong id="scorecard-acc" style="color: var(--cc-neon-emerald);">0%</strong></div>
+                        <div>Avg Speed: <strong id="scorecard-speed" style="color: var(--cc-neon-cyan);">0.0s</strong></div>
+                        <div>Best Combo: <strong id="scorecard-combo" style="color: var(--cc-neon-purple);">x0</strong></div>
+                        <div>Correct: <strong id="scorecard-correct" style="color: var(--cc-neon-emerald);">0 / 10</strong></div>
+                        <div>Incorrect: <strong id="scorecard-incorrect" style="color: var(--cc-neon-rose);">0 / 10</strong></div>
+                    </div>
+
+                    <!-- Rewards Summary Banner -->
+                    <div style="background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 12px; padding: 0.65rem 1rem; display: flex; align-items: center; justify-content: space-around; font-size: 0.85rem; font-weight: 800;">
+                        <span style="color: var(--cc-neon-emerald);"><i class="fas fa-bolt"></i> +<span id="scorecard-xp">0</span> World XP</span>
+                        <span style="color: var(--cc-neon-purple);"><i class="fas fa-crown"></i> <span id="scorecard-mastery">0%</span> Mastery</span>
+                        <span style="color: var(--cc-neon-gold);"><i class="fas fa-bullseye"></i> +<span id="scorecard-patterns-count">0</span> Identified</span>
+                    </div>
+
+                    <div class="cc-scorecard-actions">
+                        <button type="button" class="cc-btn cc-btn-cyan" id="scorecard-replay-btn">
+                            <i class="fas fa-rotate-right"></i> Play Again
+                        </button>
+                        <button type="button" class="cc-btn" id="scorecard-close-btn">
+                            <i class="fas fa-city"></i> Return to Candle City
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- World Transition Overlay -->
+            <div class="cc-dialog-backdrop" id="cc-transition-screen" aria-hidden="true">
+                <div style="text-align: center; color: var(--cc-neon-cyan);">
+                    <div style="width: 48px; height: 48px; border: 3px solid rgba(0,240,255,0.2); border-top-color: var(--cc-neon-cyan); border-radius: 50%; animation: cc-spin 0.8s linear infinite; margin: 0 auto 1rem auto;"></div>
+                    <h3 id="transition-msg" style="margin: 0; font-size: 1.1rem;">Transitioning Orbital Sector...</h3>
+                </div>
+            </div>
+        </main>
+
+        <!-- ================================================================
+             5. CANDLE CITY LANDMARKS & CONTROLS GUIDE
+             ================================================================ -->
+        <section class="cc-info-grid">
+            <div class="cc-card">
+                <h3><i class="fas fa-landmark" style="color: var(--cc-neon-cyan);"></i> Candle City Landmarks</h3>
+                <div class="cc-landmarks-list">
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-bolt-lightning" style="color: var(--cc-neon-cyan);"></i>
+                        <div><strong>Candle Blitz Arena:</strong> 10-round reaction duel game (North).</div>
+                    </div>
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-crosshairs" style="color: var(--cc-neon-amber);"></i>
+                        <div><strong>Recognition Range:</strong> Master target drills (North-East).</div>
+                    </div>
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-book-bookmark" style="color: var(--cc-neon-blue);"></i>
+                        <div><strong>Candle Archive:</strong> Canonical master encyclopedia (North-West).</div>
+                    </div>
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-microscope" style="color: var(--cc-neon-emerald);"></i>
+                        <div><strong>Candle Lab:</strong> OHLC anatomy & construction (West).</div>
+                    </div>
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-magnifying-glass" style="color: var(--cc-neon-gold);"></i>
+                        <div><strong>Candle Detective:</strong> Exploration bounty quests (South).</div>
+                    </div>
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-layer-group" style="color: var(--cc-neon-purple);"></i>
+                        <div><strong>Context Chamber:</strong> Confluence & structure (East).</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cc-card">
+                <h3><i class="fas fa-gamepad" style="color: var(--cc-neon-emerald);"></i> Navigation & Controls</h3>
+                <div class="cc-landmarks-list">
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-keyboard"></i>
+                        <div><strong>Desktop Move:</strong> <span style="color: var(--cc-neon-cyan);">W A S D</span> or <span style="color: var(--cc-neon-cyan);">Arrow Keys</span></div>
+                    </div>
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-hand-pointer"></i>
+                        <div><strong>Interact:</strong> <span style="color: var(--cc-neon-cyan);">E</span> or <span style="color: var(--cc-neon-cyan);">Space</span> (or touch ACTION button)</div>
+                    </div>
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-bullseye"></i>
+                        <div><strong>Candle Blitz Choices:</strong> Press <span style="color: var(--cc-neon-cyan);">1, 2, 3, 4</span> or Click Target</div>
+                    </div>
+                    <div class="cc-landmark-item">
+                        <i class="fas fa-globe"></i>
+                        <div><strong>Return to Hub:</strong> Walk South to Orbital Gateway or click top bar</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ====================================================================
+         DISTRICT MISSIONS JOURNAL MODAL (PHASE 2.6)
+         ==================================================================== -->
+    <div class="cc-missions-modal-overlay" id="cc-missions-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cc-missions-modal-card">
+            <div class="cc-missions-header">
+                <h2 class="cc-missions-title">
+                    <i class="fas fa-scroll" style="color: var(--cc-neon-cyan);"></i>
+                    <span>District Directives & Quests</span>
+                </h2>
+                <button type="button" class="cc-close-modal-btn" id="btn-close-missions" aria-label="Close Missions Journal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cc-missions-grid" id="cc-missions-list">
+                <!-- Populated dynamically by StrativoRPG.MissionEngine -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         SCRIPTS: RPG CORE ENGINE + NPC & MISSIONS + CANDLE ENCYCLOPEDIA
+         ==================================================================== -->
+    <script src="../js/settings/world-settings.js"></script>
+    <script src="../js/settings/haptics.js"></script>
+    <script src="../js/audio/audio-manager.js"></script>
+
+    <script src="../js/core/world-state.js"></script>
+    <script src="../js/core/world-xp-engine.js"></script>
+
+    <script src="../js/rpg/collision.js"></script>
+    <script src="../js/rpg/input.js"></script>
+    <script src="../js/rpg/camera.js"></script>
+    <script src="../js/rpg/player.js"></script>
+    <script src="../js/rpg/world.js"></script>
+    <script src="../js/rpg/rpg-core.js"></script>
+
+    <!-- Phase 2.6 Shared RPG Dialogue, NPC, and Mission Engines -->
+    <script src="../js/rpg/dialogue.js"></script>
+    <script src="../js/rpg/npc.js"></script>
+    <script src="../js/rpg/missions.js"></script>
+
+    <!-- Candle City Scene & Games -->
+    <script src="../js/districts/candle-city.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const canvas = document.getElementById("candle-city-canvas");
+            const viewport = document.getElementById("candle-city-viewport");
+            const promptEl = document.getElementById("cc-prompt");
+            const promptTitle = document.getElementById("prompt-title");
+            const promptSubtitle = document.getElementById("prompt-subtitle");
+
+            const dialogEl = document.getElementById("cc-dialog");
+            const dialogHeading = document.getElementById("dialog-heading");
+            const dialogBody = document.getElementById("dialog-body-text");
+            const dialogCloseBtn = document.getElementById("dialog-close-btn");
+            const dialogPrimaryBtn = document.getElementById("dialog-primary-btn");
+            const dialogActionContainer = document.getElementById("dialog-action-container");
+            const dialogCandleBox = document.getElementById("dialog-candle-box");
+            const dialogCandleCanvas = document.getElementById("dialog-candle-canvas");
+
+            const archiveModal = document.getElementById("cc-archive-modal");
+            const archiveCloseBtn = document.getElementById("archive-close-btn");
+            const archiveSearchInput = document.getElementById("archive-search-input");
+            const archiveCategoryTabs = document.getElementById("archive-category-tabs");
+            const archiveGrid = document.getElementById("archive-grid");
+            const archiveCountBadge = document.getElementById("archive-count-badge");
+            const hudPatternCounter = document.getElementById("hud-pattern-counter");
+            const hudArchiveBtn = document.getElementById("hud-archive-counter-btn");
+
+            // Profile Progress Stats Elements
+            const statExploredVal = document.getElementById("stat-explored-val");
+            const statAccuracyVal = document.getElementById("stat-accuracy-val");
+            const statComboVal = document.getElementById("stat-combo-val");
+            const statMasteryVal = document.getElementById("stat-mastery-val");
+            const statStreakVal = document.getElementById("stat-streak-val");
+
+            // Candle Blitz UI elements
+            const blitzOverlay = document.getElementById("cc-blitz-overlay");
+            const blitzCountdownScreen = document.getElementById("blitz-countdown-screen");
+            const blitzCountdownNum = document.getElementById("blitz-countdown-num");
+            const blitzGameStage = document.getElementById("blitz-game-stage");
+            const blitzRoundTag = document.getElementById("blitz-round-indicator");
+            const blitzDiffTag = document.getElementById("blitz-diff-indicator");
+            const blitzTimerVal = document.getElementById("blitz-timer-val");
+            const blitzComboTag = document.getElementById("blitz-combo-indicator");
+            const blitzScoreTag = document.getElementById("blitz-score-indicator");
+            const blitzScreenCanvas = document.getElementById("blitz-screen-canvas");
+            const blitzFeedbackBar = document.getElementById("blitz-feedback-bar");
+            const blitzFeedbackTitle = document.getElementById("blitz-feedback-title");
+            const blitzFeedbackMsg = document.getElementById("blitz-feedback-msg");
+            const blitzTargetGrid = document.getElementById("blitz-target-grid");
+            const blitzQuitBtn = document.getElementById("blitz-quit-btn");
+            const blitzScorecard = document.getElementById("blitz-scorecard");
+            const scorecardReplayBtn = document.getElementById("scorecard-replay-btn");
+            const scorecardCloseBtn = document.getElementById("scorecard-close-btn");
+
+            const detectivePill = document.getElementById("cc-detective-pill");
+            const detectiveTargetText = document.getElementById("cc-detective-target-text");
+
+            const debugBtn = document.getElementById("btn-toggle-debug");
+            const debugLabel = document.getElementById("debug-label");
+            const fullscreenBtn = document.getElementById("btn-fullscreen");
+            const transitionEl = document.getElementById("cc-transition-screen");
+            const transitionMsg = document.getElementById("transition-msg");
+
+            let activeCategory = "all";
+            let timerInterval = null;
+
+            function syncHUD() {
+                try {
+                    if (window.StrativoWorldState && typeof window.StrativoWorldState.get === "function") {
+                        const state = window.StrativoWorldState.get();
+                        if (state) {
+                            document.getElementById("hud-player-handle").textContent = state.handle || "Student";
+                            document.getElementById("hud-player-level").textContent = `LVL ${state.level || 1}`;
+                            document.getElementById("hud-player-rank").textContent = state.rank || "Novice Chartist";
+                        }
+                    }
+
+                    const stats = window.StrativoRPG.getCandleCityStats ? window.StrativoRPG.getCandleCityStats() : null;
+                    if (stats) {
+                        if (statExploredVal) statExploredVal.textContent = `${stats.viewedCount} / 44`;
+                        if (statAccuracyVal) statAccuracyVal.textContent = `${stats.recognitionAccuracy}%`;
+                        if (statComboVal) statComboVal.textContent = `${stats.bestCombo}x`;
+                        if (statMasteryVal) statMasteryVal.textContent = `${stats.candleMastery}%`;
+                        if (statStreakVal) statStreakVal.textContent = `${stats.streak} Day${stats.streak === 1 ? '' : 's'}`;
+                    }
+
+                    const totalPatterns = window.StrativoRPG.getPatterns ? window.StrativoRPG.getPatterns().length : 44;
+                    hudPatternCounter.textContent = `${totalPatterns} Patterns`;
+                    archiveCountBadge.textContent = `${totalPatterns} Patterns in Encyclopedia`;
+                } catch (err) {
+                    console.warn("HUD sync error:", err);
+                }
+            }
+
+            // Procedural Canvas Candlestick Renderer (Handles 1, 2, 3, and 5-candle formations)
+            function renderCandleDiagram(ctx, patternData, width = 280, height = 170) {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = "#040A18";
+                ctx.fillRect(0, 0, width, height);
+
+                ctx.strokeStyle = "rgba(0, 240, 255, 0.08)";
+                ctx.lineWidth = 1;
+                for (let x = 20; x < width; x += 30) {
+                    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+                }
+                for (let y = 20; y < height; y += 30) {
+                    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+                }
+
+                if (!patternData || !patternData.visual || !patternData.visual.candles) return;
+
+                const candles = patternData.visual.candles;
+                const totalCandles = candles.length;
+
+                const candleWidth = totalCandles === 1 ? 32 : totalCandles === 2 ? 26 : totalCandles === 3 ? 20 : 15;
+                const spacing = totalCandles === 1 ? 0 : totalCandles === 2 ? 46 : totalCandles === 3 ? 36 : 25;
+                const startX = width / 2 - ((totalCandles - 1) * spacing) / 2;
+
+                const scaleY = (val) => height - 30 - (val * 2.1);
+
+                candles.forEach((c, idx) => {
+                    const cx = startX + (idx * spacing);
+                    const openY = scaleY(c.open);
+                    const closeY = scaleY(c.close);
+                    const highY = scaleY(c.high);
+                    const lowY = scaleY(c.low);
+
+                    const isBullish = c.bullish;
+                    const color = c.isDoji ? "#FFFFFF" : isBullish ? "#00E5A8" : "#F43F5E";
+
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth = totalCandles > 3 ? 1.8 : 2.2;
+                    ctx.beginPath();
+                    ctx.moveTo(cx, highY);
+                    ctx.lineTo(cx, lowY);
+                    ctx.stroke();
+
+                    const bodyTop = Math.min(openY, closeY);
+                    const bodyH = Math.max(c.isDoji ? 3 : 5, Math.abs(openY - closeY));
+
+                    ctx.fillStyle = color;
+                    ctx.shadowColor = color;
+                    ctx.shadowBlur = 6;
+                    ctx.fillRect(cx - candleWidth / 2, bodyTop, candleWidth, bodyH);
+                    ctx.strokeRect(cx - candleWidth / 2, bodyTop, candleWidth, bodyH);
+                    ctx.shadowBlur = 0;
+                });
+            }
+
+            // Modal State & Preservation for Candle Archive & Pattern Detail
+            let openedFromArchive = false;
+            let savedArchiveScrollTop = 0;
+            let savedArchiveQuery = "";
+            let savedArchiveCategory = "all";
+
+            // Candlestick Viewer Detail Trigger
+            function openPatternDetailModal(pattern, fromArchive = false) {
+                if (!pattern) return;
+
+                openedFromArchive = !!fromArchive;
+                if (openedFromArchive) {
+                    savedArchiveScrollTop = archiveGrid.scrollTop;
+                    savedArchiveQuery = archiveSearchInput.value;
+                    savedArchiveCategory = activeCategory;
+                }
+
+                // Record genuine pattern inspection
+                if (window.StrativoRPG.recordPatternViewed) {
+                    window.StrativoRPG.recordPatternViewed(pattern.id);
+                }
+                syncHUD();
+
+                dialogHeading.innerHTML = `<i class="fas fa-chart-candlestick" style="color: var(--cc-neon-cyan);"></i> ${pattern.name}`;
+
+                const biasClass = pattern.bias.includes("bullish") ? "bullish" : pattern.bias.includes("bearish") ? "bearish" : "neutral";
+                const badgeHtml = `<div class="cc-pattern-bias-tag ${biasClass}" style="display:inline-block; font-size:0.75rem; padding:3px 8px; border-radius:12px; margin-bottom:0.75rem;">${pattern.bias.replace(/_/g, " ").toUpperCase()} • ${pattern.category.toUpperCase()}</div>`;
+
+                dialogCandleBox.style.display = "flex";
+                const dCtx = dialogCandleCanvas.getContext("2d");
+                renderCandleDiagram(dCtx, pattern, 240, 130);
+
+                dialogBody.innerHTML = `
+                    ${badgeHtml}
+                    <div style="font-size:0.88rem; color: #FFF; margin-bottom: 0.5rem;"><strong>Summary:</strong> ${pattern.summary}</div>
+                    <div style="font-size:0.84rem; color: var(--cc-text-muted); margin-bottom: 0.5rem;"><strong>Anatomy:</strong> ${pattern.anatomy}</div>
+                    <div style="font-size:0.84rem; color: var(--cc-neon-emerald); margin-bottom: 0.5rem;"><strong>Market Context:</strong> ${pattern.context}</div>
+                    <div style="font-size:0.84rem; color: var(--cc-neon-rose); margin-bottom: 0.5rem;"><strong>Common Mistake:</strong> ${pattern.commonMistake}</div>
+                    <div style="font-size:0.78rem; color: var(--cc-neon-gold);"><strong>Sources:</strong> ${(pattern.sourceRefs || []).join(", ")}</div>
+                `;
+
+                dialogActionContainer.innerHTML = '';
+                const closeBtn = document.createElement("button");
+                closeBtn.type = "button";
+                closeBtn.className = "cc-btn cc-btn-cyan";
+                closeBtn.textContent = openedFromArchive ? "Back to Archive" : "Understood";
+                closeBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    closeDialog();
+                });
+                dialogActionContainer.appendChild(closeBtn);
+
+                dialogEl.classList.add("active");
+                dialogEl.setAttribute("aria-hidden", "false");
+            }
+
+            // Candle Archive Explorer Rendering
+            function populateArchiveGrid() {
+                const totalPatterns = window.StrativoRPG.getPatterns ? window.StrativoRPG.getPatterns().length : 44;
+                const query = archiveSearchInput.value.trim();
+                const patterns = window.StrativoRPG.filterPatterns(query, activeCategory);
+
+                if (query || activeCategory !== "all") {
+                    archiveCountBadge.textContent = `${patterns.length} of ${totalPatterns} Patterns`;
+                } else {
+                    archiveCountBadge.textContent = `${totalPatterns} Patterns in Encyclopedia`;
+                }
+
+                archiveGrid.innerHTML = '';
+
+                if (patterns.length === 0) {
+                    archiveGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--cc-text-muted); padding: 2rem;">No matching candlestick patterns found for "${query}".</div>`;
+                    return;
+                }
+
+                const state = window.StrativoWorldState ? window.StrativoWorldState.get() : null;
+                const viewedPatterns = state && Array.isArray(state.viewedPatterns) ? state.viewedPatterns : [];
+
+                patterns.forEach(p => {
+                    const card = document.createElement("article");
+                    card.className = "cc-pattern-card";
+                    const biasClass = p.bias.includes("bullish") ? "bullish" : p.bias.includes("bearish") ? "bearish" : "neutral";
+                    const isViewed = viewedPatterns.includes(p.id);
+
+                    card.innerHTML = `
+                        <div class="cc-pattern-card-header">
+                            <span class="cc-pattern-card-title">${p.name}</span>
+                            <div style="display:flex; align-items:center; gap:4px;">
+                                ${isViewed ? '<span class="cc-pattern-viewed-badge"><i class="fas fa-check"></i> VIEWED</span>' : ''}
+                                <span class="cc-pattern-bias-tag ${biasClass}">${p.bias.replace(/_/g, " ").toUpperCase()}</span>
+                            </div>
+                        </div>
+                        <div class="cc-pattern-card-summary">${p.summary}</div>
+                    `;
+
+                    card.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        openPatternDetailModal(p, true);
+                    });
+
+                    archiveGrid.appendChild(card);
+                });
+            }
+
+            window.StrativoRPG.openArchiveBrowser = async function () {
+                if (!window.StrativoRPG.CandlePatterns || window.StrativoRPG.CandlePatterns.length === 0) {
+                    await window.StrativoRPG.loadCandlesticksDataset();
+                }
+                archiveModal.classList.add("active");
+                archiveModal.setAttribute("aria-hidden", "false");
+                populateArchiveGrid();
+            };
+
+            function closeArchiveBrowser() {
+                archiveModal.classList.remove("active");
+                archiveModal.setAttribute("aria-hidden", "true");
+                canvas.focus();
+            }
+
+            archiveCloseBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                closeArchiveBrowser();
+            });
+            hudArchiveBtn.addEventListener("click", () => window.StrativoRPG.openArchiveBrowser());
+
+            archiveSearchInput.addEventListener("input", () => populateArchiveGrid());
+
+            archiveCategoryTabs.querySelectorAll(".cc-filter-tab").forEach(tab => {
+                tab.addEventListener("click", () => {
+                    archiveCategoryTabs.querySelectorAll(".cc-filter-tab").forEach(t => t.classList.remove("active"));
+                    tab.classList.add("active");
+                    activeCategory = tab.getAttribute("data-cat");
+                    populateArchiveGrid();
+                });
+            });
+
+            // Instantiate Candle City Scene
+            const candleCityWorld = new window.StrativoRPG.CandleCityWorld();
+
+            const rpg = new window.StrativoRPG.RPGCore({
+                canvas: canvas,
+                container: viewport,
+                world: candleCityWorld,
+                playerConfig: {
+                    x: candleCityWorld.spawnPoint.x,
+                    y: candleCityWorld.spawnPoint.y,
+                    facing: candleCityWorld.spawnPoint.direction || "up",
+                    assetPath: "../assets/player/player-avatar.png",
+                    speed: 230
+                },
+                onInteractionPrompt: (data) => {
+                    if (data && data.active) {
+                        promptTitle.textContent = data.name;
+                        promptSubtitle.textContent = `• ${data.promptText}`;
+                        promptEl.classList.add("active");
+                    } else {
+                        promptEl.classList.remove("active");
+                    }
+                },
+                onInteractionTrigger: (obj, result) => {
+                    if (!result) return;
+
+                    // Mission progress recording
+                    if (obj && obj.buildingRef && window.StrativoRPG.MissionEngine && typeof window.StrativoRPG.MissionEngine.recordLocationInteraction === "function") {
+                        window.StrativoRPG.MissionEngine.recordLocationInteraction(obj.buildingRef.id);
+                    }
+                    if (obj && obj.buildingRef && obj.buildingRef.id === "context_chamber" && window.StrativoRPG.MissionEngine && typeof window.StrativoRPG.MissionEngine.recordContextChallengeComplete === "function") {
+                        window.StrativoRPG.MissionEngine.recordContextChallengeComplete();
+                    }
+
+                    if (result.type === "ARCHIVE_BROWSER" || result.type === "ARCHIVE_MODAL") {
+                        window.StrativoRPG.openArchiveBrowser();
+                        return;
+                    }
+
+                    if (result.type === "BLITZ_LAUNCHER" || result.type === "RANGE_LAUNCHER") {
+                        if (result.actionHandler) result.actionHandler();
+                        return;
+                    }
+
+                    if (result.type === "CANDLE_VIEWER" && result.pattern) {
+                        openPatternDetailModal(result.pattern);
+                        return;
+                    }
+
+                    dialogHeading.innerHTML = `<i class="fas ${result.icon || obj.icon || 'fa-city'}" style="color: var(--cc-neon-cyan);"></i> ${result.title || obj.name}`;
+
+                    let badgeHtml = result.badge
+                        ? `<div style="display:inline-block; font-size:0.75rem; font-weight:800; color:var(--cc-neon-emerald); background:rgba(0,229,168,0.15); border:1px solid rgba(0,229,168,0.4); padding:2px 8px; border-radius:12px; margin-bottom:0.75rem;">${result.badge}</div>`
+                        : '';
+
+                    dialogCandleBox.style.display = "none";
+                    dialogBody.innerHTML = `${badgeHtml}<p style="margin:0;">${result.message || ""}</p>`;
+
+                    dialogActionContainer.innerHTML = '';
+
+                    if (result.actionHandler) {
+                        const actBtn = document.createElement("button");
+                        actBtn.type = "button";
+                        actBtn.className = "cc-btn cc-btn-cyan";
+                        actBtn.innerHTML = `<i class="fas fa-play"></i> ${result.actionLabel || "Start"}`;
+                        actBtn.addEventListener("click", () => {
+                            closeDialog();
+                            result.actionHandler();
+                        });
+                        dialogActionContainer.appendChild(actBtn);
+                    } else if (result.actionUrl) {
+                        const linkBtn = document.createElement("a");
+                        linkBtn.href = result.actionUrl;
+                        linkBtn.className = "cc-btn cc-btn-cyan";
+                        linkBtn.innerHTML = `<i class="fas fa-book-open"></i> ${result.actionLabel || "Explore Notes"}`;
+                        dialogActionContainer.appendChild(linkBtn);
+                    }
+
+                    const closeBtn = document.createElement("button");
+                    closeBtn.type = "button";
+                    closeBtn.className = "cc-btn";
+                    closeBtn.textContent = result.actionUrl || result.actionHandler ? "Close" : (result.actionLabel || "Acknowledge");
+                    closeBtn.addEventListener("click", closeDialog);
+                    dialogActionContainer.appendChild(closeBtn);
+
+                    dialogEl.classList.add("active");
+                    dialogEl.setAttribute("aria-hidden", "false");
+                },
+                onDistrictTransition: (districtId) => {
+                    transitionMsg.textContent = districtId === "world-hub"
+                        ? "Returning to Strativo World Hub..."
+                        : `Entering ${districtId}...`;
+                    transitionEl.classList.add("active");
+                    transitionEl.setAttribute("aria-hidden", "false");
+                }
+            });
+
+            rpg.collision.clear();
+            rpg.world = candleCityWorld;
+            rpg.world.buildScene(rpg.collision);
+            rpg.camera.setWorldBounds(rpg.world.bounds);
+            rpg.camera.follow(rpg.player, true);
+            rpg.start();
+
+            function closeDialog() {
+                dialogEl.classList.remove("active");
+                dialogEl.setAttribute("aria-hidden", "true");
+
+                if (openedFromArchive) {
+                    openedFromArchive = false;
+                    // Ensure Archive is active and refreshed with updated viewed state while preserving search & scroll
+                    archiveModal.classList.add("active");
+                    archiveModal.setAttribute("aria-hidden", "false");
+                    archiveSearchInput.value = savedArchiveQuery;
+                    activeCategory = savedArchiveCategory;
+                    archiveCategoryTabs.querySelectorAll(".cc-filter-tab").forEach(tab => {
+                        if (tab.getAttribute("data-cat") === activeCategory) {
+                            tab.classList.add("active");
+                        } else {
+                            tab.classList.remove("active");
+                        }
+                    });
+                    populateArchiveGrid();
+                    archiveGrid.scrollTop = savedArchiveScrollTop;
+                    archiveSearchInput.focus();
+                } else {
+                    canvas.focus();
+                }
+            }
+            dialogCloseBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                closeDialog();
+            });
+            dialogPrimaryBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                closeDialog();
+            });
+
+            dialogEl.addEventListener("click", (e) => {
+                if (e.target === dialogEl) {
+                    closeDialog();
+                }
+            });
+
+            archiveModal.addEventListener("click", (e) => {
+                if (e.target === archiveModal) {
+                    closeArchiveBrowser();
+                }
+            });
+
+            // ================================================================
+            // CANDLE BLITZ GAMEPLAY ENGINE (PHASE 2.2 + 2.3)
+            // ================================================================
+            const blitz = window.StrativoRPG.CandleBlitzEngine;
+
+            window.StrativoRPG.launchCandleBlitz = async function () {
+                if (!window.StrativoRPG.CandlePatterns || window.StrativoRPG.CandlePatterns.length === 0) {
+                    await window.StrativoRPG.loadCandlesticksDataset();
+                }
+                blitzOverlay.classList.add("active");
+                blitzScorecard.classList.remove("active");
+                blitzGameStage.style.display = "flex";
+                blitz.start();
+            };
+
+            window.StrativoRPG.triggerBlitzCountdown = function (onComplete) {
+                blitzCountdownScreen.classList.add("active");
+                let count = 3;
+                blitzCountdownNum.textContent = count;
+                window.StrativoRPG.emitGameEvent("countdownTick", { count });
+
+                const cdInterval = setInterval(() => {
+                    count--;
+                    if (count > 0) {
+                        blitzCountdownNum.textContent = count;
+                        window.StrativoRPG.emitGameEvent("countdownTick", { count });
+                    } else if (count === 0) {
+                        blitzCountdownNum.textContent = "GO!";
+                        window.StrativoRPG.emitGameEvent("countdownGo");
+                    } else {
+                        clearInterval(cdInterval);
+                        blitzCountdownScreen.classList.remove("active");
+                        if (typeof onComplete === "function") onComplete();
+                    }
+                }, 800);
+            };
+
+            window.StrativoRPG.renderBlitzRoundUI = function (game) {
+                blitzRoundTag.textContent = `ROUND ${game.currentRound} / ${game.totalRounds}`;
+                blitzDiffTag.textContent = game.currentDifficulty.toUpperCase();
+                blitzDiffTag.className = `cc-game-diff-tag ${game.currentDifficulty}`;
+
+                blitzComboTag.textContent = `COMBO x${game.combo}`;
+                if (game.combo >= 4) blitzComboTag.classList.add("high");
+                else blitzComboTag.classList.remove("high");
+
+                blitzScoreTag.textContent = `${game.score} PTS`;
+                blitzFeedbackBar.style.display = "none";
+
+                if (timerInterval) clearInterval(timerInterval);
+                const startTime = game.roundStartTime;
+                timerInterval = setInterval(() => {
+                    if (game.isAnswered) {
+                        clearInterval(timerInterval);
+                        return;
+                    }
+                    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+                    blitzTimerVal.textContent = `${elapsed}s`;
+                }, 100);
+
+                const bCtx = blitzScreenCanvas.getContext("2d");
+                renderCandleDiagram(bCtx, game.currentQuestion.target, 280, 170);
+
+                const cards = blitzTargetGrid.querySelectorAll(".cc-target-card");
+                game.currentQuestion.options.forEach((opt, idx) => {
+                    if (cards[idx]) {
+                        cards[idx].className = "cc-target-card";
+                        cards[idx].querySelector(".opt-label").textContent = opt.name;
+                        cards[idx].onclick = () => {
+                            game.submitAnswer(opt.id);
+                        };
+                    }
+                });
+            };
+
+            window.StrativoRPG.showBlitzFeedback = function (isCorrect, title, anatomy, context, tipOrTrap) {
+                if (timerInterval) clearInterval(timerInterval);
+                blitzFeedbackBar.className = `cc-game-feedback-bar ${isCorrect ? 'correct' : 'wrong'}`;
+                blitzFeedbackBar.style.display = "flex";
+                blitzFeedbackTitle.textContent = title;
+
+                blitzFeedbackMsg.innerHTML = `
+                    <div><strong>Anatomy:</strong> ${anatomy}</div>
+                    <div><strong>Market Context:</strong> ${context}</div>
+                    <div style="margin-top:2px;"><strong>${isCorrect ? 'Pro Tip' : 'Common Trap'}:</strong> ${tipOrTrap}</div>
+                `;
+
+                const cards = blitzTargetGrid.querySelectorAll(".cc-target-card");
+                cards.forEach(card => {
+                    card.classList.add("disabled");
+                    const optLabel = card.querySelector(".opt-label").textContent;
+                    if (optLabel === blitz.currentQuestion.target.name) {
+                        card.classList.add("correct");
+                    } else {
+                        card.classList.add("wrong");
+                    }
+                });
+            };
+
+            window.StrativoRPG.renderBlitzScorecardUI = function (results) {
+                if (timerInterval) clearInterval(timerInterval);
+                blitzGameStage.style.display = "none";
+                blitzScorecard.classList.add("active");
+                document.getElementById("scorecard-grade").textContent = results.grade;
+                document.getElementById("scorecard-score").textContent = results.score;
+                document.getElementById("scorecard-acc").textContent = `${results.accuracy}%`;
+                document.getElementById("scorecard-speed").textContent = `${(results.avgSpeed / 1000).toFixed(2)}s`;
+                document.getElementById("scorecard-combo").textContent = `x${results.maxCombo}`;
+                document.getElementById("scorecard-correct").textContent = `${results.correctCount} / 10`;
+                document.getElementById("scorecard-incorrect").textContent = `${results.incorrectCount} / 10`;
+                document.getElementById("scorecard-xp").textContent = results.xpGained;
+
+                const masteryVal = document.getElementById("scorecard-mastery");
+                if (masteryVal) masteryVal.textContent = `${results.newMastery || 0}%`;
+
+                const patternsCount = document.getElementById("scorecard-patterns-count");
+                if (patternsCount) patternsCount.textContent = results.correctCount;
+
+                syncHUD();
+            };
+
+            scorecardReplayBtn.addEventListener("click", () => {
+                blitzScorecard.classList.remove("active");
+                blitzGameStage.style.display = "flex";
+                blitz.start();
+            });
+
+            scorecardCloseBtn.addEventListener("click", () => {
+                blitzOverlay.classList.remove("active");
+                canvas.focus();
+            });
+
+            blitzQuitBtn.addEventListener("click", () => {
+                if (timerInterval) clearInterval(timerInterval);
+                blitz.active = false;
+                blitzOverlay.classList.remove("active");
+                canvas.focus();
+            });
+
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    if (dialogEl.classList.contains("active")) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeDialog();
+                        return;
+                    }
+                    if (archiveModal.classList.contains("active")) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeArchiveBrowser();
+                        return;
+                    }
+                    const missionsModal = document.getElementById("cc-missions-modal");
+                    if (missionsModal && missionsModal.classList.contains("active")) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        missionsModal.classList.remove("active");
+                        missionsModal.setAttribute("aria-hidden", "true");
+                        canvas.focus();
+                        return;
+                    }
+                }
+
+                if (!blitz.active || blitz.isAnswered) return;
+                const keyMap = { "1": 0, "2": 1, "3": 2, "4": 3 };
+                if (keyMap[e.key] !== undefined) {
+                    const opt = blitz.currentQuestion.options[keyMap[e.key]];
+                    if (opt) blitz.submitAnswer(opt.id);
+                }
+            });
+
+            window.StrativoRPG.updateDetectiveHUD = function (target) {
+                detectiveTargetText.textContent = `FIND: ${target.name.toUpperCase()}`;
+                detectivePill.classList.add("active");
+            };
+
+            window.StrativoRPG.notifyDetectiveSuccess = function (pattern) {
+                detectivePill.classList.remove("active");
+                if (window.StrativoWorldXPEngine && typeof window.StrativoWorldXPEngine.addWorldXP === "function") {
+                    window.StrativoWorldXPEngine.addWorldXP(25, `Candle Detective: Found ${pattern.name}`, `detective_${pattern.id}_${Date.now()}`);
+                }
+                syncHUD();
+                updateTrackedMissionHUD();
+            };
+
+            // ================================================================
+            // MISSIONS JOURNAL & TRACKED MISSION HUD (PHASE 2.6)
+            // ================================================================
+            const missionsModal = document.getElementById("cc-missions-modal");
+            const missionsList = document.getElementById("cc-missions-list");
+            const btnOpenMissions = document.getElementById("btn-open-missions");
+            const btnCloseMissions = document.getElementById("btn-close-missions");
+            const trackerWidget = document.getElementById("cc-mission-tracker");
+            const trackerName = document.getElementById("cc-tracker-name");
+            const trackerFill = document.getElementById("cc-tracker-fill");
+            const trackerCount = document.getElementById("cc-tracker-count");
+
+            function updateTrackedMissionHUD() {
+                if (!window.StrativoRPG.MissionEngine) return;
+                const showMarkers = window.StrativoWorldSettings ? window.StrativoWorldSettings.getSetting("gameplay.showQuestMarkers", true) : true;
+                if (!showMarkers) {
+                    if (trackerWidget) trackerWidget.style.display = "none";
+                    return;
+                }
+
+                const mission = window.StrativoRPG.MissionEngine.getTrackedMission();
+                if (!mission) {
+                    if (trackerWidget) trackerWidget.style.display = "none";
+                    return;
+                }
+
+                if (trackerWidget) trackerWidget.style.display = "flex";
+                const prog = window.StrativoRPG.MissionEngine.getMissionProgress(mission.id);
+                const status = window.StrativoRPG.MissionEngine.getMissionStatus(mission.id);
+
+                if (trackerName) trackerName.textContent = mission.title;
+                if (trackerFill) trackerFill.style.width = `${prog.percent}%`;
+                if (trackerCount) {
+                    trackerCount.textContent = status === "completed" ? "COMPLETE" : `${prog.current} / ${prog.target}`;
+                    trackerCount.style.color = status === "completed" ? "var(--cc-neon-emerald)" : status === "ready_to_claim" ? "#FCD34D" : "var(--cc-neon-cyan)";
+                }
+            }
+
+            function renderMissionsJournal() {
+                if (!missionsList || !window.StrativoRPG.MissionEngine) return;
+                missionsList.innerHTML = "";
+
+                const allMissions = window.StrativoRPG.MissionEngine.getMissions();
+                const tracked = window.StrativoRPG.MissionEngine.getTrackedMission();
+
+                allMissions.forEach(m => {
+                    const status = window.StrativoRPG.MissionEngine.getMissionStatus(m.id);
+                    const prog = window.StrativoRPG.MissionEngine.getMissionProgress(m.id);
+                    const isTracked = tracked && tracked.id === m.id;
+
+                    const card = document.createElement("div");
+                    card.className = `cc-mission-card ${status === "ready_to_claim" ? "ready" : status === "completed" ? "completed" : ""}`;
+
+                    let statusLabel = "Available";
+                    let statusClass = "available";
+                    if (status === "active") { statusLabel = "Active"; statusClass = "active"; }
+                    else if (status === "ready_to_claim") { statusLabel = "Ready to Claim"; statusClass = "ready"; }
+                    else if (status === "completed") { statusLabel = "Completed"; statusClass = "completed"; }
+
+                    card.innerHTML = `
+                        <div class="cc-mission-top">
+                            <div class="cc-mission-name">${m.title}</div>
+                            <span class="cc-mission-status-pill ${statusClass}">${statusLabel}</span>
+                        </div>
+                        <p class="cc-mission-desc">${m.description}</p>
+                        <div class="cc-tracker-prog-wrap" style="margin: 4px 0;">
+                            <div class="cc-tracker-bar" style="height: 8px;">
+                                <div class="cc-tracker-fill" style="width: ${prog.percent}%;"></div>
+                            </div>
+                            <span class="cc-tracker-count">${prog.current} / ${prog.target} ${m.objective.label || ''}</span>
+                        </div>
+                        <div class="cc-mission-bottom">
+                            <div class="cc-mission-reward">
+                                <i class="fas fa-gift"></i>
+                                <span>+${m.reward.xp} World XP</span>
+                            </div>
+                            <div class="cc-mission-actions" id="actions-${m.id}"></div>
+                        </div>
+                    `;
+
+                    const actionsBox = card.querySelector(`#actions-${m.id}`);
+
+                    if (status === "ready_to_claim") {
+                        const claimBtn = document.createElement("button");
+                        claimBtn.type = "button";
+                        claimBtn.className = "strativo-dialogue-btn primary";
+                        claimBtn.innerHTML = `<i class="fas fa-gift" style="margin-right: 5px;"></i> Claim (+${m.reward.xp} XP)`;
+                        claimBtn.onclick = () => {
+                            window.StrativoRPG.MissionEngine.claimReward(m.id);
+                            renderMissionsJournal();
+                            updateTrackedMissionHUD();
+                            syncHUD();
+                        };
+                        actionsBox.appendChild(claimBtn);
+                    } else if (status === "active" || status === "available") {
+                        if (status === "available") {
+                            const acceptBtn = document.createElement("button");
+                            acceptBtn.type = "button";
+                            acceptBtn.className = "strativo-dialogue-btn default";
+                            acceptBtn.innerHTML = `<i class="fas fa-check" style="margin-right: 5px;"></i> Accept`;
+                            acceptBtn.onclick = () => {
+                                window.StrativoRPG.MissionEngine.acceptMission(m.id);
+                                renderMissionsJournal();
+                                updateTrackedMissionHUD();
+                            };
+                            actionsBox.appendChild(acceptBtn);
+                        }
+
+                        const trackBtn = document.createElement("button");
+                        trackBtn.type = "button";
+                        trackBtn.className = `strativo-dialogue-btn ${isTracked ? 'primary' : 'secondary'}`;
+                        trackBtn.innerHTML = isTracked
+                            ? `<i class="fas fa-crosshairs" style="margin-right: 5px;"></i> Tracking`
+                            : `<i class="fas fa-location-crosshairs" style="margin-right: 5px;"></i> Track`;
+                        trackBtn.onclick = () => {
+                            window.StrativoRPG.MissionEngine.setTrackedMission(m.id);
+                            renderMissionsJournal();
+                            updateTrackedMissionHUD();
+                        };
+                        actionsBox.appendChild(trackBtn);
+                    } else if (status === "completed") {
+                        const doneTag = document.createElement("span");
+                        doneTag.style.cssText = "color: var(--cc-neon-emerald); font-weight: 700; font-size: 0.84rem;";
+                        doneTag.innerHTML = `<i class="fas fa-check-double"></i> Claimed`;
+                        actionsBox.appendChild(doneTag);
+                    }
+
+                    missionsList.appendChild(card);
+                });
+            }
+
+            function openMissionsModal() {
+                renderMissionsJournal();
+                if (missionsModal) missionsModal.classList.add("active");
+                if (window.StrativoWorldAudio && typeof window.StrativoWorldAudio.playSFX === "function") {
+                    window.StrativoWorldAudio.playSFX("interaction");
+                }
+            }
+
+            function closeMissionsModal() {
+                if (missionsModal) missionsModal.classList.remove("active");
+                if (canvas) canvas.focus();
+            }
+
+            if (btnOpenMissions) btnOpenMissions.addEventListener("click", openMissionsModal);
+            if (btnCloseMissions) btnCloseMissions.addEventListener("click", closeMissionsModal);
+            if (missionsModal) {
+                missionsModal.addEventListener("click", (e) => {
+                    if (e.target === missionsModal) closeMissionsModal();
+                });
+            }
+
+            window.addEventListener("strativo:candlesticksLoaded", () => {
+                syncHUD();
+                updateTrackedMissionHUD();
+                if (archiveModal.classList.contains("active")) {
+                    populateArchiveGrid();
+                }
+            });
+
+            window.addEventListener("strativo:worldStateChanged", () => {
+                syncHUD();
+                updateTrackedMissionHUD();
+            });
+
+            window.addEventListener("strativo:missionAccepted", () => {
+                updateTrackedMissionHUD();
+                if (missionsModal && missionsModal.classList.contains("active")) renderMissionsJournal();
+            });
+
+            window.addEventListener("strativo:missionClaimed", () => {
+                syncHUD();
+                updateTrackedMissionHUD();
+                if (missionsModal && missionsModal.classList.contains("active")) renderMissionsJournal();
+            });
+
+            window.addEventListener("strativo:trackedMissionChanged", () => {
+                updateTrackedMissionHUD();
+            });
+
+            if (window.StrativoRPG.loadCandlesticksDataset) {
+                await window.StrativoRPG.loadCandlesticksDataset();
+            }
+            if (window.StrativoRPG.MissionEngine && typeof window.StrativoRPG.MissionEngine.loadMissionsDataset === "function") {
+                await window.StrativoRPG.MissionEngine.loadMissionsDataset();
+            }
+            syncHUD();
+            updateTrackedMissionHUD();
+
+            function updateDebugUI() {
+                debugLabel.textContent = `Debug: ${rpg.debug ? "ON" : "OFF"}`;
+                if (rpg.debug) debugBtn.classList.add("cc-btn-cyan");
+                else debugBtn.classList.remove("cc-btn-cyan");
+            }
+            debugBtn.addEventListener("click", () => {
+                rpg.toggleDebug();
+                updateDebugUI();
+            });
+            updateDebugUI();
+
+            fullscreenBtn.addEventListener("click", () => {
+                if (!document.fullscreenElement) {
+                    viewport.requestFullscreen().catch(err => console.warn(err));
+                } else {
+                    document.exitFullscreen().catch(err => console.warn(err));
+                }
+            });
+
+            viewport.addEventListener("click", () => {
+                canvas.focus();
+            });
+
+            // Start Candle City ambience safely on user gesture
+            const startAmbience = () => {
+                if (window.StrativoWorldAudio && typeof window.StrativoWorldAudio.playMusic === "function") {
+                    window.StrativoWorldAudio.playMusic("ambient_candle_city", { loop: true });
+                }
+            };
+            window.addEventListener("click", startAmbience, { once: true });
+            window.addEventListener("touchstart", startAmbience, { once: true });
+            window.addEventListener("keydown", startAmbience, { once: true });
+            window.addEventListener("beforeunload", () => {
+                if (window.StrativoWorldAudio && typeof window.StrativoWorldAudio.stopMusic === "function") {
+                    window.StrativoWorldAudio.stopMusic();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

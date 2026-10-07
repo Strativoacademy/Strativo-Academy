@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Strativo World — Market Arena (District 3)</title>
+    <meta name="description" content="District 3 of Strativo World. Master market structure, swing highs and lows, trends, consolidation ranges, breakouts, and fakeouts.">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../../css/rpg-core.css">
+    <link rel="stylesheet" href="../../css/market-arena.css">
+</head>
+<body class="market-arena-page">
+    <div class="market-arena-container">
+        <!-- ================================================================
+             1. TOP DISTRICT HUD
+             ================================================================ -->
+        <header class="market-arena-hud">
+            <div class="ma-hud-left">
+                <div class="ma-player-badge">
+                    <div class="ma-player-avatar-icon" id="ma-avatar-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="ma-player-meta">
+                        <div class="ma-player-name-row">
+                            <span class="ma-player-handle" id="ma-player-name">Trader</span>
+                            <span class="ma-player-lvl-tag" id="ma-level-badge">LVL 1</span>
+                        </div>
+                        <span class="ma-player-rank" id="ma-rank-label">Market Initiate</span>
+                    </div>
+                </div>
+
+                <div class="ma-district-status-badge">
+                    <span class="ma-beacon-dot"></span>
+                    <span>DISTRICT 3 • MARKET ARENA</span>
+                </div>
+            </div>
+
+            <div class="ma-hud-actions">
+                <button class="ma-btn ma-btn-amber" id="ma-btn-missions" title="District Directives">
+                    <i class="fa-solid fa-scroll"></i>
+                    <span>Directives</span>
+                </button>
+                <button class="ma-btn" id="ma-btn-audio-toggle" title="Toggle Sound">
+                    <i class="fa-solid fa-volume-high" id="ma-audio-icon"></i>
+                </button>
+                <a href="../hub.html" class="ma-btn ma-btn-blue" title="Return to World Hub">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>World Hub</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- ================================================================
+             2. PROGRESSION STATS BAR
+             ================================================================ -->
+        <section class="ma-profile-progress-bar">
+            <div class="ma-profile-stat-item">
+                <span class="ma-stat-label"><i class="fa-solid fa-map-location-dot"></i> Explored</span>
+                <span class="ma-stat-val" id="ma-stat-explored">0 / 6</span>
+            </div>
+            <div class="ma-profile-stat-item">
+                <span class="ma-stat-label"><i class="fa-solid fa-wave-square"></i> Swings Solved</span>
+                <span class="ma-stat-val" id="ma-stat-swings">0</span>
+            </div>
+            <div class="ma-profile-stat-item">
+                <span class="ma-stat-label"><i class="fa-solid fa-arrow-trend-up"></i> Trends Classified</span>
+                <span class="ma-stat-val" id="ma-stat-trends">0</span>
+            </div>
+            <div class="ma-profile-stat-item">
+                <span class="ma-stat-label"><i class="fa-solid fa-arrows-split-up-and-left"></i> Breakouts / Traps</span>
+                <span class="ma-stat-val" id="ma-stat-breakouts">0</span>
+            </div>
+            <div class="ma-profile-stat-item">
+                <span class="ma-stat-label"><i class="fa-solid fa-crown"></i> Structure Mastery</span>
+                <span class="ma-stat-val" id="ma-stat-mastery" style="color: var(--ma-neon-amber);">0%</span>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             3. 2D RPG PLAYABLE VIEWPORT
+             ================================================================ -->
+        <main class="market-arena-viewport-wrapper" id="market-arena-viewport">
+            <canvas id="market-arena-canvas" class="market-arena-canvas" width="1600" height="1000"></canvas>
+
+            <!-- Active Tracked Mission HUD Widget -->
+            <div class="ma-mission-tracker-hud" id="ma-tracker-hud">
+                <div class="ma-tracker-title">
+                    <span><i class="fa-solid fa-crosshairs"></i> Active Directive</span>
+                    <span id="ma-tracker-category">STRUCTURE</span>
+                </div>
+                <div class="ma-tracker-name" id="ma-tracker-name">Read the Structure</div>
+                <div class="ma-tracker-prog-wrap">
+                    <div class="ma-tracker-bar">
+                        <div class="ma-tracker-fill" id="ma-tracker-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="ma-tracker-count" id="ma-tracker-count">0 / 3</span>
+                </div>
+            </div>
+
+            <!-- Floating Proximity Interaction Prompt -->
+            <div class="ma-interact-prompt" id="ma-interact-prompt">
+                <span class="ma-key-badge">E</span>
+                <span class="ma-interact-title" id="ma-prompt-title">Structure Observatory</span>
+                <span class="ma-interact-action" id="ma-prompt-action">Enter Facility</span>
+            </div>
+
+            <!-- Mobile Touch Controls Layer -->
+            <div class="ma-touch-layer" id="ma-touch-layer">
+                <button class="ma-touch-action-btn" id="ma-touch-action-btn" aria-label="Action">
+                    <i class="fa-solid fa-hand"></i>
+                    <span>ACTION</span>
+                </button>
+                <div class="ma-joystick-hint">Touch & drag left side to walk</div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ====================================================================
+         4. INTERACTIVE LAB & FACILITY MODALS
+         ==================================================================== -->
+
+    <!-- A. MARKET ACADEMY MODAL -->
+    <div class="ma-dialog-backdrop" id="ma-academy-modal">
+        <div class="ma-dialog-card ma-modal-wide-card">
+            <div class="ma-dialog-header">
+                <h3><i class="fa-solid fa-graduation-cap" style="color: var(--ma-neon-blue);"></i> Market Academy — Foundations of Structure</h3>
+                <button class="ma-btn ma-modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="ma-dialog-body">
+                <p style="color: var(--ma-text-muted); margin: 0;">
+                    In financial markets, an isolated candle tells you almost nothing. Market structure is the map of price movement formed by <strong>Swing Highs</strong> (peaks) and <strong>Swing Lows</strong> (troughs).
+                </p>
+
+                <div class="ma-interactive-box">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="color: #FFF;"><i class="fa-solid fa-wave-square"></i> Swing Point Architecture</strong>
+                        <span style="font-size: 0.78rem; color: var(--ma-neon-amber); font-weight: 700;">VISUAL DIAGRAM</span>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem;">
+                        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 0.75rem;">
+                            <div style="font-weight: 800; color: #A7F3D0; font-size: 0.88rem; margin-bottom: 0.35rem;">BULLISH STRUCTURE (UPTREND)</div>
+                            <div style="font-size: 0.8rem; color: var(--ma-text-muted);">
+                                • <strong>Higher High (HH):</strong> A peak formed above the prior peak.<br>
+                                • <strong>Higher Low (HL):</strong> A trough that stays above the prior trough.
+                            </div>
+                        </div>
+                        <div style="background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 8px; padding: 0.75rem;">
+                            <div style="font-weight: 800; color: #FECDD3; font-size: 0.88rem; margin-bottom: 0.35rem;">BEARISH STRUCTURE (DOWNTREND)</div>
+                            <div style="font-size: 0.8rem; color: var(--ma-text-muted);">
+                                • <strong>Lower High (LH):</strong> A peak that fails to reach the prior high.<br>
+                                • <strong>Lower Low (LL):</strong> A trough that drops below the prior trough.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ma-interactive-box">
+                    <strong style="color: #FFF;"><i class="fa-solid fa-clipboard-check"></i> Foundational Swing Drill</strong>
+                    <p style="font-size: 0.82rem; color: var(--ma-text-muted); margin: 0.25rem 0 0.5rem 0;">
+                        Suppose price travels from 1.0800 &rarr; 1.0890 (Peak 1) &rarr; 1.0840 (Trough 1) &rarr; 1.0930 (Peak 2). What did Peak 2 create?
+                    </p>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;" id="ma-academy-options">
+                        <button class="ma-btn ma-btn-emerald" onclick="handleAcademyDrillAnswer(true)">Higher High (HH)</button>
+                        <button class="ma-btn" onclick="handleAcademyDrillAnswer(false)">Lower High (LH)</button>
+                        <button class="ma-btn" onclick="handleAcademyDrillAnswer(false)">Equal Low (EL)</button>
+                    </div>
+                    <div id="ma-academy-drill-feedback" style="display: none; font-size: 0.82rem; font-weight: 700; margin-top: 0.5rem;"></div>
+                </div>
+            </div>
+            <div class="ma-dialog-footer">
+                <button class="ma-btn ma-btn-amber" onclick="closeAllModals()">Complete Lesson</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- B. STRUCTURE OBSERVATORY MODAL -->
+    <div class="ma-dialog-backdrop" id="ma-observatory-modal">
+        <div class="ma-dialog-card ma-modal-wide-card">
+            <div class="ma-dialog-header">
+                <h3><i class="fa-solid fa-tower-observation" style="color: var(--ma-neon-amber);"></i> Market Structure Observatory</h3>
+                <button class="ma-btn ma-modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="ma-dialog-body">
+                <p style="color: var(--ma-text-muted); margin: 0;">
+                    Observe the simulated chart development. Step through candles to mark and verify swing points in real-time.
+                </p>
+
+                <div class="ma-interactive-box">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="color: #FFF;" id="ma-observatory-scen-title">Clean Bullish Expansion</strong>
+                        <span class="ma-player-lvl-tag" id="ma-observatory-step-label">Scenario 1/12</span>
+                    </div>
+                    <div class="ma-chart-canvas-box" style="height: 220px;">
+                        <canvas id="ma-observatory-canvas" width="760" height="220" style="width: 100%; height: 100%;"></canvas>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <button class="ma-btn ma-btn-amber" id="ma-observatory-btn-play" onclick="window.StrativoRPG.StructureObservatoryEngine.play()"><i class="fa-solid fa-play"></i> Play</button>
+                            <button class="ma-btn" id="ma-observatory-btn-pause" onclick="window.StrativoRPG.StructureObservatoryEngine.pause()"><i class="fa-solid fa-pause"></i> Pause</button>
+                            <button class="ma-btn" id="ma-observatory-btn-prev" onclick="window.StrativoRPG.StructureObservatoryEngine.step(-1)"><i class="fa-solid fa-backward-step"></i> Step Back</button>
+                            <button class="ma-btn" id="ma-observatory-btn-next" onclick="window.StrativoRPG.StructureObservatoryEngine.step(1)">Step Forward <i class="fa-solid fa-forward-step"></i></button>
+                            <button class="ma-btn" onclick="window.StrativoRPG.StructureObservatoryEngine.reset()"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="ma-btn ma-btn-emerald" id="ma-observatory-btn-reveal" onclick="window.StrativoRPG.StructureObservatoryEngine.reveal()"><i class="fa-solid fa-eye"></i> Reveal Full Sequence</button>
+                            <button class="ma-btn ma-btn-blue" onclick="window.StrativoRPG.StructureObservatoryEngine.nextScenario()">Next Scenario <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ma-interactive-box" id="ma-observatory-quiz-box">
+                    <strong style="color: #FFF;"><i class="fa-solid fa-bullseye"></i> Structure Identification Drill</strong>
+                    <div id="ma-observatory-question" style="font-size: 0.85rem; color: var(--ma-text-main); margin-top: 0.25rem;">
+                        Identify the nature of the latest swing point:
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap;" id="ma-observatory-options-box">
+                        <!-- Injected dynamically by StructureObservatoryEngine -->
+                    </div>
+                    <div id="ma-observatory-feedback" style="display: none; margin-top: 0.5rem; font-size: 0.82rem; font-weight: 700;"></div>
+                </div>
+            </div>
+            <div class="ma-dialog-footer">
+                <button class="ma-btn ma-btn-amber" onclick="closeAllModals()">Close Observatory</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- C. SUPPORT & RESISTANCE & STRUCTURE LAB MODAL -->
+    <div class="ma-dialog-backdrop" id="ma-lab-modal">
+        <div class="ma-dialog-card ma-modal-wide-card">
+            <div class="ma-dialog-header">
+                <h3><i class="fa-solid fa-flask-vial" style="color: var(--ma-neon-emerald);"></i> Support, Resistance & Structure Lab</h3>
+                <button class="ma-btn ma-modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="ma-dialog-body">
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;" id="ma-lab-tabs">
+                    <button class="ma-btn ma-btn-emerald" id="ma-lab-tab-sr" onclick="switchLabTab('sr')"><i class="fa-solid fa-chart-area"></i> Support & Resistance Lab</button>
+                    <button class="ma-btn" id="ma-lab-tab-seq" onclick="switchLabTab('seq')"><i class="fa-solid fa-diagram-project"></i> 10-Stage Sequence Solver</button>
+                </div>
+
+                <!-- View 1: Support & Resistance Lab -->
+                <div id="ma-srlab-view">
+                    <div class="ma-interactive-box">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <strong style="color: #FFF;" id="ma-srlab-title">Horizontal Support Hold</strong>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <span style="font-size: 0.78rem; color: var(--ma-neon-emerald); font-weight: 700;" id="ma-srlab-level-tag">1.0800 DEMAND FLOOR</span>
+                                <span class="ma-player-lvl-tag" id="ma-srlab-count">1 / 32</span>
+                            </div>
+                        </div>
+                        <div class="ma-chart-canvas-box" style="height: 190px; margin: 0.5rem 0;">
+                            <canvas id="ma-srlab-canvas" width="760" height="190" style="width: 100%; height: 100%;"></canvas>
+                        </div>
+                        <div style="font-size: 0.84rem; color: #E2E8F0; margin-bottom: 0.5rem;" id="ma-srlab-question">
+                            Price repeatedly halted at 1.0800 and bounced upward. What does 1.0800 represent?
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;" id="ma-srlab-options-grid">
+                            <!-- Injected dynamically by SupportResistanceLabEngine -->
+                        </div>
+                        <div id="ma-srlab-feedback" style="display: none; margin-top: 0.5rem; font-size: 0.82rem; font-weight: 700;"></div>
+                    </div>
+                </div>
+
+                <!-- View 2: Sequence Solver -->
+                <div id="ma-seqlab-view" style="display: none;">
+                    <div class="ma-interactive-box" id="ma-lab-challenge-box">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.75rem; color: var(--ma-neon-emerald); font-weight: 800; text-transform: uppercase;">SEQUENCE CHALLENGE #<span id="ma-lab-seq-num">1 / 10</span></span>
+                            <span class="ma-player-lvl-tag">10-STAGE SOLVER</span>
+                        </div>
+                        <div style="font-size: 1.1rem; font-weight: 800; color: #FFF; margin: 0.5rem 0; font-family: 'JetBrains Mono', monospace;" id="ma-lab-sequence-text">
+                            HH &rarr; HL &rarr; HH &rarr; HL &rarr; HH
+                        </div>
+                        <div style="font-size: 0.84rem; color: var(--ma-text-muted);" id="ma-lab-question-text">
+                            Question: What market structure is developing in this sequence?
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 0.75rem;" id="ma-lab-options-grid">
+                            <!-- Injected dynamically by StructureLabEngine -->
+                        </div>
+                        <div id="ma-lab-feedback" style="display: none; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 700;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ma-dialog-footer">
+                <div id="ma-srlab-footer-btns" style="display: flex; gap: 0.5rem;">
+                    <button class="ma-btn" onclick="window.StrativoRPG.SupportResistanceLabEngine.prevScenario()"><i class="fa-solid fa-arrow-left"></i> Prev Scenario</button>
+                    <button class="ma-btn ma-btn-emerald" onclick="window.StrativoRPG.SupportResistanceLabEngine.nextScenario()">Next S&R Scenario <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div id="ma-seqlab-footer-btns" style="display: none;">
+                    <button class="ma-btn ma-btn-emerald" id="ma-lab-btn-next" onclick="window.StrativoRPG.StructureLabEngine.nextChallenge()">Next Sequence</button>
+                </div>
+                <button class="ma-btn" onclick="closeAllModals()">Close Lab</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- D. TREND STADIUM MODAL -->
+    <div class="ma-dialog-backdrop" id="ma-trend-stadium-modal">
+        <div class="ma-dialog-card ma-modal-wide-card">
+            <div class="ma-dialog-header">
+                <h3><i class="fa-solid fa-chart-line" style="color: var(--ma-neon-emerald);"></i> Trend Stadium — Scenario Chambers</h3>
+                <button class="ma-btn ma-modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="ma-dialog-body">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;" id="ma-stadium-chamber-tabs">
+                    <button class="ma-btn ma-btn-emerald" id="ma-tab-uptrend" onclick="selectStadiumChamber('uptrend')">Chamber 1: Uptrend</button>
+                    <button class="ma-btn" id="ma-tab-downtrend" onclick="selectStadiumChamber('downtrend')">Chamber 2: Downtrend</button>
+                    <button class="ma-btn" id="ma-tab-range" onclick="selectStadiumChamber('range')">Chamber 3: Range</button>
+                    <button class="ma-btn" id="ma-tab-transition" onclick="selectStadiumChamber('transition')">Chamber 4: Shift</button>
+                </div>
+
+                <div class="ma-interactive-box" id="ma-stadium-chamber-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="color: #FFF;" id="ma-chamber-title">Chamber 1 — Bullish Uptrend Expansion</strong>
+                        <span class="ma-player-lvl-tag" id="ma-chamber-badge">HH + HL FLOW</span>
+                    </div>
+                    <p style="font-size: 0.84rem; color: var(--ma-text-muted); margin: 0.25rem 0;" id="ma-chamber-desc">
+                        In an uptrend, buyers defend every pullback by printing a Higher Low, creating stair-stepping upward momentum.
+                    </p>
+                    <div class="ma-chart-canvas-box" style="height: 180px;">
+                        <canvas id="ma-stadium-canvas" width="760" height="180" style="width: 100%; height: 100%;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="ma-dialog-footer">
+                <button class="ma-btn ma-btn-blue" onclick="window.StrativoRPG.TrendStadiumEngine.nextScenario()">Next Scenario in Chamber <i class="fa-solid fa-forward"></i></button>
+                <button class="ma-btn ma-btn-emerald" onclick="verifyStadiumChamber()">Verify Environment (+XP)</button>
+                <button class="ma-btn" onclick="closeAllModals()">Leave Stadium</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- E. BREAKOUT / FAKEOUT ZONE MODAL -->
+    <div class="ma-dialog-backdrop" id="ma-breakout-modal">
+        <div class="ma-dialog-card ma-modal-wide-card">
+            <div class="ma-dialog-header">
+                <h3><i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--ma-neon-purple);"></i> Breakout / Fakeout Tactical Zone</h3>
+                <button class="ma-btn ma-modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="ma-dialog-body">
+                <p style="color: var(--ma-text-muted); margin: 0;">
+                    When price approaches a critical structural level, it either executes a confirmed breakout, suffers a sharp rejection, or traps traders in a fakeout.
+                </p>
+
+                <div class="ma-interactive-box">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong style="color: #FFF;" id="ma-breakout-scen-title">Confirmed Bullish Breakout</strong>
+                        <span style="font-size: 0.78rem; color: var(--ma-neon-purple); font-weight: 700;" id="ma-breakout-level-tag">RESISTANCE AT 1.0880</span>
+                    </div>
+                    <div class="ma-chart-canvas-box" style="height: 200px;">
+                        <canvas id="ma-breakout-canvas" width="760" height="200" style="width: 100%; height: 100%;"></canvas>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 0.5rem;" id="ma-breakout-options-grid">
+                        <!-- Injected dynamically by BreakoutZoneEngine -->
+                    </div>
+                    <div id="ma-breakout-feedback" style="display: none; margin-top: 0.5rem; font-size: 0.82rem; font-weight: 700;"></div>
+                </div>
+            </div>
+            <div class="ma-dialog-footer">
+                <button class="ma-btn ma-btn-amber" onclick="window.StrativoRPG.BreakoutZoneEngine.nextScenario()">Next Scenario <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="ma-btn" onclick="closeAllModals()">Close Zone</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- F. CHART THEATER MODAL -->
+    <div class="ma-dialog-backdrop" id="ma-theater-modal">
+        <div class="ma-dialog-card ma-modal-wide-card">
+            <div class="ma-dialog-header">
+                <h3><i class="fa-solid fa-film" style="color: var(--ma-neon-gold);"></i> Chart Theater — 40+ Sequential Playback Scenarios</h3>
+                <button class="ma-btn ma-modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="ma-dialog-body">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span style="font-size: 0.8rem; color: #FFF; font-weight: 700;">Select Scenario:</span>
+                        <select id="ma-theater-scenario-select" class="ma-btn" style="padding: 0.35rem 0.6rem; font-size: 0.8rem; background: #1E293B; color: #FFF;" onchange="window.StrativoRPG.ChartTheaterEngine.loadScenario(parseInt(this.value))">
+                            <option value="0">#1 [UPTREND] Bullish Impulse & Continuation</option><option value="1">#2 [UPTREND] Stair-Step Trend Expansion</option><option value="2">#3 [UPTREND] Deep Pullback Bullish Defense</option><option value="3">#4 [UPTREND] Trend Acceleration Wave</option><option value="4">#5 [DOWNTREND] Standard Lower High & Lower Low Cascade</option><option value="5">#6 [DOWNTREND] Breakdown Retest Rejection</option><option value="6">#7 [DOWNTREND] Descending Channel Cascade</option><option value="7">#8 [DOWNTREND] Failed Rally Exhaustion</option><option value="8">#9 [RANGE] Clean Horizontal Range Box</option><option value="9">#10 [RANGE] Volatility Compression inside Range</option><option value="10">#11 [RANGE] Wide Choppy Range with Midpoint Rejections</option><option value="11">#12 [RANGE] Range Expansion Squeeze</option><option value="12">#13 [SUPPORT] Major Horizontal Demand Floor Defense</option><option value="13">#14 [SUPPORT] Dynamic Demand Zone Cushion</option><option value="14">#15 [SUPPORT] Triple Support Floor Test</option><option value="15">#16 [SUPPORT] Prior Swing Low Demand Defense</option><option value="16">#17 [RESISTANCE] Heavy Supply Ceiling Rejection</option><option value="17">#18 [RESISTANCE] Prior Swing High Resistance Barrier</option><option value="18">#19 [RESISTANCE] Dynamic Supply Zone Ceiling</option><option value="19">#20 [RESISTANCE] Repeated Resistance Weakening vs. Hold</option><option value="20">#21 [CONFIRMED_BREAKOUT] Confirmed Resistance Breakout with Full Body Close</option><option value="21">#22 [CONFIRMED_BREAKDOWN] Confirmed Support Breakdown Cascade</option><option value="22">#23 [CONFIRMED_BREAKOUT] Breakout Without Follow-Through (Stall)</option><option value="23">#24 [CONFIRMED_BREAKOUT] High-Volume Momentum Breakout</option><option value="24">#25 [BULLISH_FAKEOUT] Classic Bull Trap (Liquidity Wick Above Resistance)</option><option value="25">#26 [BEARISH_FAKEOUT] Bear Trap (Wick Sweep Below Support)</option><option value="26">#27 [BULLISH_FAKEOUT] Two-Candle False Breakout (Immediate Reversal)</option><option value="27">#28 [BULLISH_FAKEOUT] Repeated Failed Breakouts (Range Top Exhaustion)</option><option value="28">#29 [RETEST] Breakout + Flawless Retest Confirmation</option><option value="29">#30 [FAILED_RETEST] Failed Retest with Return to Range</option><option value="30">#31 [RETEST] Breakdown + Bearish Retest Rejection</option><option value="31">#32 [RETEST] Shallow Retest Continuation</option><option value="32">#33 [STRUCTURAL_SHIFT] Break of Structure (BOS) from Uptrend to Downtrend</option><option value="33">#34 [STRUCTURAL_SHIFT] Change of Character (CHoCH) Bottom Shift</option><option value="34">#35 [STRUCTURAL_SHIFT] Trend to Range Structural Stall</option><option value="35">#36 [STRUCTURAL_SHIFT] Failed Swing Low Shift</option><option value="36">#37 [LIQUIDITY_SWEEP] Equal Highs Liquidity Pool Sweep</option><option value="37">#38 [LIQUIDITY_SWEEP] Equal Lows Liquidity Pool Sweep</option><option value="38">#39 [CONFIRMED_BREAKOUT] Breakout After Equal Highs Accumulation</option><option value="39">#40 [CHANNEL] Ascending Channel Boundary Bounce</option><option value="40">#41 [CHANNEL] Descending Channel Resistance Touch</option><option value="41">#42 [CONFIRMED_BREAKDOWN] Channel Breakdown Acceleration</option><option value="42">#43 [FAKEOUT] Failed Channel Breakout (Return to Channel)</option><option value="43">#44 [CONFLUENCE] Multi-Factor Confluence (Horizontal Support + Trendline)</option><option value="44">#45 [CONFLUENCE] Confluence Resistance (Prior Swing High + Round Number)</option><option value="45">#46 [CONFLUENCE] Triple Confluence (Support Flip + Trendline + Demand Zone)</option>
+                        </select>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--ma-neon-gold); font-weight: 700;" id="ma-theater-status">Status: Ready to Play</span>
+                </div>
+
+                <div class="ma-theater-player">
+                    <div class="ma-chart-canvas-box" style="height: 200px;">
+                        <canvas id="ma-theater-canvas" width="760" height="200" style="width: 100%; height: 100%;"></canvas>
+                    </div>
+                    <div class="ma-theater-controls">
+                        <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+                            <button class="ma-btn ma-btn-amber" id="ma-theater-btn-play" onclick="window.StrativoRPG.ChartTheaterEngine.play()"><i class="fa-solid fa-play"></i> Play</button>
+                            <button class="ma-btn" id="ma-theater-btn-pause" onclick="window.StrativoRPG.ChartTheaterEngine.pause()"><i class="fa-solid fa-pause"></i> Pause</button>
+                            <button class="ma-btn" onclick="window.StrativoRPG.ChartTheaterEngine.step(-1)"><i class="fa-solid fa-backward-step"></i> Step -1</button>
+                            <button class="ma-btn" onclick="window.StrativoRPG.ChartTheaterEngine.step(1)"><i class="fa-solid fa-forward-step"></i> Step +1</button>
+                            <button class="ma-btn" onclick="window.StrativoRPG.ChartTheaterEngine.reset()"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                            <button class="ma-btn ma-btn-gold" id="ma-theater-btn-reveal" onclick="window.StrativoRPG.ChartTheaterEngine.reveal()" style="display: none;"><i class="fa-solid fa-eye"></i> Reveal Resolution</button>
+                        </div>
+                        <div style="display: flex; gap: 0.4rem;">
+                            <button class="ma-btn" onclick="window.StrativoRPG.ChartTheaterEngine.prevScenario()"><i class="fa-solid fa-arrow-left"></i> Prev</button>
+                            <button class="ma-btn ma-btn-emerald" onclick="window.StrativoRPG.ChartTheaterEngine.nextScenario()">Next <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ma-interactive-box" id="ma-theater-decision-box" style="display: none; margin-top: 0.75rem;">
+                    <strong style="color: #FFF;"><i class="fa-solid fa-circle-question"></i> Structure Identification at Pause Point</strong>
+                    <div style="font-size: 0.84rem; color: #E2E8F0; margin: 0.25rem 0;" id="ma-theater-question">
+                        Price has reached key resistance. What does the current price action show?
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 0.5rem;" id="ma-theater-options">
+                        <!-- Injected dynamically by ChartTheaterEngine -->
+                    </div>
+                    <div id="ma-theater-feedback" style="display: none; margin-top: 0.5rem; font-size: 0.82rem; font-weight: 700;"></div>
+                </div>
+            </div>
+            <div class="ma-dialog-footer">
+                <button class="ma-btn" onclick="closeAllModals()">Exit Theater</button>
+            </div>
+        </div>
+    </div>
+            <div class="ma-dialog-footer">
+                <button class="ma-btn ma-btn-gold" id="ma-theater-btn-reveal" onclick="revealTheaterHistoricalCandles()" style="display: none;">Reveal Historical Outcome</button>
+                <button class="ma-btn" onclick="closeAllModals()">Exit Theater</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- G. 10-ROUND MARKET BLITZ ARENA OVERLAY -->
+    <div class="ma-blitz-overlay" id="ma-blitz-overlay">
+        <!-- 3-2-1 Countdown Screen -->
+        <div class="ma-blitz-countdown-screen" id="ma-blitz-countdown-screen">
+            <div class="ma-countdown-circle" id="ma-countdown-number">3</div>
+            <div style="font-size: 1.5rem; font-weight: 900; color: #FFF; font-family: 'Orbitron', sans-serif;">GET READY TRADER</div>
+            <div style="font-size: 0.88rem; color: var(--ma-text-muted);">10 Procedural Market Structure Rounds</div>
+        </div>
+
+        <!-- Header -->
+        <header class="ma-blitz-header">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <div class="ma-player-avatar-icon" style="width: 36px; height: 36px; font-size: 1rem;">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <div>
+                    <strong style="font-size: 0.95rem; color: #FFF;">MARKET BLITZ ARENA</strong>
+                    <div style="font-size: 0.72rem; color: var(--ma-text-muted);">10-Round Structure Trial</div>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="text-align: right;">
+                    <div style="font-size: 0.68rem; color: var(--ma-text-muted); text-transform: uppercase;">Round</div>
+                    <strong style="font-size: 1rem; color: var(--ma-neon-amber);" id="ma-blitz-round-indicator">1 / 10</strong>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.68rem; color: var(--ma-text-muted); text-transform: uppercase;">Score</div>
+                    <strong style="font-size: 1rem; color: #FFF;" id="ma-blitz-score-indicator">0</strong>
+                </div>
+                <button class="ma-btn" onclick="closeMarketBlitz()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </header>
+
+        <!-- Stage Area -->
+        <div class="ma-blitz-stage" id="ma-blitz-stage">
+            <div class="ma-blitz-question-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="ma-player-lvl-tag" id="ma-blitz-type-tag">SWING IDENTIFICATION</span>
+                    <span style="font-size: 0.75rem; color: var(--ma-neon-amber); font-weight: 700;" id="ma-blitz-combo-tag">COMBO x0</span>
+                </div>
+                <div style="font-size: 1.15rem; font-weight: 800; color: #FFF; line-height: 1.45;" id="ma-blitz-question-text">
+                    Question loading...
+                </div>
+            </div>
+
+            <!-- Target Selection Grid -->
+            <div class="ma-target-grid" id="ma-blitz-target-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Feedback Bar -->
+            <div class="ma-feedback-bar" id="ma-blitz-feedback-bar">
+                <strong id="ma-blitz-feedback-title">CORRECT!</strong>
+                <span id="ma-blitz-feedback-detail">Detailed explanation here.</span>
+            </div>
+        </div>
+
+        <!-- Scorecard Screen -->
+        <div class="ma-scorecard" id="ma-blitz-scorecard">
+            <div class="ma-scorecard-rank" id="ma-scorecard-grade">S</div>
+            <h3 style="margin: 0; color: #FFF; font-size: 1.35rem;">Market Blitz Complete!</h3>
+            <div class="ma-scorecard-stats">
+                <div><div style="color: var(--ma-text-muted); font-size: 0.72rem;">FINAL SCORE</div><strong id="ma-card-score">1,250</strong></div>
+                <div><div style="color: var(--ma-text-muted); font-size: 0.72rem;">ACCURACY</div><strong id="ma-card-acc">100%</strong></div>
+                <div><div style="color: var(--ma-text-muted); font-size: 0.72rem;">AVG SPEED</div><strong id="ma-card-speed">1.4s</strong></div>
+                <div><div style="color: var(--ma-text-muted); font-size: 0.72rem;">BEST COMBO</div><strong id="ma-card-combo">10x</strong></div>
+                <div><div style="color: var(--ma-text-muted); font-size: 0.72rem;">XP GAINED</div><strong id="ma-card-xp" style="color: var(--ma-neon-amber);">+35 XP</strong></div>
+                <div><div style="color: var(--ma-text-muted); font-size: 0.72rem;">NEW MASTERY</div><strong id="ma-card-mastery" style="color: var(--ma-neon-emerald);">25%</strong></div>
+            </div>
+            <div style="display: flex; gap: 0.75rem; width: 100%;">
+                <button class="ma-btn ma-btn-amber" style="flex: 1; padding: 0.75rem;" onclick="restartMarketBlitz()"><i class="fa-solid fa-rotate-left"></i> Play Again</button>
+                <button class="ma-btn" style="flex: 1; padding: 0.75rem;" onclick="closeMarketBlitz()">Return to City</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- H. DISTRICT MISSIONS JOURNAL MODAL -->
+    <div class="ma-missions-modal-overlay" id="ma-missions-modal">
+        <div class="ma-missions-modal-card">
+            <div class="ma-missions-header">
+                <h3><i class="fa-solid fa-scroll" style="color: var(--ma-neon-amber);"></i> Market Arena Directives (10 Missions)</h3>
+                <button class="ma-btn ma-modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="ma-missions-grid" id="ma-missions-list">
+                <!-- Populated dynamically via StrativoRPG.MissionEngine -->
+            </div>
+            <div class="ma-dialog-footer">
+                <button class="ma-btn ma-btn-amber" onclick="closeAllModals()">Close Directives</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- I. GENERAL NPC / INTERACTION DIALOG MODAL -->
+    <div class="ma-dialog-backdrop" id="ma-dialog-backdrop">
+        <div class="ma-dialog-card">
+            <div class="ma-dialog-header">
+                <h3 id="ma-dialog-title"><i class="fa-solid fa-comment-dots" id="ma-dialog-icon"></i> Dialogue</h3>
+                <button class="ma-btn ma-modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="ma-dialog-body" id="ma-dialog-content">
+                <!-- Dialogue injected dynamically -->
+            </div>
+            <div class="ma-dialog-footer" id="ma-dialog-footer">
+                <button class="ma-btn ma-btn-amber" id="ma-dialog-action-btn">Acknowledge</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         5. SCRIPTS & ENGINE BINDINGS
+         ==================================================================== -->
+    <script src="../js/settings/world-settings.js"></script>
+    <script src="../js/settings/haptics.js"></script>
+    <script src="../js/audio/audio-manager.js"></script>
+
+    <script src="../js/core/world-state.js"></script>
+    <script src="../js/core/world-xp-engine.js"></script>
+
+    <script src="../js/rpg/collision.js"></script>
+    <script src="../js/rpg/input.js"></script>
+    <script src="../js/rpg/camera.js"></script>
+    <script src="../js/rpg/player.js"></script>
+    <script src="../js/rpg/world.js"></script>
+    <script src="../js/rpg/rpg-core.js"></script>
+
+    <!-- Phase 2.6/3.2 Shared RPG Dialogue, NPC, and Mission Engines -->
+    <script src="../js/rpg/dialogue.js"></script>
+    <script src="../js/rpg/npc.js"></script>
+    <script src="../js/rpg/missions.js"></script>
+
+    <!-- District 3 Engine -->
+    <script src="../js/districts/market-arena.js"></script>
+
+    <script>
+        /* ==================================================================
+           MARKET ARENA CONTROLLER & DOM INTEGRATION
+           ================================================================== */
+        let gameCore = null;
+        let marketWorld = null;
+        let observatoryStep = 5;
+        let currentStadiumChamber = "uptrend";
+        let theaterStep = 0;
+        let theaterInterval = null;
+
+        function closeAllModals() {
+            document.querySelectorAll('.ma-dialog-backdrop, .ma-missions-modal-overlay').forEach(el => el.classList.remove('active'));
+        }
+
+        // Global Dialog Opener for RPG Core Interaction
+        window.StrativoRPG.openCustomDialog = function(dialogData) {
+            const backdrop = document.getElementById("ma-dialog-backdrop");
+            const titleEl = document.getElementById("ma-dialog-title");
+            const iconEl = document.getElementById("ma-dialog-icon");
+            const contentEl = document.getElementById("ma-dialog-content");
+            const footerEl = document.getElementById("ma-dialog-footer");
+
+            titleEl.textContent = dialogData.title || "District Comm";
+            if (dialogData.icon) iconEl.className = `fa-solid ${dialogData.icon}`;
+
+            contentEl.innerHTML = `
+                <div style="font-size: 0.95rem; color: #FFF; font-weight: 600;">${dialogData.badge ? `<span class="ma-player-lvl-tag">${dialogData.badge}</span> ` : ''}${dialogData.message || ''}</div>
+            `;
+
+            footerEl.innerHTML = '';
+            if (dialogData.actionLabel && dialogData.actionHandler) {
+                const actBtn = document.createElement("button");
+                actBtn.className = "ma-btn ma-btn-amber";
+                actBtn.textContent = dialogData.actionLabel;
+                actBtn.onclick = () => {
+                    closeAllModals();
+                    dialogData.actionHandler();
+                };
+                footerEl.appendChild(actBtn);
+            }
+
+            const closeBtn = document.createElement("button");
+            closeBtn.className = "ma-btn";
+            closeBtn.textContent = "Close";
+            closeBtn.onclick = closeAllModals;
+            footerEl.appendChild(closeBtn);
+
+            backdrop.classList.add("active");
+        };
+
+
+        // Facility Modal Openers
+        window.StrativoRPG.openMarketAcademyModal = function() {
+            closeAllModals();
+            document.getElementById("ma-academy-modal").classList.add("active");
+        };
+
+        window.StrativoRPG.openObservatoryModal = function() {
+            closeAllModals();
+            document.getElementById("ma-observatory-modal").classList.add("active");
+            if (window.StrativoRPG.StructureObservatoryEngine) {
+                window.StrativoRPG.StructureObservatoryEngine.loadScenario(window.StrativoRPG.StructureObservatoryEngine.currentScenarioIndex || 0);
+            }
+        };
+
+        function switchLabTab(tab) {
+            const srView = document.getElementById("ma-srlab-view");
+            const seqView = document.getElementById("ma-seqlab-view");
+            const srTab = document.getElementById("ma-lab-tab-sr");
+            const seqTab = document.getElementById("ma-lab-tab-seq");
+            const srBtns = document.getElementById("ma-srlab-footer-btns");
+            const seqBtns = document.getElementById("ma-seqlab-footer-btns");
+
+            if (tab === 'sr') {
+                if (srView) srView.style.display = "block";
+                if (seqView) seqView.style.display = "none";
+                if (srTab) srTab.className = "ma-btn ma-btn-emerald";
+                if (seqTab) seqTab.className = "ma-btn";
+                if (srBtns) srBtns.style.display = "flex";
+                if (seqBtns) seqBtns.style.display = "none";
+                if (window.StrativoRPG.SupportResistanceLabEngine) {
+                    window.StrativoRPG.SupportResistanceLabEngine.render();
+                    window.StrativoRPG.SupportResistanceLabEngine.renderOptions();
+                }
+            } else {
+                if (srView) srView.style.display = "none";
+                if (seqView) seqView.style.display = "block";
+                if (srTab) srTab.className = "ma-btn";
+                if (seqTab) seqTab.className = "ma-btn ma-btn-emerald";
+                if (srBtns) srBtns.style.display = "none";
+                if (seqBtns) seqBtns.style.display = "block";
+                if (window.StrativoRPG.StructureLabEngine) {
+                    window.StrativoRPG.StructureLabEngine.start();
+                }
+            }
+        }
+
+        window.StrativoRPG.openStructureLabModal = function() {
+            closeAllModals();
+            document.getElementById("ma-lab-modal").classList.add("active");
+            switchLabTab('sr');
+            if (window.StrativoRPG.SupportResistanceLabEngine) {
+                window.StrativoRPG.SupportResistanceLabEngine.start();
+            }
+        };
+
+        window.StrativoRPG.openTrendStadiumModal = function() {
+            closeAllModals();
+            document.getElementById("ma-trend-stadium-modal").classList.add("active");
+            if (window.StrativoRPG.TrendStadiumEngine) {
+                window.StrativoRPG.TrendStadiumEngine.selectChamber(currentStadiumChamber || "uptrend");
+            }
+        };
+
+        window.StrativoRPG.openBreakoutModal = function() {
+            closeAllModals();
+            document.getElementById("ma-breakout-modal").classList.add("active");
+            if (window.StrativoRPG.BreakoutZoneEngine) {
+                window.StrativoRPG.BreakoutZoneEngine.loadScenario(window.StrativoRPG.BreakoutZoneEngine.currentScenarioIndex || 0);
+            }
+        };
+
+        window.StrativoRPG.openChartTheaterModal = function() {
+            closeAllModals();
+            document.getElementById("ma-theater-modal").classList.add("active");
+            if (window.StrativoRPG.ChartTheaterEngine) {
+                window.StrativoRPG.ChartTheaterEngine.loadScenario(window.StrativoRPG.ChartTheaterEngine.currentScenarioIndex || 0);
+            }
+        };
+
+        function selectStadiumChamber(type) {
+            currentStadiumChamber = type;
+            document.querySelectorAll("#ma-stadium-chamber-tabs button").forEach(b => b.className = "ma-btn");
+            const activeTab = document.getElementById("ma-tab-" + type);
+            if (activeTab) activeTab.className = "ma-btn ma-btn-emerald";
+            if (window.StrativoRPG.TrendStadiumEngine) {
+                window.StrativoRPG.TrendStadiumEngine.selectChamber(type);
+            }
+        }
+
+        function verifyStadiumChamber() {
+            if (window.StrativoRPG.TrendStadiumEngine) {
+                window.StrativoRPG.TrendStadiumEngine.verify();
+            }
+            alert("Trend environment verified! World XP recorded.");
+            updateHUDStats();
+        }
+
+        // Chart Theater Sequential Playback
+        function playTheaterSequence() {
+            document.getElementById("ma-theater-status").textContent = "Status: Playing Simulated Candles...";
+            document.getElementById("ma-theater-decision-box").style.display = "none";
+            document.getElementById("ma-theater-btn-reveal").style.display = "none";
+
+            theaterStep = 0;
+            if (theaterInterval) clearInterval(theaterInterval);
+
+            theaterInterval = setInterval(() => {
+                theaterStep++;
+                drawTheaterCanvas(theaterStep);
+                if (theaterStep >= 4) {
+                    clearInterval(theaterInterval);
+                    document.getElementById("ma-theater-status").textContent = "Status: PAUSED AT CRITICAL JUNCTURE";
+                    document.getElementById("ma-theater-decision-box").style.display = "block";
+                }
+            }, 700);
+        }
+
+        function pauseTheaterSequence() {
+            if (theaterInterval) clearInterval(theaterInterval);
+            document.getElementById("ma-theater-status").textContent = "Status: Paused";
+        }
+
+        function resetTheaterSequence() {
+            if (theaterInterval) clearInterval(theaterInterval);
+            theaterStep = 0;
+            document.getElementById("ma-theater-status").textContent = "Status: Ready to Play";
+            document.getElementById("ma-theater-decision-box").style.display = "none";
+            document.getElementById("ma-theater-btn-reveal").style.display = "none";
+            drawTheaterCanvas(0);
+        }
+
+        function drawTheaterCanvas(step) {
+            const canvas = document.getElementById("ma-theater-canvas");
+            if (!canvas) return;
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const candles = [
+                { o: 140, h: 110, l: 150, c: 120, col: "#10B981" },
+                { o: 120, h: 80, l: 130, c: 85, col: "#10B981" },
+                { o: 85, h: 75, l: 120, c: 115, col: "#F43F5E" },
+                { o: 115, h: 40, l: 120, c: 50, col: "#10B981", tag: "PAUSE CANDLE" }
+            ];
+
+            const gap = 110;
+            const startX = 100;
+
+            for (let i = 0; i < Math.min(step, candles.length); i++) {
+                const c = candles[i];
+                const x = startX + i * gap;
+
+                ctx.strokeStyle = c.col;
+                ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.moveTo(x + 14, c.h); ctx.lineTo(x + 14, c.l); ctx.stroke();
+
+                ctx.fillStyle = c.col;
+                ctx.fillRect(x, Math.min(c.o, c.c), 28, Math.abs(c.o - c.c) || 4);
+
+                if (c.tag) {
+                    ctx.font = "bold 9px 'Inter', sans-serif";
+                    ctx.fillStyle = "#FCD34D";
+                    ctx.textAlign = "center";
+                    ctx.fillText(c.tag, x + 14, c.h - 10);
+                }
+            }
+        }
+
+        function submitTheaterAnswer(ans) {
+            const fb = document.getElementById("ma-theater-feedback");
+            fb.style.display = "block";
+            fb.style.color = "#A7F3D0";
+            fb.textContent = "Choice recorded. Now reveal the subsequent candles to see historical confirmation.";
+            document.getElementById("ma-theater-btn-reveal").style.display = "inline-flex";
+        }
+
+        function revealTheaterHistoricalCandles() {
+            const canvas = document.getElementById("ma-theater-canvas");
+            if (!canvas) return;
+            const ctx = canvas.getContext("2d");
+
+            // Draw post-reveal confirmation candles
+            const postCandles = [
+                { o: 50, h: 40, l: 80, c: 75, col: "#F43F5E", tag: "RETEST" },
+                { o: 75, h: 20, l: 80, c: 25, col: "#10B981", tag: "EXPANSION" }
+            ];
+
+            postCandles.forEach((c, idx) => {
+                const x = 100 + (4 + idx) * 110;
+                ctx.strokeStyle = c.col;
+                ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.moveTo(x + 14, c.h); ctx.lineTo(x + 14, c.l); ctx.stroke();
+
+                ctx.fillStyle = c.col;
+                ctx.fillRect(x, Math.min(c.o, c.c), 28, Math.abs(c.o - c.c) || 4);
+
+                if (c.tag) {
+                    ctx.font = "bold 9px 'Inter', sans-serif";
+                    ctx.fillStyle = "#10B981";
+                    ctx.textAlign = "center";
+                    ctx.fillText(c.tag, x + 14, c.h - 10);
+                }
+            });
+
+            if (window.StrativoRPG.MissionEngine) {
+                window.StrativoRPG.MissionEngine.recordChartTheaterComplete();
+            }
+            document.getElementById("ma-theater-status").textContent = "Status: Playback & Reveal Complete!";
+            updateHUDStats();
+        }
+
+        // Structure Lab Sequences
+        function submitLabSequenceAnswer(ans) {
+            const fb = document.getElementById("ma-lab-feedback");
+            fb.style.display = "block";
+            if (ans === "UPTREND") {
+                fb.style.color = "#A7F3D0";
+                fb.textContent = "CORRECT! Consecutive Higher Highs and Higher Lows establish an Uptrend.";
+                if (window.StrativoRPG.MissionEngine) {
+                    window.StrativoRPG.MissionEngine.recordStructureSequence(1);
+                }
+            } else {
+                fb.style.color = "#FECDD3";
+                fb.textContent = "INCORRECT. Consecutive HH + HL structures define an Uptrend.";
+            }
+            updateHUDStats();
+        }
+
+        function nextLabChallenge() {
+            document.getElementById("ma-lab-seq-num").textContent = "2";
+            document.getElementById("ma-lab-sequence-text").textContent = "LH → LL → LH → LL → LL";
+            document.getElementById("ma-lab-feedback").style.display = "none";
+        }
+
+        function handleAcademyDrillAnswer(isCorrect) {
+            const fb = document.getElementById("ma-academy-drill-feedback");
+            fb.style.display = "block";
+            if (isCorrect) {
+                fb.style.color = "#A7F3D0";
+                fb.textContent = "CORRECT! Peak 2 (1.0930) exceeded Peak 1 (1.0890), forming a Higher High (HH).";
+                if (window.StrativoRPG.MissionEngine) {
+                    window.StrativoRPG.MissionEngine.recordStructureSwing(1);
+                }
+            } else {
+                fb.style.color = "#FECDD3";
+                fb.textContent = "INCORRECT. Because 1.0930 is greater than 1.0890, it is a Higher High.";
+            }
+            updateHUDStats();
+        }
+
+        /* ==================================================================
+           MARKET BLITZ UI HOOKS
+           ================================================================== */
+        window.StrativoRPG.launchMarketBlitz = function() {
+            closeAllModals();
+            document.getElementById("ma-blitz-overlay").classList.add("active");
+            document.getElementById("ma-blitz-scorecard").classList.remove("active");
+            document.getElementById("ma-blitz-stage").style.display = "flex";
+            window.StrativoRPG.MarketBlitzEngine.start();
+        };
+
+        window.StrativoRPG.triggerBlitzCountdown = function(onComplete) {
+            const screen = document.getElementById("ma-blitz-countdown-screen");
+            const numEl = document.getElementById("ma-countdown-number");
+            screen.classList.add("active");
+
+            let count = 3;
+            numEl.textContent = count;
+
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    numEl.textContent = count;
+                } else if (count === 0) {
+                    numEl.textContent = "GO!";
+                } else {
+                    clearInterval(timer);
+                    screen.classList.remove("active");
+                    if (typeof onComplete === "function") onComplete();
+                }
+            }, 800);
+        };
+
+        window.StrativoRPG.renderMarketBlitzRoundUI = function(engine) {
+            document.getElementById("ma-blitz-round-indicator").textContent = `${engine.currentRound} / ${engine.totalRounds}`;
+            document.getElementById("ma-blitz-score-indicator").textContent = engine.score;
+            document.getElementById("ma-blitz-type-tag").textContent = engine.currentQuestion.type.replace(/_/g, ' ');
+            document.getElementById("ma-blitz-combo-tag").textContent = `COMBO x${engine.combo}`;
+            document.getElementById("ma-blitz-question-text").innerHTML = engine.currentQuestion.questionText;
+
+            const grid = document.getElementById("ma-blitz-target-grid");
+            grid.innerHTML = '';
+
+            const feedback = document.getElementById("ma-blitz-feedback-bar");
+            feedback.className = "ma-feedback-bar";
+            feedback.style.display = "none";
+
+            engine.currentQuestion.options.forEach((opt, idx) => {
+                const card = document.createElement("button");
+                card.className = "ma-target-card";
+                card.innerHTML = `
+                    <span>${opt.text}</span>
+                    <span class="ma-target-key">${idx + 1}</span>
+                `;
+                card.onclick = () => {
+                    engine.submitAnswer(opt.id);
+                };
+                grid.appendChild(card);
+            });
+        };
+
+        window.StrativoRPG.showMarketBlitzFeedback = function(isCorrect, title, detail, correctText, explanation) {
+            const fb = document.getElementById("ma-blitz-feedback-bar");
+            fb.className = `ma-feedback-bar ${isCorrect ? 'correct' : 'wrong'}`;
+            fb.style.display = "flex";
+            document.getElementById("ma-blitz-feedback-title").textContent = title;
+            document.getElementById("ma-blitz-feedback-detail").innerHTML = `${correctText}<br><span style="opacity: 0.9;">${explanation}</span>`;
+
+            const cards = document.querySelectorAll(".ma-target-card");
+            cards.forEach(c => c.classList.add("disabled"));
+        };
+
+        window.StrativoRPG.renderMarketBlitzScorecardUI = function(stats) {
+            document.getElementById("ma-blitz-stage").style.display = "none";
+            const card = document.getElementById("ma-blitz-scorecard");
+            card.classList.add("active");
+
+            document.getElementById("ma-scorecard-grade").textContent = stats.grade;
+            document.getElementById("ma-card-score").textContent = stats.score;
+            document.getElementById("ma-card-acc").textContent = `${stats.accuracy}%`;
+            document.getElementById("ma-card-speed").textContent = `${(stats.avgSpeed / 1000).toFixed(1)}s`;
+            document.getElementById("ma-card-combo").textContent = `${stats.maxCombo}x`;
+            document.getElementById("ma-card-xp").textContent = `+${stats.xpGained} XP`;
+            document.getElementById("ma-card-mastery").textContent = `${stats.newMastery}%`;
+
+            updateHUDStats();
+        };
+
+        function closeMarketBlitz() {
+            document.getElementById("ma-blitz-overlay").classList.remove("active");
+            updateHUDStats();
+        }
+
+        function restartMarketBlitz() {
+            window.StrativoRPG.launchMarketBlitz();
+        }
+
+        /* ==================================================================
+           HUD STATS & PROFILE REFRESH
+           ================================================================== */
+        function updateHUDStats() {
+            const state = (window.StrativoWorldState && typeof window.StrativoWorldState.get === "function")
+                ? window.StrativoWorldState.get()
+                : { xp: 0, level: 1, rank: "Market Initiate", mastery: {}, marketStats: {}, uniqueLocations: [] };
+
+            document.getElementById("ma-player-name").textContent = state.username || "Trader";
+            document.getElementById("ma-level-badge").textContent = `LVL ${state.level || 1}`;
+            document.getElementById("ma-rank-label").textContent = state.rank || "Market Initiate";
+
+            const ms = state.marketStats || {};
+            document.getElementById("ma-stat-explored").textContent = `${(state.uniqueLocations || []).length} / 6`;
+            document.getElementById("ma-stat-swings").textContent = ms.swingsSolved || 0;
+            document.getElementById("ma-stat-trends").textContent = ms.trendsSolved || 0;
+            document.getElementById("ma-stat-breakouts").textContent = (ms.breakoutsSolved || 0) + (ms.fakeoutsSolved || 0);
+
+            const mastery = state.mastery ? (state.mastery.marketStructure || 0) : 0;
+            document.getElementById("ma-stat-mastery").textContent = `${mastery}%`;
+
+            // Active Tracked Mission HUD Update
+            if (window.StrativoRPG.MissionEngine) {
+                const tracked = window.StrativoRPG.MissionEngine.getTrackedMission();
+                if (tracked) {
+                    const prog = window.StrativoRPG.MissionEngine.getMissionProgress(tracked.id);
+                    document.getElementById("ma-tracker-name").textContent = tracked.title;
+                    document.getElementById("ma-tracker-category").textContent = (tracked.category || "STRUCTURE").toUpperCase();
+                    document.getElementById("ma-tracker-count").textContent = `${prog.current} / ${prog.target}`;
+                    document.getElementById("ma-tracker-fill").style.width = `${Math.min(100, (prog.current / prog.target) * 100)}%`;
+                }
+            }
+        }
+
+        /* ==================================================================
+           DIRECTIVES JOURNAL POPULATION
+           ================================================================== */
+        function openMissionsModal() {
+            closeAllModals();
+            const list = document.getElementById("ma-missions-list");
+            list.innerHTML = '';
+
+            if (window.StrativoRPG.MissionEngine) {
+                const missions = window.StrativoRPG.MissionEngine.getMissions();
+                missions.forEach(m => {
+                    const status = window.StrativoRPG.MissionEngine.getMissionStatus(m.id);
+                    const prog = window.StrativoRPG.MissionEngine.getMissionProgress(m.id);
+
+                    const card = document.createElement("div");
+                    card.className = `ma-mission-card ${status.toLowerCase()}`;
+                    card.innerHTML = `
+                        <div class="ma-mission-top">
+                            <span class="ma-mission-name">${m.title}</span>
+                            <span class="ma-mission-status-pill ${status.toLowerCase()}">${status}</span>
+                        </div>
+                        <p class="ma-mission-desc">${m.description}</p>
+                        <div class="ma-mission-bottom">
+                            <span class="ma-mission-reward"><i class="fa-solid fa-bolt"></i> +${m.reward.xp} World XP</span>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <span style="font-size: 0.78rem; font-weight: 700; color: var(--ma-neon-amber);">${prog.current} / ${prog.target}</span>
+                                ${status === "READY" ? `<button class="ma-btn ma-btn-amber" style="padding: 2px 8px; font-size: 0.72rem;" onclick="claimMissionReward('${m.id}')">Claim XP</button>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    list.appendChild(card);
+                });
+            }
+
+            document.getElementById("ma-missions-modal").classList.add("active");
+        }
+
+        function claimMissionReward(id) {
+            if (window.StrativoRPG.MissionEngine) {
+                const res = window.StrativoRPG.MissionEngine.claimReward(id);
+                if (res && res.claimed) {
+                    alert(`Reward claimed! +${res.xpGained} World XP`);
+                    openMissionsModal();
+                    updateHUDStats();
+                }
+            }
+        }
+
+        /* ==================================================================
+           INITIALIZATION & DOM LOAD
+           ================================================================== */
+        document.addEventListener("DOMContentLoaded", async () => {
+            const canvas = document.getElementById("market-arena-canvas");
+            const viewport = document.getElementById("market-arena-viewport");
+            const promptEl = document.getElementById("ma-interact-prompt");
+            const promptTitle = document.getElementById("ma-prompt-title");
+            const promptAction = document.getElementById("ma-prompt-action");
+
+            // 1. Initialize District Map Data & Scene World
+            marketWorld = new window.StrativoRPG.MarketArenaWorld();
+
+            // 2. Initialize Shared RPG Core Engine
+            gameCore = new window.StrativoRPG.RPGCore({
+                canvas: canvas,
+                container: viewport,
+                world: marketWorld,
+                onInteractionPrompt: (trigger) => {
+                    if (trigger && trigger.active) {
+                        promptTitle.textContent = trigger.name || "Facility";
+                        promptAction.textContent = trigger.promptText ? `• ${trigger.promptText}` : "• Press SPACE / E to Enter";
+                        promptEl.classList.add("active");
+                    } else {
+                        promptEl.classList.remove("active");
+                    }
+                },
+                onInteractionTrigger: (obj, result) => {
+                    if (!result) return;
+                    if (result.actionHandler && typeof result.actionHandler === "function") {
+                        result.actionHandler();
+                    }
+                }
+            });
+
+            // Start RPG Core rendering loop
+            gameCore.start();
+
+            // 3. Load District Missions
+            if (window.StrativoRPG.MissionEngine) {
+                await window.StrativoRPG.MissionEngine.loadMissionsDataset("../data/market-missions.json");
+            }
+
+            // 4. Bind Audio Toggle
+            const audioBtn = document.getElementById("ma-btn-audio-toggle");
+            if (audioBtn) {
+                audioBtn.addEventListener("click", () => {
+                    if (window.StrativoWorldAudio) {
+                        const isMuted = window.StrativoWorldAudio.isMuted();
+                        window.StrativoWorldAudio.setMute(!isMuted);
+                        const audioIcon = document.getElementById("ma-audio-icon");
+                        if (audioIcon) {
+                            audioIcon.className = !isMuted ? "fa-solid fa-volume-xmark" : "fa-solid fa-volume-high";
+                        }
+                    }
+                });
+            }
+
+            // 5. Bind Missions Button
+            const missionsBtn = document.getElementById("ma-btn-missions");
+            if (missionsBtn) {
+                missionsBtn.addEventListener("click", openMissionsModal);
+            }
+
+            // 6. Bind Mobile Action Button
+            const touchActionBtn = document.getElementById("ma-touch-action-btn");
+            if (touchActionBtn) {
+                touchActionBtn.addEventListener("touchstart", (e) => {
+                    e.preventDefault();
+                    if (gameCore) gameCore.triggerNearbyInteraction();
+                });
+                touchActionBtn.addEventListener("click", () => {
+                    if (gameCore) gameCore.triggerNearbyInteraction();
+                });
+            }
+
+            // 7. Keyboard Shortcuts (1-4 for Blitz)
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeAllModals();
+
+                if (window.StrativoRPG.MarketBlitzEngine && window.StrativoRPG.MarketBlitzEngine.active) {
+                    if (["1", "2", "3", "4"].includes(e.key)) {
+                        const idx = parseInt(e.key, 10) - 1;
+                        const q = window.StrativoRPG.MarketBlitzEngine.currentQuestion;
+                        if (q && q.options[idx]) {
+                            window.StrativoRPG.MarketBlitzEngine.submitAnswer(q.options[idx].id);
+                        }
+                    }
+                }
+            });
+
+            updateHUDStats();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1580 @@
+{
+  "version": "1.0.0",
+  "districtId": "psychology-zone",
+  "districtName": "Psychology Zone",
+  "districtSubtitle": "Metropolis of Emotional Discipline, Cognitive Bias Defense, FOMO Resistance & Mind Fortitude",
+  "bounds": {
+    "width": 3200,
+    "height": 2400
+  },
+  "spawn": {
+    "x": 1600,
+    "y": 1350,
+    "direction": "up"
+  },
+  "theme": {
+    "primary": "#8B5CF6",
+    "secondary": "#06B6D4",
+    "accent": "#EC4899",
+    "danger": "#F43F5E",
+    "emerald": "#10B981",
+    "amber": "#F59E0B",
+    "darkBg": "#030712",
+    "roadBg": "#0B0F19",
+    "sidewalkBg": "#111827",
+    "buildingWall": "#1E1B4B",
+    "buildingRoof": "#0F172A"
+  },
+  "quarters": [
+    {
+      "id": "zen_plaza",
+      "name": "ZEN CENTRAL PLAZA",
+      "description": "Emotional equilibrium hub and psychological baseline sanctuary",
+      "bounds": {
+        "x": 1250,
+        "y": 950,
+        "w": 700,
+        "h": 500
+      },
+      "color": "#8B5CF6"
+    },
+    {
+      "id": "discipline_quarter",
+      "name": "DISCIPLINE & EXECUTION QUARTER",
+      "description": "Rule compliance, trade checklists and systematic execution",
+      "bounds": {
+        "x": 100,
+        "y": 100,
+        "w": 1050,
+        "h": 750
+      },
+      "color": "#10B981"
+    },
+    {
+      "id": "bias_quarter",
+      "name": "COGNITIVE BIAS QUARTER",
+      "description": "Deconstruction of confirmation bias, sunk cost and overconfidence",
+      "bounds": {
+        "x": 2050,
+        "y": 100,
+        "w": 1050,
+        "h": 750
+      },
+      "color": "#06B6D4"
+    },
+    {
+      "id": "fomo_quarter",
+      "name": "FOMO RESISTANCE QUARTER",
+      "description": "Impulse suppression, late-chasing inoculation and entry patience",
+      "bounds": {
+        "x": 100,
+        "y": 950,
+        "w": 1050,
+        "h": 650
+      },
+      "color": "#F59E0B"
+    },
+    {
+      "id": "tilt_quarter",
+      "name": "TILT & REVENGE DEFENSE QUARTER",
+      "description": "Post-loss emotional cooldowns and anti-revenge trading circuit breakers",
+      "bounds": {
+        "x": 2050,
+        "y": 950,
+        "w": 1050,
+        "h": 650
+      },
+      "color": "#F43F5E"
+    },
+    {
+      "id": "journal_quarter",
+      "name": "TRADE JOURNALING QUARTER",
+      "description": "Performance logging, emotional state auditing and behavioral metrics",
+      "bounds": {
+        "x": 100,
+        "y": 1650,
+        "w": 1050,
+        "h": 650
+      },
+      "color": "#EC4899"
+    },
+    {
+      "id": "streak_quarter",
+      "name": "STREAK PSYCHOLOGY QUARTER",
+      "description": "Hot-hand bias management and post-drawdown hesitation mastery",
+      "bounds": {
+        "x": 2050,
+        "y": 1650,
+        "w": 1050,
+        "h": 650
+      },
+      "color": "#6366F1"
+    },
+    {
+      "id": "mind_fortress_quarter",
+      "name": "MIND FORTRESS & ARENA",
+      "description": "10-Round cognitive defense gauntlet and Apex Mind Fortress Citadel",
+      "bounds": {
+        "x": 1200,
+        "y": 100,
+        "w": 800,
+        "h": 750
+      },
+      "color": "#8B5CF6"
+    }
+  ],
+  "roads": [
+    {
+      "id": "main_avenue",
+      "name": "Equilibrium Grand Boulevard",
+      "x": 1520,
+      "y": 0,
+      "w": 160,
+      "h": 2400,
+      "orientation": "vertical"
+    },
+    {
+      "id": "north_boulevard",
+      "name": "Synaptic Expressway",
+      "x": 0,
+      "y": 850,
+      "w": 3200,
+      "h": 100,
+      "orientation": "horizontal"
+    },
+    {
+      "id": "south_boulevard",
+      "name": "Zen Harmony Crossway",
+      "x": 0,
+      "y": 1550,
+      "w": 3200,
+      "h": 100,
+      "orientation": "horizontal"
+    },
+    {
+      "id": "west_lane",
+      "name": "Discipline Way",
+      "x": 1150,
+      "y": 0,
+      "w": 100,
+      "h": 2400,
+      "orientation": "vertical"
+    },
+    {
+      "id": "east_lane",
+      "name": "Fortitude Corridor",
+      "x": 1950,
+      "y": 0,
+      "w": 100,
+      "h": 2400,
+      "orientation": "vertical"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "bld_psych_academy",
+      "name": "Psychology Academy",
+      "subtitle": "Neuro-Trading & Emotional Intelligence",
+      "x": 250,
+      "y": 220,
+      "w": 380,
+      "h": 220,
+      "quarter": "discipline_quarter",
+      "themeColor": "#8B5CF6",
+      "icon": "fa-brain",
+      "entrance": {
+        "x": 440,
+        "y": 440,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "psych_academy",
+      "promptText": "Enter Psychology Academy"
+    },
+    {
+      "id": "bld_discipline_dojo",
+      "name": "Discipline Dojo",
+      "subtitle": "Systematic Rule Adherence & Execution",
+      "x": 700,
+      "y": 220,
+      "w": 380,
+      "h": 220,
+      "quarter": "discipline_quarter",
+      "themeColor": "#10B981",
+      "icon": "fa-hand-fist",
+      "entrance": {
+        "x": 890,
+        "y": 440,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "discipline_dojo",
+      "promptText": "Enter Discipline Dojo"
+    },
+    {
+      "id": "bld_bias_observatory",
+      "name": "Cognitive Bias Observatory",
+      "subtitle": "Dissection of Flawed Heuristics",
+      "x": 2200,
+      "y": 220,
+      "w": 380,
+      "h": 220,
+      "quarter": "bias_quarter",
+      "themeColor": "#06B6D4",
+      "icon": "fa-eye",
+      "entrance": {
+        "x": 2390,
+        "y": 440,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "bias_observatory",
+      "promptText": "Enter Bias Observatory"
+    },
+    {
+      "id": "bld_fomo_chamber",
+      "name": "FOMO Containment Chamber",
+      "subtitle": "Late-Entry Defense & Impulse Suppression",
+      "x": 250,
+      "y": 1050,
+      "w": 380,
+      "h": 200,
+      "quarter": "fomo_quarter",
+      "themeColor": "#F59E0B",
+      "icon": "fa-shield-halved",
+      "entrance": {
+        "x": 440,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "fomo_chamber",
+      "promptText": "Enter FOMO Chamber"
+    },
+    {
+      "id": "bld_patience_pavilion",
+      "name": "Patience & Cash Pavilion",
+      "subtitle": "The Art of Non-Action & High Confluence",
+      "x": 700,
+      "y": 1050,
+      "w": 380,
+      "h": 200,
+      "quarter": "fomo_quarter",
+      "themeColor": "#10B981",
+      "icon": "fa-hourglass-half",
+      "entrance": {
+        "x": 890,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "patience_pavilion",
+      "promptText": "Enter Patience Pavilion"
+    },
+    {
+      "id": "bld_tilt_recovery_lab",
+      "name": "Tilt Recovery Laboratory",
+      "subtitle": "Emotional Cooldowns & Biofeedback Reset",
+      "x": 2200,
+      "y": 1050,
+      "w": 380,
+      "h": 200,
+      "quarter": "tilt_quarter",
+      "themeColor": "#F43F5E",
+      "icon": "fa-heart-pulse",
+      "entrance": {
+        "x": 2390,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "tilt_recovery_lab",
+      "promptText": "Enter Tilt Recovery Lab"
+    },
+    {
+      "id": "bld_revenge_station",
+      "name": "Revenge Trading Defense",
+      "subtitle": "Circuit Breakers & Anti-Martingale Shield",
+      "x": 2650,
+      "y": 1050,
+      "w": 380,
+      "h": 200,
+      "quarter": "tilt_quarter",
+      "themeColor": "#E11D48",
+      "icon": "fa-ban",
+      "entrance": {
+        "x": 2840,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "revenge_station",
+      "promptText": "Enter Revenge Defense"
+    },
+    {
+      "id": "bld_journal_sanctuary",
+      "name": "Trade Journal Sanctuary",
+      "subtitle": "Emotional State Auditing & Performance Log",
+      "x": 250,
+      "y": 1750,
+      "w": 380,
+      "h": 200,
+      "quarter": "journal_quarter",
+      "themeColor": "#EC4899",
+      "icon": "fa-book-bookmark",
+      "entrance": {
+        "x": 440,
+        "y": 1950,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "journal_sanctuary",
+      "promptText": "Enter Journal Sanctuary"
+    },
+    {
+      "id": "bld_ego_chamber",
+      "name": "Ego Dissolution Chamber",
+      "subtitle": "Accepting Small Losses as Business Costs",
+      "x": 700,
+      "y": 1750,
+      "w": 380,
+      "h": 200,
+      "quarter": "journal_quarter",
+      "themeColor": "#A855F7",
+      "icon": "fa-masks-theater",
+      "entrance": {
+        "x": 890,
+        "y": 1950,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "ego_chamber",
+      "promptText": "Enter Ego Chamber"
+    },
+    {
+      "id": "bld_streak_center",
+      "name": "Streak Psychology Center",
+      "subtitle": "Overconfidence & Post-Loss Hesitation",
+      "x": 2200,
+      "y": 1750,
+      "w": 380,
+      "h": 200,
+      "quarter": "streak_quarter",
+      "themeColor": "#6366F1",
+      "icon": "fa-chart-line-up",
+      "entrance": {
+        "x": 2390,
+        "y": 1950,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "streak_center",
+      "promptText": "Enter Streak Center"
+    },
+    {
+      "id": "bld_scenario_theater",
+      "name": "Psych Scenario Theater",
+      "subtitle": "Branching Behavioral Narrative Simulator",
+      "x": 2650,
+      "y": 1750,
+      "w": 380,
+      "h": 200,
+      "quarter": "streak_quarter",
+      "themeColor": "#8B5CF6",
+      "icon": "fa-clapperboard",
+      "entrance": {
+        "x": 2840,
+        "y": 1950,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "scenario_theater",
+      "promptText": "Enter Scenario Theater"
+    },
+    {
+      "id": "bld_mission_hq",
+      "name": "Psychology Directorate HQ",
+      "subtitle": "District Director & Tactical Mind Journal",
+      "x": 1350,
+      "y": 1050,
+      "w": 500,
+      "h": 200,
+      "quarter": "zen_plaza",
+      "themeColor": "#8B5CF6",
+      "icon": "fa-compass",
+      "entrance": {
+        "x": 1600,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "mission_hq",
+      "promptText": "Enter Mission HQ"
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "lm_zen_monolith",
+      "name": "Zen Equilibrium Spire",
+      "x": 1600,
+      "y": 980,
+      "w": 120,
+      "h": 120,
+      "icon": "fa-gem",
+      "color": "#8B5CF6",
+      "lore": "A glowing crystal spire emitting resonant frequencies that stabilize trader biometric state."
+    },
+    {
+      "id": "lm_discipline_pillar",
+      "name": "Pillar of Iron Discipline",
+      "x": 600,
+      "y": 400,
+      "w": 90,
+      "h": 90,
+      "icon": "fa-monument",
+      "color": "#10B981",
+      "lore": "Engraved with the immutable law: 'Your strategy is only as profitable as your ability to execute it without deviation.'"
+    },
+    {
+      "id": "lm_bias_prism",
+      "name": "Cognitive Refraction Prism",
+      "x": 2500,
+      "y": 400,
+      "w": 90,
+      "h": 90,
+      "icon": "fa-cube",
+      "color": "#06B6D4",
+      "lore": "Splits trader thought patterns into rational analysis and subconscious biases."
+    },
+    {
+      "id": "lm_fomo_containment",
+      "name": "FOMO Shield Pylon",
+      "x": 600,
+      "y": 1150,
+      "w": 80,
+      "h": 80,
+      "icon": "fa-shield",
+      "color": "#F59E0B",
+      "lore": "Radiates anti-impulse dampening fields to protect traders from chasing parabolic pumps."
+    },
+    {
+      "id": "lm_tilt_extinguisher",
+      "name": "Tilt Thermal Dissipator",
+      "x": 2500,
+      "y": 1150,
+      "w": 80,
+      "h": 80,
+      "icon": "fa-fire-extinguisher",
+      "color": "#F43F5E",
+      "lore": "Instantly quells the burning emotional urge to avenge market losses."
+    },
+    {
+      "id": "lm_journal_archive",
+      "name": "Master Ledger Monolith",
+      "x": 600,
+      "y": 1900,
+      "w": 80,
+      "h": 80,
+      "icon": "fa-book-atlas",
+      "color": "#EC4899",
+      "lore": "Holds the historical trade performance records of legendary disciplined traders."
+    },
+    {
+      "id": "lm_streak_balance",
+      "name": "Streak Equilibrium Scale",
+      "x": 2500,
+      "y": 1900,
+      "w": 80,
+      "h": 80,
+      "icon": "fa-scale-unbalanced",
+      "color": "#6366F1",
+      "lore": "Demonstrates that every single trade is completely independent from the previous one."
+    },
+    {
+      "id": "lm_mind_fortress",
+      "name": "Mind Fortress (Citadel of Fortitude)",
+      "x": 1600,
+      "y": 220,
+      "w": 140,
+      "h": 70,
+      "icon": "fa-chess-rook",
+      "color": "#8B5CF6",
+      "lore": "The final psychological trial where traders confront and master their Inner Saboteur."
+    }
+  ],
+  "explorationPoints": [
+    {
+      "id": "exp_01",
+      "name": "Neuro-Biofeedback Node",
+      "x": 180,
+      "y": 300,
+      "xp": 15,
+      "lore": "Elevated heart rate and clenched fists indicate emotional hijack; take 3 deep breaths and walk away."
+    },
+    {
+      "id": "exp_02",
+      "name": "Checklist Anchor Monument",
+      "x": 950,
+      "y": 180,
+      "xp": 15,
+      "lore": "Never enter a trade without ticking every criteria on your written pre-flight checklist."
+    },
+    {
+      "id": "exp_03",
+      "name": "Confirmation Bias Mirror",
+      "x": 2800,
+      "y": 300,
+      "xp": 20,
+      "lore": "Searching only for bullish news when holding a long position is financial self-sabotage."
+    },
+    {
+      "id": "exp_04",
+      "name": "Cash Is A Position Tablet",
+      "x": 2950,
+      "y": 1150,
+      "xp": 15,
+      "lore": "Holding 100% cash when the market is choppy is an active, highly profitable defensive decision."
+    },
+    {
+      "id": "exp_05",
+      "name": "The 24-Hour Cooldown Stone",
+      "x": 180,
+      "y": 1200,
+      "xp": 20,
+      "lore": "After hitting your daily maximum loss limit, trading permissions are locked for 24 hours."
+    },
+    {
+      "id": "exp_06",
+      "name": "Sunk Cost Dissolution Post",
+      "x": 1050,
+      "y": 1200,
+      "xp": 15,
+      "lore": "The money you already lost is gone. Do not hold a failing trade to 'get your money back'."
+    },
+    {
+      "id": "exp_07",
+      "name": "Anti-Martingale Ward",
+      "x": 2100,
+      "y": 1200,
+      "xp": 20,
+      "lore": "Doubling position size after a loss turns a normal probability variance into total liquidation."
+    },
+    {
+      "id": "exp_08",
+      "name": "Hot-Hand Fallacy Beacon",
+      "x": 180,
+      "y": 1900,
+      "xp": 25,
+      "lore": "5 consecutive wins does NOT grant you market immunity. Maintain identical risk parameters."
+    },
+    {
+      "id": "exp_09",
+      "name": "Trade Process Sanctum",
+      "x": 1050,
+      "y": 1900,
+      "xp": 15,
+      "lore": "Judge a trade by how well you followed your plan, never solely by whether it made money."
+    },
+    {
+      "id": "exp_10",
+      "name": "Fear of Pulling Trigger Inoculator",
+      "x": 2100,
+      "y": 1900,
+      "xp": 15,
+      "lore": "Losses are simply the cost of doing business. If a valid setup triggers, execute without hesitation."
+    },
+    {
+      "id": "exp_11",
+      "name": "Equilibrium Fountain",
+      "x": 1250,
+      "y": 180,
+      "xp": 20,
+      "lore": "The calm mind observes market structure; the turbulent mind projects its own desires."
+    },
+    {
+      "id": "exp_12",
+      "name": "Psychology Zone Portal",
+      "x": 1600,
+      "y": 2320,
+      "xp": 10,
+      "lore": "Southbound portal connecting Psychology Zone back to the Strativo World Hub."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "mentor_maya",
+      "name": "Dr. Maya - Chief Psychology Architect",
+      "role": "District Director & Zen Master",
+      "x": 440,
+      "y": 480,
+      "themeColor": "#8B5CF6",
+      "avatarIcon": "fa-brain",
+      "dialogue": "Welcome to the Psychology Zone. In trading, the greatest opponent you will ever face is looking back at you in the mirror."
+    },
+    {
+      "id": "sensei_kael",
+      "name": "Kael - Discipline Dojo Master",
+      "role": "Systematic Execution Instructor",
+      "x": 890,
+      "y": 480,
+      "themeColor": "#10B981",
+      "avatarIcon": "fa-hand-fist",
+      "dialogue": "Amateurs look for excitement; professionals execute repeatable checklists. Emotion has no place in order entry."
+    },
+    {
+      "id": "dr_talia",
+      "name": "Dr. Talia - Cognitive Bias Specialist",
+      "role": "Heuristics & Bias Analyst",
+      "x": 2390,
+      "y": 480,
+      "themeColor": "#06B6D4",
+      "avatarIcon": "fa-eye",
+      "dialogue": "Your brain is wired by millions of years of evolution to make irrational financial choices. Recognize your cognitive blindspots."
+    },
+    {
+      "id": "marcus_fomo",
+      "name": "Marcus - FOMO Interceptor",
+      "role": "Impulse Suppression Lead",
+      "x": 440,
+      "y": 1290,
+      "themeColor": "#F59E0B",
+      "avatarIcon": "fa-shield-halved",
+      "dialogue": "When you see a huge green candle blasting off without you, your FOMO screams 'BUY!'. In this zone, you learn to let it go."
+    },
+    {
+      "id": "coach_seraphina",
+      "name": "Seraphina - Tilt Recovery Coach",
+      "role": "Biofeedback & Mental Reset",
+      "x": 2390,
+      "y": 1290,
+      "themeColor": "#F43F5E",
+      "avatarIcon": "fa-heart-pulse",
+      "dialogue": "Tilt occurs when emotional frustration overpowers logical risk rules. When tilt strikes, your single best move is stepping away."
+    },
+    {
+      "id": "interceptor_logan",
+      "name": "Logan - Revenge Trading Warden",
+      "role": "Circuit Breaker Sentinel",
+      "x": 2840,
+      "y": 1290,
+      "themeColor": "#E11D48",
+      "avatarIcon": "fa-ban",
+      "dialogue": "The market did not take your money out of personal malice. Never try to 'punish' the market with enlarged revenge sizes."
+    },
+    {
+      "id": "archivist_ariana",
+      "name": "Ariana - Master Journal Archivist",
+      "role": "Performance Auditor",
+      "x": 440,
+      "y": 1990,
+      "themeColor": "#EC4899",
+      "avatarIcon": "fa-book-bookmark",
+      "dialogue": "What gets measured gets improved. If you don't journal your emotional triggers and trade compliance, you cannot evolve."
+    },
+    {
+      "id": "commander_zephyr",
+      "name": "Commander Zephyr - Fortitude Marshal",
+      "role": "Mind Fortress & Arena Lead",
+      "x": 1600,
+      "y": 320,
+      "themeColor": "#8B5CF6",
+      "avatarIcon": "fa-chess-rook",
+      "dialogue": "Prepare yourself for the Mind Fortress! You will face your Inner Saboteur across multiple emotional storm phases. Only supreme discipline survives."
+    }
+  ],
+  "ambientNpcs": [
+    {
+      "id": "amb_01",
+      "name": "Zen Trainee Rin",
+      "x": 1450,
+      "y": 1100,
+      "role": "Breathing Trainee",
+      "themeColor": "#8B5CF6",
+      "waypoints": [
+        {
+          "x": 1450,
+          "y": 1100
+        },
+        {
+          "x": 1550,
+          "y": 1100
+        }
+      ]
+    },
+    {
+      "id": "amb_02",
+      "name": "Neuro Analyst Ethan",
+      "x": 1750,
+      "y": 1100,
+      "role": "Brainwave Monitor",
+      "themeColor": "#06B6D4",
+      "waypoints": [
+        {
+          "x": 1750,
+          "y": 1100
+        },
+        {
+          "x": 1650,
+          "y": 1100
+        }
+      ]
+    },
+    {
+      "id": "amb_03",
+      "name": "Discipline Scout Liam",
+      "x": 2150,
+      "y": 400,
+      "role": "Checklist Patrol",
+      "themeColor": "#10B981",
+      "waypoints": [
+        {
+          "x": 2150,
+          "y": 400
+        },
+        {
+          "x": 2250,
+          "y": 400
+        }
+      ]
+    },
+    {
+      "id": "amb_04",
+      "name": "Biofeedback Tech Nora",
+      "x": 350,
+      "y": 400,
+      "role": "Pulse Tech",
+      "themeColor": "#EC4899",
+      "waypoints": [
+        {
+          "x": 350,
+          "y": 400
+        },
+        {
+          "x": 450,
+          "y": 400
+        }
+      ]
+    },
+    {
+      "id": "amb_05",
+      "name": "Patience Guide Sam",
+      "x": 350,
+      "y": 1200,
+      "role": "Wait Mentor",
+      "themeColor": "#10B981",
+      "waypoints": [
+        {
+          "x": 350,
+          "y": 1200
+        },
+        {
+          "x": 450,
+          "y": 1200
+        }
+      ]
+    },
+    {
+      "id": "amb_06",
+      "name": "Bias Auditor David",
+      "x": 2150,
+      "y": 1200,
+      "role": "Cognitive Auditor",
+      "themeColor": "#06B6D4",
+      "waypoints": [
+        {
+          "x": 2150,
+          "y": 1200
+        },
+        {
+          "x": 2250,
+          "y": 1200
+        }
+      ]
+    },
+    {
+      "id": "amb_07",
+      "name": "Journal Clerk Chloe",
+      "x": 350,
+      "y": 1900,
+      "role": "Data Archivist",
+      "themeColor": "#EC4899",
+      "waypoints": [
+        {
+          "x": 350,
+          "y": 1900
+        },
+        {
+          "x": 450,
+          "y": 1900
+        }
+      ]
+    },
+    {
+      "id": "amb_08",
+      "name": "Streak Specialist Ray",
+      "x": 2150,
+      "y": 1900,
+      "role": "Variance Guide",
+      "themeColor": "#6366F1",
+      "waypoints": [
+        {
+          "x": 2150,
+          "y": 1900
+        },
+        {
+          "x": 2250,
+          "y": 1900
+        }
+      ]
+    },
+    {
+      "id": "amb_09",
+      "name": "Arena Warden Leo",
+      "x": 1550,
+      "y": 350,
+      "role": "Gauntlet Marshal",
+      "themeColor": "#8B5CF6",
+      "waypoints": [
+        {
+          "x": 1550,
+          "y": 350
+        },
+        {
+          "x": 1650,
+          "y": 350
+        }
+      ]
+    },
+    {
+      "id": "amb_10",
+      "name": "Fortress Sentinel Kai",
+      "x": 1650,
+      "y": 200,
+      "role": "Citadel Guard",
+      "themeColor": "#8B5CF6",
+      "waypoints": [
+        {
+          "x": 1650,
+          "y": 200
+        },
+        {
+          "x": 1550,
+          "y": 200
+        }
+      ]
+    }
+  ],
+  "marketBoards": [
+    {
+      "id": "mb_01",
+      "name": "Emotional Equilibrium Index",
+      "x": 1350,
+      "y": 920,
+      "w": 120,
+      "h": 50,
+      "title": "Mental State",
+      "metric": "Equilibrium Level",
+      "value": "94% [OPTIMAL]",
+      "status": "Calm"
+    },
+    {
+      "id": "mb_02",
+      "name": "Tilt Risk Barometer",
+      "x": 1730,
+      "y": 920,
+      "w": 120,
+      "h": 50,
+      "title": "Tilt Barometer",
+      "metric": "Emotional Strain",
+      "value": "LOW (0.05)",
+      "status": "Clear"
+    },
+    {
+      "id": "mb_03",
+      "name": "FOMO Infiltration Monitor",
+      "x": 2150,
+      "y": 800,
+      "w": 120,
+      "h": 50,
+      "title": "FOMO Status",
+      "metric": "Impulse Threat",
+      "value": "0 Incursions",
+      "status": "Protected"
+    },
+    {
+      "id": "mb_04",
+      "name": "Bias Detection Radar",
+      "x": 350,
+      "y": 800,
+      "w": 120,
+      "h": 50,
+      "title": "Cognitive Radar",
+      "metric": "Active Blindspots",
+      "value": "None Detected",
+      "status": "Neutral"
+    },
+    {
+      "id": "mb_05",
+      "name": "Patience & Cash Position Gauge",
+      "x": 2150,
+      "y": 1500,
+      "w": 120,
+      "h": 50,
+      "title": "Patience Index",
+      "metric": "Cash Allocation",
+      "value": "100% Cash Ready",
+      "status": "Disciplined"
+    },
+    {
+      "id": "mb_06",
+      "name": "Revenge Circuit Breaker Status",
+      "x": 350,
+      "y": 1500,
+      "w": 120,
+      "h": 50,
+      "title": "Circuit Breakers",
+      "metric": "Max Loss Guard",
+      "value": "ARMED (-2.0% Cap)",
+      "status": "Active"
+    },
+    {
+      "id": "mb_07",
+      "name": "Streak Variance Evaluator",
+      "x": 1100,
+      "y": 1580,
+      "w": 120,
+      "h": 50,
+      "title": "Streak Variance",
+      "metric": "Independence Check",
+      "value": "Probability Constant",
+      "status": "Valid"
+    },
+    {
+      "id": "mb_08",
+      "name": "Mind Fortress Defense Grid",
+      "x": 1990,
+      "y": 1580,
+      "w": 120,
+      "h": 50,
+      "title": "Citadel Barrier",
+      "metric": "Fortitude Integrity",
+      "value": "100.0% Solid",
+      "status": "Fortified"
+    }
+  ],
+  "interiors": {
+    "psych_academy": {
+      "id": "psych_academy",
+      "name": "Psychology Academy Research Hall",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#8B5CF6",
+      "stations": [
+        {
+          "id": "st_psych_foundations",
+          "name": "Neuro-Trading Foundations Desk",
+          "x": 300,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "Learn Foundations [E]",
+          "action": "openAcademyModal",
+          "tab": "fund"
+        },
+        {
+          "id": "st_psych_neuro",
+          "name": "Neurochemistry Console",
+          "x": 600,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "Study Brain Chemistry [E]",
+          "action": "openAcademyModal",
+          "tab": "neuro"
+        },
+        {
+          "id": "st_psych_discipline",
+          "name": "Emotional Control Bench",
+          "x": 900,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "Study Self-Mastery [E]",
+          "action": "openAcademyModal",
+          "tab": "control"
+        }
+      ],
+      "npc": {
+        "id": "mentor_maya_in",
+        "name": "Dr. Maya",
+        "role": "Academy Director",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#8B5CF6",
+        "avatarIcon": "fa-brain",
+        "dialogue": "Dopamine creates greed; cortisol triggers panic. The disciplined trader learns to observe these biological impulses without executing orders upon them."
+      }
+    },
+    "discipline_dojo": {
+      "id": "discipline_dojo",
+      "name": "Discipline & Execution Dojo",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#10B981",
+      "stations": [
+        {
+          "id": "st_dojo_checklist",
+          "name": "Pre-Flight Checklist Terminal",
+          "x": 400,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Test Checklist [E]",
+          "action": "openDojoModal"
+        },
+        {
+          "id": "st_dojo_execution",
+          "name": "Strict Execution Simulator",
+          "x": 800,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Execute System [E]",
+          "action": "openDojoModal"
+        }
+      ],
+      "npc": {
+        "id": "sensei_kael_in",
+        "name": "Sensei Kael",
+        "role": "Execution Master",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#10B981",
+        "avatarIcon": "fa-hand-fist",
+        "dialogue": "Treat order execution like a surgeon performs surgery: precise, detached, following exact predetermined steps."
+      }
+    },
+    "bias_observatory": {
+      "id": "bias_observatory",
+      "name": "Cognitive Bias Observatory",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#06B6D4",
+      "stations": [
+        {
+          "id": "st_bias_dissector",
+          "name": "Bias Dissection Console",
+          "x": 400,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Dissect Biases [E]",
+          "action": "openBiasModal"
+        },
+        {
+          "id": "st_bias_blindspot",
+          "name": "Blindspot Radar Station",
+          "x": 800,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Scan Blindspots [E]",
+          "action": "openBiasModal"
+        }
+      ],
+      "npc": {
+        "id": "dr_talia_in",
+        "name": "Dr. Talia",
+        "role": "Cognitive Scientist",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#06B6D4",
+        "avatarIcon": "fa-eye",
+        "dialogue": "Confirmation bias makes you discard bearish evidence when you are long. Always search for what invalidates your hypothesis."
+      }
+    },
+    "fomo_chamber": {
+      "id": "fomo_chamber",
+      "name": "FOMO Containment Chamber",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#F59E0B",
+      "stations": [
+        {
+          "id": "st_fomo_sim",
+          "name": "Impulse Suppression Unit",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Test FOMO Resistance [E]",
+          "action": "openFOMOModal"
+        }
+      ],
+      "npc": {
+        "id": "marcus_in",
+        "name": "Marcus",
+        "role": "FOMO Interceptor",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F59E0B",
+        "avatarIcon": "fa-shield-halved",
+        "dialogue": "The train has already left the station. Buying at the peak of an impulse move is handing your money to smart money taking profit."
+      }
+    },
+    "patience_pavilion": {
+      "id": "patience_pavilion",
+      "name": "Patience & Cash Pavilion",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#10B981",
+      "stations": [
+        {
+          "id": "st_patience_sim",
+          "name": "Cash Position Valuation Bench",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Evaluate Cash Position [E]",
+          "action": "openPatienceModal"
+        }
+      ],
+      "npc": {
+        "id": "patience_guide_in",
+        "name": "Master Jin",
+        "role": "Patience Sage",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#10B981",
+        "avatarIcon": "fa-hourglass-half",
+        "dialogue": "Doing nothing in an ambiguous market is the highest form of professional skill. Cash is a 100% valid position."
+      }
+    },
+    "tilt_recovery_lab": {
+      "id": "tilt_recovery_lab",
+      "name": "Tilt Recovery Laboratory",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#F43F5E",
+      "stations": [
+        {
+          "id": "st_tilt_cooldown",
+          "name": "Biometric Reset Pod",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Activate Cooldown [E]",
+          "action": "openTiltModal"
+        }
+      ],
+      "npc": {
+        "id": "seraphina_in",
+        "name": "Seraphina",
+        "role": "Tilt Coach",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F43F5E",
+        "avatarIcon": "fa-heart-pulse",
+        "dialogue": "After 2 consecutive losses or an emotional trigger, lock your terminal for 60 minutes. Your future balance will thank you."
+      }
+    },
+    "revenge_station": {
+      "id": "revenge_station",
+      "name": "Revenge Trading Defense Station",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#E11D48",
+      "stations": [
+        {
+          "id": "st_circuit_breaker",
+          "name": "Circuit Breaker Terminal",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Configure Breakers [E]",
+          "action": "openRevengeModal"
+        }
+      ],
+      "npc": {
+        "id": "logan_in",
+        "name": "Logan",
+        "role": "Revenge Warden",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#E11D48",
+        "avatarIcon": "fa-ban",
+        "dialogue": "Martingale lot sizing is the fastest highway to account bankruptcy. Accept the loss, reset your mind, and wait for the next setup."
+      }
+    },
+    "journal_sanctuary": {
+      "id": "journal_sanctuary",
+      "name": "Trade Journal Sanctuary",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#EC4899",
+      "stations": [
+        {
+          "id": "st_journal_audit",
+          "name": "Trade Performance Auditing Deck",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Audit Journal [E]",
+          "action": "openJournalModal"
+        }
+      ],
+      "npc": {
+        "id": "ariana_in",
+        "name": "Ariana",
+        "role": "Journal Archivist",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#EC4899",
+        "avatarIcon": "fa-book-bookmark",
+        "dialogue": "Log your emotional score from 1 to 10 on entry and exit. You will quickly discover which emotions lose you the most capital."
+      }
+    },
+    "ego_chamber": {
+      "id": "ego_chamber",
+      "name": "Ego Dissolution Chamber",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#A855F7",
+      "stations": [
+        {
+          "id": "st_ego_reset",
+          "name": "Humility Matrix Terminal",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Test Loss Acceptance [E]",
+          "action": "openEgoModal"
+        }
+      ],
+      "npc": {
+        "id": "ego_sage_in",
+        "name": "Sensei Zen",
+        "role": "Ego Master",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#A855F7",
+        "avatarIcon": "fa-masks-theater",
+        "dialogue": "You do not have to be right to be profitable. You only have to cut losses fast when you are wrong."
+      }
+    },
+    "streak_center": {
+      "id": "streak_center",
+      "name": "Streak Psychology Center",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#6366F1",
+      "stations": [
+        {
+          "id": "st_streak_variance",
+          "name": "Variance & Probability Bench",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Analyze Streaks [E]",
+          "action": "openStreakModal"
+        }
+      ],
+      "npc": {
+        "id": "streak_lead_in",
+        "name": "Dr. Ray",
+        "role": "Variance Analyst",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#6366F1",
+        "avatarIcon": "fa-chart-line-up",
+        "dialogue": "A 5-trade winning streak can induce dangerous euphoria; a 5-trade losing streak causes paralysis. Treat each trade as an independent event."
+      }
+    },
+    "scenario_theater": {
+      "id": "scenario_theater",
+      "name": "Psychology Scenario Theater",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#8B5CF6",
+      "stations": [
+        {
+          "id": "st_theater_screen",
+          "name": "Interactive Psychology Scenarios",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Start Scenario [E]",
+          "action": "openTheaterModal"
+        }
+      ],
+      "npc": {
+        "id": "curator_in",
+        "name": "Curator Elena",
+        "role": "Narrative Lead",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#8B5CF6",
+        "avatarIcon": "fa-clapperboard",
+        "dialogue": "Live through realistic trading dilemmas: high-stakes earnings announcements, sudden flash dumps, and emotional trap setups."
+      }
+    },
+    "psych_arena": {
+      "id": "psych_arena",
+      "name": "Mental Fortitude Arena",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#8B5CF6",
+      "stations": [
+        {
+          "id": "st_arena_terminal",
+          "name": "Psychology Arena Terminal",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Launch 10-Round Arena [E]",
+          "action": "launchPsychArena"
+        }
+      ],
+      "npc": {
+        "id": "arena_marshal_in",
+        "name": "Zephyr",
+        "role": "Arena Marshal",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#8B5CF6",
+        "avatarIcon": "fa-bolt-lightning",
+        "dialogue": "10 high-speed psychological drills testing bias recognition, FOMO defense, and emotional discipline under pressure!"
+      }
+    },
+    "mission_hq": {
+      "id": "mission_hq",
+      "name": "Psychology Operations Directorate",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#8B5CF6",
+      "stations": [
+        {
+          "id": "st_hq_journal",
+          "name": "District Tactical Mind Journal",
+          "x": 450,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "Open Missions [E]",
+          "action": "openMissionsJournal"
+        },
+        {
+          "id": "st_hq_briefing",
+          "name": "Strategic Sector Briefing",
+          "x": 750,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "View Briefing [E]",
+          "action": "openTacticalBriefingModal"
+        }
+      ],
+      "npc": {
+        "id": "director_in",
+        "name": "Director Maya",
+        "role": "Psychology Lead",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#8B5CF6",
+        "avatarIcon": "fa-compass",
+        "dialogue": "Master all 8 behavioral sectors to earn your Master Mind Certification and unlock entry to the Mind Fortress."
+      }
+    },
+    "mind_fortress": {
+      "id": "mind_fortress",
+      "name": "Mind Fortress (Apex Final Boss)",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#8B5CF6",
+      "stations": [
+        {
+          "id": "st_fortress_console",
+          "name": "Mind Fortress Trial Console",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Enter Mind Fortress [E]",
+          "action": "openMindFortressModal"
+        }
+      ],
+      "npc": {
+        "id": "zephyr_vault_in",
+        "name": "Commander Zephyr",
+        "role": "Citadel Commander",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#8B5CF6",
+        "avatarIcon": "fa-chess-rook",
+        "dialogue": "You are about to enter the Mind Fortress. You will face 8 severe psychological tests: Greed, Panic, Revenge, Euphoria, Hesitation, Sunk Cost, Overconfidence, and Tilt. Maintain your 100 Mental Stamina to achieve total mastery!"
+      }
+    }
+  }
+}

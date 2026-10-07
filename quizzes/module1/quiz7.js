@@ -1947,7 +1947,74 @@ function finishQuiz() {
 
 
         /*
-         * Update Lesson 8 button if the
+         * Unlock Chart District in Strativo World State
+         */
+
+        try {
+
+            if (
+                window.StrativoWorldState &&
+                typeof window.StrativoWorldState.get === "function"
+            ) {
+
+                const ws =
+                    window.StrativoWorldState.get();
+
+                const districts =
+                    new Set(ws.unlockedDistricts || []);
+
+                districts.add("chart-district");
+
+                window.StrativoWorldState.patch({
+                    unlockedDistricts:
+                        Array.from(districts)
+                });
+
+            } else {
+
+                const wsRaw =
+                    localStorage.getItem(
+                        "strativo_world_state"
+                    );
+
+                const ws =
+                    wsRaw
+                        ? JSON.parse(wsRaw)
+                        : {
+                            unlockedDistricts: [
+                                "candle-city",
+                                "pip-district",
+                                "market-arena"
+                            ]
+                        };
+
+                const districts =
+                    new Set(ws.unlockedDistricts || []);
+
+                districts.add("chart-district");
+
+                ws.unlockedDistricts =
+                    Array.from(districts);
+
+                localStorage.setItem(
+                    "strativo_world_state",
+                    JSON.stringify(ws)
+                );
+
+            }
+
+        } catch (err) {
+
+            console.warn(
+                "Could not sync Chart District unlock to World State:",
+                err
+            );
+
+        }
+
+
+        /*
+         * Update Lesson 8 / District 4 button if the
          * current page has its config.
          */
 
@@ -1958,6 +2025,12 @@ function finishQuiz() {
 
             lesson8Config.status =
                 "unlocked";
+
+            lesson8Config.url =
+                "../../games/districts/chart-district.html";
+
+            lesson8Config.labelUnlocked =
+                "🚀 Enter Chart District (District 4)";
 
 
             if (
@@ -1988,8 +2061,7 @@ function finishQuiz() {
     if (passed) {
 
         message +=
-            "🎉 You passed! Lesson 8 is now unlocked.";
-
+            "🎉 You passed! Chart District (District 4) is now unlocked. Entering Chart District...";
 
     }
     else {
@@ -2008,8 +2080,27 @@ function finishQuiz() {
 
     if (result) {
 
-        result.textContent =
-            message;
+        let extraCta = "";
+
+        if (passed) {
+
+            extraCta = `
+                <div style="margin-top:14px;">
+                    <a
+                        href="../../games/districts/chart-district.html"
+                        id="directChartDistrictBtn"
+                        class="lesson-action-btn unlocked"
+                        style="display:inline-block; padding:12px 24px; background:#00e5a8; color:#0a1424; font-weight:800; border-radius:8px; text-decoration:none; box-shadow:0 4px 15px rgba(0,229,168,0.35);"
+                    >
+                        🚀 Enter Chart District Now
+                    </a>
+                </div>
+            `;
+
+        }
+
+        result.innerHTML =
+            `<div>${message}</div>${extraCta}`;
 
 
         result.className =
@@ -2070,6 +2161,32 @@ function finishQuiz() {
 
 
     saveQuizState();
+
+
+    /*
+     * Direct automatic navigation on confirmed success
+     */
+
+    if (passed) {
+
+        if (!window.__strativoChartNavigating) {
+
+            window.__strativoChartNavigating =
+                true;
+
+            setTimeout(
+                function () {
+
+                    window.location.href =
+                        "../../games/districts/chart-district.html";
+
+                },
+                1500
+            );
+
+        }
+
+    }
 
 }
 
@@ -2279,6 +2396,12 @@ function initQuiz() {
 
             lesson8Config.status =
                 "unlocked";
+
+            lesson8Config.url =
+                "../../games/districts/chart-district.html";
+
+            lesson8Config.labelUnlocked =
+                "🚀 Enter Chart District (District 4)";
 
 
             if (

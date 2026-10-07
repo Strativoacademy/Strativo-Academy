@@ -1,12 +1,13 @@
 /* ==========================================================================
    STRATIVO WORLD — XP & PROGRESSION ENGINE
-   Version: 1.0
+   Version: 2.0 (Phase 2.3 Real Gameplay Progression, Mastery & Rewards)
    Responsibilities:
    - Calculate Levels, XP Progress, and Rank Titles
-   - Manage Skill Mastery (0-100%)
+   - Manage Skill Mastery (0-100%) dynamically from verified activity
    - Track Real Activity Streaks
-   - Listen to Academy Events (strativo:lessonCompleted, strativo:quizCompleted)
-   - Dispatch World Events (strativo:worldXPChanged, strativo:worldLevelUp)
+   - Idempotent Blitz Match Result Processing & Anti-Duplication
+   - Track Individual Pattern Familiarity & Archive Exploration Progress
+   - Process Real Achievement Requirements & Data-Driven Missions
    ========================================================================== */
 
 "use strict";
@@ -31,7 +32,7 @@
     ];
 
     /* ======================================================================
-       WORLD ACHIEVEMENTS REGISTRY
+       WORLD ACHIEVEMENTS REGISTRY (REAL REQUIREMENTS)
        ====================================================================== */
 
     const WORLD_ACHIEVEMENTS = [
@@ -57,11 +58,39 @@
             category: "QUIZ"
         },
         {
-            id: "candle_beginner",
-            title: "Candle Novice",
-            description: "Entered Candle City and began price action training.",
-            icon: "fa-fire-flame-curved",
-            category: "DISTRICT"
+            id: "candle_scout",
+            title: "Candle Scout",
+            description: "Inspect your first candlestick formation in Candle City.",
+            icon: "fa-eye",
+            category: "EXPLORATION"
+        },
+        {
+            id: "pattern_apprentice",
+            title: "Pattern Apprentice",
+            description: "Correctly identify your first pattern in Candle Blitz.",
+            icon: "fa-wand-magic-sparkles",
+            category: "RECOGNITION"
+        },
+        {
+            id: "rapid_reader",
+            title: "Rapid Reader",
+            description: "Complete a fast recognition match with average reaction under 1.8s.",
+            icon: "fa-bolt-lightning",
+            category: "SPEED"
+        },
+        {
+            id: "candle_specialist",
+            title: "Candle Specialist",
+            description: "Achieve Grade S or A (80%+ accuracy) in a Candle Blitz match.",
+            icon: "fa-award",
+            category: "ACCURACY"
+        },
+        {
+            id: "candle_master",
+            title: "Candle Master",
+            description: "Attain 50%+ Candlestick Mastery and explore 20+ patterns.",
+            icon: "fa-crown",
+            category: "MASTERY"
         },
         {
             id: "risk_learner",
@@ -119,7 +148,6 @@
         const rank = currentTier.rank;
 
         if (!nextTier) {
-            // Max level reached
             return {
                 level,
                 rank,
@@ -149,7 +177,7 @@
     }
 
     /* ======================================================================
-       XP MODIFICATION & EVENTS
+       XP MODIFICATION & ANTI-DUPLICATION
        ====================================================================== */
 
     function addWorldXP(amount, reason = "Activity", eventId = null) {
@@ -159,7 +187,7 @@
         const xpDelta = safeNumber(amount, 0);
         if (xpDelta <= 0) return state;
 
-        // Check if event was already processed to avoid duplicate awards
+        // Idempotent event check: prevent duplicate reward grants
         if (eventId) {
             if (state.processedEvents && state.processedEvents.includes(eventId)) {
                 return state;
@@ -171,12 +199,11 @@
         const oldLevel = state.level || 1;
         state.xp = (state.xp || 0) + xpDelta;
 
-        // Recalculate level and rank
         const levelInfo = calculateLevelInfo(state.xp);
         state.level = levelInfo.level;
         state.rank = levelInfo.rank;
 
-        // Record activity for today
+        // Record qualifying activity
         recordActivityInternal(state);
 
         // Check for achievements
@@ -208,7 +235,9 @@
 
     function dispatchWorldEvent(eventName, detail = {}) {
         try {
-            window.dispatchEvent(new CustomEvent(eventName, { detail }));
+            if (typeof window !== "undefined" && typeof window.dispatchEvent === "function") {
+                window.dispatchEvent(new CustomEvent(eventName, { detail }));
+            }
         } catch (err) {
             console.warn("Strativo World: Event dispatch error:", err);
         }
@@ -228,7 +257,6 @@
 
         state.lastActiveDate = today;
 
-        // Calculate consecutive daily streak
         const uniqueDates = Array.from(new Set(state.activityDates)).sort().reverse();
         let streak = 0;
         let checkDate = new Date();
@@ -239,7 +267,6 @@
                 streak++;
                 checkDate.setDate(checkDate.getDate() - 1);
             } else {
-                // If today hasn't been active yet, allow yesterday as streak continuation
                 if (streak === 0) {
                     const yesterday = new Date();
                     yesterday.setDate(yesterday.getDate() - 1);
@@ -267,8 +294,107 @@
     }
 
     /* ======================================================================
-       SKILL MASTERY UPDATES
+       CANDLESTICK MASTERY CALCULATION
        ====================================================================== */
+
+    function recalculateCandleMastery(state) {
+        state.mastery = state.mastery || {};
+        const viewed = (state.viewedPatterns || []).length;
+        const correctPatterns = Object.values(state.patternMastery || {}).filter(p => p.correct > 0).length;
+        const accuracy = (state.blitzStats && state.blitzStats.totalAttempts > 0)
+            ? (state.blitzStats.totalCorrect / state.blitzStats.totalAttempts)
+            : 0;
+
+        // 1. Exploration component: up to 25% (viewed/44 * 25)
+        const exploreScore = Math.round((Math.min(44, viewed) / 44) * 25);
+
+        // 2. Recognition coverage component: up to 55% (correctUnique/44 * 55)
+        const recogScore = Math.round((Math.min(44, correctPatterns) / 44) * 55);
+
+        // 3. Accuracy bonus component: up to 20%
+        const accScore = Math.round(accuracy * 20);
+
+        const calculatedMastery = Math.min(100, exploreScore + recogScore + accScore);
+        state.mastery.candlesticks = Math.max(state.mastery.candlesticks || 0, calculatedMastery);
+        return state.mastery.candlesticks;
+    }
+
+    /* ======================================================================
+       PIP & POSITION MASTERY CALCULATION
+       ====================================================================== */
+
+    function recalculatePipPositionMastery(state) {
+        state.mastery = state.mastery || {};
+        state.pipStats = state.pipStats || {
+            measurementsSolved: 0,
+            jpySolved: 0,
+            fractionalSolved: 0,
+            rulesCompleted: 0,
+            forgeCompleted: 0,
+            leverageCompleted: 0,
+            arenaCompleted: 0,
+            blitzMatches: 0,
+            blitzCorrect: 0,
+            blitzAttempts: 0
+        };
+
+        const ms = state.pipStats;
+        // 1. Basic measurement & ladder progress: up to 25%
+        const measureScore = Math.min(25, Math.round((ms.measurementsSolved / 5) * 25));
+
+        // 2. Specialized precision (JPY + Fractional + Rules): up to 25%
+        const specScore = Math.min(25, (ms.jpySolved ? 10 : 0) + Math.min(10, ms.fractionalSolved * 2) + (ms.rulesCompleted ? 5 : 0));
+
+        // 3. Risk Forge & Leverage Tower: up to 25%
+        const riskScore = Math.min(25, Math.min(15, ms.forgeCompleted * 5) + (ms.leverageCompleted ? 5 : 0) + (ms.arenaCompleted ? 5 : 0));
+
+        // 4. Pip Blitz accuracy & matches: up to 25%
+        const blitzAcc = ms.blitzAttempts > 0 ? (ms.blitzCorrect / ms.blitzAttempts) : 0;
+        const blitzScore = Math.min(25, Math.min(10, ms.blitzMatches * 5) + Math.round(blitzAcc * 15));
+
+        const calculatedMastery = Math.min(100, measureScore + specScore + riskScore + blitzScore);
+        state.mastery.pipPosition = Math.max(state.mastery.pipPosition || 0, calculatedMastery);
+        return state.mastery.pipPosition;
+    }
+
+    /* ======================================================================
+       MARKET STRUCTURE MASTERY CALCULATION
+       ====================================================================== */
+
+    function recalculateMarketStructureMastery(state) {
+        state.mastery = state.mastery || {};
+        state.marketStats = state.marketStats || {
+            swingsSolved: 0,
+            trendsSolved: 0,
+            sequencesSolved: 0,
+            rangesSolved: 0,
+            breakoutsSolved: 0,
+            fakeoutsSolved: 0,
+            theaterCompleted: 0,
+            arenaCompleted: 0,
+            blitzMatches: 0,
+            blitzCorrect: 0,
+            blitzAttempts: 0
+        };
+
+        const ms = state.marketStats;
+        // 1. Swing & Structure Academy drills: up to 25%
+        const swingScore = Math.min(25, Math.round((ms.swingsSolved / 3) * 25));
+
+        // 2. Trend Stadium & Range detection: up to 25%
+        const trendScore = Math.min(25, Math.min(15, ms.trendsSolved * 3) + Math.min(10, ms.rangesSolved * 2));
+
+        // 3. Breakout/Fakeout Zone & Chart Theater: up to 25%
+        const breakoutScore = Math.min(25, Math.min(10, ms.breakoutsSolved * 2) + Math.min(10, ms.fakeoutsSolved * 2) + (ms.theaterCompleted ? 5 : 0));
+
+        // 4. Market Blitz accuracy & matches: up to 25%
+        const blitzAcc = ms.blitzAttempts > 0 ? (ms.blitzCorrect / ms.blitzAttempts) : 0;
+        const blitzScore = Math.min(25, Math.min(10, ms.blitzMatches * 5) + Math.round(blitzAcc * 15));
+
+        const calculatedMastery = Math.min(100, swingScore + trendScore + breakoutScore + blitzScore);
+        state.mastery.marketStructure = Math.max(state.mastery.marketStructure || 0, calculatedMastery);
+        return state.mastery.marketStructure;
+    }
 
     function updateMastery(skillKey, valueOrDelta, isAbsolute = false) {
         const state = getState();
@@ -292,36 +418,442 @@
     }
 
     /* ======================================================================
-       ACHIEVEMENTS SYNCHRONIZATION
+       PATTERN VIEW TRACKING (ARCHIVE & PODS)
+       ====================================================================== */
+
+    function recordPatternView(patternId) {
+        const state = getState();
+        if (!state || !patternId) return null;
+
+        state.viewedPatterns = state.viewedPatterns || [];
+        let isNew = false;
+
+        if (!state.viewedPatterns.includes(patternId)) {
+            state.viewedPatterns.push(patternId);
+            isNew = true;
+
+            // Update First Light mission
+            state.missions = state.missions || {};
+            if (state.missions.first_light && !state.missions.first_light.completed) {
+                state.missions.first_light.progress = Math.min(state.missions.first_light.target, state.viewedPatterns.length);
+            }
+
+            // Recalculate Mastery
+            recalculateCandleMastery(state);
+
+            // Record qualifying learning activity
+            recordActivityInternal(state);
+
+            // Check Achievements (e.g. candle_scout)
+            checkAchievementsInternal(state);
+
+            saveState(state);
+            dispatchWorldEvent("strativo:worldStateChanged", { state });
+        }
+
+        return { isNew, totalViewed: state.viewedPatterns.length };
+    }
+
+    /* ======================================================================
+       CANDLE BLITZ MATCH RESULT PROCESSING (IDEMPOTENT REWARD TRANSACTION)
+       ====================================================================== */
+
+    function recordCandleBlitzResult(matchData = {}) {
+        const state = getState();
+        if (!state) return null;
+
+        const matchId = matchData.matchId || `blitz_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+
+        // Anti-Duplication: reject already processed match ID
+        if (state.processedEvents && state.processedEvents.includes(matchId)) {
+            return { duplicate: true, state };
+        }
+
+        state.processedEvents = state.processedEvents || [];
+        state.processedEvents.push(matchId);
+
+        // 1. Calculate XP: Base 10 + Performance (0-20) + Learning (0-10) -> Max 40 XP
+        const baseXP = 10;
+        const perfXP = Math.min(20, Math.round((matchData.correctCount || 0) * 2));
+        const learnXP = Math.min(10, Math.floor((matchData.bestCombo || 0) * 1));
+        const matchXP = Math.min(40, baseXP + perfXP + learnXP);
+
+        // 2. Update blitzStats
+        state.blitzStats = state.blitzStats || {
+            matchesPlayed: 0,
+            patternsIdentified: 0,
+            totalCorrect: 0,
+            totalAttempts: 0,
+            bestCombo: 0,
+            bestScore: 0,
+            avgReactionMs: 0
+        };
+
+        state.blitzStats.matchesPlayed = (state.blitzStats.matchesPlayed || 0) + 1;
+        state.blitzStats.totalCorrect = (state.blitzStats.totalCorrect || 0) + (matchData.correctCount || 0);
+        state.blitzStats.totalAttempts = (state.blitzStats.totalAttempts || 0) + (matchData.totalRounds || 10);
+        state.blitzStats.patternsIdentified = (state.blitzStats.patternsIdentified || 0) + (matchData.correctCount || 0);
+        state.blitzStats.bestCombo = Math.max(state.blitzStats.bestCombo || 0, matchData.bestCombo || 0);
+        state.blitzStats.bestScore = Math.max(state.blitzStats.bestScore || 0, matchData.score || 0);
+
+        if (matchData.avgReactionMs > 0) {
+            state.blitzStats.avgReactionMs = state.blitzStats.matchesPlayed === 1
+                ? matchData.avgReactionMs
+                : Math.round((state.blitzStats.avgReactionMs + matchData.avgReactionMs) / 2);
+        }
+
+        // 3. Update individual patternMastery
+        state.patternMastery = state.patternMastery || {};
+        if (Array.isArray(matchData.patternResults)) {
+            matchData.patternResults.forEach(pr => {
+                if (pr && pr.id) {
+                    state.patternMastery[pr.id] = state.patternMastery[pr.id] || { seen: 0, correct: 0 };
+                    state.patternMastery[pr.id].seen = (state.patternMastery[pr.id].seen || 0) + 1;
+                    if (pr.correct) {
+                        state.patternMastery[pr.id].correct = (state.patternMastery[pr.id].correct || 0) + 1;
+                    }
+                }
+            });
+        }
+
+        // 4. Update Missions (rapid_eye & pattern_hunter)
+        state.missions = state.missions || {};
+        if (state.missions.rapid_eye && !state.missions.rapid_eye.completed) {
+            state.missions.rapid_eye.progress = Math.min(state.missions.rapid_eye.target, (state.missions.rapid_eye.progress || 0) + 1);
+        }
+        if (state.missions.pattern_hunter && !state.missions.pattern_hunter.completed) {
+            state.missions.pattern_hunter.progress = Math.min(state.missions.pattern_hunter.target, (state.missions.pattern_hunter.progress || 0) + (matchData.correctCount || 0));
+        }
+
+        // 5. Recalculate Candlestick Mastery
+        const newMastery = recalculateCandleMastery(state);
+
+        // 6. Record Activity
+        recordActivityInternal(state);
+
+        // 7. Add XP
+        const oldLevel = state.level || 1;
+        state.xp = (state.xp || 0) + matchXP;
+        const levelInfo = calculateLevelInfo(state.xp);
+        state.level = levelInfo.level;
+        state.rank = levelInfo.rank;
+
+        // 8. Check Achievements
+        const newAchievements = checkAchievementsInternal(state);
+
+        saveState(state);
+
+        // 9. Dispatch events
+        dispatchWorldEvent("strativo:worldXPChanged", {
+            amount: matchXP,
+            totalXP: state.xp,
+            level: state.level,
+            rank: state.rank,
+            reason: `Candle Blitz Match (${matchData.accuracy || 0}%)`
+        });
+
+        if (state.level > oldLevel) {
+            dispatchWorldEvent("strativo:worldLevelUp", {
+                oldLevel,
+                newLevel: state.level,
+                rank: state.rank
+            });
+        }
+
+        dispatchWorldEvent("strativo:candlestickMastery", {
+            score: matchData.score,
+            accuracy: matchData.accuracy,
+            grade: matchData.grade,
+            candlestickMastery: newMastery,
+            bestCombo: matchData.bestCombo,
+            completedAt: Date.now()
+        });
+
+        dispatchWorldEvent("strativo:worldStateChanged", { state });
+
+        return {
+            duplicate: false,
+            xpGained: matchXP,
+            newMastery: newMastery,
+            newAchievements: newAchievements,
+            state: state
+        };
+    }
+
+    /* ======================================================================
+       PIP BLITZ MATCH RESULT PROCESSING (IDEMPOTENT REWARD TRANSACTION)
+       ====================================================================== */
+
+    function recordPipBlitzResult(matchData = {}) {
+        const state = getState();
+        if (!state) return null;
+
+        const matchId = matchData.matchId || `pip_blitz_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+
+        // Anti-Duplication: reject already processed match ID
+        if (state.processedEvents && state.processedEvents.includes(matchId)) {
+            return { duplicate: true, state };
+        }
+
+        state.processedEvents = state.processedEvents || [];
+        state.processedEvents.push(matchId);
+
+        // 1. Calculate XP: Base 10 + Performance (0-20) + Learn (0-10) -> Max 40 XP
+        const baseXP = 10;
+        const perfXP = Math.min(20, Math.round((matchData.correctCount || 0) * 2));
+        const learnXP = Math.min(10, Math.floor((matchData.bestCombo || 0) * 1));
+        const matchXP = Math.min(40, baseXP + perfXP + learnXP);
+
+        // 2. Update pipStats
+        state.pipStats = state.pipStats || {
+            measurementsSolved: 0,
+            jpySolved: 0,
+            fractionalSolved: 0,
+            rulesCompleted: 0,
+            forgeCompleted: 0,
+            leverageCompleted: 0,
+            arenaCompleted: 0,
+            blitzMatches: 0,
+            blitzCorrect: 0,
+            blitzAttempts: 0
+        };
+
+        state.pipStats.blitzMatches = (state.pipStats.blitzMatches || 0) + 1;
+        state.pipStats.blitzCorrect = (state.pipStats.blitzCorrect || 0) + (matchData.correctCount || 0);
+        state.pipStats.blitzAttempts = (state.pipStats.blitzAttempts || 0) + (matchData.totalRounds || 10);
+        state.pipStats.measurementsSolved = (state.pipStats.measurementsSolved || 0) + (matchData.correctCount || 0);
+
+        // 3. Update Missions
+        state.missions = state.missions || {};
+        if (state.missions.pip_blitz && !state.missions.pip_blitz.completed) {
+            state.missions.pip_blitz.progress = Math.min(state.missions.pip_blitz.target, (state.missions.pip_blitz.progress || 0) + 1);
+        }
+        if (state.missions.precision_test && !state.missions.precision_test.completed) {
+            state.missions.precision_test.progress = Math.min(state.missions.precision_test.target, (state.missions.precision_test.progress || 0) + (matchData.correctCount || 0));
+        }
+
+        // 4. Recalculate Pip & Position Mastery
+        const newMastery = recalculatePipPositionMastery(state);
+
+        // 5. Record Activity
+        recordActivityInternal(state);
+
+        // 6. Add XP
+        const oldLevel = state.level || 1;
+        state.xp = (state.xp || 0) + matchXP;
+        const levelInfo = calculateLevelInfo(state.xp);
+        state.level = levelInfo.level;
+        state.rank = levelInfo.rank;
+
+        // 7. Check Achievements
+        const newAchievements = checkAchievementsInternal(state);
+
+        saveState(state);
+
+        // 8. Dispatch events
+        dispatchWorldEvent("strativo:worldXPChanged", {
+            amount: matchXP,
+            totalXP: state.xp,
+            level: state.level,
+            rank: state.rank,
+            reason: `Pip Blitz Match (${matchData.accuracy || 0}%)`
+        });
+
+        if (state.level > oldLevel) {
+            dispatchWorldEvent("strativo:worldLevelUp", {
+                oldLevel,
+                newLevel: state.level,
+                rank: state.rank
+            });
+        }
+
+        dispatchWorldEvent("strativo:pipPositionMastery", {
+            score: matchData.score,
+            accuracy: matchData.accuracy,
+            grade: matchData.grade,
+            pipPositionMastery: newMastery,
+            bestCombo: matchData.bestCombo,
+            completedAt: Date.now()
+        });
+
+        dispatchWorldEvent("strativo:worldStateChanged", { state });
+
+        return {
+            duplicate: false,
+            xpGained: matchXP,
+            newMastery: newMastery,
+            newAchievements: newAchievements,
+            state: state
+        };
+    }
+
+    /* ======================================================================
+       MARKET BLITZ MATCH RESULT PROCESSING (IDEMPOTENT REWARD TRANSACTION)
+       ====================================================================== */
+
+    function recordMarketBlitzResult(matchData = {}) {
+        const state = getState();
+        if (!state) return null;
+
+        const matchId = matchData.matchId || `market_blitz_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+
+        // Anti-Duplication: reject already processed match ID
+        if (state.processedEvents && state.processedEvents.includes(matchId)) {
+            return { duplicate: true, state };
+        }
+
+        state.processedEvents = state.processedEvents || [];
+        state.processedEvents.push(matchId);
+
+        // 1. Calculate XP: Base 10 + Performance (0-20) + Learn (0-10) -> Max 40 XP
+        const baseXP = 10;
+        const perfXP = Math.min(20, Math.round((matchData.correctCount || 0) * 2));
+        const learnXP = Math.min(10, Math.floor((matchData.bestCombo || 0) * 1));
+        const matchXP = Math.min(40, baseXP + perfXP + learnXP);
+
+        // 2. Update marketStats
+        state.marketStats = state.marketStats || {
+            swingsSolved: 0,
+            trendsSolved: 0,
+            sequencesSolved: 0,
+            rangesSolved: 0,
+            breakoutsSolved: 0,
+            fakeoutsSolved: 0,
+            theaterCompleted: 0,
+            arenaCompleted: 0,
+            blitzMatches: 0,
+            blitzCorrect: 0,
+            blitzAttempts: 0
+        };
+
+        state.marketStats.blitzMatches = (state.marketStats.blitzMatches || 0) + 1;
+        state.marketStats.blitzCorrect = (state.marketStats.blitzCorrect || 0) + (matchData.correctCount || 0);
+        state.marketStats.blitzAttempts = (state.marketStats.blitzAttempts || 0) + (matchData.totalRounds || 10);
+        state.marketStats.trendsSolved = (state.marketStats.trendsSolved || 0) + Math.min(5, matchData.correctCount || 0);
+
+        // 3. Update Missions
+        state.missions = state.missions || {};
+        if (state.missions.market_blitz && !state.missions.market_blitz.completed) {
+            state.missions.market_blitz.progress = Math.min(state.missions.market_blitz.target, (state.missions.market_blitz.progress || 0) + 1);
+        }
+        if (state.missions.find_the_trend && !state.missions.find_the_trend.completed) {
+            state.missions.find_the_trend.progress = Math.min(state.missions.find_the_trend.target, (state.missions.find_the_trend.progress || 0) + Math.min(5, matchData.correctCount || 0));
+        }
+
+        // 4. Recalculate Market Structure Mastery
+        const newMastery = recalculateMarketStructureMastery(state);
+
+        // 5. Record Activity
+        recordActivityInternal(state);
+
+        // 6. Add XP
+        const oldLevel = state.level || 1;
+        state.xp = (state.xp || 0) + matchXP;
+        const levelInfo = calculateLevelInfo(state.xp);
+        state.level = levelInfo.level;
+        state.rank = levelInfo.rank;
+
+        // 7. Check Achievements
+        const newAchievements = checkAchievementsInternal(state);
+
+        saveState(state);
+
+        // 8. Dispatch events
+        dispatchWorldEvent("strativo:worldXPChanged", {
+            amount: matchXP,
+            totalXP: state.xp,
+            level: state.level,
+            rank: state.rank,
+            reason: `Market Blitz Match (${matchData.accuracy || 0}%)`
+        });
+
+        if (state.level > oldLevel) {
+            dispatchWorldEvent("strativo:worldLevelUp", {
+                oldLevel,
+                newLevel: state.level,
+                rank: state.rank
+            });
+        }
+
+        dispatchWorldEvent("strativo:marketStructureMastery", {
+            score: matchData.score,
+            accuracy: matchData.accuracy,
+            grade: matchData.grade,
+            marketStructureMastery: newMastery,
+            bestCombo: matchData.bestCombo,
+            completedAt: Date.now()
+        });
+
+        dispatchWorldEvent("strativo:worldStateChanged", { state });
+
+        return {
+            duplicate: false,
+            xpGained: matchXP,
+            newMastery: newMastery,
+            newAchievements: newAchievements,
+            state: state
+        };
+    }
+
+    /* ======================================================================
+       ACHIEVEMENTS SYNCHRONIZATION & CRITERIA EVALUATION
        ====================================================================== */
 
     function checkAchievementsInternal(state) {
         state.achievements = state.achievements || [];
         const unlockedSet = new Set(state.achievements);
+        const newlyUnlocked = [];
 
-        // Safely check real Academy lesson progress
+        function grant(id) {
+            if (!unlockedSet.has(id)) {
+                state.achievements.push(id);
+                unlockedSet.add(id);
+                newlyUnlocked.push(id);
+                dispatchWorldEvent("strativo:achievementUnlocked", { achievementId: id });
+            }
+        }
+
+        // Real Criteria Checks:
+        // 1. Candle Scout: Inspected at least 1 candle formation
+        if ((state.viewedPatterns || []).length >= 1) {
+            grant("candle_scout");
+        }
+
+        // 2. Pattern Apprentice: Correctly identified at least 1 pattern in Blitz
+        if (state.blitzStats && state.blitzStats.totalCorrect >= 1) {
+            grant("pattern_apprentice");
+        }
+
+        // 3. Rapid Reader: Avg reaction under 1.8s in a completed match
+        if (state.blitzStats && state.blitzStats.matchesPlayed >= 1 && state.blitzStats.avgReactionMs > 0 && state.blitzStats.avgReactionMs < 1800) {
+            grant("rapid_reader");
+        }
+
+        // 4. Candle Specialist: Accuracy >= 80% with at least 1 match played
+        if (state.blitzStats && state.blitzStats.matchesPlayed >= 1) {
+            const acc = state.blitzStats.totalCorrect / Math.max(1, state.blitzStats.totalAttempts);
+            if (acc >= 0.8) {
+                grant("candle_specialist");
+            }
+        }
+
+        // 5. Candle Master: Candlestick Mastery >= 50% AND 20+ patterns viewed
+        if ((state.mastery && state.mastery.candlesticks >= 50) && (state.viewedPatterns && state.viewedPatterns.length >= 20)) {
+            grant("candle_master");
+        }
+
+        // Check Academy lesson progress safely
         try {
-            const hasLesson1 = localStorage.getItem("lesson1_completed") === "true";
-            if (hasLesson1 && !unlockedSet.has("first_lesson")) {
-                state.achievements.push("first_lesson");
-                unlockedSet.add("first_lesson");
-            }
-
-            const hasQuiz1 = localStorage.getItem("lesson1_quizPassed") === "true" ||
-                             localStorage.getItem("lesson1_quizCompleted") === "true";
-            if (hasQuiz1 && !unlockedSet.has("first_quiz")) {
-                state.achievements.push("first_quiz");
-                unlockedSet.add("first_quiz");
-            }
-
-            const hasLesson10 = localStorage.getItem("lesson10_completed") === "true";
-            if (hasLesson10 && !unlockedSet.has("risk_learner")) {
-                state.achievements.push("risk_learner");
-                unlockedSet.add("risk_learner");
+            if (typeof localStorage !== "undefined") {
+                if (localStorage.getItem("lesson1_completed") === "true") grant("first_lesson");
+                if (localStorage.getItem("lesson1_quizPassed") === "true" || localStorage.getItem("lesson1_quizCompleted") === "true") grant("first_quiz");
+                if (localStorage.getItem("lesson10_completed") === "true") grant("risk_learner");
             }
         } catch {
-            // Ignore if localStorage unavailable
+            // Ignore
         }
+
+        return newlyUnlocked;
     }
 
     /* ======================================================================
@@ -334,41 +866,20 @@
 
         let modified = false;
 
-        // Check if Academy achievements exist and reflect real mastery safely
         try {
-            let completedLessonsCount = 0;
-            for (let i = 1; i <= 10; i++) {
-                if (localStorage.getItem(`lesson${i}_completed`) === "true") {
-                    completedLessonsCount++;
-                    const eventKey = `academy_lesson_${i}`;
-                    if (!state.processedEvents.includes(eventKey)) {
-                        state.processedEvents.push(eventKey);
-                        state.xp = (state.xp || 0) + 20;
-                        modified = true;
+            if (typeof localStorage !== "undefined") {
+                for (let i = 1; i <= 10; i++) {
+                    if (localStorage.getItem(`lesson${i}_completed`) === "true") {
+                        const eventKey = `academy_lesson_${i}`;
+                        if (!state.processedEvents.includes(eventKey)) {
+                            state.processedEvents.push(eventKey);
+                            state.xp = (state.xp || 0) + 20;
+                            modified = true;
+                        }
                     }
                 }
             }
 
-            // Sync beginner mastery percentages conservatively from verified progress
-            if (completedLessonsCount >= 1) {
-                // Lessons 1 & 2 teach candlesticks & price action
-                const candleMastery = Math.min(100, completedLessonsCount * 10);
-                if (state.mastery.candlesticks < candleMastery) {
-                    state.mastery.candlesticks = candleMastery;
-                    modified = true;
-                }
-            }
-
-            if (completedLessonsCount >= 3) {
-                // Lesson 3 teaches pips
-                const pipMastery = Math.min(100, (completedLessonsCount - 2) * 12);
-                if (state.mastery.pipPosition < pipMastery) {
-                    state.mastery.pipPosition = pipMastery;
-                    modified = true;
-                }
-            }
-
-            // Update level info if XP was updated
             if (modified) {
                 const info = calculateLevelInfo(state.xp);
                 state.level = info.level;
@@ -378,6 +889,7 @@
             console.warn("Strativo World: Academy sync encountered non-critical error.", e);
         }
 
+        recalculateCandleMastery(state);
         checkAchievementsInternal(state);
         saveState(state);
     }
@@ -387,14 +899,14 @@
        ====================================================================== */
 
     function attachAcademyListeners() {
-        // Listen to lesson completed event
+        if (typeof window === "undefined") return;
+
         window.addEventListener("strativo:lessonCompleted", function (e) {
             const lessonNum = e.detail && (e.detail.lessonNumber || e.detail.lesson);
             const eventKey = `academy_event_lesson_${lessonNum || Date.now()}`;
             addWorldXP(20, `Completed Academy Lesson ${lessonNum || ""}`, eventKey);
         });
 
-        // Listen to quiz completed event
         window.addEventListener("strativo:quizCompleted", function (e) {
             const lessonNum = e.detail && (e.detail.lesson || "general");
             const isPassed = e.detail && e.detail.passed;
@@ -409,23 +921,17 @@
        ====================================================================== */
 
     function initializeEngine() {
-        // Initial sync of verified Academy achievements
         syncAcademyData();
-
-        // Record visit activity
-        recordActivity();
-
-        // Attach event listeners
         attachAcademyListeners();
-
-        console.info("Strativo World: XP & Progression Engine ready.");
+        console.info("Strativo World: XP & Progression Engine ready (Phase 2.3).");
     }
 
-    // Auto-init on DOM or immediate
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initializeEngine);
-    } else {
-        initializeEngine();
+    if (typeof document !== "undefined") {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initializeEngine);
+        } else {
+            initializeEngine();
+        }
     }
 
     /* ======================================================================
@@ -446,6 +952,13 @@
         addWorldXP,
         recordActivity,
         updateMastery,
+        recalculateCandleMastery,
+        recalculatePipPositionMastery,
+        recalculateMarketStructureMastery,
+        recordPatternView,
+        recordCandleBlitzResult,
+        recordPipBlitzResult,
+        recordMarketBlitzResult,
         syncAcademyData
     };
 

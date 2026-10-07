@@ -1,0 +1,1299 @@
+{
+  "version": 1,
+  "sourceType": "curated_master",
+  "generatedAt": "2026-08-28",
+  "totalPatterns": 44,
+  "categories": [
+    "single",
+    "double",
+    "triple",
+    "multi",
+    "reversal",
+    "continuation",
+    "indecision"
+  ],
+  "patterns": [
+    {
+      "id": "hammer",
+      "name": "Hammer",
+      "category": "single",
+      "bias": "bullish_reversal",
+      "candleCount": 1,
+      "difficulty": "beginner",
+      "aliases": ["Bullish Pin Bar", "Takuri Line"],
+      "visual": {
+        "bodyRatio": "small",
+        "upperWickRatio": "minimal",
+        "lowerWickRatio": "long",
+        "candles": [
+          { "open": 40, "high": 45, "low": 10, "close": 44, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A small real body near the top of the candle range with a long lower shadow and minimal upper shadow.",
+      "anatomy": "Real body occupies upper 25% of total candle range. Lower wick is at least 2 to 3 times the body height. Upper wick is very small or non-existent.",
+      "context": "Appears after a downward price move or at established support. Signals rejection of lower price levels by aggressive buyers.",
+      "commonMistake": "Buying immediately without waiting for next candle confirmation, or trading it in the middle of a consolidation range.",
+      "recognitionTips": [
+        "Lower wick must be at least twice the height of the body.",
+        "Color of body can be bullish or bearish, but green indicates stronger buyer close.",
+        "Must occur after a decline to qualify as a Hammer."
+      ],
+      "learningTags": ["single", "reversal", "bullish", "support", "rejection"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 13"]
+    },
+    {
+      "id": "hanging_man",
+      "name": "Hanging Man",
+      "category": "single",
+      "bias": "bearish_reversal",
+      "candleCount": 1,
+      "difficulty": "beginner",
+      "aliases": ["Kubitsuri"],
+      "visual": {
+        "bodyRatio": "small",
+        "upperWickRatio": "minimal",
+        "lowerWickRatio": "long",
+        "candles": [
+          { "open": 44, "high": 46, "low": 12, "close": 41, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "Identical physical shape to a Hammer but appears at the peak of an uptrend, warning of emerging selling pressure.",
+      "anatomy": "Small real body at the upper end of the session with a lower shadow at least twice the body size and little or no upper shadow.",
+      "context": "Formed at resistance after an advance. Reveals that sellers pushed prices significantly lower during the session, exposing buyer fragility.",
+      "commonMistake": "Assuming a long lower wick is always bullish regardless of where it occurs in market structure.",
+      "recognitionTips": [
+        "Must be preceded by an established upward move.",
+        "Requires bearish confirmation on the subsequent candle (e.g. lower open or close).",
+        "A red body signals slightly greater selling control."
+      ],
+      "learningTags": ["single", "reversal", "bearish", "resistance"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)", "Strativo Module 1 Note 15"]
+    },
+    {
+      "id": "shooting_star",
+      "name": "Shooting Star",
+      "category": "single",
+      "bias": "bearish_reversal",
+      "candleCount": 1,
+      "difficulty": "beginner",
+      "aliases": ["Bearish Pin Bar", "Nagareboshi"],
+      "visual": {
+        "bodyRatio": "small",
+        "upperWickRatio": "long",
+        "lowerWickRatio": "minimal",
+        "candles": [
+          { "open": 18, "high": 48, "low": 16, "close": 20, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A small real body near the bottom of the range with a long upper shadow, showing rejection of higher prices.",
+      "anatomy": "Small body in lower 25% of the range. Upper wick is at least 2x the body length. Lower wick is minimal or absent.",
+      "context": "Occurs after an upward price advance or at resistance. Demonstrates that buyers attempted to push higher but were overwhelmed by supply.",
+      "commonMistake": "Confusing with an Inverted Hammer; the Shooting Star occurs at the top of an uptrend, whereas Inverted Hammer occurs at the bottom of a downtrend.",
+      "recognitionTips": [
+        "Upper wick must be at least twice the size of the real body.",
+        "Price must open, rally sharply, and collapse back near the open.",
+        "Wait for follow-through selling before confirming a reversal."
+      ],
+      "learningTags": ["single", "reversal", "bearish", "resistance", "rejection"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 16"]
+    },
+    {
+      "id": "inverted_hammer",
+      "name": "Inverted Hammer",
+      "category": "single",
+      "bias": "bullish_reversal",
+      "candleCount": 1,
+      "difficulty": "intermediate",
+      "aliases": ["Tohba Bottom"],
+      "visual": {
+        "bodyRatio": "small",
+        "upperWickRatio": "long",
+        "lowerWickRatio": "minimal",
+        "candles": [
+          { "open": 16, "high": 46, "low": 15, "close": 20, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A small body near the bottom with a long upper shadow occurring after a downward move, indicating testing of higher prices.",
+      "anatomy": "Small real body near the bottom extreme. Upper wick is at least twice the real body height. Lower wick is tiny or non-existent.",
+      "context": "Formed at support after a decline. Shows that buyers attempted an aggressive rally during the session; follow-through on the next candle confirms buyer control.",
+      "commonMistake": "Assuming the long upper wick is purely bearish without recognizing its bullish potential at structural support.",
+      "recognitionTips": [
+        "Must occur after a distinct downward move.",
+        "Always wait for confirmation on the next candle (e.g. strong bullish candle or gap up).",
+        "Shows buyers are probing higher prices."
+      ],
+      "learningTags": ["single", "reversal", "bullish", "support"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 14"]
+    },
+    {
+      "id": "doji_standard",
+      "name": "Standard Doji",
+      "category": "single",
+      "bias": "neutral_indecision",
+      "candleCount": 1,
+      "difficulty": "beginner",
+      "aliases": ["Doji Star"],
+      "visual": {
+        "bodyRatio": "none",
+        "upperWickRatio": "moderate",
+        "lowerWickRatio": "moderate",
+        "candles": [
+          { "open": 30, "high": 46, "low": 14, "close": 30, "bullish": true, "isDoji": true }
+        ]
+      },
+      "summary": "A candle where Open and Close prices are identical or virtually identical, forming a cross shape.",
+      "anatomy": "Zero or negligible real body height. Upper and lower wicks extend in both directions in relatively balanced proportions.",
+      "context": "Reflects complete equilibrium and indecision between buyers and sellers. When appearing at extreme trend extensions, warns of momentum stalling.",
+      "commonMistake": "Treating a Doji as an automatic trade trigger instead of a pause/transition signal.",
+      "recognitionTips": [
+        "Open equals or is within a few pips/cents of Close.",
+        "Upper and lower shadows are of similar length.",
+        "Look at surrounding candles to evaluate whether the prior trend is losing steam."
+      ],
+      "learningTags": ["single", "indecision", "neutral"],
+      "sourceRefs": ["Nison (1991)", "Strativo Module 1 Note 09"]
+    },
+    {
+      "id": "doji_dragonfly",
+      "name": "Dragonfly Doji",
+      "category": "single",
+      "bias": "bullish_reversal",
+      "candleCount": 1,
+      "difficulty": "intermediate",
+      "aliases": ["Tonbo Doji"],
+      "visual": {
+        "bodyRatio": "none",
+        "upperWickRatio": "none",
+        "lowerWickRatio": "long",
+        "candles": [
+          { "open": 46, "high": 46, "low": 12, "close": 46, "bullish": true, "isDoji": true }
+        ]
+      },
+      "summary": "A 'T'-shaped Doji where Open, High, and Close are all at the top extreme, with a long lower shadow.",
+      "anatomy": "Open, High, and Close are identical at the session high. Long lower shadow shows extensive intraday selling rejected entirely by the close.",
+      "context": "At the bottom of a downtrend or at support, represents significant bullish rejection of lower price levels.",
+      "commonMistake": "Ignoring volume or lack of confirmation on the subsequent candle.",
+      "recognitionTips": [
+        "No upper wick exists.",
+        "Long lower wick documents seller exhaustion.",
+        "A classic price rejection signature."
+      ],
+      "learningTags": ["single", "reversal", "bullish", "support", "rejection"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 09"]
+    },
+    {
+      "id": "doji_gravestone",
+      "name": "Gravestone Doji",
+      "category": "single",
+      "bias": "bearish_reversal",
+      "candleCount": 1,
+      "difficulty": "intermediate",
+      "aliases": ["Tohba Doji"],
+      "visual": {
+        "bodyRatio": "none",
+        "upperWickRatio": "long",
+        "lowerWickRatio": "none",
+        "candles": [
+          { "open": 14, "high": 48, "low": 14, "close": 14, "bullish": false, "isDoji": true }
+        ]
+      },
+      "summary": "An inverted 'T'-shaped Doji where Open, Low, and Close are all at the bottom extreme with a long upper shadow.",
+      "anatomy": "Open, Low, and Close are identical at the session low. Long upper shadow demonstrates an intraday rally completely wiped out by sellers.",
+      "context": "At the top of an uptrend or at resistance, warns that bulls have lost control and bears have taken the upper hand.",
+      "commonMistake": "Shorting immediately without checking if price remains in a strong higher timeframe uptrend.",
+      "recognitionTips": [
+        "No lower wick exists.",
+        "Upper wick represents failed buyer momentum.",
+        "Requires bearish confirmation on the next candle."
+      ],
+      "learningTags": ["single", "reversal", "bearish", "resistance", "rejection"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 09"]
+    },
+    {
+      "id": "doji_long_legged",
+      "name": "Long-Legged Doji",
+      "category": "single",
+      "bias": "neutral_indecision",
+      "candleCount": 1,
+      "difficulty": "intermediate",
+      "aliases": ["Juji", "Rickshaw Man"],
+      "visual": {
+        "bodyRatio": "none",
+        "upperWickRatio": "very_long",
+        "lowerWickRatio": "very_long",
+        "candles": [
+          { "open": 30, "high": 54, "low": 6, "close": 30, "bullish": true, "isDoji": true }
+        ]
+      },
+      "summary": "A Doji with exceptionally long upper and lower shadows, showing dramatic market volatility with zero net directional progress.",
+      "anatomy": "Open and Close are identical near the center of a wide total range with expansive upper and lower wicks.",
+      "context": "Indicates extreme tug-of-war between bulls and bears during high-volatility events (e.g. news releases).",
+      "commonMistake": "Trying to pick a direction during the high volatility rather than waiting for the range resolution.",
+      "recognitionTips": [
+        "Total range is significantly wider than preceding average candles.",
+        "Close is situated near the midpoint.",
+        "Represents explosive volatility ending in deadlock."
+      ],
+      "learningTags": ["single", "indecision", "neutral", "volatility"],
+      "sourceRefs": ["Nison (1991)", "Strativo Module 1 Note 09"]
+    },
+    {
+      "id": "spinning_top",
+      "name": "Spinning Top",
+      "category": "single",
+      "bias": "neutral_indecision",
+      "candleCount": 1,
+      "difficulty": "beginner",
+      "aliases": ["Koma"],
+      "visual": {
+        "bodyRatio": "small",
+        "upperWickRatio": "moderate",
+        "lowerWickRatio": "moderate",
+        "candles": [
+          { "open": 26, "high": 44, "low": 16, "close": 32, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A small real body centered between noticeable upper and lower shadows, representing hesitation.",
+      "anatomy": "Small real body situated in the middle third of the total range. Both upper and lower shadows are distinctly visible.",
+      "context": "Signals a pause in market momentum. While buyers and sellers both attempted to push prices, neither side secured a dominant close.",
+      "commonMistake": "Assuming it guarantees an immediate reversal; spinning tops often appear during healthy pullbacks or consolidations.",
+      "recognitionTips": [
+        "Body is small relative to the candle's total range.",
+        "Upper and lower wicks are of roughly comparable length.",
+        "Look for subsequent breakout candles to confirm next move."
+      ],
+      "learningTags": ["single", "indecision", "neutral"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)", "Strativo Module 1 Note 10"]
+    },
+    {
+      "id": "marubozu_bullish",
+      "name": "Bullish Marubozu",
+      "category": "single",
+      "bias": "bullish_momentum",
+      "candleCount": 1,
+      "difficulty": "beginner",
+      "aliases": ["White Marubozu", "Full Candle"],
+      "visual": {
+        "bodyRatio": "large",
+        "upperWickRatio": "none",
+        "lowerWickRatio": "none",
+        "candles": [
+          { "open": 10, "high": 50, "low": 10, "close": 50, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A large green candle with zero wicks. Open equals the session Low, and Close equals the session High.",
+      "anatomy": "Full solid real body with no upper or lower shadows. Entire session was dominated by buying momentum from first tick to last.",
+      "context": "Frequently seen at breakouts from consolidation or continuation of strong bullish trends.",
+      "commonMistake": "Buying at the very peak of an overextended Marubozu, entering right before a mean-reversion pullback.",
+      "recognitionTips": [
+        "Open is the exact low; Close is the exact high.",
+        "Body is noticeably larger than average neighboring candles.",
+        "Best traded on retests rather than chasing the extended top."
+      ],
+      "learningTags": ["single", "momentum", "bullish", "breakout"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 11"]
+    },
+    {
+      "id": "marubozu_bearish",
+      "name": "Bearish Marubozu",
+      "category": "single",
+      "bias": "bearish_momentum",
+      "candleCount": 1,
+      "difficulty": "beginner",
+      "aliases": ["Black Marubozu"],
+      "visual": {
+        "bodyRatio": "large",
+        "upperWickRatio": "none",
+        "lowerWickRatio": "none",
+        "candles": [
+          { "open": 50, "high": 50, "low": 10, "close": 10, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A large red candle with zero wicks. Open equals the session High, and Close equals the session Low.",
+      "anatomy": "Full solid real body without upper or lower shadows. Complete seller dominance throughout the entire trading period.",
+      "context": "Appears during strong breakdown moves through support or continuation of aggressive downtrends.",
+      "commonMistake": "Shorting late after a massive drop without waiting for a retest of the broken level.",
+      "recognitionTips": [
+        "Open is the absolute high; Close is the absolute low.",
+        "Demonstrates undisputed institutional selling volume.",
+        "Wait for pullbacks to former support before initiating risk."
+      ],
+      "learningTags": ["single", "momentum", "bearish", "breakout"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 11"]
+    },
+    {
+      "id": "pin_bar",
+      "name": "Pin Bar / Rejection Candle",
+      "category": "single",
+      "bias": "reversal",
+      "candleCount": 1,
+      "difficulty": "beginner",
+      "aliases": ["Pinocchio Bar", "Tail Bar"],
+      "visual": {
+        "bodyRatio": "small",
+        "upperWickRatio": "minimal",
+        "lowerWickRatio": "long",
+        "candles": [
+          { "open": 38, "high": 42, "low": 8, "close": 40, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A price-action candle characterized by an elongated tail (wick) showing clear false breakout and rejection of a key level.",
+      "anatomy": "Tail/wick accounts for at least 66% (two-thirds) of total candle length. Real body is contained entirely within the remaining one-third.",
+      "context": "Formed at key support or resistance levels when price probes liquidity beyond a level and sharply snaps back.",
+      "commonMistake": "Trading pin bars that occur in random 'no-man's land' without structural support or resistance.",
+      "recognitionTips": [
+        "Tail protrudes distinctly beyond neighboring candles.",
+        "Body is situated close to the opposite end of the tail.",
+        "Clear signature of institutional liquidity rejection."
+      ],
+      "learningTags": ["single", "reversal", "rejection", "support", "resistance"],
+      "sourceRefs": ["Bulkowski (2008)", "Strativo Module 1 Note 17"]
+    },
+    {
+      "id": "bullish_engulfing",
+      "name": "Bullish Engulfing",
+      "category": "double",
+      "bias": "bullish_reversal",
+      "candleCount": 2,
+      "difficulty": "beginner",
+      "aliases": ["Tsutsumi Bullish"],
+      "visual": {
+        "bodyRatio": "large",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 32, "high": 36, "low": 20, "close": 22, "bullish": false, "isDoji": false },
+          { "open": 18, "high": 46, "low": 16, "close": 42, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A two-candle bullish reversal pattern where a large green candle body completely envelops the prior red candle's body.",
+      "anatomy": "Candle 1 is bearish. Candle 2 opens at or below Candle 1's close and surges to close above Candle 1's open, completely covering its real body.",
+      "context": "Formed at the bottom of a downtrend or at major support. Signals a decisive shift from seller control to buyer supremacy.",
+      "commonMistake": "Focusing on whether wicks are engulfed; Japanese charting principles prioritize real body engulfment.",
+      "recognitionTips": [
+        "Second real body must completely cover the first real body.",
+        "Higher volume on the second candle reinforces pattern strength.",
+        "Significantly more reliable at major support levels."
+      ],
+      "learningTags": ["double", "reversal", "bullish", "support"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 18"]
+    },
+    {
+      "id": "bearish_engulfing",
+      "name": "Bearish Engulfing",
+      "category": "double",
+      "bias": "bearish_reversal",
+      "candleCount": 2,
+      "difficulty": "beginner",
+      "aliases": ["Tsutsumi Bearish"],
+      "visual": {
+        "bodyRatio": "large",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 22, "high": 36, "low": 20, "close": 34, "bullish": true, "isDoji": false },
+          { "open": 36, "high": 40, "low": 12, "close": 16, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A two-candle bearish reversal pattern where a large red candle body completely envelops the prior green candle's body.",
+      "anatomy": "Candle 1 is bullish. Candle 2 opens at or above Candle 1's close and plunges to close below Candle 1's open, fully covering its real body.",
+      "context": "Occurs at the peak of an uptrend or at resistance. Demonstrates sudden overwhelming seller liquidation.",
+      "commonMistake": "Trading small engulfing patterns inside tight trading ranges where false signals abound.",
+      "recognitionTips": [
+        "Second candle real body completely covers the first candle body.",
+        "Strongest when appearing after an extended multi-candle rally.",
+        "Look for confirmation through lower lows on subsequent candles."
+      ],
+      "learningTags": ["double", "reversal", "bearish", "resistance"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 19"]
+    },
+    {
+      "id": "bullish_harami",
+      "name": "Bullish Harami",
+      "category": "double",
+      "bias": "bullish_reversal",
+      "candleCount": 2,
+      "difficulty": "intermediate",
+      "aliases": ["Inside Bar Bullish"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 44, "high": 48, "low": 14, "close": 16, "bullish": false, "isDoji": false },
+          { "open": 22, "high": 34, "low": 20, "close": 30, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A small bullish candle whose body is completely contained inside the prior large bearish candle's body, indicating downside exhaustion.",
+      "anatomy": "Candle 1 is a large red body. Candle 2 is a smaller green body that opens and closes inside the vertical span of Candle 1's real body.",
+      "context": "Found at the conclusion of downtrends. Shows that intense selling momentum has abruptly ceased, setting up a potential base.",
+      "commonMistake": "Entering immediately on the Harami candle without waiting for a breakout above the mother candle's high.",
+      "recognitionTips": [
+        "Second body is completely inside the first body ('Harami' means pregnant in Japanese).",
+        "Represents contraction and loss of selling momentum.",
+        "Requires a bullish breakout candle for formal confirmation."
+      ],
+      "learningTags": ["double", "reversal", "bullish", "inside_bar"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)", "Strativo Module 1 Note 20"]
+    },
+    {
+      "id": "bearish_harami",
+      "name": "Bearish Harami",
+      "category": "double",
+      "bias": "bearish_reversal",
+      "candleCount": 2,
+      "difficulty": "intermediate",
+      "aliases": ["Inside Bar Bearish"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 16, "high": 48, "low": 14, "close": 44, "bullish": true, "isDoji": false },
+          { "open": 38, "high": 40, "low": 24, "close": 28, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A small bearish candle whose body is completely contained inside the prior large bullish candle's body, indicating upside stalling.",
+      "anatomy": "Candle 1 is a large green body. Candle 2 is a smaller red body that opens and closes inside the span of Candle 1's real body.",
+      "context": "Appears after a strong advance. Indicates that buyers are no longer able to produce follow-through highs.",
+      "commonMistake": "Assuming an immediate crash; Haramis frequently lead into temporary sideways consolidation.",
+      "recognitionTips": [
+        "Second real body is nestled within the first body.",
+        "Sign of buyer hesitation and momentum loss.",
+        "Wait for a close below the mother candle's low to confirm trend change."
+      ],
+      "learningTags": ["double", "reversal", "bearish", "inside_bar"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)", "Strativo Module 1 Note 21"]
+    },
+    {
+      "id": "harami_cross",
+      "name": "Harami Cross",
+      "category": "double",
+      "bias": "reversal",
+      "candleCount": 2,
+      "difficulty": "advanced",
+      "aliases": ["Petrifying Pattern"],
+      "visual": {
+        "bodyRatio": "none",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 14, "high": 48, "low": 12, "close": 44, "bullish": true, "isDoji": false },
+          { "open": 30, "high": 36, "low": 24, "close": 30, "bullish": true, "isDoji": true }
+        ]
+      },
+      "summary": "A two-candle pattern where a large-bodied candle is followed by a Doji contained within the first candle's real body.",
+      "anatomy": "Candle 1 is a long green or red body. Candle 2 is a Doji whose open and close fall entirely within the body of Candle 1.",
+      "context": "Considered a major warning of trend exhaustion and impending reversal because the market goes from high momentum to total indecision in one bar.",
+      "commonMistake": "Trading before price breaks out of the mother candle's high/low boundary.",
+      "recognitionTips": [
+        "Second candle must be a strict Doji.",
+        "More powerful than a standard Harami.",
+        "Signals sudden market paralysis."
+      ],
+      "learningTags": ["double", "reversal", "indecision"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "piercing_line",
+      "name": "Piercing Pattern",
+      "category": "double",
+      "bias": "bullish_reversal",
+      "candleCount": 2,
+      "difficulty": "intermediate",
+      "aliases": ["Kirikomi"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 44, "high": 46, "low": 16, "close": 18, "bullish": false, "isDoji": false },
+          { "open": 10, "high": 38, "low": 8, "close": 34, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A two-candle bullish reversal where a green candle gaps lower but surges to close above the 50% midpoint of the previous red body.",
+      "anatomy": "Candle 1 is a strong red body. Candle 2 opens below Candle 1's low and rallies to close past the midpoint of Candle 1's body.",
+      "context": "Appears at support after a downtrend. Proves that buyers rejected new lows and reclaimed the majority of the prior session's loss.",
+      "commonMistake": "Accepting a candle that closes below the 50% midpoint (which is merely a weak 'In-Neck' or 'Thrusting' pattern).",
+      "recognitionTips": [
+        "Second candle MUST close higher than the 50% midpoint of the first candle's body.",
+        "Stronger when opening gap down is significant.",
+        "Bullish counterpart to Dark Cloud Cover."
+      ],
+      "learningTags": ["double", "reversal", "bullish", "support"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 22"]
+    },
+    {
+      "id": "dark_cloud_cover",
+      "name": "Dark Cloud Cover",
+      "category": "double",
+      "bias": "bearish_reversal",
+      "candleCount": 2,
+      "difficulty": "intermediate",
+      "aliases": ["Kabuse"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 16, "high": 42, "low": 14, "close": 40, "bullish": true, "isDoji": false },
+          { "open": 48, "high": 50, "low": 20, "close": 24, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A two-candle bearish reversal where a red candle gaps higher but plunges to close below the 50% midpoint of the prior green body.",
+      "anatomy": "Candle 1 is a strong green body. Candle 2 opens above Candle 1's high and sells off deeply to close below the 50% midpoint of Candle 1's body.",
+      "context": "Formed at resistance after an advance. Represents a failed buyer gap-up that was fiercely rejected by institutional sellers.",
+      "commonMistake": "Ignoring the 50% penetration rule; closing above the midpoint is not a true Dark Cloud Cover.",
+      "recognitionTips": [
+        "Second candle MUST close deeper than the 50% midpoint of the prior green candle.",
+        "Occurs at the top of an uptrend.",
+        "Bearish counterpart to Piercing Line."
+      ],
+      "learningTags": ["double", "reversal", "bearish", "resistance"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 23"]
+    },
+    {
+      "id": "tweezer_bottom",
+      "name": "Tweezer Bottom",
+      "category": "double",
+      "bias": "bullish_reversal",
+      "candleCount": 2,
+      "difficulty": "beginner",
+      "aliases": ["Kenuki Bottom"],
+      "visual": {
+        "bodyRatio": "small",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "long",
+        "candles": [
+          { "open": 36, "high": 38, "low": 12, "close": 24, "bullish": false, "isDoji": false },
+          { "open": 24, "high": 38, "low": 12, "close": 36, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "Two or more consecutive candles with matching lowest points (wicks or bodies), indicating solid floor support.",
+      "anatomy": "Candle 1 and Candle 2 share the identical low price level. Commonly consists of a bearish candle followed by a bullish candle or hammer.",
+      "context": "Occurs at key horizontal support. Shows that the market tested the exact same bottom twice and refused to break lower.",
+      "commonMistake": "Expecting identical body sizes; Tweezers are defined specifically by identical low price levels.",
+      "recognitionTips": [
+        "Lows of both candles touch the exact same support level.",
+        "Second candle should show bullish rejection off the low.",
+        "Represents a mini double-bottom on smaller timeframes."
+      ],
+      "learningTags": ["double", "reversal", "bullish", "support"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 24"]
+    },
+    {
+      "id": "tweezer_top",
+      "name": "Tweezer Top",
+      "category": "double",
+      "bias": "bearish_reversal",
+      "candleCount": 2,
+      "difficulty": "beginner",
+      "aliases": ["Kenuki Top"],
+      "visual": {
+        "bodyRatio": "small",
+        "upperWickRatio": "long",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 20, "high": 48, "low": 18, "close": 36, "bullish": true, "isDoji": false },
+          { "open": 36, "high": 48, "low": 18, "close": 20, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "Two or more consecutive candles with matching highest points, indicating a hard resistance ceiling.",
+      "anatomy": "Candle 1 and Candle 2 reach the exact same high price point. Typically features an initial bullish candle and a subsequent shooting star or bearish candle.",
+      "context": "Formed at resistance after an advance. Represents consecutive failed attempts to breach a specific ceiling.",
+      "commonMistake": "Trading before confirmation of a lower close on the third candle.",
+      "recognitionTips": [
+        "Highs of both candles test the exact same price ceiling.",
+        "Shows double rejection at resistance.",
+        "Represents a mini double-top on lower timeframes."
+      ],
+      "learningTags": ["double", "reversal", "bearish", "resistance"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 24"]
+    },
+    {
+      "id": "bullish_belt_hold",
+      "name": "Bullish Belt Hold",
+      "category": "single",
+      "bias": "bullish_reversal",
+      "candleCount": 1,
+      "difficulty": "intermediate",
+      "aliases": ["Yorikiri Bullish"],
+      "visual": {
+        "bodyRatio": "large",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "none",
+        "candles": [
+          { "open": 12, "high": 46, "low": 12, "close": 42, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A large green candle that opens on its absolute low after a downtrend and rallies steadily to close near its high.",
+      "anatomy": "Zero lower shadow (Open = Low). Large bullish real body with a small upper shadow near the top.",
+      "context": "Appears at support following heavy selling. Represents an aggressive opening gap-down that immediately attracted strong institutional accumulation.",
+      "commonMistake": "Confusing with a general green candle; a Belt Hold must open at its exact low with zero lower wick.",
+      "recognitionTips": [
+        "Open equals the lowest point of the session.",
+        "Significantly large real body.",
+        "Signals urgent buyer entry from market open."
+      ],
+      "learningTags": ["single", "reversal", "bullish", "momentum"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)"]
+    },
+    {
+      "id": "bearish_belt_hold",
+      "name": "Bearish Belt Hold",
+      "category": "single",
+      "bias": "bearish_reversal",
+      "candleCount": 1,
+      "difficulty": "intermediate",
+      "aliases": ["Yorikiri Bearish"],
+      "visual": {
+        "bodyRatio": "large",
+        "upperWickRatio": "none",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 48, "high": 48, "low": 14, "close": 18, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A large red candle that opens on its absolute high after an uptrend and sells off steadily to close near its low.",
+      "anatomy": "Zero upper shadow (Open = High). Large bearish real body with a small lower shadow at the close.",
+      "context": "Occurs at resistance following an extended rally. Shows that sellers dumped supply at the open without allowing price to tick higher.",
+      "commonMistake": "Shorting into strong support zones without checking higher timeframe market structure.",
+      "recognitionTips": [
+        "Open equals the absolute highest point of the session.",
+        "Strong red body dominates the range.",
+        "Signals immediate supply pressure at the opening bell."
+      ],
+      "learningTags": ["single", "reversal", "bearish", "momentum"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)"]
+    },
+    {
+      "id": "bullish_counterattack",
+      "name": "Bullish Counterattack",
+      "category": "double",
+      "bias": "bullish_reversal",
+      "candleCount": 2,
+      "difficulty": "intermediate",
+      "aliases": ["Deai Sen Bullish"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 42, "high": 44, "low": 20, "close": 22, "bullish": false, "isDoji": false },
+          { "open": 6, "high": 24, "low": 4, "close": 22, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A large red candle followed by a sharp gap down that rallies to close at the exact same price as the first candle's close.",
+      "anatomy": "Candle 1 is a strong red body. Candle 2 gaps significantly lower at open, but buyers rally price to close exactly equal to Candle 1's close.",
+      "context": "Found in downtrends. Demonstrates that severe opening panic selling was completely neutralized by the close.",
+      "commonMistake": "Confusing with Piercing Pattern; Counterattack closes at the prior close rather than piercing into the prior body.",
+      "recognitionTips": [
+        "Closes of both candles are identical.",
+        "Second candle shows aggressive recovery from a deep gap down.",
+        "Signals a stalemate turning in favor of buyers."
+      ],
+      "learningTags": ["double", "reversal", "bullish"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "bearish_counterattack",
+      "name": "Bearish Counterattack",
+      "category": "double",
+      "bias": "bearish_reversal",
+      "candleCount": 2,
+      "difficulty": "intermediate",
+      "aliases": ["Deai Sen Bearish"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 18, "high": 40, "low": 16, "close": 38, "bullish": true, "isDoji": false },
+          { "open": 54, "high": 56, "low": 36, "close": 38, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A large green candle followed by a gap up that sells off to close at the exact same price as the first candle's close.",
+      "anatomy": "Candle 1 is a strong green body. Candle 2 gaps higher at the open, but bears push price back down to close equal to Candle 1's close.",
+      "context": "Occurs at the top of an uptrend. Highlights that enthusiastic opening buyers were trapped and liquidated.",
+      "commonMistake": "Assuming an instant breakdown without waiting for follow-through selling.",
+      "recognitionTips": [
+        "Closing prices of both candles match exactly.",
+        "Second candle wipes out an opening gap rally.",
+        "Warns of buying exhaustion."
+      ],
+      "learningTags": ["double", "reversal", "bearish"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "matching_low",
+      "name": "Matching Low",
+      "category": "double",
+      "bias": "bullish_reversal",
+      "candleCount": 2,
+      "difficulty": "advanced",
+      "aliases": ["Matching Lows"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "none",
+        "candles": [
+          { "open": 42, "high": 44, "low": 18, "close": 18, "bullish": false, "isDoji": false },
+          { "open": 32, "high": 34, "low": 18, "close": 18, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "Two consecutive bearish candles with identical closing prices and no lower shadows, creating a firm support floor.",
+      "anatomy": "Candle 1 is a long black/red body. Candle 2 is a smaller black/red body that closes at the exact same level as Candle 1.",
+      "context": "Appears in downtrends. Shows that despite continued selling attempts, price was unable to close even one tick lower.",
+      "commonMistake": "Thinking two red candles must always be bearish; matching closes reveal a rigid support barrier.",
+      "recognitionTips": [
+        "Both candles have identical closing prices.",
+        "No lower wicks extend beyond the close.",
+        "Strong base-building formation."
+      ],
+      "learningTags": ["double", "reversal", "bullish", "support"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "morning_star",
+      "name": "Morning Star",
+      "category": "triple",
+      "bias": "bullish_reversal",
+      "candleCount": 3,
+      "difficulty": "beginner",
+      "aliases": ["Sanzen Morning Star"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 44, "high": 46, "low": 18, "close": 20, "bullish": false, "isDoji": false },
+          { "open": 10, "high": 16, "low": 8, "close": 12, "bullish": true, "isDoji": false },
+          { "open": 16, "high": 42, "low": 14, "close": 38, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A premier three-candle bullish reversal pattern consisting of a large red candle, a small-bodied star, and a large green candle.",
+      "anatomy": "1) Large bearish candle. 2) Small-bodied candle gapping lower (indecision). 3) Strong bullish candle closing deeply (>50%) into Candle 1's body.",
+      "context": "Formed at major support at the end of a downtrend. Documents the complete transition: selling dominance → indecision → buyer triumph.",
+      "commonMistake": "Entering before Candle 3 has officially closed.",
+      "recognitionTips": [
+        "Middle candle body is distinctly small and gapped lower.",
+        "Third candle must close comfortably past the midpoint of the first candle.",
+        "One of the most reliable multi-candle reversal signatures."
+      ],
+      "learningTags": ["triple", "reversal", "bullish", "support"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 25"]
+    },
+    {
+      "id": "evening_star",
+      "name": "Evening Star",
+      "category": "triple",
+      "bias": "bearish_reversal",
+      "candleCount": 3,
+      "difficulty": "beginner",
+      "aliases": ["Sanzen Evening Star"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 18, "high": 42, "low": 16, "close": 40, "bullish": true, "isDoji": false },
+          { "open": 46, "high": 50, "low": 44, "close": 48, "bullish": false, "isDoji": false },
+          { "open": 42, "high": 44, "low": 18, "close": 20, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A premier three-candle bearish reversal pattern consisting of a large green candle, a small-bodied star, and a large red candle.",
+      "anatomy": "1) Large bullish candle. 2) Small-bodied candle gapping higher. 3) Strong bearish candle closing deeply (>50%) into Candle 1's body.",
+      "context": "Formed at resistance after an extended bull run. Warns of buyer exhaustion followed by forceful distribution.",
+      "commonMistake": "Calling an Evening Star when the third candle fails to penetrate the midpoint of the first candle.",
+      "recognitionTips": [
+        "Middle star candle body is distinctly small.",
+        "Third candle must close well into the first candle's real body.",
+        "Bearish counterpart to Morning Star."
+      ],
+      "learningTags": ["triple", "reversal", "bearish", "resistance"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 26"]
+    },
+    {
+      "id": "morning_doji_star",
+      "name": "Morning Doji Star",
+      "category": "triple",
+      "bias": "bullish_reversal",
+      "candleCount": 3,
+      "difficulty": "intermediate",
+      "aliases": ["Morning Doji Star"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 44, "high": 46, "low": 18, "close": 20, "bullish": false, "isDoji": false },
+          { "open": 10, "high": 16, "low": 6, "close": 10, "bullish": true, "isDoji": true },
+          { "open": 16, "high": 42, "low": 14, "close": 38, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A Morning Star formation where the middle candle is a Doji, representing an even sharper halt in selling momentum.",
+      "anatomy": "1) Large red body. 2) Doji gapping below the first candle. 3) Strong green body closing >50% into Candle 1.",
+      "context": "Appears at key bottoms. The Doji signifies absolute buyer/seller stalemate before the powerful bullish reversal.",
+      "commonMistake": "Trading before Candle 3 confirms the Doji resolution.",
+      "recognitionTips": [
+        "Middle candle must have no real body.",
+        "Gaps between candle bodies increase potency.",
+        "More powerful than a standard Morning Star."
+      ],
+      "learningTags": ["triple", "reversal", "bullish", "doji"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "evening_doji_star",
+      "name": "Evening Doji Star",
+      "category": "triple",
+      "bias": "bearish_reversal",
+      "candleCount": 3,
+      "difficulty": "intermediate",
+      "aliases": ["Evening Doji Star"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 18, "high": 42, "low": 16, "close": 40, "bullish": true, "isDoji": false },
+          { "open": 48, "high": 54, "low": 44, "close": 48, "bullish": false, "isDoji": true },
+          { "open": 42, "high": 44, "low": 18, "close": 20, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "An Evening Star formation where the middle candle is a Doji, warning of sudden top exhaustion.",
+      "anatomy": "1) Large green body. 2) Doji gapping above the first candle. 3) Strong red body closing deeply into Candle 1.",
+      "context": "Formed at major market tops. Shows that buyer demand evaporated into a Doji before aggressive sellers dumped.",
+      "commonMistake": "Ignoring the requirement for a strong bearish close on Candle 3.",
+      "recognitionTips": [
+        "Middle candle is a pure Doji.",
+        "Gaps between candle bodies enhance reliability.",
+        "Bearish counterpart to Morning Doji Star."
+      ],
+      "learningTags": ["triple", "reversal", "bearish", "doji"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "three_white_soldiers",
+      "name": "Three White Soldiers",
+      "category": "triple",
+      "bias": "bullish_momentum",
+      "candleCount": 3,
+      "difficulty": "beginner",
+      "aliases": ["Aka Sanpei", "Three Advancing Soldiers"],
+      "visual": {
+        "bodyRatio": "large",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 10, "high": 24, "low": 8, "close": 22, "bullish": true, "isDoji": false },
+          { "open": 20, "high": 36, "low": 18, "close": 34, "bullish": true, "isDoji": false },
+          { "open": 32, "high": 48, "low": 30, "close": 46, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "Three consecutive strong bullish candles with progressively higher opens and closes, signaling powerful institutional accumulation.",
+      "anatomy": "Three consecutive long green bodies. Each candle opens within the prior candle's real body and closes near its high with small wicks.",
+      "context": "Emerges from bottom consolidations or reversals. Represents sustained, multi-session buying pressure.",
+      "commonMistake": "Entering late on the third candle when price is heavily overextended, rather than waiting for a shallow pullback.",
+      "recognitionTips": [
+        "Consecutive higher highs and higher closes.",
+        "Upper wicks remain short, proving buyers held control through the close.",
+        "Shows sustained institutional trend initiation."
+      ],
+      "learningTags": ["triple", "momentum", "bullish", "continuation"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 27"]
+    },
+    {
+      "id": "three_black_crows",
+      "name": "Three Black Crows",
+      "category": "triple",
+      "bias": "bearish_momentum",
+      "candleCount": 3,
+      "difficulty": "beginner",
+      "aliases": ["Sanba Garasu"],
+      "visual": {
+        "bodyRatio": "large",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 48, "high": 50, "low": 34, "close": 36, "bullish": false, "isDoji": false },
+          { "open": 38, "high": 40, "low": 22, "close": 24, "bullish": false, "isDoji": false },
+          { "open": 26, "high": 28, "low": 10, "close": 12, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "Three consecutive strong bearish candles with progressively lower opens and closes, signaling relentless selling pressure.",
+      "anatomy": "Three consecutive long red bodies. Each candle opens within the previous body and drives lower to close near its low.",
+      "context": "Occurs after market tops or breaks of major support. Represents continuous liquidation with minimal buyer resistance.",
+      "commonMistake": "Panic shorting at the extreme low of the third crow right before a mean-reversion retest.",
+      "recognitionTips": [
+        "Consecutive lower lows and lower closes.",
+        "Small lower wicks indicate sellers held command through every closing bell.",
+        "Bearish counterpart to Three White Soldiers."
+      ],
+      "learningTags": ["triple", "momentum", "bearish", "continuation"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)", "Strativo Module 1 Note 28"]
+    },
+    {
+      "id": "three_inside_up",
+      "name": "Three Inside Up",
+      "category": "triple",
+      "bias": "bullish_reversal",
+      "candleCount": 3,
+      "difficulty": "intermediate",
+      "aliases": ["Confirmed Bullish Harami"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 44, "high": 46, "low": 14, "close": 16, "bullish": false, "isDoji": false },
+          { "open": 20, "high": 32, "low": 18, "close": 30, "bullish": true, "isDoji": false },
+          { "open": 30, "high": 48, "low": 28, "close": 46, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A Bullish Harami followed by a third bullish candle closing above the high of the first candle, providing formal breakout confirmation.",
+      "anatomy": "1) Large red body. 2) Small green body inside Candle 1 (Bullish Harami). 3) Strong green candle closing above Candle 1's high.",
+      "context": "Formed at market bottoms. Solves the Harami's need for confirmation by requiring a validated close above the mother bar.",
+      "commonMistake": "Ignoring the third candle close requirement; without it, the pattern remains an unconfirmed Harami.",
+      "recognitionTips": [
+        "Combines Harami + breakout confirmation.",
+        "Significantly higher statistical success than Harami alone.",
+        "Shows clear structural change in price action."
+      ],
+      "learningTags": ["triple", "reversal", "bullish", "confirmation"],
+      "sourceRefs": ["Bulkowski (2008)", "Strativo Module 1 Note 29"]
+    },
+    {
+      "id": "three_inside_down",
+      "name": "Three Inside Down",
+      "category": "triple",
+      "bias": "bearish_reversal",
+      "candleCount": 3,
+      "difficulty": "intermediate",
+      "aliases": ["Confirmed Bearish Harami"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 16, "high": 46, "low": 14, "close": 44, "bullish": true, "isDoji": false },
+          { "open": 40, "high": 42, "low": 28, "close": 30, "bullish": false, "isDoji": false },
+          { "open": 30, "high": 32, "low": 12, "close": 14, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A Bearish Harami followed by a third bearish candle closing below the low of the first candle, providing formal breakdown confirmation.",
+      "anatomy": "1) Large green body. 2) Small red body inside Candle 1 (Bearish Harami). 3) Strong red candle closing below Candle 1's low.",
+      "context": "Occurs at market tops. Validates the Harami top by breaking through the base of the mother bar.",
+      "commonMistake": "Shorting before Candle 3 closes below the first candle's low.",
+      "recognitionTips": [
+        "Combines Bearish Harami + breakdown confirmation.",
+        "Third candle provides structural validation.",
+        "Bearish counterpart to Three Inside Up."
+      ],
+      "learningTags": ["triple", "reversal", "bearish", "confirmation"],
+      "sourceRefs": ["Bulkowski (2008)", "Strativo Module 1 Note 29"]
+    },
+    {
+      "id": "three_outside_up",
+      "name": "Three Outside Up",
+      "category": "triple",
+      "bias": "bullish_reversal",
+      "candleCount": 3,
+      "difficulty": "intermediate",
+      "aliases": ["Confirmed Bullish Engulfing"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 32, "high": 36, "low": 20, "close": 22, "bullish": false, "isDoji": false },
+          { "open": 18, "high": 42, "low": 16, "close": 40, "bullish": true, "isDoji": false },
+          { "open": 40, "high": 50, "low": 38, "close": 48, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A Bullish Engulfing pattern followed by a third bullish candle that makes a higher close, confirming immediate momentum expansion.",
+      "anatomy": "1) Small red body. 2) Large green body engulfing Candle 1. 3) Green candle closing higher than Candle 2's close.",
+      "context": "Formed at support. Proves that the engulfing momentum did not stall and is actively expanding.",
+      "commonMistake": "Chasing the top of Candle 3 without defining risk against the engulfing low.",
+      "recognitionTips": [
+        "Engulfing pattern + immediate continuation bar.",
+        "High win-rate confirmation pattern.",
+        "Validates buyer dominance."
+      ],
+      "learningTags": ["triple", "reversal", "bullish", "confirmation"],
+      "sourceRefs": ["Bulkowski (2008)", "Morris (2006)"]
+    },
+    {
+      "id": "three_outside_down",
+      "name": "Three Outside Down",
+      "category": "triple",
+      "bias": "bearish_reversal",
+      "candleCount": 3,
+      "difficulty": "intermediate",
+      "aliases": ["Confirmed Bearish Engulfing"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 22, "high": 36, "low": 20, "close": 34, "bullish": true, "isDoji": false },
+          { "open": 36, "high": 38, "low": 14, "close": 16, "bullish": false, "isDoji": false },
+          { "open": 16, "high": 18, "low": 6, "close": 8, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A Bearish Engulfing pattern followed by a third bearish candle that makes a lower close, confirming aggressive distribution.",
+      "anatomy": "1) Small green body. 2) Large red body engulfing Candle 1. 3) Red candle closing lower than Candle 2's close.",
+      "context": "Appears at resistance. Validates that sellers are pressing the breakdown with sustained flow.",
+      "commonMistake": "Shorting without checking for nearby higher timeframe support levels.",
+      "recognitionTips": [
+        "Bearish engulfing + continuation down bar.",
+        "Confirms genuine trend reversal.",
+        "Bearish counterpart to Three Outside Up."
+      ],
+      "learningTags": ["triple", "reversal", "bearish", "confirmation"],
+      "sourceRefs": ["Bulkowski (2008)", "Morris (2006)"]
+    },
+    {
+      "id": "rising_three_methods",
+      "name": "Rising Three Methods",
+      "category": "multi",
+      "bias": "bullish_continuation",
+      "candleCount": 5,
+      "difficulty": "advanced",
+      "aliases": ["Sanpo Bullish"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 10, "high": 42, "low": 8, "close": 40, "bullish": true, "isDoji": false },
+          { "open": 38, "high": 40, "low": 30, "close": 32, "bullish": false, "isDoji": false },
+          { "open": 32, "high": 34, "low": 24, "close": 26, "bullish": false, "isDoji": false },
+          { "open": 26, "high": 28, "low": 18, "close": 20, "bullish": false, "isDoji": false },
+          { "open": 22, "high": 50, "low": 20, "close": 48, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A premier 5-candle bullish continuation pattern: a large green candle, three small declining red candles inside its range, and a massive green breakout candle.",
+      "anatomy": "1) Long green candle. 2-4) Three small red pullback candles that stay entirely within Candle 1's high/low range. 5) Strong green candle closing above Candle 1's high.",
+      "context": "Occurs in healthy uptrends. Demonstrates that minor profit taking was completely absorbed before the primary trend resumed.",
+      "commonMistake": "Mistaking the 3 small pullback candles for a genuine trend reversal.",
+      "recognitionTips": [
+        "Small pullback candles must not break below Candle 1's low.",
+        "Final candle must make a new closing high.",
+        "Represents classic trend pullback and expansion."
+      ],
+      "learningTags": ["multi", "continuation", "bullish", "trend"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "falling_three_methods",
+      "name": "Falling Three Methods",
+      "category": "multi",
+      "bias": "bearish_continuation",
+      "candleCount": 5,
+      "difficulty": "advanced",
+      "aliases": ["Sanpo Bearish"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 48, "high": 50, "low": 16, "close": 18, "bullish": false, "isDoji": false },
+          { "open": 20, "high": 28, "low": 18, "close": 26, "bullish": true, "isDoji": false },
+          { "open": 26, "high": 34, "low": 24, "close": 32, "bullish": true, "isDoji": false },
+          { "open": 32, "high": 40, "low": 30, "close": 38, "bullish": true, "isDoji": false },
+          { "open": 36, "high": 38, "low": 8, "close": 10, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A premier 5-candle bearish continuation pattern: a large red candle, three small rising green candles within its range, and a massive red breakdown candle.",
+      "anatomy": "1) Long red candle. 2-4) Three small green counter-trend candles staying within Candle 1's range. 5) Strong red candle closing below Candle 1's low.",
+      "context": "Found in strong downtrends. Shows that weak counter-trend rallies fail to attract volume and get crushed by the primary trend.",
+      "commonMistake": "Prematurely buying the 3 green candles thinking the downtrend has ended.",
+      "recognitionTips": [
+        "Green corrective candles remain inside Candle 1's high/low span.",
+        "Fifth candle makes a decisive new low.",
+        "Bearish counterpart to Rising Three Methods."
+      ],
+      "learningTags": ["multi", "continuation", "bearish", "trend"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "upside_tasuki_gap",
+      "name": "Upside Tasuki Gap",
+      "category": "triple",
+      "bias": "bullish_continuation",
+      "candleCount": 3,
+      "difficulty": "advanced",
+      "aliases": ["Tasuki Bullish"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 10, "high": 26, "low": 8, "close": 24, "bullish": true, "isDoji": false },
+          { "open": 30, "high": 46, "low": 28, "close": 44, "bullish": true, "isDoji": false },
+          { "open": 42, "high": 44, "low": 26, "close": 28, "bullish": false, "isDoji": false }
+        ]
+      },
+      "summary": "A bullish continuation pattern: two green candles with an upward gap between them, followed by a red candle that partially enters the gap without closing it.",
+      "anatomy": "1) Green candle. 2) Green candle gapping higher. 3) Red candle opening inside Candle 2 and closing inside the gap, but leaving the gap open.",
+      "context": "Appears in strong uptrends. Shows a shallow test of the gap area that fails to fill the gap, prompting trend continuation.",
+      "commonMistake": "Shorting on Candle 3 assuming the gap will completely fill.",
+      "recognitionTips": [
+        "Gap between Candle 1 and Candle 2 is preserved.",
+        "Third candle closes inside the gap without closing below Candle 1's high.",
+        "Signals persistent bull momentum."
+      ],
+      "learningTags": ["triple", "continuation", "bullish", "gap"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)"]
+    },
+    {
+      "id": "downside_tasuki_gap",
+      "name": "Downside Tasuki Gap",
+      "category": "triple",
+      "bias": "bearish_continuation",
+      "candleCount": 3,
+      "difficulty": "advanced",
+      "aliases": ["Tasuki Bearish"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 48, "high": 50, "low": 32, "close": 34, "bullish": false, "isDoji": false },
+          { "open": 28, "high": 30, "low": 12, "close": 14, "bullish": false, "isDoji": false },
+          { "open": 16, "high": 32, "low": 14, "close": 30, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A bearish continuation pattern: two red candles with a downward gap between them, followed by a green candle that partially enters the gap without filling it.",
+      "anatomy": "1) Red candle. 2) Red candle gapping lower. 3) Green candle opening inside Candle 2 and closing inside the gap without rising above Candle 1's low.",
+      "context": "Occurs in persistent downtrends. Proves that buying attempts are too feeble to close the gap.",
+      "commonMistake": "Buying the green candle thinking a full gap-fill rally is underway.",
+      "recognitionTips": [
+        "Downward gap remains partially open.",
+        "Third candle is an unsuccessful counter-trend bounce.",
+        "Bearish counterpart to Upside Tasuki Gap."
+      ],
+      "learningTags": ["triple", "continuation", "bearish", "gap"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)"]
+    },
+    {
+      "id": "advance_block",
+      "name": "Advance Block",
+      "category": "triple",
+      "bias": "bearish_reversal",
+      "candleCount": 3,
+      "difficulty": "advanced",
+      "aliases": ["Saki Zumari"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "increasing",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 10, "high": 30, "low": 8, "close": 28, "bullish": true, "isDoji": false },
+          { "open": 26, "high": 42, "low": 24, "close": 38, "bullish": true, "isDoji": false },
+          { "open": 36, "high": 52, "low": 34, "close": 42, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "Three consecutive green candles whose real bodies progressively shrink while their upper shadows progressively lengthen, signaling upside exhaustion.",
+      "anatomy": "Three green candles making higher highs, but Candle 2 and 3 exhibit diminishing body height and increasingly long upper wicks.",
+      "context": "Occurs after an extended rally. Warns that even though prices are making highs, buyers are meeting heavy resistance on each push.",
+      "commonMistake": "Assuming three green candles always mean strong momentum; shrinking bodies reveal exhaustion.",
+      "recognitionTips": [
+        "Progressively smaller real bodies.",
+        "Progressively longer upper shadows.",
+        "Signals buyer fatigue ahead of a correction."
+      ],
+      "learningTags": ["triple", "reversal", "bearish", "exhaustion"],
+      "sourceRefs": ["Nison (1991)", "Morris (2006)"]
+    },
+    {
+      "id": "deliberation",
+      "name": "Deliberation / Stalled Pattern",
+      "category": "triple",
+      "bias": "bearish_reversal",
+      "candleCount": 3,
+      "difficulty": "advanced",
+      "aliases": ["Aka Sanpei Saki Zumari", "Stalled Pattern"],
+      "visual": {
+        "bodyRatio": "composite",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 10, "high": 28, "low": 8, "close": 26, "bullish": true, "isDoji": false },
+          { "open": 24, "high": 44, "low": 22, "close": 42, "bullish": true, "isDoji": false },
+          { "open": 46, "high": 50, "low": 44, "close": 48, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "Two strong green candles followed by a third small-bodied candle (or star) gapping higher, indicating sudden momentum stalling.",
+      "anatomy": "Candle 1 and 2 are long robust green bodies. Candle 3 opens near or above Candle 2's close but forms a very small real body.",
+      "context": "Formed at tops. The abrupt contraction from two expansive candles into a tiny third candle reveals that buyers have run out of fuel.",
+      "commonMistake": "Shorting immediately before a bearish reversal candle materializes.",
+      "recognitionTips": [
+        "First two candles are strong; third candle is abruptly small.",
+        "Third candle often gaps above the second body.",
+        "Sign of sudden buyer exhaustion."
+      ],
+      "learningTags": ["triple", "reversal", "bearish", "exhaustion"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "on_neck_line",
+      "name": "On Neck Line",
+      "category": "double",
+      "bias": "bearish_continuation",
+      "candleCount": 2,
+      "difficulty": "advanced",
+      "aliases": ["Ate Kubi"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 44, "high": 46, "low": 18, "close": 20, "bullish": false, "isDoji": false },
+          { "open": 8, "high": 18, "low": 6, "close": 18, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A long red candle followed by a gap down green candle that rallies only enough to close at the prior candle's low price.",
+      "anatomy": "Candle 1 is a long red body. Candle 2 opens below Candle 1's low and closes exactly at Candle 1's low (the 'neck').",
+      "context": "Appears in downtrends. Shows that the bounce was completely stifled at the prior candle's floor, signaling continued bearish trend.",
+      "commonMistake": "Mistaking for a Piercing Pattern; On Neck closes at the low of Candle 1, not inside its body.",
+      "recognitionTips": [
+        "Second candle closes right at the low of the first candle.",
+        "Fails to penetrate into the previous body.",
+        "Indicates continuation of the downtrend."
+      ],
+      "learningTags": ["double", "continuation", "bearish"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    },
+    {
+      "id": "in_neck_line",
+      "name": "In Neck Line",
+      "category": "double",
+      "bias": "bearish_continuation",
+      "candleCount": 2,
+      "difficulty": "advanced",
+      "aliases": ["Iri Kubi"],
+      "visual": {
+        "bodyRatio": "moderate",
+        "upperWickRatio": "small",
+        "lowerWickRatio": "small",
+        "candles": [
+          { "open": 44, "high": 46, "low": 18, "close": 20, "bullish": false, "isDoji": false },
+          { "open": 8, "high": 22, "low": 6, "close": 21, "bullish": true, "isDoji": false }
+        ]
+      },
+      "summary": "A long red candle followed by a gap down green candle that closes barely inside the lower boundary of the prior red body.",
+      "anatomy": "Candle 1 is a long red body. Candle 2 opens lower and closes just barely above Candle 1's close, failing to reach the 50% midpoint.",
+      "context": "Found in downtrends. Demonstrates a weak recovery that lacked the buying volume to cause a genuine reversal.",
+      "commonMistake": "Treating any green candle as a reversal; closing barely inside the lower edge confirms seller dominance.",
+      "recognitionTips": [
+        "Closes slightly inside the prior body's lower edge.",
+        "Fails to reach 50% midpoint.",
+        "Continuation pattern in established downtrends."
+      ],
+      "learningTags": ["double", "continuation", "bearish"],
+      "sourceRefs": ["Nison (1991)", "Bulkowski (2008)"]
+    }
+  ]
+}

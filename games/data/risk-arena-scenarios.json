@@ -1,0 +1,317 @@
+{
+  "version": "1.0.0",
+  "scenarios": [
+    {
+      "id": "arena_def_01",
+      "category": "DRAWDOWN_RECOVERY",
+      "questionText": "If an account suffers a 20% drawdown, what percentage gain is required on remaining capital to break even?",
+      "options": [
+        "+25.0% Gain",
+        "+20.0% Gain",
+        "+30.0% Gain",
+        "+50.0% Gain"
+      ],
+      "correctAnswer": "+25.0% Gain",
+      "explanation": "If $10,000 drops 20% to $8,000, recovering to $10,000 requires $2,000 / $8,000 = +25.0% gain."
+    },
+    {
+      "id": "arena_def_02",
+      "category": "DRAWDOWN_RECOVERY",
+      "questionText": "If an account suffers a severe 50% drawdown, what percentage gain is required to reach initial break-even capital?",
+      "options": [
+        "+100.0% Gain (Doubling Account)",
+        "+50.0% Gain",
+        "+75.0% Gain",
+        "+150.0% Gain"
+      ],
+      "correctAnswer": "+100.0% Gain (Doubling Account)",
+      "explanation": "If $10,000 drops 50% to $5,000, you must gain $5,000 on a $5,000 base, requiring an exact +100% gain."
+    },
+    {
+      "id": "arena_def_03",
+      "category": "DRAWDOWN_RECOVERY",
+      "questionText": "If an overleveraged account loses 75% of its balance, what return is required just to return to zero profit/loss?",
+      "options": [
+        "+300.0% Gain",
+        "+75.0% Gain",
+        "+150.0% Gain",
+        "+500.0% Gain"
+      ],
+      "correctAnswer": "+300.0% Gain",
+      "explanation": "If $10,000 drops to $2,500, gaining back $7,500 requires $7,500 / $2,500 = +300% return."
+    },
+    {
+      "id": "arena_def_04",
+      "category": "DRAWDOWN_RECOVERY",
+      "questionText": "If a catastrophic 90% drawdown occurs, what return is required to recover the initial deposit?",
+      "options": [
+        "+900.0% Gain (10x Return)",
+        "+90.0% Gain",
+        "+180.0% Gain",
+        "+500.0% Gain"
+      ],
+      "correctAnswer": "+900.0% Gain (10x Return)",
+      "explanation": "If $10,000 drops to $1,000, gaining $9,000 requires a +900% gain. Severe drawdowns cause near-irreversible mathematical ruin."
+    },
+    {
+      "id": "arena_def_05",
+      "category": "CONSECUTIVE_LOSSES",
+      "questionText": "A disciplined trader risks 2% per trade. After 5 consecutive losses on $10,000, what is the total drawdown?",
+      "options": [
+        "9.6% Total Drawdown ($9,039 remaining)",
+        "10.0% Drawdown",
+        "20.0% Drawdown",
+        "4.8% Drawdown"
+      ],
+      "correctAnswer": "9.6% Total Drawdown ($9,039 remaining)",
+      "explanation": "$10,000 * (0.98)^5 = $9,039.21 (Total Drawdown = 9.61%)."
+    },
+    {
+      "id": "arena_def_06",
+      "category": "CONSECUTIVE_LOSSES",
+      "questionText": "An undisciplined trader risks 10% per trade. After 5 consecutive losses on $10,000, what is the total drawdown?",
+      "options": [
+        "41.0% Total Drawdown ($5,904 remaining)",
+        "50.0% Drawdown",
+        "25.0% Drawdown",
+        "30.0% Drawdown"
+      ],
+      "correctAnswer": "41.0% Total Drawdown ($5,904 remaining)",
+      "explanation": "$10,000 * (0.90)^5 = $5,904.90 (Total Drawdown = 40.95%)."
+    },
+    {
+      "id": "arena_def_07",
+      "category": "RISK_ASYMMETRY",
+      "questionText": "Why is the relationship between account loss and required recovery percentage asymmetric?",
+      "options": [
+        "Because each loss shrinks the equity base used to generate future percentage returns",
+        "Because brokers charge higher spreads during losses",
+        "Because volatility declines after losses",
+        "Because interest rates adjust"
+      ],
+      "correctAnswer": "Because each loss shrinks the equity base used to generate future percentage returns",
+      "explanation": "Losses are calculated on a larger base; recovery gains must be made on a smaller remaining base, creating exponential recovery difficulty."
+    },
+    {
+      "id": "arena_def_08",
+      "category": "DEFENSE_RULES",
+      "questionText": "During a market volatility spike (e.g. interest rate decision), what is the safest risk defense action?",
+      "options": [
+        "Reduce position size or wait for volatility to normalize",
+        "Remove stop losses to give trade more room",
+        "Increase leverage to 1:500 to catch big swings",
+        "Add to losing positions"
+      ],
+      "correctAnswer": "Reduce position size or wait for volatility to normalize",
+      "explanation": "Reducing position size or remaining flat during extreme news prevents slippage and sudden catastrophic liquidation."
+    },
+    {
+      "id": "arena_def_09",
+      "category": "DEFENSE_RULES",
+      "questionText": "What is the primary danger of 'revenge trading' (increasing lot size immediately after a loss)?",
+      "options": [
+        "It accelerates account drawdown exponentially, often triggering complete ruin",
+        "It confuses broker algorithms",
+        "It lowers tax liabilities",
+        "It guarantees a win"
+      ],
+      "correctAnswer": "It accelerates account drawdown exponentially, often triggering complete ruin",
+      "explanation": "Increasing position sizes after losses accelerates losses on smaller remaining capital, rapidly compounding into fatal drawdowns."
+    },
+    {
+      "id": "arena_def_10",
+      "category": "DEFENSE_RULES",
+      "questionText": "What is the primary objective of a professional risk proctor in market combat?",
+      "options": [
+        "Capital preservation: Living to trade another day",
+        "Achieving 100% daily returns",
+        "Winning every single trade",
+        "Maximizing margin utilization"
+      ],
+      "correctAnswer": "Capital preservation: Living to trade another day",
+      "explanation": "Capital preservation is the absolute priority. If you preserve capital, compound growth takes care of long-term profitability."
+    },
+    {
+      "id": "arena_def_11",
+      "category": "CAPITAL_PRESERVATION",
+      "questionText": "If a trader loses 30% of their capital, what percentage return is needed to recover to even?",
+      "options": [
+        "+42.9% Gain",
+        "+30.0% Gain",
+        "+35.0% Gain",
+        "+60.0% Gain"
+      ],
+      "correctAnswer": "+42.9% Gain",
+      "explanation": "$3,000 loss on $10,000 leaves $7,000. $3,000 / $7,000 = +42.86% required gain."
+    },
+    {
+      "id": "arena_def_12",
+      "category": "CAPITAL_PRESERVATION",
+      "questionText": "If a trader loses 40% of their capital, what percentage return is needed to recover to even?",
+      "options": [
+        "+66.7% Gain",
+        "+40.0% Gain",
+        "+50.0% Gain",
+        "+80.0% Gain"
+      ],
+      "correctAnswer": "+66.7% Gain",
+      "explanation": "$4,000 / $6,000 = +66.67% required return."
+    },
+    {
+      "id": "arena_def_13",
+      "category": "DRAWDOWN_DEFENSE",
+      "questionText": "A trader experiences 4 consecutive losses risking 1.5% per trade on $20,000. What is remaining equity?",
+      "options": [
+        "$18,827 (-5.86% Drawdown)",
+        "$17,000 (-15.0%)",
+        "$19,400 (-3.0%)",
+        "$16,000 (-20.0%)"
+      ],
+      "correctAnswer": "$18,827 (-5.86% Drawdown)",
+      "explanation": "$20,000 * (0.985)^4 = $18,827.42 (Total Drawdown = 5.86%)."
+    },
+    {
+      "id": "arena_def_14",
+      "category": "DRAWDOWN_DEFENSE",
+      "questionText": "A trader experiences 4 consecutive losses risking 8.0% per trade on $20,000. What is remaining equity?",
+      "options": [
+        "$14,328 (-28.36% Drawdown)",
+        "$18,400 (-8.0%)",
+        "$12,000 (-40.0%)",
+        "$10,000 (-50.0%)"
+      ],
+      "correctAnswer": "$14,328 (-28.36% Drawdown)",
+      "explanation": "$20,000 * (0.92)^4 = $14,327.86 (Over 28% capital destroyed in 4 trades)."
+    },
+    {
+      "id": "arena_def_15",
+      "category": "RISK_REWARD",
+      "questionText": "With a 1:2 Risk-to-Reward ratio (risking $100 to make $200), what win rate is required to break even?",
+      "options": [
+        "33.3% Win Rate",
+        "50.0% Win Rate",
+        "66.7% Win Rate",
+        "25.0% Win Rate"
+      ],
+      "correctAnswer": "33.3% Win Rate",
+      "explanation": "Win Rate = Risk / (Risk + Reward) = 1 / (1 + 2) = 33.33%. You can lose 66% of trades and still not lose money."
+    },
+    {
+      "id": "arena_def_16",
+      "category": "RISK_REWARD",
+      "questionText": "With a 1:3 Risk-to-Reward ratio (risking $100 to make $300), what win rate is required to break even?",
+      "options": [
+        "25.0% Win Rate",
+        "33.3% Win Rate",
+        "50.0% Win Rate",
+        "20.0% Win Rate"
+      ],
+      "correctAnswer": "25.0% Win Rate",
+      "explanation": "Win Rate = 1 / (1 + 3) = 25.0%. Even winning only 1 out of 4 trades breaks even."
+    },
+    {
+      "id": "arena_def_17",
+      "category": "SURVIVAL_PSYCHOLOGY",
+      "questionText": "What is the primary psychological defense against emotional tilting after a losing trade?",
+      "options": [
+        "Accepting that individual trade outcomes are probabilistic, while following strict fixed risk limits",
+        "Doubling lot size on the next candle",
+        "Closing the trading platform for a month",
+        "Switching strategies after every loss"
+      ],
+      "correctAnswer": "Accepting that individual trade outcomes are probabilistic, while following strict fixed risk limits",
+      "explanation": "Professional risk proctors accept losses as business expenses, maintaining disciplined execution."
+    },
+    {
+      "id": "arena_def_18",
+      "category": "PORTFOLIO_HEAT",
+      "questionText": "What does 'Portfolio Heat' measure in capital defense?",
+      "options": [
+        "The total aggregate percentage of account equity at risk across all currently open positions",
+        "The temperature of exchange servers",
+        "The volatility index reading",
+        "The broker commission rate"
+      ],
+      "correctAnswer": "The total aggregate percentage of account equity at risk across all currently open positions",
+      "explanation": "Portfolio heat measures combined open risk across all positions. Keeping heat under 5% prevents catastrophic correlations."
+    },
+    {
+      "id": "arena_def_19",
+      "category": "PORTFOLIO_HEAT",
+      "questionText": "If your maximum allowable Portfolio Heat is 4.0%, how many concurrent trades risking 1.0% each can you open?",
+      "options": [
+        "4 Trades",
+        "8 Trades",
+        "2 Trades",
+        "10 Trades"
+      ],
+      "correctAnswer": "4 Trades",
+      "explanation": "4 trades * 1.0% = 4.0% maximum portfolio heat."
+    },
+    {
+      "id": "arena_def_20",
+      "category": "STOP_OUT_DEFENSE",
+      "questionText": "How does placing a hard stop loss order on every trade protect against broker liquidation?",
+      "options": [
+        "It terminates the loss before account equity can drop anywhere near the margin stop-out threshold",
+        "It prevents spread widening",
+        "It increases broker margin loans",
+        "It guarantees positive slippage"
+      ],
+      "correctAnswer": "It terminates the loss before account equity can drop anywhere near the margin stop-out threshold",
+      "explanation": "A hard stop loss controls risk at 1%–2%, keeping equity far above the margin stop-out level."
+    },
+    {
+      "id": "arena_def_21",
+      "category": "SLIPPAGE_DEFENSE",
+      "questionText": "Why must risk managers account for potential slippage during extreme market gap events?",
+      "options": [
+        "Price can gap past a stop order during major news, making conservative position sizing essential",
+        "Brokers refuse to execute trades",
+        "Slippage always improves entry price",
+        "Slippage only affects winning trades"
+      ],
+      "correctAnswer": "Price can gap past a stop order during major news, making conservative position sizing essential",
+      "explanation": "Slippage can cause fills beyond your stop price; keeping small position sizes ensures unexpected gaps remain survivable."
+    },
+    {
+      "id": "arena_def_22",
+      "category": "CAPITAL_PRESERVATION",
+      "questionText": "What is the single most important rule in professional financial risk management?",
+      "options": [
+        "Rule 1: Never risk ruin. Rule 2: Never forget Rule 1.",
+        "Always trade with maximum leverage",
+        "Never take a stop loss",
+        "Trade every market session"
+      ],
+      "correctAnswer": "Rule 1: Never risk ruin. Rule 2: Never forget Rule 1.",
+      "explanation": "Survival is the prerequisite for all long-term wealth accumulation in financial markets."
+    },
+    {
+      "id": "arena_def_23",
+      "category": "DRAWDOWN_RECOVERY",
+      "questionText": "If capital drops from $50,000 to $35,000 (30% loss), how much profit is needed to reach $50,000 again?",
+      "options": [
+        "$15,000 (+42.9% return on $35,000)",
+        "$15,000 (+30.0%)",
+        "$10,000 (+28.5%)",
+        "$20,000 (+57.1%)"
+      ],
+      "correctAnswer": "$15,000 (+42.9% return on $35,000)",
+      "explanation": "$15,000 / $35,000 = +42.86% return."
+    },
+    {
+      "id": "arena_def_24",
+      "category": "DRAWDOWN_RECOVERY",
+      "questionText": "If capital drops from $100,000 to $50,000 (50% loss), how much profit is needed to recover?",
+      "options": [
+        "$50,000 (+100.0% return on $50,000)",
+        "$50,000 (+50.0%)",
+        "$25,000 (+50.0%)",
+        "$100,000 (+200.0%)"
+      ],
+      "correctAnswer": "$50,000 (+100.0% return on $50,000)",
+      "explanation": "$50,000 / $50,000 = +100.0% return."
+    }
+  ]
+}

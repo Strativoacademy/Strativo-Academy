@@ -1,0 +1,1183 @@
+{
+  "version": "1.2.0",
+  "districtId": "pip-district",
+  "districtName": "Pip District",
+  "districtSubtitle": "Metropolis of Precision, Price Movement & Risk Control",
+  "bounds": {
+    "width": 3200,
+    "height": 2400
+  },
+  "spawn": {
+    "x": 1600,
+    "y": 2250,
+    "direction": "up"
+  },
+  "theme": {
+    "primary": "#00F0FF",
+    "secondary": "#3B82F6",
+    "accent": "#A855F7",
+    "gold": "#FCD34D",
+    "emerald": "#10B981",
+    "rose": "#F43F5E",
+    "darkBg": "#020617",
+    "roadBg": "#0A1128",
+    "sidewalkBg": "#0F1E3D",
+    "buildingWall": "#0B1936",
+    "buildingRoof": "#071229"
+  },
+  "quarters": [
+    {
+      "id": "pip_plaza",
+      "name": "PIP PLAZA",
+      "description": "Central civic plaza and heart of Pip District",
+      "bounds": {
+        "x": 1250,
+        "y": 950,
+        "w": 700,
+        "h": 500
+      },
+      "color": "#00F0FF"
+    },
+    {
+      "id": "education_quarter",
+      "name": "EDUCATION QUARTER",
+      "description": "Academic grounds for foundational pip definitions and direction",
+      "bounds": {
+        "x": 100,
+        "y": 100,
+        "w": 1050,
+        "h": 750
+      },
+      "color": "#3B82F6"
+    },
+    {
+      "id": "precision_quarter",
+      "name": "PRECISION QUARTER",
+      "description": "High-tech research labs for Price Ladders, JPY rules, and fractional pipettes",
+      "bounds": {
+        "x": 2050,
+        "y": 100,
+        "w": 1050,
+        "h": 750
+      },
+      "color": "#10B981"
+    },
+    {
+      "id": "leverage_quarter",
+      "name": "LEVERAGE QUARTER",
+      "description": "Citadel of purchasing power, margin utilization, and exposure calculation",
+      "bounds": {
+        "x": 1250,
+        "y": 100,
+        "w": 700,
+        "h": 750
+      },
+      "color": "#A855F7"
+    },
+    {
+      "id": "risk_quarter",
+      "name": "RISK QUARTER",
+      "description": "Defensive engineering sector for position sizing and capital preservation",
+      "bounds": {
+        "x": 100,
+        "y": 1550,
+        "w": 1050,
+        "h": 750
+      },
+      "color": "#F59E0B"
+    },
+    {
+      "id": "market_mission_quarter",
+      "name": "MARKET & BLITZ QUARTER",
+      "description": "Fast-paced market exchange, tactical blitz arena, and directives command",
+      "bounds": {
+        "x": 2050,
+        "y": 1550,
+        "w": 1050,
+        "h": 750
+      },
+      "color": "#FCD34D"
+    },
+    {
+      "id": "residential_quarter",
+      "name": "RESIDENTIAL & SOCIAL QUARTER",
+      "description": "Community residential sector with public parks, lore kiosks, and social avenues",
+      "bounds": {
+        "x": 2050,
+        "y": 900,
+        "w": 1050,
+        "h": 600
+      },
+      "color": "#38BDF8"
+    }
+  ],
+  "roads": [
+    {
+      "id": "road_main_avenue",
+      "name": "Main Avenue (N-S)",
+      "x": 1540,
+      "y": 80,
+      "w": 120,
+      "h": 2240,
+      "type": "avenue"
+    },
+    {
+      "id": "road_pip_plaza_blvd",
+      "name": "Pip Plaza Boulevard (E-W)",
+      "x": 80,
+      "y": 1140,
+      "w": 3040,
+      "h": 120,
+      "type": "boulevard"
+    },
+    {
+      "id": "road_north_highline",
+      "name": "Academic & Precision Highline (E-W)",
+      "x": 80,
+      "y": 500,
+      "w": 3040,
+      "h": 100,
+      "type": "street"
+    },
+    {
+      "id": "road_south_promenade",
+      "name": "Risk & Market Promenade (E-W)",
+      "x": 80,
+      "y": 1880,
+      "w": 3040,
+      "h": 100,
+      "type": "street"
+    },
+    {
+      "id": "road_west_flank",
+      "name": "Education-Risk West Connector (N-S)",
+      "x": 800,
+      "y": 100,
+      "w": 80,
+      "h": 2200,
+      "type": "connector"
+    },
+    {
+      "id": "road_east_flank",
+      "name": "Precision-Market East Connector (N-S)",
+      "x": 2320,
+      "y": 100,
+      "w": 80,
+      "h": 2200,
+      "type": "connector"
+    }
+  ],
+  "sidewalks": [
+    {
+      "id": "sw_main_west",
+      "x": 1500,
+      "y": 80,
+      "w": 40,
+      "h": 2240
+    },
+    {
+      "id": "sw_main_east",
+      "x": 1660,
+      "y": 80,
+      "w": 40,
+      "h": 2240
+    },
+    {
+      "id": "sw_plaza_north",
+      "x": 80,
+      "y": 1100,
+      "w": 3040,
+      "h": 40
+    },
+    {
+      "id": "sw_plaza_south",
+      "x": 80,
+      "y": 1260,
+      "w": 3040,
+      "h": 40
+    },
+    {
+      "id": "sw_highline_north",
+      "x": 80,
+      "y": 460,
+      "w": 3040,
+      "h": 40
+    },
+    {
+      "id": "sw_highline_south",
+      "x": 80,
+      "y": 600,
+      "w": 3040,
+      "h": 40
+    },
+    {
+      "id": "sw_promenade_north",
+      "x": 80,
+      "y": 1840,
+      "w": 3040,
+      "h": 40
+    },
+    {
+      "id": "sw_promenade_south",
+      "x": 80,
+      "y": 1980,
+      "w": 3040,
+      "h": 40
+    }
+  ],
+  "crosswalks": [
+    {
+      "x": 1540,
+      "y": 480,
+      "w": 120,
+      "h": 20,
+      "bars": 6
+    },
+    {
+      "x": 1540,
+      "y": 600,
+      "w": 120,
+      "h": 20,
+      "bars": 6
+    },
+    {
+      "x": 1540,
+      "y": 1120,
+      "w": 120,
+      "h": 20,
+      "bars": 6
+    },
+    {
+      "x": 1540,
+      "y": 1260,
+      "w": 120,
+      "h": 20,
+      "bars": 6
+    },
+    {
+      "x": 1540,
+      "y": 1860,
+      "w": 120,
+      "h": 20,
+      "bars": 6
+    },
+    {
+      "x": 1540,
+      "y": 1980,
+      "w": 120,
+      "h": 20,
+      "bars": 6
+    },
+    {
+      "x": 780,
+      "y": 1140,
+      "w": 20,
+      "h": 120,
+      "bars": 6
+    },
+    {
+      "x": 2320,
+      "y": 1140,
+      "w": 20,
+      "h": 120,
+      "bars": 6
+    }
+  ],
+  "buildings": [
+    {
+      "id": "pip_academy",
+      "x": 250,
+      "y": 200,
+      "w": 460,
+      "h": 300,
+      "name": "PIP ACADEMY",
+      "subtitle": "What a Pip Represents & Directional Movement",
+      "category": "ACADEMY",
+      "quarter": "education_quarter",
+      "themeColor": "#00F0FF",
+      "accentColor": "#3B82F6",
+      "icon": "fa-graduation-cap",
+      "facadeStyle": "academic_facility",
+      "windows": 10,
+      "entrance": {
+        "x": 480,
+        "y": 500
+      },
+      "interactRadius": 85,
+      "promptText": "Enter Pip Academy",
+      "roofProps": [
+        "solar_array",
+        "holographic_crest"
+      ]
+    },
+    {
+      "id": "precision_lab",
+      "x": 2480,
+      "y": 200,
+      "w": 460,
+      "h": 300,
+      "name": "PRECISION LAB",
+      "subtitle": "Price Ladder, JPY Rules & Fractional Pipettes",
+      "category": "LAB",
+      "quarter": "precision_quarter",
+      "themeColor": "#10B981",
+      "accentColor": "#00F0FF",
+      "icon": "fa-microscope",
+      "facadeStyle": "precision_tech_lab",
+      "windows": 10,
+      "entrance": {
+        "x": 2710,
+        "y": 500
+      },
+      "interactRadius": 85,
+      "promptText": "Enter Precision Lab",
+      "roofProps": [
+        "dish_antenna",
+        "laser_caliper"
+      ]
+    },
+    {
+      "id": "leverage_tower",
+      "x": 1380,
+      "y": 160,
+      "w": 440,
+      "h": 340,
+      "name": "LEVERAGE TOWER",
+      "subtitle": "Purchasing Power, Exposure & Margin Mechanics",
+      "category": "TOWER",
+      "quarter": "leverage_quarter",
+      "themeColor": "#A855F7",
+      "accentColor": "#F43F5E",
+      "icon": "fa-building-columns",
+      "facadeStyle": "corporate_skyscraper",
+      "windows": 16,
+      "entrance": {
+        "x": 1600,
+        "y": 500
+      },
+      "interactRadius": 85,
+      "promptText": "Enter Leverage Tower",
+      "roofProps": [
+        "spire_antenna",
+        "skyline_beacon"
+      ]
+    },
+    {
+      "id": "risk_forge",
+      "x": 250,
+      "y": 1600,
+      "w": 460,
+      "h": 280,
+      "name": "RISK & POSITION FORGE",
+      "subtitle": "Capital Risk % & Lot Sizing Workshop",
+      "category": "RISK",
+      "quarter": "risk_quarter",
+      "themeColor": "#F59E0B",
+      "accentColor": "#F43F5E",
+      "icon": "fa-shield-halved",
+      "facadeStyle": "armory_forge",
+      "windows": 8,
+      "entrance": {
+        "x": 480,
+        "y": 1880
+      },
+      "interactRadius": 85,
+      "promptText": "Enter Risk & Position Forge",
+      "roofProps": [
+        "shield_spires",
+        "heavy_vents"
+      ]
+    },
+    {
+      "id": "risk_arena",
+      "x": 250,
+      "y": 1980,
+      "w": 460,
+      "h": 240,
+      "name": "RISK ARENA",
+      "subtitle": "Drawdown Defense & Risk Survival",
+      "category": "ARENA",
+      "quarter": "risk_quarter",
+      "themeColor": "#F43F5E",
+      "accentColor": "#F59E0B",
+      "icon": "fa-cubes-stacked",
+      "facadeStyle": "bunker_defense",
+      "windows": 6,
+      "entrance": {
+        "x": 480,
+        "y": 2220
+      },
+      "interactRadius": 85,
+      "promptText": "Enter Risk Arena",
+      "roofProps": [
+        "fortified_turret"
+      ]
+    },
+    {
+      "id": "pip_blitz_arena",
+      "x": 2480,
+      "y": 1600,
+      "w": 460,
+      "h": 280,
+      "name": "PIP BLITZ ARENA",
+      "subtitle": "10-Round Precision Mini-Game Gauntlet",
+      "category": "ARENA",
+      "quarter": "market_mission_quarter",
+      "themeColor": "#00F0FF",
+      "accentColor": "#10B981",
+      "icon": "fa-bolt-lightning",
+      "facadeStyle": "stadium_combat",
+      "windows": 10,
+      "entrance": {
+        "x": 2710,
+        "y": 1880
+      },
+      "interactRadius": 85,
+      "promptText": "Enter Pip Blitz Arena",
+      "roofProps": [
+        "lightning_rods",
+        "arena_pylon"
+      ]
+    },
+    {
+      "id": "mission_hq",
+      "x": 2120,
+      "y": 1600,
+      "w": 300,
+      "h": 280,
+      "name": "MISSION HQ",
+      "subtitle": "10 District Directives & Tactical Operations",
+      "category": "HQ",
+      "quarter": "market_mission_quarter",
+      "themeColor": "#FCD34D",
+      "accentColor": "#00F0FF",
+      "icon": "fa-compass",
+      "facadeStyle": "command_center",
+      "windows": 8,
+      "entrance": {
+        "x": 2270,
+        "y": 1880
+      },
+      "interactRadius": 85,
+      "promptText": "Enter Mission HQ",
+      "roofProps": [
+        "satellite_uplink"
+      ]
+    },
+    {
+      "id": "gate_return_hub",
+      "x": 1480,
+      "y": 2280,
+      "w": 240,
+      "h": 80,
+      "name": "WORLD HUB TRANSIT GATE",
+      "subtitle": "Return to Strativo World Central Hub",
+      "category": "GATEWAY",
+      "quarter": "market_mission_quarter",
+      "themeColor": "#00E5A8",
+      "accentColor": "#00F0FF",
+      "icon": "fa-portal-enter",
+      "facadeStyle": "quantum_gate",
+      "windows": 0,
+      "entrance": {
+        "x": 1600,
+        "y": 2340
+      },
+      "interactRadius": 95,
+      "promptText": "Return to World Hub [E]",
+      "districtId": "world-hub"
+    },
+    {
+      "id": "bldg_residential_a",
+      "x": 2480,
+      "y": 960,
+      "w": 460,
+      "h": 180,
+      "name": "NEXUS RESIDENTIAL APARTMENTS",
+      "subtitle": "Trader Residences & Social Lofts",
+      "category": "RESIDENTIAL",
+      "quarter": "residential_quarter",
+      "themeColor": "#38BDF8",
+      "accentColor": "#818CF8",
+      "icon": "fa-house",
+      "facadeStyle": "residential_block",
+      "windows": 12
+    },
+    {
+      "id": "bldg_residential_b",
+      "x": 2480,
+      "y": 1200,
+      "w": 460,
+      "h": 180,
+      "name": "STRATIVO COMMONS RESIDENCES",
+      "subtitle": "Financial Scholars Living Quarters",
+      "category": "RESIDENTIAL",
+      "quarter": "residential_quarter",
+      "themeColor": "#38BDF8",
+      "accentColor": "#818CF8",
+      "icon": "fa-city",
+      "facadeStyle": "residential_block",
+      "windows": 12
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "landmark_precision_spire",
+      "name": "Pip Precision Spire",
+      "description": "The central spire projecting holographic 4th decimal metrics into the night sky.",
+      "x": 1600,
+      "y": 1200,
+      "radius": 40,
+      "themeColor": "#00F0FF",
+      "accentColor": "#3B82F6",
+      "icon": "fa-monument"
+    },
+    {
+      "id": "landmark_south_fountain",
+      "name": "South Plaza Energy Fountain",
+      "description": "Cascading neon energy fountain at the district entrance.",
+      "x": 1600,
+      "y": 2150,
+      "radius": 35,
+      "themeColor": "#10B981",
+      "accentColor": "#00F0FF",
+      "icon": "fa-water"
+    },
+    {
+      "id": "landmark_pipette_array",
+      "name": "Pipette Hologram Array",
+      "description": "High-frequency decimal microscope projector demonstrating fractional pipette physics.",
+      "x": 2850,
+      "y": 380,
+      "radius": 35,
+      "themeColor": "#10B981",
+      "accentColor": "#A855F7",
+      "icon": "fa-microchip"
+    },
+    {
+      "id": "landmark_decimal_clock",
+      "name": "Atomic Decimal Precision Clock",
+      "description": "Ultra-precise synchronization chronometer keeping millisecond market volatility records.",
+      "x": 1600,
+      "y": 850,
+      "radius": 35,
+      "themeColor": "#FCD34D",
+      "accentColor": "#00F0FF",
+      "icon": "fa-clock"
+    },
+    {
+      "id": "landmark_risk_shield_monument",
+      "name": "Risk Shield Bastion Monument",
+      "description": "Commemorative shield monument honoring 100% capital preservation principles.",
+      "x": 650,
+      "y": 1750,
+      "radius": 35,
+      "themeColor": "#F59E0B",
+      "accentColor": "#F43F5E",
+      "icon": "fa-shield-halved"
+    },
+    {
+      "id": "landmark_market_arch",
+      "name": "Market Exchange Archway",
+      "description": "Gateway arch spanning Market Street with real-time simulated order flow streams.",
+      "x": 2320,
+      "y": 1200,
+      "radius": 35,
+      "themeColor": "#FCD34D",
+      "accentColor": "#10B981",
+      "icon": "fa-archway"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "mentor_pip",
+      "name": "Pip Mentor",
+      "role": "Chief Precision Officer",
+      "x": 650,
+      "y": 560,
+      "quarter": "education_quarter",
+      "themeColor": "#00F0FF",
+      "secondaryColor": "#3B82F6",
+      "avatarIcon": "fa-calculator",
+      "missions": [
+        "first_measurement",
+        "precision_master"
+      ],
+      "defaultDialogue": "Welcome to Pip District! Precision is the foundation of trading risk management. Every 0.0001 movement on standard forex pairs represents 1 pip of fluctuation. Visit Pip Academy to begin your tour!"
+    },
+    {
+      "id": "instructor_precision",
+      "name": "Precision Instructor",
+      "role": "Ladder & JPY Specialist",
+      "x": 2550,
+      "y": 560,
+      "quarter": "precision_quarter",
+      "themeColor": "#10B981",
+      "secondaryColor": "#00F0FF",
+      "avatarIcon": "fa-ruler-combined",
+      "missions": [
+        "precision_test",
+        "jpy_zone",
+        "fractional_precision"
+      ],
+      "defaultDialogue": "Remember: Not all instruments follow 4-decimal rules! JPY pairs quote at 2 decimal places, Gold quotes in cents, and pipettes measure tenths of a pip."
+    },
+    {
+      "id": "engineer_risk",
+      "name": "Risk Engineer",
+      "role": "Position & Leverage Specialist",
+      "x": 700,
+      "y": 1900,
+      "quarter": "risk_quarter",
+      "themeColor": "#F59E0B",
+      "secondaryColor": "#F43F5E",
+      "avatarIcon": "fa-shield-halved",
+      "missions": [
+        "risk_engineer",
+        "leverage_check",
+        "risk_arena"
+      ],
+      "defaultDialogue": "Account capital, stop loss distance, and risk percentage dictate your position lot size. Never calculate position size backwards from profit expectations!"
+    },
+    {
+      "id": "coordinator_pip",
+      "name": "Mission Coordinator",
+      "role": "District Directives Officer",
+      "x": 2180,
+      "y": 1960,
+      "quarter": "market_mission_quarter",
+      "themeColor": "#FCD34D",
+      "secondaryColor": "#00F0FF",
+      "avatarIcon": "fa-compass",
+      "missions": [
+        "city_explorer_pip",
+        "pip_blitz",
+        "know_your_instrument"
+      ],
+      "defaultDialogue": "Welcome to Pip District Operations! Complete all 10 directives across our facilities to earn the title of Grand Precision Master."
+    }
+  ],
+  "ambientNpcs": [
+    {
+      "id": "ambient_trader_alex",
+      "name": "Trader Alex",
+      "role": "Market Street Analyst",
+      "avatarIcon": "fa-user-tie",
+      "themeColor": "#3B82F6",
+      "x": 2400,
+      "y": 1200,
+      "dialogue": "EUR/USD is testing support! A 15-pip stop loss on standard lots is exactly $150 of risk.",
+      "waypoints": [
+        {
+          "x": 2400,
+          "y": 1200
+        },
+        {
+          "x": 2000,
+          "y": 1200
+        },
+        {
+          "x": 1600,
+          "y": 1200
+        },
+        {
+          "x": 2000,
+          "y": 1200
+        }
+      ],
+      "speed": 0.9
+    },
+    {
+      "id": "ambient_student_leo",
+      "name": "Student Leo",
+      "role": "Academy Scholar",
+      "avatarIcon": "fa-user-graduate",
+      "themeColor": "#00F0FF",
+      "x": 600,
+      "y": 550,
+      "dialogue": "I just solved the EUR/USD 25-pip movement calculation! On a mini lot (0.10), that's $25.",
+      "waypoints": [
+        {
+          "x": 600,
+          "y": 550
+        },
+        {
+          "x": 1000,
+          "y": 550
+        },
+        {
+          "x": 1400,
+          "y": 550
+        },
+        {
+          "x": 1000,
+          "y": 550
+        }
+      ],
+      "speed": 0.85
+    },
+    {
+      "id": "ambient_quant_elena",
+      "name": "Quant Elena",
+      "role": "Precision Specialist",
+      "avatarIcon": "fa-laptop-code",
+      "themeColor": "#10B981",
+      "x": 2600,
+      "y": 550,
+      "dialogue": "On USD/JPY, moving from 154.20 to 154.55 represents 35 pips because the 2nd decimal is 1 pip.",
+      "waypoints": [
+        {
+          "x": 2600,
+          "y": 550
+        },
+        {
+          "x": 2100,
+          "y": 550
+        },
+        {
+          "x": 1650,
+          "y": 550
+        },
+        {
+          "x": 2100,
+          "y": 550
+        }
+      ],
+      "speed": 0.9
+    },
+    {
+      "id": "ambient_officer_marcus",
+      "name": "Officer Marcus",
+      "role": "Risk Defense Inspector",
+      "avatarIcon": "fa-user-shield",
+      "themeColor": "#F59E0B",
+      "x": 650,
+      "y": 1920,
+      "dialogue": "Never risk more than 1-2% of total capital on a single execution.",
+      "waypoints": [
+        {
+          "x": 650,
+          "y": 1920
+        },
+        {
+          "x": 1100,
+          "y": 1920
+        },
+        {
+          "x": 1550,
+          "y": 1920
+        },
+        {
+          "x": 1100,
+          "y": 1920
+        }
+      ],
+      "speed": 0.8
+    },
+    {
+      "id": "ambient_broker_victor",
+      "name": "Broker Victor",
+      "role": "Leverage Executive",
+      "avatarIcon": "fa-briefcase",
+      "themeColor": "#A855F7",
+      "x": 1600,
+      "y": 650,
+      "dialogue": "1:100 leverage allows you to control $100,000 notional with only $1,000 margin collateral.",
+      "waypoints": [
+        {
+          "x": 1600,
+          "y": 650
+        },
+        {
+          "x": 1600,
+          "y": 950
+        },
+        {
+          "x": 1600,
+          "y": 1150
+        },
+        {
+          "x": 1600,
+          "y": 800
+        }
+      ],
+      "speed": 0.85
+    },
+    {
+      "id": "ambient_blitz_fan_maya",
+      "name": "Challenger Maya",
+      "role": "Speed Drill Athlete",
+      "avatarIcon": "fa-medal",
+      "themeColor": "#FCD34D",
+      "x": 2600,
+      "y": 1920,
+      "dialogue": "My record in the Blitz Arena is 10/10 correct in under 45 seconds! Keep your focus sharp.",
+      "waypoints": [
+        {
+          "x": 2600,
+          "y": 1920
+        },
+        {
+          "x": 2100,
+          "y": 1920
+        },
+        {
+          "x": 1650,
+          "y": 1920
+        },
+        {
+          "x": 2100,
+          "y": 1920
+        }
+      ],
+      "speed": 1
+    },
+    {
+      "id": "ambient_resident_clara",
+      "name": "Resident Clara",
+      "role": "Social Quarter Botanist",
+      "avatarIcon": "fa-seedling",
+      "themeColor": "#38BDF8",
+      "x": 2700,
+      "y": 1140,
+      "dialogue": "The cyber-gardens in our residential quarter provide the best view of the central Precision Spire.",
+      "waypoints": [
+        {
+          "x": 2700,
+          "y": 1140
+        },
+        {
+          "x": 2350,
+          "y": 1140
+        },
+        {
+          "x": 2700,
+          "y": 1140
+        },
+        {
+          "x": 2900,
+          "y": 1140
+        }
+      ],
+      "speed": 0.75
+    },
+    {
+      "id": "ambient_archivist_owen",
+      "name": "Archivist Owen",
+      "role": "Financial Historian",
+      "avatarIcon": "fa-book-open",
+      "themeColor": "#FCD34D",
+      "x": 1400,
+      "y": 1200,
+      "dialogue": "The term 'pip' originated as 'percentage in point' or 'price interest point'.",
+      "waypoints": [
+        {
+          "x": 1400,
+          "y": 1200
+        },
+        {
+          "x": 1600,
+          "y": 1200
+        },
+        {
+          "x": 1800,
+          "y": 1200
+        },
+        {
+          "x": 1600,
+          "y": 1200
+        }
+      ],
+      "speed": 0.8
+    },
+    {
+      "id": "ambient_engineer_tariq",
+      "name": "Engineer Tariq",
+      "role": "Telemetry Technician",
+      "avatarIcon": "fa-wrench",
+      "themeColor": "#10B981",
+      "x": 2400,
+      "y": 600,
+      "dialogue": "Recalibrating the atomic decimal clock ensures sub-pipette synchronicity across all facilities.",
+      "waypoints": [
+        {
+          "x": 2400,
+          "y": 600
+        },
+        {
+          "x": 2400,
+          "y": 850
+        },
+        {
+          "x": 2400,
+          "y": 1100
+        },
+        {
+          "x": 2400,
+          "y": 850
+        }
+      ],
+      "speed": 0.85
+    },
+    {
+      "id": "ambient_scout_ren",
+      "name": "Scout Ren",
+      "role": "District Guide",
+      "avatarIcon": "fa-compass",
+      "themeColor": "#00F0FF",
+      "x": 1600,
+      "y": 2000,
+      "dialogue": "Welcome! Head North to reach Pip Plaza, or explore the avenues to discover hidden archives!",
+      "waypoints": [
+        {
+          "x": 1600,
+          "y": 2000
+        },
+        {
+          "x": 1600,
+          "y": 1700
+        },
+        {
+          "x": 1600,
+          "y": 1400
+        },
+        {
+          "x": 1600,
+          "y": 1700
+        }
+      ],
+      "speed": 0.9
+    }
+  ],
+  "marketBoards": [
+    {
+      "id": "board_eurusd",
+      "pair": "EUR/USD",
+      "currentPrice": 1.08542,
+      "pipsChange": 14.5,
+      "pipDecimals": 5,
+      "x": 2350,
+      "y": 1100,
+      "w": 180,
+      "h": 60
+    },
+    {
+      "id": "board_gbpusd",
+      "pair": "GBP/USD",
+      "currentPrice": 1.27318,
+      "pipsChange": -22.3,
+      "pipDecimals": 5,
+      "x": 2550,
+      "y": 1100,
+      "w": 180,
+      "h": 60
+    },
+    {
+      "id": "board_usdjpy",
+      "pair": "USD/JPY",
+      "currentPrice": 154.385,
+      "pipsChange": 38,
+      "pipDecimals": 3,
+      "x": 2750,
+      "y": 1100,
+      "w": 180,
+      "h": 60
+    },
+    {
+      "id": "board_gbpjpy",
+      "pair": "GBP/JPY",
+      "currentPrice": 196.52,
+      "pipsChange": 45.2,
+      "pipDecimals": 3,
+      "x": 2350,
+      "y": 1280,
+      "w": 180,
+      "h": 60
+    },
+    {
+      "id": "board_xauusd",
+      "pair": "XAU/USD",
+      "currentPrice": 2345.65,
+      "pipsChange": -85,
+      "pipDecimals": 2,
+      "x": 2550,
+      "y": 1280,
+      "w": 180,
+      "h": 60
+    },
+    {
+      "id": "board_us30",
+      "pair": "US30",
+      "currentPrice": 39120,
+      "pipsChange": 120,
+      "pipDecimals": 1,
+      "x": 2750,
+      "y": 1280,
+      "w": 180,
+      "h": 60
+    },
+    {
+      "id": "board_nas100",
+      "pair": "NAS100",
+      "currentPrice": 18450.5,
+      "pipsChange": 65.5,
+      "pipDecimals": 1,
+      "x": 2950,
+      "y": 1280,
+      "w": 180,
+      "h": 60
+    }
+  ],
+  "explorationPoints": [
+    {
+      "id": "exp_caliper_monument",
+      "name": "Caliper Obelisk Inscription",
+      "quarter": "pip_plaza",
+      "x": 1600,
+      "y": 1100,
+      "rewardXP": 15,
+      "text": "The ancient Caliper Obelisk reads: 'A trader who masters the pip masters risk; a trader who ignores the pip forfeits capital.'"
+    },
+    {
+      "id": "exp_market_archive",
+      "name": "Market Street Secret Archive",
+      "quarter": "market_mission_quarter",
+      "x": 2500,
+      "y": 1360,
+      "rewardXP": 20,
+      "text": "Archive Vault #4: 'On standard pairs, 1 pip = 0.0001 = $10 per standard lot. On mini lots (0.10), 1 pip = $1.00.'"
+    },
+    {
+      "id": "exp_leverage_vault",
+      "name": "Leverage Tower Terrace Viewpoint",
+      "quarter": "leverage_quarter",
+      "x": 1400,
+      "y": 480,
+      "rewardXP": 20,
+      "text": "Overlooking the entire district skyline: 'High leverage amplifies purchasing power without altering pip value. Margin is collateral, not free equity.'"
+    },
+    {
+      "id": "exp_risk_sanctuary",
+      "name": "Risk Quarter Defense Bunker",
+      "quarter": "risk_quarter",
+      "x": 350,
+      "y": 1850,
+      "rewardXP": 15,
+      "text": "Bunker Wall Axiom: 'Position Size = (Account Balance × Risk %) / (Stop Loss in Pips × Pip Value).'"
+    },
+    {
+      "id": "exp_precision_vault",
+      "name": "Atomic Clock Chamber",
+      "quarter": "precision_quarter",
+      "x": 2850,
+      "y": 250,
+      "rewardXP": 20,
+      "text": "Laser Calibration Register: 'The 5th decimal is a pipette (0.1 pip). A quote move from 1.10000 to 1.10005 is 0.5 pips.'"
+    },
+    {
+      "id": "exp_academy_terrace",
+      "name": "Academy Knowledge Pergola",
+      "quarter": "education_quarter",
+      "x": 350,
+      "y": 450,
+      "rewardXP": 15,
+      "text": "Pergola Scholar Plaque: 'Pip stands for Percentage in Point. It represents the standardized unit of currency price fluctuation.'"
+    },
+    {
+      "id": "exp_jpy_monument",
+      "name": "JPY 2nd Decimal Monument",
+      "quarter": "precision_quarter",
+      "x": 2400,
+      "y": 700,
+      "rewardXP": 15,
+      "text": "JPY Pillar: 'Japanese Yen pairs quote in 2 decimal places. 1 pip = 0.01 JPY movement.'"
+    },
+    {
+      "id": "exp_residential_garden",
+      "name": "Residential Garden Lore Pod",
+      "quarter": "residential_quarter",
+      "x": 2700,
+      "y": 1100,
+      "rewardXP": 10,
+      "text": "Social Garden Terminal: 'Disciplined traders practice consistency daily. Even 15 pips per day with strict risk compounding creates long-term mastery.'"
+    },
+    {
+      "id": "exp_anti_ruin_vault",
+      "name": "Anti-Ruin Capital Cache",
+      "quarter": "risk_quarter",
+      "x": 750,
+      "y": 2150,
+      "rewardXP": 15,
+      "text": "Security Terminal: 'A 50% drawdown requires a 100% gain just to break even. Defend capital at all costs.'"
+    },
+    {
+      "id": "exp_blitz_monolith",
+      "name": "Blitz Champion Hall of Fame",
+      "quarter": "market_mission_quarter",
+      "x": 2850,
+      "y": 1800,
+      "rewardXP": 20,
+      "text": "Arena Honors Monument: 'Speed combined with precision is the hallmark of professional order execution.'"
+    },
+    {
+      "id": "exp_transit_ledger",
+      "name": "South Gate World Gateway Archive",
+      "quarter": "market_mission_quarter",
+      "x": 1450,
+      "y": 2250,
+      "rewardXP": 10,
+      "text": "Transit Gate Telemetry: 'Pip District is connected directly to Candle City, Market Arena, and the World Hub.'"
+    },
+    {
+      "id": "exp_civic_beacon",
+      "name": "Central Civic Telemetry Beacon",
+      "quarter": "pip_plaza",
+      "x": 1400,
+      "y": 1200,
+      "rewardXP": 15,
+      "text": "Civic Beacon: 'Broadcasting live market health, pip volatility alerts, and district mastery rankings across Strativo World.'"
+    }
+  ],
+  "challengeStations": [
+    {
+      "id": "trigger_station_quick_plaza",
+      "name": "Plaza Quick Pip Drill",
+      "quarter": "pip_plaza",
+      "x": 1450,
+      "y": 1150,
+      "rewardXP": 10
+    },
+    {
+      "id": "trigger_station_quick_market",
+      "name": "Market Street Fast Calculator",
+      "quarter": "market_mission_quarter",
+      "x": 2600,
+      "y": 1350,
+      "rewardXP": 10
+    },
+    {
+      "id": "trigger_station_quick_precision",
+      "name": "Precision Quarter Drill Kiosk",
+      "quarter": "precision_quarter",
+      "x": 2450,
+      "y": 650,
+      "rewardXP": 10
+    },
+    {
+      "id": "trigger_station_quick_risk",
+      "name": "Risk Sizing Quick Booth",
+      "quarter": "risk_quarter",
+      "x": 750,
+      "y": 1750,
+      "rewardXP": 10
+    },
+    {
+      "id": "trigger_station_quick_residential",
+      "name": "Community Knowledge Terminal",
+      "quarter": "residential_quarter",
+      "x": 2800,
+      "y": 1050,
+      "rewardXP": 10
+    }
+  ]
+}

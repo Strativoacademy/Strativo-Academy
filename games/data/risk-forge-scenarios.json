@@ -1,0 +1,499 @@
+{
+  "version": "1.0.0",
+  "scenarios": [
+    {
+      "id": "risk_scen_01",
+      "accountBalance": 10000,
+      "riskPercent": 1,
+      "stopLossPips": 25,
+      "pair": "EUR/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $10,000 | Max Risk: 1.0% ($100) | Stop Loss: 25 Pips on EUR/USD ($10/pip/lot). What is the exact recommended position size?",
+      "options": [
+        "0.40 Lots",
+        "1.00 Lot",
+        "0.25 Lots",
+        "0.50 Lots"
+      ],
+      "correctAnswer": "0.40 Lots",
+      "maxDollarRisk": 100,
+      "recommendedLots": 0.4,
+      "explanation": "Position Size = Max Risk ($100) / (Stop Pips (25) * $10) = $100 / $250 = 0.40 Lots."
+    },
+    {
+      "id": "risk_scen_02",
+      "accountBalance": 10000,
+      "riskPercent": 2,
+      "stopLossPips": 20,
+      "pair": "GBP/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $10,000 | Max Risk: 2.0% ($200) | Stop Loss: 20 Pips on GBP/USD. What is the recommended lot size?",
+      "options": [
+        "1.00 Lot",
+        "0.50 Lots",
+        "2.00 Lots",
+        "0.20 Lots"
+      ],
+      "correctAnswer": "1.00 Lot",
+      "maxDollarRisk": 200,
+      "recommendedLots": 1,
+      "explanation": "Position Size = $200 / (20 pips * $10) = $200 / $200 = 1.00 Standard Lot."
+    },
+    {
+      "id": "risk_scen_03",
+      "accountBalance": 5000,
+      "riskPercent": 1,
+      "stopLossPips": 25,
+      "pair": "EUR/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $5,000 | Max Risk: 1.0% ($50) | Stop Loss: 25 Pips. What is the recommended lot size?",
+      "options": [
+        "0.20 Lots",
+        "0.50 Lots",
+        "0.10 Lots",
+        "0.05 Lots"
+      ],
+      "correctAnswer": "0.20 Lots",
+      "maxDollarRisk": 50,
+      "recommendedLots": 0.2,
+      "explanation": "$50 / (25 * $10) = $50 / $250 = 0.20 Lots (2 Mini Lots)."
+    },
+    {
+      "id": "risk_scen_04",
+      "accountBalance": 5000,
+      "riskPercent": 2,
+      "stopLossPips": 50,
+      "pair": "GBP/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $5,000 | Max Risk: 2.0% ($100) | Wide Swing Stop Loss: 50 Pips. What is the lot size?",
+      "options": [
+        "0.20 Lots",
+        "0.40 Lots",
+        "1.00 Lot",
+        "0.10 Lots"
+      ],
+      "correctAnswer": "0.20 Lots",
+      "maxDollarRisk": 100,
+      "recommendedLots": 0.2,
+      "explanation": "$100 / (50 * $10) = $100 / $500 = 0.20 Lots."
+    },
+    {
+      "id": "risk_scen_05",
+      "accountBalance": 25000,
+      "riskPercent": 1,
+      "stopLossPips": 25,
+      "pair": "EUR/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $25,000 | Max Risk: 1.0% ($250) | Stop Loss: 25 Pips. What is the lot size?",
+      "options": [
+        "1.00 Lot",
+        "2.50 Lots",
+        "0.50 Lots",
+        "0.25 Lots"
+      ],
+      "correctAnswer": "1.00 Lot",
+      "maxDollarRisk": 250,
+      "recommendedLots": 1,
+      "explanation": "$250 / (25 * $10) = $250 / $250 = 1.00 Standard Lot."
+    },
+    {
+      "id": "risk_scen_06",
+      "accountBalance": 50000,
+      "riskPercent": 1,
+      "stopLossPips": 20,
+      "pair": "AUD/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $50,000 | Max Risk: 1.0% ($500) | Stop Loss: 20 Pips. What is the recommended lot size?",
+      "options": [
+        "2.50 Lots",
+        "5.00 Lots",
+        "1.00 Lot",
+        "0.25 Lots"
+      ],
+      "correctAnswer": "2.50 Lots",
+      "maxDollarRisk": 500,
+      "recommendedLots": 2.5,
+      "explanation": "$500 / (20 * $10) = $500 / $200 = 2.50 Lots."
+    },
+    {
+      "id": "risk_scen_07",
+      "accountBalance": 100000,
+      "riskPercent": 1,
+      "stopLossPips": 25,
+      "pair": "EUR/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $100,000 | Max Risk: 1.0% ($1,000) | Stop Loss: 25 Pips. What is the lot size?",
+      "options": [
+        "4.00 Lots",
+        "1.00 Lot",
+        "10.00 Lots",
+        "2.50 Lots"
+      ],
+      "correctAnswer": "4.00 Lots",
+      "maxDollarRisk": 1000,
+      "recommendedLots": 4,
+      "explanation": "$1,000 / (25 * $10) = $1,000 / $250 = 4.00 Lots."
+    },
+    {
+      "id": "risk_scen_08",
+      "accountBalance": 100000,
+      "riskPercent": 0.5,
+      "stopLossPips": 50,
+      "pair": "GBP/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $100,000 | Conservative Risk: 0.5% ($500) | Stop Loss: 50 Pips. What is the lot size?",
+      "options": [
+        "1.00 Lot",
+        "2.00 Lots",
+        "0.50 Lots",
+        "5.00 Lots"
+      ],
+      "correctAnswer": "1.00 Lot",
+      "maxDollarRisk": 500,
+      "recommendedLots": 1,
+      "explanation": "$500 / (50 * $10) = $500 / $500 = 1.00 Lot."
+    },
+    {
+      "id": "risk_scen_09",
+      "accountBalance": 2000,
+      "riskPercent": 1,
+      "stopLossPips": 20,
+      "pair": "EUR/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $2,000 | Max Risk: 1.0% ($20) | Stop Loss: 20 Pips. What is the recommended lot size?",
+      "options": [
+        "0.10 Lots (1 Mini Lot)",
+        "1.00 Lot",
+        "0.01 Lots",
+        "0.20 Lots"
+      ],
+      "correctAnswer": "0.10 Lots (1 Mini Lot)",
+      "maxDollarRisk": 20,
+      "recommendedLots": 0.1,
+      "explanation": "$20 / (20 * $10) = $20 / $200 = 0.10 Lots (1 Mini Lot)."
+    },
+    {
+      "id": "risk_scen_10",
+      "accountBalance": 2000,
+      "riskPercent": 2,
+      "stopLossPips": 40,
+      "pair": "USD/CAD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $2,000 | Max Risk: 2.0% ($40) | Stop Loss: 40 Pips. What is the lot size?",
+      "options": [
+        "0.10 Lots",
+        "0.20 Lots",
+        "0.05 Lots",
+        "0.40 Lots"
+      ],
+      "correctAnswer": "0.10 Lots",
+      "maxDollarRisk": 40,
+      "recommendedLots": 0.1,
+      "explanation": "$40 / (40 * $10) = $40 / $400 = 0.10 Lots."
+    },
+    {
+      "id": "risk_scen_11",
+      "accountBalance": 10000,
+      "riskPercent": 1,
+      "stopLossPips": 10,
+      "pair": "EUR/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $10,000 | Max Risk: 1.0% ($100) | Tight Scalp Stop: 10 Pips. What is the lot size?",
+      "options": [
+        "1.00 Lot",
+        "0.10 Lots",
+        "2.00 Lots",
+        "0.50 Lots"
+      ],
+      "correctAnswer": "1.00 Lot",
+      "maxDollarRisk": 100,
+      "recommendedLots": 1,
+      "explanation": "$100 / (10 * $10) = $100 / $100 = 1.00 Lot."
+    },
+    {
+      "id": "risk_scen_12",
+      "accountBalance": 10000,
+      "riskPercent": 1,
+      "stopLossPips": 100,
+      "pair": "GBP/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $10,000 | Max Risk: 1.0% ($100) | Wide Macro Stop: 100 Pips. What is the lot size?",
+      "options": [
+        "0.10 Lots",
+        "1.00 Lot",
+        "0.01 Lots",
+        "0.50 Lots"
+      ],
+      "correctAnswer": "0.10 Lots",
+      "maxDollarRisk": 100,
+      "recommendedLots": 0.1,
+      "explanation": "$100 / (100 * $10) = $100 / $1,000 = 0.10 Lots."
+    },
+    {
+      "id": "risk_scen_13",
+      "accountBalance": 50000,
+      "riskPercent": 2,
+      "stopLossPips": 40,
+      "pair": "EUR/USD",
+      "dollarPerPipPerLot": 10,
+      "questionText": "Account: $50,000 | Max Risk: 2.0% ($1,000) | Stop Loss: 40 Pips. What is the lot size?",
+      "options": [
+        "2.50 Lots",
+        "1.25 Lots",
+        "5.00 Lots",
+        "2.00 Lots"
+      ],
+      "correctAnswer": "2.50 Lots",
+      "maxDollarRisk": 1000,
+      "recommendedLots": 2.5,
+      "explanation": "$1,000 / (40 * $10) = $1,000 / $400 = 2.50 Lots."
+    },
+    {
+      "id": "risk_scen_14",
+      "category": "PRINCIPLE",
+      "questionText": "If market volatility forces you to DOUBLE your stop loss distance from 20 pips to 40 pips, how must your position size adjust to keep total dollar risk unchanged?",
+      "options": [
+        "Cut position size in half (50% reduction)",
+        "Double position size (2x increase)",
+        "Keep position size identical",
+        "Increase leverage by 2x"
+      ],
+      "correctAnswer": "Cut position size in half (50% reduction)",
+      "explanation": "Because Risk ($) = Lots * Stop Pips * $10, doubling stop pips requires halving lot size to maintain constant dollar risk."
+    },
+    {
+      "id": "risk_scen_15",
+      "category": "PRINCIPLE",
+      "questionText": "If technical structure allows a tight 15-pip stop loss instead of a standard 30-pip stop, your allowable position size for the same dollar risk is:",
+      "options": [
+        "Twice as large (2x)",
+        "Half as large (0.5x)",
+        "Identical",
+        "Four times larger (4x)"
+      ],
+      "correctAnswer": "Twice as large (2x)",
+      "explanation": "Halving stop loss distance doubles the allowed lot volume while keeping exact dollar risk capped."
+    },
+    {
+      "id": "risk_scen_16",
+      "accountBalance": 15000,
+      "riskPercent": 1,
+      "questionText": "On a $15,000 trading account with a strict 1.0% maximum risk policy, what is the maximum allowable dollar loss on any single trade?",
+      "options": [
+        "$150",
+        "$15",
+        "$1,500",
+        "$300"
+      ],
+      "correctAnswer": "$150",
+      "explanation": "1.0% of $15,000 = $150."
+    },
+    {
+      "id": "risk_scen_17",
+      "accountBalance": 80000,
+      "riskPercent": 2,
+      "questionText": "On an $80,000 account adhering to a strict 2.0% risk cap, what is the max dollar risk?",
+      "options": [
+        "$1,600",
+        "$160",
+        "$800",
+        "$3,200"
+      ],
+      "correctAnswer": "$1,600",
+      "explanation": "2.0% of $80,000 = $1,600."
+    },
+    {
+      "id": "risk_scen_18",
+      "category": "ANTI_RUIN",
+      "questionText": "A reckless trader risks 10% per trade on a $10,000 balance. After 3 consecutive losses, what is the remaining account equity?",
+      "options": [
+        "$7,290 (-27.1% Drawdown)",
+        "$7,000 (-30.0%)",
+        "$8,100 (-19.0%)",
+        "$9,000 (-10.0%)"
+      ],
+      "correctAnswer": "$7,290 (-27.1% Drawdown)",
+      "explanation": "$10,000 * 0.9 * 0.9 * 0.9 = $7,290. Over 27% of capital was lost in just 3 trades."
+    },
+    {
+      "id": "risk_scen_19",
+      "category": "ANTI_RUIN",
+      "questionText": "A disciplined trader risks 1% per trade on a $10,000 balance. After 3 consecutive losses, what is the remaining equity?",
+      "options": [
+        "$9,703 (-2.97% Drawdown)",
+        "$9,000 (-10.0%)",
+        "$9,500 (-5.0%)",
+        "$9,900 (-1.0%)"
+      ],
+      "correctAnswer": "$9,703 (-2.97% Drawdown)",
+      "explanation": "$10,000 * 0.99 * 0.99 * 0.99 = $9,702.99. Less than 3% total drawdown occurs across 3 losses."
+    },
+    {
+      "id": "risk_scen_20",
+      "category": "PRINCIPLE",
+      "questionText": "Why must position size be calculated FROM the stop loss distance, rather than arbitrarily picking lot size first?",
+      "options": [
+        "To ensure maximum dollar loss is strictly capped regardless of market volatility",
+        "Because brokers require fixed lot sizes",
+        "To maximize leverage utilization",
+        "To eliminate spread costs"
+      ],
+      "correctAnswer": "To ensure maximum dollar loss is strictly capped regardless of market volatility",
+      "explanation": "Calculating lot size from stop loss distance guarantees you never lose more than your pre-determined dollar risk limit."
+    },
+    {
+      "id": "risk_scen_21",
+      "accountBalance": 20000,
+      "riskPercent": 1,
+      "stopLossPips": 40,
+      "pair": "EUR/USD",
+      "questionText": "Account: $20,000 | 1% Risk ($200) | Stop Loss: 40 Pips on EUR/USD. What is the recommended lot size?",
+      "options": [
+        "0.50 Lots",
+        "1.00 Lot",
+        "0.25 Lots",
+        "2.00 Lots"
+      ],
+      "correctAnswer": "0.50 Lots",
+      "explanation": "$200 / (40 * $10) = $200 / $400 = 0.50 Lots."
+    },
+    {
+      "id": "risk_scen_22",
+      "accountBalance": 30000,
+      "riskPercent": 1,
+      "stopLossPips": 30,
+      "pair": "GBP/USD",
+      "questionText": "Account: $30,000 | 1% Risk ($300) | Stop Loss: 30 Pips. What is the lot size?",
+      "options": [
+        "1.00 Lot",
+        "0.50 Lots",
+        "1.50 Lots",
+        "3.00 Lots"
+      ],
+      "correctAnswer": "1.00 Lot",
+      "explanation": "$300 / (30 * $10) = $300 / $300 = 1.00 Lot."
+    },
+    {
+      "id": "risk_scen_23",
+      "accountBalance": 12000,
+      "riskPercent": 1.5,
+      "stopLossPips": 30,
+      "pair": "EUR/USD",
+      "questionText": "Account: $12,000 | 1.5% Risk ($180) | Stop Loss: 30 Pips. What is the lot size?",
+      "options": [
+        "0.60 Lots",
+        "0.40 Lots",
+        "0.80 Lots",
+        "1.00 Lot"
+      ],
+      "correctAnswer": "0.60 Lots",
+      "explanation": "$180 / (30 * $10) = $180 / $300 = 0.60 Lots."
+    },
+    {
+      "id": "risk_scen_24",
+      "accountBalance": 8000,
+      "riskPercent": 2,
+      "stopLossPips": 20,
+      "pair": "AUD/USD",
+      "questionText": "Account: $8,000 | 2.0% Risk ($160) | Stop Loss: 20 Pips. What is the lot size?",
+      "options": [
+        "0.80 Lots",
+        "0.40 Lots",
+        "1.60 Lots",
+        "0.20 Lots"
+      ],
+      "correctAnswer": "0.80 Lots",
+      "explanation": "$160 / (20 * $10) = $160 / $200 = 0.80 Lots."
+    },
+    {
+      "id": "risk_scen_25",
+      "accountBalance": 40000,
+      "riskPercent": 0.5,
+      "stopLossPips": 25,
+      "pair": "EUR/USD",
+      "questionText": "Account: $40,000 | 0.5% Risk ($200) | Stop Loss: 25 Pips. What is the lot size?",
+      "options": [
+        "0.80 Lots",
+        "0.40 Lots",
+        "1.00 Lot",
+        "1.60 Lots"
+      ],
+      "correctAnswer": "0.80 Lots",
+      "explanation": "$200 / (25 * $10) = $200 / $250 = 0.80 Lots."
+    },
+    {
+      "id": "risk_scen_26",
+      "category": "MULTI_TRADE",
+      "questionText": "If you have 3 open trades simultaneously, each risking 1.0% of your account, what is your total open portfolio risk?",
+      "options": [
+        "3.0% Maximum Account Risk",
+        "1.0% Risk",
+        "9.0% Risk",
+        "0.33% Risk"
+      ],
+      "correctAnswer": "3.0% Maximum Account Risk",
+      "explanation": "3 trades * 1.0% risk each = 3.0% total correlated/simultaneous risk."
+    },
+    {
+      "id": "risk_scen_27",
+      "category": "CORRELATION",
+      "questionText": "Opening long EUR/USD and long GBP/USD at the same time represents correlated USD risk. How should a risk engineer handle this?",
+      "options": [
+        "Split standard risk allowance across both pairs (e.g. 0.5% each)",
+        "Double risk on both to maximize profit",
+        "Ignore correlation because pairs have different names",
+        "Open max leverage on both"
+      ],
+      "correctAnswer": "Split standard risk allowance across both pairs (e.g. 0.5% each)",
+      "explanation": "Splitting risk across highly correlated pairs prevents doubling your directional dollar exposure to USD moves."
+    },
+    {
+      "id": "risk_scen_28",
+      "accountBalance": 60000,
+      "riskPercent": 1,
+      "stopLossPips": 15,
+      "pair": "EUR/USD",
+      "questionText": "Account: $60,000 | 1% Risk ($600) | Tight Stop: 15 Pips. What is the recommended lot size?",
+      "options": [
+        "4.00 Lots",
+        "2.00 Lots",
+        "6.00 Lots",
+        "1.50 Lots"
+      ],
+      "correctAnswer": "4.00 Lots",
+      "explanation": "$600 / (15 * $10) = $600 / $150 = 4.00 Lots."
+    },
+    {
+      "id": "risk_scen_29",
+      "accountBalance": 16000,
+      "riskPercent": 1,
+      "stopLossPips": 32,
+      "pair": "GBP/USD",
+      "questionText": "Account: $16,000 | 1% Risk ($160) | Stop Loss: 32 Pips. What is the lot size?",
+      "options": [
+        "0.50 Lots",
+        "1.00 Lot",
+        "0.25 Lots",
+        "0.80 Lots"
+      ],
+      "correctAnswer": "0.50 Lots",
+      "explanation": "$160 / (32 * $10) = $160 / $320 = 0.50 Lots."
+    },
+    {
+      "id": "risk_scen_30",
+      "accountBalance": 100000,
+      "riskPercent": 1,
+      "stopLossPips": 20,
+      "pair": "EUR/USD",
+      "questionText": "Account: $100,000 | 1% Risk ($1,000) | Stop Loss: 20 Pips. What is the recommended lot size?",
+      "options": [
+        "5.00 Lots",
+        "2.50 Lots",
+        "10.00 Lots",
+        "1.00 Lot"
+      ],
+      "correctAnswer": "5.00 Lots",
+      "explanation": "$1,000 / (20 * $10) = $1,000 / $200 = 5.00 Lots."
+    }
+  ]
+}

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#030712">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Strativo World — Game Settings & Controls</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/world-settings.css">
+</head>
+
+<body class="world-settings-page">
+
+    <div class="ws-container">
+
+        <!-- ================================================================
+             1. HEADER & GLOBAL CONTROLS
+             ================================================================ -->
+        <header class="ws-header">
+            <div class="ws-header-title-group">
+                <div class="ws-header-icon">
+                    <i class="fas fa-sliders"></i>
+                </div>
+                <div class="ws-header-meta">
+                    <h1>WORLD SETTINGS</h1>
+                    <p>Configure audio, controls sensitivity, graphics & accessibility preferences</p>
+                </div>
+            </div>
+
+            <div class="ws-header-actions">
+                <button type="button" class="ws-btn ws-btn-rose" id="btn-reset-defaults" title="Reset all settings to initial defaults">
+                    <i class="fas fa-rotate-left"></i> Reset Defaults
+                </button>
+                <button type="button" class="ws-btn ws-btn-cyan" id="btn-save-apply" title="Save and apply settings">
+                    <i class="fas fa-check"></i> Save & Apply
+                </button>
+                <a href="hub.html" class="ws-btn" id="btn-back-hub" title="Return to Strativo World Hub">
+                    <i class="fas fa-globe"></i> World Hub
+                </a>
+            </div>
+        </header>
+
+        <!-- ================================================================
+             2. SETTINGS SECTIONS GRID (2-COLUMN)
+             ================================================================ -->
+        <main class="ws-grid">
+
+            <!-- SECTION A: AUDIO SETTINGS -->
+            <section class="ws-card">
+                <div class="ws-card-header">
+                    <i class="fas fa-volume-high" style="color: var(--ws-neon-cyan);"></i>
+                    <h2>AUDIO SETTINGS</h2>
+                </div>
+
+                <!-- Master Volume -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <span class="ws-item-label">Master Volume</span>
+                        <span class="ws-val-pill" id="val-audio-master">100%</span>
+                    </div>
+                    <input type="range" class="ws-range-input" id="input-audio-master" min="0" max="1" step="0.05" value="1.0" aria-label="Master Volume">
+                    <span class="ws-item-desc">Controls overall sound output across all games.</span>
+                </div>
+
+                <!-- Music Volume -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <span class="ws-item-label">Music Volume</span>
+                        <span class="ws-val-pill" id="val-audio-music">70%</span>
+                    </div>
+                    <input type="range" class="ws-range-input" id="input-audio-music" min="0" max="1" step="0.05" value="0.7" aria-label="Music Volume">
+                    <span class="ws-item-desc">Background orbital ambient tracks & arena themes.</span>
+                </div>
+
+                <!-- SFX Volume -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <span class="ws-item-label">Sound Effects (SFX)</span>
+                        <span class="ws-val-pill" id="val-audio-sfx">80%</span>
+                    </div>
+                    <input type="range" class="ws-range-input" id="input-audio-sfx" min="0" max="1" step="0.05" value="0.8" aria-label="SFX Volume">
+                    <span class="ws-item-desc">Target selection, hits, combo surges & UI clicks.</span>
+                </div>
+
+                <!-- Mute Toggle -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">Mute All Audio</span>
+                            <div class="ws-item-desc">Silence all game audio and sound effects.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-audio-muted" aria-label="Mute all audio">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION B: CONTROLS & SENSITIVITY -->
+            <section class="ws-card">
+                <div class="ws-card-header">
+                    <i class="fas fa-gamepad" style="color: var(--ws-neon-emerald);"></i>
+                    <h2>CONTROLS & SENSITIVITY</h2>
+                </div>
+
+                <!-- Joystick Sensitivity -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <span class="ws-item-label">Joystick Sensitivity</span>
+                        <span class="ws-val-pill" id="val-ctrl-joystick">1.0x</span>
+                    </div>
+                    <input type="range" class="ws-range-input" id="input-ctrl-joystick" min="0.5" max="2.0" step="0.05" value="1.0" aria-label="Joystick Sensitivity">
+                    <span class="ws-item-desc">Mobile virtual touch joystick responsiveness.</span>
+                </div>
+
+                <!-- Aim Sensitivity -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <span class="ws-item-label">Aim / Target Sensitivity</span>
+                        <span class="ws-val-pill" id="val-ctrl-aim">1.0x</span>
+                    </div>
+                    <input type="range" class="ws-range-input" id="input-ctrl-aim" min="0.5" max="2.0" step="0.05" value="1.0" aria-label="Aim Sensitivity">
+                    <span class="ws-item-desc">Candle Blitz target node cursor selection response.</span>
+                </div>
+
+                <!-- Camera Sensitivity -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <span class="ws-item-label">Camera Follow Speed</span>
+                        <span class="ws-val-pill" id="val-ctrl-camera">1.0x</span>
+                    </div>
+                    <input type="range" class="ws-range-input" id="input-ctrl-camera" min="0.5" max="2.0" step="0.05" value="1.0" aria-label="Camera Sensitivity">
+                    <span class="ws-item-desc">Camera smoothness and player centering tracking.</span>
+                </div>
+
+                <!-- Device Vibration / Haptics -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">Vibration & Haptics</span>
+                            <div class="ws-item-desc">Tactile physical pulse on hits, combos & rewards.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-ctrl-vibration" checked aria-label="Vibration and Haptics">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION C: GRAPHICS & PERFORMANCE -->
+            <section class="ws-card">
+                <div class="ws-card-header">
+                    <i class="fas fa-display" style="color: var(--ws-neon-gold);"></i>
+                    <h2>GRAPHICS & PERFORMANCE</h2>
+                </div>
+
+                <!-- Graphics Quality -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <span class="ws-item-label">Rendering Quality</span>
+                    </div>
+                    <select class="ws-select" id="input-gfx-quality" aria-label="Rendering Quality">
+                        <option value="high">High (Full Shadows, Particle Glow & Bloom)</option>
+                        <option value="medium" selected>Medium (Standard Effects & Optimized Lighting)</option>
+                        <option value="low">Low (Maximum Performance, Disabled Shadows)</option>
+                    </select>
+                    <span class="ws-item-desc">Adjust rendering fidelity for lower-spec mobile devices.</span>
+                </div>
+
+                <!-- Particle Systems -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">Particle Systems</span>
+                            <div class="ws-item-desc">Sparks, countdown rings, and victory bursts.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-gfx-particles" checked aria-label="Particle Systems">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Cyber Glow & Bloom -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">Neon Glow & Bloom</span>
+                            <div class="ws-item-desc">Building perimeter shields and candlestick highlights.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-gfx-glow" checked aria-label="Neon Glow and Bloom">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Reduced Motion -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">Reduced Motion</span>
+                            <div class="ws-item-desc">Disable decorative camera shakes and screen scans.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-gfx-reduced-motion" aria-label="Reduced Motion">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION D: GAMEPLAY & ACCESSIBILITY -->
+            <section class="ws-card">
+                <div class="ws-card-header">
+                    <i class="fas fa-universal-access" style="color: var(--ws-neon-purple);"></i>
+                    <h2>GAMEPLAY & ACCESSIBILITY</h2>
+                </div>
+
+                <!-- In-Game Hints -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">Show Recognition Hints</span>
+                            <div class="ws-item-desc">Display candle anatomy tips on incorrect hits.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-gp-hints" checked aria-label="Show Recognition Hints">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Quest Markers -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">Show Quest Beacons</span>
+                            <div class="ws-item-desc">Pulsing beacons above active mission buildings.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-gp-markers" checked aria-label="Show Quest Beacons">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Large Text Mode -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">Large Text Mode</span>
+                            <div class="ws-item-desc">Increase UI text scale across all games.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-a11y-large-text" aria-label="Large Text Mode">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- High Contrast Mode -->
+                <div class="ws-item">
+                    <div class="ws-item-header">
+                        <div>
+                            <span class="ws-item-label">High Contrast Mode</span>
+                            <div class="ws-item-desc">Maximize borders and text legibility.</div>
+                        </div>
+                        <label class="ws-switch">
+                            <input type="checkbox" id="input-a11y-high-contrast" aria-label="High Contrast Mode">
+                            <span class="ws-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Save Feedback Toast Notification -->
+        <div class="ws-toast" id="ws-toast" role="status" aria-live="polite">
+            <i class="fas fa-check-circle" style="color: var(--ws-neon-emerald);"></i>
+            <span id="ws-toast-msg">Settings saved successfully!</span>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/settings/world-settings.js"></script>
+    <script src="js/settings/haptics.js"></script>
+    <script src="js/audio/audio-manager.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const S = window.StrativoWorldSettings;
+            if (!S) {
+                console.error("StrativoWorldSettings not loaded.");
+                return;
+            }
+
+            // Input references
+            const elAudioMaster = document.getElementById("input-audio-master");
+            const elAudioMusic = document.getElementById("input-audio-music");
+            const elAudioSfx = document.getElementById("input-audio-sfx");
+            const elAudioMuted = document.getElementById("input-audio-muted");
+
+            const elCtrlJoystick = document.getElementById("input-ctrl-joystick");
+            const elCtrlAim = document.getElementById("input-ctrl-aim");
+            const elCtrlCamera = document.getElementById("input-ctrl-camera");
+            const elCtrlVibration = document.getElementById("input-ctrl-vibration");
+
+            const elGfxQuality = document.getElementById("input-gfx-quality");
+            const elGfxParticles = document.getElementById("input-gfx-particles");
+            const elGfxGlow = document.getElementById("input-gfx-glow");
+            const elGfxReducedMotion = document.getElementById("input-gfx-reduced-motion");
+
+            const elGpHints = document.getElementById("input-gp-hints");
+            const elGpMarkers = document.getElementById("input-gp-markers");
+
+            const elA11yLargeText = document.getElementById("input-a11y-large-text");
+            const elA11yHighContrast = document.getElementById("input-a11y-high-contrast");
+
+            // Pill references
+            const pillAudioMaster = document.getElementById("val-audio-master");
+            const pillAudioMusic = document.getElementById("val-audio-music");
+            const pillAudioSfx = document.getElementById("val-audio-sfx");
+            const pillCtrlJoystick = document.getElementById("val-ctrl-joystick");
+            const pillCtrlAim = document.getElementById("val-ctrl-aim");
+            const pillCtrlCamera = document.getElementById("val-ctrl-camera");
+
+            const toast = document.getElementById("ws-toast");
+            const toastMsg = document.getElementById("ws-toast-msg");
+            let toastTimeout = null;
+
+            function showToast(msg) {
+                toastMsg.textContent = msg;
+                toast.classList.add("active");
+                if (toastTimeout) clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove("active");
+                }, 2200);
+            }
+
+            // Populate UI from Settings
+            function populateUI() {
+                const s = S.getSettings();
+
+                // Audio
+                elAudioMaster.value = s.audio.master;
+                pillAudioMaster.textContent = `${Math.round(s.audio.master * 100)}%`;
+
+                elAudioMusic.value = s.audio.music;
+                pillAudioMusic.textContent = `${Math.round(s.audio.music * 100)}%`;
+
+                elAudioSfx.value = s.audio.sfx;
+                pillAudioSfx.textContent = `${Math.round(s.audio.sfx * 100)}%`;
+
+                elAudioMuted.checked = Boolean(s.audio.muted);
+
+                // Controls
+                elCtrlJoystick.value = s.controls.joystickSensitivity;
+                pillCtrlJoystick.textContent = `${s.controls.joystickSensitivity.toFixed(2)}x`;
+
+                elCtrlAim.value = s.controls.aimSensitivity;
+                pillCtrlAim.textContent = `${s.controls.aimSensitivity.toFixed(2)}x`;
+
+                elCtrlCamera.value = s.controls.cameraSensitivity;
+                pillCtrlCamera.textContent = `${s.controls.cameraSensitivity.toFixed(2)}x`;
+
+                elCtrlVibration.checked = Boolean(s.controls.vibration);
+
+                // Graphics
+                elGfxQuality.value = s.graphics.quality;
+                elGfxParticles.checked = Boolean(s.graphics.particles);
+                elGfxGlow.checked = Boolean(s.graphics.glow);
+                elGfxReducedMotion.checked = Boolean(s.graphics.reducedMotion);
+
+                // Gameplay
+                elGpHints.checked = Boolean(s.gameplay.showHints);
+                elGpMarkers.checked = Boolean(s.gameplay.showQuestMarkers);
+
+                // Accessibility
+                elA11yLargeText.checked = Boolean(s.accessibility.largeText);
+                elA11yHighContrast.checked = Boolean(s.accessibility.highContrast);
+            }
+
+            // Harvest form values
+            function harvestForm() {
+                return {
+                    version: S.SCHEMA_VERSION,
+                    audio: {
+                        master: parseFloat(elAudioMaster.value),
+                        music: parseFloat(elAudioMusic.value),
+                        sfx: parseFloat(elAudioSfx.value),
+                        muted: elAudioMuted.checked
+                    },
+                    controls: {
+                        joystickSensitivity: parseFloat(elCtrlJoystick.value),
+                        aimSensitivity: parseFloat(elCtrlAim.value),
+                        cameraSensitivity: parseFloat(elCtrlCamera.value),
+                        vibration: elCtrlVibration.checked
+                    },
+                    graphics: {
+                        quality: elGfxQuality.value,
+                        particles: elGfxParticles.checked,
+                        glow: elGfxGlow.checked,
+                        reducedMotion: elGfxReducedMotion.checked
+                    },
+                    gameplay: {
+                        showHints: elGpHints.checked,
+                        showQuestMarkers: elGpMarkers.checked
+                    },
+                    accessibility: {
+                        largeText: elA11yLargeText.checked,
+                        highContrast: elA11yHighContrast.checked
+                    }
+                };
+            }
+
+            // Real-time live update bindings
+            elAudioMaster.addEventListener("input", (e) => {
+                pillAudioMaster.textContent = `${Math.round(e.target.value * 100)}%`;
+                S.updateSetting("audio.master", parseFloat(e.target.value));
+            });
+
+            elAudioMusic.addEventListener("input", (e) => {
+                pillAudioMusic.textContent = `${Math.round(e.target.value * 100)}%`;
+                S.updateSetting("audio.music", parseFloat(e.target.value));
+            });
+
+            elAudioSfx.addEventListener("input", (e) => {
+                pillAudioSfx.textContent = `${Math.round(e.target.value * 100)}%`;
+                S.updateSetting("audio.sfx", parseFloat(e.target.value));
+            });
+
+            elAudioMuted.addEventListener("change", (e) => {
+                S.updateSetting("audio.muted", e.target.checked);
+            });
+
+            elCtrlJoystick.addEventListener("input", (e) => {
+                pillCtrlJoystick.textContent = `${parseFloat(e.target.value).toFixed(2)}x`;
+                S.updateSetting("controls.joystickSensitivity", parseFloat(e.target.value));
+            });
+
+            elCtrlAim.addEventListener("input", (e) => {
+                pillCtrlAim.textContent = `${parseFloat(e.target.value).toFixed(2)}x`;
+                S.updateSetting("controls.aimSensitivity", parseFloat(e.target.value));
+            });
+
+            elCtrlCamera.addEventListener("input", (e) => {
+                pillCtrlCamera.textContent = `${parseFloat(e.target.value).toFixed(2)}x`;
+                S.updateSetting("controls.cameraSensitivity", parseFloat(e.target.value));
+            });
+
+            elCtrlVibration.addEventListener("change", (e) => {
+                S.updateSetting("controls.vibration", e.target.checked);
+                if (e.target.checked && window.StrativoWorldHaptics) {
+                    window.StrativoWorldHaptics.triggerHaptic("tap");
+                }
+            });
+
+            elGfxQuality.addEventListener("change", (e) => {
+                S.updateSetting("graphics.quality", e.target.value);
+            });
+
+            elGfxParticles.addEventListener("change", (e) => {
+                S.updateSetting("graphics.particles", e.target.checked);
+            });
+
+            elGfxGlow.addEventListener("change", (e) => {
+                S.updateSetting("graphics.glow", e.target.checked);
+            });
+
+            elGfxReducedMotion.addEventListener("change", (e) => {
+                S.updateSetting("graphics.reducedMotion", e.target.checked);
+            });
+
+            elGpHints.addEventListener("change", (e) => {
+                S.updateSetting("gameplay.showHints", e.target.checked);
+            });
+
+            elGpMarkers.addEventListener("change", (e) => {
+                S.updateSetting("gameplay.showQuestMarkers", e.target.checked);
+            });
+
+            elA11yLargeText.addEventListener("change", (e) => {
+                S.updateSetting("accessibility.largeText", e.target.checked);
+            });
+
+            elA11yHighContrast.addEventListener("change", (e) => {
+                S.updateSetting("accessibility.highContrast", e.target.checked);
+            });
+
+            // Action Buttons
+            document.getElementById("btn-save-apply").addEventListener("click", () => {
+                const settings = harvestForm();
+                S.saveSettings(settings);
+                if (window.StrativoWorldHaptics) {
+                    window.StrativoWorldHaptics.triggerHaptic("success");
+                }
+                showToast("All game settings applied!");
+            });
+
+            document.getElementById("btn-reset-defaults").addEventListener("click", () => {
+                S.resetSettings();
+                populateUI();
+                if (window.StrativoWorldHaptics) {
+                    window.StrativoWorldHaptics.triggerHaptic("warning");
+                }
+                showToast("Settings reset to defaults!");
+            });
+
+            // Back button intelligent return
+            const referrer = document.referrer;
+            if (referrer && referrer.includes("candle-city.html")) {
+                const btnBack = document.getElementById("btn-back-hub");
+                btnBack.href = "districts/candle-city.html";
+                btnBack.innerHTML = `<i class="fas fa-arrow-left"></i> Candle City`;
+                btnBack.title = "Return to Candle City";
+            }
+
+            populateUI();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,539 @@
+{
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "prec_jpy_01",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "pair": "USD/JPY",
+      "startPrice": 150.2,
+      "endPrice": 150.75,
+      "questionText": "USD/JPY moves from 150.20 to 150.75. On Japanese Yen pairs, how many pips is this?",
+      "options": [
+        "55 Pips",
+        "5.5 Pips",
+        "550 Pips",
+        "0.55 Pips"
+      ],
+      "correctAnswer": "55 Pips",
+      "explanation": "On JPY pairs, 1 pip is the 2nd decimal place (0.01). 150.75 - 150.20 = 0.55 = 55 pips."
+    },
+    {
+      "id": "prec_jpy_02",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "pair": "GBP/JPY",
+      "startPrice": 189.5,
+      "endPrice": 188.9,
+      "questionText": "GBP/JPY drops from 189.50 to 188.90. What is the pip decline?",
+      "options": [
+        "60 Pips",
+        "6 Pips",
+        "600 Pips",
+        "0.6 Pips"
+      ],
+      "correctAnswer": "60 Pips",
+      "explanation": "189.50 - 188.90 = 0.60 = 60 pips down on JPY quotation."
+    },
+    {
+      "id": "prec_jpy_03",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "pair": "EUR/JPY",
+      "startPrice": 162.1,
+      "endPrice": 162.95,
+      "questionText": "EUR/JPY advances from 162.10 to 162.95. What is the pip gain?",
+      "options": [
+        "85 Pips",
+        "8.5 Pips",
+        "850 Pips",
+        "0.85 Pips"
+      ],
+      "correctAnswer": "85 Pips",
+      "explanation": "162.95 - 162.10 = 0.85 = 85 pips."
+    },
+    {
+      "id": "prec_jpy_04",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "pair": "CAD/JPY",
+      "startPrice": 111.4,
+      "endPrice": 110.65,
+      "questionText": "CAD/JPY moves from 111.40 to 110.65. How many pips was the drop?",
+      "options": [
+        "75 Pips",
+        "7.5 Pips",
+        "750 Pips",
+        "0.75 Pips"
+      ],
+      "correctAnswer": "75 Pips",
+      "explanation": "111.40 - 110.65 = 0.75 = 75 pips."
+    },
+    {
+      "id": "prec_jpy_05",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "pair": "AUD/JPY",
+      "startPrice": 98.2,
+      "endPrice": 98.9,
+      "questionText": "AUD/JPY advances from 98.20 to 98.90. How many pips did it gain?",
+      "options": [
+        "70 Pips",
+        "7 Pips",
+        "700 Pips",
+        "0.7 Pips"
+      ],
+      "correctAnswer": "70 Pips",
+      "explanation": "98.90 - 98.20 = 0.70 = 70 pips."
+    },
+    {
+      "id": "prec_jpy_06",
+      "category": "JPY",
+      "difficulty": "advanced",
+      "pair": "CHF/JPY",
+      "startPrice": 168.1,
+      "endPrice": 169.3,
+      "questionText": "CHF/JPY surges from 168.10 to 169.30. What is the total pip gain?",
+      "options": [
+        "120 Pips",
+        "12 Pips",
+        "1,200 Pips",
+        "1.2 Pips"
+      ],
+      "correctAnswer": "120 Pips",
+      "explanation": "169.30 - 168.10 = 1.20 = 120 pips."
+    },
+    {
+      "id": "prec_jpy_07",
+      "category": "JPY_THEORY",
+      "difficulty": "beginner",
+      "questionText": "Why do Japanese Yen (JPY) currency pairs use the 2nd decimal place for 1 pip instead of the 4th?",
+      "options": [
+        "Because 1 Yen has roughly equivalent purchasing power to 1 Cent of USD/EUR",
+        "Because Japanese exchanges use base-12 math",
+        "Because Yen has no decimal coinage",
+        "Because of international regulatory caps"
+      ],
+      "correctAnswer": "Because 1 Yen has roughly equivalent purchasing power to 1 Cent of USD/EUR",
+      "explanation": "Since 1 USD is ~150 JPY, 1 Yen is roughly 1 cent. The 2nd decimal place (0.01 JPY) represents 1 pip."
+    },
+    {
+      "id": "prec_jpy_08",
+      "category": "JPY",
+      "difficulty": "beginner",
+      "pair": "USD/JPY",
+      "questionText": "If USD/JPY moves from 151.00 to 151.01, exactly how many pips is this?",
+      "options": [
+        "1.0 Pip",
+        "0.1 Pip",
+        "10 Pips",
+        "0.01 Pip"
+      ],
+      "correctAnswer": "1.0 Pip",
+      "explanation": "On JPY pairs, 0.01 = 1.0 pip."
+    },
+    {
+      "id": "prec_jpy_09",
+      "category": "JPY",
+      "difficulty": "beginner",
+      "pair": "USD/JPY",
+      "questionText": "If USD/JPY moves from 150.50 to 151.50, exactly how many pips is this?",
+      "options": [
+        "100 Pips",
+        "10 Pips",
+        "1,000 Pips",
+        "1.0 Pip"
+      ],
+      "correctAnswer": "100 Pips",
+      "explanation": "151.50 - 150.50 = 1.00 = 100 pips."
+    },
+    {
+      "id": "prec_jpy_10",
+      "category": "JPY",
+      "difficulty": "intermediate",
+      "pair": "GBP/JPY",
+      "questionText": "GBP/JPY falls from 191.00 to 189.80. What is the pip decline?",
+      "options": [
+        "120 Pips",
+        "12 Pips",
+        "1,200 Pips",
+        "1.2 Pips"
+      ],
+      "correctAnswer": "120 Pips",
+      "explanation": "191.00 - 189.80 = 1.20 = 120 pips."
+    },
+    {
+      "id": "prec_pip_01",
+      "category": "PIPETTE",
+      "difficulty": "intermediate",
+      "pair": "EUR/USD",
+      "startPrice": 1.085,
+      "endPrice": 1.08508,
+      "questionText": "EUR/USD shifts from 1.08500 to 1.08508. How many fractional points/pipettes is this?",
+      "options": [
+        "0.8 Pips (8 Pipettes/Points)",
+        "8 Pips",
+        "80 Pips",
+        "0.08 Pips"
+      ],
+      "correctAnswer": "0.8 Pips (8 Pipettes/Points)",
+      "explanation": "The 5th decimal place (0.00008) equals 8 fractional pipettes or 0.8 standard pips (10 pipettes = 1 pip)."
+    },
+    {
+      "id": "prec_pip_02",
+      "category": "PIPETTE",
+      "difficulty": "intermediate",
+      "pair": "GBP/USD",
+      "startPrice": 1.263,
+      "endPrice": 1.26315,
+      "questionText": "GBP/USD moves from 1.26300 to 1.26315. What is the fractional distance?",
+      "options": [
+        "1.5 Pips (15 Pipettes)",
+        "15 Pips",
+        "150 Pips",
+        "0.15 Pips"
+      ],
+      "correctAnswer": "1.5 Pips (15 Pipettes)",
+      "explanation": "1.26315 - 1.26300 = 0.00015 = 1.5 pips = 15 pipettes."
+    },
+    {
+      "id": "prec_pip_03",
+      "category": "PIPETTE",
+      "difficulty": "intermediate",
+      "pair": "USD/JPY",
+      "startPrice": 150.25,
+      "endPrice": 150.274,
+      "questionText": "USD/JPY quotes to 3 decimal places from 150.250 to 150.274. How many pips is this?",
+      "options": [
+        "2.4 Pips (24 Pipettes)",
+        "24 Pips",
+        "240 Pips",
+        "0.24 Pips"
+      ],
+      "correctAnswer": "2.4 Pips (24 Pipettes)",
+      "explanation": "150.274 - 150.250 = 0.024 = 2.4 pips (24 JPY pipettes)."
+    },
+    {
+      "id": "prec_pip_04",
+      "category": "PIPETTE_THEORY",
+      "difficulty": "beginner",
+      "questionText": "What is a 'Pipette' (or fractional point)?",
+      "options": [
+        "One-tenth of a standard pip (0.1 Pip / 5th decimal place)",
+        "Ten standard pips",
+        "One hundredth of a pip",
+        "A trading fee charged by brokers"
+      ],
+      "correctAnswer": "One-tenth of a standard pip (0.1 Pip / 5th decimal place)",
+      "explanation": "A pipette is one-tenth (1/10) of a pip, allowing brokers to quote narrower spreads."
+    },
+    {
+      "id": "prec_pip_05",
+      "category": "PIPETTE_CONVERSION",
+      "difficulty": "beginner",
+      "questionText": "How many standard pips is 75 fractional pipettes?",
+      "options": [
+        "7.5 Pips",
+        "75 Pips",
+        "0.75 Pips",
+        "750 Pips"
+      ],
+      "correctAnswer": "7.5 Pips",
+      "explanation": "75 pipettes / 10 = 7.5 standard pips."
+    },
+    {
+      "id": "prec_pip_06",
+      "category": "PIPETTE_READING",
+      "difficulty": "beginner",
+      "questionText": "EUR/USD price is displayed as 1.08453. What is the digit '3' at the end?",
+      "options": [
+        "The fractional pipette (0.3 pips)",
+        "The whole pip digit",
+        "The lot volume",
+        "The spread multiplier"
+      ],
+      "correctAnswer": "The fractional pipette (0.3 pips)",
+      "explanation": "In 5-decimal pricing, the 4th digit (5) is whole pips and the 5th digit (3) is fractional pipettes (0.3 pips)."
+    },
+    {
+      "id": "prec_pip_07",
+      "category": "PIPETTE_CONVERSION",
+      "difficulty": "beginner",
+      "questionText": "AUD/USD moves 45 broker points (pipettes). How many standard pips is this?",
+      "options": [
+        "4.5 Pips",
+        "45 Pips",
+        "0.45 Pips",
+        "450 Pips"
+      ],
+      "correctAnswer": "4.5 Pips",
+      "explanation": "45 / 10 = 4.5 pips."
+    },
+    {
+      "id": "prec_pip_08",
+      "category": "PIPETTE",
+      "difficulty": "intermediate",
+      "pair": "USD/CAD",
+      "startPrice": 1.35,
+      "endPrice": 1.35062,
+      "questionText": "USD/CAD advances from 1.35000 to 1.35062. What is the pip distance?",
+      "options": [
+        "6.2 Pips (62 Pipettes)",
+        "62 Pips",
+        "0.62 Pips",
+        "620 Pips"
+      ],
+      "correctAnswer": "6.2 Pips (62 Pipettes)",
+      "explanation": "1.35062 - 1.35000 = 0.00062 = 6.2 pips."
+    },
+    {
+      "id": "prec_lad_01",
+      "category": "PRICE_LADDER",
+      "difficulty": "beginner",
+      "pair": "EUR/USD",
+      "questionText": "On the Price Ladder, Rung A is 1.0850 and Rung B is 1.0880. What is the distance between rungs?",
+      "options": [
+        "30 Pips",
+        "3 Pips",
+        "300 Pips",
+        "0.3 Pips"
+      ],
+      "correctAnswer": "30 Pips",
+      "explanation": "1.0880 - 1.0850 = 0.0030 = 30 pips."
+    },
+    {
+      "id": "prec_lad_02",
+      "category": "PRICE_LADDER",
+      "difficulty": "beginner",
+      "pair": "GBP/USD",
+      "questionText": "On the Price Ladder, Rung A is 1.2600 and Rung B is 1.2540. What is the downward distance?",
+      "options": [
+        "60 Pips Down",
+        "6 Pips Down",
+        "600 Pips Down",
+        "0.6 Pips Down"
+      ],
+      "correctAnswer": "60 Pips Down",
+      "explanation": "1.2600 - 1.2540 = 0.0060 = 60 pips downward."
+    },
+    {
+      "id": "prec_lad_03",
+      "category": "PRICE_LADDER",
+      "difficulty": "intermediate",
+      "pair": "USD/JPY",
+      "questionText": "On the Price Ladder, USD/JPY Rung A is 150.00 and Rung B is 150.50. What is the rung distance?",
+      "options": [
+        "50 JPY Pips",
+        "5 Pips",
+        "500 Pips",
+        "0.5 Pips"
+      ],
+      "correctAnswer": "50 JPY Pips",
+      "explanation": "150.50 - 150.00 = 0.50 = 50 pips."
+    },
+    {
+      "id": "prec_lad_04",
+      "category": "INSTRUMENT_GOLD",
+      "difficulty": "intermediate",
+      "pair": "XAU/USD (Gold)",
+      "startPrice": 2040,
+      "endPrice": 2045,
+      "questionText": "Gold (XAU/USD) advances from $2040.00 to $2045.00. What is the dollar move and point equivalent?",
+      "options": [
+        "$5.00 Move (50 Pips / 500 Cents)",
+        "$50.00 Move",
+        "$0.50 Move",
+        "$500.00 Move"
+      ],
+      "correctAnswer": "$5.00 Move (50 Pips / 500 Cents)",
+      "explanation": "On Gold, $1.00 move = 10 pips ($0.10/pip). A $5.00 rise represents 50 pips (500 cents)."
+    },
+    {
+      "id": "prec_lad_05",
+      "category": "INSTRUMENT_GOLD",
+      "difficulty": "intermediate",
+      "pair": "XAU/USD (Gold)",
+      "questionText": "On standard broker Gold (XAU/USD) contracts, 1 pip typically represents:",
+      "options": [
+        "$0.10 (10 Cents)",
+        "$1.00",
+        "$0.01 (1 Cent)",
+        "$10.00"
+      ],
+      "correctAnswer": "$0.10 (10 Cents)",
+      "explanation": "In standard Gold CFD pricing, 1 pip is $0.10 (10 cents), and 10 pips is $1.00."
+    },
+    {
+      "id": "prec_lad_06",
+      "category": "INSTRUMENT_INDEX",
+      "difficulty": "intermediate",
+      "pair": "US30 (Dow Jones)",
+      "startPrice": 38900,
+      "endPrice": 38950,
+      "questionText": "US30 Index climbs from 38,900 to 38,950. How many index points did it gain?",
+      "options": [
+        "50 Points",
+        "5 Points",
+        "500 Points",
+        "0.5 Points"
+      ],
+      "correctAnswer": "50 Points",
+      "explanation": "Indices trade in integer points. 38,950 - 38,900 = 50 index points."
+    },
+    {
+      "id": "prec_lad_07",
+      "category": "INSTRUMENT_INDEX",
+      "difficulty": "intermediate",
+      "pair": "NAS100 (Nasdaq)",
+      "startPrice": 17900,
+      "endPrice": 17925,
+      "questionText": "NAS100 Index rallies from 17,900 to 17,925. How many index points did it travel?",
+      "options": [
+        "25 Points",
+        "2.5 Points",
+        "250 Points",
+        "0.25 Points"
+      ],
+      "correctAnswer": "25 Points",
+      "explanation": "17,925 - 17,900 = 25 index points."
+    },
+    {
+      "id": "prec_lad_08",
+      "category": "INSTRUMENT_INDEX",
+      "difficulty": "intermediate",
+      "pair": "SPX500 (S&P 500)",
+      "startPrice": 5000,
+      "endPrice": 5015.5,
+      "questionText": "SPX500 moves from 5000.0 to 5015.5. What is the point expansion?",
+      "options": [
+        "15.5 Points",
+        "155 Points",
+        "1.55 Points",
+        "1,550 Points"
+      ],
+      "correctAnswer": "15.5 Points",
+      "explanation": "5015.5 - 5000.0 = 15.5 index points."
+    },
+    {
+      "id": "prec_lad_09",
+      "category": "INSTRUMENT_OIL",
+      "difficulty": "intermediate",
+      "pair": "WTI Crude Oil",
+      "startPrice": 78,
+      "endPrice": 78.5,
+      "questionText": "Crude Oil (WTI) moves from $78.00 to $78.50. What is the move in cents and ticks?",
+      "options": [
+        "$0.50 (50 Cents / 50 Ticks)",
+        "$5.00",
+        "$0.05",
+        "$50.00"
+      ],
+      "correctAnswer": "$0.50 (50 Cents / 50 Ticks)",
+      "explanation": "$78.50 - $78.00 = $0.50 = 50 cents (50 ticks at $0.01/tick)."
+    },
+    {
+      "id": "prec_lad_10",
+      "category": "SPREAD_CALC",
+      "difficulty": "beginner",
+      "pair": "EUR/USD",
+      "questionText": "If EUR/USD broker spread is quoted as 0.8 pips, how many fractional pipettes is this?",
+      "options": [
+        "8 Pipettes",
+        "80 Pipettes",
+        "0.08 Pipettes",
+        "800 Pipettes"
+      ],
+      "correctAnswer": "8 Pipettes",
+      "explanation": "0.8 pips * 10 = 8 pipettes."
+    },
+    {
+      "id": "prec_lad_11",
+      "category": "SPREAD_CALC",
+      "difficulty": "intermediate",
+      "pair": "USD/JPY",
+      "questionText": "USD/JPY Bid is 150.300 and Ask is 150.312. What is the exact spread?",
+      "options": [
+        "1.2 Pips (12 Pipettes)",
+        "12 Pips",
+        "0.12 Pips",
+        "120 Pips"
+      ],
+      "correctAnswer": "1.2 Pips (12 Pipettes)",
+      "explanation": "150.312 - 150.300 = 0.012 = 1.2 pips = 12 JPY pipettes."
+    },
+    {
+      "id": "prec_lad_12",
+      "category": "COMPARISON",
+      "difficulty": "intermediate",
+      "questionText": "Which statement accurately describes 25 pips on EUR/USD versus 25 pips on USD/JPY?",
+      "options": [
+        "Both represent 25 standard units of distance for their respective market pricing conventions",
+        "EUR/USD 25 pips is 100 times larger than USD/JPY",
+        "USD/JPY 25 pips cannot be calculated",
+        "EUR/USD 25 pips equals 250 JPY pips"
+      ],
+      "correctAnswer": "Both represent 25 standard units of distance for their respective market pricing conventions",
+      "explanation": "1 pip is normalized to 0.0001 for EUR/USD and 0.01 for USD/JPY, making 25 pips a standardized 25-unit measurement on both."
+    },
+    {
+      "id": "prec_lad_13",
+      "category": "INSTRUMENT_GOLD",
+      "difficulty": "intermediate",
+      "pair": "XAU/USD (Gold)",
+      "startPrice": 2050,
+      "endPrice": 2050.8,
+      "questionText": "Gold (XAU/USD) fluctuates from $2050.00 to $2050.80. What is the move in pips?",
+      "options": [
+        "8 Pips ($0.80 / 80 Cents)",
+        "80 Pips",
+        "0.8 Pips",
+        "800 Pips"
+      ],
+      "correctAnswer": "8 Pips ($0.80 / 80 Cents)",
+      "explanation": "$0.80 / $0.10 per pip = 8 pips."
+    },
+    {
+      "id": "prec_lad_14",
+      "category": "THEORY",
+      "difficulty": "beginner",
+      "questionText": "What is the 5th decimal place in GBP/USD quotation called?",
+      "options": [
+        "Pipette / Fractional Point",
+        "Standard Pip",
+        "Cent",
+        "Lot Unit"
+      ],
+      "correctAnswer": "Pipette / Fractional Point",
+      "explanation": "The 5th decimal place is the fractional pipette (0.1 pip)."
+    },
+    {
+      "id": "prec_lad_15",
+      "category": "THEORY",
+      "difficulty": "beginner",
+      "questionText": "What is the 3rd decimal place in USD/JPY quotation called?",
+      "options": [
+        "JPY Pipette / Fractional Point",
+        "Standard JPY Pip",
+        "Yen Integer",
+        "Cent"
+      ],
+      "correctAnswer": "JPY Pipette / Fractional Point",
+      "explanation": "The 3rd decimal place on JPY pairs is the fractional pipette (0.1 pip)."
+    },
+    {
+      "id": "prec_lad_16",
+      "category": "PRICE_LADDER",
+      "difficulty": "beginner",
+      "pair": "AUD/USD",
+      "questionText": "On the Price Ladder, AUD/USD moves from 0.6500 to 0.6535. What is the distance?",
+      "options": [
+        "35 Pips",
+        "3.5 Pips",
+        "350 Pips",
+        "0.35 Pips"
+      ],
+      "correctAnswer": "35 Pips",
+      "explanation": "0.6535 - 0.6500 = 0.0035 = 35 pips."
+    }
+  ]
+}

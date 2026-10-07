@@ -1,0 +1,596 @@
+/* ==========================================================================
+   STRATIVO WORLD — DISTRICT 6: PSYCHOLOGY ZONE STYLES
+   Version: 1.0.0
+   Color Palette: Neon Violet (#8B5CF6), Cyan (#06B6D4), Pink (#EC4899), Emerald (#10B981), Tilt Rose (#F43F5E), Gold (#FCD34D)
+   Theme: High-Tech Neural Cortex & Cognitive Discipline Laboratory
+   ========================================================================== */
+
+:root {
+    --psych-neon-violet: #8B5CF6;
+    --psych-neon-cyan: #06B6D4;
+    --psych-neon-pink: #EC4899;
+    --psych-neon-emerald: #10B981;
+    --psych-neon-rose: #F43F5E;
+    --psych-neon-gold: #FCD34D;
+    --psych-neon-amber: #F59E0B;
+
+    --psych-bg-dark: #030712;
+    --psych-bg-card: rgba(15, 23, 42, 0.96);
+    --psych-bg-input: #0F172A;
+    --psych-border-glow: rgba(139, 92, 246, 0.45);
+    --psych-border-subtle: rgba(255, 255, 255, 0.12);
+    --psych-text-main: #F8FAFC;
+    --psych-text-muted: #94A3B8;
+}
+
+body {
+    background-color: var(--psych-bg-dark);
+    color: var(--psych-text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+/* Master Viewport Layout */
+.psych-viewport-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #030712;
+}
+
+#psychology-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+/* HUD Overlay */
+.psych-hud-top {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.psych-hud-badge {
+    pointer-events: auto;
+    background: var(--psych-bg-card);
+    border: 1px solid var(--psych-border-glow);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 10px rgba(139, 92, 246, 0.25);
+}
+
+.psych-hud-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--psych-neon-violet);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.psych-hud-xp {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--psych-neon-cyan);
+}
+
+/* Mini-Map */
+.psych-minimap-container {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 210px;
+    height: 160px;
+    background: rgba(10, 15, 30, 0.92);
+    border: 1px solid var(--psych-border-glow);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.psych-minimap-header {
+    background: rgba(139, 92, 246, 0.2);
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--psych-neon-violet);
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.5px;
+}
+
+#psych-minimap-canvas {
+    display: block;
+    width: 210px;
+    height: 135px;
+}
+
+/* Interaction Prompt Banner */
+.psych-prompt-banner {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid var(--psych-neon-violet);
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.45);
+    padding: 0.6rem 1.6rem;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    z-index: 25;
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+}
+
+.psych-prompt-banner.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+}
+
+.psych-key-badge {
+    background: var(--psych-neon-violet);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.75rem;
+    padding: 2px 7px;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(139, 92, 246, 0.6);
+}
+
+/* Standard Buttons */
+.psych-btn {
+    background: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #F8FAFC;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    text-decoration: none;
+}
+
+.psych-btn:hover {
+    background: #334155;
+    border-color: #94A3B8;
+}
+
+.psych-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.psych-btn-sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.psych-btn-violet {
+    background: rgba(139, 92, 246, 0.25);
+    border-color: #8B5CF6;
+    color: #DDD6FE;
+}
+.psych-btn-violet:hover {
+    background: #8B5CF6;
+    color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+.psych-btn-cyan {
+    background: rgba(6, 182, 212, 0.2);
+    border-color: #06B6D4;
+    color: #CFFAFE;
+}
+.psych-btn-cyan:hover {
+    background: #06B6D4;
+    color: #030712;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+}
+
+.psych-btn-pink {
+    background: rgba(236, 72, 153, 0.2);
+    border-color: #EC4899;
+    color: #FCE7F3;
+}
+.psych-btn-pink:hover {
+    background: #EC4899;
+    color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+}
+
+.psych-btn-emerald {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: #10B981;
+    color: #A7F3D0;
+}
+.psych-btn-emerald:hover {
+    background: #10B981;
+    color: #030712;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+.psych-btn-rose {
+    background: rgba(244, 63, 94, 0.2);
+    border-color: #F43F5E;
+    color: #FECDD3;
+}
+.psych-btn-rose:hover {
+    background: #F43F5E;
+    color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+}
+
+.psych-btn-gold {
+    background: rgba(252, 211, 77, 0.2);
+    border-color: #FCD34D;
+    color: #FEF3C7;
+}
+.psych-btn-gold:hover {
+    background: #FCD34D;
+    color: #030712;
+}
+
+/* Modals */
+.psych-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 7, 18, 0.88);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.psych-modal-backdrop.active {
+    display: flex;
+}
+
+.psych-modal-card {
+    background: var(--psych-bg-card);
+    border: 1px solid var(--psych-border-glow);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 860px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.85), 0 0 20px rgba(139, 92, 246, 0.3);
+    animation: psychModalPop 0.2s ease-out;
+}
+
+@keyframes psychModalPop {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.psych-modal-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--psych-border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(139, 92, 246, 0.08);
+}
+
+.psych-modal-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--psych-neon-violet);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.psych-modal-close {
+    background: none;
+    border: none;
+    color: #94A3B8;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.psych-modal-close:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.psych-modal-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Feedback Box */
+.psych-feedback-box {
+    display: none;
+    padding: 0.85rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-top: 0.5rem;
+    animation: psychFadeIn 0.2s ease-in;
+}
+
+@keyframes psychFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.psych-feedback-correct {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid #10B981;
+    color: #A7F3D0;
+}
+
+.psych-feedback-incorrect {
+    background: rgba(244, 63, 94, 0.15);
+    border: 1px solid #F43F5E;
+    color: #FECDD3;
+}
+
+/* Question Option Grids */
+.psych-options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+    .psych-options-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.psych-option-btn {
+    background: #0F172A;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    color: #F8FAFC;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.psych-option-btn:hover:not(:disabled) {
+    background: rgba(139, 92, 246, 0.18);
+    border-color: #8B5CF6;
+    transform: translateY(-1px);
+}
+
+.psych-option-btn.selected-correct {
+    background: rgba(16, 185, 129, 0.25) !important;
+    border-color: #10B981 !important;
+    color: #A7F3D0 !important;
+}
+
+.psych-option-btn.selected-incorrect {
+    background: rgba(244, 63, 94, 0.25) !important;
+    border-color: #F43F5E !important;
+    color: #FECDD3 !important;
+}
+
+/* Simulator Canvas Frames */
+.psych-canvas-frame {
+    background: #030712;
+    border: 1px solid var(--psych-border-subtle);
+    border-radius: 8px;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.psych-canvas-frame canvas {
+    max-width: 100%;
+    display: block;
+}
+
+/* Dynamic Inputs & Sliders */
+.psych-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.psych-input-group label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--psych-neon-cyan);
+    letter-spacing: 0.3px;
+}
+
+.psych-input {
+    background: var(--psych-bg-input);
+    border: 1px solid var(--psych-border-subtle);
+    border-radius: 6px;
+    color: #FFF;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+}
+.psych-input:focus {
+    border-color: var(--psych-neon-violet);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.35);
+}
+
+.psych-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: #1E293B;
+    outline: none;
+}
+.psych-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--psych-neon-violet);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0.8);
+}
+
+/* Stat Pills & Gauges */
+.psych-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+.psych-stat-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--psych-border-subtle);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.psych-stat-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--psych-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.psych-stat-val {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--psych-neon-cyan);
+}
+
+/* Gauge Bar */
+.psych-gauge-track {
+    width: 100%;
+    height: 12px;
+    background: #1E293B;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.psych-gauge-fill {
+    height: 100%;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+/* Boss Fight Bar */
+.psych-boss-hud {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--psych-border-subtle);
+    border-radius: 8px;
+}
+
+.psych-hp-bar {
+    width: 100%;
+    height: 14px;
+    background: #0F172A;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.psych-hp-fill-player {
+    height: 100%;
+    background: linear-gradient(90deg, #06B6D4, #10B981);
+    transition: width 0.3s;
+}
+
+.psych-hp-fill-boss {
+    height: 100%;
+    background: linear-gradient(90deg, #F43F5E, #EC4899);
+    transition: width 0.3s;
+}
+
+/* Mobile Action Button */
+.psych-mobile-action-btn {
+    display: none;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: var(--psych-neon-violet);
+    color: #FFFFFF;
+    font-weight: 900;
+    font-size: 0.85rem;
+    border: none;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+    z-index: 25;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .psych-mobile-action-btn {
+        display: block;
+    }
+    .psych-minimap-container {
+        bottom: 6.5rem;
+        right: 1rem;
+        width: 140px;
+        height: 105px;
+    }
+    #psych-minimap-canvas {
+        width: 140px;
+        height: 85px;
+    }
+    .psych-boss-hud {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#030712">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Strativo World — 2D RPG Core Prototype</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- RPG Core Stylesheet -->
+    <link rel="stylesheet" href="../../css/rpg-core.css">
+</head>
+
+<body class="rpg-page">
+
+    <div class="rpg-layout-container">
+
+        <!-- ================================================================
+             1. TOP HUD BAR
+             ================================================================ -->
+        <header class="rpg-top-hud">
+            <div class="rpg-hud-player-group">
+                <div class="rpg-hud-avatar-icon">
+                    <i class="fas fa-user-astronaut" id="hud-avatar-icon"></i>
+                </div>
+                <div class="rpg-hud-player-meta">
+                    <div class="rpg-hud-name-row">
+                        <span class="rpg-hud-handle" id="hud-player-handle">Student</span>
+                        <span class="rpg-hud-level-tag" id="hud-player-level">LVL 1</span>
+                    </div>
+                    <span class="rpg-hud-rank" id="hud-player-rank">Novice Chartist</span>
+                </div>
+            </div>
+
+            <div class="rpg-hud-district-indicator">
+                <span class="rpg-district-beacon-dot" aria-hidden="true"></span>
+                <span id="hud-district-title">Core Testing Realm</span>
+            </div>
+
+            <div class="rpg-hud-actions">
+                <button type="button" class="rpg-btn" id="btn-toggle-debug" title="Toggle Debug Mode (F3)">
+                    <i class="fas fa-bug"></i> <span id="debug-btn-label">Debug: Off</span>
+                </button>
+                <button type="button" class="rpg-btn" id="btn-fullscreen" title="Toggle Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <a href="../hub.html" class="rpg-btn rpg-btn-cyan" title="Return to Strativo World Hub">
+                    <i class="fas fa-arrow-left"></i> World Hub
+                </a>
+            </div>
+        </header>
+
+        <!-- ================================================================
+             2. MAIN GAME VIEWPORT & CANVAS
+             ================================================================ -->
+        <main class="rpg-viewport-wrapper" id="rpg-viewport">
+            <canvas id="rpg-canvas" class="rpg-canvas" tabindex="0" aria-label="Strativo 2D RPG Game Viewport"></canvas>
+
+            <!-- Interaction Prompt Floating Pill -->
+            <div class="rpg-interact-prompt" id="rpg-prompt" aria-live="polite">
+                <span class="rpg-key-badge">E</span>
+                <span class="rpg-interact-title" id="prompt-name">Terminal</span>
+                <span class="rpg-interact-action" id="prompt-action">• Access Intel</span>
+            </div>
+
+            <!-- Mobile Touch Controls Layer -->
+            <div class="rpg-touch-controls-layer">
+                <button type="button" class="rpg-touch-action-btn" id="touch-action-btn" aria-label="Interact or Action">
+                    <i class="fas fa-hand-pointer"></i>
+                    <span>ACTION</span>
+                </button>
+                <div class="rpg-mobile-joystick-hint">
+                    <i class="fas fa-arrows-up-down-left-right"></i> Touch & drag left side to move
+                </div>
+            </div>
+
+            <!-- Interaction Dialog Modal -->
+            <div class="rpg-dialog-backdrop" id="rpg-dialog" role="dialog" aria-modal="true" aria-hidden="true">
+                <div class="rpg-dialog-card">
+                    <div class="rpg-dialog-header">
+                        <h3 id="dialog-title"><i class="fas fa-terminal"></i> Terminal</h3>
+                        <button type="button" class="rpg-btn" id="dialog-close-btn" aria-label="Close dialog">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="rpg-dialog-body" id="dialog-content">
+                        Loading transmission...
+                    </div>
+                    <div class="rpg-dialog-footer">
+                        <button type="button" class="rpg-btn rpg-btn-cyan" id="dialog-confirm-btn">Acknowledge</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- World Transition Overlay -->
+            <div class="rpg-transition-screen" id="rpg-transition" aria-hidden="true">
+                <div class="rpg-spinner"></div>
+                <div style="font-weight: 700; color: #00F0FF;" id="transition-text">Connecting Orbital District...</div>
+            </div>
+        </main>
+
+        <!-- ================================================================
+             3. CONTROLS GUIDE & LIVE TELEMETRY PANELS
+             ================================================================ -->
+        <section class="rpg-info-grid">
+            <div class="rpg-card">
+                <h3><i class="fas fa-gamepad" style="color: var(--rpg-neon-cyan);"></i> Controls & Navigation</h3>
+                <div class="rpg-controls-list">
+                    <div class="rpg-control-item">
+                        <span class="rpg-kbd">W A S D</span>
+                        <span>or <span class="rpg-kbd">Arrows</span> Move Character</span>
+                    </div>
+                    <div class="rpg-control-item">
+                        <span class="rpg-kbd">E</span>
+                        <span>or <span class="rpg-kbd">Space</span> Interact</span>
+                    </div>
+                    <div class="rpg-control-item">
+                        <span class="rpg-kbd">F3</span>
+                        <span>or <span class="rpg-kbd">`</span> Toggle Debug Overlay</span>
+                    </div>
+                    <div class="rpg-control-item">
+                        <i class="fas fa-mobile-screen" style="color: var(--rpg-neon-emerald);"></i>
+                        <span>Touch Screen: Virtual Joystick + Action Button</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rpg-card">
+                <h3><i class="fas fa-microchip" style="color: var(--rpg-neon-emerald);"></i> Engine Live Telemetry</h3>
+                <div class="rpg-controls-list" id="engine-telemetry-list">
+                    <div class="rpg-control-item">
+                        <strong style="color: var(--rpg-neon-cyan);">Position:</strong>
+                        <span id="tel-player-pos">X: 0, Y: 0</span>
+                    </div>
+                    <div class="rpg-control-item">
+                        <strong style="color: var(--rpg-neon-cyan);">Facing:</strong>
+                        <span id="tel-player-facing">DOWN</span>
+                    </div>
+                    <div class="rpg-control-item">
+                        <strong style="color: var(--rpg-neon-emerald);">Camera:</strong>
+                        <span id="tel-cam-pos">X: 0, Y: 0</span>
+                    </div>
+                    <div class="rpg-control-item">
+                        <strong style="color: var(--rpg-neon-amber);">FPS / Delta:</strong>
+                        <span id="tel-fps">60 FPS (16ms)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ====================================================================
+         SCRIPTS: WORLD STATE INTEGRATION + 2D RPG CORE ENGINE
+         ==================================================================== -->
+    <script src="../js/core/world-state.js"></script>
+    <script src="../js/core/world-xp-engine.js"></script>
+
+    <script src="../js/rpg/collision.js"></script>
+    <script src="../js/rpg/input.js"></script>
+    <script src="../js/rpg/camera.js"></script>
+    <script src="../js/rpg/player.js"></script>
+    <script src="../js/rpg/world.js"></script>
+    <script src="../js/rpg/rpg-core.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvas = document.getElementById("rpg-canvas");
+            const viewport = document.getElementById("rpg-viewport");
+            const promptEl = document.getElementById("rpg-prompt");
+            const promptName = document.getElementById("prompt-name");
+            const promptAction = document.getElementById("prompt-action");
+            const dialogEl = document.getElementById("rpg-dialog");
+            const dialogTitle = document.getElementById("dialog-title");
+            const dialogContent = document.getElementById("dialog-content");
+            const dialogCloseBtn = document.getElementById("dialog-close-btn");
+            const dialogConfirmBtn = document.getElementById("dialog-confirm-btn");
+            const debugBtn = document.getElementById("btn-toggle-debug");
+            const debugBtnLabel = document.getElementById("debug-btn-label");
+            const fullscreenBtn = document.getElementById("btn-fullscreen");
+            const transitionEl = document.getElementById("rpg-transition");
+            const transitionText = document.getElementById("transition-text");
+
+            // Telemetry Elements
+            const telPos = document.getElementById("tel-player-pos");
+            const telFacing = document.getElementById("tel-player-facing");
+            const telCam = document.getElementById("tel-cam-pos");
+            const telFps = document.getElementById("tel-fps");
+
+            // Sync HUD with existing Strativo World State
+            function syncHUD() {
+                try {
+                    if (window.StrativoWorldState && typeof window.StrativoWorldState.get === "function") {
+                        const state = window.StrativoWorldState.get();
+                        if (state) {
+                            document.getElementById("hud-player-handle").textContent = state.handle || "Student";
+                            document.getElementById("hud-player-level").textContent = `LVL ${state.level || 1}`;
+                            document.getElementById("hud-player-rank").textContent = state.rank || "Novice Chartist";
+                        }
+                    }
+                } catch (err) {
+                    console.warn("HUD sync error:", err);
+                }
+            }
+            syncHUD();
+
+            // Initialize RPG Engine
+            const rpg = new window.StrativoRPG.RPGCore({
+                canvas: canvas,
+                container: viewport,
+                playerConfig: {
+                    x: 800,
+                    y: 600,
+                    assetPath: "../assets/player/player-avatar.png",
+                    speed: 220
+                },
+                worldConfig: {
+                    width: 1600,
+                    height: 1200
+                },
+                onInteractionPrompt: (data) => {
+                    if (data && data.active) {
+                        promptName.textContent = data.name;
+                        promptAction.textContent = `• ${data.promptText}`;
+                        promptEl.classList.add("active");
+                    } else {
+                        promptEl.classList.remove("active");
+                    }
+                },
+                onInteractionTrigger: (obj, result) => {
+                    if (result && (result.title || result.message)) {
+                        dialogTitle.innerHTML = `<i class="fas ${obj.icon || 'fa-info-circle'}" style="color: var(--rpg-neon-cyan);"></i> ${result.title || obj.name}`;
+                        dialogContent.textContent = result.message || "";
+                        dialogEl.classList.add("active");
+                        dialogEl.setAttribute("aria-hidden", "false");
+                    }
+                },
+                onDistrictTransition: (districtId, options) => {
+                    transitionText.textContent = `Connecting to ${districtId.replace('-', ' ').toUpperCase()}...`;
+                    transitionEl.classList.add("active");
+                    transitionEl.setAttribute("aria-hidden", "false");
+
+                    setTimeout(() => {
+                        transitionEl.classList.remove("active");
+                        transitionEl.setAttribute("aria-hidden", "true");
+                    }, 1400);
+                }
+            });
+
+            // Start Engine
+            rpg.start();
+
+            // Dialog Close Handlers
+            function closeDialog() {
+                dialogEl.classList.remove("active");
+                dialogEl.setAttribute("aria-hidden", "true");
+                canvas.focus();
+            }
+            dialogCloseBtn.addEventListener("click", closeDialog);
+            dialogConfirmBtn.addEventListener("click", closeDialog);
+
+            // Debug Mode Toggle
+            function updateDebugUI() {
+                debugBtnLabel.textContent = `Debug: ${rpg.debug ? "ON" : "OFF"}`;
+                if (rpg.debug) {
+                    debugBtn.classList.add("rpg-btn-cyan");
+                } else {
+                    debugBtn.classList.remove("rpg-btn-cyan");
+                }
+            }
+            debugBtn.addEventListener("click", () => {
+                rpg.toggleDebug();
+                updateDebugUI();
+            });
+            updateDebugUI();
+
+            // Fullscreen Toggle
+            fullscreenBtn.addEventListener("click", () => {
+                if (!document.fullscreenElement) {
+                    viewport.requestFullscreen().catch(err => console.warn(err));
+                } else {
+                    document.exitFullscreen().catch(err => console.warn(err));
+                }
+            });
+
+            // Live Telemetry Sync Interval (10Hz)
+            setInterval(() => {
+                if (!rpg) return;
+                const state = rpg.getPublicState();
+                telPos.textContent = `X: ${state.player.x}, Y: ${state.player.y}`;
+                telFacing.textContent = `${state.player.facing.toUpperCase()} (${state.player.state.toUpperCase()})`;
+                telCam.textContent = `X: ${state.camera.x}, Y: ${state.camera.y}`;
+                telFps.textContent = `${state.fps} FPS`;
+                updateDebugUI();
+            }, 100);
+
+            // Focus canvas on click
+            viewport.addEventListener("click", () => {
+                canvas.focus();
+            });
+        });
+    </script>
+</body>
+
+</html>

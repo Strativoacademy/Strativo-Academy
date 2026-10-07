@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Strativo World — Psychology Zone (District 6)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/rpg-core.css">
+    <link rel="stylesheet" href="../../css/psychology-zone.css">
+</head>
+<body>
+    <div class="psych-viewport-wrapper" id="psych-viewport-wrapper">
+        <!-- Master Game Canvas -->
+        <canvas id="psychology-canvas" width="1280" height="720" tabindex="0"></canvas>
+
+        <!-- Top HUD -->
+        <header class="psych-hud-top" role="banner">
+            <div class="psych-hud-badge">
+                <div class="psych-hud-title">
+                    <i class="fas fa-brain"></i>
+                    <span>PSYCHOLOGY ZONE</span>
+                </div>
+                <span style="color: rgba(255,255,255,0.3);">|</span>
+                <div class="psych-hud-xp">
+                    <i class="fas fa-bolt-lightning"></i>
+                    <span id="hud-xp-val">0</span> XP
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; pointer-events: auto;">
+                <button type="button" class="psych-btn psych-btn-sm" id="btn-open-missions" aria-label="Open Missions Journal">
+                    <i class="fas fa-compass"></i> Mind Journal
+                </button>
+                <button type="button" class="psych-btn psych-btn-sm" id="btn-toggle-minimap" aria-label="Toggle Mini-Map">
+                    <i class="fas fa-map"></i> Radar [M]
+                </button>
+                <a href="../hub.html" class="psych-btn psych-btn-sm psych-btn-rose" style="text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i> Hub
+                </a>
+            </div>
+        </header>
+
+        <!-- Mini-Map Overlay -->
+        <aside class="psych-minimap-container" id="psych-minimap" aria-label="District Mini-Map">
+            <div class="psych-minimap-header">
+                <span>DISTRICT 6 RADAR</span>
+                <span id="minimap-explored-count">0 / 12</span>
+            </div>
+            <canvas id="psych-minimap-canvas" width="210" height="135"></canvas>
+        </aside>
+
+        <!-- Interaction Prompt Banner -->
+        <div class="psych-prompt-banner hidden" id="psych-prompt-banner" role="status" aria-live="polite">
+            <span class="psych-key-badge">ACTION</span>
+            <span id="psych-prompt-text" style="font-weight: 700; font-size: 0.95rem; color: #FFF;">Interact [E]</span>
+        </div>
+
+        <!-- Mobile Touch Action Button -->
+        <button type="button" class="psych-mobile-action-btn" id="psych-mobile-action" aria-label="Action Button">ACTION</button>
+
+        <!-- ====================================================================
+             1. EXPLORATION DISCOVERY MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-discovery-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-compass"></i> <span id="psych-discovery-heading">Exploration Node</span></div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="psych-discovery-lore" style="font-size: 1.05rem; color: #E2E8F0; line-height: 1.55;"></p>
+                    <div id="psych-discovery-xp" style="font-weight: 800; color: var(--psych-neon-violet); font-size: 1.1rem;"></div>
+                    <button type="button" class="psych-btn psych-btn-violet" style="margin-top: 1rem;" onclick="window.StrativoRPG.closeAllModals()">Integrate &amp; Continue [Space]</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             2. PSYCHOLOGY ACADEMY MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-academy-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-graduation-cap"></i> Psychology Academy: Neuro-Foundations</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="acad-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="acad-options-grid"></div>
+                    <div class="psych-feedback-box" id="acad-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="acad-skip-btn"><i class="fas fa-sync"></i> Next Neuro Drill</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             3. DISCIPLINE DOJO MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-dojo-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-hand-fist"></i> Discipline Dojo: Systematic Execution</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="dojo-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="dojo-options-grid"></div>
+                    <div class="psych-feedback-box" id="dojo-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="dojo-skip-btn"><i class="fas fa-sync"></i> Next Discipline Trial</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             4. BIAS OBSERVATORY MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-bias-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-eye"></i> Cognitive Bias Observatory</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="bias-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="bias-options-grid"></div>
+                    <div class="psych-feedback-box" id="bias-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="bias-skip-btn"><i class="fas fa-sync"></i> Next Bias Case</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             5. FOMO CHAMBER MODAL (Interactive R:R Degradation Canvas)
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-fomo-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-shield-halved"></i> FOMO Containment &amp; R:R Degradation</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <div class="psych-canvas-frame">
+                        <canvas id="fomo-canvas" width="600" height="200"></canvas>
+                    </div>
+                    <div class="psych-stat-grid" id="fomo-metrics-grid">
+                        <div class="psych-stat-card">
+                            <span class="psych-stat-label">Initial R:R</span>
+                            <span class="psych-stat-val" style="color: var(--psych-neon-emerald);" id="fomo-init-rr">3.00 : 1</span>
+                        </div>
+                        <div class="psych-stat-card">
+                            <span class="psych-stat-label">Chased R:R</span>
+                            <span class="psych-stat-val" style="color: var(--psych-neon-rose);" id="fomo-chased-rr">0.54 : 1</span>
+                        </div>
+                        <div class="psych-stat-card">
+                            <span class="psych-stat-label">Edge Destruction</span>
+                            <span class="psych-stat-val" style="color: var(--psych-neon-rose);" id="fomo-degrade-pct">82.0%</span>
+                        </div>
+                    </div>
+                    <p id="fomo-q-text" style="font-size: 1rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="fomo-options-grid"></div>
+                    <div class="psych-feedback-box" id="fomo-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="fomo-skip-btn"><i class="fas fa-sync"></i> Next FOMO Trap</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             6. PATIENCE & CASH PAVILION MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-patience-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-hourglass-half"></i> Patience &amp; Cash Pavilion</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="pat-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="pat-options-grid"></div>
+                    <div class="psych-feedback-box" id="pat-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="pat-skip-btn"><i class="fas fa-sync"></i> Next Patience Scenario</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             7. TILT RECOVERY LAB MODAL (Interactive Tilt Barometer Canvas)
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-tilt-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-heart-pulse"></i> Tilt Recovery &amp; Barometer Lab</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <div class="psych-canvas-frame">
+                        <canvas id="tilt-canvas" width="600" height="180"></canvas>
+                    </div>
+                    <div class="psych-stat-grid">
+                        <div class="psych-stat-card">
+                            <span class="psych-stat-label">Tilt Index</span>
+                            <span class="psych-stat-val" id="tilt-score-val" style="color: var(--psych-neon-rose);">0.75 / 1.0</span>
+                        </div>
+                        <div class="psych-stat-card">
+                            <span class="psych-stat-label">State Level</span>
+                            <span class="psych-stat-val" id="tilt-level-val" style="color: var(--psych-neon-rose);">SEVERE TILT</span>
+                        </div>
+                        <div class="psych-stat-card">
+                            <span class="psych-stat-label">Mandatory Cooldown</span>
+                            <span class="psych-stat-val" id="tilt-cooldown-val" style="color: var(--psych-neon-amber);">24 Hours Lock</span>
+                        </div>
+                    </div>
+                    <p id="tilt-q-text" style="font-size: 1rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="tilt-options-grid"></div>
+                    <div class="psych-feedback-box" id="tilt-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="tilt-skip-btn"><i class="fas fa-sync"></i> Next Tilt Case</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             8. REVENGE TRADING DEFENSE STATION MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-revenge-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-ban"></i> Revenge Trading Circuit Breakers</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="rev-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="rev-options-grid"></div>
+                    <div class="psych-feedback-box" id="rev-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="rev-skip-btn"><i class="fas fa-sync"></i> Next Defense Scenario</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             9. TRADE JOURNAL SANCTUARY MODAL (Interactive Compliance Radar Canvas)
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-journal-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-book-bookmark"></i> Trade Journal Sanctuary &amp; Auditor</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <div class="psych-canvas-frame">
+                        <canvas id="journal-canvas" width="600" height="200"></canvas>
+                    </div>
+                    <p id="journ-q-text" style="font-size: 1rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="journ-options-grid"></div>
+                    <div class="psych-feedback-box" id="journ-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="journ-skip-btn"><i class="fas fa-sync"></i> Next Audit Case</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             10. EGO NEUTRALIZATION CHAMBER MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-ego-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-masks-theater"></i> Ego Neutralization &amp; Loss Acceptance</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="ego-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="ego-options-grid"></div>
+                    <div class="psych-feedback-box" id="ego-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="ego-skip-btn"><i class="fas fa-sync"></i> Next Humility Trial</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             11. STREAK PSYCHOLOGY CENTER MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-streak-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-chart-line"></i> Winning &amp; Losing Streak Management</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="streak-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="streak-options-grid"></div>
+                    <div class="psych-feedback-box" id="streak-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="streak-skip-btn"><i class="fas fa-sync"></i> Next Streak Analysis</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             12. SCENARIO THEATER MODAL
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-theater-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-clapperboard"></i> Scenario Theater: Emotional Stress Tests</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <p id="theater-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="theater-options-grid"></div>
+                    <div class="psych-feedback-box" id="theater-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn" id="theater-skip-btn"><i class="fas fa-sync"></i> Next Crisis Scenario</button>
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             13. PSYCHOLOGY ARENA MODAL (10-Round Gauntlet)
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-arena-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-bolt-lightning"></i> Mental Fortitude Arena (10-Round Gauntlet)</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span id="arena-round-badge" style="font-weight: 800; font-size: 1rem; color: var(--psych-neon-violet);">Round 1 / 10 • Score: 0</span>
+                    </div>
+                    <p id="arena-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="psych-options-grid" id="arena-options-grid"></div>
+                    <div class="psych-feedback-box" id="arena-feedback-box"></div>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Exit Arena</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             14. MIND FORTRESS MODAL (Final Boss vs Inner Saboteur)
+             ==================================================================== -->
+        <div class="psych-modal-backdrop" id="psych-mind-fortress-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="psych-modal-card">
+                <div class="psych-modal-header">
+                    <div class="psych-modal-title"><i class="fas fa-chess-rook"></i> Mind Fortress: Confronting The Inner Saboteur</div>
+                    <button type="button" class="psych-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="psych-modal-body">
+                    <div class="psych-boss-hud">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700;">
+                                <span style="color: var(--psych-neon-cyan);"><i class="fas fa-user-shield"></i> Trader Mental Stamina</span>
+                                <span id="boss-player-stamina-val">100 / 100</span>
+                            </div>
+                            <div class="psych-hp-bar">
+                                <div class="psych-hp-fill-player" id="boss-player-hp-bar" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700;">
+                                <span style="color: var(--psych-neon-rose);"><i class="fas fa-skull"></i> Saboteur Resistance</span>
+                                <span id="boss-resistance-val">100 / 100</span>
+                            </div>
+                            <div class="psych-hp-bar">
+                                <div class="psych-hp-fill-boss" id="boss-resistance-bar" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: var(--psych-neon-violet);">
+                        <span id="boss-stage-badge">Phase 1 / 8: Greed Surge</span>
+                        <span id="boss-violations-badge">0 Emotional Incursions</span>
+                    </div>
+
+                    <p id="boss-prompt-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF; line-height: 1.5;"></p>
+                    <div class="psych-options-grid" id="boss-options-grid"></div>
+                    <div class="psych-feedback-box" id="boss-feedback-box"></div>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem;">
+                        <button type="button" class="psych-btn psych-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Retreat from Fortress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             SHARED DIALOGUE OVERLAY
+             ==================================================================== -->
+        <div class="strativo-dialogue-overlay" id="strativo-dialogue-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="strativo-dialogue-avatar" id="strativo-dialogue-avatar">
+                <i class="fas fa-brain" id="strativo-dialogue-avatar-icon"></i>
+            </div>
+            <div class="strativo-dialogue-box">
+                <div class="strativo-dialogue-header">
+                    <div class="strativo-speaker-meta">
+                        <h3 class="strativo-speaker-name" id="strativo-speaker-name">Dr. Maya Vance</h3>
+                        <span class="strativo-speaker-role" id="strativo-speaker-role">Chief Psychology Architect</span>
+                    </div>
+                    <button type="button" class="strativo-dialogue-close-btn" id="strativo-dialogue-close-btn" aria-label="Close Dialogue">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="strativo-dialogue-body">
+                    <p class="strativo-dialogue-text" id="strativo-dialogue-text">Dialogue text...</p>
+                </div>
+                <div class="strativo-dialogue-actions" id="strativo-dialogue-actions">
+                    <button type="button" class="psych-btn psych-btn-violet" onclick="window.StrativoRPG.closeAllModals()">Close [Space]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         SCRIPTS: RPG CORE ENGINE + PSYCHOLOGY ZONE ENGINES + CONTROLLER
+         ==================================================================== -->
+    <script src="../js/settings/world-settings.js"></script>
+    <script src="../js/settings/haptics.js"></script>
+    <script src="../js/audio/audio-manager.js"></script>
+    <script src="../js/core/world-state.js"></script>
+    <script src="../js/core/world-xp-engine.js"></script>
+    <script src="../js/rpg/collision.js"></script>
+    <script src="../js/rpg/input.js"></script>
+    <script src="../js/rpg/camera.js"></script>
+    <script src="../js/rpg/player.js"></script>
+    <script src="../js/rpg/world.js"></script>
+    <script src="../js/rpg/rpg-core.js"></script>
+    <script src="../js/rpg/dialogue.js"></script>
+    <script src="../js/rpg/npc.js"></script>
+    <script src="../js/rpg/missions.js"></script>
+
+    <!-- Psychology Zone Engines -->
+    <script src="../js/psychology/psych-engine.js"></script>
+    <script src="../js/psychology/psych-scenario-engine.js"></script>
+    <script src="../js/districts/psychology-zone.js"></script>
+
+    <!-- Master Controller -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const canvas = document.getElementById("psychology-canvas");
+            const miniCanvas = document.getElementById("psych-minimap-canvas");
+
+            // Initialize Game World
+            const world = new window.StrativoRPG.PsychologyZoneWorld();
+            const player = new window.StrativoRPG.Player({ x: 1600, y: 1350 });
+            const camera = new window.StrativoRPG.Camera(canvas.width || 1280, canvas.height || 720);
+            camera.setWorldBounds({ x: 0, y: 0, width: world.width, height: world.height });
+            camera.follow(player, true);
+
+            const input = new window.StrativoRPG.InputManager({ container: document.getElementById("psych-viewport-wrapper") });
+            input.attach();
+
+            window.StrativoRPG.gameCore = { world, player, camera, input };
+
+            // Specialized Psychological Engines
+            const tiltEngine = new window.StrativoRPG.PsychEngines.TiltBarometerEngine();
+            const fomoEngine = new window.StrativoRPG.PsychEngines.FomoDegradationEngine();
+            const journalEngine = new window.StrativoRPG.PsychEngines.JournalAuditorEngine();
+            const arenaEngine = new window.StrativoRPG.PsychEngines.PsychArenaEngine();
+            const fortressEngine = new window.StrativoRPG.PsychEngines.MindFortressBossEngine();
+
+            window.StrativoRPG.activePsychEngines = {
+                tiltEngine,
+                fomoEngine,
+                journalEngine,
+                arenaEngine,
+                fortressEngine
+            };
+
+            // Resize Handler
+            function resizeCanvas() {
+                canvas.width = window.innerWidth || 1280;
+                canvas.height = window.innerHeight || 720;
+                camera.viewportWidth = canvas.width;
+                camera.viewportHeight = canvas.height;
+                camera.clamp();
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
+
+            // Modal Status Query Helper
+            function hasActiveModal() {
+                if (window.StrativoRPG && window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                    return true;
+                }
+                const activeEl = document.querySelector(".psych-modal-backdrop.active, .strativo-dialogue-overlay.active, [role='dialog'][aria-modal='true'].active");
+                return Boolean(activeEl && window.getComputedStyle(activeEl).display !== "none");
+            }
+            window.hasActiveModal = hasActiveModal;
+            window.StrativoRPG.hasActiveModal = hasActiveModal;
+
+            // Main Game Loop (60 FPS)
+            let lastTime = performance.now();
+            function gameLoop(now) {
+                try {
+                    const dt = Math.min(0.1, (now - lastTime) / 1000);
+                    lastTime = now;
+
+                    const isModalActive = hasActiveModal();
+                    if (isModalActive) {
+                        if (input && typeof input.reset === "function") input.reset();
+                        player.update(dt, { x: 0, y: 0, isMoving: false }, null, { width: world.width, height: world.height });
+                    } else {
+                        const moveVec = input.getMovementVector();
+                        player.update(dt, moveVec, null, { width: world.width, height: world.height });
+                    }
+
+                    camera.update(dt);
+                    world.update(dt);
+
+                    const ctx = canvas.getContext("2d");
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.save();
+                    ctx.translate(-camera.x, -camera.y);
+                    world.render(ctx, camera);
+                    player.render(ctx);
+                    ctx.restore();
+
+                    renderMiniMap();
+                } catch (e) {
+                    console.error("Psychology Zone GameLoop error:", e);
+                }
+                requestAnimationFrame(gameLoop);
+            }
+            gameLoop(performance.now());
+
+            // Load Datasets
+            (async () => {
+                try {
+                    const [mapRes, scenRes] = await Promise.all([
+                        fetch("../data/psychology-map.json").then(r => r.json()).catch(() => null),
+                        fetch("../data/psychology-scenarios.json").then(r => r.json()).catch(() => null)
+                    ]);
+                    if (mapRes) world.setMapData(mapRes);
+                    if (scenRes) window.StrativoRPG.PsychScenarioEngine.init(scenRes);
+                } catch (err) {
+                    console.warn("Dataset loading notice:", err);
+                }
+            })();
+
+            // Mini-Map Render
+            function renderMiniMap() {
+                if (!miniCanvas) return;
+                const mctx = miniCanvas.getContext("2d");
+                mctx.fillStyle = "#030712";
+                mctx.fillRect(0, 0, miniCanvas.width, miniCanvas.height);
+
+                const scaleX = miniCanvas.width / world.width;
+                const scaleY = miniCanvas.height / world.height;
+
+                // Quarters
+                (world.quarters || []).forEach(q => {
+                    mctx.fillStyle = (q.color || "#8B5CF6") + "40";
+                    mctx.fillRect(q.bounds.x * scaleX, q.bounds.y * scaleY, q.bounds.w * scaleX, q.bounds.h * scaleY);
+                    mctx.strokeStyle = (q.color || "#8B5CF6") + "80";
+                    mctx.lineWidth = 1;
+                    mctx.strokeRect(q.bounds.x * scaleX, q.bounds.y * scaleY, q.bounds.w * scaleX, q.bounds.h * scaleY);
+                });
+
+                // Buildings
+                (world.buildings || []).forEach(b => {
+                    mctx.fillStyle = b.themeColor || "#8B5CF6";
+                    mctx.fillRect(b.x * scaleX, b.y * scaleY, b.w * scaleX, b.h * scaleY);
+                });
+
+                // Player Position Dot
+                mctx.fillStyle = "#06B6D4";
+                mctx.shadowColor = "#06B6D4";
+                mctx.shadowBlur = 6;
+                mctx.beginPath();
+                mctx.arc(player.x * scaleX, player.y * scaleY, 4, 0, Math.PI * 2);
+                mctx.fill();
+                mctx.shadowBlur = 0;
+            }
+
+            // Keyboard Handlers
+            window.addEventListener("keydown", (e) => {
+                if (e.code === "KeyE" || e.code === "Space") {
+                    if (hasActiveModal()) {
+                        if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                            window.StrativoRPG.DialogueManager.closeDialogue();
+                        }
+                    } else {
+                        world.interact();
+                    }
+                } else if (e.code === "Escape") {
+                    closeAllModals();
+                } else if (e.code === "KeyM") {
+                    if (!hasActiveModal()) {
+                        const mm = document.getElementById("psych-minimap");
+                        if (mm) mm.style.display = mm.style.display === "none" ? "block" : "none";
+                    }
+                }
+            });
+
+            // Mobile Action Button Handler
+            const mobileBtn = document.getElementById("psych-mobile-action");
+            if (mobileBtn) {
+                mobileBtn.addEventListener("click", () => {
+                    if (hasActiveModal()) {
+                        if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                            window.StrativoRPG.DialogueManager.closeDialogue();
+                        }
+                    } else {
+                        world.interact();
+                    }
+                });
+            }
+
+            // Top HUD Button Listeners
+            const btnMissions = document.getElementById("btn-open-missions");
+            if (btnMissions) {
+                btnMissions.addEventListener("click", () => window.StrativoRPG.openTacticalBriefingModal());
+            }
+            const btnMapToggle = document.getElementById("btn-toggle-minimap");
+            if (btnMapToggle) {
+                btnMapToggle.addEventListener("click", () => {
+                    const mm = document.getElementById("psych-minimap");
+                    if (mm) mm.style.display = mm.style.display === "none" ? "block" : "none";
+                });
+            }
+
+            // Close All Modals (Authoritative Single Reset Lifecycle)
+            function closeAllModals() {
+                document.querySelectorAll(".psych-modal-backdrop, .strativo-dialogue-overlay").forEach(m => {
+                    m.classList.remove("active");
+                    m.setAttribute("aria-hidden", "true");
+                });
+                if (window.StrativoRPG.DialogueManager && typeof window.StrativoRPG.DialogueManager.closeDialogue === "function") {
+                    window.StrativoRPG.DialogueManager.closeDialogue();
+                }
+                if (input && typeof input.reset === "function") input.reset();
+                if (document.activeElement && typeof document.activeElement.blur === "function") document.activeElement.blur();
+                if (canvas && typeof canvas.focus === "function") canvas.focus();
+            }
+            window.closeAllModals = closeAllModals;
+            window.StrativoRPG.closeAllModals = closeAllModals;
+
+            // Generic Question Renderer with Single Authoritative Reset Pattern
+            function renderGenericQuestionCard(prefix, q, onAnswerCallback, refreshFn) {
+                const textEl = document.getElementById(`${prefix}-q-text`);
+                const gridEl = document.getElementById(`${prefix}-options-grid`);
+                const fbEl = document.getElementById(`${prefix}-feedback-box`);
+                const skipBtn = document.getElementById(`${prefix}-skip-btn`);
+
+                if (!q || !textEl || !gridEl) return;
+                textEl.textContent = q.questionText || q.prompt;
+                if (fbEl) { fbEl.style.display = "none"; fbEl.innerHTML = ""; fbEl.className = "psych-feedback-box"; }
+                if (skipBtn) {
+                    skipBtn.innerHTML = '<i class="fas fa-sync"></i> Next Scenario';
+                    skipBtn.onclick = () => { if (refreshFn) refreshFn(); };
+                }
+                gridEl.innerHTML = "";
+
+                let answered = false;
+                (q.options || []).forEach(opt => {
+                    const optText = typeof opt === "string" ? opt : (opt.label || opt.text || "");
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "psych-option-btn";
+                    btn.innerHTML = `<i class="fas fa-circle-dot" style="color: var(--psych-neon-violet); margin-top: 2px;"></i> <span>${optText}</span>`;
+
+                    btn.onclick = () => {
+                        if (answered) return;
+                        answered = true;
+                        Array.from(gridEl.children).forEach(c => c.disabled = true);
+
+                        const isCorrect = optText === q.correctAnswer || (typeof opt === "object" && (opt.isSafe || opt.isCorrect));
+                        if (isCorrect) {
+                            btn.classList.add("selected-correct");
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.className = "psych-feedback-box psych-feedback-correct";
+                                fbEl.innerHTML = `<div><i class="fas fa-check-circle" style="color: #10B981; margin-right: 0.4rem;"></i> <strong>CORRECT!</strong> ${q.explanation || "Optimal psychological decision."}</div>`;
+                            }
+                            window.StrativoRPG.emitGameEvent("correctHit");
+                            if (window.StrativoWorldXPEngine) {
+                                window.StrativoWorldXPEngine.addWorldXP(15, `Psychology Zone: ${q.category || "General"}`, `psych_q_${q.id}_${Date.now()}`);
+                            }
+                        } else {
+                            btn.classList.add("selected-incorrect");
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.className = "psych-feedback-box psych-feedback-incorrect";
+                                fbEl.innerHTML = `<div><i class="fas fa-times-circle" style="color: #F43F5E; margin-right: 0.4rem;"></i> <strong>INCORRECT.</strong> Correct: <em>${q.correctAnswer || "Disciplined Choice"}</em>. ${q.explanation || ""}</div>`;
+                            }
+                            window.StrativoRPG.emitGameEvent("wrongHit");
+                        }
+
+                        if (onAnswerCallback) onAnswerCallback(isCorrect, opt);
+                    };
+                    gridEl.appendChild(btn);
+                });
+            }
+
+            // Exploration Discovery Opener
+            window.StrativoRPG.openDiscoveryModal = (point) => {
+                closeAllModals();
+                const m = document.getElementById("psych-discovery-modal");
+                if (!m) return;
+                m.classList.add("active");
+                m.setAttribute("aria-hidden", "false");
+                const h = document.getElementById("psych-discovery-heading");
+                const l = document.getElementById("psych-discovery-lore");
+                const xp = document.getElementById("psych-discovery-xp");
+                if (h) h.textContent = point.name;
+                if (l) l.textContent = point.lore;
+                if (xp) xp.innerHTML = `<i class="fas fa-star"></i> +${point.xp} XP Mastered`;
+            };
+
+            // Facility Openers
+            window.StrativoRPG.openAcademyModal = (tab = "fund") => {
+                closeAllModals();
+                document.getElementById("psych-academy-modal").classList.add("active");
+                refreshAcademyQuestion(tab);
+            };
+            window.StrativoRPG.openPsychAcademyModal = window.StrativoRPG.openAcademyModal;
+
+            function refreshAcademyQuestion(tab = null) {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("psych_academy", tab);
+                renderGenericQuestionCard("acad", q, null, () => refreshAcademyQuestion(tab));
+            }
+
+            window.StrativoRPG.openDojoModal = () => {
+                closeAllModals();
+                document.getElementById("psych-dojo-modal").classList.add("active");
+                refreshDojoQuestion();
+            };
+            window.StrativoRPG.openDisciplineDojoModal = window.StrativoRPG.openDojoModal;
+
+            function refreshDojoQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("discipline_dojo");
+                renderGenericQuestionCard("dojo", q, null, refreshDojoQuestion);
+            }
+
+            window.StrativoRPG.openBiasModal = () => {
+                closeAllModals();
+                document.getElementById("psych-bias-modal").classList.add("active");
+                refreshBiasQuestion();
+            };
+            window.StrativoRPG.openBiasObservatoryModal = window.StrativoRPG.openBiasModal;
+
+            function refreshBiasQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("bias_observatory");
+                renderGenericQuestionCard("bias", q, null, refreshBiasQuestion);
+            }
+
+            // FOMO Chamber with R:R Degradation Simulator
+            window.StrativoRPG.openFOMOModal = () => {
+                closeAllModals();
+                document.getElementById("psych-fomo-modal").classList.add("active");
+                refreshFOMOQuestion();
+            };
+            window.StrativoRPG.openFomoChamberModal = window.StrativoRPG.openFOMOModal;
+
+            function refreshFOMOQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("fomo_chamber");
+                const deg = fomoEngine.calculateDegradation(100, 95, 115, 107);
+                const cv = document.getElementById("fomo-canvas");
+                if (cv) {
+                    fomoEngine.renderDegradationComparison(cv, 100, 95, 115, 107);
+                }
+                const initEl = document.getElementById("fomo-init-rr");
+                const chasedEl = document.getElementById("fomo-chased-rr");
+                const degEl = document.getElementById("fomo-degrade-pct");
+                if (initEl) initEl.textContent = `${deg.initialRR.toFixed(2)} : 1`;
+                if (chasedEl) chasedEl.textContent = `${deg.chasedRR.toFixed(2)} : 1`;
+                if (degEl) degEl.textContent = `${deg.degradationPct.toFixed(1)}%`;
+
+                renderGenericQuestionCard("fomo", q, null, refreshFOMOQuestion);
+            }
+
+            window.StrativoRPG.openPatienceModal = () => {
+                closeAllModals();
+                document.getElementById("psych-patience-modal").classList.add("active");
+                refreshPatienceQuestion();
+            };
+            window.StrativoRPG.openPatiencePavilionModal = window.StrativoRPG.openPatienceModal;
+
+            function refreshPatienceQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("patience_pavilion");
+                renderGenericQuestionCard("pat", q, null, refreshPatienceQuestion);
+            }
+
+            // Tilt Recovery Lab with Barometer
+            window.StrativoRPG.openTiltModal = () => {
+                closeAllModals();
+                document.getElementById("psych-tilt-modal").classList.add("active");
+                refreshTiltQuestion();
+            };
+            window.StrativoRPG.openTiltRecoveryModal = window.StrativoRPG.openTiltModal;
+
+            function refreshTiltQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("tilt_recovery_lab");
+                const tScore = tiltEngine.calculateTiltScore(3, 2, 8, true);
+                const cv = document.getElementById("tilt-canvas");
+                if (cv) {
+                    tiltEngine.renderBarometer(cv, tScore.tiltIndex);
+                }
+                const scoreEl = document.getElementById("tilt-score-val");
+                const lvlEl = document.getElementById("tilt-level-val");
+                const coolEl = document.getElementById("tilt-cooldown-val");
+                if (scoreEl) scoreEl.textContent = `${tScore.tiltIndex.toFixed(2)} / 1.0`;
+                if (lvlEl) lvlEl.textContent = tScore.tiltLevel;
+                if (coolEl) coolEl.textContent = `${tScore.cooldownMinutes} Minutes Lock`;
+
+                renderGenericQuestionCard("tilt", q, null, refreshTiltQuestion);
+            }
+
+            window.StrativoRPG.openRevengeModal = () => {
+                closeAllModals();
+                document.getElementById("psych-revenge-modal").classList.add("active");
+                refreshRevengeQuestion();
+            };
+            window.StrativoRPG.openRevengeStationModal = window.StrativoRPG.openRevengeModal;
+
+            function refreshRevengeQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("revenge_station");
+                renderGenericQuestionCard("rev", q, null, refreshRevengeQuestion);
+            }
+
+            // Journal Sanctuary with Radar Chart
+            window.StrativoRPG.openJournalModal = () => {
+                closeAllModals();
+                document.getElementById("psych-journal-modal").classList.add("active");
+                refreshJournalQuestion();
+            };
+            window.StrativoRPG.openJournalSanctuaryModal = window.StrativoRPG.openJournalModal;
+
+            function refreshJournalQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("journal_sanctuary");
+                const cv = document.getElementById("journal-canvas");
+                if (cv) {
+                    journalEngine.renderRadar(cv, {
+                        prePlanCompliance: 90,
+                        riskDiscipline: 85,
+                        emotionalDetachment: 70,
+                        exitExecution: 95,
+                        postTradeReview: 80
+                    });
+                }
+                renderGenericQuestionCard("journ", q, null, refreshJournalQuestion);
+            }
+
+            window.StrativoRPG.openEgoModal = () => {
+                closeAllModals();
+                document.getElementById("psych-ego-modal").classList.add("active");
+                refreshEgoQuestion();
+            };
+            window.StrativoRPG.openEgoChamberModal = window.StrativoRPG.openEgoModal;
+
+            function refreshEgoQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("ego_chamber");
+                renderGenericQuestionCard("ego", q, null, refreshEgoQuestion);
+            }
+
+            window.StrativoRPG.openStreakModal = () => {
+                closeAllModals();
+                document.getElementById("psych-streak-modal").classList.add("active");
+                refreshStreakQuestion();
+            };
+            window.StrativoRPG.openStreakCenterModal = window.StrativoRPG.openStreakModal;
+
+            function refreshStreakQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("streak_center");
+                renderGenericQuestionCard("streak", q, null, refreshStreakQuestion);
+            }
+
+            window.StrativoRPG.openTheaterModal = () => {
+                closeAllModals();
+                document.getElementById("psych-theater-modal").classList.add("active");
+                refreshTheaterQuestion();
+            };
+            window.StrativoRPG.openScenarioTheaterModal = window.StrativoRPG.openTheaterModal;
+
+            function refreshTheaterQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("scenario_theater");
+                renderGenericQuestionCard("theater", q, null, refreshTheaterQuestion);
+            }
+
+            // Mental Fortitude Arena
+            window.StrativoRPG.launchPsychArena = () => {
+                closeAllModals();
+                document.getElementById("psych-arena-modal").classList.add("active");
+                arenaEngine.start(window.StrativoRPG.PsychScenarioEngine.pools.psych_arena);
+                refreshArenaQuestion();
+            };
+            window.StrativoRPG.openPsychArenaModal = window.StrativoRPG.launchPsychArena;
+
+            function refreshArenaQuestion() {
+                const q = window.StrativoRPG.PsychScenarioEngine.getQuestion("psych_arena");
+                const roundBadge = document.getElementById("arena-round-badge");
+                if (roundBadge) roundBadge.textContent = `Round ${arenaEngine.round} / 10 • Score: ${arenaEngine.score}`;
+                renderGenericQuestionCard("arena", q, (isCorrect) => {
+                    const res = arenaEngine.recordAnswer(isCorrect);
+                    if (res.isFinished) {
+                        const fb = document.getElementById("arena-feedback-box");
+                        if (fb) {
+                            fb.style.display = "block";
+                            fb.className = "psych-feedback-box psych-feedback-correct";
+                            fb.innerHTML = `<strong>GAUNTLET COMPLETE!</strong> Final Mental Fortitude Score: ${res.score} XP!`;
+                        }
+                    } else {
+                        setTimeout(refreshArenaQuestion, 1400);
+                    }
+                }, refreshArenaQuestion);
+            }
+
+            window.StrativoRPG.openTacticalBriefingModal = () => {
+                if (window.StrativoRPG.DialogueManager) {
+                    window.StrativoRPG.DialogueManager.startDialogue({
+                        speaker: "Cognitive Operations Directorate",
+                        role: "District 6 Mind Briefing",
+                        avatarIcon: "fa-brain",
+                        themeColor: "#8B5CF6",
+                        text: "District 6 Tactical Mind Briefing:<br><br>• <strong>Neuro-Foundations:</strong> Recognize adrenaline and cortisol spikes<br>• <strong>Discipline Dojo:</strong> Execute checklists without emotional improvisation<br>• <strong>Bias Observatory:</strong> Neutralize confirmation and recency bias<br>• <strong>FOMO Containment:</strong> Never chase extended market moves<br>• <strong>Tilt Defense:</strong> Respect circuit breakers and cooldown protocols<br>• <strong>Mind Fortress:</strong> Defeat the 8 phases of your Inner Saboteur"
+                    });
+                }
+            };
+            window.StrativoRPG.openMissionsJournal = window.StrativoRPG.openTacticalBriefingModal;
+            window.StrativoRPG.openMissionHQModal = window.StrativoRPG.openTacticalBriefingModal;
+
+            // Mind Fortress Final Boss Engine
+            window.StrativoRPG.openMindFortressModal = () => {
+                closeAllModals();
+                document.getElementById("psych-mind-fortress-modal").classList.add("active");
+                fortressEngine.reset();
+                refreshMindFortressStage();
+            };
+
+            function refreshMindFortressStage() {
+                const status = fortressEngine.getStatus();
+                const playerHpBar = document.getElementById("boss-player-hp-bar");
+                const bossHpBar = document.getElementById("boss-resistance-bar");
+                const playerHpVal = document.getElementById("boss-player-stamina-val");
+                const bossHpVal = document.getElementById("boss-resistance-val");
+                const stageBadge = document.getElementById("boss-stage-badge");
+                const violationsBadge = document.getElementById("boss-violations-badge");
+                const promptEl = document.getElementById("boss-prompt-text");
+                const gridEl = document.getElementById("boss-options-grid");
+                const fbEl = document.getElementById("boss-feedback-box");
+
+                if (playerHpBar) playerHpBar.style.width = `${Math.max(0, status.playerStamina)}%`;
+                if (bossHpBar) bossHpBar.style.width = `${Math.max(0, status.bossResistance)}%`;
+                if (playerHpVal) playerHpVal.textContent = `${status.playerStamina} / 100`;
+                if (bossHpVal) bossHpVal.textContent = `${status.bossResistance} / 100`;
+                if (stageBadge) stageBadge.textContent = `Phase ${status.currentStageIndex + 1} / 8: ${status.currentPhaseName || "Mind Trial"}`;
+                if (violationsBadge) violationsBadge.textContent = `${status.violations} Emotional Incursions`;
+
+                if (fbEl) { fbEl.style.display = "none"; fbEl.innerHTML = ""; fbEl.className = "psych-feedback-box"; }
+
+                if (status.isVictory) {
+                    if (promptEl) promptEl.textContent = "CONGRATULATIONS! You have fully mastered your psychology, defeated the Inner Saboteur, and conquered the Mind Fortress!";
+                    if (gridEl) {
+                        gridEl.innerHTML = '<button type="button" class="psych-btn psych-btn-violet" style="grid-column: span 2;" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-trophy"></i> Claim Master Mind Certification</button>';
+                    }
+                    if (window.StrativoWorldXPEngine) {
+                        window.StrativoWorldXPEngine.addWorldXP(150, "Mind Fortress Apex Victory", "fortress_win_" + Date.now());
+                    }
+                    return;
+                }
+
+                if (status.isDefeated) {
+                    if (promptEl) promptEl.textContent = `MENTAL STAMINA DEPLETED! ${status.defeatReason}`;
+                    if (gridEl) {
+                        gridEl.innerHTML = '<button type="button" class="psych-btn psych-btn-rose" style="grid-column: span 2;" onclick="window.StrativoRPG.openMindFortressModal()"><i class="fas fa-rotate-left"></i> Restart Mind Trial</button>';
+                    }
+                    return;
+                }
+
+                const scen = window.StrativoRPG.PsychScenarioEngine.pools.mind_fortress[status.currentStageIndex] || {
+                    phase: "Emotional Turmoil",
+                    prompt: "Your Inner Saboteur attempts to bypass your rules. Choose your psychological counter-strategy:",
+                    options: [
+                        { label: "Step back, enforce written rules and take a mandatory 15-minute reset", isDisciplined: true, staminaCost: 0, damage: 15 },
+                        { label: "Double position size to make back the lost money immediately", isDisciplined: false, staminaCost: 25, damage: 0 },
+                        { label: "Blame the market and enter an impulsive market order", isDisciplined: false, staminaCost: 25, damage: 0 },
+                        { label: "Ignore stop loss because price will surely bounce back", isDisciplined: false, staminaCost: 30, damage: 0 }
+                    ]
+                };
+
+                if (promptEl) promptEl.textContent = `[Phase ${status.currentStageIndex + 1}: ${scen.phase}] ${scen.prompt}`;
+                if (gridEl) {
+                    gridEl.innerHTML = "";
+                    (scen.options || []).forEach(opt => {
+                        const btn = document.createElement("button");
+                        btn.type = "button";
+                        btn.className = "psych-option-btn";
+                        btn.innerHTML = `<i class="fas fa-shield" style="color: var(--psych-neon-violet); margin-top: 2px;"></i> <span>${opt.label}</span>`;
+                        btn.onclick = () => {
+                            Array.from(gridEl.children).forEach(c => c.disabled = true);
+                            const updated = fortressEngine.executeTurn(opt);
+                            const lastAction = updated.turnHistory[updated.turnHistory.length - 1];
+
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                if (lastAction.isDisciplined) {
+                                    fbEl.className = "psych-feedback-box psych-feedback-correct";
+                                    fbEl.innerHTML = `<strong>DISCIPLINED EXECUTION!</strong> Inflicted ${lastAction.damageDealt} damage to Saboteur Resistance. Trader Stamina: ${updated.playerStamina}`;
+                                    btn.classList.add("selected-correct");
+                                } else {
+                                    fbEl.className = "psych-feedback-box psych-feedback-incorrect";
+                                    fbEl.innerHTML = `<strong>EMOTIONAL TRAP TRIGGERED!</strong> Saboteur dealt ${lastAction.staminaLost} Stamina Damage. Remaining Stamina: ${updated.playerStamina}`;
+                                    btn.classList.add("selected-incorrect");
+                                }
+                            }
+
+                            setTimeout(refreshMindFortressStage, 1400);
+                        };
+                        gridEl.appendChild(btn);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

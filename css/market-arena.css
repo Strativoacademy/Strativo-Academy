@@ -1,0 +1,969 @@
+/* ==========================================================================
+   STRATIVO WORLD — DISTRICT 3: MARKET ARENA STYLESHEET (PHASE 3.2)
+   Theme: High-Tech Trading Floor & Market Structure Metropolis
+   ========================================================================== */
+
+:root {
+    --ma-bg-base: #020617;
+    --ma-bg-surface: rgba(13, 27, 62, 0.9);
+    --ma-bg-surface-hover: rgba(22, 44, 94, 0.95);
+    --ma-border-subtle: rgba(255, 255, 255, 0.12);
+    --ma-border-glow: rgba(245, 158, 11, 0.35);
+
+    --ma-neon-amber: #F59E0B;
+    --ma-neon-gold: #FCD34D;
+    --ma-neon-emerald: #10B981;
+    --ma-neon-blue: #3B82F6;
+    --ma-neon-purple: #A855F7;
+    --ma-neon-rose: #F43F5E;
+    --ma-neon-cyan: #00F0FF;
+
+    --ma-text-main: #F8FAFC;
+    --ma-text-muted: #94A3B8;
+    --ma-text-dim: #64748B;
+}
+
+/* ==========================================================================
+   1. PAGE ROOT & AMBIENT TRADING FLOOR BACKGROUND
+   ========================================================================== */
+.market-arena-page {
+    min-height: 100vh;
+    background-color: var(--ma-bg-base);
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(245, 158, 11, 0.12), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(16, 185, 129, 0.1), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.08), transparent 50%),
+        linear-gradient(180deg, #020617 0%, #08132b 50%, #020617 100%);
+    color: var(--ma-text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.market-arena-container {
+    width: 100%;
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 1rem 1rem 2.5rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+/* ==========================================================================
+   2. TOP DISTRICT HUD
+   ========================================================================== */
+.market-arena-hud {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--ma-bg-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--ma-border-subtle);
+    border-radius: 16px;
+    padding: 0.65rem 1.25rem;
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(245, 158, 11, 0.08);
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.ma-hud-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.ma-player-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ma-player-avatar-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(16, 185, 129, 0.25));
+    border: 1.5px solid var(--ma-neon-amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ma-neon-amber);
+    font-size: 1.15rem;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+}
+
+.ma-player-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.ma-player-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ma-player-handle {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #FFF;
+}
+
+.ma-player-lvl-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    background: rgba(245, 158, 11, 0.18);
+    color: var(--ma-neon-amber);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    padding: 2px 7px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.ma-player-rank {
+    font-size: 0.78rem;
+    color: var(--ma-text-muted);
+}
+
+/* District Status Badge */
+.ma-district-status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    padding: 0.4rem 0.95rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #FFF;
+}
+
+.ma-beacon-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ma-neon-amber);
+    box-shadow: 0 0 10px var(--ma-neon-amber);
+    animation: ma-pulse 2s infinite ease-in-out;
+}
+
+@keyframes ma-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.ma-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--ma-border-subtle);
+    color: var(--ma-text-main);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.45rem 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.ma-btn:hover {
+    background: rgba(30, 58, 138, 0.4);
+    border-color: var(--ma-neon-amber);
+    color: #FFF;
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+}
+
+.ma-btn-amber {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.4);
+    color: var(--ma-neon-amber);
+}
+
+.ma-btn-amber:hover {
+    background: var(--ma-neon-amber);
+    color: #020617;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.4);
+}
+
+.ma-btn-blue {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.4);
+    color: #93C5FD;
+}
+
+.ma-btn-blue:hover {
+    background: var(--ma-neon-blue);
+    color: #FFF;
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.4);
+}
+
+.ma-btn-emerald {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: var(--ma-neon-emerald);
+}
+
+.ma-btn-emerald:hover {
+    background: var(--ma-neon-emerald);
+    color: #020617;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+}
+
+.ma-hud-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   2B. PROGRESSION STATS BAR
+   ========================================================================== */
+.ma-profile-progress-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: var(--ma-bg-surface);
+    border: 1px solid var(--ma-border-subtle);
+    border-radius: 14px;
+    padding: 0.65rem 1rem;
+    gap: 0.75rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ma-profile-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ma-profile-stat-item:last-child {
+    border-right: none;
+}
+
+.ma-stat-label {
+    font-size: 0.74rem;
+    color: var(--ma-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+}
+
+.ma-stat-val {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #FFF;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   3. PLAYABLE GAME VIEWPORT
+   ========================================================================== */
+.market-arena-viewport-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    max-height: 700px;
+    min-height: 480px;
+    background: #020617;
+    border: 1.5px solid rgba(245, 158, 11, 0.3);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.1);
+}
+
+.market-arena-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: default;
+    outline: none;
+}
+
+/* Active Tracked Mission HUD Widget */
+.ma-mission-tracker-hud {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(13, 27, 62, 0.9);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: 10px;
+    padding: 0.5rem 0.85rem;
+    min-width: 200px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    z-index: 5;
+}
+
+.ma-tracker-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: var(--ma-neon-amber);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.ma-tracker-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #FFF;
+}
+
+.ma-tracker-prog-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ma-tracker-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ma-tracker-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--ma-neon-amber), var(--ma-neon-emerald));
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.ma-tracker-count {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--ma-neon-amber);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Floating Interaction Prompt */
+.ma-interact-prompt {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(13, 27, 62, 0.95);
+    border: 1.5px solid var(--ma-neon-amber);
+    border-radius: 30px;
+    padding: 0.5rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 6;
+}
+
+.ma-interact-prompt.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.ma-key-badge {
+    background: var(--ma-neon-amber);
+    color: #020617;
+    font-weight: 900;
+    font-size: 0.75rem;
+    padding: 2px 7px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px var(--ma-neon-amber);
+}
+
+.ma-interact-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #FFF;
+}
+
+.ma-interact-action {
+    font-size: 0.82rem;
+    color: #93C5FD;
+}
+
+/* Mobile Touch Controls Layer */
+.ma-touch-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.ma-touch-action-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(16, 185, 129, 0.4));
+    border: 2px solid var(--ma-neon-amber);
+    color: #FFF;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    pointer-events: auto;
+    box-shadow: 0 6px 24px rgba(245, 158, 11, 0.4);
+    touch-action: manipulation;
+}
+
+.ma-touch-action-btn span {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+}
+
+.ma-touch-action-btn:active {
+    transform: scale(0.92);
+    background: var(--ma-neon-amber);
+    color: #020617;
+}
+
+.ma-joystick-hint {
+    position: absolute;
+    bottom: 12px;
+    left: 16px;
+    font-size: 0.72rem;
+    color: var(--ma-text-muted);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 3px 8px;
+    border-radius: 6px;
+    display: none;
+}
+
+/* ==========================================================================
+   4. MODALS & DIALOG OVERLAYS
+   ========================================================================== */
+.ma-dialog-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 9999;
+}
+
+.ma-dialog-backdrop.active {
+    display: flex;
+    animation: ma-fade-in 0.2s ease forwards;
+}
+
+@keyframes ma-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.ma-dialog-card {
+    background: var(--ma-bg-surface);
+    border: 1px solid var(--ma-border-glow);
+    border-radius: 18px;
+    width: 100%;
+    max-width: 580px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.ma-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--ma-border-subtle);
+}
+
+.ma-dialog-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ma-dialog-body {
+    padding: 1.25rem;
+    color: var(--ma-text-main);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ma-dialog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--ma-border-subtle);
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 0 0 18px 18px;
+}
+
+/* Modal Wide Variant */
+.ma-modal-wide-card {
+    max-width: 820px;
+}
+
+/* Interactive Box & Chart Canvas */
+.ma-interactive-box {
+    background: rgba(2, 6, 23, 0.75);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ma-chart-canvas-box {
+    width: 100%;
+    height: 220px;
+    background: #060D1E;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    position: relative;
+}
+
+/* ==========================================================================
+   5. CHART THEATER SEQUENTIAL PLAYBACK COMPONENT
+   ========================================================================== */
+.ma-theater-player {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: #071228;
+    border: 1.5px solid var(--ma-neon-gold);
+    border-radius: 14px;
+    padding: 1rem;
+}
+
+.ma-theater-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   6. 10-ROUND MARKET BLITZ ARENA OVERLAY
+   ========================================================================== */
+.ma-blitz-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.94);
+    backdrop-filter: blur(12px);
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    z-index: 10000;
+}
+
+.ma-blitz-overlay.active {
+    display: flex;
+}
+
+.ma-blitz-countdown-screen {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.96);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    z-index: 50;
+}
+
+.ma-blitz-countdown-screen.active {
+    display: flex;
+}
+
+.ma-countdown-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(16, 185, 129, 0.3));
+    border: 3px solid var(--ma-neon-amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #FFF;
+    box-shadow: 0 0 35px var(--ma-neon-amber);
+    animation: ma-bounce 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes ma-bounce {
+    from { transform: scale(0.9); }
+    to { transform: scale(1.1); }
+}
+
+.ma-blitz-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--ma-bg-surface);
+    border: 1px solid var(--ma-border-subtle);
+    border-radius: 14px;
+    padding: 0.6rem 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.ma-blitz-stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    max-width: 780px;
+    margin: 1.5rem auto;
+    width: 100%;
+}
+
+.ma-blitz-question-card {
+    width: 100%;
+    background: var(--ma-bg-surface);
+    border: 1.5px solid rgba(245, 158, 11, 0.35);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ma-target-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.ma-target-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 1rem;
+    color: #FFF;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ma-target-card:hover {
+    background: rgba(45, 78, 148, 0.5);
+    border-color: var(--ma-neon-amber);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.25);
+}
+
+.ma-target-card.correct {
+    background: rgba(16, 185, 129, 0.35) !important;
+    border-color: var(--ma-neon-emerald) !important;
+    color: #A7F3D0 !important;
+}
+
+.ma-target-card.wrong {
+    background: rgba(244, 63, 94, 0.35) !important;
+    border-color: var(--ma-neon-rose) !important;
+    color: #FECDD3 !important;
+}
+
+.ma-target-card.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.ma-target-key {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--ma-neon-amber);
+}
+
+/* Feedback Bar */
+.ma-feedback-bar {
+    width: 100%;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+}
+
+.ma-feedback-bar.correct {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid var(--ma-neon-emerald);
+    color: #A7F3D0;
+}
+
+.ma-feedback-bar.wrong {
+    background: rgba(244, 63, 94, 0.2);
+    border: 1px solid var(--ma-neon-rose);
+    color: #FECDD3;
+}
+
+/* Scorecard */
+.ma-scorecard {
+    background: var(--ma-bg-surface);
+    border: 2px solid var(--ma-neon-amber);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 580px;
+    margin: auto;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(245, 158, 11, 0.2);
+    text-align: center;
+}
+
+.ma-scorecard.active {
+    display: flex;
+}
+
+.ma-scorecard-rank {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(16, 185, 129, 0.35));
+    border: 3px solid var(--ma-neon-amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.75rem;
+    font-weight: 900;
+    color: #FFF;
+    box-shadow: 0 0 25px var(--ma-neon-amber);
+}
+
+.ma-scorecard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    width: 100%;
+    background: rgba(2, 6, 23, 0.6);
+    border-radius: 12px;
+    padding: 0.85rem;
+    font-size: 0.84rem;
+}
+
+/* ==========================================================================
+   7. DISTRICT MISSIONS JOURNAL MODAL
+   ========================================================================== */
+.ma-missions-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 9999;
+}
+
+.ma-missions-modal-overlay.active {
+    display: flex;
+}
+
+.ma-missions-modal-card {
+    background: var(--ma-bg-surface);
+    border: 1px solid var(--ma-border-glow);
+    border-radius: 18px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ma-missions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--ma-border-subtle);
+}
+
+.ma-missions-grid {
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ma-mission-card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ma-mission-card.ready {
+    border-color: var(--ma-neon-gold);
+    box-shadow: 0 0 12px rgba(252, 211, 77, 0.2);
+}
+
+.ma-mission-card.completed {
+    border-color: rgba(16, 185, 129, 0.4);
+    opacity: 0.85;
+}
+
+.ma-mission-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ma-mission-name {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #FFF;
+}
+
+.ma-mission-status-pill {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.ma-mission-status-pill.available { background: rgba(59, 130, 246, 0.2); color: #93C5FD; border: 1px solid rgba(59, 130, 246, 0.4); }
+.ma-mission-status-pill.active { background: rgba(245, 158, 11, 0.2); color: var(--ma-neon-amber); border: 1px solid rgba(245, 158, 11, 0.4); }
+.ma-mission-status-pill.ready { background: rgba(252, 211, 77, 0.2); color: var(--ma-neon-gold); border: 1px solid rgba(252, 211, 77, 0.4); }
+.ma-mission-status-pill.completed { background: rgba(16, 185, 129, 0.2); color: var(--ma-neon-emerald); border: 1px solid rgba(16, 185, 129, 0.4); }
+
+.ma-mission-desc {
+    margin: 0;
+    font-size: 0.84rem;
+    color: var(--ma-text-muted);
+}
+
+.ma-mission-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+}
+
+.ma-mission-reward {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--ma-neon-gold);
+    font-weight: 700;
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE BREAKPOINTS (Mobile: 360px, 390px, 430px)
+   ========================================================================= */
+@media (max-width: 992px) {
+    .ma-profile-progress-bar {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .ma-profile-stat-item:nth-child(3) {
+        border-right: none;
+    }
+    .ma-profile-stat-item:nth-child(4),
+    .ma-profile-stat-item:nth-child(5) {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .market-arena-container {
+        padding: 0.75rem 0.5rem 2rem 0.5rem;
+    }
+    .ma-touch-action-btn {
+        display: flex;
+    }
+    .ma-joystick-hint {
+        display: block;
+    }
+    .ma-target-grid {
+        grid-template-columns: 1fr;
+    }
+    .ma-scorecard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .ma-profile-progress-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ma-profile-stat-item:nth-child(2) {
+        border-right: none;
+    }
+    .ma-hud-left {
+        gap: 0.5rem;
+    }
+    .ma-stat-val {
+        font-size: 0.95rem;
+    }
+}

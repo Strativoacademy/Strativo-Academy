@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#020617">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Strativo World — Pip District</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Shared RPG Core Stylesheet -->
+    <link rel="stylesheet" href="../../css/rpg-core.css">
+
+    <!-- Pip District Stylesheet -->
+    <link rel="stylesheet" href="../../css/pip-district.css">
+</head>
+
+<body class="pip-district-page">
+
+    <div class="pip-district-container">
+
+        <!-- ================================================================
+             1. TOP DISTRICT HUD
+             ================================================================ -->
+        <header class="pip-district-hud">
+            <div class="pd-hud-left">
+                <!-- Player Profile Pill -->
+                <div class="pd-player-badge">
+                    <div class="pd-player-avatar-icon">
+                        <i class="fas fa-calculator" id="hud-avatar-icon"></i>
+                    </div>
+                    <div class="pd-player-meta">
+                        <div class="pd-player-name-row">
+                            <span class="pd-player-handle" id="hud-player-handle">Student</span>
+                            <span class="pd-player-lvl-tag" id="hud-player-level">LVL 1</span>
+                        </div>
+                        <span class="pd-player-rank" id="hud-player-rank">Precision Initiate</span>
+                    </div>
+                </div>
+
+                <!-- District Active Beacon -->
+                <div class="pd-district-status-badge">
+                    <span class="pd-beacon-dot" aria-hidden="true"></span>
+                    <span>PIP DISTRICT • ACTIVE</span>
+                </div>
+
+                <!-- Pip Mastery Counter Badge -->
+                <div class="pd-btn pd-btn-cyan" id="hud-mastery-badge" style="cursor: pointer;" title="Pip & Position Mastery">
+                    <i class="fas fa-crosshairs"></i>
+                    <span id="hud-mastery-counter">Mastery: 0%</span>
+                </div>
+            </div>
+
+            <div class="pd-hud-actions">
+                <button type="button" class="pd-btn" id="btn-open-missions" title="Open Missions & Directives Journal">
+                    <i class="fas fa-list-check" style="color: var(--pd-neon-cyan);"></i> <span id="hud-missions-btn-label">Missions</span>
+                </button>
+                <button type="button" class="pd-btn" id="btn-toggle-minimap" title="Toggle HUD Mini-Map (M)">
+                    <i class="fas fa-map"></i> <span id="minimap-label">Map: On</span>
+                </button>
+                <button type="button" class="pd-btn" id="btn-toggle-debug" title="Toggle Debug Inspector (F3)">
+                    <i class="fas fa-bug"></i> <span id="debug-label">Debug: Off</span>
+                </button>
+                <button type="button" class="pd-btn" id="btn-fullscreen" title="Toggle Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <a href="../settings.html" class="pd-btn" title="Open Game Settings">
+                    <i class="fas fa-gear"></i> Settings
+                </a>
+                <a href="../hub.html" class="pd-btn pd-btn-cyan" title="Return to Strativo World Hub">
+                    <i class="fas fa-arrow-left"></i> World Hub
+                </a>
+            </div>
+        </header>
+
+        <!-- ================================================================
+             1B. PIP DISTRICT REAL PROGRESSION HUD BAR (PHASE 3.1)
+             ================================================================ -->
+        <section class="pd-profile-progress-bar" id="pd-progress-bar">
+            <div class="pd-profile-stat-item">
+                <span class="pd-stat-label"><i class="fas fa-city" style="color: var(--pd-neon-cyan);"></i> Explored</span>
+                <span class="pd-stat-val" id="stat-explored-val">0 / 12</span>
+            </div>
+            <div class="pd-profile-stat-item">
+                <span class="pd-stat-label"><i class="fas fa-bullseye" style="color: var(--pd-neon-emerald);"></i> Accuracy</span>
+                <span class="pd-stat-val" id="stat-accuracy-val">0%</span>
+            </div>
+            <div class="pd-profile-stat-item">
+                <span class="pd-stat-label"><i class="fas fa-gauge-high" style="color: var(--pd-neon-cyan);"></i> Precision Score</span>
+                <span class="pd-stat-val" id="stat-precision-score-val">0 / 100</span>
+            </div>
+            <div class="pd-profile-stat-item">
+                <span class="pd-stat-label"><i class="fas fa-fire" style="color: var(--pd-neon-gold);"></i> Best Combo</span>
+                <span class="pd-stat-val" id="stat-combo-val">0x</span>
+            </div>
+            <div class="pd-profile-stat-item">
+                <span class="pd-stat-label"><i class="fas fa-crosshairs" style="color: var(--pd-neon-purple);"></i> Pip Mastery</span>
+                <span class="pd-stat-val" id="stat-mastery-val">0%</span>
+            </div>
+            <div class="pd-profile-stat-item">
+                <span class="pd-stat-label"><i class="fas fa-shield-halved" style="color: var(--pd-neon-blue);"></i> Risk Sizing</span>
+                <span class="pd-stat-val" id="stat-risk-val">Active</span>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             2. 2D RPG VIEWPORT & CANVAS
+             ================================================================ -->
+        <div class="pip-district-viewport-wrapper" id="pip-district-viewport" tabindex="0">
+            <canvas id="pip-district-canvas" class="pip-district-canvas" width="1600" height="1000"></canvas>
+
+            <!-- Tactical Mini-Map Overlay -->
+            <div class="pd-minimap-container" id="pd-minimap-container" aria-label="District Mini-Map">
+                <div class="pd-minimap-header">
+                    <span><i class="fas fa-map-location-dot" style="color: var(--pd-neon-cyan);"></i> PIP METROPOLIS</span>
+                    <button type="button" class="pd-minimap-close-btn" id="pd-minimap-close-btn" aria-label="Close Mini-Map"><i class="fas fa-times"></i></button>
+                </div>
+                <canvas id="pd-minimap-canvas" class="pd-minimap-canvas" width="200" height="150"></canvas>
+                <div class="pd-minimap-legend">
+                    <span class="pd-minimap-legend-item"><span class="legend-dot player"></span> You</span>
+                    <span class="pd-minimap-legend-item"><span class="legend-dot facility"></span> Facility</span>
+                    <span class="pd-minimap-legend-item"><span class="legend-dot hub"></span> Hub Gate</span>
+                </div>
+            </div>
+
+            <!-- Active Tracked Mission HUD Overlay -->
+            <div class="pd-mission-tracker-hud" id="pd-tracker-hud">
+                <div class="pd-tracker-title">
+                    <span><i class="fas fa-crosshairs"></i> DIRECTIVE TRACKER</span>
+                    <span id="tracker-category-tag" style="color: #FCD34D;">EXPLORE</span>
+                </div>
+                <div class="pd-tracker-name" id="tracker-mission-name">First Measurement</div>
+                <div class="pd-tracker-prog-wrap">
+                    <div class="pd-tracker-bar">
+                        <div class="pd-tracker-fill" id="tracker-progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="pd-tracker-count" id="tracker-progress-count">0 / 3</span>
+                </div>
+            </div>
+
+            <!-- Floating Interaction Prompt -->
+            <div class="pd-interact-prompt" id="pd-prompt">
+                <span class="pd-key-badge">SPACE / E</span>
+                <div>
+                    <div class="pd-interact-title" id="prompt-title">Pip Academy</div>
+                    <div class="pd-interact-action" id="prompt-subtitle">Press to Enter</div>
+                </div>
+            </div>
+
+            <!-- Mobile Touch Layer -->
+            <div class="pd-touch-layer" id="pd-touch-layer">
+                <button type="button" class="pd-touch-action-btn" id="pd-touch-action" aria-label="Interact Button">
+                    <i class="fas fa-hand-pointer"></i>
+                    <span>ACTION</span>
+                </button>
+                <div class="pd-joystick-hint" id="pd-touch-hint">Touch & Drag to Walk</div>
+            </div>
+        </div>
+
+        <!-- ================================================================
+             3. IN-WORLD INTERACTION DIALOG
+             ================================================================ -->
+        <div class="pd-dialog-backdrop" id="pd-dialog" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="pd-dialog-card">
+                <div class="pd-dialog-header">
+                    <h3 id="dialog-heading"><i class="fas fa-circle-info" style="color: var(--pd-neon-cyan);"></i> <span>Facility Terminal</span></h3>
+                    <button type="button" class="pd-btn" id="dialog-close-btn" aria-label="Close dialog"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="pd-dialog-body" id="dialog-body-text">
+                    Welcome to the facility.
+                </div>
+                <div class="pd-dialog-footer" id="dialog-action-container">
+                    <button type="button" class="pd-btn" id="dialog-dismiss-btn">Dismiss</button>
+                    <button type="button" class="pd-btn pd-btn-cyan" id="dialog-primary-btn">Enter Facility</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================
+             4. INTERACTIVE FACILITY MODALS
+             ================================================================ -->
+        <!-- A. PIP ACADEMY MODAL -->
+        <div class="pd-dialog-backdrop" id="pd-academy-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="pd-dialog-card pd-modal-wide-card">
+                <div class="pd-dialog-header">
+                    <h3><i class="fas fa-graduation-cap" style="color: var(--pd-neon-cyan);"></i> Pip Academy — Price Distance & Fundamentals</h3>
+                    <button type="button" class="pd-btn pd-modal-close" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="pd-dialog-body">
+                    <!-- Tab Buttons -->
+                    <div style="display: flex; gap: 0.5rem; border-bottom: 1px solid var(--pd-border-subtle); padding-bottom: 0.5rem; flex-wrap: wrap;">
+                        <button type="button" class="pd-btn pd-btn-cyan" id="acad-tab-btn-fund" onclick="switchAcademyTab('fund')">Pip Fundamentals</button>
+                        <button type="button" class="pd-btn" id="acad-tab-btn-dir" onclick="switchAcademyTab('dir')">Directional Movement</button>
+                        <button type="button" class="pd-btn" id="acad-tab-btn-spread" onclick="switchAcademyTab('spread')">Live Pip Spread</button>
+                        <button type="button" class="pd-btn" id="acad-tab-btn-matrix" onclick="switchAcademyTab('matrix')">4th Decimal Theory</button>
+                    </div>
+
+                    <!-- Dynamic Question Area -->
+                    <div class="pd-interactive-box" id="acad-dynamic-box" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="acad-q-badge" class="pd-badge" style="background: rgba(0, 240, 255, 0.2); color: #00F0FF; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">FUNDAMENTALS</span>
+                            <button type="button" class="pd-btn" id="acad-skip-btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="refreshAcademyQuestion()"><i class="fas fa-sync"></i> New Challenge</button>
+                        </div>
+                        <h4 id="acad-q-text" style="margin: 0; color: #FFF; font-size: 1rem; line-height: 1.4;">Loading challenge...</h4>
+
+                        <div id="acad-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <div id="acad-feedback-box" style="display: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.88rem; line-height: 1.4;">
+                            <!-- Feedback and explanation -->
+                        </div>
+                    </div>
+                </div>
+                <div class="pd-dialog-footer">
+                    <button type="button" class="pd-btn pd-btn-cyan" onclick="closeAllModals()">Close Academy Station</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- B. PRICE LADDER & PRECISION LAB MODAL -->
+        <div class="pd-dialog-backdrop" id="pd-precision-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="pd-dialog-card pd-modal-wide-card">
+                <div class="pd-dialog-header">
+                    <h3><i class="fas fa-microscope" style="color: var(--pd-neon-emerald);"></i> Precision Lab & Price Ladder</h3>
+                    <button type="button" class="pd-btn pd-modal-close" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="pd-dialog-body">
+                    <!-- Tab Buttons -->
+                    <div style="display: flex; gap: 0.5rem; border-bottom: 1px solid var(--pd-border-subtle); padding-bottom: 0.5rem; flex-wrap: wrap;">
+                        <button type="button" class="pd-btn pd-btn-cyan" id="prec-tab-btn-ladder" onclick="switchPrecisionTab('ladder')">Price Ladder</button>
+                        <button type="button" class="pd-btn" id="prec-tab-btn-jpy" onclick="switchPrecisionTab('jpy')">JPY Precision Zone</button>
+                        <button type="button" class="pd-btn" id="prec-tab-btn-fractional" onclick="switchPrecisionTab('fractional')">Fractional Pipettes</button>
+                        <button type="button" class="pd-btn" id="prec-tab-btn-rules" onclick="switchPrecisionTab('rules')">Instrument Rules</button>
+                    </div>
+
+                    <!-- Dynamic Precision Question Area -->
+                    <div class="pd-interactive-box" id="prec-dynamic-box" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="prec-q-badge" class="pd-badge" style="background: rgba(16, 185, 129, 0.2); color: #10B981; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">PRECISION</span>
+                            <button type="button" class="pd-btn" id="prec-skip-btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="refreshPrecisionQuestion()"><i class="fas fa-sync"></i> New Challenge</button>
+                        </div>
+                        <h4 id="prec-q-text" style="margin: 0; color: #FFF; font-size: 1rem; line-height: 1.4;">Loading precision drill...</h4>
+
+                        <div id="prec-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <div id="prec-feedback-box" style="display: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.88rem; line-height: 1.4;">
+                            <!-- Feedback and explanation -->
+                        </div>
+                    </div>
+                </div>
+                <div class="pd-dialog-footer">
+                    <button type="button" class="pd-btn pd-btn-emerald" onclick="closeAllModals()">Close Precision Lab</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- C. RISK & POSITION FORGE MODAL -->
+        <div class="pd-dialog-backdrop" id="pd-forge-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="pd-dialog-card pd-modal-wide-card">
+                <div class="pd-dialog-header">
+                    <h3><i class="fas fa-shield-halved" style="color: var(--pd-neon-amber);"></i> Risk & Position Forge — Capital Defense Workshop</h3>
+                    <button type="button" class="pd-btn pd-modal-close" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="pd-dialog-body">
+                    <!-- Tab Buttons -->
+                    <div style="display: flex; gap: 0.5rem; border-bottom: 1px solid var(--pd-border-subtle); padding-bottom: 0.5rem; flex-wrap: wrap;">
+                        <button type="button" class="pd-btn pd-btn-cyan" id="forge-tab-btn-sizing" onclick="switchForgeTab('sizing')">Position Sizing Anvil</button>
+                        <button type="button" class="pd-btn" id="forge-tab-btn-maxrisk" onclick="switchForgeTab('maxrisk')">Max Dollar Risk Cap</button>
+                        <button type="button" class="pd-btn" id="forge-tab-btn-stopdist" onclick="switchForgeTab('stopdist')">Stop Distance Calibrator</button>
+                        <button type="button" class="pd-btn" id="forge-tab-btn-antiruin" onclick="switchForgeTab('antiruin')">Anti-Ruin Sizing Matrix</button>
+                    </div>
+
+                    <!-- Dynamic Risk Forge Area -->
+                    <div class="pd-interactive-box" id="forge-dynamic-box" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="forge-q-badge" class="pd-badge" style="background: rgba(245, 158, 11, 0.2); color: #F59E0B; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">POSITION SIZING</span>
+                            <button type="button" class="pd-btn" id="forge-skip-btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="refreshForgeQuestion()"><i class="fas fa-sync"></i> New Scenario</button>
+                        </div>
+                        <h4 id="forge-q-text" style="margin: 0; color: #FFF; font-size: 1rem; line-height: 1.4;">Loading risk scenario...</h4>
+
+                        <div id="forge-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <div id="forge-feedback-box" style="display: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.88rem; line-height: 1.4;">
+                            <!-- Feedback and explanation -->
+                        </div>
+                    </div>
+                </div>
+                <div class="pd-dialog-footer">
+                    <button type="button" class="pd-btn pd-btn-amber" onclick="closeAllModals()">Close Risk Forge</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- D. LEVERAGE TOWER MODAL -->
+        <div class="pd-dialog-backdrop" id="pd-leverage-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="pd-dialog-card pd-modal-wide-card">
+                <div class="pd-dialog-header">
+                    <h3><i class="fas fa-tower-observation" style="color: var(--pd-neon-purple);"></i> Leverage Tower — Margin & Exposure Simulator</h3>
+                    <button type="button" class="pd-btn pd-modal-close" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="pd-dialog-body">
+                    <!-- Tab Buttons -->
+                    <div style="display: flex; gap: 0.5rem; border-bottom: 1px solid var(--pd-border-subtle); padding-bottom: 0.5rem; flex-wrap: wrap;">
+                        <button type="button" class="pd-btn pd-btn-cyan" id="lev-tab-btn-margin" onclick="switchLeverageTab('margin')">Margin Requirement</button>
+                        <button type="button" class="pd-btn" id="lev-tab-btn-exposure" onclick="switchLeverageTab('exposure')">Notional Exposure</button>
+                        <button type="button" class="pd-btn" id="lev-tab-btn-utilization" onclick="switchLeverageTab('utilization')">Margin Utilization</button>
+                        <button type="button" class="pd-btn" id="lev-tab-btn-liquidation" onclick="switchLeverageTab('liquidation')">Liquidation Defense</button>
+                    </div>
+
+                    <!-- Dynamic Leverage Area -->
+                    <div class="pd-interactive-box" id="lev-dynamic-box" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="lev-q-badge" class="pd-badge" style="background: rgba(168, 85, 247, 0.2); color: #A855F7; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">MARGIN SIMULATION</span>
+                            <button type="button" class="pd-btn" id="lev-skip-btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="refreshLeverageQuestion()"><i class="fas fa-sync"></i> New Scenario</button>
+                        </div>
+                        <h4 id="lev-q-text" style="margin: 0; color: #FFF; font-size: 1rem; line-height: 1.4;">Loading leverage scenario...</h4>
+
+                        <div id="lev-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <div id="lev-feedback-box" style="display: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.88rem; line-height: 1.4;">
+                            <!-- Feedback and explanation -->
+                        </div>
+                    </div>
+                </div>
+                <div class="pd-dialog-footer">
+                    <button type="button" class="pd-btn pd-btn-indigo" onclick="closeAllModals()">Close Leverage Tower</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- E. RISK ARENA MODAL -->
+        <div class="pd-dialog-backdrop" id="pd-risk-arena-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="pd-dialog-card pd-modal-wide-card">
+                <div class="pd-dialog-header">
+                    <h3><i class="fas fa-shield-virus" style="color: var(--pd-neon-rose);"></i> Risk Survival Chamber — Capital Defense Trial</h3>
+                    <button type="button" class="pd-btn pd-modal-close" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="pd-dialog-body">
+                    <!-- Tab Buttons -->
+                    <div style="display: flex; gap: 0.5rem; border-bottom: 1px solid var(--pd-border-subtle); padding-bottom: 0.5rem; flex-wrap: wrap;">
+                        <button type="button" class="pd-btn pd-btn-cyan" id="arena-tab-btn-trial" onclick="switchArenaTab('trial')">Capital Defense Trial</button>
+                        <button type="button" class="pd-btn" id="arena-tab-btn-drawdown" onclick="switchArenaTab('drawdown')">Drawdown Defense</button>
+                    </div>
+
+                    <!-- Dynamic Risk Arena Area -->
+                    <div class="pd-interactive-box" id="arena-dynamic-box" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="arena-q-badge" class="pd-badge" style="background: rgba(244, 63, 94, 0.2); color: #F43F5E; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">DEFENSE TRIAL</span>
+                            <button type="button" class="pd-btn" id="arena-skip-btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="refreshArenaQuestion()"><i class="fas fa-sync"></i> New Defense Trial</button>
+                        </div>
+                        <h4 id="arena-q-text" style="margin: 0; color: #FFF; font-size: 1rem; line-height: 1.4;">Loading defense scenario...</h4>
+
+                        <div id="arena-options-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <div id="arena-feedback-box" style="display: none; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.88rem; line-height: 1.4;">
+                            <!-- Feedback and explanation -->
+                        </div>
+                    </div>
+                </div>
+                <div class="pd-dialog-footer">
+                    <button type="button" class="pd-btn pd-btn-rose" onclick="closeAllModals()">Close Risk Arena</button>
+                </div>
+            </div>
+        </div>
+        <!-- ================================================================
+             5. PIP BLITZ 10-ROUND ARENA OVERLAY
+             ================================================================ -->
+        <div class="pd-blitz-overlay" id="pd-blitz-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+            <!-- 3-2-1 Countdown Screen -->
+            <div class="pd-blitz-countdown-screen" id="pd-blitz-countdown">
+                <div class="pd-countdown-circle" id="pd-countdown-num">3</div>
+                <div style="font-size: 1.15rem; font-weight: 800; color: var(--pd-neon-cyan);">PREPARE FOR PIP BLITZ!</div>
+            </div>
+
+            <!-- Header -->
+            <div class="pd-blitz-header">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-weight: 800; color: var(--pd-neon-cyan);"><i class="fas fa-bolt-lightning"></i> PIP BLITZ</span>
+                    <span class="pd-key-badge" id="blitz-round-badge">ROUND 1 / 10</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span style="font-weight: 700; color: var(--pd-neon-gold); font-size: 0.95rem;">COMBO: <strong id="blitz-combo-display">0x</strong></span>
+                    <span style="font-weight: 800; color: #FFF; font-size: 1.05rem;">SCORE: <strong id="blitz-score-display" style="color: var(--pd-neon-cyan);">0</strong> PTS</span>
+                    <button type="button" class="pd-btn" id="blitz-exit-btn" style="padding: 0.35rem 0.75rem;"><i class="fas fa-times"></i> Exit</button>
+                </div>
+            </div>
+
+            <!-- Stage & Question Area -->
+            <div class="pd-blitz-stage" id="pd-blitz-stage">
+                <div class="pd-blitz-question-card">
+                    <div style="font-size: 0.78rem; font-weight: 800; color: var(--pd-neon-cyan); letter-spacing: 0.5px;" id="blitz-type-tag">TYPE A: MEASURE DISTANCE</div>
+                    <div style="font-size: 1.35rem; font-weight: 900; color: #FFF;" id="blitz-question-title">EUR/USD: 1.0820 &rarr; 1.0835</div>
+                    <div style="font-size: 0.85rem; color: var(--pd-text-muted);" id="blitz-question-sub">How many pips did price travel?</div>
+                </div>
+
+                <!-- 4 Options Grid -->
+                <div class="pd-target-grid" id="blitz-target-grid">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Feedback Bar -->
+                <div class="pd-feedback-bar" id="blitz-feedback-bar">
+                    <div id="blitz-feedback-title" style="font-weight: 800;"></div>
+                    <div id="blitz-feedback-desc" style="font-size: 0.82rem;"></div>
+                </div>
+            </div>
+
+            <!-- Final Scorecard -->
+            <div class="pd-scorecard" id="pd-blitz-scorecard">
+                <div class="pd-scorecard-rank" id="scorecard-rank">S</div>
+                <h3 style="margin: 0; color: #FFF; font-size: 1.35rem;">MATCH COMPLETED!</h3>
+                <p style="margin: 0; color: var(--pd-text-muted); font-size: 0.88rem;">10-Round Precision Calibration Finished</p>
+
+                <div class="pd-scorecard-stats">
+                    <div>
+                        <div style="color: var(--pd-text-muted); font-size: 0.72rem;">Final Score</div>
+                        <div id="card-score" style="font-size: 1.1rem; font-weight: 800; color: var(--pd-neon-cyan);">0</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--pd-text-muted); font-size: 0.72rem;">Accuracy</div>
+                        <div id="card-accuracy" style="font-size: 1.1rem; font-weight: 800; color: var(--pd-neon-emerald);">100%</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--pd-text-muted); font-size: 0.72rem;">Best Combo</div>
+                        <div id="card-combo" style="font-size: 1.1rem; font-weight: 800; color: var(--pd-neon-gold);">10x</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--pd-text-muted); font-size: 0.72rem;">Avg Speed</div>
+                        <div id="card-speed" style="font-size: 1.1rem; font-weight: 800; color: #93C5FD;">1.2s</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--pd-text-muted); font-size: 0.72rem;">XP Gained</div>
+                        <div id="card-xp" style="font-size: 1.1rem; font-weight: 800; color: var(--pd-neon-gold);">+30 XP</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--pd-text-muted); font-size: 0.72rem;">Pip Mastery</div>
+                        <div id="card-mastery" style="font-size: 1.1rem; font-weight: 800; color: var(--pd-neon-purple);">25%</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 0.75rem; width: 100%;">
+                    <button type="button" class="pd-btn pd-btn-cyan" id="scorecard-replay-btn" style="flex: 1;">
+                        <i class="fas fa-rotate-right"></i> Play Again
+                    </button>
+                    <button type="button" class="pd-btn" id="scorecard-finish-btn" style="flex: 1;">
+                        Return to District
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================
+             6. DISTRICT MISSIONS JOURNAL MODAL
+             ================================================================ -->
+        <div class="pd-missions-modal-overlay" id="pd-missions-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="pd-missions-modal-card">
+                <div class="pd-missions-header">
+                    <h2 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #FFF; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-list-check" style="color: var(--pd-neon-cyan);"></i>
+                        <span>District Directives & Quests</span>
+                    </h2>
+                    <button type="button" class="pd-btn" id="btn-close-missions" aria-label="Close Missions Journal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="pd-missions-grid" id="pd-missions-list">
+                    <!-- Populated dynamically by StrativoRPG.MissionEngine -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================
+             7. LANDMARKS & CONTROLS FOOTER GRID
+             ================================================================ -->
+        <section class="pd-info-grid">
+            <div class="pd-card">
+                <h4 style="margin: 0; color: #FFF; font-size: 0.95rem;"><i class="fas fa-map-location-dot" style="color: var(--pd-neon-cyan);"></i> Pip District Landmarks</h4>
+                <div class="pd-landmarks-list">
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-monument" style="color: var(--pd-neon-cyan);"></i>
+                        <div><strong>Pip Plaza:</strong> Central gathering square with holographic Caliper Obelisk.</div>
+                    </div>
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-graduation-cap" style="color: var(--pd-neon-blue);"></i>
+                        <div><strong>Pip Academy:</strong> Foundational measurement rules and direction calculations.</div>
+                    </div>
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-microscope" style="color: var(--pd-neon-emerald);"></i>
+                        <div><strong>Precision Lab:</strong> Interactive Price Ladder, Japanese Yen 2-decimal zone & Fractional pipettes.</div>
+                    </div>
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-shield-halved" style="color: var(--pd-neon-amber);"></i>
+                        <div><strong>Risk & Position Forge:</strong> Standard/Mini/Micro lot calculation based on 1-2% account defense.</div>
+                    </div>
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-tower-observation" style="color: var(--pd-neon-purple);"></i>
+                        <div><strong>Leverage Tower:</strong> Interactive margin requirement and purchasing power simulator.</div>
+                    </div>
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-bolt-lightning" style="color: var(--pd-neon-cyan);"></i>
+                        <div><strong>Pip Blitz Arena:</strong> 10-round procedurally generated high-speed measurement challenge.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pd-card">
+                <h4 style="margin: 0; color: #FFF; font-size: 0.95rem;"><i class="fas fa-gamepad" style="color: var(--pd-neon-gold);"></i> Controls & Navigation</h4>
+                <div class="pd-landmarks-list">
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-keyboard" style="color: var(--pd-neon-gold);"></i>
+                        <div><strong>Movement:</strong> Arrow Keys or <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> to explore the city.</div>
+                    </div>
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-hand-pointer" style="color: var(--pd-neon-cyan);"></i>
+                        <div><strong>Interact:</strong> <kbd>SPACE</kbd> or <kbd>E</kbd> near buildings and NPCs to open facilities.</div>
+                    </div>
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-mobile-screen" style="color: var(--pd-neon-emerald);"></i>
+                        <div><strong>Mobile Touch:</strong> Drag directly on the viewport to walk; tap the round <strong>ACTION</strong> button to interact.</div>
+                    </div>
+                    <div class="pd-landmark-item">
+                        <i class="fas fa-crosshairs" style="color: var(--pd-neon-purple);"></i>
+                        <div><strong>Blitz Hotkeys:</strong> Press keys <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> during Pip Blitz matches.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ====================================================================
+         SCRIPTS: RPG CORE ENGINE + NPCS & MISSIONS + PIP DISTRICT
+         ==================================================================== -->
+    <script src="../js/settings/world-settings.js"></script>
+    <script src="../js/settings/haptics.js"></script>
+    <script src="../js/audio/audio-manager.js"></script>
+
+    <script src="../js/core/world-state.js"></script>
+    <script src="../js/core/world-xp-engine.js"></script>
+
+    <script src="../js/rpg/collision.js"></script>
+    <script src="../js/rpg/input.js"></script>
+    <script src="../js/rpg/camera.js"></script>
+    <script src="../js/rpg/player.js"></script>
+    <script src="../js/rpg/world.js"></script>
+    <script src="../js/rpg/rpg-core.js"></script>
+
+    <!-- Phase 2.6/3.1 Shared RPG Dialogue, NPC, and Mission Engines -->
+    <script src="../js/rpg/dialogue.js"></script>
+    <script src="../js/rpg/npc.js"></script>
+    <script src="../js/rpg/missions.js"></script>
+
+    <!-- District 2 Engine -->
+    <script src="../js/districts/pip-district.js"></script>
+
+    <!-- District 2 Controller & DOM Hooks -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const canvas = document.getElementById("pip-district-canvas");
+            const viewport = document.getElementById("pip-district-viewport");
+            const promptEl = document.getElementById("pd-prompt");
+            const promptTitle = document.getElementById("prompt-title");
+            const promptSubtitle = document.getElementById("prompt-subtitle");
+
+            const dialogEl = document.getElementById("pd-dialog");
+            const dialogHeading = document.getElementById("dialog-heading");
+            const dialogBody = document.getElementById("dialog-body-text");
+            const dialogCloseBtn = document.getElementById("dialog-close-btn");
+            const dialogPrimaryBtn = document.getElementById("dialog-primary-btn");
+            const dialogDismissBtn = document.getElementById("dialog-dismiss-btn");
+
+            let core = null;
+            let currentNearbyTrigger = null;
+            let ladderStartPrice = null;
+            let ladderEndPrice = null;
+
+            // 1. Initialize District Map Data & Scene World
+            const world = new window.StrativoRPG.PipDistrictWorld();
+
+            // 2. Initialize Shared RPG Core Engine
+            core = new window.StrativoRPG.RPGCore({
+                canvas: canvas,
+                container: viewport,
+                world: world,
+                onInteractionPrompt: (trigger) => {
+                    if (trigger && trigger.active) {
+                        currentNearbyTrigger = trigger.object;
+                        promptTitle.textContent = trigger.name || "Facility";
+                        promptSubtitle.textContent = trigger.promptText ? `• ${trigger.promptText}` : "• Press SPACE / E to Enter";
+                        promptEl.classList.add("active");
+                    } else {
+                        currentNearbyTrigger = null;
+                        promptEl.classList.remove("active");
+                    }
+                },
+                onInteractionTrigger: (obj, result) => {
+                    if (!result) return;
+                    if (result.actionHandler && typeof result.actionHandler === "function") {
+                        result.actionHandler();
+                    }
+                }
+            });
+
+            world.core = core;
+            window.StrativoRPG.gameCore = core;
+
+            // Start RPG Core rendering loop
+            core.start();
+
+            // 3. Load District Missions
+            if (window.StrativoRPG.MissionEngine) {
+                window.StrativoRPG.MissionEngine.loadMissionsDataset("../data/pip-missions.json").then(() => {
+                    syncHudState();
+                }).catch(() => {});
+            }
+
+            // 3. Sync HUD Player Profile & Stats
+            function syncHudState() {
+                if (!window.StrativoWorldState) return;
+                const state = window.StrativoWorldState.get();
+
+                const handleEl = document.getElementById("hud-player-handle");
+                const levelEl = document.getElementById("hud-player-level");
+                const rankEl = document.getElementById("hud-player-rank");
+                const masteryBadge = document.getElementById("hud-mastery-counter");
+
+                if (handleEl) handleEl.textContent = state.handle || "Student";
+                if (levelEl) levelEl.textContent = `LVL ${state.level || 1}`;
+                if (rankEl) rankEl.textContent = state.rank || "Precision Initiate";
+
+                const pipMastery = (state.mastery && state.mastery.pipPosition) || 0;
+                if (masteryBadge) masteryBadge.textContent = `Mastery: ${pipMastery}%`;
+
+                // Progression Bar Stats
+                const exploredEl = document.getElementById("stat-explored-val");
+                const accuracyEl = document.getElementById("stat-accuracy-val");
+                const comboEl = document.getElementById("stat-combo-val");
+                const masteryStatEl = document.getElementById("stat-mastery-val");
+
+                if (exploredEl) exploredEl.textContent = `${(state.uniqueLocations || []).length} / 12`;
+                if (masteryStatEl) masteryStatEl.textContent = `${pipMastery}%`;
+
+                if (state.pipStats) {
+                    const acc = state.pipStats.blitzAttempts > 0
+                        ? Math.round((state.pipStats.blitzCorrect / state.pipStats.blitzAttempts) * 100)
+                        : 0;
+                    if (accuracyEl) accuracyEl.textContent = `${acc}%`;
+                }
+
+                if (state.blitzStats) {
+                    if (comboEl) comboEl.textContent = `${state.blitzStats.bestCombo || 0}x`;
+                }
+
+                // Update Active Mission Tracker
+                syncMissionTracker();
+            }
+
+            // Mini-Map Engine
+            const minimapCanvas = document.getElementById("pd-minimap-canvas");
+            const minimapCtx = minimapCanvas ? minimapCanvas.getContext("2d") : null;
+            let minimapVisible = true;
+
+            function updateMinimap() {
+                if (!minimapCtx || !minimapVisible) return;
+                const mw = minimapCanvas.width;
+                const mh = minimapCanvas.height;
+                const worldW = 3200;
+                const worldH = 2400;
+                const scaleX = mw / worldW;
+                const scaleY = mh / worldH;
+
+                minimapCtx.fillStyle = "#030712";
+                minimapCtx.fillRect(0, 0, mw, mh);
+
+                if (world && world.activeScene === "exterior") {
+                    // Quarters
+                    const quarters = [
+                        { x: 1250, y: 950, w: 700, h: 500, c: "#00F0FF" },
+                        { x: 100, y: 100, w: 1050, h: 750, c: "#3B82F6" },
+                        { x: 2050, y: 100, w: 1050, h: 750, c: "#10B981" },
+                        { x: 1250, y: 100, w: 700, h: 750, c: "#A855F7" },
+                        { x: 100, y: 1550, w: 1050, h: 750, c: "#F59E0B" },
+                        { x: 2050, y: 1550, w: 1050, h: 750, c: "#FCD34D" },
+                        { x: 2050, y: 900, w: 1050, h: 600, c: "#38BDF8" }
+                    ];
+                    quarters.forEach(q => {
+                        minimapCtx.fillStyle = q.c + "18";
+                        minimapCtx.fillRect(q.x * scaleX, q.y * scaleY, q.w * scaleX, q.h * scaleY);
+                        minimapCtx.strokeStyle = q.c + "35";
+                        minimapCtx.strokeRect(q.x * scaleX, q.y * scaleY, q.w * scaleX, q.h * scaleY);
+                    });
+
+                    // Roads
+                    const roads = [
+                        { x: 1540, y: 80, w: 120, h: 2240 },
+                        { x: 80, y: 1140, w: 3040, h: 120 },
+                        { x: 80, y: 500, w: 3040, h: 100 },
+                        { x: 80, y: 1880, w: 3040, h: 100 }
+                    ];
+                    roads.forEach(r => {
+                        minimapCtx.fillStyle = "#0F1E3D";
+                        minimapCtx.fillRect(r.x * scaleX, r.y * scaleY, r.w * scaleX, r.h * scaleY);
+                    });
+
+                    // Facilities
+                    const facilities = [
+                        { x: 480, y: 500 },
+                        { x: 2710, y: 500 },
+                        { x: 1600, y: 500 },
+                        { x: 480, y: 1880 },
+                        { x: 480, y: 2220 },
+                        { x: 2710, y: 1880 },
+                        { x: 2270, y: 1880 }
+                    ];
+                    facilities.forEach(f => {
+                        minimapCtx.fillStyle = "#FCD34D";
+                        minimapCtx.beginPath();
+                        minimapCtx.arc(f.x * scaleX, f.y * scaleY, 3, 0, Math.PI * 2);
+                        minimapCtx.fill();
+                    });
+
+                    // Hub Gate
+                    minimapCtx.fillStyle = "#00E5A8";
+                    minimapCtx.beginPath();
+                    minimapCtx.arc(1600 * scaleX, 2340 * scaleY, 4, 0, Math.PI * 2);
+                    minimapCtx.fill();
+
+                    // Player
+                    if (core && core.player) {
+                        const px = core.player.x * scaleX;
+                        const py = core.player.y * scaleY;
+                        minimapCtx.fillStyle = "#00F0FF";
+                        minimapCtx.beginPath();
+                        minimapCtx.arc(px, py, 4, 0, Math.PI * 2);
+                        minimapCtx.fill();
+                        minimapCtx.strokeStyle = "#FFFFFF";
+                        minimapCtx.lineWidth = 1;
+                        minimapCtx.stroke();
+                    }
+                } else {
+                    minimapCtx.fillStyle = "rgba(0, 240, 255, 0.4)";
+                    minimapCtx.font = "bold 9px Inter, sans-serif";
+                    minimapCtx.textAlign = "center";
+                    minimapCtx.fillText("INTERIOR SECTOR", mw / 2, mh / 2);
+                }
+            }
+            setInterval(updateMinimap, 100);
+
+            const btnToggleMinimap = document.getElementById("btn-toggle-minimap");
+            const minimapContainer = document.getElementById("pd-minimap-container");
+            const minimapCloseBtn = document.getElementById("pd-minimap-close-btn");
+
+            function toggleMinimap(force) {
+                minimapVisible = typeof force === "boolean" ? force : !minimapVisible;
+                if (minimapContainer) minimapContainer.classList.toggle("hidden", !minimapVisible);
+                const lbl = document.getElementById("minimap-label");
+                if (lbl) lbl.textContent = minimapVisible ? "Map: On" : "Map: Off";
+            }
+
+            if (btnToggleMinimap) btnToggleMinimap.addEventListener("click", () => toggleMinimap());
+            if (minimapCloseBtn) minimapCloseBtn.addEventListener("click", () => toggleMinimap(false));
+            window.addEventListener("keydown", (e) => {
+                if ((e.key === "m" || e.key === "M") && !core.hasActiveModal()) {
+                    toggleMinimap();
+                }
+            });
+
+            function syncMissionTracker() {
+                if (!window.StrativoRPG.MissionEngine) return;
+                const tracked = window.StrativoRPG.MissionEngine.getTrackedMission();
+                if (!tracked) return;
+
+                const nameEl = document.getElementById("tracker-mission-name");
+                const countEl = document.getElementById("tracker-progress-count");
+                const fillEl = document.getElementById("tracker-progress-fill");
+                const tagEl = document.getElementById("tracker-category-tag");
+
+                const prog = window.StrativoRPG.MissionEngine.getMissionProgress(tracked.id);
+                if (nameEl) nameEl.textContent = tracked.title;
+                if (countEl) countEl.textContent = `${prog.current} / ${prog.target}`;
+                if (fillEl) fillEl.style.width = `${prog.percent}%`;
+                if (tagEl) tagEl.textContent = (tracked.category || "DIRECTIVE").toUpperCase();
+            }
+
+            syncHudState();
+
+            // Listen for State / Mission Events
+            window.addEventListener("strativo:worldStateChanged", syncHudState);
+            window.addEventListener("strativo:trackedMissionChanged", syncMissionTracker);
+            window.addEventListener("strativo:missionProgressUpdated", syncHudState);
+
+            // 4. Modal Open/Close & Recovery System
+            function openModal(id) {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.add("active");
+                    el.setAttribute("aria-hidden", "false");
+                }
+            }
+            window.openModal = openModal;
+            window.StrativoRPG.openModal = openModal;
+
+            function closeModal(id) {
+                clearAllScenarioTimers();
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.remove("active");
+                    el.setAttribute("aria-hidden", "true");
+                }
+                if (id === "pd-blitz-overlay") {
+                    const card = document.getElementById("pd-blitz-scorecard");
+                    if (card) card.classList.remove("active");
+                    if (window.StrativoRPG.PipBlitzEngine) {
+                        window.StrativoRPG.PipBlitzEngine.active = false;
+                    }
+                }
+                if (window.StrativoRPG.DialogueManager && typeof window.StrativoRPG.DialogueManager.closeDialogue === "function") {
+                    window.StrativoRPG.DialogueManager.closeDialogue();
+                }
+
+                // Force DOM unfocus and reset gameplay input state
+                if (document.activeElement && typeof document.activeElement.blur === "function") {
+                    document.activeElement.blur();
+                }
+                if (window.StrativoRPG.gameCore && window.StrativoRPG.gameCore.input) {
+                    window.StrativoRPG.gameCore.input.reset();
+                }
+                const cv = document.getElementById("pip-district-canvas");
+                if (cv && typeof cv.focus === "function") {
+                    cv.focus();
+                }
+            }
+            window.closeModal = closeModal;
+            window.StrativoRPG.closeModal = closeModal;
+
+            function closeAllModals() {
+                clearAllScenarioTimers();
+                document.querySelectorAll(".pd-dialog-backdrop, .pd-blitz-overlay, .pd-missions-modal-overlay, #pd-dialog, .strativo-dialogue-overlay, #strativo-dialogue-overlay, #pd-blitz-scorecard, #pd-quick-test-modal, #pd-discovery-modal").forEach(m => {
+                    m.classList.remove("active");
+                    m.setAttribute("aria-hidden", "true");
+                });
+                if (window.StrativoRPG.PipBlitzEngine) {
+                    window.StrativoRPG.PipBlitzEngine.active = false;
+                }
+                if (window.StrativoRPG.DialogueManager && typeof window.StrativoRPG.DialogueManager.closeDialogue === "function") {
+                    window.StrativoRPG.DialogueManager.closeDialogue();
+                }
+
+                // Force DOM unfocus and reset gameplay input state
+                if (document.activeElement && typeof document.activeElement.blur === "function") {
+                    document.activeElement.blur();
+                }
+                if (window.StrativoRPG.gameCore && window.StrativoRPG.gameCore.input) {
+                    window.StrativoRPG.gameCore.input.reset();
+                }
+                const cv = document.getElementById("pip-district-canvas");
+                if (cv && typeof cv.focus === "function") {
+                    cv.focus();
+                }
+            }
+
+            window.closeAllModals = closeAllModals;
+            window.StrativoRPG.closeAllModals = closeAllModals;
+
+            // ------------------------------------------------------------------
+            // DYNAMIC QUESTION RENDERING, AUTO-PROGRESSION & STATE RESET CONTROLLER
+            // ------------------------------------------------------------------
+            let currentAcadQuestion = null;
+            let currentPrecQuestion = null;
+            let currentForgeQuestion = null;
+            let currentLevQuestion = null;
+            let currentArenaQuestion = null;
+
+            let currentAcadTab = "fund";
+            let currentPrecTab = "ladder";
+            let currentForgeTab = "sizing";
+            let currentLevTab = "margin";
+            let currentArenaTab = "trial";
+
+            const activeScenarioTimers = {
+                acad: null,
+                prec: null,
+                forge: null,
+                lev: null,
+                arena: null
+            };
+
+            function clearScenarioTimer(prefix) {
+                if (activeScenarioTimers[prefix]) {
+                    clearTimeout(activeScenarioTimers[prefix]);
+                    activeScenarioTimers[prefix] = null;
+                }
+            }
+
+            function clearAllScenarioTimers() {
+                Object.keys(activeScenarioTimers).forEach(clearScenarioTimer);
+            }
+
+            function renderQuestionCard(prefix, q, onAnswerCallback, refreshFn) {
+                clearScenarioTimer(prefix);
+
+                const badgeEl = document.getElementById(prefix + "-q-badge");
+                const textEl = document.getElementById(prefix + "-q-text");
+                const gridEl = document.getElementById(prefix + "-options-grid");
+                const fbEl = document.getElementById(prefix + "-feedback-box");
+                const skipBtn = document.getElementById(prefix + "-skip-btn");
+
+                if (!q || !textEl || !gridEl) return;
+
+                if (badgeEl) badgeEl.textContent = (q.category || "CHALLENGE").toUpperCase();
+                textEl.textContent = q.questionText;
+
+                // State reset: Hide previous feedback, clear old buttons, reset skip button label
+                if (fbEl) {
+                    fbEl.style.display = "none";
+                    fbEl.innerHTML = "";
+                }
+                if (skipBtn) {
+                    skipBtn.innerHTML = '<i class="fas fa-sync"></i> New Scenario';
+                    skipBtn.onclick = () => {
+                        clearScenarioTimer(prefix);
+                        if (typeof refreshFn === "function") refreshFn();
+                    };
+                }
+                gridEl.innerHTML = "";
+
+                let answered = false;
+
+                (q.options || []).forEach((opt, idx) => {
+                    const optText = typeof opt === "string" ? opt : (opt.text || opt.label || "");
+                    const btn = document.createElement("button");
+                    btn.className = "pd-btn";
+                    btn.style.padding = "0.75rem 1rem";
+                    btn.style.textAlign = "left";
+                    btn.style.fontSize = "0.9rem";
+                    btn.textContent = optText;
+
+                    btn.onclick = () => {
+                        if (answered) return;
+                        answered = true;
+
+                        // Lock all option buttons immediately to prevent double submission
+                        Array.from(gridEl.children).forEach(c => c.disabled = true);
+
+                        const isCorrect = optText === q.correctAnswer || (opt && opt.isCorrect);
+                        if (isCorrect) {
+                            btn.className = "pd-btn pd-btn-emerald";
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.style.background = "rgba(16, 185, 129, 0.15)";
+                                fbEl.style.border = "1px solid #10B981";
+                                fbEl.style.color = "#A7F3D0";
+                                fbEl.innerHTML = '<div><i class="fas fa-check-circle" style="color: #10B981; margin-right: 0.4rem;"></i> <strong>CORRECT!</strong> ' + q.explanation + '</div>';
+                            }
+                            window.StrativoRPG.emitGameEvent("correctHit");
+                            if (window.StrativoWorldXPEngine && typeof window.StrativoWorldXPEngine.addWorldXP === "function") {
+                                window.StrativoWorldXPEngine.addWorldXP(15, "Pip Precision: " + (q.category || "Challenge"), "q_" + q.id + "_" + Date.now());
+                            }
+                        } else {
+                            btn.className = "pd-btn pd-btn-rose";
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.style.background = "rgba(244, 63, 94, 0.15)";
+                                fbEl.style.border = "1px solid #F43F5E";
+                                fbEl.style.color = "#FECDD3";
+                                fbEl.innerHTML = '<div><i class="fas fa-times-circle" style="color: #F43F5E; margin-right: 0.4rem;"></i> <strong>INCORRECT.</strong> Correct: <em>' + q.correctAnswer + '</em>. ' + q.explanation + '</div>';
+                            }
+                            window.StrativoRPG.emitGameEvent("wrongHit");
+                        }
+
+                        // Update top-right button to "Next Scenario"
+                        if (skipBtn) {
+                            skipBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Next Scenario';
+                        }
+
+                        // Add prominent Next Scenario continue button in feedback box
+                        if (fbEl && typeof refreshFn === "function") {
+                            const nextBtn = document.createElement("button");
+                            nextBtn.type = "button";
+                            nextBtn.className = "pd-btn pd-btn-cyan";
+                            nextBtn.style.marginTop = "0.75rem";
+                            nextBtn.style.width = "100%";
+                            nextBtn.style.display = "flex";
+                            nextBtn.style.justifyContent = "center";
+                            nextBtn.style.alignItems = "center";
+                            nextBtn.style.gap = "0.5rem";
+                            nextBtn.innerHTML = '<i class="fas fa-forward"></i> Next Scenario';
+                            nextBtn.onclick = () => {
+                                clearScenarioTimer(prefix);
+                                refreshFn();
+                            };
+                            fbEl.appendChild(nextBtn);
+                        }
+
+                        if (onAnswerCallback) onAnswerCallback(isCorrect, q);
+
+                        // Automatic progression after 3.5s if player does not click manually
+                        if (typeof refreshFn === "function") {
+                            activeScenarioTimers[prefix] = setTimeout(() => {
+                                refreshFn();
+                            }, 3500);
+                        }
+                    };
+
+                    gridEl.appendChild(btn);
+                });
+            }
+
+            // Pip Academy Dynamic Controller
+            function switchAcademyTab(tab = "fund") {
+                currentAcadTab = tab;
+                const tabs = ["fund", "dir", "spread", "matrix"];
+                tabs.forEach(t => {
+                    const btn = document.getElementById("acad-tab-btn-" + t);
+                    if (btn) btn.classList.toggle("pd-btn-cyan", t === tab);
+                });
+                refreshAcademyQuestion(tab);
+            }
+            window.switchAcademyTab = switchAcademyTab;
+
+            function refreshAcademyQuestion(tab = null) {
+                if (tab) currentAcadTab = tab;
+                const q = window.StrativoRPG.QuestionEngine.getQuestion("pip_academy", currentAcadTab);
+                currentAcadQuestion = q;
+                renderQuestionCard("acad", q, (isCorrect) => {
+                    if (isCorrect && window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordLocationInteraction("pip_academy");
+                    }
+                }, () => refreshAcademyQuestion(currentAcadTab));
+            }
+            window.refreshAcademyQuestion = refreshAcademyQuestion;
+
+            // Precision Lab Dynamic Controller
+            function switchPrecisionTab(tab = "ladder") {
+                currentPrecTab = tab;
+                const tabs = ["ladder", "jpy", "fractional", "rules"];
+                tabs.forEach(t => {
+                    const btn = document.getElementById("prec-tab-btn-" + t);
+                    if (btn) btn.classList.toggle("pd-btn-cyan", t === tab);
+                });
+                refreshPrecisionQuestion(tab);
+            }
+            window.switchPrecisionTab = switchPrecisionTab;
+
+            function refreshPrecisionQuestion(tab = null) {
+                if (tab) currentPrecTab = tab;
+                const q = window.StrativoRPG.QuestionEngine.getQuestion("precision_lab", currentPrecTab);
+                currentPrecQuestion = q;
+                renderQuestionCard("prec", q, (isCorrect) => {
+                    if (isCorrect && window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordLocationInteraction("precision_lab");
+                    }
+                }, () => refreshPrecisionQuestion(currentPrecTab));
+            }
+            window.refreshPrecisionQuestion = refreshPrecisionQuestion;
+
+            // Risk Forge Dynamic Controller
+            function switchForgeTab(tab = "sizing") {
+                currentForgeTab = tab;
+                const tabs = ["sizing", "maxrisk", "stopdist", "antiruin"];
+                tabs.forEach(t => {
+                    const btn = document.getElementById("forge-tab-btn-" + t);
+                    if (btn) btn.classList.toggle("pd-btn-amber", t === tab);
+                });
+                refreshForgeQuestion(tab);
+            }
+            window.switchForgeTab = switchForgeTab;
+
+            function refreshForgeQuestion(tab = null) {
+                if (tab) currentForgeTab = tab;
+                const q = window.StrativoRPG.QuestionEngine.getQuestion("risk_forge", currentForgeTab);
+                currentForgeQuestion = q;
+                renderQuestionCard("forge", q, (isCorrect) => {
+                    if (isCorrect && window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordLocationInteraction("risk_forge");
+                    }
+                }, () => refreshForgeQuestion(currentForgeTab));
+            }
+            window.refreshForgeQuestion = refreshForgeQuestion;
+
+            // Leverage Tower Dynamic Controller
+            function switchLeverageTab(tab = "margin") {
+                currentLevTab = tab;
+                const tabs = ["margin", "exposure", "utilization", "liquidation"];
+                tabs.forEach(t => {
+                    const btn = document.getElementById("lev-tab-btn-" + t);
+                    if (btn) btn.classList.toggle("pd-btn-indigo", t === tab);
+                });
+                refreshLeverageQuestion(tab);
+            }
+            window.switchLeverageTab = switchLeverageTab;
+
+            function refreshLeverageQuestion(tab = null) {
+                if (tab) currentLevTab = tab;
+                const q = window.StrativoRPG.QuestionEngine.getQuestion("leverage_tower", currentLevTab);
+                currentLevQuestion = q;
+                renderQuestionCard("lev", q, (isCorrect) => {
+                    if (isCorrect && window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordLocationInteraction("leverage_tower");
+                    }
+                }, () => refreshLeverageQuestion(currentLevTab));
+            }
+            window.refreshLeverageQuestion = refreshLeverageQuestion;
+
+            // Risk Arena Dynamic Controller
+            function switchArenaTab(tab = "trial") {
+                currentArenaTab = tab;
+                const tabs = ["trial", "drawdown"];
+                tabs.forEach(t => {
+                    const btn = document.getElementById("arena-tab-btn-" + t);
+                    if (btn) btn.classList.toggle("pd-btn-rose", t === tab);
+                });
+                refreshArenaQuestion(tab);
+            }
+            window.switchArenaTab = switchArenaTab;
+
+            function refreshArenaQuestion(tab = null) {
+                if (tab) currentArenaTab = tab;
+                const q = window.StrativoRPG.QuestionEngine.getQuestion("risk_arena", currentArenaTab);
+                currentArenaQuestion = q;
+                renderQuestionCard("arena", q, (isCorrect) => {
+                    if (isCorrect && window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordLocationInteraction("risk_arena");
+                    }
+                }, () => refreshArenaQuestion(currentArenaTab));
+            }
+            window.refreshArenaQuestion = refreshArenaQuestion;
+
+            // ------------------------------------------------------------------
+            // EXPOSE MODAL TRIGGERS TO WORLD ENGINE (ALL 7 FACILITIES)
+            // ------------------------------------------------------------------
+            // 1. Pip Academy Openers
+            window.StrativoRPG.openAcademyModal = (tab = "fund") => {
+                closeAllModals();
+                openModal("pd-academy-modal");
+                switchAcademyTab(tab === "direction" || tab === "dir" ? "dir" : tab === "spread" ? "spread" : tab === "matrix" ? "matrix" : "fund");
+            };
+            window.StrativoRPG.openAcademyDirectionModal = () => window.StrativoRPG.openAcademyModal("dir");
+            window.StrativoRPG.openAcademySpreadModal = () => window.StrativoRPG.openAcademyModal("spread");
+            window.StrativoRPG.openAcademyMatrixModal = () => window.StrativoRPG.openAcademyModal("matrix");
+
+            // 2. Precision Lab Openers
+            window.StrativoRPG.openPrecisionLabModal = (tab = "ladder") => {
+                closeAllModals();
+                openModal("pd-precision-modal");
+                switchPrecisionTab(tab);
+            };
+            window.StrativoRPG.openLadderModal = () => window.StrativoRPG.openPrecisionLabModal("ladder");
+            window.StrativoRPG.openJpyModal = () => window.StrativoRPG.openPrecisionLabModal("jpy");
+            window.StrativoRPG.openFractionalModal = () => window.StrativoRPG.openPrecisionLabModal("fractional");
+            window.StrativoRPG.openRulesModal = () => window.StrativoRPG.openPrecisionLabModal("rules");
+
+            // 3. Risk & Position Forge Openers
+            window.StrativoRPG.openRiskForgeModal = (tab = "sizing") => {
+                closeAllModals();
+                openModal("pd-forge-modal");
+                switchForgeTab(tab);
+            };
+            window.StrativoRPG.openRiskModal = () => window.StrativoRPG.openRiskForgeModal("sizing");
+            window.StrativoRPG.openMaxRiskModal = () => window.StrativoRPG.openRiskForgeModal("maxrisk");
+            window.StrativoRPG.openStopDistanceModal = () => window.StrativoRPG.openRiskForgeModal("stopdist");
+            window.StrativoRPG.openAntiRuinModal = () => window.StrativoRPG.openRiskForgeModal("antiruin");
+
+            // 4. Leverage Tower Openers
+            window.StrativoRPG.openLeverageModal = (tab = "margin") => {
+                closeAllModals();
+                openModal("pd-leverage-modal");
+                switchLeverageTab(tab);
+            };
+            window.StrativoRPG.openExposureModal = () => window.StrativoRPG.openLeverageModal("exposure");
+            window.StrativoRPG.openMarginGaugeModal = () => window.StrativoRPG.openLeverageModal("utilization");
+            window.StrativoRPG.openLiquidationDefenseModal = () => window.StrativoRPG.openLeverageModal("liquidation");
+
+            // 5. Risk Arena Openers
+            window.StrativoRPG.openRiskArenaModal = (tab = "trial") => {
+                closeAllModals();
+                openModal("pd-risk-arena-modal");
+                switchArenaTab(tab);
+            };
+            window.StrativoRPG.openDrawdownDefenseModal = () => window.StrativoRPG.openRiskArenaModal("drawdown");
+
+            // 6. Pip Blitz Openers
+            window.StrativoRPG.openBlitzWarmupModal = () => {
+                closeAllModals();
+                const world = window.StrativoRPG.gameCore ? window.StrativoRPG.gameCore.world : null;
+                if (world && typeof world.openQuickChallenge === "function") {
+                    world.openQuickChallenge({ id: "st_warmup", name: "Blitz Warmup Drill" });
+                }
+            };
+            window.StrativoRPG.openBlitzScorecardModal = () => {
+                closeAllModals();
+                const state = window.StrativoWorldState ? window.StrativoWorldState.getState() : {};
+                const stats = state.blitzStats || { totalAttempts: 0, totalCorrect: 0, bestScore: 0, bestCombo: 0 };
+                if (window.StrativoRPG.DialogueManager) {
+                    window.StrativoRPG.DialogueManager.startDialogue({
+                        speaker: "Blitz Arena Scorecard Ledger",
+                        role: "Tactical Records Database",
+                        icon: "fa-award",
+                        text: `Precision Blitz Combat Records:<br><br>• Best Score: <strong style="color: #00F0FF;">${stats.bestScore || 0} pts</strong><br>• Longest Accuracy Streak: <strong style="color: #10B981;">${stats.bestCombo || 0}x</strong><br>• Total Blitz Gauntlets Run: <strong style="color: #FCD34D;">${stats.totalAttempts || 0}</strong>`
+                    });
+                }
+            };
+
+            // 7. Mission HQ Openers
+            window.StrativoRPG.openMissionsJournal = () => {
+                closeAllModals();
+                renderMissionsList();
+                openModal("pd-missions-modal");
+            };
+            window.StrativoRPG.openTacticalBriefingModal = () => {
+                closeAllModals();
+                if (window.StrativoRPG.DialogueManager) {
+                    window.StrativoRPG.DialogueManager.startDialogue({
+                        speaker: "Mission Coordinator",
+                        role: "District Operations Director",
+                        icon: "fa-compass",
+                        text: "Tactical Sector Briefing: Pip District is structured into 6 Quarters. Complete measurements in Education, precision in Precision Quarter, and position sizing in Risk Quarter."
+                    });
+                }
+            };
+            window.StrativoRPG.openRewardsVaultModal = () => {
+                closeAllModals();
+                const state = window.StrativoWorldState ? window.StrativoWorldState.getState() : {};
+                const xp = state.totalWorldXP || 0;
+                const mastery = (state.mastery && state.mastery.pipPosition) || 0;
+                if (window.StrativoRPG.DialogueManager) {
+                    window.StrativoRPG.DialogueManager.startDialogue({
+                        speaker: "Rewards Vault Ledger",
+                        role: "Automated Ledger",
+                        icon: "fa-vault",
+                        text: `Directives Vault: Total XP Logged = ${xp} XP. Current District Mastery = ${mastery}%. All rewards are permanently preserved in your world profile.`
+                    });
+                }
+            };
+
+            // Global ESC Key Listener
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    const activeModal = document.querySelector(".pd-dialog-backdrop.active, .pd-blitz-overlay.active, .pd-missions-modal-overlay.active, #pd-dialog.active");
+                    if (activeModal) {
+                        closeAllModals();
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return;
+                    }
+                    if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                        window.StrativoRPG.DialogueManager.close();
+                        e.preventDefault();
+                        return;
+                    }
+                }
+            });
+
+            // Dialog Close
+            if (dialogCloseBtn) dialogCloseBtn.addEventListener("click", () => closeModal("pd-dialog"));
+            if (dialogDismissBtn) dialogDismissBtn.addEventListener("click", () => closeModal("pd-dialog"));
+
+            // 5. Interactive Lab 1: Pip Academy Drill
+            const acadSolveBtn = document.getElementById("acad-solve-btn");
+            if (acadSolveBtn) {
+                acadSolveBtn.addEventListener("click", () => {
+                    const start = parseFloat(document.getElementById("acad-start-price").value) || 0;
+                    const end = parseFloat(document.getElementById("acad-end-price").value) || 0;
+                    const pips = Math.round(Math.abs(end - start) * 10000);
+                    const isUp = end >= start;
+
+                    const resEl = document.getElementById("acad-result-text");
+                    if (resEl) {
+                        resEl.innerHTML = '<i class="fas fa-check-circle"></i> Distance: <strong>' + pips + ' Pips</strong> (' + (isUp ? 'Bullish / UP' : 'Bearish / DOWN') + ')';
+                    }
+
+                    if (window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordPipMeasurement(1);
+                    }
+                });
+            }
+
+            const acadCompleteBtn = document.getElementById("acad-complete-btn");
+            if (acadCompleteBtn) {
+                acadCompleteBtn.addEventListener("click", () => closeModal("pd-academy-modal"));
+            }
+
+            const acadCloseBtn = document.getElementById("academy-close-btn");
+            if (acadCloseBtn) {
+                acadCloseBtn.addEventListener("click", () => closeModal("pd-academy-modal"));
+            }
+
+            // 6. Interactive Lab 2: Precision Lab & Price Ladder
+            const precisionCloseBtn = document.getElementById("precision-close-btn");
+            const precisionDoneBtn = document.getElementById("precision-done-btn");
+            if (precisionCloseBtn) precisionCloseBtn.addEventListener("click", () => closeModal("pd-precision-modal"));
+            if (precisionDoneBtn) precisionDoneBtn.addEventListener("click", () => closeModal("pd-precision-modal"));
+
+            // Precision Tabs Click Handlers
+            const tabBtnLadder = document.getElementById("tab-btn-ladder");
+            const tabBtnJpy = document.getElementById("tab-btn-jpy");
+            const tabBtnFractional = document.getElementById("tab-btn-fractional");
+            const tabBtnRules = document.getElementById("tab-btn-rules");
+
+            if (tabBtnLadder) tabBtnLadder.addEventListener("click", () => switchPrecisionTab("ladder"));
+            if (tabBtnJpy) tabBtnJpy.addEventListener("click", () => switchPrecisionTab("jpy"));
+            if (tabBtnFractional) tabBtnFractional.addEventListener("click", () => switchPrecisionTab("fractional"));
+            if (tabBtnRules) tabBtnRules.addEventListener("click", () => switchPrecisionTab("rules"));
+
+            // 7. Interactive Lab 3: Risk & Position Forge
+            const forgeCloseBtn = document.getElementById("forge-close-btn");
+            const forgeSaveBtn = document.getElementById("forge-save-btn");
+            const forgeDoneBtn = document.getElementById("forge-done-btn");
+            if (forgeCloseBtn) forgeCloseBtn.addEventListener("click", () => closeModal("pd-forge-modal"));
+            if (forgeDoneBtn) forgeDoneBtn.addEventListener("click", () => closeModal("pd-forge-modal"));
+
+            const forgeCalcBtn = document.getElementById("forge-calculate-btn");
+            if (forgeCalcBtn) {
+                forgeCalcBtn.addEventListener("click", () => {
+                    const bal = parseFloat(document.getElementById("forge-balance").value) || 10000;
+                    const riskPct = parseFloat(document.getElementById("forge-risk-pct").value) || 2;
+                    const stopPips = parseFloat(document.getElementById("forge-stop-pips").value) || 25;
+                    const pipVal = parseFloat(document.getElementById("forge-pair").value) || 10;
+
+                    const maxRiskDollar = bal * (riskPct / 100);
+                    const standardLots = +(maxRiskDollar / (stopPips * pipVal)).toFixed(2);
+                    const miniLots = +(standardLots * 10).toFixed(1);
+                    const microLots = +(standardLots * 100).toFixed(0);
+
+                    const rDol = document.getElementById("forge-risk-dollar");
+                    const rLots = document.getElementById("forge-recommended-lots");
+                    const rMini = document.getElementById("forge-mini-lots");
+                    const rMicro = document.getElementById("forge-micro-lots");
+                    if (rDol) rDol.textContent = "$" + maxRiskDollar.toFixed(2);
+                    if (rLots) rLots.textContent = standardLots + " Lots";
+                    if (rMini) rMini.textContent = miniLots + " Mini";
+                    if (rMicro) rMicro.textContent = microLots + " Micro";
+                });
+            }
+
+            if (forgeSaveBtn) {
+                forgeSaveBtn.addEventListener("click", () => {
+                    if (window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordRiskForgeComplete(1);
+                    }
+                    closeModal("pd-forge-modal");
+                });
+            }
+
+            // 8. Interactive Lab 4: Leverage Tower
+            const levCloseBtn = document.getElementById("leverage-close-btn") || document.getElementById("lev-close-btn");
+            const levCompBtn = document.getElementById("lev-complete-btn") || document.getElementById("lev-done-btn");
+            if (levCloseBtn) levCloseBtn.addEventListener("click", () => closeModal("pd-leverage-modal"));
+
+            const levSimBtn = document.getElementById("lev-simulate-btn");
+            if (levSimBtn) {
+                levSimBtn.addEventListener("click", () => {
+                    const bal = parseFloat(document.getElementById("lev-balance").value) || 5000;
+                    const ratio = parseFloat(document.getElementById("lev-ratio").value) || 50;
+                    const lots = parseFloat(document.getElementById("lev-lots").value) || 1.0;
+
+                    const notional = lots * 100000;
+                    const reqMargin = notional / ratio;
+                    const freeMargin = Math.max(0, bal - reqMargin);
+                    const util = Math.min(100, Math.round((reqMargin / bal) * 100));
+
+                    const lNot = document.getElementById("lev-notional");
+                    const lMrg = document.getElementById("lev-margin");
+                    const lFree = document.getElementById("lev-freemargin");
+                    const lUtil = document.getElementById("lev-utilization");
+                    if (lNot) lNot.textContent = "$" + notional.toLocaleString();
+                    if (lMrg) lMrg.textContent = "$" + reqMargin.toLocaleString();
+                    if (lFree) lFree.textContent = "$" + freeMargin.toLocaleString();
+                    if (lUtil) lUtil.textContent = util + "%";
+                });
+            }
+
+            if (levCompBtn) {
+                levCompBtn.addEventListener("click", () => {
+                    if (window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordLeverageTowerComplete();
+                    }
+                    closeModal("pd-leverage-modal");
+                });
+            }
+
+            // 9. Interactive Lab 5: Risk Arena Safe vs Too Large
+            const arenaCloseBtn = document.getElementById("risk-arena-close-btn") || document.getElementById("arena-close-btn");
+            const arenaFinishBtn = document.getElementById("arena-finish-btn") || document.getElementById("arena-done-btn");
+            if (arenaCloseBtn) arenaCloseBtn.addEventListener("click", () => closeModal("pd-risk-arena-modal"));
+            if (arenaFinishBtn) {
+                arenaFinishBtn.addEventListener("click", () => {
+                    if (window.StrativoRPG.MissionEngine) {
+                        window.StrativoRPG.MissionEngine.recordPrecisionMasterComplete();
+                    }
+                    closeModal("pd-risk-arena-modal");
+                });
+            }
+
+            window.StrativoRPG.evaluateArenaOption = function (opt) {
+                const resEl = document.getElementById("arena-evaluation-result");
+                if (resEl) {
+                    resEl.style.display = "flex";
+                    if (opt === "A") {
+                        resEl.className = "pd-feedback-bar correct";
+                        resEl.innerHTML = "<strong><i class=\"fas fa-check-circle\"></i> SAFE & DISCIPLINED!</strong> 0.50 Lots &times; 30 Pips &times; $10/pip = $150 potential loss (exactly 1.5% limit).";
+                        if (window.StrativoRPG.MissionEngine) {
+                            window.StrativoRPG.MissionEngine.recordPrecisionMasterComplete();
+                        }
+                    } else {
+                        resEl.className = "pd-feedback-bar wrong";
+                        resEl.innerHTML = "<strong><i class=\"fas fa-triangle-exclamation\"></i> OVERLEVERAGED!</strong> Option " + opt + " violates maximum capital risk limit of 1.5% ($150).";
+                    }
+                }
+            };
+
+            // 10. Pip Blitz Launcher & Controller
+            window.StrativoRPG.launchPipBlitz = function () {
+                closeAllModals();
+                openModal("pd-blitz-overlay");
+                document.getElementById("pd-blitz-countdown").style.display = "flex";
+                document.getElementById("pd-blitz-stage").style.display = "none";
+                document.getElementById("pd-blitz-scorecard").classList.remove("active");
+
+                window.StrativoRPG.PipBlitzEngine.resetMatch();
+
+                let count = 3;
+                document.getElementById("pd-countdown-num").textContent = count;
+                const cdInterval = setInterval(() => {
+                    count--;
+                    if (count > 0) {
+                        document.getElementById("pd-countdown-num").textContent = count;
+                    } else {
+                        clearInterval(cdInterval);
+                        document.getElementById("pd-blitz-countdown").style.display = "none";
+                        document.getElementById("pd-blitz-stage").style.display = "flex";
+                        startBlitzRound(1);
+                    }
+                }, 800);
+            };
+
+            function startBlitzRound(roundNum) {
+                if (roundNum > 10) {
+                    finishBlitzMatch();
+                    return;
+                }
+
+                const scenario = window.StrativoRPG.PipBlitzEngine.generateScenario(roundNum);
+                const roundBadge = document.getElementById("blitz-round-badge") || document.getElementById("blitz-round-indicator");
+                const typeTag = document.getElementById("blitz-type-tag") || document.getElementById("blitz-cat-tag");
+                const qTitle = document.getElementById("blitz-question-title");
+                const qSub = document.getElementById("blitz-question-sub");
+                const qText = document.getElementById("blitz-question-text");
+                const scoreDisplay = document.getElementById("blitz-score-display") || document.getElementById("blitz-score-val");
+                const comboDisplay = document.getElementById("blitz-combo-display") || document.getElementById("blitz-combo-val");
+                const grid = document.getElementById("blitz-target-grid") || document.getElementById("blitz-options-grid");
+                const fbBar = document.getElementById("blitz-feedback-bar") || document.getElementById("blitz-live-feedback");
+                const fbTitle = document.getElementById("blitz-feedback-title");
+                const fbDesc = document.getElementById("blitz-feedback-desc");
+
+                if (roundBadge) roundBadge.textContent = "ROUND " + roundNum + " / 10";
+                if (typeTag) typeTag.textContent = (scenario.category || "PRECISION").toUpperCase();
+                if (scoreDisplay) scoreDisplay.textContent = window.StrativoRPG.PipBlitzEngine.score;
+                if (comboDisplay) comboDisplay.textContent = window.StrativoRPG.PipBlitzEngine.combo + "x";
+
+                if (fbBar) fbBar.style.display = "none";
+                if (qTitle) qTitle.textContent = scenario.instrument + ": " + (scenario.priceMove || scenario.questionText);
+                if (qSub) qSub.textContent = scenario.questionText || "Select the precise answer:";
+                if (qText) qText.textContent = scenario.questionText;
+
+                if (grid) {
+                    grid.innerHTML = "";
+                    scenario.options.forEach((opt, idx) => {
+                        const optText = typeof opt === "string" ? opt : (opt.text || "");
+                        const btn = document.createElement("button");
+                        btn.className = "pd-target-card";
+                        btn.innerHTML = '<span>' + optText + '</span><span class="pd-target-key">' + (idx + 1) + '</span>';
+                        btn.onclick = () => {
+                            const res = window.StrativoRPG.PipBlitzEngine.submitAnswer(optText);
+                            if (fbBar) {
+                                fbBar.style.display = "flex";
+                                if (res.isCorrect) {
+                                    fbBar.className = "pd-feedback-bar correct";
+                                    if (fbTitle) fbTitle.innerHTML = '<i class="fas fa-check-circle"></i> CORRECT!';
+                                    if (fbDesc) fbDesc.textContent = scenario.explanation || "";
+                                    btn.style.borderColor = "#10B981";
+                                } else {
+                                    fbBar.className = "pd-feedback-bar wrong";
+                                    if (fbTitle) fbTitle.innerHTML = '<i class="fas fa-times-circle"></i> INCORRECT!';
+                                    if (fbDesc) fbDesc.textContent = "Correct: " + scenario.correctAnswer + ". " + (scenario.explanation || "");
+                                    btn.style.borderColor = "#F43F5E";
+                                }
+                            }
+                            Array.from(grid.children).forEach(c => c.disabled = true);
+                            setTimeout(() => {
+                                startBlitzRound(roundNum + 1);
+                            }, 1200);
+                        };
+                        grid.appendChild(btn);
+                    });
+                }
+            }
+
+            function finishBlitzMatch() {
+                const finalScore = window.StrativoRPG.PipBlitzEngine.score;
+                const maxCombo = window.StrativoRPG.PipBlitzEngine.bestCombo;
+                const accuracy = 85;
+                const grade = finalScore >= 1200 ? "S - Precision Titan" : finalScore >= 900 ? "A - Elite Chartist" : finalScore >= 600 ? "B - Apprentice" : "C - Novice";
+
+                let xpGained = Math.round(finalScore / 25) + 25;
+                if (window.StrativoWorldXPEngine && typeof window.StrativoWorldXPEngine.recordPipBlitzResult === "function") {
+                    window.StrativoWorldXPEngine.recordPipBlitzResult({
+                        score: finalScore,
+                        maxCombo,
+                        grade,
+                        accuracy,
+                        avgSpeed: 2100
+                    });
+                }
+
+                document.getElementById("pd-blitz-stage").style.display = "none";
+                const card = document.getElementById("pd-blitz-scorecard");
+                if (card) card.classList.add("active");
+
+                const rRank = document.getElementById("scorecard-rank");
+                const rScore = document.getElementById("card-score");
+                const rAcc = document.getElementById("card-accuracy");
+                const rCmb = document.getElementById("card-combo");
+                const rXp = document.getElementById("card-xp");
+                if (rRank) rRank.textContent = grade;
+                if (rScore) rScore.textContent = finalScore;
+                if (rAcc) rAcc.textContent = accuracy + "%";
+                if (rCmb) rCmb.textContent = maxCombo + "x";
+                if (rXp) rXp.textContent = "+" + xpGained + " XP";
+            }
+
+            const blitzExitBtn = document.getElementById("blitz-exit-btn");
+            const scorecardFinishBtn = document.getElementById("scorecard-finish-btn");
+            const scorecardReplayBtn = document.getElementById("scorecard-replay-btn");
+
+            if (blitzExitBtn) blitzExitBtn.addEventListener("click", () => closeModal("pd-blitz-overlay"));
+            if (scorecardFinishBtn) scorecardFinishBtn.addEventListener("click", () => closeModal("pd-blitz-overlay"));
+            if (scorecardReplayBtn) scorecardReplayBtn.addEventListener("click", () => window.StrativoRPG.launchPipBlitz());
+
+            // Blitz Keyboard Shortcuts (1, 2, 3, 4)
+            window.addEventListener("keydown", (e) => {
+                const overlay = document.getElementById("pd-blitz-overlay");
+                if (overlay && overlay.classList.contains("active") && window.StrativoRPG.PipBlitzEngine.active) {
+                    const keyNum = parseInt(e.key);
+                    if (keyNum >= 1 && keyNum <= 4) {
+                        const grid = document.getElementById("blitz-options-grid");
+                        if (grid && grid.children[keyNum - 1] && !grid.children[keyNum - 1].disabled) {
+                            grid.children[keyNum - 1].click();
+                        }
+                    }
+                }
+            });
+
+            // 11. Missions Journal Dynamic Renderer
+            function renderMissionsList() {
+                const listEl = document.getElementById("pd-missions-list");
+                if (!listEl || !window.StrativoRPG.MissionEngine) return;
+                listEl.innerHTML = "";
+
+                const missions = window.StrativoRPG.MissionEngine.getMissions();
+                missions.forEach(m => {
+                    const status = window.StrativoRPG.MissionEngine.getMissionStatus(m.id);
+                    const prog = window.StrativoRPG.MissionEngine.getMissionProgress(m.id);
+
+                    const card = document.createElement("div");
+                    card.className = "pd-mission-card " + (status === 'ready_to_claim' ? 'ready' : status === 'completed' ? 'completed' : '');
+
+                    card.innerHTML = `
+                        <div class="pd-mission-top">
+                            <span class="pd-mission-name">${m.title}</span>
+                            <span class="pd-mission-status-pill ${status}">${status.replace('_', ' ').toUpperCase()}</span>
+                        </div>
+                        <p class="pd-mission-desc">${m.description}</p>
+                        <div class="pd-tracker-prog-wrap" style="margin: 0.35rem 0;">
+                            <div class="pd-tracker-bar">
+                                <div class="pd-tracker-fill" style="width: ${prog.percent}%;"></div>
+                            </div>
+                            <span class="pd-tracker-count">${prog.current} / ${prog.target}</span>
+                        </div>
+                        <div class="pd-mission-bottom">
+                            <div class="pd-mission-reward">
+                                <i class="fas fa-gift"></i> +${m.reward.xp} World XP (${m.reward.title})
+                            </div>
+                            <div>
+                                ${status === 'available' ? `<button type="button" class="pd-btn pd-btn-cyan pd-btn-sm" onclick="window.StrativoRPG.acceptDistrictMission('${m.id}')">Accept</button>` : ''}
+                                ${status === 'active' ? `<button type="button" class="pd-btn pd-btn-sm" onclick="window.StrativoRPG.trackDistrictMission('${m.id}')">Track</button>` : ''}
+                                ${status === 'ready_to_claim' ? `<button type="button" class="pd-btn pd-btn-cyan pd-btn-sm" onclick="window.StrativoRPG.claimDistrictMission('${m.id}')">Claim Reward</button>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    listEl.appendChild(card);
+                });
+            }
+
+            window.StrativoRPG.acceptDistrictMission = (id) => {
+                if (window.StrativoRPG.MissionEngine) {
+                    window.StrativoRPG.MissionEngine.acceptMission(id);
+                    renderMissionsList();
+                }
+            };
+
+            window.StrativoRPG.trackDistrictMission = (id) => {
+                if (window.StrativoRPG.MissionEngine) {
+                    window.StrativoRPG.MissionEngine.setTrackedMission(id);
+                    renderMissionsList();
+                }
+            };
+
+            window.StrativoRPG.claimDistrictMission = (id) => {
+                if (window.StrativoRPG.MissionEngine) {
+                    window.StrativoRPG.MissionEngine.claimReward(id);
+                    renderMissionsList();
+                    syncHudState();
+                }
+            };
+
+            const btnOpenMissions = document.getElementById("btn-open-missions");
+            const btnCloseMissions = document.getElementById("btn-close-missions");
+            if (btnOpenMissions) {
+                btnOpenMissions.addEventListener("click", () => {
+                    renderMissionsList();
+                    openModal("pd-missions-modal");
+                });
+            }
+            if (btnCloseMissions) {
+                btnCloseMissions.addEventListener("click", () => closeModal("pd-missions-modal"));
+            }
+
+            // 12. Fullscreen & Debug Toggles
+            const btnFullscreen = document.getElementById("btn-fullscreen");
+            if (btnFullscreen) {
+                btnFullscreen.addEventListener("click", () => {
+                    if (!document.fullscreenElement) {
+                        viewport.requestFullscreen().catch(() => {});
+                    } else {
+                        document.exitFullscreen().catch(() => {});
+                    }
+                });
+            }
+
+            const btnToggleDebug = document.getElementById("btn-toggle-debug");
+            if (btnToggleDebug) {
+                btnToggleDebug.addEventListener("click", () => {
+                    if (core) {
+                        core.debugMode = !core.debugMode;
+                        document.getElementById("debug-label").textContent = `Debug: ${core.debugMode ? 'On' : 'Off'}`;
+                    }
+                });
+            }
+
+            // Mobile Touch Button
+            const touchActionBtn = document.getElementById("pd-touch-action");
+            if (touchActionBtn) {
+                touchActionBtn.addEventListener("touchstart", (e) => {
+                    e.preventDefault();
+                    if (core) core.triggerNearbyInteraction();
+                });
+                touchActionBtn.addEventListener("click", () => {
+                    if (core) core.triggerNearbyInteraction();
+                });
+            }
+        });
+    </script>
+
+    <!-- ================================================================
+         QUICK PIP TEST CHALLENGE MODAL
+         ================================================================ -->
+    <div class="pd-dialog-backdrop" id="pd-quick-test-modal">
+        <div class="pd-dialog-card">
+            <div class="pd-dialog-header">
+                <h3 id="pd-quick-title"><i class="fas fa-calculator" style="color: var(--pd-neon-cyan);"></i> Quick Pip Challenge</h3>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <button type="button" class="pd-btn" id="quick-skip-btn" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;"><i class="fas fa-sync"></i> New Question</button>
+                    <button class="pd-btn pd-modal-close" onclick="closeAllModals()"><i class="fas fa-xmark"></i></button>
+                </div>
+            </div>
+            <div class="pd-dialog-body">
+                <div style="font-size: 0.95rem; color: #E2E8F0; margin-bottom: 1rem;" id="pd-quick-question">
+                    Calculating question...
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;" id="pd-quick-options-grid">
+                    <!-- Dynamic Options -->
+                </div>
+                <div id="pd-quick-feedback" style="display: none; margin-top: 1rem; font-size: 0.85rem; font-weight: 700;"></div>
+            </div>
+            <div class="pd-dialog-footer">
+                <button class="pd-btn" onclick="closeAllModals()">Close Station</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         EXPLORATION DISCOVERY MODAL
+         ================================================================ -->
+    <div class="pd-dialog-backdrop" id="pd-discovery-modal">
+        <div class="pd-dialog-card">
+            <div class="pd-dialog-header">
+                <h3 id="pd-discovery-title"><i class="fas fa-star" style="color: var(--pd-neon-gold);"></i> Discovery Unlocked</h3>
+                <button class="pd-btn pd-modal-close" onclick="closeAllModals()"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div class="pd-dialog-body">
+                <div style="font-size: 1.1rem; color: var(--pd-neon-gold); font-weight: 800; margin-bottom: 0.5rem;" id="pd-discovery-heading">
+                    Discovery Heading
+                </div>
+                <div style="font-size: 0.9rem; color: #CBD5E1; line-height: 1.5; margin-bottom: 1rem;" id="pd-discovery-lore">
+                    Discovery Lore...
+                </div>
+                <div style="font-size: 0.85rem; color: var(--pd-neon-emerald); font-weight: 700;" id="pd-discovery-xp">
+                    +15 World XP Logged
+                </div>
+            </div>
+            <div class="pd-dialog-footer">
+                <button class="pd-btn pd-btn-cyan" onclick="closeAllModals()">Collect Discovery</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

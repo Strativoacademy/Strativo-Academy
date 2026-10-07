@@ -56,6 +56,10 @@ desktop.ini
 *~
 *.sublime-workspace
 *.sublime-project
-# Local audit files
+# Local audit & temporary files
 strativo_audit.ps1
 strativo_audit_report.txt
+scratch/
+fix.ps1
+diff.txt
+.wrangler/

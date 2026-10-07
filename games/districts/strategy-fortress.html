@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Strativo World — Strategy Fortress (District 7 Endgame)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/rpg-core.css">
+    <link rel="stylesheet" href="../../css/strategy-fortress.css">
+</head>
+<body>
+    <div class="fortress-viewport-wrapper" id="fortress-viewport-wrapper">
+        <!-- Master Game Canvas -->
+        <canvas id="fortress-canvas" width="1280" height="720" tabindex="0"></canvas>
+
+        <!-- Top HUD -->
+        <header class="fortress-hud-top fortress-hud-container" role="banner">
+            <div class="fortress-hud-badge">
+                <div class="fortress-hud-title">
+                    <i class="fas fa-chess-rook"></i>
+                    <span>STRATEGY FORTRESS</span>
+                </div>
+                <span style="color: rgba(255,255,255,0.3);">|</span>
+                <div class="fortress-hud-xp">
+                    <i class="fas fa-crown"></i>
+                    <span id="hud-xp-val">0</span> XP
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; pointer-events: auto;">
+                <button type="button" class="fortress-btn fortress-btn-sm" id="btn-open-missions" aria-label="Open Missions Journal">
+                    <i class="fas fa-compass"></i> Citadel Journal
+                </button>
+                <button type="button" class="fortress-btn fortress-btn-sm" id="btn-toggle-minimap" aria-label="Toggle Mini-Map">
+                    <i class="fas fa-map"></i> Radar [M]
+                </button>
+                <a href="../hub.html" class="fortress-btn fortress-btn-sm fortress-btn-crimson" style="text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i> Hub
+                </a>
+            </div>
+        </header>
+
+        <!-- Floating Quest Objective Tracker HUD -->
+        <div class="fortress-quest-hud" id="fortress-quest-hud" role="region" aria-label="Active Mission Objective">
+            <div class="fortress-quest-badge">
+                <i class="fas fa-scroll"></i>
+                <span>ACTIVE DIRECTIVE</span>
+            </div>
+            <div class="fortress-quest-title">Grand Strategist's Ascendance</div>
+            <div class="fortress-quest-desc">Explore the 8 citadel quarters, master the 14 war rooms, and conquer the Strategy Throne.</div>
+            <div class="fortress-quest-progress-bar">
+                <div class="fortress-quest-progress-fill" id="quest-progress-fill" style="width: 25%;"></div>
+            </div>
+        </div>
+
+        <!-- Mini-Map Overlay -->
+        <aside class="fortress-minimap-container" id="fortress-minimap" aria-label="District Mini-Map">
+            <div class="fortress-minimap-header">
+                <span>DISTRICT 7 RADAR</span>
+                <span id="minimap-explored-count">0 / 12</span>
+            </div>
+            <canvas id="fortress-minimap-canvas" width="220" height="140"></canvas>
+        </aside>
+
+        <!-- Interaction Prompt Banner -->
+        <div class="fortress-prompt-banner hidden" id="fortress-prompt-banner" role="status" aria-live="polite">
+            <span class="fortress-key-badge">ACTION</span>
+            <span id="fortress-prompt-text" style="font-weight: 700; font-size: 0.95rem; color: #FFF;">Interact [E]</span>
+        </div>
+
+        <!-- Mobile Touch Action Button -->
+        <button type="button" class="fortress-mobile-action-btn" id="fortress-mobile-action" aria-label="Action Button">ACTION</button>
+
+        <!-- ====================================================================
+             1. EXPLORATION DISCOVERY MODAL
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-discovery-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-compass"></i> <span id="fortress-discovery-heading">Citadel Inscription</span></div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <p id="fortress-discovery-lore" style="font-size: 1.05rem; color: #E2E8F0; line-height: 1.55;"></p>
+                    <div id="fortress-discovery-xp" style="font-weight: 800; color: var(--fortress-gold); font-size: 1.1rem;"></div>
+                    <button type="button" class="fortress-btn fortress-btn-gold" style="margin-top: 1rem;" onclick="window.StrativoRPG.closeAllModals()">Integrate &amp; Continue [Space]</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             2. STRATEGY ACADEMY MODAL (Tabbed Workbench)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-academy-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-graduation-cap"></i> Strategy Academy: Core Frameworks</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-tabs" id="acad-tab-bar">
+                        <button type="button" class="fortress-tab-btn active" data-tab="strategy"><i class="fas fa-chess"></i> Strategy Core</button>
+                        <button type="button" class="fortress-tab-btn" data-tab="confluence"><i class="fas fa-cubes-stacked"></i> Confluence Matrix</button>
+                        <button type="button" class="fortress-tab-btn" data-tab="execution"><i class="fas fa-crosshairs"></i> Execution Rules</button>
+                        <button type="button" class="fortress-tab-btn" data-tab="risk"><i class="fas fa-shield-halved"></i> Risk Allocation</button>
+                    </div>
+                    <p id="acad-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="fortress-options-grid" id="acad-options-grid"></div>
+                    <div class="fortress-feedback-box" id="acad-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn" id="acad-skip-btn"><i class="fas fa-sync"></i> Next Strategy Drill</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             3. CONFLUENCE FORGE MODAL (Interactive Radar & Live Sliders)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-forge-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card" style="max-width: 950px;">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-cubes-stacked"></i> The Confluence Forge &amp; Radar</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-workbench-grid">
+                        <div class="fortress-workbench-panel">
+                            <div class="fortress-panel-title"><i class="fas fa-chart-pie"></i> Confluence Radar</div>
+                            <div class="fortress-canvas-frame" style="height: 190px;">
+                                <canvas id="confluence-radar-canvas" width="420" height="180"></canvas>
+                            </div>
+                            <div class="fortress-stat-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                                <div class="fortress-stat-card">
+                                    <span class="fortress-stat-label">Score</span>
+                                    <span class="fortress-stat-val" id="forge-score-val" style="color: var(--fortress-gold);">88 / 100</span>
+                                </div>
+                                <div class="fortress-stat-card">
+                                    <span class="fortress-stat-label">Rating</span>
+                                    <span class="fortress-stat-val" id="forge-grade-val" style="color: var(--fortress-emerald); font-size: 0.95rem;">PRIME (A+)</span>
+                                </div>
+                                <div class="fortress-stat-card">
+                                    <span class="fortress-stat-label">Execution</span>
+                                    <span class="fortress-stat-val" id="forge-status-val" style="color: var(--fortress-gold); font-size: 0.85rem;">VALID SETUP</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fortress-workbench-panel">
+                            <div class="fortress-panel-title"><i class="fas fa-sliders"></i> 7-Pillar Confluence Sliders</div>
+                            <div class="fortress-slider-group">
+                                <div class="fortress-slider-label"><span>HTF Trend Alignment</span><span id="val-slider-trend">90%</span></div>
+                                <input type="range" class="fortress-range-slider" id="slider-trend" min="0" max="100" value="90">
+                            </div>
+                            <div class="fortress-slider-group">
+                                <div class="fortress-slider-label"><span>Market Structure (HH/HL)</span><span id="val-slider-struct">95%</span></div>
+                                <input type="range" class="fortress-range-slider" id="slider-struct" min="0" max="100" value="95">
+                            </div>
+                            <div class="fortress-slider-group">
+                                <div class="fortress-slider-label"><span>Support / Resistance Zone</span><span id="val-slider-sr">85%</span></div>
+                                <input type="range" class="fortress-range-slider" id="slider-sr" min="0" max="100" value="85">
+                            </div>
+                            <div class="fortress-slider-group">
+                                <div class="fortress-slider-label"><span>Price Action Rejection</span><span id="val-slider-pa">85%</span></div>
+                                <input type="range" class="fortress-range-slider" id="slider-pa" min="0" max="100" value="85">
+                            </div>
+                            <div class="fortress-slider-group">
+                                <div class="fortress-slider-label"><span>Reward to Risk Ratio (>= 2:1)</span><span id="val-slider-rr">95%</span></div>
+                                <input type="range" class="fortress-range-slider" id="slider-rr" min="0" max="100" value="95">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(15, 23, 42, 0.6); padding: 0.75rem; border-radius: 8px; border: 1px solid var(--fortress-border-subtle); margin-top: 0.25rem;">
+                        <p id="forge-q-text" style="font-size: 1rem; font-weight: 600; color: #FFF; margin: 0 0 0.5rem 0;"></p>
+                        <div class="fortress-options-grid" id="forge-options-grid"></div>
+                        <div class="fortress-feedback-box" id="forge-feedback-box"></div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                        <button type="button" class="fortress-btn" id="forge-skip-btn"><i class="fas fa-sync"></i> Next Confluence Case</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             4. CANDLESTICK WAR ROOM MODAL (OHLC Canvas Chart & Metrics)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-candle-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-fire-flame-curved"></i> Candlestick War Room &amp; Rejection</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-canvas-frame">
+                        <canvas id="candle-war-canvas" width="600" height="200"></canvas>
+                    </div>
+                    <div class="fortress-stat-grid" style="grid-template-columns: repeat(4, 1fr);">
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Open</span><span class="fortress-stat-val" id="ohlc-open" style="font-size: 0.95rem;">1.0820</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">High</span><span class="fortress-stat-val" id="ohlc-high" style="font-size: 0.95rem; color: var(--fortress-emerald);">1.0890</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Low</span><span class="fortress-stat-val" id="ohlc-low" style="font-size: 0.95rem; color: var(--fortress-crimson);">1.0815</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Close</span><span class="fortress-stat-val" id="ohlc-close" style="font-size: 0.95rem;">1.0880</span></div>
+                    </div>
+                    <p id="candle-q-text" style="font-size: 1rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="fortress-options-grid" id="candle-options-grid"></div>
+                    <div class="fortress-feedback-box" id="candle-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn" id="candle-skip-btn"><i class="fas fa-sync"></i> Next Candle Setup</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             5. STRUCTURE TOWER MODAL (Multi-Timeframe Trend Alignment)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-structure-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-sitemap"></i> Market Structure &amp; Trend Bastion</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-stat-grid" style="grid-template-columns: repeat(4, 1fr);">
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">15M Trend</span><span class="fortress-stat-val" style="color: var(--fortress-emerald); font-size: 0.9rem;"><i class="fas fa-arrow-up"></i> Bullish</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">1H Trend</span><span class="fortress-stat-val" style="color: var(--fortress-emerald); font-size: 0.9rem;"><i class="fas fa-arrow-up"></i> Bullish</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">4H Structure</span><span class="fortress-stat-val" style="color: var(--fortress-emerald); font-size: 0.9rem;"><i class="fas fa-arrow-up"></i> Higher High</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Daily Regime</span><span class="fortress-stat-val" style="color: var(--fortress-gold); font-size: 0.9rem;"><i class="fas fa-mountain"></i> Expansion</span></div>
+                    </div>
+                    <p id="struct-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="fortress-options-grid" id="struct-options-grid"></div>
+                    <div class="fortress-feedback-box" id="struct-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn" id="struct-skip-btn"><i class="fas fa-sync"></i> Next Structure Case</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             6. SUPPORT & RESISTANCE VAULT MODAL
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-sr-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-shield-halved"></i> Support &amp; Resistance Polarity Vaults</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-stat-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Zone Polarity</span><span class="fortress-stat-val" style="color: var(--fortress-gold); font-size: 0.95rem;">Resistance Flips to Support</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Confluence Touches</span><span class="fortress-stat-val" style="color: var(--fortress-emerald); font-size: 0.95rem;">3 Tested Rejections</span></div>
+                    </div>
+                    <p id="sr-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="fortress-options-grid" id="sr-options-grid"></div>
+                    <div class="fortress-feedback-box" id="sr-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn" id="sr-skip-btn"><i class="fas fa-sync"></i> Next S/R Case</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             7. BREAKOUT & LIQUIDITY VAULT MODAL
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-breakout-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-bolt-lightning"></i> Breakout &amp; Liquidity Observatory</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-stat-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Breakout Type</span><span class="fortress-stat-val" style="color: var(--fortress-cyan); font-size: 0.95rem;">High-Volume Extension</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Liquidity Sweep</span><span class="fortress-stat-val" style="color: var(--fortress-gold); font-size: 0.95rem;">Stops Trapped Above High</span></div>
+                    </div>
+                    <p id="brk-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="fortress-options-grid" id="brk-options-grid"></div>
+                    <div class="fortress-feedback-box" id="brk-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn" id="brk-skip-btn"><i class="fas fa-sync"></i> Next Breakout Setup</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             8. RISK COMMAND CENTER MODAL (Interactive Position Size Calculator)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-risk-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card" style="max-width: 900px;">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-calculator"></i> Risk Command Center &amp; Position Sizing</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-workbench-grid">
+                        <div class="fortress-workbench-panel">
+                            <div class="fortress-panel-title"><i class="fas fa-sliders"></i> Position Sizing Workbench</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; font-weight: 700;">Account Balance ($)</label>
+                                    <input type="number" class="fortress-input-field" id="calc-account-size" value="10000" min="100">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; font-weight: 700;">Risk Per Trade (%)</label>
+                                    <input type="number" class="fortress-input-field" id="calc-risk-pct" value="1" min="0.1" max="10" step="0.1">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; font-weight: 700;">Stop Loss (Pips)</label>
+                                    <input type="number" class="fortress-input-field" id="calc-sl-pips" value="20" min="1">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; font-weight: 700;">Pip Value ($/pip/lot)</label>
+                                    <input type="number" class="fortress-input-field" id="calc-pip-val" value="10" readonly>
+                                </div>
+                            </div>
+                            <div class="fortress-stat-grid" style="grid-template-columns: 1fr 1fr; margin-top: 0.4rem;">
+                                <div class="fortress-stat-card"><span class="fortress-stat-label">Max Risk ($)</span><span class="fortress-stat-val" id="calc-risk-dollars" style="color: var(--fortress-crimson); font-size: 1rem;">$100.00</span></div>
+                                <div class="fortress-stat-card"><span class="fortress-stat-label">Position Size</span><span class="fortress-stat-val" id="calc-lot-size" style="color: var(--fortress-gold); font-size: 1rem;">0.50 Lots</span></div>
+                            </div>
+                        </div>
+
+                        <div class="fortress-workbench-panel">
+                            <div class="fortress-panel-title"><i class="fas fa-bullseye"></i> Risk Scenario Question</div>
+                            <p id="risk-q-text" style="font-size: 0.95rem; font-weight: 600; color: #FFF; margin: 0 0 0.5rem 0;"></p>
+                            <div class="fortress-options-grid" id="risk-options-grid"></div>
+                            <div class="fortress-feedback-box" id="risk-feedback-box"></div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                        <button type="button" class="fortress-btn" id="risk-skip-btn"><i class="fas fa-sync"></i> Next Risk Calculation</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             9. PSYCHOLOGY SANCTUM MODAL (Tilt Barometer)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-psych-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-brain"></i> Psychology &amp; Discipline Sanctum</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-stat-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Tilt Risk</span><span class="fortress-stat-val" style="color: var(--fortress-emerald); font-size: 0.95rem;">0% (Calm)</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Execution Bias</span><span class="fortress-stat-val" style="color: var(--fortress-gold); font-size: 0.95rem;">Zero FOMO</span></div>
+                        <div class="fortress-stat-card"><span class="fortress-stat-label">Discipline Score</span><span class="fortress-stat-val" style="color: var(--fortress-emerald); font-size: 0.95rem;">100 / 100</span></div>
+                    </div>
+                    <p id="psych-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="fortress-options-grid" id="psych-options-grid"></div>
+                    <div class="fortress-feedback-box" id="psych-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn" id="psych-skip-btn"><i class="fas fa-sync"></i> Next Mind Drill</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             10. STRATEGY WORKSHOP MODAL (10-Factor Strategy Construction Workbench)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-workshop-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card" style="max-width: 950px;">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-gears"></i> 10-Factor Strategy Workshop</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Build and test your complete systematic trading blueprint. The engine evaluates internal consistency across all 10 core strategy parameters.</p>
+
+                    <div class="fortress-workbench-grid" style="margin-top: 0.5rem;">
+                        <div class="fortress-workbench-panel">
+                            <div class="fortress-panel-title"><i class="fas fa-sliders"></i> Strategy Parameters</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; font-size: 0.8rem;">
+                                <div>
+                                    <label style="color: #94A3B8; font-weight: 700;">1. Market Condition</label>
+                                    <select class="fortress-input-field" id="ws-condition" style="padding: 0.35rem 0.5rem;">
+                                        <option value="uptrend">Established Uptrend (HH/HL)</option>
+                                        <option value="downtrend">Established Downtrend (LH/LL)</option>
+                                        <option value="range">Consolidation Range</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="color: #94A3B8; font-weight: 700;">2. Trade Direction</label>
+                                    <select class="fortress-input-field" id="ws-direction" style="padding: 0.35rem 0.5rem;">
+                                        <option value="long">Long (Buy)</option>
+                                        <option value="short">Short (Sell)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="color: #94A3B8; font-weight: 700;">3. Invalidation Point</label>
+                                    <select class="fortress-input-field" id="ws-invalidation" style="padding: 0.35rem 0.5rem;">
+                                        <option value="structural_support_low">Beyond Prior Higher Low</option>
+                                        <option value="none">No Invalidation Point</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="color: #94A3B8; font-weight: 700;">4. Reward-to-Risk</label>
+                                    <select class="fortress-input-field" id="ws-rr" style="padding: 0.35rem 0.5rem;">
+                                        <option value="3.0">3.0 : 1 (Prime)</option>
+                                        <option value="2.0">2.0 : 1 (Standard)</option>
+                                        <option value="0.8">0.8 : 1 (Flawed)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="color: #94A3B8; font-weight: 700;">5. Max Risk / Trade</label>
+                                    <select class="fortress-input-field" id="ws-risk" style="padding: 0.35rem 0.5rem;">
+                                        <option value="1.0">1.0% (Systematic)</option>
+                                        <option value="2.0">2.0% (Aggressive)</option>
+                                        <option value="5.0">5.0% (Excessive / High Risk)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="color: #94A3B8; font-weight: 700;">6. Management Rule</label>
+                                    <select class="fortress-input-field" id="ws-mgmt" style="padding: 0.35rem 0.5rem;">
+                                        <option value="scale_tp">Scale Out at TP1, Breakeven Stop</option>
+                                        <option value="let_run">Hold to Target or Invalidation</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="button" class="fortress-btn fortress-btn-gold" id="btn-run-ws-eval" style="margin-top: 0.5rem;"><i class="fas fa-play"></i> Evaluate Custom Strategy</button>
+                        </div>
+
+                        <div class="fortress-workbench-panel">
+                            <div class="fortress-panel-title"><i class="fas fa-clipboard-check"></i> System Evaluation Verdict</div>
+                            <div class="fortress-options-grid" style="grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-top: 0;">
+                                <button type="button" class="fortress-btn fortress-btn-sm fortress-btn-gold" id="btn-build-trend-strat"><i class="fas fa-arrow-trend-up"></i> Preset: Trend Retest (3:1, 1%)</button>
+                                <button type="button" class="fortress-btn fortress-btn-sm fortress-btn-crimson" id="btn-build-flawed-strat"><i class="fas fa-triangle-exclamation"></i> Preset: Flawed (Counter-trend, 5%)</button>
+                            </div>
+                            <div class="fortress-feedback-box" id="workshop-feedback-box" style="display: block; margin-top: 0.4rem;">
+                                <strong>SYSTEM EVALUATION READY:</strong> Select a blueprint or click evaluate above.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             11. BACKTEST ARCHIVE MODAL (Simulated Candle-by-Candle Tester)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-backtest-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-clock-rotate-left"></i> Simulated Backtest Archive</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-canvas-frame">
+                        <canvas id="backtest-equity-canvas" width="600" height="180"></canvas>
+                    </div>
+                    <div class="fortress-stat-grid">
+                        <div class="fortress-stat-card">
+                            <span class="fortress-stat-label">Simulated Trades</span>
+                            <span class="fortress-stat-val" id="bt-trades-val">10</span>
+                        </div>
+                        <div class="fortress-stat-card">
+                            <span class="fortress-stat-label">Win Rate</span>
+                            <span class="fortress-stat-val" id="bt-winrate-val" style="color: var(--fortress-emerald);">60%</span>
+                        </div>
+                        <div class="fortress-stat-card">
+                            <span class="fortress-stat-label">Expectancy</span>
+                            <span class="fortress-stat-val" id="bt-expectancy-val" style="color: var(--fortress-gold);">+1.10 R</span>
+                        </div>
+                        <div class="fortress-stat-card">
+                            <span class="fortress-stat-label">Max Drawdown</span>
+                            <span class="fortress-stat-val" id="bt-maxdd-val" style="color: var(--fortress-amber);">3.2%</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.5rem;">
+                        <button type="button" class="fortress-btn fortress-btn-emerald" id="btn-bt-execute-win"><i class="fas fa-plus"></i> Simulate +2.5R Win</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" id="btn-bt-execute-loss"><i class="fas fa-minus"></i> Simulate -1.0R Loss</button>
+                        <button type="button" class="fortress-btn" id="btn-bt-reset"><i class="fas fa-rotate-left"></i> Reset Archive</button>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             12. DECISION ARENA MODAL
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-decision-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-crosshairs"></i> Decision Arena: Multi-Factor Dilemmas</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <p id="dec-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="fortress-options-grid" id="dec-options-grid"></div>
+                    <div class="fortress-feedback-box" id="dec-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn" id="dec-skip-btn"><i class="fas fa-sync"></i> Next Dilemma</button>
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             13. STRATEGY ARENA MODAL (10-Round Gauntlet)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-arena-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-trophy"></i> Grand Strategy Arena (10-Round Gauntlet)</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span id="arena-round-badge" style="font-weight: 800; font-size: 1rem; color: var(--fortress-gold);">Round 1 / 10 • Score: 0</span>
+                    </div>
+                    <p id="arena-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="fortress-options-grid" id="arena-options-grid"></div>
+                    <div class="fortress-feedback-box" id="arena-feedback-box"></div>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Exit Arena</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             14. FINAL STRATEGY THRONE MODAL (Apex Final Mastery Challenge)
+             ==================================================================== -->
+        <div class="fortress-modal-backdrop" id="fortress-throne-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="fortress-modal-card">
+                <div class="fortress-modal-header">
+                    <div class="fortress-modal-title"><i class="fas fa-crown"></i> The Strategy Throne: Apex Grand Mastery Trial</div>
+                    <button type="button" class="fortress-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="fortress-modal-body">
+                    <div class="fortress-boss-hud throne-boss-meter">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700;">
+                                <span style="color: var(--fortress-gold);"><i class="fas fa-user-shield"></i> Trader Mental Stamina</span>
+                                <span id="throne-player-stamina-val">100 / 100</span>
+                            </div>
+                            <div class="fortress-hp-bar">
+                                <div class="fortress-hp-fill-player" id="throne-player-hp-bar" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700;">
+                                <span style="color: var(--fortress-emerald);"><i class="fas fa-crown"></i> Strategy Mastery Score</span>
+                                <span id="throne-mastery-score-val">0 / 120</span>
+                            </div>
+                            <div class="fortress-hp-bar">
+                                <div class="fortress-hp-fill-throne" id="throne-mastery-bar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 700; color: var(--fortress-gold);">
+                        <span id="throne-stage-badge">Stage 1 / 8: Market Regime Classification</span>
+                        <span id="throne-violations-badge">0 Strategy Violations</span>
+                    </div>
+
+                    <p id="throne-prompt-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF; line-height: 1.5;"></p>
+                    <div class="fortress-options-grid" id="throne-options-grid"></div>
+                    <div class="fortress-feedback-box" id="throne-feedback-box"></div>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 0.75rem;">
+                        <button type="button" class="fortress-btn fortress-btn-crimson" onclick="window.StrativoRPG.closeAllModals()">Retreat from Throne</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================================
+             SHARED DIALOGUE OVERLAY
+             ==================================================================== -->
+        <div class="strativo-dialogue-overlay" id="strativo-dialogue-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="strativo-dialogue-avatar" id="strativo-dialogue-avatar">
+                <i class="fas fa-chess-rook" id="strativo-dialogue-avatar-icon"></i>
+            </div>
+            <div class="strativo-dialogue-box">
+                <div class="strativo-dialogue-header">
+                    <div class="strativo-speaker-meta">
+                        <h3 class="strativo-speaker-name" id="strativo-speaker-name">Grand Strategist Arven</h3>
+                        <span class="strativo-speaker-role" id="strativo-speaker-role">Apex Strategy Mentor</span>
+                    </div>
+                    <button type="button" class="strativo-dialogue-close-btn" id="strativo-dialogue-close-btn" aria-label="Close Dialogue">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="strativo-dialogue-body">
+                    <p class="strativo-dialogue-text" id="strativo-dialogue-text">Dialogue text...</p>
+                </div>
+                <div class="strativo-dialogue-actions" id="strativo-dialogue-actions">
+                    <button type="button" class="fortress-btn fortress-btn-gold" onclick="window.StrativoRPG.closeAllModals()">Close [Space]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         SCRIPTS: RPG CORE ENGINE + STRATEGY FORTRESS ENGINES + CONTROLLER
+         ==================================================================== -->
+    <script src="../js/settings/world-settings.js"></script>
+    <script src="../js/settings/haptics.js"></script>
+    <script src="../js/audio/audio-manager.js"></script>
+    <script src="../js/core/world-state.js"></script>
+    <script src="../js/core/world-xp-engine.js"></script>
+    <script src="../js/rpg/collision.js"></script>
+    <script src="../js/rpg/input.js"></script>
+    <script src="../js/rpg/camera.js"></script>
+    <script src="../js/rpg/player.js"></script>
+    <script src="../js/rpg/world.js"></script>
+    <script src="../js/rpg/rpg-core.js"></script>
+    <script src="../js/rpg/dialogue.js"></script>
+    <script src="../js/rpg/npc.js"></script>
+    <script src="../js/rpg/missions.js"></script>
+
+    <!-- Strategy Fortress Engines -->
+    <script src="../js/strategy/strategy-engine.js"></script>
+    <script src="../js/strategy/strategy-scenario-engine.js"></script>
+    <script src="../js/districts/strategy-fortress.js"></script>
+
+    <!-- Master Controller -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const canvas = document.getElementById("fortress-canvas");
+            const miniCanvas = document.getElementById("fortress-minimap-canvas");
+
+            // Initialize Game World
+            const world = new window.StrativoRPG.StrategyFortressWorld();
+            const player = new window.StrativoRPG.Player({ x: 1800, y: 2550 });
+            const camera = new window.StrativoRPG.Camera(canvas.width || 1280, canvas.height || 720);
+            camera.setWorldBounds({ x: 0, y: 0, width: world.width, height: world.height });
+            camera.follow(player, true);
+
+            const input = new window.StrativoRPG.InputManager({ container: document.getElementById("fortress-viewport-wrapper") });
+            input.attach();
+
+            window.StrativoRPG.gameCore = { world, player, camera, input };
+
+            // Specialized Strategy Engines
+            const confluenceEngine = new window.StrativoRPG.StrategyEngines.ConfluenceForgeEngine();
+            const workshopEngine = new window.StrativoRPG.StrategyEngines.StrategyWorkshopEngine();
+            const backtestEngine = new window.StrativoRPG.StrategyEngines.BacktestArchiveEngine();
+            const arenaEngine = new window.StrativoRPG.StrategyEngines.FortressGauntletEngine();
+            const throneEngine = new window.StrativoRPG.StrategyEngines.StrategyThroneEngine();
+
+            window.StrativoRPG.activeStrategyEngines = {
+                confluenceEngine,
+                workshopEngine,
+                backtestEngine,
+                arenaEngine,
+                throneEngine
+            };
+
+            // Resize Handler
+            function resizeCanvas() {
+                canvas.width = window.innerWidth || 1280;
+                canvas.height = window.innerHeight || 720;
+                camera.viewportWidth = canvas.width;
+                camera.viewportHeight = canvas.height;
+                camera.clamp();
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
+
+            // Modal Status Query Helper
+            function hasActiveModal() {
+                if (window.StrativoRPG && window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                    return true;
+                }
+                const activeEl = document.querySelector(".fortress-modal-backdrop.active, .strativo-dialogue-overlay.active, [role='dialog'][aria-modal='true'].active");
+                return Boolean(activeEl && window.getComputedStyle(activeEl).display !== "none");
+            }
+            window.hasActiveModal = hasActiveModal;
+            window.StrativoRPG.hasActiveModal = hasActiveModal;
+
+            // Main Game Loop (60 FPS)
+            let lastTime = performance.now();
+            function gameLoop(now) {
+                try {
+                    const dt = Math.min(0.1, (now - lastTime) / 1000);
+                    lastTime = now;
+
+                    const isModalActive = hasActiveModal();
+                    if (isModalActive) {
+                        if (input && typeof input.reset === "function") input.reset();
+                        player.update(dt, { x: 0, y: 0, isMoving: false }, null, { width: world.width, height: world.height });
+                    } else {
+                        const moveVec = input.getMovementVector();
+                        player.update(dt, moveVec, null, { width: world.width, height: world.height });
+                    }
+
+                    camera.update(dt);
+                    world.update(dt);
+
+                    const ctx = canvas.getContext("2d");
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.save();
+                    ctx.translate(-camera.x, -camera.y);
+                    world.render(ctx, camera);
+                    player.render(ctx);
+                    ctx.restore();
+
+                    renderMiniMap();
+                } catch (e) {
+                    console.error("Strategy Fortress GameLoop error:", e);
+                }
+                requestAnimationFrame(gameLoop);
+            }
+            gameLoop(performance.now());
+
+            // Load Datasets
+            (async () => {
+                try {
+                    const [mapRes, scenRes] = await Promise.all([
+                        fetch("../data/strategy-map.json").then(r => r.json()).catch(() => null),
+                        fetch("../data/strategy-scenarios.json").then(r => r.json()).catch(() => null)
+                    ]);
+                    if (mapRes) world.setMapData(mapRes);
+                    if (scenRes) window.StrativoRPG.StrategyScenarioEngine.init(scenRes);
+                } catch (err) {
+                    console.warn("Strategy Fortress dataset loading notice:", err);
+                }
+            })();
+
+            // Mini-Map Render
+            function renderMiniMap() {
+                if (!miniCanvas) return;
+                const mctx = miniCanvas.getContext("2d");
+                mctx.fillStyle = "#030712";
+                mctx.fillRect(0, 0, miniCanvas.width, miniCanvas.height);
+
+                const scaleX = miniCanvas.width / world.width;
+                const scaleY = miniCanvas.height / world.height;
+
+                // Quarters
+                (world.quarters || []).forEach(q => {
+                    mctx.fillStyle = (q.color || "#FCD34D") + "35";
+                    mctx.fillRect(q.bounds.x * scaleX, q.bounds.y * scaleY, q.bounds.w * scaleX, q.bounds.h * scaleY);
+                    mctx.strokeStyle = (q.color || "#FCD34D") + "80";
+                    mctx.lineWidth = 1;
+                    mctx.strokeRect(q.bounds.x * scaleX, q.bounds.y * scaleY, q.bounds.w * scaleX, q.bounds.h * scaleY);
+                });
+
+                // Buildings
+                (world.buildings || []).forEach(b => {
+                    mctx.fillStyle = b.themeColor || "#FCD34D";
+                    mctx.fillRect(b.x * scaleX, b.y * scaleY, b.w * scaleX, b.h * scaleY);
+                });
+
+                // Player Position Dot
+                mctx.fillStyle = "#FCD34D";
+                mctx.shadowColor = "#FCD34D";
+                mctx.shadowBlur = 6;
+                mctx.beginPath();
+                mctx.arc(player.x * scaleX, player.y * scaleY, 4, 0, Math.PI * 2);
+                mctx.fill();
+                mctx.shadowBlur = 0;
+            }
+
+            // Keyboard Handlers
+            window.addEventListener("keydown", (e) => {
+                if (e.code === "KeyE" || e.code === "Space") {
+                    if (hasActiveModal()) {
+                        if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                            window.StrativoRPG.DialogueManager.closeDialogue();
+                        }
+                    } else {
+                        world.interact();
+                    }
+                } else if (e.code === "Escape") {
+                    closeAllModals();
+                } else if (e.code === "KeyM") {
+                    if (!hasActiveModal()) {
+                        const mm = document.getElementById("fortress-minimap");
+                        if (mm) mm.style.display = mm.style.display === "none" ? "block" : "none";
+                    }
+                }
+            });
+
+            // Mobile Action Button Handler
+            const mobileBtn = document.getElementById("fortress-mobile-action");
+            if (mobileBtn) {
+                mobileBtn.addEventListener("click", () => {
+                    if (hasActiveModal()) {
+                        if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                            window.StrativoRPG.DialogueManager.closeDialogue();
+                        }
+                    } else {
+                        world.interact();
+                    }
+                });
+            }
+
+            // Top HUD Listeners
+            const btnMissions = document.getElementById("btn-open-missions");
+            if (btnMissions) {
+                btnMissions.addEventListener("click", () => window.StrativoRPG.openTacticalBriefingModal());
+            }
+            const btnMapToggle = document.getElementById("btn-toggle-minimap");
+            if (btnMapToggle) {
+                btnMapToggle.addEventListener("click", () => {
+                    const mm = document.getElementById("fortress-minimap");
+                    if (mm) mm.style.display = mm.style.display === "none" ? "block" : "none";
+                });
+            }
+
+            // Close All Modals (Authoritative Single Reset Lifecycle)
+            function closeAllModals() {
+                document.querySelectorAll(".fortress-modal-backdrop, .strativo-dialogue-overlay").forEach(m => {
+                    m.classList.remove("active");
+                    m.setAttribute("aria-hidden", "true");
+                });
+                if (window.StrativoRPG.DialogueManager && typeof window.StrativoRPG.DialogueManager.closeDialogue === "function") {
+                    window.StrativoRPG.DialogueManager.closeDialogue();
+                }
+                if (input && typeof input.reset === "function") input.reset();
+                if (document.activeElement && typeof document.activeElement.blur === "function") document.activeElement.blur();
+                if (canvas && typeof canvas.focus === "function") canvas.focus();
+            }
+            window.closeAllModals = closeAllModals;
+            window.StrativoRPG.closeAllModals = closeAllModals;
+
+            // Single Authoritative Reset Lifecycle Helper
+            function resetActivityState(prefix) {
+                if (prefix) {
+                    const textEl = document.getElementById(`${prefix}-q-text`);
+                    const gridEl = document.getElementById(`${prefix}-options-grid`);
+                    const fbEl = document.getElementById(`${prefix}-feedback-box`);
+                    if (textEl) textEl.textContent = "";
+                    if (gridEl) gridEl.innerHTML = "";
+                    if (fbEl) { fbEl.style.display = "none"; fbEl.innerHTML = ""; fbEl.className = "fortress-feedback-box"; }
+                }
+            }
+            window.resetActivityState = resetActivityState;
+            window.StrativoRPG.resetActivityState = resetActivityState;
+
+            // Generic Question Renderer with Single Authoritative Reset Pattern
+            function renderGenericQuestionCard(prefix, q, onAnswerCallback, refreshFn) {
+                const textEl = document.getElementById(`${prefix}-q-text`);
+                const gridEl = document.getElementById(`${prefix}-options-grid`);
+                const fbEl = document.getElementById(`${prefix}-feedback-box`);
+                const skipBtn = document.getElementById(`${prefix}-skip-btn`);
+
+                if (!q || !textEl || !gridEl) return;
+                textEl.textContent = q.questionText || q.prompt;
+                if (fbEl) { fbEl.style.display = "none"; fbEl.innerHTML = ""; fbEl.className = "fortress-feedback-box"; }
+                if (skipBtn) {
+                    skipBtn.innerHTML = '<i class="fas fa-sync"></i> Next Scenario';
+                    skipBtn.onclick = () => { if (refreshFn) refreshFn(); };
+                }
+                gridEl.innerHTML = "";
+
+                let answered = false;
+                (q.options || []).forEach(opt => {
+                    const optText = typeof opt === "string" ? opt : (opt.label || opt.text || "");
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "fortress-option-btn";
+                    btn.innerHTML = `<i class="fas fa-circle-dot" style="color: var(--fortress-gold); margin-top: 2px;"></i> <span>${optText}</span>`;
+
+                    btn.onclick = () => {
+                        if (answered) return;
+                        answered = true;
+                        Array.from(gridEl.children).forEach(c => c.disabled = true);
+
+                        const isCorrect = optText === q.correctAnswer || (typeof opt === "object" && (opt.isMaster || opt.isCorrect));
+                        if (isCorrect) {
+                            btn.classList.add("selected-correct");
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.className = "fortress-feedback-box fortress-feedback-correct";
+                                fbEl.innerHTML = `<div><i class="fas fa-check-circle" style="color: #10B981; margin-right: 0.4rem;"></i> <strong>CORRECT!</strong> ${q.explanation || "Optimal strategy decision."}</div>`;
+                            }
+                            window.StrativoRPG.emitGameEvent("correctHit");
+                            if (window.StrativoWorldXPEngine) {
+                                window.StrativoWorldXPEngine.addWorldXP(20, `Strategy Fortress: ${q.category || "General"}`, `strat_q_${q.id}_${Date.now()}`);
+                            }
+                        } else {
+                            btn.classList.add("selected-incorrect");
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.className = "fortress-feedback-box fortress-feedback-incorrect";
+                                fbEl.innerHTML = `<div><i class="fas fa-times-circle" style="color: #EF4444; margin-right: 0.4rem;"></i> <strong>INCORRECT.</strong> Correct: <em>${q.correctAnswer || "Systematic Choice"}</em>. ${q.explanation || ""}</div>`;
+                            }
+                            window.StrativoRPG.emitGameEvent("wrongHit");
+                        }
+
+                        if (onAnswerCallback) onAnswerCallback(isCorrect, opt);
+                    };
+                    gridEl.appendChild(btn);
+                });
+            }
+
+            // Exploration Discovery Opener
+            window.StrativoRPG.openDiscoveryModal = (point) => {
+                closeAllModals();
+                const m = document.getElementById("fortress-discovery-modal");
+                if (!m) return;
+                m.classList.add("active");
+                m.setAttribute("aria-hidden", "false");
+                const h = document.getElementById("fortress-discovery-heading");
+                const l = document.getElementById("fortress-discovery-lore");
+                const xp = document.getElementById("fortress-discovery-xp");
+                if (h) h.textContent = point.name;
+                if (l) l.textContent = point.lore;
+                if (xp) xp.innerHTML = `<i class="fas fa-crown"></i> +${point.xp} XP Mastered`;
+            };
+
+            // Strategy Academy Tab Navigation
+            const acadTabBar = document.getElementById("acad-tab-bar");
+            if (acadTabBar) {
+                acadTabBar.querySelectorAll(".fortress-tab-btn").forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        acadTabBar.querySelectorAll(".fortress-tab-btn").forEach(b => b.classList.remove("active"));
+                        btn.classList.add("active");
+                        refreshAcademyQuestion(btn.dataset.tab);
+                    });
+                });
+            }
+
+            // Confluence Forge Interactive Sliders
+            function updateConfluenceFromSliders() {
+                const sTrend = parseInt(document.getElementById("slider-trend")?.value || "90", 10);
+                const sStruct = parseInt(document.getElementById("slider-struct")?.value || "95", 10);
+                const sSR = parseInt(document.getElementById("slider-sr")?.value || "85", 10);
+                const sPA = parseInt(document.getElementById("slider-pa")?.value || "85", 10);
+                const sRR = parseInt(document.getElementById("slider-rr")?.value || "95", 10);
+
+                const valTrend = document.getElementById("val-slider-trend");
+                const valStruct = document.getElementById("val-slider-struct");
+                const valSR = document.getElementById("val-slider-sr");
+                const valPA = document.getElementById("val-slider-pa");
+                const valRR = document.getElementById("val-slider-rr");
+
+                if (valTrend) valTrend.textContent = `${sTrend}%`;
+                if (valStruct) valStruct.textContent = `${sStruct}%`;
+                if (valSR) valSR.textContent = `${sSR}%`;
+                if (valPA) valPA.textContent = `${sPA}%`;
+                if (valRR) valRR.textContent = `${sRR}%`;
+
+                const cv = document.getElementById("confluence-radar-canvas");
+                if (cv && window.StrativoRPG.StrategyEngine) {
+                    window.StrativoRPG.StrategyEngine.renderConfluenceRadar(cv, {
+                        trend: sTrend,
+                        structure: sStruct,
+                        sr: sSR,
+                        priceAction: sPA,
+                        breakout: 70,
+                        rr: sRR,
+                        psychology: 90
+                    });
+                }
+
+                const res = confluenceEngine.calculateConfluence({
+                    trend: sTrend >= 60,
+                    structure: sStruct >= 60,
+                    sr: sSR >= 60,
+                    priceAction: sPA >= 60,
+                    breakout: true,
+                    rr: sRR >= 60,
+                    psychology: true
+                });
+
+                const scoreEl = document.getElementById("forge-score-val");
+                const gradeEl = document.getElementById("forge-grade-val");
+                const statusEl = document.getElementById("forge-status-val");
+                if (scoreEl) scoreEl.textContent = `${res.confluenceScore} / 100`;
+                if (gradeEl) gradeEl.textContent = res.grade;
+                if (statusEl) statusEl.textContent = res.quality;
+            }
+
+            ["slider-trend", "slider-struct", "slider-sr", "slider-pa", "slider-rr"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener("input", updateConfluenceFromSliders);
+            });
+
+            // Position Size & Risk Calculator
+            function updateRiskCalculator() {
+                const bal = parseFloat(document.getElementById("calc-account-size")?.value || "10000");
+                const riskPct = parseFloat(document.getElementById("calc-risk-pct")?.value || "1");
+                const slPips = parseFloat(document.getElementById("calc-sl-pips")?.value || "20");
+
+                const maxRiskDollars = bal * (riskPct / 100);
+                const pipValuePerLot = 10; // Standard $10/pip for 1.0 lot on EUR/USD
+                const lotSize = slPips > 0 ? (maxRiskDollars / (slPips * pipValuePerLot)) : 0;
+
+                const riskValEl = document.getElementById("calc-risk-dollars");
+                const lotValEl = document.getElementById("calc-lot-size");
+
+                if (riskValEl) riskValEl.textContent = `$${maxRiskDollars.toFixed(2)}`;
+                if (lotValEl) lotValEl.textContent = `${lotSize.toFixed(2)} Lots`;
+            }
+
+            ["calc-account-size", "calc-risk-pct", "calc-sl-pips"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener("input", updateRiskCalculator);
+            });
+
+            // Custom Strategy Evaluator (10-Factor Workshop)
+            const btnRunWsEval = document.getElementById("btn-run-ws-eval");
+            if (btnRunWsEval) {
+                btnRunWsEval.onclick = () => {
+                    const cond = document.getElementById("ws-condition")?.value || "uptrend";
+                    const dir = document.getElementById("ws-direction")?.value || "long";
+                    const inv = document.getElementById("ws-invalidation")?.value || "structural_support_low";
+                    const rr = parseFloat(document.getElementById("ws-rr")?.value || "3.0");
+                    const riskPct = parseFloat(document.getElementById("ws-risk")?.value || "1.0");
+
+                    const res = workshopEngine.evaluateStrategy({
+                        condition: cond,
+                        direction: dir,
+                        invalidation: inv,
+                        rr: rr,
+                        riskPct: riskPct
+                    });
+
+                    const fb = document.getElementById("workshop-feedback-box");
+                    if (fb) {
+                        fb.style.display = "block";
+                        if (res.isValid) {
+                            fb.className = "fortress-feedback-box fortress-feedback-correct";
+                            fb.innerHTML = `<strong>${res.verdict} (Score: ${res.consistencyScore}/100)</strong><br>• ${res.strengths.join("<br>• ")}`;
+                        } else {
+                            fb.className = "fortress-feedback-box fortress-feedback-incorrect";
+                            fb.innerHTML = `<strong>${res.verdict} (Score: ${res.consistencyScore}/100)</strong><br>• ${res.flaws.join("<br>• ")}`;
+                        }
+                    }
+                };
+            }
+
+            // Facility Openers
+            window.StrativoRPG.openStrategyAcademyModal = (tab = "strategy") => {
+                closeAllModals();
+                document.getElementById("fortress-academy-modal").classList.add("active");
+                refreshAcademyQuestion(tab);
+            };
+
+            function refreshAcademyQuestion(tab = null) {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("strategy_academy", tab);
+                renderGenericQuestionCard("acad", q, null, () => refreshAcademyQuestion(tab));
+            }
+
+            // Confluence Forge with Interactive Radar
+            window.StrativoRPG.openConfluenceForgeModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-forge-modal").classList.add("active");
+                refreshConfluenceForgeQuestion();
+                updateConfluenceFromSliders();
+            };
+
+            function refreshConfluenceForgeQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("confluence_forge");
+                renderGenericQuestionCard("forge", q, null, refreshConfluenceForgeQuestion);
+            }
+
+            // Candlestick War Room with OHLC Chart Canvas
+            window.StrativoRPG.openCandlestickChamberModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-candle-modal").classList.add("active");
+                refreshCandlestickWarQuestion();
+            };
+
+            function refreshCandlestickWarQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("candlestick_chamber");
+                if (q && q.candles) {
+                    const cv = document.getElementById("candle-war-canvas");
+                    window.StrativoRPG.StrategyEngine.renderCandleChart(cv, q.candles);
+                }
+                renderGenericQuestionCard("candle", q, null, refreshCandlestickWarQuestion);
+            }
+
+            window.StrativoRPG.openStructureTowerModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-structure-modal").classList.add("active");
+                refreshStructureQuestion();
+            };
+
+            function refreshStructureQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("structure_tower");
+                renderGenericQuestionCard("struct", q, null, refreshStructureQuestion);
+            }
+
+            window.StrativoRPG.openSRVaultModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-sr-modal").classList.add("active");
+                refreshSRQuestion();
+            };
+
+            function refreshSRQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("sr_vault");
+                renderGenericQuestionCard("sr", q, null, refreshSRQuestion);
+            }
+
+            window.StrativoRPG.openBreakoutVaultModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-breakout-modal").classList.add("active");
+                refreshBreakoutQuestion();
+            };
+
+            function refreshBreakoutQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("breakout_vault");
+                renderGenericQuestionCard("brk", q, null, refreshBreakoutQuestion);
+            }
+
+            window.StrativoRPG.openRiskCommandModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-risk-modal").classList.add("active");
+                refreshRiskQuestion();
+                updateRiskCalculator();
+            };
+
+            function refreshRiskQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("risk_command");
+                renderGenericQuestionCard("risk", q, null, refreshRiskQuestion);
+            }
+
+            window.StrativoRPG.openPsychChamberModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-psych-modal").classList.add("active");
+                refreshPsychQuestion();
+            };
+
+            function refreshPsychQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("psych_chamber");
+                renderGenericQuestionCard("psych", q, null, refreshPsychQuestion);
+            }
+
+            // Strategy Construction Workshop (10-Factor Blueprint Tester)
+            window.StrativoRPG.openStrategyWorkshopModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-workshop-modal").classList.add("active");
+            };
+
+            const btnBuildTrend = document.getElementById("btn-build-trend-strat");
+            if (btnBuildTrend) {
+                btnBuildTrend.onclick = () => {
+                    const res = workshopEngine.evaluateStrategy({
+                        condition: "uptrend",
+                        direction: "long",
+                        invalidation: "structural_support_low",
+                        rr: 3.0,
+                        riskPct: 1.0
+                    });
+                    const fb = document.getElementById("workshop-feedback-box");
+                    if (fb) {
+                        fb.className = "fortress-feedback-box fortress-feedback-correct";
+                        fb.style.display = "block";
+                        fb.innerHTML = `<strong>${res.verdict} (Score: ${res.consistencyScore}/100)</strong><br>• ${res.strengths.join("<br>• ")}`;
+                    }
+                };
+            }
+
+            const btnBuildFlawed = document.getElementById("btn-build-flawed-strat");
+            if (btnBuildFlawed) {
+                btnBuildFlawed.onclick = () => {
+                    const res = workshopEngine.evaluateStrategy({
+                        condition: "uptrend",
+                        direction: "short",
+                        invalidation: "none",
+                        rr: 0.8,
+                        riskPct: 5.0
+                    });
+                    const fb = document.getElementById("workshop-feedback-box");
+                    if (fb) {
+                        fb.className = "fortress-feedback-box fortress-feedback-incorrect";
+                        fb.style.display = "block";
+                        fb.innerHTML = `<strong>${res.verdict} (Score: ${res.consistencyScore}/100)</strong><br>• ${res.flaws.join("<br>• ")}`;
+                    }
+                };
+            }
+
+            // Simulated Backtest Archive
+            window.StrativoRPG.openBacktestArchiveModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-backtest-modal").classList.add("active");
+                updateBacktestDisplay();
+            };
+
+            function updateBacktestDisplay() {
+                const cv = document.getElementById("backtest-equity-canvas");
+                if (cv) {
+                    window.StrativoRPG.StrategyEngine.renderBacktestEquityCurve(cv, backtestEngine.equityHistory);
+                }
+                const trEl = document.getElementById("bt-trades-val");
+                const wrEl = document.getElementById("bt-winrate-val");
+                const expEl = document.getElementById("bt-expectancy-val");
+                const ddEl = document.getElementById("bt-maxdd-val");
+
+                const wr = backtestEngine.tradesExecuted > 0 ? Math.round((backtestEngine.wins / backtestEngine.tradesExecuted) * 100) : 0;
+                if (trEl) trEl.textContent = backtestEngine.tradesExecuted;
+                if (wrEl) wrEl.textContent = `${wr}%`;
+                if (expEl) expEl.textContent = `+$${(backtestEngine.balance - backtestEngine.startingBalance).toLocaleString()}`;
+                if (ddEl) ddEl.textContent = `${backtestEngine.maxDrawdown}%`;
+            }
+
+            const btnBtWin = document.getElementById("btn-bt-execute-win");
+            if (btnBtWin) {
+                btnBtWin.onclick = () => {
+                    backtestEngine.recordTrade(true, 100, 2.5, true);
+                    updateBacktestDisplay();
+                };
+            }
+
+            const btnBtLoss = document.getElementById("btn-bt-execute-loss");
+            if (btnBtLoss) {
+                btnBtLoss.onclick = () => {
+                    backtestEngine.recordTrade(false, 100, 2.5, true);
+                    updateBacktestDisplay();
+                };
+            }
+
+            const btnBtReset = document.getElementById("btn-bt-reset");
+            if (btnBtReset) {
+                btnBtReset.onclick = () => {
+                    backtestEngine.reset();
+                    updateBacktestDisplay();
+                };
+            }
+
+            // Decision Arena
+            window.StrativoRPG.openDecisionArenaModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-decision-modal").classList.add("active");
+                refreshDecisionQuestion();
+            };
+
+            function refreshDecisionQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("decision_arena");
+                renderGenericQuestionCard("dec", q, null, refreshDecisionQuestion);
+            }
+
+            // Grand Strategy Arena (10-Round Gauntlet)
+            window.StrativoRPG.launchFortressArena = () => {
+                closeAllModals();
+                document.getElementById("fortress-arena-modal").classList.add("active");
+                arenaEngine.start(window.StrativoRPG.StrategyScenarioEngine.pools.fortress_arena);
+                refreshArenaQuestion();
+            };
+
+            function refreshArenaQuestion() {
+                const q = window.StrativoRPG.StrategyScenarioEngine.getQuestion("fortress_arena");
+                const roundBadge = document.getElementById("arena-round-badge");
+                if (roundBadge) roundBadge.textContent = `Round ${arenaEngine.round} / 10 • Score: ${arenaEngine.score}`;
+                renderGenericQuestionCard("arena", q, (isCorrect) => {
+                    const res = arenaEngine.recordAnswer(isCorrect);
+                    if (res.isFinished) {
+                        const fb = document.getElementById("arena-feedback-box");
+                        if (fb) {
+                            fb.style.display = "block";
+                            fb.className = "fortress-feedback-box fortress-feedback-correct";
+                            fb.innerHTML = `<strong>GRAND GAUNTLET COMPLETE!</strong> Final Confluence Strategy Score: ${res.score} XP!`;
+                        }
+                    } else {
+                        setTimeout(refreshArenaQuestion, 1400);
+                    }
+                }, refreshArenaQuestion);
+            }
+
+            window.StrativoRPG.openTacticalBriefingModal = () => {
+                if (window.StrativoRPG.DialogueManager) {
+                    window.StrativoRPG.DialogueManager.startDialogue({
+                        speaker: "Apex Strategy Directorate",
+                        role: "District 7 Grand Strategy Briefing",
+                        avatarIcon: "fa-chess-rook",
+                        themeColor: "#FCD34D",
+                        text: "Strategy Fortress Master Briefing:<br><br>• <strong>Strategy vs Setup:</strong> A setup is a trigger; strategy is your complete risk & trade plan<br>• <strong>Confluence Forge:</strong> Require 4+ pillars (Structure, S/R, Price Action, R:R) before entry<br>• <strong>War Room & S/R:</strong> Respect HTF polarity flips and multi-touch liquidity zones<br>• <strong>Risk Command:</strong> Never risk more than 1-2% of total capital per setup<br>• <strong>Backtest Archive:</strong> Verify positive expectancy across historical samples<br>• <strong>The Strategy Throne:</strong> Complete all 8 stages of the Apex Master Challenge"
+                    });
+                }
+            };
+            window.StrativoRPG.openMissionsJournal = window.StrativoRPG.openTacticalBriefingModal;
+
+            // Final Strategy Throne (Apex Final Trial)
+            window.StrativoRPG.openStrategyThroneModal = () => {
+                closeAllModals();
+                document.getElementById("fortress-throne-modal").classList.add("active");
+                throneEngine.reset();
+                refreshStrategyThroneStage();
+            };
+
+            function refreshStrategyThroneStage() {
+                const status = throneEngine.getStatus();
+                const playerHpBar = document.getElementById("throne-player-hp-bar");
+                const masteryBar = document.getElementById("throne-mastery-bar");
+                const playerHpVal = document.getElementById("throne-player-stamina-val");
+                const masteryVal = document.getElementById("throne-mastery-score-val");
+                const stageBadge = document.getElementById("throne-stage-badge");
+                const violationsBadge = document.getElementById("throne-violations-badge");
+                const promptEl = document.getElementById("throne-prompt-text");
+                const gridEl = document.getElementById("throne-options-grid");
+                const fbEl = document.getElementById("throne-feedback-box");
+
+                if (playerHpBar) playerHpBar.style.width = `${Math.max(0, status.traderStamina)}%`;
+                if (masteryBar) masteryBar.style.width = `${Math.min(100, (status.masteryScore / 120) * 100)}%`;
+                if (playerHpVal) playerHpVal.textContent = `${status.traderStamina} / 100`;
+                if (masteryVal) masteryVal.textContent = `${status.masteryScore} / 120`;
+                if (stageBadge) stageBadge.textContent = `Stage ${status.stage} / 8: Apex Confluence Evaluation`;
+                if (violationsBadge) violationsBadge.textContent = `${status.ruleViolations} Strategy Violations`;
+
+                if (fbEl) { fbEl.style.display = "none"; fbEl.innerHTML = ""; fbEl.className = "fortress-feedback-box"; }
+
+                if (status.isVictory) {
+                    if (promptEl) promptEl.textContent = "CONGRATULATIONS, MASTER STRATEGIST! You have achieved complete confluence mastery, conquered Strategy Fortress, and completed Strativo World V1!";
+                    if (gridEl) {
+                        gridEl.innerHTML = '<button type="button" class="fortress-btn fortress-btn-gold" style="grid-column: span 2;" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-crown"></i> Claim Apex Grand Master Strategy Certification</button>';
+                    }
+                    if (window.StrativoWorldXPEngine) {
+                        window.StrativoWorldXPEngine.addWorldXP(200, "Apex Strategy Throne Victory", "throne_win_" + Date.now());
+                    }
+                    return;
+                }
+
+                if (status.isDefeated) {
+                    if (promptEl) promptEl.textContent = `TRIAL FAILED! ${status.defeatReason}`;
+                    if (gridEl) {
+                        gridEl.innerHTML = '<button type="button" class="fortress-btn fortress-btn-crimson" style="grid-column: span 2;" onclick="window.StrativoRPG.openStrategyThroneModal()"><i class="fas fa-rotate-left"></i> Restart Strategy Throne Trial</button>';
+                    }
+                    return;
+                }
+
+                const scen = window.StrativoRPG.StrategyScenarioEngine.pools.strategy_throne[status.stage - 1] || {
+                    title: `Stage ${status.stage}`,
+                    prompt: "Grand Strategy Situation: Multi-factor market context requires decisive disciplined action. What is your choice?",
+                    options: [
+                        { label: "Align with 4H Trend, execute at S/R zone with confirmed pinbar and 3:1 R:R", isCorrect: true, isMaster: true, scoreGain: 15 },
+                        { label: "Gamble counter-trend with 10% risk without waiting for confirmation", isCorrect: false, isMaster: false, scoreGain: 0 },
+                        { label: "Chase late market expansion after candle has already moved 50 pips", isCorrect: false, isMaster: false, scoreGain: 0 },
+                        { label: "Cancel stop loss because price will surely bounce back", isCorrect: false, isMaster: false, scoreGain: 0 }
+                    ]
+                };
+
+                if (promptEl) promptEl.textContent = `[Stage ${status.stage}: ${scen.title}] ${scen.prompt}`;
+                if (gridEl) {
+                    gridEl.innerHTML = "";
+                    (scen.options || []).forEach(opt => {
+                        const btn = document.createElement("button");
+                        btn.type = "button";
+                        btn.className = "fortress-option-btn";
+                        btn.innerHTML = `<i class="fas fa-shield" style="color: var(--fortress-gold); margin-top: 2px;"></i> <span>${opt.label}</span>`;
+                        btn.onclick = () => {
+                            Array.from(gridEl.children).forEach(c => c.disabled = true);
+                            const updated = throneEngine.executeStage(opt, scen);
+                            const lastAction = updated.turnHistory[updated.turnHistory.length - 1];
+
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                if (lastAction.isMaster) {
+                                    fbEl.className = "fortress-feedback-box fortress-feedback-correct";
+                                    fbEl.innerHTML = `<strong>MASTER CONFLUENCE CHOICE!</strong> +${lastAction.scoreGain} Strategy Mastery Points!`;
+                                    btn.classList.add("selected-correct");
+                                } else {
+                                    fbEl.className = "fortress-feedback-box fortress-feedback-incorrect";
+                                    fbEl.innerHTML = `<strong>FLAWED DECISION!</strong> Lost 25 Mental Stamina. Remaining Stamina: ${updated.traderStamina}`;
+                                    btn.classList.add("selected-incorrect");
+                                }
+                            }
+
+                            setTimeout(refreshStrategyThroneStage, 1400);
+                        };
+                        gridEl.appendChild(btn);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

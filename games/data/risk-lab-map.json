@@ -1,0 +1,1619 @@
+{
+  "version": "1.0.0",
+  "districtId": "risk-lab",
+  "districtName": "Risk Lab",
+  "districtSubtitle": "Metropolis of Capital Preservation, Mathematical Sizing, Probability & Survival",
+  "bounds": {
+    "width": 3200,
+    "height": 2400
+  },
+  "spawn": {
+    "x": 1600,
+    "y": 1350,
+    "direction": "up"
+  },
+  "theme": {
+    "primary": "#10B981",
+    "secondary": "#00F0FF",
+    "accent": "#F59E0B",
+    "danger": "#F43F5E",
+    "purple": "#8B5CF6",
+    "darkBg": "#020617",
+    "roadBg": "#0A1128",
+    "sidewalkBg": "#0D1F3C",
+    "buildingWall": "#0A1E3F",
+    "buildingRoof": "#07132B"
+  },
+  "quarters": [
+    {
+      "id": "risk_plaza",
+      "name": "RISK PLAZA",
+      "description": "Central civic plaza and heart of Risk Management Research",
+      "bounds": {
+        "x": 1250,
+        "y": 950,
+        "w": 700,
+        "h": 500
+      },
+      "color": "#10B981"
+    },
+    {
+      "id": "position_sizing_quarter",
+      "name": "POSITION SIZING QUARTER",
+      "description": "Mathematical lot sizing, capital allocation and risk percentages",
+      "bounds": {
+        "x": 100,
+        "y": 100,
+        "w": 1050,
+        "h": 750
+      },
+      "color": "#00F0FF"
+    },
+    {
+      "id": "stop_loss_quarter",
+      "name": "STOP-LOSS QUARTER",
+      "description": "Structural invalidation, volatility buffers and technical stops",
+      "bounds": {
+        "x": 2050,
+        "y": 100,
+        "w": 1050,
+        "h": 750
+      },
+      "color": "#F59E0B"
+    },
+    {
+      "id": "risk_reward_quarter",
+      "name": "RISK/REWARD QUARTER",
+      "description": "Mathematical expectancy, payoff asymmetry and trade quality",
+      "bounds": {
+        "x": 100,
+        "y": 950,
+        "w": 1050,
+        "h": 650
+      },
+      "color": "#8B5CF6"
+    },
+    {
+      "id": "leverage_quarter",
+      "name": "LEVERAGE QUARTER",
+      "description": "Margin mechanics, leverage exposure and liquidation defense",
+      "bounds": {
+        "x": 2050,
+        "y": 950,
+        "w": 1050,
+        "h": 650
+      },
+      "color": "#EC4899"
+    },
+    {
+      "id": "drawdown_quarter",
+      "name": "DRAWDOWN QUARTER",
+      "description": "Asymmetric recovery math, consecutive loss survival and equity defense",
+      "bounds": {
+        "x": 100,
+        "y": 1650,
+        "w": 1050,
+        "h": 650
+      },
+      "color": "#3B82F6"
+    },
+    {
+      "id": "risk_psychology_quarter",
+      "name": "RISK PSYCHOLOGY QUARTER",
+      "description": "Emotional discipline, revenge trading defense and rule adherence",
+      "bounds": {
+        "x": 2050,
+        "y": 1650,
+        "w": 1050,
+        "h": 650
+      },
+      "color": "#10B981"
+    },
+    {
+      "id": "risk_arena_quarter",
+      "name": "RISK ARENA & SURVIVAL VAULT",
+      "description": "10-Round combat evaluation and Apex Survival Vault challenge",
+      "bounds": {
+        "x": 1200,
+        "y": 100,
+        "w": 800,
+        "h": 750
+      },
+      "color": "#F43F5E"
+    }
+  ],
+  "roads": [
+    {
+      "id": "main_avenue",
+      "name": "Risk Grand Boulevard",
+      "x": 1520,
+      "y": 0,
+      "w": 160,
+      "h": 2400,
+      "orientation": "vertical"
+    },
+    {
+      "id": "north_boulevard",
+      "name": "Preservation Expressway",
+      "x": 0,
+      "y": 850,
+      "w": 3200,
+      "h": 100,
+      "orientation": "horizontal"
+    },
+    {
+      "id": "south_boulevard",
+      "name": "Expectancy Crossway",
+      "x": 0,
+      "y": 1550,
+      "w": 3200,
+      "h": 100,
+      "orientation": "horizontal"
+    },
+    {
+      "id": "west_lane",
+      "name": "Sizing Way",
+      "x": 1150,
+      "y": 0,
+      "w": 100,
+      "h": 2400,
+      "orientation": "vertical"
+    },
+    {
+      "id": "east_lane",
+      "name": "Margin Corridor",
+      "x": 1950,
+      "y": 0,
+      "w": 100,
+      "h": 2400,
+      "orientation": "vertical"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "bld_risk_academy",
+      "name": "Risk Academy",
+      "subtitle": "Capital Preservation & Risk Foundations",
+      "x": 250,
+      "y": 220,
+      "w": 380,
+      "h": 220,
+      "quarter": "position_sizing_quarter",
+      "themeColor": "#00F0FF",
+      "icon": "fa-graduation-cap",
+      "entrance": {
+        "x": 440,
+        "y": 440,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "risk_academy",
+      "promptText": "Enter Risk Academy"
+    },
+    {
+      "id": "bld_position_forge",
+      "name": "Position Size Forge",
+      "subtitle": "Precision Lot Sizing & Exposure Engine",
+      "x": 700,
+      "y": 220,
+      "w": 380,
+      "h": 220,
+      "quarter": "position_sizing_quarter",
+      "themeColor": "#10B981",
+      "icon": "fa-calculator",
+      "entrance": {
+        "x": 890,
+        "y": 440,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "position_forge",
+      "promptText": "Enter Position Forge"
+    },
+    {
+      "id": "bld_stoploss_workshop",
+      "name": "Stop-Loss Workshop",
+      "subtitle": "Structural Invalidation & Technical Stops",
+      "x": 2200,
+      "y": 220,
+      "w": 380,
+      "h": 220,
+      "quarter": "stop_loss_quarter",
+      "themeColor": "#F59E0B",
+      "icon": "fa-shield-halved",
+      "entrance": {
+        "x": 2390,
+        "y": 440,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "stoploss_workshop",
+      "promptText": "Enter Stop-Loss Workshop"
+    },
+    {
+      "id": "bld_rr_table",
+      "name": "Risk/Reward Trading Table",
+      "subtitle": "Payoff Asymmetry & Quality Evaluation",
+      "x": 250,
+      "y": 1050,
+      "w": 380,
+      "h": 200,
+      "quarter": "risk_reward_quarter",
+      "themeColor": "#8B5CF6",
+      "icon": "fa-scale-balanced",
+      "entrance": {
+        "x": 440,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "rr_table",
+      "promptText": "Enter R:R Trading Table"
+    },
+    {
+      "id": "bld_expectancy_lab",
+      "name": "Expectancy Laboratory",
+      "subtitle": "Mathematical Edge & Win-Rate Synthesis",
+      "x": 700,
+      "y": 1050,
+      "w": 380,
+      "h": 200,
+      "quarter": "risk_reward_quarter",
+      "themeColor": "#A855F7",
+      "icon": "fa-chart-pie",
+      "entrance": {
+        "x": 890,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "expectancy_lab",
+      "promptText": "Enter Expectancy Lab"
+    },
+    {
+      "id": "bld_leverage_tower",
+      "name": "Leverage Control Tower",
+      "subtitle": "Margin Pressure & Liquidation Modeling",
+      "x": 2200,
+      "y": 1050,
+      "w": 380,
+      "h": 200,
+      "quarter": "leverage_quarter",
+      "themeColor": "#EC4899",
+      "icon": "fa-tower-observation",
+      "entrance": {
+        "x": 2390,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "leverage_tower",
+      "promptText": "Enter Leverage Tower"
+    },
+    {
+      "id": "bld_drawdown_obs",
+      "name": "Drawdown Observatory",
+      "subtitle": "Equity Curve Survival & Streak Defense",
+      "x": 250,
+      "y": 1750,
+      "w": 380,
+      "h": 200,
+      "quarter": "drawdown_quarter",
+      "themeColor": "#3B82F6",
+      "icon": "fa-water",
+      "entrance": {
+        "x": 440,
+        "y": 1950,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "drawdown_observatory",
+      "promptText": "Enter Drawdown Observatory"
+    },
+    {
+      "id": "bld_recovery_lab",
+      "name": "Recovery Laboratory",
+      "subtitle": "Asymmetric Gain Mathematics & Recovery",
+      "x": 700,
+      "y": 1750,
+      "w": 380,
+      "h": 200,
+      "quarter": "drawdown_quarter",
+      "themeColor": "#60A5FA",
+      "icon": "fa-arrow-trend-up",
+      "entrance": {
+        "x": 890,
+        "y": 1950,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "recovery_lab",
+      "promptText": "Enter Recovery Lab"
+    },
+    {
+      "id": "bld_mistake_gallery",
+      "name": "Risk Mistake Gallery",
+      "subtitle": "Museum of Account-Fatal Trading Errors",
+      "x": 2200,
+      "y": 1750,
+      "w": 380,
+      "h": 200,
+      "quarter": "risk_psychology_quarter",
+      "themeColor": "#F43F5E",
+      "icon": "fa-triangle-exclamation",
+      "entrance": {
+        "x": 2390,
+        "y": 1950,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "mistake_gallery",
+      "promptText": "Enter Mistake Gallery"
+    },
+    {
+      "id": "bld_decision_lab",
+      "name": "Decision Psychology Lab",
+      "subtitle": "Anti-Tilt & Revenge Trading Defense",
+      "x": 2650,
+      "y": 1750,
+      "w": 380,
+      "h": 200,
+      "quarter": "risk_psychology_quarter",
+      "themeColor": "#10B981",
+      "icon": "fa-brain",
+      "entrance": {
+        "x": 2840,
+        "y": 1950,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "decision_lab",
+      "promptText": "Enter Decision Lab"
+    },
+    {
+      "id": "bld_scenario_theater",
+      "name": "Risk Scenario Theater",
+      "subtitle": "Branching Risk Narrative Decisions",
+      "x": 2650,
+      "y": 1050,
+      "w": 380,
+      "h": 200,
+      "quarter": "leverage_quarter",
+      "themeColor": "#F59E0B",
+      "icon": "fa-masks-theater",
+      "entrance": {
+        "x": 2840,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "scenario_theater",
+      "promptText": "Enter Scenario Theater"
+    },
+    {
+      "id": "bld_mission_hq",
+      "name": "Risk District Mission HQ",
+      "subtitle": "District Director & Tactical Risk Journal",
+      "x": 1350,
+      "y": 1050,
+      "w": 500,
+      "h": 200,
+      "quarter": "risk_plaza",
+      "themeColor": "#10B981",
+      "icon": "fa-compass",
+      "entrance": {
+        "x": 1600,
+        "y": 1250,
+        "w": 80,
+        "h": 20
+      },
+      "interiorId": "mission_hq",
+      "promptText": "Enter Mission HQ"
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "lm_risk_central_tower",
+      "name": "Risk Central Tower",
+      "x": 1600,
+      "y": 980,
+      "w": 120,
+      "h": 120,
+      "icon": "fa-shield-halved",
+      "color": "#10B981",
+      "lore": "The nerve center of Risk Lab projecting live simulated risk telemetry across the district."
+    },
+    {
+      "id": "lm_position_forge",
+      "name": "Position Size Forge Landmark",
+      "x": 600,
+      "y": 400,
+      "w": 90,
+      "h": 90,
+      "icon": "fa-calculator",
+      "color": "#00F0FF",
+      "lore": "Where lot sizes are hammered out with mathematical precision."
+    },
+    {
+      "id": "lm_stoploss_workshop",
+      "name": "Structural Invalidation Spire",
+      "x": 2500,
+      "y": 400,
+      "w": 90,
+      "h": 90,
+      "icon": "fa-shield",
+      "color": "#F59E0B",
+      "lore": "Dedicated to the principle: Stops belong at structural invalidation, never arbitrary points."
+    },
+    {
+      "id": "lm_rr_trading_table",
+      "name": "Expectancy Monolith",
+      "x": 600,
+      "y": 1150,
+      "w": 80,
+      "h": 80,
+      "icon": "fa-scale-balanced",
+      "color": "#8B5CF6",
+      "lore": "A monument showing how positive expectancy turns small edges into fortunes."
+    },
+    {
+      "id": "lm_leverage_tower",
+      "name": "Margin Pressure Beacon",
+      "x": 2500,
+      "y": 1150,
+      "w": 80,
+      "h": 80,
+      "icon": "fa-tower-observation",
+      "color": "#EC4899",
+      "lore": "Emits warning pulses when leverage exposure exceeds safe account thresholds."
+    },
+    {
+      "id": "lm_drawdown_observatory",
+      "name": "Drawdown Depth Gauge",
+      "x": 600,
+      "y": 1900,
+      "w": 80,
+      "h": 80,
+      "icon": "fa-water",
+      "color": "#3B82F6",
+      "lore": "Visually illustrates the asymmetric hill required to recover from deep losses."
+    },
+    {
+      "id": "lm_risk_mistake_gallery",
+      "name": "Account Ruin Memorial",
+      "x": 2500,
+      "y": 1900,
+      "w": 80,
+      "h": 80,
+      "icon": "fa-triangle-exclamation",
+      "color": "#F43F5E",
+      "lore": "Chronicles the downfall of traders who ignored stops, overleveraged, or revenge traded."
+    },
+    {
+      "id": "lm_survival_vault",
+      "name": "Apex Survival Vault",
+      "x": 1600,
+      "y": 220,
+      "w": 140,
+      "h": 70,
+      "icon": "fa-vault",
+      "color": "#F43F5E",
+      "lore": "The ultimate trial testing whether you can protect capital and survive uncertain market sequences."
+    }
+  ],
+  "explorationPoints": [
+    {
+      "id": "exp_01",
+      "name": "Position Calibration Terminal",
+      "x": 180,
+      "y": 300,
+      "xp": 15,
+      "lore": "Position size must be the dependent variable, derived from your stop distance and risk dollar."
+    },
+    {
+      "id": "exp_02",
+      "name": "Invalidation Anchor Stone",
+      "x": 950,
+      "y": 180,
+      "xp": 15,
+      "lore": "If price reaches your stop, your hypothesis was incorrect. Never argue with the tape."
+    },
+    {
+      "id": "exp_03",
+      "name": "Expectancy Constant Relic",
+      "x": 2800,
+      "y": 300,
+      "xp": 20,
+      "lore": "A 40% win rate with a 1:2 R:R beats an 80% win rate with an unchecked negative tail."
+    },
+    {
+      "id": "exp_04",
+      "name": "Margin Warning Beacon",
+      "x": 2950,
+      "y": 1150,
+      "xp": 15,
+      "lore": "Usable margin is your oxygen tank in volatile markets."
+    },
+    {
+      "id": "exp_05",
+      "name": "Drawdown Cliff Marker",
+      "x": 180,
+      "y": 1200,
+      "xp": 20,
+      "lore": "A 50% loss requires a 100% gain to recover. Protect capital at all costs."
+    },
+    {
+      "id": "exp_06",
+      "name": "Asymmetric Recovery Matrix",
+      "x": 1050,
+      "y": 1200,
+      "xp": 15,
+      "lore": "The math of recovery is non-linear; deep holes require exponential climb."
+    },
+    {
+      "id": "exp_07",
+      "name": "Anti-Tilt Monolith",
+      "x": 2100,
+      "y": 1200,
+      "xp": 20,
+      "lore": "Frustration after a loss is an emotional signal to halt trading, not to increase risk."
+    },
+    {
+      "id": "exp_08",
+      "name": "Risk-of-Ruin Calculation Matrix",
+      "x": 180,
+      "y": 1900,
+      "xp": 25,
+      "lore": "Risking >5% per trade makes mathematical ruin statistically inevitable over time."
+    },
+    {
+      "id": "exp_09",
+      "name": "Capital Preservation Vault",
+      "x": 1050,
+      "y": 1900,
+      "xp": 15,
+      "lore": "Your primary job as a trader is risk management; profit is simply the byproduct."
+    },
+    {
+      "id": "exp_10",
+      "name": "Emergency Stop Terminal",
+      "x": 2100,
+      "y": 1900,
+      "xp": 15,
+      "lore": "A stop-loss is not an admission of defeat; it is an active insurance contract."
+    },
+    {
+      "id": "exp_11",
+      "name": "Discipline Benchmark Post",
+      "x": 1250,
+      "y": 180,
+      "xp": 20,
+      "lore": "Consistency is not about never losing; it is about keeping losses strictly controlled."
+    },
+    {
+      "id": "exp_12",
+      "name": "Risk Lab South Portal",
+      "x": 1600,
+      "y": 2320,
+      "xp": 10,
+      "lore": "Southbound portal connecting Risk Lab back to the Strativo World Hub."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "mentor_vance",
+      "name": "Vance - Master Risk Director",
+      "role": "District Guide & Capital Preservation",
+      "x": 440,
+      "y": 480,
+      "themeColor": "#00F0FF",
+      "avatarIcon": "fa-graduation-cap",
+      "dialogue": "Welcome to Risk Lab. In this district, you will learn the one skill that separates surviving professionals from wiped-out amateurs: ruthless capital protection."
+    },
+    {
+      "id": "engineer_sloan",
+      "name": "Sloan - Position Sizing Engineer",
+      "role": "Lot Size & Exposure Specialist",
+      "x": 890,
+      "y": 480,
+      "themeColor": "#10B981",
+      "avatarIcon": "fa-calculator",
+      "dialogue": "Never guess your lot size. Calculate your exact dollar risk, measure your stop distance, and let mathematics dictate your exposure."
+    },
+    {
+      "id": "specialist_kora",
+      "name": "Kora - Invalidation Specialist",
+      "role": "Technical Stop Director",
+      "x": 2390,
+      "y": 480,
+      "themeColor": "#F59E0B",
+      "avatarIcon": "fa-shield-halved",
+      "dialogue": "A stop-loss belongs where your trading idea is disproven, not where your emotions feel comfortable. Always anchor stops to structure."
+    },
+    {
+      "id": "analyst_dax",
+      "name": "Dax - Expectancy Analyst",
+      "role": "R:R & Probability Strategist",
+      "x": 440,
+      "y": 1290,
+      "themeColor": "#8B5CF6",
+      "avatarIcon": "fa-scale-balanced",
+      "dialogue": "High win rates are meaningless without positive payoff asymmetry. Learn how a 40% win rate can generate consistent wealth."
+    },
+    {
+      "id": "controller_valen",
+      "name": "Valen - Margin Controller",
+      "role": "Leverage & Liquidation Marshal",
+      "x": 2390,
+      "y": 1290,
+      "themeColor": "#EC4899",
+      "avatarIcon": "fa-tower-observation",
+      "dialogue": "Leverage is a double-edged sword. Used properly, it gives capital efficiency; abused, it guarantees swift liquidation."
+    },
+    {
+      "id": "coach_selene",
+      "name": "Selene - Drawdown Coach",
+      "role": "Recovery & Survival Lead",
+      "x": 440,
+      "y": 1990,
+      "themeColor": "#3B82F6",
+      "avatarIcon": "fa-water",
+      "dialogue": "Lose 50% of your account, and you must make 100% just to get back to zero. Defend your equity with every single trade."
+    },
+    {
+      "id": "psychologist_orion",
+      "name": "Orion - Risk Psychologist",
+      "role": "Behavioral Discipline Lead",
+      "x": 2390,
+      "y": 1990,
+      "themeColor": "#10B981",
+      "avatarIcon": "fa-brain",
+      "dialogue": "When you lose, your brain screams to revenge trade. Master the emotional cooldown and stick to predefined rules."
+    },
+    {
+      "id": "commander_kane",
+      "name": "Kane - Survival Commander",
+      "role": "Vault & Arena Marshal",
+      "x": 1600,
+      "y": 320,
+      "themeColor": "#F43F5E",
+      "avatarIcon": "fa-vault",
+      "dialogue": "Step up to the Survival Vault! Manage an account through unpredictable market cycles. Your goal is not maximum profit—your goal is survival."
+    }
+  ],
+  "ambientNpcs": [
+    {
+      "id": "amb_01",
+      "name": "Risk Officer Leo",
+      "x": 1450,
+      "y": 1100,
+      "role": "Risk Monitor",
+      "themeColor": "#10B981",
+      "waypoints": [
+        {
+          "x": 1450,
+          "y": 1100
+        },
+        {
+          "x": 1550,
+          "y": 1100
+        }
+      ]
+    },
+    {
+      "id": "amb_02",
+      "name": "Trader Elena",
+      "x": 1750,
+      "y": 1100,
+      "role": "Junior Sizer",
+      "themeColor": "#00F0FF",
+      "waypoints": [
+        {
+          "x": 1750,
+          "y": 1100
+        },
+        {
+          "x": 1650,
+          "y": 1100
+        }
+      ]
+    },
+    {
+      "id": "amb_03",
+      "name": "Simulator Tech Aaron",
+      "x": 2150,
+      "y": 400,
+      "role": "Margin Tech",
+      "themeColor": "#EC4899",
+      "waypoints": [
+        {
+          "x": 2150,
+          "y": 400
+        },
+        {
+          "x": 2250,
+          "y": 400
+        }
+      ]
+    },
+    {
+      "id": "amb_04",
+      "name": "Analyst Tara",
+      "x": 350,
+      "y": 400,
+      "role": "Formula Tech",
+      "themeColor": "#8B5CF6",
+      "waypoints": [
+        {
+          "x": 350,
+          "y": 400
+        },
+        {
+          "x": 450,
+          "y": 400
+        }
+      ]
+    },
+    {
+      "id": "amb_05",
+      "name": "Scout Lucas",
+      "x": 350,
+      "y": 1200,
+      "role": "Drawdown Scout",
+      "themeColor": "#3B82F6",
+      "waypoints": [
+        {
+          "x": 350,
+          "y": 1200
+        },
+        {
+          "x": 450,
+          "y": 1200
+        }
+      ]
+    },
+    {
+      "id": "amb_06",
+      "name": "Inspector Maya",
+      "x": 2150,
+      "y": 1200,
+      "role": "Stop Inspector",
+      "themeColor": "#F59E0B",
+      "waypoints": [
+        {
+          "x": 2150,
+          "y": 1200
+        },
+        {
+          "x": 2250,
+          "y": 1200
+        }
+      ]
+    },
+    {
+      "id": "amb_07",
+      "name": "Guide Felix",
+      "x": 350,
+      "y": 1900,
+      "role": "Equity Guide",
+      "themeColor": "#60A5FA",
+      "waypoints": [
+        {
+          "x": 350,
+          "y": 1900
+        },
+        {
+          "x": 450,
+          "y": 1900
+        }
+      ]
+    },
+    {
+      "id": "amb_08",
+      "name": "Arena Contender Chloe",
+      "x": 2150,
+      "y": 1900,
+      "role": "Speed Trainee",
+      "themeColor": "#F43F5E",
+      "waypoints": [
+        {
+          "x": 2150,
+          "y": 1900
+        },
+        {
+          "x": 2250,
+          "y": 1900
+        }
+      ]
+    },
+    {
+      "id": "amb_09",
+      "name": "Curator Marcus",
+      "x": 1550,
+      "y": 350,
+      "role": "Gallery Curator",
+      "themeColor": "#F43F5E",
+      "waypoints": [
+        {
+          "x": 1550,
+          "y": 350
+        },
+        {
+          "x": 1650,
+          "y": 350
+        }
+      ]
+    },
+    {
+      "id": "amb_10",
+      "name": "Vault Guard Nina",
+      "x": 1650,
+      "y": 200,
+      "role": "Vault Guard",
+      "themeColor": "#10B981",
+      "waypoints": [
+        {
+          "x": 1650,
+          "y": 200
+        },
+        {
+          "x": 1550,
+          "y": 200
+        }
+      ]
+    }
+  ],
+  "marketBoards": [
+    {
+      "id": "mb_01",
+      "name": "Account Health Index",
+      "x": 1350,
+      "y": 920,
+      "w": 120,
+      "h": 50,
+      "title": "Account Health",
+      "metric": "Capital Status",
+      "value": "$10,000 [NORMAL]",
+      "status": "Safe"
+    },
+    {
+      "id": "mb_02",
+      "name": "Risk Per Trade Gauge",
+      "x": 1730,
+      "y": 920,
+      "w": 120,
+      "h": 50,
+      "title": "Max Risk Rule",
+      "metric": "Per Trade Limit",
+      "value": "1.00% ($100)",
+      "status": "Optimal"
+    },
+    {
+      "id": "mb_03",
+      "name": "Stop Invalidation Monitor",
+      "x": 2150,
+      "y": 800,
+      "w": 120,
+      "h": 50,
+      "title": "Stop Discipline",
+      "metric": "Invalidation Check",
+      "value": "100% Technical",
+      "status": "Active"
+    },
+    {
+      "id": "mb_04",
+      "name": "Expectancy Curve",
+      "x": 350,
+      "y": 800,
+      "w": 120,
+      "h": 50,
+      "title": "Edge Status",
+      "metric": "Math Expectancy",
+      "value": "+$65 / Trade",
+      "status": "Positive"
+    },
+    {
+      "id": "mb_05",
+      "name": "Leverage Pressure",
+      "x": 2150,
+      "y": 1500,
+      "w": 120,
+      "h": 50,
+      "title": "Margin Stress",
+      "metric": "Margin Level",
+      "value": "650% [HEALTHY]",
+      "status": "Safe"
+    },
+    {
+      "id": "mb_06",
+      "name": "Drawdown Asymmetry",
+      "x": 350,
+      "y": 1500,
+      "w": 120,
+      "h": 50,
+      "title": "Drawdown Math",
+      "metric": "-50% Recovery",
+      "value": "Requires +100%",
+      "status": "Warning"
+    },
+    {
+      "id": "mb_07",
+      "name": "Tilt & Revenge Monitor",
+      "x": 1100,
+      "y": 1580,
+      "w": 120,
+      "h": 50,
+      "title": "Emotional State",
+      "metric": "Discipline Index",
+      "value": "Calm / Rules First",
+      "status": "Protected"
+    },
+    {
+      "id": "mb_08",
+      "name": "Survival Vault Records",
+      "x": 1990,
+      "y": 1580,
+      "w": 120,
+      "h": 50,
+      "title": "Survival Trial",
+      "metric": "Max Drawdown Cap",
+      "value": "20.00% Limit",
+      "status": "Armed"
+    }
+  ],
+  "interiors": {
+    "risk_academy": {
+      "id": "risk_academy",
+      "name": "Risk Academy Research Hall",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#00F0FF",
+      "stations": [
+        {
+          "id": "st_acad_foundations",
+          "name": "Risk Foundations Desk",
+          "x": 300,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "Learn Foundations [E]",
+          "action": "openAcademyModal",
+          "tab": "fund"
+        },
+        {
+          "id": "st_acad_capital",
+          "name": "Capital Allocation Console",
+          "x": 600,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "Study Capital Rules [E]",
+          "action": "openAcademyModal",
+          "tab": "capital"
+        },
+        {
+          "id": "st_acad_survival",
+          "name": "Survival Principles Deck",
+          "x": 900,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "Study Survival [E]",
+          "action": "openAcademyModal",
+          "tab": "survival"
+        }
+      ],
+      "npc": {
+        "id": "mentor_vance_in",
+        "name": "Vance",
+        "role": "Risk Academy Director",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#00F0FF",
+        "avatarIcon": "fa-graduation-cap",
+        "dialogue": "Capital preservation is rule #1, #2, and #3. Without trading capital, your strategy has zero value."
+      }
+    },
+    "position_forge": {
+      "id": "position_forge",
+      "name": "Position Sizing Forge",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#10B981",
+      "stations": [
+        {
+          "id": "st_forge_calc",
+          "name": "Precision Position Calculator",
+          "x": 400,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Open Position Forge [E]",
+          "action": "openPositionForgeModal"
+        },
+        {
+          "id": "st_forge_drills",
+          "name": "Lot Sizing Drills Console",
+          "x": 800,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Start Sizing Drills [E]",
+          "action": "openPositionForgeModal"
+        }
+      ],
+      "npc": {
+        "id": "engineer_sloan_in",
+        "name": "Sloan",
+        "role": "Sizing Engineer",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#10B981",
+        "avatarIcon": "fa-calculator",
+        "dialogue": "Every position must be mathematically customized to your stop distance. Never use fixed lot sizes across different setups."
+      }
+    },
+    "stoploss_workshop": {
+      "id": "stoploss_workshop",
+      "name": "Stop-Loss Calibration Workshop",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#F59E0B",
+      "stations": [
+        {
+          "id": "st_sl_structure",
+          "name": "Structural Invalidation Bench",
+          "x": 400,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Calibrate Stops [E]",
+          "action": "openStopLossModal"
+        },
+        {
+          "id": "st_sl_volatility",
+          "name": "Volatility Buffer Terminal",
+          "x": 800,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Test Volatility Stops [E]",
+          "action": "openStopLossModal"
+        }
+      ],
+      "npc": {
+        "id": "specialist_kora_in",
+        "name": "Kora",
+        "role": "Invalidation Specialist",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F59E0B",
+        "avatarIcon": "fa-shield-halved",
+        "dialogue": "Always ask: Where is this trade idea dead? Place your stop there plus a small buffer, never a single tick inside."
+      }
+    },
+    "rr_table": {
+      "id": "rr_table",
+      "name": "Risk/Reward Trading Table",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#8B5CF6",
+      "stations": [
+        {
+          "id": "st_rr_evaluator",
+          "name": "Trade R:R Evaluation Table",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Evaluate Trade R:R [E]",
+          "action": "openRRTableModal"
+        }
+      ],
+      "npc": {
+        "id": "analyst_dax_in",
+        "name": "Dax",
+        "role": "Expectancy Analyst",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#8B5CF6",
+        "avatarIcon": "fa-scale-balanced",
+        "dialogue": "Do not just hunt high R:R setups with unrealistic targets. Focus on high quality with achievable structural targets."
+      }
+    },
+    "expectancy_lab": {
+      "id": "expectancy_lab",
+      "name": "Expectancy Research Laboratory",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#A855F7",
+      "stations": [
+        {
+          "id": "st_exp_simulator",
+          "name": "Mathematical Expectancy Console",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Open Expectancy Lab [E]",
+          "action": "openExpectancyModal"
+        }
+      ],
+      "npc": {
+        "id": "exp_guide_in",
+        "name": "Dr. Aris",
+        "role": "Expectancy Mathematician",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#A855F7",
+        "avatarIcon": "fa-chart-pie",
+        "dialogue": "Expectancy = (Win% × Avg Win) - (Loss% × Avg Loss). As long as this number is positive over a 100-trade sample, you have an edge."
+      }
+    },
+    "leverage_tower": {
+      "id": "leverage_tower",
+      "name": "Leverage Control Tower",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#EC4899",
+      "stations": [
+        {
+          "id": "st_lev_console",
+          "name": "Leverage Simulator Console",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Simulate Leverage [E]",
+          "action": "openLeverageModal"
+        }
+      ],
+      "npc": {
+        "id": "controller_valen_in",
+        "name": "Valen",
+        "role": "Margin Controller",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#EC4899",
+        "avatarIcon": "fa-tower-observation",
+        "dialogue": "High leverage turns a tiny adverse market twitch into a total liquidation. Never let your position size outstrip your balance."
+      }
+    },
+    "margin_center": {
+      "id": "margin_center",
+      "name": "Margin Control Center",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#F472B6",
+      "stations": [
+        {
+          "id": "st_margin_stress",
+          "name": "Margin Stress Terminal",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Test Margin Stress [E]",
+          "action": "openMarginModal"
+        }
+      ],
+      "npc": {
+        "id": "margin_tech_in",
+        "name": "Tech Chloe",
+        "role": "Margin Specialist",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F472B6",
+        "avatarIcon": "fa-gauge-high",
+        "dialogue": "Keep your margin level well above 500% to ensure market spikes never trigger forced stop-outs."
+      }
+    },
+    "drawdown_observatory": {
+      "id": "drawdown_observatory",
+      "name": "Drawdown Observation Deck",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#3B82F6",
+      "stations": [
+        {
+          "id": "st_dd_curve",
+          "name": "Equity Curve Simulator",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Simulate Drawdown [E]",
+          "action": "openDrawdownModal"
+        }
+      ],
+      "npc": {
+        "id": "coach_selene_in",
+        "name": "Selene",
+        "role": "Drawdown Coach",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#3B82F6",
+        "avatarIcon": "fa-water",
+        "dialogue": "Watch what happens during a 7-trade losing streak when risking 1% versus 5%. 1% is a minor scratch; 5% is a near-fatal wound."
+      }
+    },
+    "recovery_lab": {
+      "id": "recovery_lab",
+      "name": "Asymmetric Recovery Laboratory",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#60A5FA",
+      "stations": [
+        {
+          "id": "st_rec_calc",
+          "name": "Recovery Math Challenge Terminal",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Calculate Recovery [E]",
+          "action": "openRecoveryModal"
+        }
+      ],
+      "npc": {
+        "id": "rec_specialist_in",
+        "name": "Felix",
+        "role": "Recovery Specialist",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#60A5FA",
+        "avatarIcon": "fa-arrow-trend-up",
+        "dialogue": "The deeper the drawdown, the higher the recovery hill. Never let yourself fall into the 30%+ danger zone."
+      }
+    },
+    "mistake_gallery": {
+      "id": "mistake_gallery",
+      "name": "Risk Mistake Gallery",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#F43F5E",
+      "stations": [
+        {
+          "id": "st_mistake_archive",
+          "name": "Interactive Mistake Exhibits",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Examine Mistakes [E]",
+          "action": "openMistakeGalleryModal"
+        }
+      ],
+      "npc": {
+        "id": "curator_marcus_in",
+        "name": "Marcus",
+        "role": "Museum Curator",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F43F5E",
+        "avatarIcon": "fa-triangle-exclamation",
+        "dialogue": "Study the fatal mistakes of those who came before you: moving stops, overleveraging, revenge trading, and adding to losers."
+      }
+    },
+    "decision_lab": {
+      "id": "decision_lab",
+      "name": "Risk Decision Psychology Lab",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#10B981",
+      "stations": [
+        {
+          "id": "st_psych_decision",
+          "name": "Psychological Pressure Terminal",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Test Psychology [E]",
+          "action": "openPsychologyModal"
+        }
+      ],
+      "npc": {
+        "id": "psychologist_orion_in",
+        "name": "Orion",
+        "role": "Risk Psychologist",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#10B981",
+        "avatarIcon": "fa-brain",
+        "dialogue": "When emotions flare, rules must take over. Discipline is the ability to execute your plan regardless of emotional discomfort."
+      }
+    },
+    "scenario_theater": {
+      "id": "scenario_theater",
+      "name": "Risk Scenario Theater",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#F59E0B",
+      "stations": [
+        {
+          "id": "st_theater_screen",
+          "name": "Cinematic Scenario Screen",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Play Scenario [E]",
+          "action": "openTheaterModal"
+        }
+      ],
+      "npc": {
+        "id": "theater_curator_in",
+        "name": "Curator Lucas",
+        "role": "Scenario Narrator",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F59E0B",
+        "avatarIcon": "fa-masks-theater",
+        "dialogue": "Step inside realistic trading scenarios. Make risk decisions and watch how account balance and survival evolve."
+      }
+    },
+    "risk_arena": {
+      "id": "risk_arena",
+      "name": "Risk Arena Combat Pavilion",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#F43F5E",
+      "stations": [
+        {
+          "id": "st_arena_terminal",
+          "name": "Risk Arena Terminal",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Launch 10-Round Arena [E]",
+          "action": "launchRiskArena"
+        }
+      ],
+      "npc": {
+        "id": "kane_arena_in",
+        "name": "Kane",
+        "role": "Arena Marshal",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F43F5E",
+        "avatarIcon": "fa-bolt-lightning",
+        "dialogue": "10 rapid rounds testing position sizing, stop placement, R:R calculation, and emotional control under timer pressure!"
+      }
+    },
+    "mission_hq": {
+      "id": "mission_hq",
+      "name": "District 5 Operations Directorate",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#10B981",
+      "stations": [
+        {
+          "id": "st_hq_journal",
+          "name": "District Tactical Risk Journal",
+          "x": 450,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "Open Missions [E]",
+          "action": "openMissionsJournal"
+        },
+        {
+          "id": "st_hq_briefing",
+          "name": "Strategic Sector Briefing",
+          "x": 750,
+          "y": 350,
+          "w": 120,
+          "h": 60,
+          "label": "View Briefing [E]",
+          "action": "openTacticalBriefingModal"
+        }
+      ],
+      "npc": {
+        "id": "director_in",
+        "name": "Director Vance",
+        "role": "Operations Lead",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#10B981",
+        "avatarIcon": "fa-compass",
+        "dialogue": "Complete all 8 sector missions to earn your Master Risk Certification and unlock access to the Apex Survival Vault."
+      }
+    },
+    "survival_vault": {
+      "id": "survival_vault",
+      "name": "Apex Survival Vault",
+      "width": 1200,
+      "height": 800,
+      "spawn": {
+        "x": 600,
+        "y": 680,
+        "direction": "up"
+      },
+      "exit": {
+        "x": 600,
+        "y": 750,
+        "w": 120,
+        "h": 40
+      },
+      "themeColor": "#F43F5E",
+      "stations": [
+        {
+          "id": "st_vault_console",
+          "name": "Survival Simulation Console",
+          "x": 600,
+          "y": 350,
+          "w": 140,
+          "h": 60,
+          "label": "Enter Survival Trial [E]",
+          "action": "openSurvivalVaultModal"
+        }
+      ],
+      "npc": {
+        "id": "kane_vault_in",
+        "name": "Kane",
+        "role": "Vault Commander",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F43F5E",
+        "avatarIcon": "fa-vault",
+        "dialogue": "This is the final test of District 5. Can you manage an account through a sequence of uncertain trades without breaching the 20% drawdown limit?"
+      }
+    }
+  }
+}

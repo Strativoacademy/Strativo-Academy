@@ -1,0 +1,413 @@
+{
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "acad_q01",
+      "category": "FUNDAMENTALS",
+      "difficulty": "beginner",
+      "pair": "EUR/USD",
+      "startPrice": 1.082,
+      "endPrice": 1.0855,
+      "questionText": "EUR/USD moves from 1.0820 to 1.0855. What is the total price distance in pips?",
+      "options": [
+        "35 Pips",
+        "3.5 Pips",
+        "350 Pips",
+        "0.35 Pips"
+      ],
+      "correctAnswer": "35 Pips",
+      "explanation": "1.0855 - 1.0820 = 0.0035. On standard 4-decimal currency pairs, 0.0001 = 1 pip. Therefore, 0.0035 = 35 pips."
+    },
+    {
+      "id": "acad_q02",
+      "category": "FUNDAMENTALS",
+      "difficulty": "beginner",
+      "pair": "GBP/USD",
+      "startPrice": 1.261,
+      "endPrice": 1.268,
+      "questionText": "GBP/USD climbs from 1.2610 to 1.2680. How many pips did price advance?",
+      "options": [
+        "70 Pips",
+        "7 Pips",
+        "700 Pips",
+        "0.7 Pips"
+      ],
+      "correctAnswer": "70 Pips",
+      "explanation": "1.2680 - 1.2610 = 0.0070 = 70 pips of bullish expansion."
+    },
+    {
+      "id": "acad_q03",
+      "category": "DIRECTION",
+      "difficulty": "beginner",
+      "pair": "AUD/USD",
+      "startPrice": 0.654,
+      "endPrice": 0.6515,
+      "questionText": "AUD/USD drops from 0.6540 to 0.6515. What is the pip change and market direction?",
+      "options": [
+        "25 Pips Bearish",
+        "25 Pips Bullish",
+        "2.5 Pips Bearish",
+        "250 Pips Bearish"
+      ],
+      "correctAnswer": "25 Pips Bearish",
+      "explanation": "0.6540 - 0.6515 = 0.0025 = 25 pips downward (bearish) movement."
+    },
+    {
+      "id": "acad_q04",
+      "category": "ROUND_NUMBERS",
+      "difficulty": "intermediate",
+      "pair": "EUR/USD",
+      "startPrice": 1.099,
+      "endPrice": 1.1015,
+      "questionText": "EUR/USD crosses the 1.1000 major psychological level from 1.0990 to 1.1015. What is the pip distance?",
+      "options": [
+        "25 Pips",
+        "15 Pips",
+        "125 Pips",
+        "2.5 Pips"
+      ],
+      "correctAnswer": "25 Pips",
+      "explanation": "From 1.0990 to 1.1000 is 10 pips; from 1.1000 to 1.1015 is 15 pips. Total = 25 pips (1.1015 - 1.0990 = 0.0025)."
+    },
+    {
+      "id": "acad_q05",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "pair": "USD/CAD",
+      "startPrice": 1.352,
+      "endPrice": 1.3565,
+      "questionText": "USD/CAD advances from 1.3520 to 1.3565. How many pips did it gain?",
+      "options": [
+        "45 Pips",
+        "4.5 Pips",
+        "450 Pips",
+        "0.45 Pips"
+      ],
+      "correctAnswer": "45 Pips",
+      "explanation": "1.3565 - 1.3520 = 0.0045 = 45 pips."
+    },
+    {
+      "id": "acad_q06",
+      "category": "MEASURE",
+      "difficulty": "intermediate",
+      "pair": "NZD/USD",
+      "startPrice": 0.608,
+      "endPrice": 0.614,
+      "questionText": "NZD/USD rallies from 0.6080 to 0.6140. What is the pip expansion?",
+      "options": [
+        "60 Pips",
+        "6 Pips",
+        "600 Pips",
+        "0.6 Pips"
+      ],
+      "correctAnswer": "60 Pips",
+      "explanation": "0.6140 - 0.6080 = 0.0060 = 60 pips."
+    },
+    {
+      "id": "acad_q07",
+      "category": "THEORY",
+      "difficulty": "beginner",
+      "questionText": "What does the 4th decimal place (0.0001) represent in standard forex notation (e.g., EUR/USD)?",
+      "options": [
+        "1 Standard Pip",
+        "1 Pipette (Tenth of a Pip)",
+        "10 Pips",
+        "0.1 Pip"
+      ],
+      "correctAnswer": "1 Standard Pip",
+      "explanation": "On all standard 4-decimal currency pairs, the 4th decimal place represents 1 standard pip (Price Interest Point)."
+    },
+    {
+      "id": "acad_q08",
+      "category": "TRADE_MATH",
+      "difficulty": "beginner",
+      "pair": "EUR/USD",
+      "questionText": "A trader opens a BUY order on EUR/USD at 1.0840 and closes at 1.0895. What is the profit in pips?",
+      "options": [
+        "+55 Pips",
+        "+5.5 Pips",
+        "+550 Pips",
+        "-55 Pips"
+      ],
+      "correctAnswer": "+55 Pips",
+      "explanation": "Exit Price (1.0895) - Entry Price (1.0840) = +0.0055 = +55 pips."
+    },
+    {
+      "id": "acad_q09",
+      "category": "TRADE_MATH",
+      "difficulty": "beginner",
+      "pair": "GBP/USD",
+      "questionText": "A trader opens a SHORT (Sell) order on GBP/USD at 1.2720 and covers at 1.2660. What is the pip gain?",
+      "options": [
+        "+60 Pips",
+        "-60 Pips",
+        "+6.0 Pips",
+        "+600 Pips"
+      ],
+      "correctAnswer": "+60 Pips",
+      "explanation": "For short positions: Entry (1.2720) - Exit (1.2660) = +0.0060 = +60 pips in profit."
+    },
+    {
+      "id": "acad_q10",
+      "category": "COMPARISON",
+      "difficulty": "intermediate",
+      "questionText": "Which price fluctuation represents the larger pip movement?\nMove A: EUR/USD from 1.0800 to 1.0845\nMove B: GBP/USD from 1.2500 to 1.2535",
+      "options": [
+        "Move A (45 Pips vs 35 Pips)",
+        "Move B (35 Pips vs 45 Pips)",
+        "Both are identical",
+        "Move B is twice as large"
+      ],
+      "correctAnswer": "Move A (45 Pips vs 35 Pips)",
+      "explanation": "Move A is 1.0845 - 1.0800 = 45 pips. Move B is 1.2535 - 1.2500 = 35 pips. Move A is 10 pips larger."
+    },
+    {
+      "id": "acad_q11",
+      "category": "SPREAD",
+      "difficulty": "intermediate",
+      "pair": "EUR/USD",
+      "questionText": "EUR/USD is quoted as Bid = 1.08500 and Ask = 1.08515. What is the broker spread in pips?",
+      "options": [
+        "1.5 Pips (15 Pipettes)",
+        "15 Pips",
+        "0.15 Pips",
+        "150 Pips"
+      ],
+      "correctAnswer": "1.5 Pips (15 Pipettes)",
+      "explanation": "Spread = Ask (1.08515) - Bid (1.08500) = 0.00015 = 1.5 pips (15 fractional pipettes)."
+    },
+    {
+      "id": "acad_q12",
+      "category": "DIRECTION",
+      "difficulty": "beginner",
+      "pair": "GBP/USD",
+      "startPrice": 1.28,
+      "endPrice": 1.271,
+      "questionText": "GBP/USD drops from 1.2800 to 1.2710. What is the directional change?",
+      "options": [
+        "90 Pips Bearish (-90 Pips)",
+        "90 Pips Bullish (+90 Pips)",
+        "9 Pips Bearish",
+        "900 Pips Bearish"
+      ],
+      "correctAnswer": "90 Pips Bearish (-90 Pips)",
+      "explanation": "1.2800 - 1.2710 = 0.0090 = 90 pips downward movement."
+    },
+    {
+      "id": "acad_q13",
+      "category": "THEORY",
+      "difficulty": "beginner",
+      "questionText": "What does the acronym 'PIP' stand for in financial markets?",
+      "options": [
+        "Price Interest Point (or Percentage in Point)",
+        "Profit In Price",
+        "Point Index Position",
+        "Portfolio Interest Percentage"
+      ],
+      "correctAnswer": "Price Interest Point (or Percentage in Point)",
+      "explanation": "Pip stands for Price Interest Point (or Percentage in Point), the standardized unit of measurement for forex price changes."
+    },
+    {
+      "id": "acad_q14",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "pair": "EUR/USD",
+      "startPrice": 1.075,
+      "endPrice": 1.083,
+      "questionText": "EUR/USD advances from 1.0750 to 1.0830. What is the pip increase?",
+      "options": [
+        "80 Pips",
+        "8 Pips",
+        "800 Pips",
+        "0.8 Pips"
+      ],
+      "correctAnswer": "80 Pips",
+      "explanation": "1.0830 - 1.0750 = 0.0080 = 80 pips."
+    },
+    {
+      "id": "acad_q15",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "pair": "USD/CHF",
+      "startPrice": 0.885,
+      "endPrice": 0.879,
+      "questionText": "USD/CHF falls from 0.8850 to 0.8790. What is the pip decline?",
+      "options": [
+        "60 Pips",
+        "6 Pips",
+        "600 Pips",
+        "0.6 Pips"
+      ],
+      "correctAnswer": "60 Pips",
+      "explanation": "0.8850 - 0.8790 = 0.0060 = 60 pips."
+    },
+    {
+      "id": "acad_q16",
+      "category": "MEASURE",
+      "difficulty": "intermediate",
+      "pair": "AUD/USD",
+      "startPrice": 0.648,
+      "endPrice": 0.6555,
+      "questionText": "AUD/USD rallies from 0.6480 to 0.6555. How many pips did it expand?",
+      "options": [
+        "75 Pips",
+        "7.5 Pips",
+        "750 Pips",
+        "0.75 Pips"
+      ],
+      "correctAnswer": "75 Pips",
+      "explanation": "0.6555 - 0.6480 = 0.0075 = 75 pips."
+    },
+    {
+      "id": "acad_q17",
+      "category": "DECIMAL_MATH",
+      "difficulty": "beginner",
+      "questionText": "If EUR/USD price moves from 1.1200 to 1.1201, exactly how many pips is this?",
+      "options": [
+        "1.0 Pip",
+        "0.1 Pip",
+        "10 Pips",
+        "0.01 Pip"
+      ],
+      "correctAnswer": "1.0 Pip",
+      "explanation": "A change of 0.0001 in the 4th decimal place equals exactly 1.0 pip."
+    },
+    {
+      "id": "acad_q18",
+      "category": "DECIMAL_MATH",
+      "difficulty": "beginner",
+      "questionText": "If EUR/USD price moves from 1.1200 to 1.1210, exactly how many pips is this?",
+      "options": [
+        "10.0 Pips",
+        "1.0 Pip",
+        "100 Pips",
+        "0.1 Pip"
+      ],
+      "correctAnswer": "10.0 Pips",
+      "explanation": "0.0010 = 10 pips."
+    },
+    {
+      "id": "acad_q19",
+      "category": "DECIMAL_MATH",
+      "difficulty": "beginner",
+      "questionText": "If EUR/USD price moves from 1.1200 to 1.1300, exactly how many pips is this?",
+      "options": [
+        "100.0 Pips",
+        "10.0 Pips",
+        "1,000 Pips",
+        "1.0 Pip"
+      ],
+      "correctAnswer": "100.0 Pips",
+      "explanation": "0.0100 in 4-decimal currency pairs equals exactly 100.0 pips."
+    },
+    {
+      "id": "acad_q20",
+      "category": "MEASURE",
+      "difficulty": "intermediate",
+      "pair": "EUR/GBP",
+      "startPrice": 0.852,
+      "endPrice": 0.8565,
+      "questionText": "EUR/GBP climbs from 0.8520 to 0.8565. What is the pip gain?",
+      "options": [
+        "45 Pips",
+        "4.5 Pips",
+        "450 Pips",
+        "0.45 Pips"
+      ],
+      "correctAnswer": "45 Pips",
+      "explanation": "0.8565 - 0.8520 = 0.0045 = 45 pips."
+    },
+    {
+      "id": "acad_q21",
+      "category": "THEORY",
+      "difficulty": "beginner",
+      "questionText": "Which of the following currency pairs does NOT use the 4th decimal place as 1 standard pip?",
+      "options": [
+        "USD/JPY (2nd Decimal Place)",
+        "EUR/USD",
+        "GBP/USD",
+        "AUD/USD"
+      ],
+      "correctAnswer": "USD/JPY (2nd Decimal Place)",
+      "explanation": "Japanese Yen (JPY) pairs quote to 2 decimal places, where 0.01 = 1 standard pip."
+    },
+    {
+      "id": "acad_q22",
+      "category": "TARGET_CALC",
+      "difficulty": "beginner",
+      "pair": "EUR/USD",
+      "questionText": "You enter a BUY on EUR/USD at 1.0850 with a 30-pip Take Profit target. What is your exit price?",
+      "options": [
+        "1.0880",
+        "1.0820",
+        "1.0853",
+        "1.0950"
+      ],
+      "correctAnswer": "1.0880",
+      "explanation": "1.0850 + 0.0030 (+30 pips) = 1.0880."
+    },
+    {
+      "id": "acad_q23",
+      "category": "STOP_CALC",
+      "difficulty": "beginner",
+      "pair": "GBP/USD",
+      "questionText": "You enter a SELL (Short) on GBP/USD at 1.2650 with a 25-pip Stop Loss. What is your stop price?",
+      "options": [
+        "1.2675",
+        "1.2625",
+        "1.2652",
+        "1.2700"
+      ],
+      "correctAnswer": "1.2675",
+      "explanation": "For short positions, stop loss is set above entry: 1.2650 + 0.0025 (+25 pips) = 1.2675."
+    },
+    {
+      "id": "acad_q24",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "pair": "EUR/USD",
+      "startPrice": 1.05,
+      "endPrice": 1.07,
+      "questionText": "A major multi-week rally lifts EUR/USD from 1.0500 to 1.0700. How many pips is this trend?",
+      "options": [
+        "200 Pips",
+        "20 Pips",
+        "2,000 Pips",
+        "2 Pips"
+      ],
+      "correctAnswer": "200 Pips",
+      "explanation": "1.0700 - 1.0500 = 0.0200 = 200 standard pips."
+    },
+    {
+      "id": "acad_q25",
+      "category": "MEASURE",
+      "difficulty": "beginner",
+      "pair": "GBP/USD",
+      "startPrice": 1.3,
+      "endPrice": 1.294,
+      "questionText": "GBP/USD drops from 1.3000 to 1.2940. What is the total pip drop?",
+      "options": [
+        "60 Pips",
+        "6 Pips",
+        "600 Pips",
+        "0.6 Pips"
+      ],
+      "correctAnswer": "60 Pips",
+      "explanation": "1.3000 - 1.2940 = 0.0060 = 60 pips."
+    },
+    {
+      "id": "acad_q26",
+      "category": "COMPARISON",
+      "difficulty": "intermediate",
+      "questionText": "If EUR/USD moves from 1.0800 to 1.0890 and USD/CAD moves from 1.3500 to 1.3570, which pair had greater pip distance?",
+      "options": [
+        "EUR/USD (90 Pips vs 70 Pips)",
+        "USD/CAD (70 Pips vs 90 Pips)",
+        "They are equal",
+        "USD/CAD is 2x larger"
+      ],
+      "correctAnswer": "EUR/USD (90 Pips vs 70 Pips)",
+      "explanation": "EUR/USD moved 90 pips (1.0890 - 1.0800); USD/CAD moved 70 pips (1.3570 - 1.3500)."
+    }
+  ]
+}

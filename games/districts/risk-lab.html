@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Strativo World — Risk Lab (District 5)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/rpg-core.css">
+    <link rel="stylesheet" href="../../css/risk-lab.css">
+</head>
+<body>
+    <div class="rl-viewport-wrapper" id="rl-viewport-wrapper">
+        <!-- Master Game Canvas -->
+        <canvas id="risk-lab-canvas" width="1280" height="720" tabindex="0"></canvas>
+
+        <!-- Top HUD -->
+        <header class="rl-hud-top" role="banner">
+            <div class="rl-hud-badge">
+                <div class="rl-hud-title">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>RISK LAB</span>
+                </div>
+                <span style="color: rgba(255,255,255,0.3);">|</span>
+                <div class="rl-hud-xp">
+                    <i class="fas fa-star"></i>
+                    <span id="hud-xp-val">0</span> XP
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; pointer-events: auto;">
+                <button type="button" class="rl-btn rl-btn-sm" id="btn-open-missions" aria-label="Open Missions Journal">
+                    <i class="fas fa-compass"></i> Missions
+                </button>
+                <button type="button" class="rl-btn rl-btn-sm" id="btn-toggle-minimap" aria-label="Toggle Mini-Map">
+                    <i class="fas fa-map"></i> Map [M]
+                </button>
+                <a href="../hub.html" class="rl-btn rl-btn-sm rl-btn-rose" style="text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i> Hub
+                </a>
+            </div>
+        </header>
+
+        <!-- Mini-Map Overlay -->
+        <aside class="rl-minimap-container" id="rl-minimap" aria-label="District Mini-Map">
+            <div class="rl-minimap-header">
+                <span>DISTRICT 5 RADAR</span>
+                <span id="minimap-explored-count">0 / 12</span>
+            </div>
+            <canvas id="rl-minimap-canvas" width="200" height="130"></canvas>
+        </aside>
+
+        <!-- Interaction Prompt Banner -->
+        <div class="rl-prompt-banner hidden" id="rl-prompt-banner" role="status" aria-live="polite">
+            <span class="rl-key-badge">ACTION</span>
+            <span id="rl-prompt-text" style="font-weight: 700; font-size: 0.95rem; color: #FFF;">Interact [E]</span>
+        </div>
+
+        <!-- Mobile Touch Action Button -->
+        <button type="button" class="rl-mobile-action-btn" id="rl-mobile-action" aria-label="Action Button">ACTION</button>
+
+        <!-- 1. Exploration Discovery Modal -->
+        <div class="rl-modal-backdrop" id="rl-discovery-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-compass"></i> <span id="rl-discovery-heading">Exploration Point</span></div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="rl-discovery-lore" style="font-size: 1rem; color: #E2E8F0; line-height: 1.5;"></p>
+                    <div id="rl-discovery-xp" style="font-weight: 800; color: var(--rl-neon-emerald); font-size: 1.05rem;"></div>
+                    <button type="button" class="rl-btn rl-btn-emerald" style="margin-top: 1rem;" onclick="window.StrativoRPG.closeAllModals()">Claim &amp; Continue [Space]</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Risk Academy Modal -->
+        <div class="rl-modal-backdrop" id="rl-academy-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-graduation-cap"></i> Risk Academy: Foundations</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="acad-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="acad-options-grid"></div>
+                    <div class="rl-feedback-box" id="acad-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="acad-skip-btn"><i class="fas fa-sync"></i> Next Scenario</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Position Size Forge Modal -->
+        <div class="rl-modal-backdrop" id="rl-position-forge-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-calculator"></i> Position Size Forge</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="forge-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="forge-options-grid"></div>
+                    <div class="rl-feedback-box" id="forge-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="forge-skip-btn"><i class="fas fa-sync"></i> Next Sizing Drill</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Stop-Loss Workshop Modal -->
+        <div class="rl-modal-backdrop" id="rl-stoploss-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-shield-halved"></i> Stop-Loss Workshop</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <div class="rl-canvas-frame">
+                        <canvas id="stoploss-canvas" width="600" height="220"></canvas>
+                    </div>
+                    <p id="sl-q-text" style="font-size: 1rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="sl-options-grid"></div>
+                    <div class="rl-feedback-box" id="sl-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="sl-skip-btn"><i class="fas fa-sync"></i> Next Setup</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Risk/Reward Trading Table Modal -->
+        <div class="rl-modal-backdrop" id="rl-rr-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-scale-balanced"></i> Risk/Reward Trading Table</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="rr-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="rr-options-grid"></div>
+                    <div class="rl-feedback-box" id="rr-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="rr-skip-btn"><i class="fas fa-sync"></i> Next Evaluation</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Expectancy Lab Modal -->
+        <div class="rl-modal-backdrop" id="rl-expectancy-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-chart-pie"></i> Expectancy Research Lab</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <div class="rl-canvas-frame">
+                        <canvas id="expectancy-canvas" width="600" height="180"></canvas>
+                    </div>
+                    <p id="exp-q-text" style="font-size: 1rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="exp-options-grid"></div>
+                    <div class="rl-feedback-box" id="exp-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="exp-skip-btn"><i class="fas fa-sync"></i> Next Model</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Leverage & Margin Simulator Modal -->
+        <div class="rl-modal-backdrop" id="rl-leverage-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-tower-observation"></i> Leverage &amp; Margin Simulator</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="lev-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="lev-options-grid"></div>
+                    <div class="rl-feedback-box" id="lev-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="lev-skip-btn"><i class="fas fa-sync"></i> Next Simulation</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Drawdown Simulator Modal -->
+        <div class="rl-modal-backdrop" id="rl-drawdown-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-water"></i> Drawdown Survival Simulator</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <div class="rl-canvas-frame">
+                        <canvas id="drawdown-canvas" width="600" height="180"></canvas>
+                    </div>
+                    <p id="dd-q-text" style="font-size: 1rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="dd-options-grid"></div>
+                    <div class="rl-feedback-box" id="dd-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="dd-skip-btn"><i class="fas fa-sync"></i> Next Streak</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Recovery Lab Modal -->
+        <div class="rl-modal-backdrop" id="rl-recovery-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-arrow-trend-up"></i> Asymmetric Recovery Lab</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="rec-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="rec-options-grid"></div>
+                    <div class="rl-feedback-box" id="rec-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="rec-skip-btn"><i class="fas fa-sync"></i> Next Challenge</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. Risk Mistake Gallery Modal -->
+        <div class="rl-modal-backdrop" id="rl-mistake-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-triangle-exclamation"></i> Risk Mistake Gallery</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="mistake-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="mistake-options-grid"></div>
+                    <div class="rl-feedback-box" id="mistake-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="mistake-skip-btn"><i class="fas fa-sync"></i> Next Exhibit</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. Decision Psychology Lab Modal -->
+        <div class="rl-modal-backdrop" id="rl-psychology-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-brain"></i> Decision Psychology Lab</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="psych-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="psych-options-grid"></div>
+                    <div class="rl-feedback-box" id="psych-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="psych-skip-btn"><i class="fas fa-sync"></i> Next Decision</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. Risk Scenario Theater Modal -->
+        <div class="rl-modal-backdrop" id="rl-theater-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-masks-theater"></i> Risk Scenario Theater</div>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="theater-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="theater-options-grid"></div>
+                    <div class="rl-feedback-box" id="theater-feedback-box"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem;">
+                        <button type="button" class="rl-btn" id="theater-skip-btn"><i class="fas fa-sync"></i> Next Story</button>
+                        <button type="button" class="rl-btn rl-btn-rose" onclick="window.StrativoRPG.closeAllModals()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13. Risk Arena Modal -->
+        <div class="rl-modal-backdrop" id="rl-arena-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-bolt-lightning"></i> Risk Arena Combat Gauntlet</div>
+                    <span id="arena-round-badge" style="background: rgba(244,63,94,0.2); color: #FECDD3; border: 1px solid #F43F5E; padding: 2px 8px; border-radius: 4px; font-weight: 800;">Round 1 / 10</span>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <p id="arena-q-text" style="font-size: 1.05rem; font-weight: 600; color: #FFF;"></p>
+                    <div class="rl-options-grid" id="arena-options-grid"></div>
+                    <div class="rl-feedback-box" id="arena-feedback-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 14. Survival Vault Final Boss Modal -->
+        <div class="rl-modal-backdrop" id="rl-survival-vault-modal" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="rl-modal-card" style="max-width: 860px;">
+                <div class="rl-modal-header">
+                    <div class="rl-modal-title"><i class="fas fa-vault"></i> Apex Survival Vault (Final Boss)</div>
+                    <span id="vault-status-badge" style="background: rgba(16,185,129,0.2); color: #A7F3D0; border: 1px solid #10B981; padding: 2px 8px; border-radius: 4px; font-weight: 800;">Trade 1 / 8</span>
+                    <button type="button" class="rl-modal-close" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="rl-modal-body">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; background: #030712; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--rl-border-subtle);">
+                        <div>
+                            <small style="color: #94A3B8;">Account Balance</small>
+                            <div id="vault-balance-val" style="font-size: 1.2rem; font-weight: 800; color: var(--rl-neon-emerald);">$10,000</div>
+                        </div>
+                        <div>
+                            <small style="color: #94A3B8;">Max Drawdown Reached</small>
+                            <div id="vault-drawdown-val" style="font-size: 1.2rem; font-weight: 800; color: var(--rl-neon-amber);">0.0% / 20.0% Limit</div>
+                        </div>
+                        <div>
+                            <small style="color: #94A3B8;">Rule Violations</small>
+                            <div id="vault-violations-val" style="font-size: 1.2rem; font-weight: 800; color: #FFF;">0 Allowed</div>
+                        </div>
+                    </div>
+
+                    <p id="vault-prompt-text" style="font-size: 1rem; font-weight: 600; color: #FFF; margin-top: 0.5rem;"></p>
+                    <div class="rl-options-grid" id="vault-options-grid"></div>
+                    <div class="rl-feedback-box" id="vault-feedback-box"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Standard Dialogue Overlay -->
+    <div class="strativo-dialogue-overlay" id="strativo-dialogue-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="strativo-dialogue-card" id="strativo-dialogue-card">
+            <div class="strativo-dialogue-header">
+                <div class="strativo-speaker-avatar" id="strativo-speaker-avatar">
+                    <i class="fas fa-user-tie" id="strativo-speaker-icon"></i>
+                </div>
+                <div class="strativo-speaker-meta">
+                    <h3 class="strativo-speaker-name" id="strativo-speaker-name">Speaker Name</h3>
+                    <span class="strativo-speaker-role" id="strativo-speaker-role">District Instructor</span>
+                </div>
+                <button type="button" class="strativo-dialogue-close-btn" id="strativo-dialogue-close-btn" aria-label="Close Dialogue">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="strativo-dialogue-body">
+                <p class="strativo-dialogue-text" id="strativo-dialogue-text">Dialogue text...</p>
+            </div>
+            <div class="strativo-dialogue-actions" id="strativo-dialogue-actions">
+                <button type="button" class="rl-btn rl-btn-emerald" onclick="window.StrativoRPG.closeAllModals()">Close [Space]</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         SCRIPTS: RPG CORE ENGINE + RISK LAB ENGINES + CONTROLLER
+         ==================================================================== -->
+    <script src="../js/settings/world-settings.js"></script>
+    <script src="../js/settings/haptics.js"></script>
+    <script src="../js/audio/audio-manager.js"></script>
+    <script src="../js/core/world-state.js"></script>
+    <script src="../js/core/world-xp-engine.js"></script>
+    <script src="../js/rpg/collision.js"></script>
+    <script src="../js/rpg/input.js"></script>
+    <script src="../js/rpg/camera.js"></script>
+    <script src="../js/rpg/player.js"></script>
+    <script src="../js/rpg/world.js"></script>
+    <script src="../js/rpg/rpg-core.js"></script>
+    <script src="../js/rpg/dialogue.js"></script>
+    <script src="../js/rpg/npc.js"></script>
+    <script src="../js/rpg/missions.js"></script>
+
+    <!-- Risk Lab Engines -->
+    <script src="../js/risk/risk-engine.js"></script>
+    <script src="../js/risk/risk-scenario-engine.js"></script>
+    <script src="../js/districts/risk-lab.js"></script>
+
+    <!-- Main Controller -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const canvas = document.getElementById("risk-lab-canvas");
+            const miniCanvas = document.getElementById("rl-minimap-canvas");
+
+            // Initialize Game World
+            const world = new window.StrativoRPG.RiskLabWorld();
+            const player = new window.StrativoRPG.Player({ x: 1600, y: 1350 });
+            const camera = new window.StrativoRPG.Camera(canvas.width || 1280, canvas.height || 720);
+            camera.setWorldBounds({ x: 0, y: 0, width: world.width, height: world.height });
+            camera.follow(player, true);
+
+            const input = new window.StrativoRPG.InputManager({ container: document.getElementById("rl-viewport-wrapper") });
+            input.attach();
+
+            window.StrativoRPG.gameCore = { world, player, camera, input };
+
+            // Specialized Engines
+            const positionEngine = new window.StrativoRPG.RiskEngines.PositionForgeEngine();
+            const stoplossEngine = new window.StrativoRPG.RiskEngines.StopLossWorkshopEngine();
+            const expectancyEngine = new window.StrativoRPG.RiskEngines.ExpectancyLabEngine();
+            const leverageEngine = new window.StrativoRPG.RiskEngines.LeverageMarginEngine();
+            const drawdownEngine = new window.StrativoRPG.RiskEngines.DrawdownSimulatorEngine();
+            const ruinEngine = new window.StrativoRPG.RiskEngines.RiskOfRuinEngine();
+            const arenaEngine = new window.StrativoRPG.RiskEngines.RiskArenaEngine();
+            const vaultEngine = new window.StrativoRPG.RiskEngines.SurvivalVaultBossEngine();
+
+            window.StrativoRPG.activeRiskEngines = {
+                positionEngine,
+                stoplossEngine,
+                expectancyEngine,
+                leverageEngine,
+                drawdownEngine,
+                ruinEngine,
+                arenaEngine,
+                vaultEngine
+            };
+
+            // Resize Handler
+            function resizeCanvas() {
+                canvas.width = window.innerWidth || 1280;
+                canvas.height = window.innerHeight || 720;
+                camera.viewportWidth = canvas.width;
+                camera.viewportHeight = canvas.height;
+                camera.clamp();
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
+
+            // Modal Status Query Helper
+            function hasActiveModal() {
+                if (window.StrativoRPG && window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                    return true;
+                }
+                const activeEl = document.querySelector(".rl-modal-backdrop.active, .strativo-dialogue-overlay.active, [role='dialog'][aria-modal='true'].active");
+                return Boolean(activeEl && window.getComputedStyle(activeEl).display !== "none");
+            }
+            window.hasActiveModal = hasActiveModal;
+            window.StrativoRPG.hasActiveModal = hasActiveModal;
+
+            // Main Game Loop
+            let lastTime = performance.now();
+            function gameLoop(now) {
+                try {
+                    const dt = Math.min(0.1, (now - lastTime) / 1000);
+                    lastTime = now;
+
+                    const isModalActive = hasActiveModal();
+                    if (isModalActive) {
+                        if (input && typeof input.reset === "function") input.reset();
+                        player.update(dt, { x: 0, y: 0, isMoving: false }, null, { width: world.width, height: world.height });
+                    } else {
+                        const moveVec = input.getMovementVector();
+                        player.update(dt, moveVec, null, { width: world.width, height: world.height });
+                    }
+
+                    camera.update(dt);
+                    world.update(dt);
+
+                    const ctx = canvas.getContext("2d");
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.save();
+                    ctx.translate(-camera.x, -camera.y);
+                    world.render(ctx, camera);
+                    player.render(ctx);
+                    ctx.restore();
+
+                    renderMiniMap();
+                } catch (e) {
+                    console.error("Risk Lab GameLoop error:", e);
+                }
+                requestAnimationFrame(gameLoop);
+            }
+            gameLoop(performance.now());
+
+            // Fetch Datasets
+            (async () => {
+                try {
+                    const [scenRes] = await Promise.all([
+                        fetch("../data/risk-lab-scenarios.json").then(r => r.json()).catch(() => ({}))
+                    ]);
+                    window.StrativoRPG.RiskScenarioEngine.init(scenRes);
+                } catch (err) {
+                    console.warn("Dataset loading notice:", err);
+                }
+            })();
+
+            // Mini-Map Render
+            function renderMiniMap() {
+                if (!miniCanvas) return;
+                const mctx = miniCanvas.getContext("2d");
+                mctx.fillStyle = "#030712";
+                mctx.fillRect(0, 0, miniCanvas.width, miniCanvas.height);
+
+                const scaleX = miniCanvas.width / world.width;
+                const scaleY = miniCanvas.height / world.height;
+
+                // Quarters
+                (world.mapConfig.quarters || []).forEach(q => {
+                    mctx.fillStyle = q.color + "45";
+                    mctx.fillRect(q.bounds.x * scaleX, q.bounds.y * scaleY, q.bounds.w * scaleX, q.bounds.h * scaleY);
+                    mctx.strokeStyle = q.color + "90";
+                    mctx.lineWidth = 1;
+                    mctx.strokeRect(q.bounds.x * scaleX, q.bounds.y * scaleY, q.bounds.w * scaleX, q.bounds.h * scaleY);
+                });
+
+                // Buildings
+                (world.mapConfig.buildings || []).forEach(b => {
+                    mctx.fillStyle = b.themeColor || "#10B981";
+                    mctx.fillRect(b.x * scaleX, b.y * scaleY, b.w * scaleX, b.h * scaleY);
+                });
+
+                // Player Dot
+                mctx.fillStyle = "#00F0FF";
+                mctx.shadowColor = "#00F0FF";
+                mctx.shadowBlur = 6;
+                mctx.beginPath();
+                mctx.arc(player.x * scaleX, player.y * scaleY, 4, 0, Math.PI * 2);
+                mctx.fill();
+                mctx.shadowBlur = 0;
+            }
+
+            // Key Handlers
+            window.addEventListener("keydown", (e) => {
+                if (e.code === "KeyE" || e.code === "Space") {
+                    if (hasActiveModal()) {
+                        if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                            window.StrativoRPG.DialogueManager.closeDialogue();
+                        }
+                    } else {
+                        world.interact();
+                    }
+                } else if (e.code === "Escape") {
+                    closeAllModals();
+                } else if (e.code === "KeyM") {
+                    if (!hasActiveModal()) {
+                        const mm = document.getElementById("rl-minimap");
+                        if (mm) mm.style.display = mm.style.display === "none" ? "block" : "none";
+                    }
+                }
+            });
+
+            const mobileBtn = document.getElementById("rl-mobile-action");
+            if (mobileBtn) {
+                mobileBtn.addEventListener("click", () => {
+                    if (hasActiveModal()) {
+                        if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                            window.StrativoRPG.DialogueManager.closeDialogue();
+                        }
+                    } else {
+                        world.interact();
+                    }
+                });
+            }
+
+            // Close All Modals (Authoritative Single Reset Lifecycle)
+            function closeAllModals() {
+                document.querySelectorAll(".rl-modal-backdrop, .strativo-dialogue-overlay").forEach(m => {
+                    m.classList.remove("active");
+                    m.setAttribute("aria-hidden", "true");
+                });
+                if (window.StrativoRPG.DialogueManager && typeof window.StrativoRPG.DialogueManager.closeDialogue === "function") {
+                    window.StrativoRPG.DialogueManager.closeDialogue();
+                }
+                if (input && typeof input.reset === "function") input.reset();
+                if (document.activeElement && typeof document.activeElement.blur === "function") document.activeElement.blur();
+                if (canvas && typeof canvas.focus === "function") canvas.focus();
+            }
+            window.closeAllModals = closeAllModals;
+            window.StrativoRPG.closeAllModals = closeAllModals;
+
+            // Generic Question Renderer with Single Authoritative Reset Pattern
+            function renderGenericQuestionCard(prefix, q, onAnswerCallback, refreshFn) {
+                const textEl = document.getElementById(`${prefix}-q-text`);
+                const gridEl = document.getElementById(`${prefix}-options-grid`);
+                const fbEl = document.getElementById(`${prefix}-feedback-box`);
+                const skipBtn = document.getElementById(`${prefix}-skip-btn`);
+
+                if (!q || !textEl || !gridEl) return;
+                textEl.textContent = q.questionText || q.prompt;
+                if (fbEl) { fbEl.style.display = "none"; fbEl.innerHTML = ""; }
+                if (skipBtn) {
+                    skipBtn.innerHTML = '<i class="fas fa-sync"></i> Next Scenario';
+                    skipBtn.onclick = () => { if (refreshFn) refreshFn(); };
+                }
+                gridEl.innerHTML = "";
+
+                let answered = false;
+                (q.options || []).forEach(opt => {
+                    const optText = typeof opt === "string" ? opt : (opt.label || opt.text || "");
+                    const btn = document.createElement("button");
+                    btn.className = "rl-btn";
+                    btn.textContent = optText;
+
+                    btn.onclick = () => {
+                        if (answered) return;
+                        answered = true;
+                        Array.from(gridEl.children).forEach(c => c.disabled = true);
+
+                        const isCorrect = optText === q.correctAnswer || (typeof opt === "object" && opt.isSafe);
+                        if (isCorrect) {
+                            btn.className = "rl-btn rl-btn-emerald";
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.style.background = "rgba(16, 185, 129, 0.15)";
+                                fbEl.style.border = "1px solid #10B981";
+                                fbEl.style.color = "#A7F3D0";
+                                fbEl.innerHTML = `<div><i class="fas fa-check-circle" style="color: #10B981; margin-right: 0.4rem;"></i> <strong>CORRECT!</strong> ${q.explanation}</div>`;
+                            }
+                            window.StrativoRPG.emitGameEvent("correctHit");
+                            if (window.StrativoWorldXPEngine) {
+                                window.StrativoWorldXPEngine.addWorldXP(15, `Risk Lab: ${q.category || "General"}`, `rl_q_${q.id}_${Date.now()}`);
+                            }
+                        } else {
+                            btn.className = "rl-btn rl-btn-rose";
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.style.background = "rgba(244, 63, 94, 0.15)";
+                                fbEl.style.border = "1px solid #F43F5E";
+                                fbEl.style.color = "#FECDD3";
+                                fbEl.innerHTML = `<div><i class="fas fa-times-circle" style="color: #F43F5E; margin-right: 0.4rem;"></i> <strong>INCORRECT.</strong> Correct: <em>${q.correctAnswer || "Safe Risk Rule"}</em>. ${q.explanation}</div>`;
+                            }
+                            window.StrativoRPG.emitGameEvent("wrongHit");
+                        }
+
+                        if (onAnswerCallback) onAnswerCallback(isCorrect, opt);
+                    };
+                    gridEl.appendChild(btn);
+                });
+            }
+
+            // Facility Openers
+            window.StrativoRPG.openAcademyModal = (tab = "fund") => {
+                closeAllModals();
+                document.getElementById("rl-academy-modal").classList.add("active");
+                refreshAcademyQuestion(tab);
+            };
+
+            function refreshAcademyQuestion(tab = null) {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("risk_academy", tab);
+                renderGenericQuestionCard("acad", q, null, () => refreshAcademyQuestion(tab));
+            }
+
+            window.StrativoRPG.openPositionForgeModal = () => {
+                closeAllModals();
+                document.getElementById("rl-position-forge-modal").classList.add("active");
+                refreshPositionQuestion();
+            };
+
+            function refreshPositionQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("position_forge");
+                renderGenericQuestionCard("forge", q, null, refreshPositionQuestion);
+            }
+
+            window.StrativoRPG.openStopLossModal = () => {
+                closeAllModals();
+                document.getElementById("rl-stoploss-modal").classList.add("active");
+                refreshStopLossQuestion();
+            };
+
+            function refreshStopLossQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("stoploss_workshop");
+                if (q && q.candles) {
+                    const cv = document.getElementById("stoploss-canvas");
+                    window.StrativoRPG.RiskEngines.renderStaticCandleChart(cv, q.candles);
+                }
+                renderGenericQuestionCard("sl", q, null, refreshStopLossQuestion);
+            }
+
+            window.StrativoRPG.openRRTableModal = () => {
+                closeAllModals();
+                document.getElementById("rl-rr-modal").classList.add("active");
+                refreshRRQuestion();
+            };
+
+            function refreshRRQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("rr_table");
+                renderGenericQuestionCard("rr", q, null, refreshRRQuestion);
+            }
+
+            window.StrativoRPG.openExpectancyModal = () => {
+                closeAllModals();
+                document.getElementById("rl-expectancy-modal").classList.add("active");
+                refreshExpectancyQuestion();
+            };
+
+            function refreshExpectancyQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("expectancy_lab");
+                const cv = document.getElementById("expectancy-canvas");
+                expectancyEngine.renderCurve(cv, 50, 100, 200, 40);
+                renderGenericQuestionCard("exp", q, null, refreshExpectancyQuestion);
+            }
+
+            window.StrativoRPG.openLeverageModal = () => {
+                closeAllModals();
+                document.getElementById("rl-leverage-modal").classList.add("active");
+                refreshLeverageQuestion();
+            };
+
+            function refreshLeverageQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("leverage_tower");
+                renderGenericQuestionCard("lev", q, null, refreshLeverageQuestion);
+            }
+            window.StrativoRPG.openMarginModal = window.StrativoRPG.openLeverageModal;
+
+            window.StrativoRPG.openDrawdownModal = () => {
+                closeAllModals();
+                document.getElementById("rl-drawdown-modal").classList.add("active");
+                refreshDrawdownQuestion();
+            };
+
+            function refreshDrawdownQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("drawdown_observatory");
+                const sim = drawdownEngine.simulateStreak(10000, 2.0, 7);
+                const cv = document.getElementById("drawdown-canvas");
+                drawdownEngine.renderDrawdownCurve(cv, sim.history);
+                renderGenericQuestionCard("dd", q, null, refreshDrawdownQuestion);
+            }
+
+            window.StrativoRPG.openRecoveryModal = () => {
+                closeAllModals();
+                document.getElementById("rl-recovery-modal").classList.add("active");
+                refreshRecoveryQuestion();
+            };
+
+            function refreshRecoveryQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("recovery_lab");
+                renderGenericQuestionCard("rec", q, null, refreshRecoveryQuestion);
+            }
+
+            window.StrativoRPG.openMistakeGalleryModal = () => {
+                closeAllModals();
+                document.getElementById("rl-mistake-modal").classList.add("active");
+                refreshMistakeQuestion();
+            };
+
+            function refreshMistakeQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("mistake_gallery");
+                renderGenericQuestionCard("mistake", q, null, refreshMistakeQuestion);
+            }
+
+            window.StrativoRPG.openPsychologyModal = () => {
+                closeAllModals();
+                document.getElementById("rl-psychology-modal").classList.add("active");
+                refreshPsychologyQuestion();
+            };
+
+            function refreshPsychologyQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("decision_lab");
+                renderGenericQuestionCard("psych", q, null, refreshPsychologyQuestion);
+            }
+
+            window.StrativoRPG.openTheaterModal = () => {
+                closeAllModals();
+                document.getElementById("rl-theater-modal").classList.add("active");
+                refreshTheaterQuestion();
+            };
+
+            function refreshTheaterQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("scenario_theater");
+                renderGenericQuestionCard("theater", q, null, refreshTheaterQuestion);
+            }
+
+            window.StrativoRPG.launchRiskArena = () => {
+                closeAllModals();
+                document.getElementById("rl-arena-modal").classList.add("active");
+                arenaEngine.start(window.StrativoRPG.RiskScenarioEngine.pools.risk_arena);
+                refreshArenaQuestion();
+            };
+
+            function refreshArenaQuestion() {
+                const q = window.StrativoRPG.RiskScenarioEngine.getQuestion("risk_arena");
+                const roundBadge = document.getElementById("arena-round-badge");
+                if (roundBadge) roundBadge.textContent = `Round ${arenaEngine.round} / 10 • Score: ${arenaEngine.score}`;
+                renderGenericQuestionCard("arena", q, (isCorrect) => {
+                    const res = arenaEngine.recordAnswer(isCorrect);
+                    if (res.isFinished) {
+                        const fb = document.getElementById("arena-feedback-box");
+                        if (fb) {
+                            fb.style.display = "block";
+                            fb.innerHTML = `<strong>GAUNTLET COMPLETE!</strong> Final Score: ${res.score} XP!`;
+                        }
+                    } else {
+                        setTimeout(refreshArenaQuestion, 1500);
+                    }
+                }, refreshArenaQuestion);
+            }
+
+            window.StrativoRPG.openTacticalBriefingModal = () => {
+                if (window.StrativoRPG.DialogueManager) {
+                    window.StrativoRPG.DialogueManager.startDialogue({
+                        speaker: "Strategic Risk Directorate",
+                        role: "District Operations",
+                        avatarIcon: "fa-compass",
+                        themeColor: "#10B981",
+                        text: "District 5 Tactical Briefing:<br><br>• <strong>Position Sizing:</strong> Derive lot size from stop distance<br>• <strong>Stop-Loss:</strong> Place stops at structural invalidation<br>• <strong>Risk/Reward:</strong> Target positive expectancy<br>• <strong>Leverage:</strong> Guard against overexposure<br>• <strong>Drawdown:</strong> Respect asymmetric recovery math<br>• <strong>Survival Vault:</strong> Pass the 8-trade survival gauntlet"
+                    });
+                }
+            };
+            window.StrativoRPG.openMissionsJournal = window.StrativoRPG.openTacticalBriefingModal;
+
+            // Survival Vault (Final Boss Controller)
+            window.StrativoRPG.openSurvivalVaultModal = () => {
+                closeAllModals();
+                document.getElementById("rl-survival-vault-modal").classList.add("active");
+                vaultEngine.reset();
+                refreshSurvivalVaultStage();
+            };
+
+            function refreshSurvivalVaultStage() {
+                const status = vaultEngine.getStatus();
+                const balEl = document.getElementById("vault-balance-val");
+                const ddEl = document.getElementById("vault-drawdown-val");
+                const viEl = document.getElementById("vault-violations-val");
+                const badgeEl = document.getElementById("vault-status-badge");
+                const promptEl = document.getElementById("vault-prompt-text");
+                const gridEl = document.getElementById("vault-options-grid");
+                const fbEl = document.getElementById("vault-feedback-box");
+
+                if (balEl) balEl.textContent = `$${status.currentBalance.toLocaleString()}`;
+                if (ddEl) ddEl.textContent = `${status.maxDrawdownReached}% / 20.0% Limit`;
+                if (viEl) viEl.textContent = `${status.ruleViolations} Rule Violations`;
+                if (badgeEl) badgeEl.textContent = `Trade ${status.tradesExecuted + 1} / ${status.targetTrades}`;
+
+                if (fbEl) { fbEl.style.display = "none"; fbEl.innerHTML = ""; }
+
+                if (status.isSurvived) {
+                    if (promptEl) promptEl.textContent = "CONGRATULATIONS! You survived the unpredictable market cycle and preserved your capital!";
+                    if (gridEl) {
+                        gridEl.innerHTML = '<button type="button" class="rl-btn rl-btn-emerald" style="grid-column: span 2;" onclick="window.StrativoRPG.closeAllModals()"><i class="fas fa-trophy"></i> Claim Master Risk Certification</button>';
+                    }
+                    if (window.StrativoWorldXPEngine) {
+                        window.StrativoWorldXPEngine.addWorldXP(100, "Apex Survival Vault Victory", "vault_win_" + Date.now());
+                    }
+                    return;
+                }
+
+                if (status.isFailed) {
+                    if (promptEl) promptEl.textContent = `SURVIVAL FAILED! ${status.failureReason}`;
+                    if (gridEl) {
+                        gridEl.innerHTML = '<button type="button" class="rl-btn rl-btn-rose" style="grid-column: span 2;" onclick="window.StrativoRPG.openSurvivalVaultModal()"><i class="fas fa-rotate-left"></i> Restart Survival Trial</button>';
+                    }
+                    return;
+                }
+
+                const scen = window.StrativoRPG.RiskScenarioEngine.pools.survival_vault[status.tradesExecuted] || {
+                    marketCondition: "Volatile Expansion",
+                    prompt: "Market entering high-volatility session. Choose your risk allocation:",
+                    options: [
+                        { label: "Conservative (1% Risk - Recommended)", riskPct: 1.0, isSafe: true },
+                        { label: "Moderate (2% Risk)", riskPct: 2.0, isSafe: true },
+                        { label: "Aggressive (5% Risk - High Danger)", riskPct: 5.0, isSafe: false },
+                        { label: "Reckless (15% Risk - Ruin Hazard)", riskPct: 15.0, isSafe: false }
+                    ]
+                };
+
+                if (promptEl) promptEl.textContent = `[Stage ${status.tradesExecuted + 1}] ${scen.prompt || scen.title}`;
+                if (gridEl) {
+                    gridEl.innerHTML = "";
+                    (scen.options || []).forEach(opt => {
+                        const btn = document.createElement("button");
+                        btn.className = "rl-btn";
+                        btn.textContent = opt.label;
+                        btn.onclick = () => {
+                            Array.from(gridEl.children).forEach(c => c.disabled = true);
+                            const updated = vaultEngine.executeTurn(opt.riskPct || 1.0, scen);
+                            const lastTrade = updated.tradeHistory[updated.tradeHistory.length - 1];
+
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.style.background = lastTrade.result === "WIN" ? "rgba(16, 185, 129, 0.15)" : "rgba(244, 63, 94, 0.15)";
+                                fbEl.style.border = lastTrade.result === "WIN" ? "1px solid #10B981" : "1px solid #F43F5E";
+                                fbEl.style.color = lastTrade.result === "WIN" ? "#A7F3D0" : "#FECDD3";
+                                fbEl.innerHTML = `<strong>${lastTrade.result === "WIN" ? "PROFITABLE TRADE!" : "TRADE STOPPED OUT."}</strong> Account Balance: $${updated.currentBalance.toLocaleString()} (Drawdown: ${updated.maxDrawdownReached}%)`;
+                            }
+
+                            setTimeout(refreshSurvivalVaultStage, 1500);
+                        };
+                        gridEl.appendChild(btn);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

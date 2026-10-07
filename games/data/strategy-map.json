@@ -1,0 +1,842 @@
+{
+  "id": "strategy_fortress",
+  "districtId": "strategy_fortress",
+  "name": "District 7 — Strategy Fortress",
+  "districtName": "District 7 — Strategy Fortress",
+  "subtitle": "Apex Confluence Citadel & Master Strategy Domain",
+  "districtSubtitle": "Apex Confluence Citadel & Master Strategy Domain",
+  "width": 3600,
+  "height": 2800,
+  "bounds": {
+    "minX": 0,
+    "minY": 0,
+    "maxX": 3600,
+    "maxY": 2800,
+    "width": 3600,
+    "height": 2800
+  },
+  "spawn": {
+    "x": 1800,
+    "y": 2550,
+    "direction": "up"
+  },
+  "theme": {
+    "primary": "#FCD34D",
+    "secondary": "#F59E0B",
+    "accent": "#EF4444",
+    "cyan": "#06B6D4",
+    "purple": "#8B5CF6",
+    "emerald": "#10B981",
+    "darkBg": "#020617",
+    "roadBg": "#0B1120",
+    "sidewalkBg": "#0F172A",
+    "wallColor": "#1E293B",
+    "roofColor": "#0F172A",
+    "surface": "rgba(15, 23, 42, 0.95)"
+  },
+  "quarters": [
+    {
+      "id": "gate_bastion",
+      "name": "Fortress Gate & Southern Ramparts",
+      "code": "GATE",
+      "bounds": { "x": 1100, "y": 2200, "w": 1400, "h": 600 },
+      "color": "#F59E0B",
+      "lore": "The majestic entry gates of Strategy Fortress, guarded by golden ramparts, lion banners, and stone braziers."
+    },
+    {
+      "id": "confluence_plaza",
+      "name": "Grand Confluence Plaza",
+      "code": "CONF",
+      "bounds": { "x": 1000, "y": 900, "w": 1600, "h": 1300 },
+      "color": "#FCD34D",
+      "lore": "The central heartbeat of the citadel where multi-factor technical analysis and strategy confluence are synthesized."
+    },
+    {
+      "id": "candlestick_wing",
+      "name": "Candlestick & Price Action Wing",
+      "code": "CANDLE",
+      "bounds": { "x": 0, "y": 1400, "w": 1100, "h": 1400 },
+      "color": "#EF4444",
+      "lore": "Chambers dedicated to pure candlestick anatomy, momentum identification, and wick rejection clues."
+    },
+    {
+      "id": "structure_bastion",
+      "name": "Market Structure Bastion",
+      "code": "STRUCT",
+      "bounds": { "x": 2500, "y": 1400, "w": 1100, "h": 1400 },
+      "color": "#3B82F6",
+      "lore": "Towers where higher highs, lower lows, break-of-structure, and orderflow shifts are mastered."
+    },
+    {
+      "id": "sr_vault_quarter",
+      "name": "Support & Resistance Vaults",
+      "code": "SR",
+      "bounds": { "x": 0, "y": 500, "w": 1100, "h": 900 },
+      "color": "#10B981",
+      "lore": "Subterranean vaults testing key horizontal levels, zone dynamics, and polarity flips."
+    },
+    {
+      "id": "breakout_quarter",
+      "name": "Breakout & Liquidity Observatory",
+      "code": "LIQ",
+      "bounds": { "x": 2500, "y": 500, "w": 1100, "h": 900 },
+      "color": "#06B6D4",
+      "lore": "High spires scanning liquidity pools, equal highs/lows, and genuine breakouts vs. fakeout traps."
+    },
+    {
+      "id": "command_quarter",
+      "name": "Risk & Psychology Command Center",
+      "code": "CMD",
+      "bounds": { "x": 0, "y": 0, "w": 1300, "h": 500 },
+      "color": "#8B5CF6",
+      "lore": "The strategic command center integrating position sizing, expectancy modeling, and iron discipline."
+    },
+    {
+      "id": "throne_citadel",
+      "name": "The Strategy Throne & Backtest Archives",
+      "code": "THRONE",
+      "bounds": { "x": 1300, "y": 0, "w": 2300, "h": 500 },
+      "color": "#EC4899",
+      "lore": "The supreme apex of Strativo World where master traders undergo the Final Strategy Trial."
+    }
+  ],
+  "roads": [
+    { "id": "main_north_south", "name": "Imperial Confluence Avenue", "x": 1700, "y": 0, "w": 200, "h": 2800, "orientation": "vertical" },
+    { "id": "mid_east_west", "name": "Mastery Grand Boulevard", "x": 0, "y": 1350, "w": 3600, "h": 160, "orientation": "horizontal" },
+    { "id": "west_fortress_lane", "name": "Price Action Way", "x": 950, "y": 0, "w": 120, "h": 2800, "orientation": "vertical" },
+    { "id": "east_fortress_lane", "name": "Liquidity Corridor", "x": 2530, "y": 0, "w": 120, "h": 2800, "orientation": "vertical" },
+    { "id": "north_colonnade", "name": "Citadel Colonnade", "x": 0, "y": 480, "w": 3600, "h": 120, "orientation": "horizontal" },
+    { "id": "gate_ring_road", "name": "Rampart Gate Walk", "x": 1100, "y": 2150, "w": 1400, "h": 100, "orientation": "horizontal" }
+  ],
+  "sidewalks": [
+    { "x": 1660, "y": 0, "w": 40, "h": 2800 },
+    { "x": 1900, "y": 0, "w": 40, "h": 2800 },
+    { "x": 0, "y": 1310, "w": 3600, "h": 40 },
+    { "x": 0, "y": 1510, "w": 3600, "h": 40 },
+    { "x": 910, "y": 0, "w": 40, "h": 2800 },
+    { "x": 1070, "y": 0, "w": 40, "h": 2800 },
+    { "x": 2490, "y": 0, "w": 40, "h": 2800 },
+    { "x": 2650, "y": 0, "w": 40, "h": 2800 }
+  ],
+  "buildings": [
+    {
+      "id": "bld_strategy_academy",
+      "name": "Strategy Academy",
+      "subtitle": "Strategy vs. Setup Foundations",
+      "category": "ACADEMY",
+      "x": 1280,
+      "y": 1550,
+      "w": 360,
+      "h": 220,
+      "quarter": "confluence_plaza",
+      "themeColor": "#FCD34D",
+      "accentColor": "#F59E0B",
+      "icon": "fa-graduation-cap",
+      "windows": 6,
+      "entrance": { "x": 1420, "y": 1750, "w": 80, "h": 20 },
+      "interiorId": "strategy_academy",
+      "promptText": "Enter Strategy Academy [E]"
+    },
+    {
+      "id": "bld_confluence_forge",
+      "name": "The Confluence Forge",
+      "subtitle": "7-Pillar Multi-Factor Radar",
+      "category": "FORGE",
+      "x": 1960,
+      "y": 1550,
+      "w": 360,
+      "h": 220,
+      "quarter": "confluence_plaza",
+      "themeColor": "#F59E0B",
+      "accentColor": "#FCD34D",
+      "icon": "fa-cubes-stacked",
+      "windows": 6,
+      "entrance": { "x": 2100, "y": 1750, "w": 80, "h": 20 },
+      "interiorId": "confluence_forge",
+      "promptText": "Enter Confluence Forge [E]"
+    },
+    {
+      "id": "bld_candlestick_chamber",
+      "name": "Candlestick War Room",
+      "subtitle": "Price Action Clues & Wicks",
+      "category": "WAR_ROOM",
+      "x": 300,
+      "y": 1650,
+      "w": 380,
+      "h": 220,
+      "quarter": "candlestick_wing",
+      "themeColor": "#EF4444",
+      "accentColor": "#F87171",
+      "icon": "fa-fire-flame-curved",
+      "windows": 6,
+      "entrance": { "x": 450, "y": 1850, "w": 80, "h": 20 },
+      "interiorId": "candlestick_chamber",
+      "promptText": "Enter Candlestick War Room [E]"
+    },
+    {
+      "id": "bld_structure_tower",
+      "name": "Structure Tower",
+      "subtitle": "BOS, CHoCH & Trend Shifts",
+      "category": "TOWER",
+      "x": 2920,
+      "y": 1650,
+      "w": 380,
+      "h": 220,
+      "quarter": "structure_bastion",
+      "themeColor": "#3B82F6",
+      "accentColor": "#60A5FA",
+      "icon": "fa-sitemap",
+      "windows": 6,
+      "entrance": { "x": 3070, "y": 1850, "w": 80, "h": 20 },
+      "interiorId": "structure_tower",
+      "promptText": "Enter Structure Tower [E]"
+    },
+    {
+      "id": "bld_sr_vault",
+      "name": "Support & Resistance Vaults",
+      "subtitle": "Key Zones & Polarity Flips",
+      "category": "VAULT",
+      "x": 300,
+      "y": 700,
+      "w": 380,
+      "h": 220,
+      "quarter": "sr_vault_quarter",
+      "themeColor": "#10B981",
+      "accentColor": "#34D399",
+      "icon": "fa-shield-halved",
+      "windows": 6,
+      "entrance": { "x": 450, "y": 900, "w": 80, "h": 20 },
+      "interiorId": "sr_vault",
+      "promptText": "Enter S/R Vault [E]"
+    },
+    {
+      "id": "bld_breakout_vault",
+      "name": "Breakout Observatory",
+      "subtitle": "Liquidity Raids & Trap Traps",
+      "category": "OBSERVATORY",
+      "x": 2920,
+      "y": 700,
+      "w": 380,
+      "h": 220,
+      "quarter": "breakout_quarter",
+      "themeColor": "#06B6D4",
+      "accentColor": "#22D3EE",
+      "icon": "fa-bolt-lightning",
+      "windows": 6,
+      "entrance": { "x": 3070, "y": 900, "w": 80, "h": 20 },
+      "interiorId": "breakout_vault",
+      "promptText": "Enter Breakout Observatory [E]"
+    },
+    {
+      "id": "bld_risk_command",
+      "name": "Risk Command Center",
+      "subtitle": "Sizing, Expectancy & Shield",
+      "category": "COMMAND",
+      "x": 250,
+      "y": 120,
+      "w": 360,
+      "h": 210,
+      "quarter": "command_quarter",
+      "themeColor": "#F59E0B",
+      "accentColor": "#FCD34D",
+      "icon": "fa-calculator",
+      "windows": 5,
+      "entrance": { "x": 390, "y": 310, "w": 80, "h": 20 },
+      "interiorId": "risk_command",
+      "promptText": "Enter Risk Command [E]"
+    },
+    {
+      "id": "bld_psych_chamber",
+      "name": "Psychology Sanctum",
+      "subtitle": "Tilt Defense & Detached Focus",
+      "category": "SANCTUM",
+      "x": 720,
+      "y": 120,
+      "w": 360,
+      "h": 210,
+      "quarter": "command_quarter",
+      "themeColor": "#8B5CF6",
+      "accentColor": "#A78BFA",
+      "icon": "fa-brain",
+      "windows": 5,
+      "entrance": { "x": 860, "y": 310, "w": 80, "h": 20 },
+      "interiorId": "psych_chamber",
+      "promptText": "Enter Psychology Sanctum [E]"
+    },
+    {
+      "id": "bld_strategy_workshop",
+      "name": "Strategy Workshop",
+      "subtitle": "10-Factor Strategy Builder",
+      "category": "WORKSHOP",
+      "x": 1280,
+      "y": 700,
+      "w": 360,
+      "h": 220,
+      "quarter": "confluence_plaza",
+      "themeColor": "#A855F7",
+      "accentColor": "#C084FC",
+      "icon": "fa-gears",
+      "windows": 6,
+      "entrance": { "x": 1420, "y": 900, "w": 80, "h": 20 },
+      "interiorId": "strategy_workshop",
+      "promptText": "Enter Strategy Workshop [E]"
+    },
+    {
+      "id": "bld_backtest_archive",
+      "name": "Backtest Archive",
+      "subtitle": "Step-by-Step Historical Replay",
+      "category": "ARCHIVE",
+      "x": 1960,
+      "y": 700,
+      "w": 360,
+      "h": 220,
+      "quarter": "confluence_plaza",
+      "themeColor": "#6366F1",
+      "accentColor": "#818CF8",
+      "icon": "fa-clock-rotate-left",
+      "windows": 6,
+      "entrance": { "x": 2100, "y": 900, "w": 80, "h": 20 },
+      "interiorId": "backtest_archive",
+      "promptText": "Enter Backtest Archive [E]"
+    },
+    {
+      "id": "bld_decision_arena",
+      "name": "Decision Arena",
+      "subtitle": "Multi-Timeframe Market Dilemmas",
+      "category": "ARENA",
+      "x": 1280,
+      "y": 1050,
+      "w": 360,
+      "h": 220,
+      "quarter": "confluence_plaza",
+      "themeColor": "#EC4899",
+      "accentColor": "#F472B6",
+      "icon": "fa-crosshairs",
+      "windows": 6,
+      "entrance": { "x": 1420, "y": 1250, "w": 80, "h": 20 },
+      "interiorId": "decision_arena",
+      "promptText": "Enter Decision Arena [E]"
+    },
+    {
+      "id": "bld_fortress_arena",
+      "name": "Fortress Strategy Arena",
+      "subtitle": "10-Round Grand Gauntlet",
+      "category": "ARENA",
+      "x": 1960,
+      "y": 1050,
+      "w": 360,
+      "h": 220,
+      "quarter": "confluence_plaza",
+      "themeColor": "#F43F5E",
+      "accentColor": "#FB7185",
+      "icon": "fa-trophy",
+      "windows": 6,
+      "entrance": { "x": 2100, "y": 1250, "w": 80, "h": 20 },
+      "interiorId": "fortress_arena",
+      "promptText": "Enter Strategy Arena [E]"
+    },
+    {
+      "id": "bld_mastery_hall",
+      "name": "Mastery Operations Hall",
+      "subtitle": "Citadel Briefings & Journal",
+      "category": "HALL",
+      "x": 2520,
+      "y": 120,
+      "w": 380,
+      "h": 210,
+      "quarter": "throne_citadel",
+      "themeColor": "#10B981",
+      "accentColor": "#34D399",
+      "icon": "fa-compass",
+      "windows": 5,
+      "entrance": { "x": 2670, "y": 310, "w": 80, "h": 20 },
+      "interiorId": "mastery_hall",
+      "promptText": "Enter Mastery Hall [E]"
+    },
+    {
+      "id": "bld_strategy_throne",
+      "name": "The Strategy Throne",
+      "subtitle": "Apex Grand Mastery Trial",
+      "category": "THRONE",
+      "x": 1600,
+      "y": 70,
+      "w": 400,
+      "h": 260,
+      "quarter": "throne_citadel",
+      "themeColor": "#FCD34D",
+      "accentColor": "#EF4444",
+      "icon": "fa-crown",
+      "windows": 8,
+      "entrance": { "x": 1760, "y": 310, "w": 80, "h": 20 },
+      "interiorId": "strategy_throne",
+      "promptText": "Enter The Strategy Throne [E]"
+    }
+  ],
+  "landmarks": [
+    { "id": "lm_confluence_beacon", "name": "Confluence Obelisk", "x": 1800, "y": 1420, "w": 80, "h": 80, "icon": "fa-sun", "color": "#FCD34D", "lore": "Radiates the 7 pillars of technical confluence across the entire fortress plaza." },
+    { "id": "lm_structure_tower", "name": "Structure Monolith", "x": 3110, "y": 1600, "w": 70, "h": 70, "icon": "fa-sitemap", "color": "#3B82F6", "lore": "Monolithic pillar charting the fundamental sequence of swing highs and break of structure." },
+    { "id": "lm_liquidity_gate", "name": "Liquidity Portal", "x": 3110, "y": 650, "w": 70, "h": 70, "icon": "fa-bolt", "color": "#06B6D4", "lore": "Marks the boundary where stops accumulate and institutional sweeps occur." },
+    { "id": "lm_risk_guardian", "name": "Risk Guardian Bastion", "x": 430, "y": 80, "w": 70, "h": 70, "icon": "fa-shield", "color": "#F59E0B", "lore": "Guardian effigy reminding traders that capital preservation precedes all profit." },
+    { "id": "lm_expectancy_monument", "name": "Expectancy Monument", "x": 490, "y": 1600, "w": 70, "h": 70, "icon": "fa-chart-column", "color": "#EF4444", "lore": "Carved with the mathematical formula of positive edge and win-rate asymmetry." },
+    { "id": "lm_psychology_mirror", "name": "Psychology Reflecting Pool", "x": 900, "y": 80, "w": 70, "h": 70, "icon": "fa-eye", "color": "#8B5CF6", "lore": "A still crystal pool where traders confront their emotional biases before entering the war rooms." },
+    { "id": "lm_strategy_forge", "name": "Strategy Anvil", "x": 1800, "y": 880, "w": 70, "h": 70, "icon": "fa-hammer", "color": "#A855F7", "lore": "Where rules, triggers, and invalidations are hammered into unbreakable systems." },
+    { "id": "lm_backtest_archive", "name": "Archive Chronolith", "x": 2140, "y": 650, "w": 70, "h": 70, "icon": "fa-database", "color": "#6366F1", "lore": "Contains tens of thousands of simulated candles testing long-term consistency." },
+    { "id": "lm_mastery_clock", "name": "Mastery Sundial", "x": 1800, "y": 2350, "w": 70, "h": 70, "icon": "fa-hourglass-start", "color": "#F59E0B", "lore": "Tracks the continuous hours of disciplined market study." },
+    { "id": "lm_strategy_throne", "name": "The Imperial Strategy Throne", "x": 1800, "y": 40, "w": 90, "h": 90, "icon": "fa-crown", "color": "#FCD34D", "lore": "The crowning citadel where the Master Strategy Certification is bestowed." }
+  ],
+  "explorationPoints": [
+    { "id": "exp_01", "name": "Confluence Alignment Tablet", "x": 1720, "y": 1500, "xp": 25, "lore": "Never trade a pattern without confirming market structure, key zones, and clean R:R." },
+    { "id": "exp_02", "name": "No-Trade Inoculation Node", "x": 1880, "y": 1500, "xp": 20, "lore": "When conditions are messy and confluence is low, 'No Trade' is the highest profit decision." },
+    { "id": "exp_03", "name": "Structure Break Sentinel", "x": 3350, "y": 1700, "xp": 20, "lore": "A break of structure is not confirmed until a candle body closes cleanly beyond the swing point." },
+    { "id": "exp_04", "name": "Liquidity Sweep Marker", "x": 3350, "y": 750, "xp": 25, "lore": "Wicks sweeping equal highs during high volatility often represent smart money filling institutional orders." },
+    { "id": "exp_05", "name": "S/R Polarity Stone", "x": 150, "y": 750, "xp": 20, "lore": "Broken resistance becomes dynamic support only after a confirmed retest and rejection." },
+    { "id": "exp_06", "name": "Asymmetric Edge Inscription", "x": 150, "y": 1700, "xp": 25, "lore": "With a 3:1 reward-to-risk ratio, you only need a 35% win rate to achieve steady profitability." },
+    { "id": "exp_07", "name": "The 1% Rule Anchor", "x": 150, "y": 380, "xp": 20, "lore": "Risking only 1-2% ensures that even a 6-trade losing streak leaves over 90% of your account intact." },
+    { "id": "exp_08", "name": "Emotional Neutrality Well", "x": 1150, "y": 380, "xp": 20, "lore": "Winning trades should not induce euphoria; losing trades should not induce despair." },
+    { "id": "exp_09", "name": "Backtest Verification Stele", "x": 2350, "y": 750, "xp": 25, "lore": "A strategy is only as trustworthy as its sample size across varied market regimes." },
+    { "id": "exp_10", "name": "Invalidation Horizon", "x": 1150, "y": 750, "xp": 25, "lore": "Define your invalidation point BEFORE entering the trade. If price reaches it, exit without debate." },
+    { "id": "exp_11", "name": "Grand Citadel Gate Bridge", "x": 1800, "y": 2100, "xp": 20, "lore": "Connecting the lower ramparts of the fortress to the Grand Confluence Plaza." },
+    { "id": "exp_12", "name": "Fortress World Portal", "x": 1800, "y": 2720, "xp": 15, "lore": "Southbound portal connecting Strategy Fortress back to the Strativo World Hub." }
+  ],
+  "marketBoards": [
+    { "id": "mb_01", "name": "Global Confluence Gauge", "x": 1640, "y": 1280, "w": 150, "h": 55, "title": "Confluence Index", "metric": "Signal Quality", "value": "88% [HIGH]", "status": "Fortified" },
+    { "id": "mb_02", "name": "Structure Alignment Board", "x": 1960, "y": 1280, "w": 150, "h": 55, "title": "Structure State", "metric": "Bullish Trend", "value": "HTF / LTF Aligned", "status": "Valid" },
+    { "id": "mb_03", "name": "S/R Key Zone Monitor", "x": 420, "y": 1050, "w": 150, "h": 55, "title": "Key Levels", "metric": "Zone Holding", "value": "Support Tested (3x)", "status": "Active" },
+    { "id": "mb_04", "name": "Liquidity Pool Radar", "x": 3050, "y": 1050, "w": 150, "h": 55, "title": "Liquidity Sweeps", "metric": "Equal Highs", "value": "Buy Stops Swept", "status": "High Volatility" },
+    { "id": "mb_05", "name": "Capital Defense Monitor", "x": 280, "y": 420, "w": 150, "h": 55, "title": "Risk Shield", "metric": "Max Allocation", "value": "1.0% Per Trade", "status": "Disciplined" },
+    { "id": "mb_06", "name": "Psychological Equilibrium Board", "x": 780, "y": 420, "w": 150, "h": 55, "title": "Emotional State", "metric": "Tilt Vulnerability", "value": "0.00 [ZEN CALM]", "status": "Optimal" },
+    { "id": "mb_07", "name": "Backtest Performance Matrix", "x": 2040, "y": 850, "w": 150, "h": 55, "title": "Sample Archive", "metric": "Simulated Expectancy", "value": "+0.85 R / Trade", "status": "Positive" },
+    { "id": "mb_08", "name": "Throne Mastery Matrix", "x": 1720, "y": 240, "w": 160, "h": 55, "title": "Mastery Index", "metric": "Apex Readiness", "value": "95% Required", "status": "Ready" }
+  ],
+  "npcs": [
+    {
+      "id": "mentor_arven",
+      "name": "Grand Strategist Arven",
+      "role": "Apex Strategy Master",
+      "x": 1800,
+      "y": 2480,
+      "themeColor": "#FCD34D",
+      "secondaryColor": "#F59E0B",
+      "avatarIcon": "fa-crown",
+      "dialogue": "Welcome to Strategy Fortress, trader. You stand at the apex of Strativo World. Here, isolated candlestick patterns and single indicator signals are obsolete. We forge complete, rule-based confluences across structure, zones, risk, and discipline."
+    },
+    {
+      "id": "mentor_mira",
+      "name": "Mira - Candlestick Mentor",
+      "role": "Price Action Specialist",
+      "x": 490,
+      "y": 1890,
+      "themeColor": "#EF4444",
+      "secondaryColor": "#F87171",
+      "avatarIcon": "fa-fire-flame-curved",
+      "dialogue": "A candlestick is never a standalone trade signal; it is a footprint of immediate orderflow at a key structural location."
+    },
+    {
+      "id": "mentor_kael",
+      "name": "Kael - Market Structure Master",
+      "role": "Trend & Orderflow Master",
+      "x": 3110,
+      "y": 1890,
+      "themeColor": "#3B82F6",
+      "secondaryColor": "#60A5FA",
+      "avatarIcon": "fa-sitemap",
+      "dialogue": "Always align your trades with the higher-timeframe swing structure. Fighting the dominant trend is the primary cause of blown accounts."
+    },
+    {
+      "id": "mentor_soren",
+      "name": "Soren - S/R Analyst",
+      "role": "Horizontal Zone Master",
+      "x": 490,
+      "y": 940,
+      "themeColor": "#10B981",
+      "secondaryColor": "#34D399",
+      "avatarIcon": "fa-shield-halved",
+      "dialogue": "Support and resistance are zones of resting liquidity, not single lines. Look for multi-touch structural rejections and polarity flips."
+    },
+    {
+      "id": "mentor_veyra",
+      "name": "Veyra - Liquidity Specialist",
+      "role": "Breakout & Trap Sentinel",
+      "x": 3110,
+      "y": 940,
+      "themeColor": "#06B6D4",
+      "secondaryColor": "#22D3EE",
+      "avatarIcon": "fa-bolt-lightning",
+      "dialogue": "Beware the obvious breakout at major swing highs. Often it is a liquidity raid before an aggressive structural reversal."
+    },
+    {
+      "id": "mentor_darius",
+      "name": "Darius - Risk Commander",
+      "role": "Capital Defense Marshall",
+      "x": 430,
+      "y": 350,
+      "themeColor": "#F59E0B",
+      "secondaryColor": "#FCD34D",
+      "avatarIcon": "fa-calculator",
+      "dialogue": "Without strict position sizing, even a 90% win-rate strategy will eventually hit ruin. Always calculate your exact lot size and stop distance."
+    },
+    {
+      "id": "mentor_lyra",
+      "name": "Lyra - Psychology Mentor",
+      "role": "Cognitive Fortitude Guide",
+      "x": 900,
+      "y": 350,
+      "themeColor": "#8B5CF6",
+      "secondaryColor": "#A78BFA",
+      "avatarIcon": "fa-brain",
+      "dialogue": "The greatest strategy is worthless without the emotional detachment to execute it. Enforce your invalidation rules unconditionally."
+    },
+    {
+      "id": "mentor_orion",
+      "name": "Orion - Confluence Guardian",
+      "role": "Throne Citadel Warden",
+      "x": 1800,
+      "y": 380,
+      "themeColor": "#EC4899",
+      "secondaryColor": "#F472B6",
+      "avatarIcon": "fa-chess-rook",
+      "dialogue": "Beyond this gateway lies The Strategy Throne. Only those who achieve at least 80% Confluence Mastery across all modules may challenge the Apex Trial."
+    }
+  ],
+  "ambientNpcs": [
+    { "id": "amb_01", "name": "Fortress Knight Garen", "x": 1620, "y": 1450, "role": "Confluence Sentry", "themeColor": "#FCD34D", "waypoints": [{ "x": 1620, "y": 1450 }, { "x": 1720, "y": 1450 }] },
+    { "id": "amb_02", "name": "Chart Scholar Iris", "x": 1980, "y": 1450, "role": "Pattern Archivist", "themeColor": "#FCD34D", "waypoints": [{ "x": 1980, "y": 1450 }, { "x": 1880, "y": 1450 }] },
+    { "id": "amb_03", "name": "Price Action Sentry Thorne", "x": 580, "y": 1650, "role": "Wick Watcher", "themeColor": "#EF4444", "waypoints": [{ "x": 580, "y": 1650 }, { "x": 580, "y": 1750 }] },
+    { "id": "amb_04", "name": "Structure Scout Logan", "x": 2820, "y": 1650, "role": "Orderflow Scout", "themeColor": "#3B82F6", "waypoints": [{ "x": 2820, "y": 1650 }, { "x": 2820, "y": 1750 }] },
+    { "id": "amb_05", "name": "Vault Guardian Kenneth", "x": 580, "y": 700, "role": "Key Zone Sentry", "themeColor": "#10B981", "waypoints": [{ "x": 580, "y": 700 }, { "x": 580, "y": 800 }] },
+    { "id": "amb_06", "name": "Observatory Scout Jax", "x": 2820, "y": 700, "role": "Liquidity Sentinel", "themeColor": "#06B6D4", "waypoints": [{ "x": 2820, "y": 700 }, { "x": 2820, "y": 800 }] },
+    { "id": "amb_07", "name": "Backtest Scribe Elena", "x": 2100, "y": 620, "role": "Data Scribe", "themeColor": "#6366F1", "waypoints": [{ "x": 2100, "y": 620 }, { "x": 2200, "y": 620 }] },
+    { "id": "amb_08", "name": "War Room Strategist Selene", "x": 1420, "y": 1050, "role": "Dilemma Judge", "themeColor": "#EC4899", "waypoints": [{ "x": 1420, "y": 1050 }, { "x": 1520, "y": 1050 }] },
+    { "id": "amb_09", "name": "Citadel Marshal Victor", "x": 1700, "y": 2250, "role": "Gate Commander", "themeColor": "#F59E0B", "waypoints": [{ "x": 1700, "y": 2250 }, { "x": 1900, "y": 2250 }] },
+    { "id": "amb_10", "name": "Throne Guardian Aurelius", "x": 1700, "y": 150, "role": "Honor Guard", "themeColor": "#FCD34D", "waypoints": [{ "x": 1700, "y": 150 }, { "x": 1900, "y": 150 }] }
+  ],
+  "streetProps": [
+    { "id": "gate_torch_l", "type": "brazier", "x": 1660, "y": 2520, "color": "#F59E0B" },
+    { "id": "gate_torch_r", "type": "brazier", "x": 1940, "y": 2520, "color": "#F59E0B" },
+    { "id": "gate_banner_l", "type": "banner", "x": 1640, "y": 2400, "color": "#FCD34D" },
+    { "id": "gate_banner_r", "type": "banner", "x": 1960, "y": 2400, "color": "#FCD34D" },
+    { "id": "plaza_fountain", "type": "fountain", "x": 1800, "y": 1420, "w": 90, "h": 90 },
+    { "id": "plaza_bench_1", "type": "bench", "x": 1650, "y": 1380, "w": 50, "h": 20 },
+    { "id": "plaza_bench_2", "type": "bench", "x": 1950, "y": 1380, "w": 50, "h": 20 },
+    { "id": "plaza_tree_1", "type": "tree", "x": 1650, "y": 1460, "radius": 24 },
+    { "id": "plaza_tree_2", "type": "tree", "x": 1950, "y": 1460, "radius": 24 },
+    { "id": "plaza_tree_3", "type": "tree", "x": 1650, "y": 1000, "radius": 24 },
+    { "id": "plaza_tree_4", "type": "tree", "x": 1950, "y": 1000, "radius": 24 },
+    { "id": "plaza_tree_5", "type": "tree", "x": 1650, "y": 1600, "radius": 24 },
+    { "id": "plaza_tree_6", "type": "tree", "x": 1950, "y": 1600, "radius": 24 },
+    { "id": "throne_brazier_l", "type": "brazier", "x": 1680, "y": 280, "color": "#FCD34D" },
+    { "id": "throne_brazier_r", "type": "brazier", "x": 1920, "y": 280, "color": "#FCD34D" }
+  ],
+  "interiors": {
+    "strategy_academy": {
+      "id": "strategy_academy",
+      "name": "Strategy Academy: Core Foundations",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#FCD34D",
+      "stations": [
+        { "id": "st_acad_foundations", "name": "Strategy vs. Signal Desk", "x": 260, "y": 350, "w": 180, "h": 70, "label": "Study Foundations [E]", "action": "openStrategyAcademyModal", "tab": "strategy" },
+        { "id": "st_acad_confluence", "name": "Confluence Principles Desk", "x": 510, "y": 350, "w": 180, "h": 70, "label": "Study Confluence [E]", "action": "openStrategyAcademyModal", "tab": "confluence" },
+        { "id": "st_acad_execution", "name": "Rule Execution Console", "x": 760, "y": 350, "w": 180, "h": 70, "label": "Study Execution [E]", "action": "openStrategyAcademyModal", "tab": "execution" }
+      ],
+      "npc": {
+        "id": "mentor_arven_in",
+        "name": "Grand Strategist Arven",
+        "role": "Head of Academy",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#FCD34D",
+        "avatarIcon": "fa-graduation-cap",
+        "dialogue": "A setup is what market conditions look like; a strategy is your complete rule-based plan for entry, invalidation, sizing, and exit."
+      }
+    },
+    "confluence_forge": {
+      "id": "confluence_forge",
+      "name": "The Confluence Forge",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#F59E0B",
+      "stations": [
+        { "id": "st_forge_evaluator", "name": "7-Pillar Confluence Evaluator", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Forge Confluence [E]", "action": "openConfluenceForgeModal" }
+      ],
+      "npc": {
+        "id": "forge_master_in",
+        "name": "Forge Master Kaelen",
+        "role": "Confluence Synthesizer",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F59E0B",
+        "avatarIcon": "fa-cubes-stacked",
+        "dialogue": "Each technical pillar adds weight to your statistical edge. When 7 independent factors align, execution becomes effortless."
+      }
+    },
+    "candlestick_chamber": {
+      "id": "candlestick_chamber",
+      "name": "Candlestick War Room",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#EF4444",
+      "stations": [
+        { "id": "st_candle_war_desk", "name": "Orderflow Rejection Console", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Analyze Candles [E]", "action": "openCandlestickModal" }
+      ],
+      "npc": {
+        "id": "mira_in",
+        "name": "Mira - Candlestick Mentor",
+        "role": "Price Action Specialist",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#EF4444",
+        "avatarIcon": "fa-fire-flame-curved",
+        "dialogue": "Wicks reveal where market orders absorbed aggressive liquidity. Never trade a candle without checking its location."
+      }
+    },
+    "structure_tower": {
+      "id": "structure_tower",
+      "name": "Structure Tower",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#3B82F6",
+      "stations": [
+        { "id": "st_structure_console", "name": "BOS & Multi-Timeframe Shift Console", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Analyze Structure [E]", "action": "openStructureModal" }
+      ],
+      "npc": {
+        "id": "kael_in",
+        "name": "Kael - Market Structure Master",
+        "role": "Orderflow Master",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#3B82F6",
+        "avatarIcon": "fa-sitemap",
+        "dialogue": "Break of Structure requires candle body closes. Align your entry with the higher timeframe directional bias."
+      }
+    },
+    "sr_vault": {
+      "id": "sr_vault",
+      "name": "Support & Resistance Vaults",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#10B981",
+      "stations": [
+        { "id": "st_sr_console", "name": "Key Zone & Polarity Flip Station", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Examine Zones [E]", "action": "openSRModal" }
+      ],
+      "npc": {
+        "id": "soren_in",
+        "name": "Soren - S/R Analyst",
+        "role": "Horizontal Zone Master",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#10B981",
+        "avatarIcon": "fa-shield-halved",
+        "dialogue": "The best support zones are previous major resistance zones tested and validated after an expansion."
+      }
+    },
+    "breakout_vault": {
+      "id": "breakout_vault",
+      "name": "Breakout Observatory",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#06B6D4",
+      "stations": [
+        { "id": "st_breakout_radar", "name": "Liquidity Pool & Trap Radar", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Analyze Breakouts [E]", "action": "openBreakoutModal" }
+      ],
+      "npc": {
+        "id": "veyra_in",
+        "name": "Veyra - Liquidity Specialist",
+        "role": "Trap Sentinel",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#06B6D4",
+        "avatarIcon": "fa-bolt-lightning",
+        "dialogue": "When retail traders place stops tightly above equal highs, smart money sweeps that liquidity before reversing."
+      }
+    },
+    "risk_command": {
+      "id": "risk_command",
+      "name": "Risk Command Center",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#F59E0B",
+      "stations": [
+        { "id": "st_risk_console", "name": "Position Sizing & Capital Shield Console", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Calculate Risk [E]", "action": "openRiskCommandModal" }
+      ],
+      "npc": {
+        "id": "darius_in",
+        "name": "Darius - Risk Commander",
+        "role": "Capital Defense Marshall",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F59E0B",
+        "avatarIcon": "fa-calculator",
+        "dialogue": "Always risk 1-2% maximum per trade. Survival through drawdowns is what allows compounding to build wealth."
+      }
+    },
+    "psych_chamber": {
+      "id": "psych_chamber",
+      "name": "Psychology Sanctum",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#8B5CF6",
+      "stations": [
+        { "id": "st_psych_console", "name": "Tilt Barometer & FOMO Defense Console", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Fortify Mind [E]", "action": "openPsychologyModal" }
+      ],
+      "npc": {
+        "id": "lyra_in",
+        "name": "Lyra - Psychology Mentor",
+        "role": "Cognitive Fortitude Guide",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#8B5CF6",
+        "avatarIcon": "fa-brain",
+        "dialogue": "When you lose a trade that followed every single rule, that is not a failure; it is the cost of doing business."
+      }
+    },
+    "strategy_workshop": {
+      "id": "strategy_workshop",
+      "name": "Strategy Workshop",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#A855F7",
+      "stations": [
+        { "id": "st_workshop_bench", "name": "10-Factor Strategy Rule Workbench", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Build Strategy [E]", "action": "openStrategyWorkshopModal" }
+      ],
+      "npc": {
+        "id": "workshop_architect_in",
+        "name": "Architect Alden",
+        "role": "Strategy System Designer",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#A855F7",
+        "avatarIcon": "fa-gears",
+        "dialogue": "An airtight strategy has precise rules for entry, invalidation, profit targets, sizing, and daily loss limits."
+      }
+    },
+    "backtest_archive": {
+      "id": "backtest_archive",
+      "name": "Backtest Archive",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#6366F1",
+      "stations": [
+        { "id": "st_backtest_console", "name": "Candle-by-Candle Historical Replay Console", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Run Backtest [E]", "action": "openBacktestArchiveModal" }
+      ],
+      "npc": {
+        "id": "archivist_vance_in",
+        "name": "Archivist Vance",
+        "role": "Historical Data Keeper",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#6366F1",
+        "avatarIcon": "fa-clock-rotate-left",
+        "dialogue": "Step through 100 historical trades without skipping. The resulting equity curve tells you everything about your edge."
+      }
+    },
+    "decision_arena": {
+      "id": "decision_arena",
+      "name": "Decision Arena",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#EC4899",
+      "stations": [
+        { "id": "st_decision_pod", "name": "Real-Time Market Dilemma Pod", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Enter Arena [E]", "action": "openDecisionArenaModal" }
+      ],
+      "npc": {
+        "id": "judge_rhys_in",
+        "name": "Judge Rhys",
+        "role": "Dilemma Arbitrator",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#EC4899",
+        "avatarIcon": "fa-crosshairs",
+        "dialogue": "Markets present conflicting signals constantly. Learn to filter noise and act only on the highest confluence evidence."
+      }
+    },
+    "fortress_arena": {
+      "id": "fortress_arena",
+      "name": "Fortress Strategy Arena",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#F43F5E",
+      "stations": [
+        { "id": "st_gauntlet_gate", "name": "10-Round Grand Gauntlet Ring", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Start Gauntlet [E]", "action": "openFortressArenaModal" }
+      ],
+      "npc": {
+        "id": "arena_master_titus_in",
+        "name": "Arena Master Titus",
+        "role": "Gauntlet Commander",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#F43F5E",
+        "avatarIcon": "fa-trophy",
+        "dialogue": "Ten rounds. Speed, precision, and zero hesitation. Prove your confluence reflexes under tournament conditions."
+      }
+    },
+    "mastery_hall": {
+      "id": "mastery_hall",
+      "name": "Mastery Operations Hall",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#10B981",
+      "stations": [
+        { "id": "st_mastery_journal", "name": "Citadel Master Journal & Overview", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Open Journal [E]", "action": "openMasteryHallModal" }
+      ],
+      "npc": {
+        "id": "marshal_elias_in",
+        "name": "Marshal Elias",
+        "role": "Citadel Chronicler",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#10B981",
+        "avatarIcon": "fa-compass",
+        "dialogue": "Review your performance across all 7 districts before challenging the Grand Strategy Throne."
+      }
+    },
+    "strategy_throne": {
+      "id": "strategy_throne",
+      "name": "The Strategy Throne",
+      "width": 1200,
+      "height": 800,
+      "spawn": { "x": 600, "y": 680, "direction": "up" },
+      "exit": { "x": 540, "y": 740, "w": 120, "h": 40 },
+      "themeColor": "#FCD34D",
+      "stations": [
+        { "id": "st_throne_dais", "name": "The Apex Strategy Throne", "x": 500, "y": 350, "w": 200, "h": 70, "label": "Ascend Throne [E]", "action": "openStrategyThroneModal" }
+      ],
+      "npc": {
+        "id": "grandmaster_orion_in",
+        "name": "Grandmaster Orion",
+        "role": "The Apex Judge",
+        "x": 600,
+        "y": 200,
+        "themeColor": "#FCD34D",
+        "avatarIcon": "fa-crown",
+        "dialogue": "You stand before The Strategy Throne. Eight stages of multi-market mastery stand between you and the Apex Certification. Prove your discipline."
+      }
+    }
+  }
+}

@@ -1,0 +1,1877 @@
+{
+  "version": "2.0.0",
+  "scenarios": [
+    {
+      "id": "brk_scenario_01",
+      "title": "Confirmed Bullish Breakout #1",
+      "category": "CONFIRMED_BREAKOUT",
+      "keyLevel": {
+        "value": 1.085,
+        "label": "1.085 Key Level",
+        "type": "breakout"
+      },
+      "candles": [
+        {
+          "open": 1.08,
+          "high": 1.084,
+          "low": 1.079,
+          "close": 1.0835
+        },
+        {
+          "open": 1.0835,
+          "high": 1.0852,
+          "low": 1.083,
+          "close": 1.0845
+        },
+        {
+          "open": 1.0845,
+          "high": 1.0895,
+          "low": 1.0842,
+          "close": 1.089
+        },
+        {
+          "open": 1.089,
+          "high": 1.091,
+          "low": 1.0885,
+          "close": 1.0905
+        },
+        {
+          "open": 1.0905,
+          "high": 1.093,
+          "low": 1.0899999999999999,
+          "close": 1.0925
+        },
+        {
+          "open": 1.0925,
+          "high": 1.095,
+          "low": 1.0919999999999999,
+          "close": 1.0945
+        }
+      ],
+      "question": "Price interacts with key boundary 1.085. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Confirmed Bullish Breakout",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Immediate Liquidity Sweep",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Solid green body close above 1.0850 with follow-through confirms a valid breakout."
+    },
+    {
+      "id": "brk_scenario_02",
+      "title": "Confirmed Support Breakdown #2",
+      "category": "CONFIRMED_BREAKDOWN",
+      "keyLevel": {
+        "value": 150,
+        "label": "150 Key Level",
+        "type": "breakdown"
+      },
+      "candles": [
+        {
+          "open": 150.005,
+          "high": 150.006,
+          "low": 150.001,
+          "close": 150.0015
+        },
+        {
+          "open": 150.0015,
+          "high": 150.002,
+          "low": 149.9998,
+          "close": 150.0005
+        },
+        {
+          "open": 150.0005,
+          "high": 150.0008,
+          "low": 149.9955,
+          "close": 149.996
+        },
+        {
+          "open": 149.996,
+          "high": 149.9965,
+          "low": 149.994,
+          "close": 149.9945
+        },
+        {
+          "open": 149.9945,
+          "high": 149.995,
+          "low": 149.992,
+          "close": 149.9925
+        },
+        {
+          "open": 149.9925,
+          "high": 149.993,
+          "low": 149.99,
+          "close": 149.9905
+        }
+      ],
+      "question": "Price interacts with key boundary 150. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Confirmed Support Breakdown",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Decisive candle close beneath the 150.00 floor confirms breakdown."
+    },
+    {
+      "id": "brk_scenario_03",
+      "title": "Bull Trap (Wick Spike) #3",
+      "category": "BULLISH_FAKEOUT",
+      "keyLevel": {
+        "value": 1.28,
+        "label": "1.28 Key Level",
+        "type": "fakeout"
+      },
+      "candles": [
+        {
+          "open": 1.276,
+          "high": 1.2790000000000001,
+          "low": 1.2755,
+          "close": 1.2785
+        },
+        {
+          "open": 1.2785,
+          "high": 1.2795,
+          "low": 1.2775,
+          "close": 1.2790000000000001
+        },
+        {
+          "open": 1.2790000000000001,
+          "high": 1.2835,
+          "low": 1.2785,
+          "close": 1.2792000000000001
+        },
+        {
+          "open": 1.2792000000000001,
+          "high": 1.2795,
+          "low": 1.276,
+          "close": 1.2765
+        },
+        {
+          "open": 1.2765,
+          "high": 1.2770000000000001,
+          "low": 1.2730000000000001,
+          "close": 1.2735
+        },
+        {
+          "open": 1.2735,
+          "high": 1.274,
+          "low": 1.2705,
+          "close": 1.2710000000000001
+        }
+      ],
+      "question": "Price interacts with key boundary 1.28. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Bull Trap / False Breakout",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price wicked above 1.2800 but closed inside, trapping breakout buyers."
+    },
+    {
+      "id": "brk_scenario_04",
+      "title": "Bear Trap (Spring / Sweep) #4",
+      "category": "BEARISH_FAKEOUT",
+      "keyLevel": {
+        "value": 2030,
+        "label": "2030 Key Level",
+        "type": "fakeout"
+      },
+      "candles": [
+        {
+          "open": 2030.004,
+          "high": 2030.0045,
+          "low": 2030.001,
+          "close": 2030.0015
+        },
+        {
+          "open": 2030.0015,
+          "high": 2030.002,
+          "low": 2029.9995,
+          "close": 2030.001
+        },
+        {
+          "open": 2030.001,
+          "high": 2030.0015,
+          "low": 2029.9965,
+          "close": 2030.0012
+        },
+        {
+          "open": 2030.0012,
+          "high": 2030.0045,
+          "low": 2030.001,
+          "close": 2030.004
+        },
+        {
+          "open": 2030.004,
+          "high": 2030.0075,
+          "low": 2030.0035,
+          "close": 2030.007
+        },
+        {
+          "open": 2030.007,
+          "high": 2030.0095,
+          "low": 2030.0065,
+          "close": 2030.009
+        }
+      ],
+      "question": "Price interacts with key boundary 2030. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Bear Trap / False Breakdown",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price pierced below 2030 support but instantly rebounded inside the range."
+    },
+    {
+      "id": "brk_scenario_05",
+      "title": "Breakout + Successful Retest #5",
+      "category": "RETEST",
+      "keyLevel": {
+        "value": 1.09,
+        "label": "1.09 Key Level",
+        "type": "retest"
+      },
+      "candles": [
+        {
+          "open": 1.0850000000000002,
+          "high": 1.0890000000000002,
+          "low": 1.084,
+          "close": 1.0885
+        },
+        {
+          "open": 1.0885,
+          "high": 1.0902,
+          "low": 1.088,
+          "close": 1.0895000000000001
+        },
+        {
+          "open": 1.0895000000000001,
+          "high": 1.0945,
+          "low": 1.0892000000000002,
+          "close": 1.094
+        },
+        {
+          "open": 1.094,
+          "high": 1.096,
+          "low": 1.0935000000000001,
+          "close": 1.0955000000000001
+        },
+        {
+          "open": 1.0955000000000001,
+          "high": 1.098,
+          "low": 1.095,
+          "close": 1.0975000000000001
+        },
+        {
+          "open": 1.0975000000000001,
+          "high": 1.1,
+          "low": 1.097,
+          "close": 1.0995000000000001
+        }
+      ],
+      "question": "Price interacts with key boundary 1.09. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Successful Retest & Continuation",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price broke 1.0900 and cleanly bounced off the level from above."
+    },
+    {
+      "id": "brk_scenario_06",
+      "title": "Breakout + Failed Retest #6",
+      "category": "FAILED_RETEST",
+      "keyLevel": {
+        "value": 151,
+        "label": "151 Key Level",
+        "type": "retest"
+      },
+      "candles": [
+        {
+          "open": 151.004,
+          "high": 151.0045,
+          "low": 151.001,
+          "close": 151.0015
+        },
+        {
+          "open": 151.0015,
+          "high": 151.002,
+          "low": 150.9995,
+          "close": 151.001
+        },
+        {
+          "open": 151.001,
+          "high": 151.0015,
+          "low": 150.9965,
+          "close": 151.0012
+        },
+        {
+          "open": 151.0012,
+          "high": 151.0045,
+          "low": 151.001,
+          "close": 151.004
+        },
+        {
+          "open": 151.004,
+          "high": 151.0075,
+          "low": 151.0035,
+          "close": 151.007
+        },
+        {
+          "open": 151.007,
+          "high": 151.0095,
+          "low": 151.0065,
+          "close": 151.009
+        }
+      ],
+      "question": "Price interacts with key boundary 151. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Failed Retest / Return to Range",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price failed to hold above 151.00 and dropped back into the range."
+    },
+    {
+      "id": "brk_scenario_07",
+      "title": "Strong Resistance Rejection #7",
+      "category": "REJECTION",
+      "keyLevel": {
+        "value": 1.265,
+        "label": "1.265 Key Level",
+        "type": "rejection"
+      },
+      "candles": [
+        {
+          "open": 1.269,
+          "high": 1.2694999999999999,
+          "low": 1.2659999999999998,
+          "close": 1.2665
+        },
+        {
+          "open": 1.2665,
+          "high": 1.267,
+          "low": 1.2645,
+          "close": 1.2659999999999998
+        },
+        {
+          "open": 1.2659999999999998,
+          "high": 1.2665,
+          "low": 1.2614999999999998,
+          "close": 1.2662
+        },
+        {
+          "open": 1.2662,
+          "high": 1.2694999999999999,
+          "low": 1.2659999999999998,
+          "close": 1.269
+        },
+        {
+          "open": 1.269,
+          "high": 1.2725,
+          "low": 1.2685,
+          "close": 1.2719999999999998
+        },
+        {
+          "open": 1.2719999999999998,
+          "high": 1.2745,
+          "low": 1.2714999999999999,
+          "close": 1.2739999999999998
+        }
+      ],
+      "question": "Price interacts with key boundary 1.265. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Resistance Ceiling Rejection",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Strong upper wick and bearish engulfing body reject at resistance."
+    },
+    {
+      "id": "brk_scenario_08",
+      "title": "Strong Support Rejection #8",
+      "category": "REJECTION",
+      "keyLevel": {
+        "value": 1.08,
+        "label": "1.08 Key Level",
+        "type": "rejection"
+      },
+      "candles": [
+        {
+          "open": 1.084,
+          "high": 1.0845,
+          "low": 1.081,
+          "close": 1.0815000000000001
+        },
+        {
+          "open": 1.0815000000000001,
+          "high": 1.082,
+          "low": 1.0795000000000001,
+          "close": 1.081
+        },
+        {
+          "open": 1.081,
+          "high": 1.0815000000000001,
+          "low": 1.0765,
+          "close": 1.0812000000000002
+        },
+        {
+          "open": 1.0812000000000002,
+          "high": 1.0845,
+          "low": 1.081,
+          "close": 1.084
+        },
+        {
+          "open": 1.084,
+          "high": 1.0875000000000001,
+          "low": 1.0835000000000001,
+          "close": 1.087
+        },
+        {
+          "open": 1.087,
+          "high": 1.0895000000000001,
+          "low": 1.0865,
+          "close": 1.089
+        }
+      ],
+      "question": "Price interacts with key boundary 1.08. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Support Demand Rejection",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Lower wick rejection and green surge confirm buying support."
+    },
+    {
+      "id": "brk_scenario_09",
+      "title": "Range Squeeze Breakout #9",
+      "category": "RANGE_BREAKOUT",
+      "keyLevel": {
+        "value": 2050,
+        "label": "2050 Key Level",
+        "type": "breakout"
+      },
+      "candles": [
+        {
+          "open": 2049.995,
+          "high": 2049.999,
+          "low": 2049.994,
+          "close": 2049.9985
+        },
+        {
+          "open": 2049.9985,
+          "high": 2050.0002,
+          "low": 2049.998,
+          "close": 2049.9995
+        },
+        {
+          "open": 2049.9995,
+          "high": 2050.0045,
+          "low": 2049.9992,
+          "close": 2050.004
+        },
+        {
+          "open": 2050.004,
+          "high": 2050.006,
+          "low": 2050.0035,
+          "close": 2050.0055
+        },
+        {
+          "open": 2050.0055,
+          "high": 2050.008,
+          "low": 2050.005,
+          "close": 2050.0075
+        },
+        {
+          "open": 2050.0075,
+          "high": 2050.01,
+          "low": 2050.007,
+          "close": 2050.0095
+        }
+      ],
+      "question": "Price interacts with key boundary 2050. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Volatility Expansion Breakout",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Immediate Liquidity Sweep",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Ascending lows compressed into 2050 before breaking out upward."
+    },
+    {
+      "id": "brk_scenario_10",
+      "title": "Equal Highs Liquidity Sweep #10",
+      "category": "LIQUIDITY_SWEEP",
+      "keyLevel": {
+        "value": 152.5,
+        "label": "152.5 Key Level",
+        "type": "sweep"
+      },
+      "candles": [
+        {
+          "open": 152.496,
+          "high": 152.499,
+          "low": 152.4955,
+          "close": 152.4985
+        },
+        {
+          "open": 152.4985,
+          "high": 152.4995,
+          "low": 152.4975,
+          "close": 152.499
+        },
+        {
+          "open": 152.499,
+          "high": 152.5035,
+          "low": 152.4985,
+          "close": 152.4992
+        },
+        {
+          "open": 152.4992,
+          "high": 152.4995,
+          "low": 152.496,
+          "close": 152.4965
+        },
+        {
+          "open": 152.4965,
+          "high": 152.497,
+          "low": 152.493,
+          "close": 152.4935
+        },
+        {
+          "open": 152.4935,
+          "high": 152.494,
+          "low": 152.4905,
+          "close": 152.491
+        }
+      ],
+      "question": "Price interacts with key boundary 152.5. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Liquidity Sweep of Equal Highs",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "A spike took out stops above equal highs before reversing down."
+    },
+    {
+      "id": "brk_scenario_11",
+      "title": "Confirmed Bullish Breakout #11",
+      "category": "CONFIRMED_BREAKOUT",
+      "keyLevel": {
+        "value": 1.085,
+        "label": "1.085 Key Level",
+        "type": "breakout"
+      },
+      "candles": [
+        {
+          "open": 1.08,
+          "high": 1.084,
+          "low": 1.079,
+          "close": 1.0835
+        },
+        {
+          "open": 1.0835,
+          "high": 1.0852,
+          "low": 1.083,
+          "close": 1.0845
+        },
+        {
+          "open": 1.0845,
+          "high": 1.0895,
+          "low": 1.0842,
+          "close": 1.089
+        },
+        {
+          "open": 1.089,
+          "high": 1.091,
+          "low": 1.0885,
+          "close": 1.0905
+        },
+        {
+          "open": 1.0905,
+          "high": 1.093,
+          "low": 1.0899999999999999,
+          "close": 1.0925
+        },
+        {
+          "open": 1.0925,
+          "high": 1.095,
+          "low": 1.0919999999999999,
+          "close": 1.0945
+        }
+      ],
+      "question": "Price interacts with key boundary 1.085. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Confirmed Bullish Breakout",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Immediate Liquidity Sweep",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Solid green body close above 1.0850 with follow-through confirms a valid breakout."
+    },
+    {
+      "id": "brk_scenario_12",
+      "title": "Confirmed Support Breakdown #12",
+      "category": "CONFIRMED_BREAKDOWN",
+      "keyLevel": {
+        "value": 150,
+        "label": "150 Key Level",
+        "type": "breakdown"
+      },
+      "candles": [
+        {
+          "open": 150.005,
+          "high": 150.006,
+          "low": 150.001,
+          "close": 150.0015
+        },
+        {
+          "open": 150.0015,
+          "high": 150.002,
+          "low": 149.9998,
+          "close": 150.0005
+        },
+        {
+          "open": 150.0005,
+          "high": 150.0008,
+          "low": 149.9955,
+          "close": 149.996
+        },
+        {
+          "open": 149.996,
+          "high": 149.9965,
+          "low": 149.994,
+          "close": 149.9945
+        },
+        {
+          "open": 149.9945,
+          "high": 149.995,
+          "low": 149.992,
+          "close": 149.9925
+        },
+        {
+          "open": 149.9925,
+          "high": 149.993,
+          "low": 149.99,
+          "close": 149.9905
+        }
+      ],
+      "question": "Price interacts with key boundary 150. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Confirmed Support Breakdown",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Decisive candle close beneath the 150.00 floor confirms breakdown."
+    },
+    {
+      "id": "brk_scenario_13",
+      "title": "Bull Trap (Wick Spike) #13",
+      "category": "BULLISH_FAKEOUT",
+      "keyLevel": {
+        "value": 1.28,
+        "label": "1.28 Key Level",
+        "type": "fakeout"
+      },
+      "candles": [
+        {
+          "open": 1.276,
+          "high": 1.2790000000000001,
+          "low": 1.2755,
+          "close": 1.2785
+        },
+        {
+          "open": 1.2785,
+          "high": 1.2795,
+          "low": 1.2775,
+          "close": 1.2790000000000001
+        },
+        {
+          "open": 1.2790000000000001,
+          "high": 1.2835,
+          "low": 1.2785,
+          "close": 1.2792000000000001
+        },
+        {
+          "open": 1.2792000000000001,
+          "high": 1.2795,
+          "low": 1.276,
+          "close": 1.2765
+        },
+        {
+          "open": 1.2765,
+          "high": 1.2770000000000001,
+          "low": 1.2730000000000001,
+          "close": 1.2735
+        },
+        {
+          "open": 1.2735,
+          "high": 1.274,
+          "low": 1.2705,
+          "close": 1.2710000000000001
+        }
+      ],
+      "question": "Price interacts with key boundary 1.28. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Bull Trap / False Breakout",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price wicked above 1.2800 but closed inside, trapping breakout buyers."
+    },
+    {
+      "id": "brk_scenario_14",
+      "title": "Bear Trap (Spring / Sweep) #14",
+      "category": "BEARISH_FAKEOUT",
+      "keyLevel": {
+        "value": 2030,
+        "label": "2030 Key Level",
+        "type": "fakeout"
+      },
+      "candles": [
+        {
+          "open": 2030.004,
+          "high": 2030.0045,
+          "low": 2030.001,
+          "close": 2030.0015
+        },
+        {
+          "open": 2030.0015,
+          "high": 2030.002,
+          "low": 2029.9995,
+          "close": 2030.001
+        },
+        {
+          "open": 2030.001,
+          "high": 2030.0015,
+          "low": 2029.9965,
+          "close": 2030.0012
+        },
+        {
+          "open": 2030.0012,
+          "high": 2030.0045,
+          "low": 2030.001,
+          "close": 2030.004
+        },
+        {
+          "open": 2030.004,
+          "high": 2030.0075,
+          "low": 2030.0035,
+          "close": 2030.007
+        },
+        {
+          "open": 2030.007,
+          "high": 2030.0095,
+          "low": 2030.0065,
+          "close": 2030.009
+        }
+      ],
+      "question": "Price interacts with key boundary 2030. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Bear Trap / False Breakdown",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price pierced below 2030 support but instantly rebounded inside the range."
+    },
+    {
+      "id": "brk_scenario_15",
+      "title": "Breakout + Successful Retest #15",
+      "category": "RETEST",
+      "keyLevel": {
+        "value": 1.09,
+        "label": "1.09 Key Level",
+        "type": "retest"
+      },
+      "candles": [
+        {
+          "open": 1.0850000000000002,
+          "high": 1.0890000000000002,
+          "low": 1.084,
+          "close": 1.0885
+        },
+        {
+          "open": 1.0885,
+          "high": 1.0902,
+          "low": 1.088,
+          "close": 1.0895000000000001
+        },
+        {
+          "open": 1.0895000000000001,
+          "high": 1.0945,
+          "low": 1.0892000000000002,
+          "close": 1.094
+        },
+        {
+          "open": 1.094,
+          "high": 1.096,
+          "low": 1.0935000000000001,
+          "close": 1.0955000000000001
+        },
+        {
+          "open": 1.0955000000000001,
+          "high": 1.098,
+          "low": 1.095,
+          "close": 1.0975000000000001
+        },
+        {
+          "open": 1.0975000000000001,
+          "high": 1.1,
+          "low": 1.097,
+          "close": 1.0995000000000001
+        }
+      ],
+      "question": "Price interacts with key boundary 1.09. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Successful Retest & Continuation",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price broke 1.0900 and cleanly bounced off the level from above."
+    },
+    {
+      "id": "brk_scenario_16",
+      "title": "Breakout + Failed Retest #16",
+      "category": "FAILED_RETEST",
+      "keyLevel": {
+        "value": 151,
+        "label": "151 Key Level",
+        "type": "retest"
+      },
+      "candles": [
+        {
+          "open": 151.004,
+          "high": 151.0045,
+          "low": 151.001,
+          "close": 151.0015
+        },
+        {
+          "open": 151.0015,
+          "high": 151.002,
+          "low": 150.9995,
+          "close": 151.001
+        },
+        {
+          "open": 151.001,
+          "high": 151.0015,
+          "low": 150.9965,
+          "close": 151.0012
+        },
+        {
+          "open": 151.0012,
+          "high": 151.0045,
+          "low": 151.001,
+          "close": 151.004
+        },
+        {
+          "open": 151.004,
+          "high": 151.0075,
+          "low": 151.0035,
+          "close": 151.007
+        },
+        {
+          "open": 151.007,
+          "high": 151.0095,
+          "low": 151.0065,
+          "close": 151.009
+        }
+      ],
+      "question": "Price interacts with key boundary 151. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Failed Retest / Return to Range",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price failed to hold above 151.00 and dropped back into the range."
+    },
+    {
+      "id": "brk_scenario_17",
+      "title": "Strong Resistance Rejection #17",
+      "category": "REJECTION",
+      "keyLevel": {
+        "value": 1.265,
+        "label": "1.265 Key Level",
+        "type": "rejection"
+      },
+      "candles": [
+        {
+          "open": 1.269,
+          "high": 1.2694999999999999,
+          "low": 1.2659999999999998,
+          "close": 1.2665
+        },
+        {
+          "open": 1.2665,
+          "high": 1.267,
+          "low": 1.2645,
+          "close": 1.2659999999999998
+        },
+        {
+          "open": 1.2659999999999998,
+          "high": 1.2665,
+          "low": 1.2614999999999998,
+          "close": 1.2662
+        },
+        {
+          "open": 1.2662,
+          "high": 1.2694999999999999,
+          "low": 1.2659999999999998,
+          "close": 1.269
+        },
+        {
+          "open": 1.269,
+          "high": 1.2725,
+          "low": 1.2685,
+          "close": 1.2719999999999998
+        },
+        {
+          "open": 1.2719999999999998,
+          "high": 1.2745,
+          "low": 1.2714999999999999,
+          "close": 1.2739999999999998
+        }
+      ],
+      "question": "Price interacts with key boundary 1.265. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Resistance Ceiling Rejection",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Strong upper wick and bearish engulfing body reject at resistance."
+    },
+    {
+      "id": "brk_scenario_18",
+      "title": "Strong Support Rejection #18",
+      "category": "REJECTION",
+      "keyLevel": {
+        "value": 1.08,
+        "label": "1.08 Key Level",
+        "type": "rejection"
+      },
+      "candles": [
+        {
+          "open": 1.084,
+          "high": 1.0845,
+          "low": 1.081,
+          "close": 1.0815000000000001
+        },
+        {
+          "open": 1.0815000000000001,
+          "high": 1.082,
+          "low": 1.0795000000000001,
+          "close": 1.081
+        },
+        {
+          "open": 1.081,
+          "high": 1.0815000000000001,
+          "low": 1.0765,
+          "close": 1.0812000000000002
+        },
+        {
+          "open": 1.0812000000000002,
+          "high": 1.0845,
+          "low": 1.081,
+          "close": 1.084
+        },
+        {
+          "open": 1.084,
+          "high": 1.0875000000000001,
+          "low": 1.0835000000000001,
+          "close": 1.087
+        },
+        {
+          "open": 1.087,
+          "high": 1.0895000000000001,
+          "low": 1.0865,
+          "close": 1.089
+        }
+      ],
+      "question": "Price interacts with key boundary 1.08. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Support Demand Rejection",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Lower wick rejection and green surge confirm buying support."
+    },
+    {
+      "id": "brk_scenario_19",
+      "title": "Range Squeeze Breakout #19",
+      "category": "RANGE_BREAKOUT",
+      "keyLevel": {
+        "value": 2050,
+        "label": "2050 Key Level",
+        "type": "breakout"
+      },
+      "candles": [
+        {
+          "open": 2049.995,
+          "high": 2049.999,
+          "low": 2049.994,
+          "close": 2049.9985
+        },
+        {
+          "open": 2049.9985,
+          "high": 2050.0002,
+          "low": 2049.998,
+          "close": 2049.9995
+        },
+        {
+          "open": 2049.9995,
+          "high": 2050.0045,
+          "low": 2049.9992,
+          "close": 2050.004
+        },
+        {
+          "open": 2050.004,
+          "high": 2050.006,
+          "low": 2050.0035,
+          "close": 2050.0055
+        },
+        {
+          "open": 2050.0055,
+          "high": 2050.008,
+          "low": 2050.005,
+          "close": 2050.0075
+        },
+        {
+          "open": 2050.0075,
+          "high": 2050.01,
+          "low": 2050.007,
+          "close": 2050.0095
+        }
+      ],
+      "question": "Price interacts with key boundary 2050. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Volatility Expansion Breakout",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Immediate Liquidity Sweep",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Ascending lows compressed into 2050 before breaking out upward."
+    },
+    {
+      "id": "brk_scenario_20",
+      "title": "Equal Highs Liquidity Sweep #20",
+      "category": "LIQUIDITY_SWEEP",
+      "keyLevel": {
+        "value": 152.5,
+        "label": "152.5 Key Level",
+        "type": "sweep"
+      },
+      "candles": [
+        {
+          "open": 152.496,
+          "high": 152.499,
+          "low": 152.4955,
+          "close": 152.4985
+        },
+        {
+          "open": 152.4985,
+          "high": 152.4995,
+          "low": 152.4975,
+          "close": 152.499
+        },
+        {
+          "open": 152.499,
+          "high": 152.5035,
+          "low": 152.4985,
+          "close": 152.4992
+        },
+        {
+          "open": 152.4992,
+          "high": 152.4995,
+          "low": 152.496,
+          "close": 152.4965
+        },
+        {
+          "open": 152.4965,
+          "high": 152.497,
+          "low": 152.493,
+          "close": 152.4935
+        },
+        {
+          "open": 152.4935,
+          "high": 152.494,
+          "low": 152.4905,
+          "close": 152.491
+        }
+      ],
+      "question": "Price interacts with key boundary 152.5. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Liquidity Sweep of Equal Highs",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "A spike took out stops above equal highs before reversing down."
+    },
+    {
+      "id": "brk_scenario_21",
+      "title": "Confirmed Bullish Breakout #21",
+      "category": "CONFIRMED_BREAKOUT",
+      "keyLevel": {
+        "value": 1.085,
+        "label": "1.085 Key Level",
+        "type": "breakout"
+      },
+      "candles": [
+        {
+          "open": 1.08,
+          "high": 1.084,
+          "low": 1.079,
+          "close": 1.0835
+        },
+        {
+          "open": 1.0835,
+          "high": 1.0852,
+          "low": 1.083,
+          "close": 1.0845
+        },
+        {
+          "open": 1.0845,
+          "high": 1.0895,
+          "low": 1.0842,
+          "close": 1.089
+        },
+        {
+          "open": 1.089,
+          "high": 1.091,
+          "low": 1.0885,
+          "close": 1.0905
+        },
+        {
+          "open": 1.0905,
+          "high": 1.093,
+          "low": 1.0899999999999999,
+          "close": 1.0925
+        },
+        {
+          "open": 1.0925,
+          "high": 1.095,
+          "low": 1.0919999999999999,
+          "close": 1.0945
+        }
+      ],
+      "question": "Price interacts with key boundary 1.085. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Confirmed Bullish Breakout",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Immediate Liquidity Sweep",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Solid green body close above 1.0850 with follow-through confirms a valid breakout."
+    },
+    {
+      "id": "brk_scenario_22",
+      "title": "Confirmed Support Breakdown #22",
+      "category": "CONFIRMED_BREAKDOWN",
+      "keyLevel": {
+        "value": 150,
+        "label": "150 Key Level",
+        "type": "breakdown"
+      },
+      "candles": [
+        {
+          "open": 150.005,
+          "high": 150.006,
+          "low": 150.001,
+          "close": 150.0015
+        },
+        {
+          "open": 150.0015,
+          "high": 150.002,
+          "low": 149.9998,
+          "close": 150.0005
+        },
+        {
+          "open": 150.0005,
+          "high": 150.0008,
+          "low": 149.9955,
+          "close": 149.996
+        },
+        {
+          "open": 149.996,
+          "high": 149.9965,
+          "low": 149.994,
+          "close": 149.9945
+        },
+        {
+          "open": 149.9945,
+          "high": 149.995,
+          "low": 149.992,
+          "close": 149.9925
+        },
+        {
+          "open": 149.9925,
+          "high": 149.993,
+          "low": 149.99,
+          "close": 149.9905
+        }
+      ],
+      "question": "Price interacts with key boundary 150. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Confirmed Support Breakdown",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Decisive candle close beneath the 150.00 floor confirms breakdown."
+    },
+    {
+      "id": "brk_scenario_23",
+      "title": "Bull Trap (Wick Spike) #23",
+      "category": "BULLISH_FAKEOUT",
+      "keyLevel": {
+        "value": 1.28,
+        "label": "1.28 Key Level",
+        "type": "fakeout"
+      },
+      "candles": [
+        {
+          "open": 1.276,
+          "high": 1.2790000000000001,
+          "low": 1.2755,
+          "close": 1.2785
+        },
+        {
+          "open": 1.2785,
+          "high": 1.2795,
+          "low": 1.2775,
+          "close": 1.2790000000000001
+        },
+        {
+          "open": 1.2790000000000001,
+          "high": 1.2835,
+          "low": 1.2785,
+          "close": 1.2792000000000001
+        },
+        {
+          "open": 1.2792000000000001,
+          "high": 1.2795,
+          "low": 1.276,
+          "close": 1.2765
+        },
+        {
+          "open": 1.2765,
+          "high": 1.2770000000000001,
+          "low": 1.2730000000000001,
+          "close": 1.2735
+        },
+        {
+          "open": 1.2735,
+          "high": 1.274,
+          "low": 1.2705,
+          "close": 1.2710000000000001
+        }
+      ],
+      "question": "Price interacts with key boundary 1.28. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Bull Trap / False Breakout",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price wicked above 1.2800 but closed inside, trapping breakout buyers."
+    },
+    {
+      "id": "brk_scenario_24",
+      "title": "Bear Trap (Spring / Sweep) #24",
+      "category": "BEARISH_FAKEOUT",
+      "keyLevel": {
+        "value": 2030,
+        "label": "2030 Key Level",
+        "type": "fakeout"
+      },
+      "candles": [
+        {
+          "open": 2030.004,
+          "high": 2030.0045,
+          "low": 2030.001,
+          "close": 2030.0015
+        },
+        {
+          "open": 2030.0015,
+          "high": 2030.002,
+          "low": 2029.9995,
+          "close": 2030.001
+        },
+        {
+          "open": 2030.001,
+          "high": 2030.0015,
+          "low": 2029.9965,
+          "close": 2030.0012
+        },
+        {
+          "open": 2030.0012,
+          "high": 2030.0045,
+          "low": 2030.001,
+          "close": 2030.004
+        },
+        {
+          "open": 2030.004,
+          "high": 2030.0075,
+          "low": 2030.0035,
+          "close": 2030.007
+        },
+        {
+          "open": 2030.007,
+          "high": 2030.0095,
+          "low": 2030.0065,
+          "close": 2030.009
+        }
+      ],
+      "question": "Price interacts with key boundary 2030. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Bear Trap / False Breakdown",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price pierced below 2030 support but instantly rebounded inside the range."
+    },
+    {
+      "id": "brk_scenario_25",
+      "title": "Breakout + Successful Retest #25",
+      "category": "RETEST",
+      "keyLevel": {
+        "value": 1.09,
+        "label": "1.09 Key Level",
+        "type": "retest"
+      },
+      "candles": [
+        {
+          "open": 1.0850000000000002,
+          "high": 1.0890000000000002,
+          "low": 1.084,
+          "close": 1.0885
+        },
+        {
+          "open": 1.0885,
+          "high": 1.0902,
+          "low": 1.088,
+          "close": 1.0895000000000001
+        },
+        {
+          "open": 1.0895000000000001,
+          "high": 1.0945,
+          "low": 1.0892000000000002,
+          "close": 1.094
+        },
+        {
+          "open": 1.094,
+          "high": 1.096,
+          "low": 1.0935000000000001,
+          "close": 1.0955000000000001
+        },
+        {
+          "open": 1.0955000000000001,
+          "high": 1.098,
+          "low": 1.095,
+          "close": 1.0975000000000001
+        },
+        {
+          "open": 1.0975000000000001,
+          "high": 1.1,
+          "low": 1.097,
+          "close": 1.0995000000000001
+        }
+      ],
+      "question": "Price interacts with key boundary 1.09. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Successful Retest & Continuation",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price broke 1.0900 and cleanly bounced off the level from above."
+    },
+    {
+      "id": "brk_scenario_26",
+      "title": "Breakout + Failed Retest #26",
+      "category": "FAILED_RETEST",
+      "keyLevel": {
+        "value": 151,
+        "label": "151 Key Level",
+        "type": "retest"
+      },
+      "candles": [
+        {
+          "open": 151.004,
+          "high": 151.0045,
+          "low": 151.001,
+          "close": 151.0015
+        },
+        {
+          "open": 151.0015,
+          "high": 151.002,
+          "low": 150.9995,
+          "close": 151.001
+        },
+        {
+          "open": 151.001,
+          "high": 151.0015,
+          "low": 150.9965,
+          "close": 151.0012
+        },
+        {
+          "open": 151.0012,
+          "high": 151.0045,
+          "low": 151.001,
+          "close": 151.004
+        },
+        {
+          "open": 151.004,
+          "high": 151.0075,
+          "low": 151.0035,
+          "close": 151.007
+        },
+        {
+          "open": 151.007,
+          "high": 151.0095,
+          "low": 151.0065,
+          "close": 151.009
+        }
+      ],
+      "question": "Price interacts with key boundary 151. What market structure outcome is developing?",
+      "options": [
+        {
+          "id": "opt_c",
+          "text": "Failed Retest / Return to Range",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Neutral Indecision Doji Chop",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Confirmed Breakout Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Trend Invalidation Error",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Price failed to hold above 151.00 and dropped back into the range."
+    }
+  ]
+}

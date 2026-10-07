@@ -1,0 +1,965 @@
+{
+  "version": "2.0.0",
+  "questions": [
+    {
+      "id": "seq_challenge_01",
+      "title": "Structural Sequence #1",
+      "number": 1,
+      "sequence": "HH → HL → HH → HL → HH",
+      "question": "What market structure is developing in this sequence?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bearish Downtrend Cascade",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Consecutive Higher Highs and Higher Lows define textbook bullish uptrend expansion."
+    },
+    {
+      "id": "seq_challenge_02",
+      "title": "Structural Sequence #2",
+      "number": 2,
+      "sequence": "LH → LL → LH → LL → LL",
+      "question": "What market structure is confirmed by consecutive lower extremes?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Consecutive Lower Highs and Lower Lows confirm sellers are in full directional control."
+    },
+    {
+      "id": "seq_challenge_03",
+      "title": "Structural Sequence #3",
+      "number": 3,
+      "sequence": "Equal High → Equal Low → Equal High → Equal Low",
+      "question": "Price bounces between equal boundaries without higher or lower expansion. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Horizontal Range Consolidation",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Immediate Reversal Impulse",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Equal highs and equal lows represent a balanced trading range."
+    },
+    {
+      "id": "seq_challenge_04",
+      "title": "Structural Sequence #4",
+      "number": 4,
+      "sequence": "HH → HL → HH → Failure to make HH → Break below HL",
+      "question": "After making Higher Highs, price prints a Lower High and breaks the previous Higher Low. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Break of Structure (BOS) from Bullish to Bearish",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Breaking below the most recent Higher Low marks a decisive structural shift."
+    },
+    {
+      "id": "seq_challenge_05",
+      "title": "Structural Sequence #5",
+      "number": 5,
+      "sequence": "LH → LL → LH → Higher Low → Break above LH",
+      "question": "In a downtrend, price prints a Higher Low followed by a break above the prior Lower High. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Change of Character (CHoCH) from Bearish to Bullish",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Breaking above the previous Lower High signals an initial bullish character change."
+    },
+    {
+      "id": "seq_challenge_06",
+      "title": "Structural Sequence #6",
+      "number": 6,
+      "sequence": "Resistance at 1.0850 → Spike to 1.0875 → Close at 1.0845",
+      "question": "A candle wicks 25 pips above resistance but closes back below it. What occurred?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bull Trap / Liquidity Sweep above Resistance",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Spiking beyond a level and immediately closing inside creates a classic fakeout trap."
+    },
+    {
+      "id": "seq_challenge_07",
+      "title": "Structural Sequence #7",
+      "number": 7,
+      "sequence": "Support at 1.2500 → Break to 1.2440 → Pullback to 1.2498 → Rejection to 1.2400",
+      "question": "Broken support at 1.2500 is tested from below and rejects downward. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Support-to-Resistance Retest & Flip",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Former support acting as new resistance upon retest is a verified S/R level flip."
+    },
+    {
+      "id": "seq_challenge_08",
+      "title": "Structural Sequence #8",
+      "number": 8,
+      "sequence": "Resistance at 150.00 → Break to 150.80 → Pullback to 150.05 → Bounce to 151.50",
+      "question": "Broken resistance at 150.00 is tested from above and bounces upward. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Resistance-to-Support Retest & Flip",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Former resistance acting as new support upon retest is a confirmed level flip."
+    },
+    {
+      "id": "seq_challenge_09",
+      "title": "Structural Sequence #9",
+      "number": 9,
+      "sequence": "Equal High 1 → Equal High 2 → Equal High 3 → Sweep Wick → Collapse",
+      "question": "Triple tops are pierced by a single quick wick before an aggressive selloff. What happened?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Buy-Side Liquidity Pool Sweep",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Equal highs accumulate buy stops that institutions target before initiating sell moves."
+    },
+    {
+      "id": "seq_challenge_10",
+      "title": "Structural Sequence #10",
+      "number": 10,
+      "sequence": "Equal Low 1 → Equal Low 2 → Equal Low 3 → Sweep Wick → Surge",
+      "question": "Triple bottoms are pierced by a sudden wick before a violent rally. What happened?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Sell-Side Liquidity Pool Sweep (Bear Trap)",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Equal lows accumulate sell stops that are swept for liquidity before upward reversal."
+    },
+    {
+      "id": "seq_challenge_11",
+      "title": "Structural Sequence #11",
+      "number": 11,
+      "sequence": "Ascending Lows against Flat Resistance Ceiling",
+      "question": "Swing lows are steadily rising while swing highs hit the same flat resistance. What does this indicate?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bullish Pressure Accumulation into Resistance",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Ascending lows show buyers stepping in earlier on each dip, pressing against the resistance barrier."
+    },
+    {
+      "id": "seq_challenge_12",
+      "title": "Structural Sequence #12",
+      "number": 12,
+      "sequence": "Descending Highs against Flat Support Floor",
+      "question": "Swing highs are steadily falling while swing lows hit the same flat support floor. What does this indicate?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bearish Pressure Accumulation into Support",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Descending highs show sellers capping rallies earlier, pressing against the support floor."
+    },
+    {
+      "id": "seq_challenge_13",
+      "title": "Structural Sequence #13",
+      "number": 13,
+      "sequence": "HH1 → HL1 → HH2 (Extended Wick) → Deep Pullback → Equal Low",
+      "question": "A strong uptrend suddenly prints a deep retracement that touches the prior major swing low. What is happening?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Trend Weakening & Transition to Range",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "A deep pullback matching the previous low halts Higher Low progression and transitions into a range."
+    },
+    {
+      "id": "seq_challenge_14",
+      "title": "Structural Sequence #14",
+      "number": 14,
+      "sequence": "Wide Range → Range Squeeze → Volatility Compression",
+      "question": "Swing swings become smaller and volume drops toward a tight pivot. What phase is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Volatility Compression / Pre-Expansion",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Compression represents market equilibrium where participants await catalysts for the next expansion."
+    },
+    {
+      "id": "seq_challenge_15",
+      "title": "Structural Sequence #15",
+      "number": 15,
+      "sequence": "Rising Trendline Touch 1 → Touch 2 → Touch 3 → Touch 4",
+      "question": "Price respects a diagonal floor connecting consecutive Higher Lows. What is this line called?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Ascending Dynamic Trendline Support",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "An ascending trendline connects two or more rising Higher Lows, acting as diagonal support."
+    },
+    {
+      "id": "seq_challenge_16",
+      "title": "Structural Sequence #16",
+      "number": 16,
+      "sequence": "Falling Trendline Touch 1 → Touch 2 → Touch 3 → Touch 4",
+      "question": "Price respects a diagonal ceiling connecting consecutive Lower Highs. What is this line called?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Descending Dynamic Trendline Resistance",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "A descending trendline connects two or more declining Lower Highs, acting as diagonal resistance."
+    },
+    {
+      "id": "seq_challenge_17",
+      "title": "Structural Sequence #17",
+      "number": 17,
+      "sequence": "HH → HL → HH → HL → HH [Cycle 2]",
+      "question": "What market structure is developing in this sequence?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bullish Uptrend (Higher Highs & Higher Lows)",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bearish Downtrend Cascade",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Consecutive Higher Highs and Higher Lows define textbook bullish uptrend expansion."
+    },
+    {
+      "id": "seq_challenge_18",
+      "title": "Structural Sequence #18",
+      "number": 18,
+      "sequence": "LH → LL → LH → LL → LL [Cycle 2]",
+      "question": "What market structure is confirmed by consecutive lower extremes?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bearish Downtrend (Lower Highs & Lower Lows)",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Consecutive Lower Highs and Lower Lows confirm sellers are in full directional control."
+    },
+    {
+      "id": "seq_challenge_19",
+      "title": "Structural Sequence #19",
+      "number": 19,
+      "sequence": "Equal High → Equal Low → Equal High → Equal Low [Cycle 2]",
+      "question": "Price bounces between equal boundaries without higher or lower expansion. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Horizontal Range Consolidation",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Immediate Reversal Impulse",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Equal highs and equal lows represent a balanced trading range."
+    },
+    {
+      "id": "seq_challenge_20",
+      "title": "Structural Sequence #20",
+      "number": 20,
+      "sequence": "HH → HL → HH → Failure to make HH → Break below HL [Cycle 2]",
+      "question": "After making Higher Highs, price prints a Lower High and breaks the previous Higher Low. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Break of Structure (BOS) from Bullish to Bearish",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Breaking below the most recent Higher Low marks a decisive structural shift."
+    },
+    {
+      "id": "seq_challenge_21",
+      "title": "Structural Sequence #21",
+      "number": 21,
+      "sequence": "LH → LL → LH → Higher Low → Break above LH [Cycle 2]",
+      "question": "In a downtrend, price prints a Higher Low followed by a break above the prior Lower High. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Change of Character (CHoCH) from Bearish to Bullish",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Breaking above the previous Lower High signals an initial bullish character change."
+    },
+    {
+      "id": "seq_challenge_22",
+      "title": "Structural Sequence #22",
+      "number": 22,
+      "sequence": "Resistance at 1.0850 → Spike to 1.0875 → Close at 1.0845 [Cycle 2]",
+      "question": "A candle wicks 25 pips above resistance but closes back below it. What occurred?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bull Trap / Liquidity Sweep above Resistance",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Spiking beyond a level and immediately closing inside creates a classic fakeout trap."
+    },
+    {
+      "id": "seq_challenge_23",
+      "title": "Structural Sequence #23",
+      "number": 23,
+      "sequence": "Support at 1.2500 → Break to 1.2440 → Pullback to 1.2498 → Rejection to 1.2400 [Cycle 2]",
+      "question": "Broken support at 1.2500 is tested from below and rejects downward. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Support-to-Resistance Retest & Flip",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Former support acting as new resistance upon retest is a verified S/R level flip."
+    },
+    {
+      "id": "seq_challenge_24",
+      "title": "Structural Sequence #24",
+      "number": 24,
+      "sequence": "Resistance at 150.00 → Break to 150.80 → Pullback to 150.05 → Bounce to 151.50 [Cycle 2]",
+      "question": "Broken resistance at 150.00 is tested from above and bounces upward. What is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Resistance-to-Support Retest & Flip",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Former resistance acting as new support upon retest is a confirmed level flip."
+    },
+    {
+      "id": "seq_challenge_25",
+      "title": "Structural Sequence #25",
+      "number": 25,
+      "sequence": "Equal High 1 → Equal High 2 → Equal High 3 → Sweep Wick → Collapse [Cycle 2]",
+      "question": "Triple tops are pierced by a single quick wick before an aggressive selloff. What happened?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Buy-Side Liquidity Pool Sweep",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Equal highs accumulate buy stops that institutions target before initiating sell moves."
+    },
+    {
+      "id": "seq_challenge_26",
+      "title": "Structural Sequence #26",
+      "number": 26,
+      "sequence": "Equal Low 1 → Equal Low 2 → Equal Low 3 → Sweep Wick → Surge [Cycle 2]",
+      "question": "Triple bottoms are pierced by a sudden wick before a violent rally. What happened?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Sell-Side Liquidity Pool Sweep (Bear Trap)",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Equal lows accumulate sell stops that are swept for liquidity before upward reversal."
+    },
+    {
+      "id": "seq_challenge_27",
+      "title": "Structural Sequence #27",
+      "number": 27,
+      "sequence": "Ascending Lows against Flat Resistance Ceiling [Cycle 2]",
+      "question": "Swing lows are steadily rising while swing highs hit the same flat resistance. What does this indicate?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bullish Pressure Accumulation into Resistance",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Ascending lows show buyers stepping in earlier on each dip, pressing against the resistance barrier."
+    },
+    {
+      "id": "seq_challenge_28",
+      "title": "Structural Sequence #28",
+      "number": 28,
+      "sequence": "Descending Highs against Flat Support Floor [Cycle 2]",
+      "question": "Swing highs are steadily falling while swing lows hit the same flat support floor. What does this indicate?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Bearish Pressure Accumulation into Support",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Descending highs show sellers capping rallies earlier, pressing against the support floor."
+    },
+    {
+      "id": "seq_challenge_29",
+      "title": "Structural Sequence #29",
+      "number": 29,
+      "sequence": "HH1 → HL1 → HH2 (Extended Wick) → Deep Pullback → Equal Low [Cycle 2]",
+      "question": "A strong uptrend suddenly prints a deep retracement that touches the prior major swing low. What is happening?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Trend Weakening & Transition to Range",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "A deep pullback matching the previous low halts Higher Low progression and transitions into a range."
+    },
+    {
+      "id": "seq_challenge_30",
+      "title": "Structural Sequence #30",
+      "number": 30,
+      "sequence": "Wide Range → Range Squeeze → Volatility Compression [Cycle 2]",
+      "question": "Swing swings become smaller and volume drops toward a tight pivot. What phase is this?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Volatility Compression / Pre-Expansion",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Compression represents market equilibrium where participants await catalysts for the next expansion."
+    },
+    {
+      "id": "seq_challenge_31",
+      "title": "Structural Sequence #31",
+      "number": 31,
+      "sequence": "Rising Trendline Touch 1 → Touch 2 → Touch 3 → Touch 4 [Cycle 2]",
+      "question": "Price respects a diagonal floor connecting consecutive Higher Lows. What is this line called?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Ascending Dynamic Trendline Support",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "An ascending trendline connects two or more rising Higher Lows, acting as diagonal support."
+    },
+    {
+      "id": "seq_challenge_32",
+      "title": "Structural Sequence #32",
+      "number": 32,
+      "sequence": "Falling Trendline Touch 1 → Touch 2 → Touch 3 → Touch 4 [Cycle 2]",
+      "question": "Price respects a diagonal ceiling connecting consecutive Lower Highs. What is this line called?",
+      "options": [
+        {
+          "id": "opt_correct",
+          "text": "Descending Dynamic Trendline Resistance",
+          "isCorrect": true
+        },
+        {
+          "id": "opt_w1",
+          "text": "Random Market Noise / Unstructured",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w2",
+          "text": "Bullish Uptrend Expansion",
+          "isCorrect": false
+        },
+        {
+          "id": "opt_w3",
+          "text": "Equilibrium Range Consolidation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "A descending trendline connects two or more declining Lower Highs, acting as diagonal resistance."
+    }
+  ]
+}

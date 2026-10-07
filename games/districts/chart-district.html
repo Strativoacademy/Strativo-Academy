@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Strativo World — Chart District (District 4)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/rpg-core.css">
+    <link rel="stylesheet" href="../../css/pip-district.css">
+    <link rel="stylesheet" href="../../css/chart-district.css">
+</head>
+<body>
+    <div class="cd-viewport-wrapper" id="cd-viewport-wrapper">
+        <!-- Master Game Canvas -->
+        <canvas id="chart-district-canvas" width="1280" height="720" tabindex="0"></canvas>
+
+        <!-- Top HUD -->
+        <header class="cd-hud-top" role="banner">
+            <div class="cd-hud-badge">
+                <div class="cd-hud-title">
+                    <i class="fas fa-chart-simple"></i>
+                    <span>CHART DISTRICT</span>
+                </div>
+                <span style="color: rgba(255,255,255,0.3);">|</span>
+                <div class="cd-hud-xp">
+                    <i class="fas fa-star"></i>
+                    <span id="hud-xp-val">0</span> XP
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; pointer-events: auto;">
+                <button type="button" class="cd-btn cd-btn-sm" id="btn-open-missions" aria-label="Open Missions Journal">
+                    <i class="fas fa-compass"></i> Missions
+                </button>
+                <button type="button" class="cd-btn cd-btn-sm" id="btn-toggle-minimap" aria-label="Toggle Mini-Map">
+                    <i class="fas fa-map"></i> Map [M]
+                </button>
+                <a href="../hub.html" class="cd-btn cd-btn-sm cd-btn-rose" style="text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i> Hub
+                </a>
+            </div>
+        </header>
+
+        <!-- Mini-Map Overlay -->
+        <aside class="cd-minimap-container" id="cd-minimap" aria-label="District Mini-Map">
+            <div class="cd-minimap-header">
+                <span>DISTRICT 4 RADAR</span>
+                <span id="minimap-explored-count">0 / 12</span>
+            </div>
+            <canvas id="cd-minimap-canvas" width="200" height="130"></canvas>
+        </aside>
+
+        <!-- Interaction Prompt Banner -->
+        <div class="cd-prompt-banner hidden" id="cd-prompt-banner" role="status" aria-live="polite">
+            <span class="cd-key-badge">ACTION</span>
+            <span id="cd-prompt-text" style="font-weight: 700; font-size: 0.95rem; color: #FFF;">Interact [E]</span>
+        </div>
+
+        <!-- Mobile Touch Action Button -->
+        <button type="button" class="cd-mobile-action-btn" id="cd-mobile-action" aria-label="Action Button">ACTION</button>
+    </div>
+
+    <!-- ====================================================================
+         FACILITY MODALS (12 REAL INTERACTIVE FACILITIES)
+         ==================================================================== -->
+
+    <!-- 1. CHART ACADEMY MODAL -->
+    <div class="cd-modal-backdrop" id="cd-academy-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-graduation-cap" style="color: var(--cd-neon-cyan);"></i> Chart Academy — Complete Chart Literacy</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-tabs-bar">
+                    <button type="button" class="cd-btn cd-btn-cyan" id="acad-tab-btn-fund" onclick="switchAcademyTab('fund')">Foundations</button>
+                    <button type="button" class="cd-btn" id="acad-tab-btn-swings" onclick="switchAcademyTab('swings')">Swing Highs/Lows</button>
+                    <button type="button" class="cd-btn" id="acad-tab-btn-trend" onclick="switchAcademyTab('trend')">Trend Structure</button>
+                    <button type="button" class="cd-btn" id="acad-tab-btn-context" onclick="switchAcademyTab('context')">Context & S/R</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="acad-q-badge" class="pd-badge" style="background: rgba(0, 240, 255, 0.2); color: #00F0FF; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">ORIENTATION</span>
+                    <button type="button" class="cd-btn cd-btn-sm" id="acad-skip-btn" onclick="refreshAcademyQuestion()"><i class="fas fa-sync"></i> New Scenario</button>
+                </div>
+                <h4 id="acad-q-text" style="margin: 0; color: #FFF; font-size: 1rem; line-height: 1.4;">Loading challenge...</h4>
+                <div class="cd-options-grid" id="acad-options-grid"></div>
+                <div class="cd-feedback-box" id="acad-feedback-box"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-cyan" onclick="closeAllModals()">Close Academy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. CHART REPLAY LAB MODAL -->
+    <div class="cd-modal-backdrop" id="cd-replay-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card" style="max-width: 960px;">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-play" style="color: var(--cd-neon-emerald);"></i> Chart Replay Lab — Candle-by-Candle Simulation</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-chart-canvas-wrap">
+                    <canvas id="replay-canvas" width="880" height="320"></canvas>
+                </div>
+                <!-- Replay Controls -->
+                <div class="cd-replay-controls">
+                    <div style="display: flex; gap: 0.4rem; align-items: center;">
+                        <button type="button" class="cd-btn cd-btn-sm cd-btn-emerald" id="replay-btn-play"><i class="fas fa-play"></i> Play</button>
+                        <button type="button" class="cd-btn cd-btn-sm" id="replay-btn-pause"><i class="fas fa-pause"></i> Pause</button>
+                        <button type="button" class="cd-btn cd-btn-sm" id="replay-btn-step-back"><i class="fas fa-step-backward"></i> Back</button>
+                        <button type="button" class="cd-btn cd-btn-sm cd-btn-cyan" id="replay-btn-step-fwd"><i class="fas fa-step-forward"></i> Step</button>
+                        <button type="button" class="cd-btn cd-btn-sm" id="replay-btn-reset"><i class="fas fa-rotate-left"></i> Reset</button>
+                        <button type="button" class="cd-btn cd-btn-sm cd-btn-amber" id="replay-btn-reveal"><i class="fas fa-eye"></i> Reveal</button>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span style="font-size: 0.8rem; color: var(--cd-text-muted);" id="replay-progress-text">Candle 3 / 16</span>
+                        <button type="button" class="cd-btn cd-btn-sm" id="replay-btn-next-scen"><i class="fas fa-forward"></i> Next Replay</button>
+                    </div>
+                </div>
+                <!-- Interactive Question -->
+                <div style="margin-top: 0.5rem;">
+                    <h4 id="replay-q-text" style="margin: 0 0 0.5rem 0; color: #FFF; font-size: 0.95rem;">Loading question...</h4>
+                    <div class="cd-options-grid" id="replay-options-grid"></div>
+                    <div class="cd-feedback-box" id="replay-feedback-box"></div>
+                </div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-emerald" onclick="closeAllModals()">Close Replay Lab</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. CHART ANALYSIS LAB MODAL -->
+    <div class="cd-modal-backdrop" id="cd-analysis-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-magnifying-glass-chart" style="color: var(--cd-neon-purple);"></i> Chart Analysis Lab — Regime Identification</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-chart-canvas-wrap">
+                    <canvas id="analysis-canvas" width="800" height="260"></canvas>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="analysis-q-badge" class="pd-badge" style="background: rgba(139, 92, 246, 0.2); color: #8B5CF6; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">STRUCTURE</span>
+                    <button type="button" class="cd-btn cd-btn-sm" id="analysis-skip-btn" onclick="refreshAnalysisQuestion()"><i class="fas fa-sync"></i> New Scenario</button>
+                </div>
+                <h4 id="analysis-q-text" style="margin: 0; color: #FFF; font-size: 0.95rem;">Loading analysis drill...</h4>
+                <div class="cd-options-grid" id="analysis-options-grid"></div>
+                <div class="cd-feedback-box" id="analysis-feedback-box"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-purple" onclick="closeAllModals()">Close Analysis Lab</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. CHART DETECTIVE LAB MODAL -->
+    <div class="cd-modal-backdrop" id="cd-detective-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-user-secret" style="color: #A855F7;"></i> Chart Detective Lab — Partial Chart Mystery</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-chart-canvas-wrap">
+                    <canvas id="detective-canvas" width="800" height="260"></canvas>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="pd-badge" style="background: rgba(168, 85, 247, 0.2); color: #A855F7; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">MYSTERY INVESTIGATION</span>
+                    <button type="button" class="cd-btn cd-btn-sm" id="detective-skip-btn" onclick="refreshDetectiveQuestion()"><i class="fas fa-sync"></i> New Case</button>
+                </div>
+                <h4 id="detective-q-text" style="margin: 0; color: #FFF; font-size: 0.95rem;">Loading detective case...</h4>
+                <div class="cd-options-grid" id="detective-options-grid"></div>
+                <div class="cd-feedback-box" id="detective-feedback-box"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-purple" onclick="closeAllModals()">Close Detective Lab</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. CHART ANNOTATION LAB MODAL -->
+    <div class="cd-modal-backdrop" id="cd-annotation-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card" style="max-width: 960px;">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-pen-ruler" style="color: var(--cd-neon-amber);"></i> Chart Annotation Lab — Precision Drawing Tool</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-palette-bar">
+                    <span style="font-size: 0.8rem; font-weight: 800; color: #FCD34D;">TOOLS:</span>
+                    <button type="button" class="cd-btn cd-btn-sm cd-btn-cyan" id="tool-btn-sh" onclick="setAnnotationTool('SWING_HIGH')">Swing High (SH)</button>
+                    <button type="button" class="cd-btn cd-btn-sm" id="tool-btn-sl" onclick="setAnnotationTool('SWING_LOW')">Swing Low (SL)</button>
+                    <button type="button" class="cd-btn cd-btn-sm cd-btn-emerald" id="tool-btn-supp" onclick="setAnnotationTool('SUPPORT_ZONE')">Support Zone</button>
+                    <button type="button" class="cd-btn cd-btn-sm cd-btn-rose" id="tool-btn-res" onclick="setAnnotationTool('RESISTANCE_ZONE')">Resistance Zone</button>
+                    <button type="button" class="cd-btn cd-btn-sm" id="tool-btn-tl" onclick="setAnnotationTool('TRENDLINE')">Trendline</button>
+                    <button type="button" class="cd-btn cd-btn-sm" style="margin-left: auto;" onclick="clearAnnotations()"><i class="fas fa-trash"></i> Clear</button>
+                </div>
+                <div class="cd-chart-canvas-wrap">
+                    <canvas id="annotation-canvas" width="880" height="320"></canvas>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="annot-instruction-text" style="font-size: 0.95rem; font-weight: 700; color: #FFF;">Place target marker on key structural point.</span>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button type="button" class="cd-btn cd-btn-emerald" id="annot-btn-check" onclick="checkAnnotations()"><i class="fas fa-check"></i> Check Accuracy</button>
+                        <button type="button" class="cd-btn" id="annot-skip-btn" onclick="refreshAnnotationChallenge()"><i class="fas fa-sync"></i> Next Challenge</button>
+                    </div>
+                </div>
+                <div class="cd-feedback-box" id="annot-feedback-box"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-amber" onclick="closeAllModals()">Close Annotation Lab</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. MULTI-TIMEFRAME OBSERVATORY MODAL -->
+    <div class="cd-modal-backdrop" id="cd-timeframe-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card" style="max-width: 960px;">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-binoculars" style="color: var(--cd-neon-rose);"></i> Multi-Timeframe Observatory — Macro vs Micro Context</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-timeframe-grid">
+                    <div>
+                        <div style="font-size: 0.82rem; font-weight: 800; color: var(--cd-neon-cyan); margin-bottom: 0.3rem;" id="htf-label">HIGHER TIMEFRAME (DAILY)</div>
+                        <div class="cd-chart-canvas-wrap"><canvas id="htf-canvas" width="420" height="220"></canvas></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.82rem; font-weight: 800; color: var(--cd-neon-gold); margin-bottom: 0.3rem;" id="ltf-label">LOWER TIMEFRAME (1-HOUR)</div>
+                        <div class="cd-chart-canvas-wrap"><canvas id="ltf-canvas" width="420" height="220"></canvas></div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="pd-badge" style="background: rgba(236, 72, 153, 0.2); color: #EC4899; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">SYNTHESIS DRILL</span>
+                    <button type="button" class="cd-btn cd-btn-sm" id="timeframe-skip-btn" onclick="refreshTimeframeQuestion()"><i class="fas fa-sync"></i> New Pair</button>
+                </div>
+                <h4 id="timeframe-q-text" style="margin: 0; color: #FFF; font-size: 0.95rem;">Loading timeframe context...</h4>
+                <div class="cd-options-grid" id="timeframe-options-grid"></div>
+                <div class="cd-feedback-box" id="timeframe-feedback-box"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-rose" onclick="closeAllModals()">Close Observatory</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. CHART COMPARISON ROOM MODAL -->
+    <div class="cd-modal-backdrop" id="cd-comparison-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card" style="max-width: 960px;">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-code-compare" style="color: #F472B6;"></i> Chart Comparison Gallery — Side-by-Side Spotting</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-timeframe-grid">
+                    <div>
+                        <div style="font-size: 0.82rem; font-weight: 800; color: #00F0FF; margin-bottom: 0.3rem;" id="comp-label-a">CHART A</div>
+                        <div class="cd-chart-canvas-wrap"><canvas id="comp-canvas-a" width="420" height="220"></canvas></div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.82rem; font-weight: 800; color: #F59E0B; margin-bottom: 0.3rem;" id="comp-label-b">CHART B</div>
+                        <div class="cd-chart-canvas-wrap"><canvas id="comp-canvas-b" width="420" height="220"></canvas></div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="pd-badge" style="background: rgba(244, 114, 182, 0.2); color: #F472B6; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">COMPARISON DRILL</span>
+                    <button type="button" class="cd-btn cd-btn-sm" id="comparison-skip-btn" onclick="refreshComparisonQuestion()"><i class="fas fa-sync"></i> New Pair</button>
+                </div>
+                <h4 id="comparison-q-text" style="margin: 0; color: #FFF; font-size: 0.95rem;">Loading comparison...</h4>
+                <div class="cd-options-grid" id="comparison-options-grid"></div>
+                <div class="cd-feedback-box" id="comparison-feedback-box"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-rose" onclick="closeAllModals()">Close Comparison Room</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. CHART MUSEUM MODAL -->
+    <div class="cd-modal-backdrop" id="cd-museum-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-landmark" style="color: #38BDF8;"></i> Chart Museum — Complete Multi-Candle Formations</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-chart-canvas-wrap"><canvas id="museum-canvas" width="800" height="260"></canvas></div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="museum-formation-title" style="font-size: 1.1rem; font-weight: 800; color: #38BDF8;">Ascending Channel Formation</span>
+                    <button type="button" class="cd-btn cd-btn-sm" onclick="nextMuseumExhibit()"><i class="fas fa-forward"></i> Next Exhibit</button>
+                </div>
+                <p id="museum-desc" style="color: #CBD5E1; line-height: 1.5; margin: 0;">Examine the multi-candle structure...</p>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-cyan" onclick="closeAllModals()">Close Museum</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. CHART THEATER MODAL -->
+    <div class="cd-modal-backdrop" id="cd-theater-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card" style="max-width: 960px;">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-masks-theater" style="color: #6366F1;"></i> Chart Theater — 4-Act Market Narratives</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-chart-canvas-wrap"><canvas id="theater-canvas" width="880" height="280"></canvas></div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="theater-title" style="font-weight: 800; color: #818CF8;">Act I: Accumulation Structure</span>
+                    <button type="button" class="cd-btn cd-btn-sm" id="theater-skip-btn" onclick="refreshTheaterScenario()"><i class="fas fa-sync"></i> Next Story</button>
+                </div>
+                <h4 id="theater-q-text" style="margin: 0; color: #FFF; font-size: 0.95rem;">Loading narrative checkpoint...</h4>
+                <div class="cd-options-grid" id="theater-options-grid"></div>
+                <div class="cd-feedback-box" id="theater-feedback-box"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-purple" onclick="closeAllModals()">Close Theater</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. MARKET HISTORY ROOM MODAL -->
+    <div class="cd-modal-backdrop" id="cd-history-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-clock-rotate-left" style="color: #D97706;"></i> Market History Room — Historical Timeline Scrub</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-chart-canvas-wrap"><canvas id="history-canvas" width="800" height="260"></canvas></div>
+                <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                    <button type="button" class="cd-btn cd-btn-sm" onclick="setHistoryPhase(1)">Phase 1: Earlier</button>
+                    <button type="button" class="cd-btn cd-btn-sm" onclick="setHistoryPhase(2)">Phase 2: Development</button>
+                    <button type="button" class="cd-btn cd-btn-sm" onclick="setHistoryPhase(3)">Phase 3: The Event</button>
+                    <button type="button" class="cd-btn cd-btn-sm" onclick="setHistoryPhase(4)">Phase 4: Aftermath</button>
+                </div>
+                <p id="history-phase-desc" style="color: #E2E8F0; line-height: 1.5; margin: 0.5rem 0;">Timeline context overview...</p>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-amber" onclick="closeAllModals()">Close History Room</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. FULL CHART ANALYSIS BOSS MODAL -->
+    <div class="cd-modal-backdrop" id="cd-boss-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card" style="max-width: 960px; border-color: var(--cd-neon-rose);">
+            <div class="cd-modal-header" style="background: rgba(244, 63, 94, 0.15);">
+                <h3><i class="fas fa-chess-rook" style="color: var(--cd-neon-rose);"></i> Grand Citadel — Full Chart Analysis Boss Challenge</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div class="cd-chart-canvas-wrap"><canvas id="boss-canvas" width="880" height="300"></canvas></div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="pd-badge" style="background: rgba(244, 63, 94, 0.25); color: #F43F5E; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 4px;">FINAL EVALUATION</span>
+                    <button type="button" class="cd-btn cd-btn-sm" id="boss-skip-btn" onclick="refreshBossScenario()"><i class="fas fa-sync"></i> Next Boss Chart</button>
+                </div>
+                <h4 id="boss-q-text" style="margin: 0; color: #FFF; font-size: 1rem;">Loading full boss chart...</h4>
+                <div class="cd-options-grid" id="boss-options-grid"></div>
+                <div class="cd-feedback-box" id="boss-feedback-box"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-rose" onclick="closeAllModals()">Close Citadel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. CHART ARENA 10-ROUND OVERLAY -->
+    <div class="cd-arena-overlay" id="cd-arena-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-arena-header">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span style="font-weight: 900; color: var(--cd-neon-rose); font-size: 1.1rem;"><i class="fas fa-bolt-lightning"></i> CHART ARENA</span>
+                <span class="cd-key-badge" id="arena-round-badge">ROUND 1 / 10</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-weight: 700; color: var(--cd-neon-gold);">COMBO: <strong id="arena-combo-val">0x</strong></span>
+                <span style="font-weight: 800; color: #FFF;">SCORE: <strong id="arena-score-val" style="color: var(--cd-neon-cyan);">0</strong> PTS</span>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i> Exit</button>
+            </div>
+        </div>
+        <div style="flex: 1; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; align-items: center; justify-content: center;">
+            <div class="cd-chart-canvas-wrap" style="max-width: 860px;">
+                <canvas id="arena-canvas" width="860" height="300"></canvas>
+            </div>
+            <div style="max-width: 860px; width: 100%;">
+                <h3 id="arena-q-title" style="margin: 0 0 0.5rem 0; color: #FFF; font-size: 1.15rem; text-align: center;">Identify the regime:</h3>
+                <div class="cd-options-grid" id="arena-options-grid"></div>
+                <div class="cd-feedback-box" id="arena-feedback-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. MISSIONS JOURNAL MODAL -->
+    <div class="cd-modal-backdrop" id="cd-missions-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-compass" style="color: var(--cd-neon-blue);"></i> Chart District Tactical Missions</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div id="cd-missions-list" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-blue" onclick="closeAllModals()">Close Journal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 14. EXPLORATION DISCOVERY MODAL -->
+    <div class="cd-modal-backdrop" id="cd-discovery-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="cd-modal-card">
+            <div class="cd-modal-header">
+                <h3><i class="fas fa-star" style="color: var(--cd-neon-gold);"></i> Discovery Unlocked</h3>
+                <button type="button" class="cd-btn cd-btn-sm" onclick="closeAllModals()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cd-modal-body">
+                <div style="font-size: 1.15rem; color: var(--cd-neon-gold); font-weight: 800;" id="cd-discovery-heading">Discovery Title</div>
+                <div style="font-size: 0.95rem; color: #CBD5E1; line-height: 1.5;" id="cd-discovery-lore">Lore details...</div>
+                <div style="font-size: 0.88rem; color: var(--cd-neon-emerald); font-weight: 700;" id="cd-discovery-xp">+15 World XP Logged</div>
+            </div>
+            <div class="cd-modal-footer">
+                <button type="button" class="cd-btn cd-btn-cyan" onclick="closeAllModals()">Collect Discovery</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dialogue Overlay -->
+    <div class="strativo-dialogue-overlay" id="strativo-dialogue-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="strativo-dialogue-card" id="strativo-dialogue-card">
+            <div class="strativo-dialogue-header">
+                <div class="strativo-speaker-avatar" id="strativo-speaker-avatar">
+                    <i class="fas fa-user-tie" id="strativo-speaker-icon"></i>
+                </div>
+                <div class="strativo-speaker-meta">
+                    <h3 class="strativo-speaker-name" id="strativo-speaker-name">Speaker Name</h3>
+                    <span class="strativo-speaker-role" id="strativo-speaker-role">District Instructor</span>
+                </div>
+                <button type="button" class="strativo-dialogue-close-btn" id="strativo-dialogue-close-btn" aria-label="Close Dialogue">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="strativo-dialogue-body">
+                <p class="strativo-dialogue-text" id="strativo-dialogue-text">Dialogue text...</p>
+            </div>
+            <div class="strativo-dialogue-actions" id="strativo-dialogue-actions">
+                <button type="button" class="cd-btn cd-btn-cyan" onclick="window.StrativoRPG.closeAllModals()">Close [Space]</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         SCRIPTS: RPG CORE ENGINE + CHART ENGINES + CONTROLLER
+         ==================================================================== -->
+    <script src="../js/settings/world-settings.js"></script>
+    <script src="../js/settings/haptics.js"></script>
+    <script src="../js/audio/audio-manager.js"></script>
+    <script src="../js/core/world-state.js"></script>
+    <script src="../js/core/world-xp-engine.js"></script>
+    <script src="../js/rpg/collision.js"></script>
+    <script src="../js/rpg/input.js"></script>
+    <script src="../js/rpg/camera.js"></script>
+    <script src="../js/rpg/player.js"></script>
+    <script src="../js/rpg/world.js"></script>
+    <script src="../js/rpg/rpg-core.js"></script>
+    <script src="../js/rpg/dialogue.js"></script>
+    <script src="../js/rpg/npc.js"></script>
+    <script src="../js/rpg/missions.js"></script>
+
+    <!-- Chart District Engines -->
+    <script src="../js/chart/chart-replay-engine.js"></script>
+    <script src="../js/chart/chart-annotation-engine.js"></script>
+    <script src="../js/chart/chart-scenario-engine.js"></script>
+    <script src="../js/districts/chart-district.js"></script>
+
+    <!-- Main Controller -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const canvas = document.getElementById("chart-district-canvas");
+            const miniCanvas = document.getElementById("cd-minimap-canvas");
+
+            // Initialize Game World synchronously
+            const world = new window.StrativoRPG.ChartDistrictWorld();
+            const player = new window.StrativoRPG.Player({ x: 1600, y: 1350 });
+            const camera = new window.StrativoRPG.Camera(canvas.width || 1280, canvas.height || 720);
+            camera.setWorldBounds({ x: 0, y: 0, width: world.width, height: world.height });
+            camera.follow(player, true);
+
+            const input = new window.StrativoRPG.InputManager({ container: document.getElementById("cd-viewport-wrapper") });
+            input.attach();
+
+            window.StrativoRPG.gameCore = { world, player, camera, input };
+
+            // Instantiate Replay & Annotation Engines
+            const replayEngine = new window.StrativoRPG.ChartReplayEngine({
+                scenarios: window.StrativoRPG.ChartScenarioEngine.pools.replay_lab
+            });
+            window.StrativoRPG.activeReplayEngine = replayEngine;
+
+            const annotationEngine = new window.StrativoRPG.ChartAnnotationEngine();
+            window.StrativoRPG.activeAnnotationEngine = annotationEngine;
+
+            // Resize Handler
+            function resizeCanvas() {
+                canvas.width = window.innerWidth || 1280;
+                canvas.height = window.innerHeight || 720;
+                camera.viewportWidth = canvas.width;
+                camera.viewportHeight = canvas.height;
+                camera.clamp();
+            }
+            window.addEventListener("resize", resizeCanvas);
+            resizeCanvas();
+
+            // Modal Status Query Helper
+            function hasActiveModal() {
+                if (window.StrativoRPG && window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                    return true;
+                }
+                const activeEl = document.querySelector(".cd-modal-backdrop.active, .cd-arena-overlay.active, .strativo-dialogue-overlay.active, [role='dialog'][aria-modal='true'].active");
+                if (activeEl && window.getComputedStyle(activeEl).display !== "none") return true;
+                const annotBackdrop = document.getElementById("annot-modal-backdrop");
+                if (annotBackdrop && annotBackdrop.style.display !== "none" && window.getComputedStyle(annotBackdrop).display !== "none") return true;
+                const challengeBackdrop = document.getElementById("challenge-modal-backdrop");
+                if (challengeBackdrop && challengeBackdrop.style.display !== "none" && window.getComputedStyle(challengeBackdrop).display !== "none") return true;
+                const briefingBackdrop = document.getElementById("briefing-modal-backdrop");
+                if (briefingBackdrop && briefingBackdrop.style.display !== "none" && window.getComputedStyle(briefingBackdrop).display !== "none") return true;
+                return false;
+            }
+            window.hasActiveModal = hasActiveModal;
+            window.StrativoRPG.hasActiveModal = hasActiveModal;
+
+            // Main Game Loop
+            let lastTime = performance.now();
+            function gameLoop(now) {
+                try {
+                    const dt = Math.min(0.1, (now - lastTime) / 1000);
+                    lastTime = now;
+
+                    const isModalActive = hasActiveModal();
+                    if (isModalActive) {
+                        if (input && typeof input.reset === "function") input.reset();
+                        player.update(dt, { x: 0, y: 0, isMoving: false }, null, { width: world.width, height: world.height });
+                    } else {
+                        const moveVec = input.getMovementVector();
+                        player.update(dt, moveVec, null, { width: world.width, height: world.height });
+                    }
+
+                    camera.update(dt);
+                    world.update(dt);
+
+                    const ctx = canvas.getContext("2d");
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.save();
+                    ctx.translate(-camera.x, -camera.y);
+                    world.render(ctx, camera);
+                    player.render(ctx);
+                    ctx.restore();
+
+                    renderMiniMap();
+                } catch (e) {
+                    window.__loopError__ = (e && e.message ? e.message : String(e)) + "\n" + (e && e.stack ? e.stack : "");
+                    console.error("GameLoop error:", e);
+                }
+                requestAnimationFrame(gameLoop);
+            }
+            gameLoop(performance.now());
+
+            // Fetch Datasets in background and update scenario pools
+            (async () => {
+                try {
+                    const [scenRes, repRes, annRes, mtfRes] = await Promise.all([
+                        fetch("../data/chart-district-scenarios.json").then(r => r.json()).catch(() => ({})),
+                        fetch("../data/chart-district-replay.json").then(r => r.json()).catch(() => ({})),
+                        fetch("../data/chart-district-annotations.json").then(r => r.json()).catch(() => ({})),
+                        fetch("../data/chart-district-timeframes.json").then(r => r.json()).catch(() => ({}))
+                    ]);
+
+                    window.StrativoRPG.ChartScenarioEngine.init({
+                        scenarios: scenRes.scenarios || [],
+                        replays: repRes.replays || [],
+                        annotations: annRes.challenges || [],
+                        timeframes: mtfRes.scenarios || []
+                    });
+
+                    if (window.StrativoRPG.ChartScenarioEngine.pools.replay_lab.length > 0) {
+                        replayEngine.scenarios = window.StrativoRPG.ChartScenarioEngine.pools.replay_lab;
+                        replayEngine.loadScenario(0);
+                    }
+                } catch (err) {
+                    console.warn("Dataset loading notice:", err);
+                }
+            })();
+
+            // Mini-Map Render Loop
+            function renderMiniMap() {
+                if (!miniCanvas) return;
+                const mctx = miniCanvas.getContext("2d");
+                mctx.fillStyle = "#030712";
+                mctx.fillRect(0, 0, miniCanvas.width, miniCanvas.height);
+
+                const scaleX = miniCanvas.width / world.width;
+                const scaleY = miniCanvas.height / world.height;
+
+                // Quarters
+                (world.mapConfig.quarters || []).forEach(q => {
+                    mctx.fillStyle = q.color + "45";
+                    mctx.fillRect(q.bounds.x * scaleX, q.bounds.y * scaleY, q.bounds.w * scaleX, q.bounds.h * scaleY);
+                    mctx.strokeStyle = q.color + "90";
+                    mctx.lineWidth = 1;
+                    mctx.strokeRect(q.bounds.x * scaleX, q.bounds.y * scaleY, q.bounds.w * scaleX, q.bounds.h * scaleY);
+                });
+
+                // Buildings
+                (world.mapConfig.buildings || []).forEach(b => {
+                    mctx.fillStyle = b.themeColor || "#3B82F6";
+                    mctx.fillRect(b.x * scaleX, b.y * scaleY, b.w * scaleX, b.h * scaleY);
+                });
+
+                // Player Dot with Pulsing Radar Effect
+                mctx.fillStyle = "#00F0FF";
+                mctx.shadowColor = "#00F0FF";
+                mctx.shadowBlur = 6;
+                mctx.beginPath();
+                mctx.arc(player.x * scaleX, player.y * scaleY, 4, 0, Math.PI * 2);
+                mctx.fill();
+                mctx.shadowBlur = 0;
+            }
+
+            // Keyboard and Touch Actions
+            window.addEventListener("keydown", (e) => {
+                if (e.code === "KeyE" || e.code === "Space") {
+                    if (hasActiveModal()) {
+                        if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                            window.StrativoRPG.DialogueManager.closeDialogue();
+                        }
+                    } else {
+                        world.interact();
+                    }
+                } else if (e.code === "Escape") {
+                    closeAllModals();
+                } else if (e.code === "KeyM") {
+                    if (!hasActiveModal()) {
+                        const mm = document.getElementById("cd-minimap");
+                        if (mm) mm.style.display = mm.style.display === "none" ? "block" : "none";
+                    }
+                }
+            });
+
+            const mobileBtn = document.getElementById("cd-mobile-action");
+            if (mobileBtn) {
+                mobileBtn.addEventListener("click", () => {
+                    if (hasActiveModal()) {
+                        if (window.StrativoRPG.DialogueManager && window.StrativoRPG.DialogueManager.isOpen) {
+                            window.StrativoRPG.DialogueManager.closeDialogue();
+                        }
+                    } else {
+                        world.interact();
+                    }
+                });
+            }
+
+            // HUD XP Sync
+            function syncXP() {
+                const xpVal = document.getElementById("hud-xp-val");
+                if (xpVal && window.StrativoWorldXPEngine) {
+                    xpVal.textContent = window.StrativoWorldXPEngine.getXP();
+                }
+            }
+            setInterval(syncXP, 1000);
+            syncXP();
+
+            // Modal Handlers & Auto-Progression Controller
+            const activeTimers = {};
+            function clearTimer(p) { if (activeTimers[p]) { clearTimeout(activeTimers[p]); activeTimers[p] = null; } }
+            function clearAllTimers() { Object.keys(activeTimers).forEach(clearTimer); }
+
+            function closeAllModals() {
+                clearAllTimers();
+                document.querySelectorAll(".cd-modal-backdrop, .cd-arena-overlay, .strativo-dialogue-overlay").forEach(m => {
+                    m.classList.remove("active");
+                    m.setAttribute("aria-hidden", "true");
+                });
+                if (window.StrativoRPG.DialogueManager && typeof window.StrativoRPG.DialogueManager.closeDialogue === "function") {
+                    window.StrativoRPG.DialogueManager.closeDialogue();
+                }
+                if (replayEngine) replayEngine.pause();
+                if (annotationEngine) annotationEngine.reset();
+                if (input && typeof input.reset === "function") input.reset();
+                if (document.activeElement && typeof document.activeElement.blur === "function") document.activeElement.blur();
+                if (canvas && typeof canvas.focus === "function") canvas.focus();
+            }
+            window.closeAllModals = closeAllModals;
+            window.StrativoRPG.closeAllModals = closeAllModals;
+
+            function renderGenericQuestionCard(prefix, q, onAnswerCallback, refreshFn) {
+                clearTimer(prefix);
+                const textEl = document.getElementById(`${prefix}-q-text`);
+                const gridEl = document.getElementById(`${prefix}-options-grid`);
+                const fbEl = document.getElementById(`${prefix}-feedback-box`);
+                const skipBtn = document.getElementById(`${prefix}-skip-btn`);
+
+                if (!q || !textEl || !gridEl) return;
+                textEl.textContent = q.questionText;
+                if (fbEl) { fbEl.style.display = "none"; fbEl.innerHTML = ""; }
+                if (skipBtn) {
+                    skipBtn.innerHTML = '<i class="fas fa-sync"></i> New Scenario';
+                    skipBtn.onclick = () => { clearTimer(prefix); if (refreshFn) refreshFn(); };
+                }
+                gridEl.innerHTML = "";
+
+                let answered = false;
+                (q.options || []).forEach(opt => {
+                    const optText = typeof opt === "string" ? opt : (opt.text || opt.label || "");
+                    const btn = document.createElement("button");
+                    btn.className = "cd-btn";
+                    btn.textContent = optText;
+
+                    btn.onclick = () => {
+                        if (answered) return;
+                        answered = true;
+                        Array.from(gridEl.children).forEach(c => c.disabled = true);
+
+                        const isCorrect = optText === q.correctAnswer || (opt && opt.isCorrect);
+                        if (isCorrect) {
+                            btn.className = "cd-btn cd-btn-emerald";
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.style.background = "rgba(16, 185, 129, 0.15)";
+                                fbEl.style.border = "1px solid #10B981";
+                                fbEl.style.color = "#A7F3D0";
+                                fbEl.innerHTML = `<div><i class="fas fa-check-circle" style="color: #10B981; margin-right: 0.4rem;"></i> <strong>CORRECT!</strong> ${q.explanation}</div>`;
+                            }
+                            window.StrativoRPG.emitGameEvent("correctHit");
+                            if (window.StrativoWorldXPEngine) {
+                                window.StrativoWorldXPEngine.addWorldXP(15, `Chart Reading: ${q.category || "Structure"}`, `q_${q.id}_${Date.now()}`);
+                            }
+                        } else {
+                            btn.className = "cd-btn cd-btn-rose";
+                            if (fbEl) {
+                                fbEl.style.display = "block";
+                                fbEl.style.background = "rgba(244, 63, 94, 0.15)";
+                                fbEl.style.border = "1px solid #F43F5E";
+                                fbEl.style.color = "#FECDD3";
+                                fbEl.innerHTML = `<div><i class="fas fa-times-circle" style="color: #F43F5E; margin-right: 0.4rem;"></i> <strong>INCORRECT.</strong> Correct: <em>${q.correctAnswer}</em>. ${q.explanation}</div>`;
+                            }
+                            window.StrativoRPG.emitGameEvent("wrongHit");
+                        }
+
+                        if (skipBtn) skipBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Next Scenario';
+
+                        if (fbEl && refreshFn) {
+                            const nextBtn = document.createElement("button");
+                            nextBtn.type = "button";
+                            nextBtn.className = "cd-btn cd-btn-cyan";
+                            nextBtn.style.marginTop = "0.75rem";
+                            nextBtn.style.width = "100%";
+                            nextBtn.innerHTML = '<i class="fas fa-forward"></i> Next Scenario';
+                            nextBtn.onclick = () => { clearTimer(prefix); refreshFn(); };
+                            fbEl.appendChild(nextBtn);
+                        }
+
+                        if (onAnswerCallback) onAnswerCallback(isCorrect, q);
+                        if (refreshFn) activeTimers[prefix] = setTimeout(refreshFn, 3500);
+                    };
+                    gridEl.appendChild(btn);
+                });
+            }
+
+            // Expose Facility Openers
+            window.StrativoRPG.openAcademyModal = (tab = "fund") => {
+                closeAllModals();
+                document.getElementById("cd-academy-modal").classList.add("active");
+                refreshAcademyQuestion(tab);
+            };
+
+            function refreshAcademyQuestion(tab = null) {
+                const q = window.StrativoRPG.ChartScenarioEngine.getQuestion("chart_academy", tab);
+                renderGenericQuestionCard("acad", q, null, () => refreshAcademyQuestion(tab));
+            }
+            window.refreshAcademyQuestion = refreshAcademyQuestion;
+
+            window.StrativoRPG.openReplayModal = (tab = "trend") => {
+                closeAllModals();
+                document.getElementById("cd-replay-modal").classList.add("active");
+                const rCanvas = document.getElementById("replay-canvas");
+                replayEngine.render(rCanvas);
+                replayEngine.onStateChangeCallback = () => {
+                    replayEngine.render(rCanvas);
+                    const prog = document.getElementById("replay-progress-text");
+                    if (prog && replayEngine.activeScenario) {
+                        prog.textContent = `Candle ${replayEngine.currentCandleIndex} / ${replayEngine.activeScenario.candles.length}`;
+                    }
+                };
+                refreshReplayQuestion();
+            };
+
+            function refreshReplayQuestion() {
+                const scen = replayEngine.activeScenario;
+                if (scen) {
+                    renderGenericQuestionCard("replay", scen, null, () => {
+                        replayEngine.nextScenario();
+                        refreshReplayQuestion();
+                    });
+                }
+            }
+
+            document.getElementById("replay-btn-play").onclick = () => replayEngine.play();
+            document.getElementById("replay-btn-pause").onclick = () => replayEngine.pause();
+            document.getElementById("replay-btn-step-fwd").onclick = () => replayEngine.stepForward();
+            document.getElementById("replay-btn-step-back").onclick = () => replayEngine.stepBack();
+            document.getElementById("replay-btn-reset").onclick = () => replayEngine.reset();
+            document.getElementById("replay-btn-reveal").onclick = () => replayEngine.reveal();
+            document.getElementById("replay-btn-next-scen").onclick = () => {
+                replayEngine.nextScenario();
+                refreshReplayQuestion();
+            };
+
+            window.StrativoRPG.openAnalysisModal = () => {
+                closeAllModals();
+                document.getElementById("cd-analysis-modal").classList.add("active");
+                refreshAnalysisQuestion();
+            };
+
+            function refreshAnalysisQuestion() {
+                const q = window.StrativoRPG.ChartScenarioEngine.getQuestion("analysis_lab");
+                if (q && q.candles) {
+                    const cv = document.getElementById("analysis-canvas");
+                    renderStaticCandleChart(cv, q.candles);
+                }
+                renderGenericQuestionCard("analysis", q, null, refreshAnalysisQuestion);
+            }
+            window.refreshAnalysisQuestion = refreshAnalysisQuestion;
+
+            window.StrativoRPG.openDetectiveModal = () => {
+                closeAllModals();
+                document.getElementById("cd-detective-modal").classList.add("active");
+                refreshDetectiveQuestion();
+            };
+
+            function refreshDetectiveQuestion() {
+                const q = window.StrativoRPG.ChartScenarioEngine.getQuestion("detective_lab");
+                if (q && q.partialCandles) {
+                    const cv = document.getElementById("detective-canvas");
+                    renderStaticCandleChart(cv, q.partialCandles);
+                }
+                renderGenericQuestionCard("detective", q, null, refreshDetectiveQuestion);
+            }
+            window.refreshDetectiveQuestion = refreshDetectiveQuestion;
+
+            function updatePaletteActiveUI(activeTool) {
+                const map = {
+                    "SWING_HIGH": "tool-btn-sh",
+                    "SWING_LOW": "tool-btn-sl",
+                    "SUPPORT_ZONE": "tool-btn-supp",
+                    "RESISTANCE_ZONE": "tool-btn-res",
+                    "TRENDLINE": "tool-btn-tl"
+                };
+                ["tool-btn-sh", "tool-btn-sl", "tool-btn-supp", "tool-btn-res", "tool-btn-tl"].forEach(id => {
+                    const btn = document.getElementById(id);
+                    if (btn) btn.classList.remove("cd-btn-cyan", "cd-btn-amber", "cd-btn-emerald", "cd-btn-rose");
+                });
+                const targetId = map[activeTool];
+                const targetBtn = document.getElementById(targetId);
+                if (targetBtn) {
+                    if (activeTool === "SWING_HIGH") targetBtn.classList.add("cd-btn-cyan");
+                    else if (activeTool === "SWING_LOW") targetBtn.classList.add("cd-btn-amber");
+                    else if (activeTool === "SUPPORT_ZONE") targetBtn.classList.add("cd-btn-emerald");
+                    else if (activeTool === "RESISTANCE_ZONE") targetBtn.classList.add("cd-btn-rose");
+                    else if (activeTool === "TRENDLINE") targetBtn.classList.add("cd-btn-cyan");
+                }
+            }
+
+            window.StrativoRPG.openAnnotationModal = () => {
+                closeAllModals();
+                document.getElementById("cd-annotation-modal").classList.add("active");
+                const annCanvas = document.getElementById("annotation-canvas");
+                annotationEngine.attachCanvas(annCanvas);
+                refreshAnnotationChallenge();
+            };
+
+            function refreshAnnotationChallenge() {
+                const fb = document.getElementById("annot-feedback-box");
+                if (fb) {
+                    fb.style.display = "none";
+                    fb.innerHTML = "";
+                    fb.className = "cd-feedback-box";
+                }
+                const ch = window.StrativoRPG.ChartScenarioEngine.getQuestion("annotation_lab");
+                if (ch) {
+                    annotationEngine.loadChallenge(ch);
+                    const instEl = document.getElementById("annot-instruction-text");
+                    if (instEl) instEl.textContent = ch.instruction || "Place target marker on key structural point.";
+                    updatePaletteActiveUI(annotationEngine.activeTool);
+                }
+            }
+            window.refreshAnnotationChallenge = refreshAnnotationChallenge;
+            window.setAnnotationTool = (t) => {
+                annotationEngine.setTool(t);
+                updatePaletteActiveUI(t);
+            };
+            window.clearAnnotations = () => {
+                annotationEngine.clear();
+                const fb = document.getElementById("annot-feedback-box");
+                if (fb) {
+                    fb.style.display = "none";
+                    fb.innerHTML = "";
+                }
+            };
+            window.checkAnnotations = () => {
+                const res = annotationEngine.checkAccuracy();
+                const fb = document.getElementById("annot-feedback-box");
+                if (fb) {
+                    fb.style.display = "block";
+                    fb.style.background = res.isCorrect ? "rgba(16, 185, 129, 0.15)" : "rgba(244, 63, 94, 0.15)";
+                    fb.style.border = res.isCorrect ? "1px solid #10B981" : "1px solid #F43F5E";
+                    fb.style.color = res.isCorrect ? "#A7F3D0" : "#FECDD3";
+                    fb.innerHTML = `<strong>${res.isCorrect ? "CORRECT!" : "INCORRECT."}</strong> ${res.message}`;
+                }
+            };
+
+            window.StrativoRPG.openTacticalBriefingModal = () => {
+                if (window.StrativoRPG.DialogueManager) {
+                    window.StrativoRPG.DialogueManager.startDialogue({
+                        speaker: "Strategic Sector Briefing",
+                        role: "District Operations Directorate",
+                        avatarIcon: "fa-compass",
+                        themeColor: "#3B82F6",
+                        text: "Tactical Sector Briefing: Chart District is divided into 8 Sectors.<br><br>• <strong>School Quarter:</strong> Complete Chart Literacy & Swings<br>• <strong>Replay Quarter:</strong> Bar-by-Bar Development Labs<br>• <strong>Analysis Quarter:</strong> Full Structural Diagnosis & Detective Mysteries<br>• <strong>Annotation Quarter:</strong> Precision Levels, Zones & Trendlines<br>• <strong>Timeframe Quarter:</strong> Macro/Micro Synchronization & Comparisons<br>• <strong>Chart Arena:</strong> 10-Round Fast Regime Recognition<br>• <strong>Apex Citadel:</strong> Grand Boss Chart Evaluation"
+                    });
+                }
+            };
+
+            window.StrativoRPG.openTimeframeModal = () => {
+                closeAllModals();
+                document.getElementById("cd-timeframe-modal").classList.add("active");
+                refreshTimeframeQuestion();
+            };
+
+            function refreshTimeframeQuestion() {
+                const q = window.StrativoRPG.ChartScenarioEngine.getQuestion("timeframe_observatory");
+                if (q && q.htf && q.ltf) {
+                    renderStaticCandleChart(document.getElementById("htf-canvas"), q.htf.candles);
+                    renderStaticCandleChart(document.getElementById("ltf-canvas"), q.ltf.candles);
+                }
+                renderGenericQuestionCard("timeframe", q, null, refreshTimeframeQuestion);
+            }
+            window.refreshTimeframeQuestion = refreshTimeframeQuestion;
+
+            window.StrativoRPG.openComparisonModal = () => {
+                closeAllModals();
+                document.getElementById("cd-comparison-modal").classList.add("active");
+                refreshComparisonQuestion();
+            };
+
+            function refreshComparisonQuestion() {
+                const q = window.StrativoRPG.ChartScenarioEngine.getQuestion("comparison_room");
+                if (q && q.chartA && q.chartB) {
+                    renderStaticCandleChart(document.getElementById("comp-canvas-a"), q.chartA.candles);
+                    renderStaticCandleChart(document.getElementById("comp-canvas-b"), q.chartB.candles);
+                }
+                renderGenericQuestionCard("comparison", q, null, refreshComparisonQuestion);
+            }
+            window.refreshComparisonQuestion = refreshComparisonQuestion;
+
+            window.StrativoRPG.openMuseumModal = () => {
+                closeAllModals();
+                document.getElementById("cd-museum-modal").classList.add("active");
+                nextMuseumExhibit();
+            };
+
+            let museumIdx = 0;
+            window.nextMuseumExhibit = () => {
+                const pool = window.StrativoRPG.ChartScenarioEngine.pools.analysis_lab || [];
+                if (pool.length === 0) return;
+                museumIdx = (museumIdx + 1) % pool.length;
+                const sc = pool[museumIdx];
+                renderStaticCandleChart(document.getElementById("museum-canvas"), sc.candles);
+                document.getElementById("museum-formation-title").textContent = sc.title;
+                document.getElementById("museum-desc").textContent = sc.explanation;
+            };
+
+            window.StrativoRPG.openTheaterModal = () => {
+                closeAllModals();
+                document.getElementById("cd-theater-modal").classList.add("active");
+                refreshTheaterScenario();
+            };
+
+            function refreshTheaterScenario() {
+                const q = window.StrativoRPG.ChartScenarioEngine.getQuestion("chart_theater");
+                if (q && q.candles) {
+                    renderStaticCandleChart(document.getElementById("theater-canvas"), q.candles);
+                    document.getElementById("theater-title").textContent = q.title;
+                }
+                renderGenericQuestionCard("theater", q, null, refreshTheaterScenario);
+            }
+            window.refreshTheaterScenario = refreshTheaterScenario;
+
+            window.StrativoRPG.openHistoryModal = () => {
+                closeAllModals();
+                document.getElementById("cd-history-modal").classList.add("active");
+                setHistoryPhase(1);
+            };
+
+            let activeHistoryCandles = [];
+            window.setHistoryPhase = (phase) => {
+                const pool = window.StrativoRPG.ChartScenarioEngine.pools.analysis_lab || [];
+                if (pool.length === 0) return;
+                activeHistoryCandles = pool[0].candles;
+                const count = Math.max(3, Math.floor((phase / 4) * activeHistoryCandles.length));
+                renderStaticCandleChart(document.getElementById("history-canvas"), activeHistoryCandles.slice(0, count));
+                const descs = [
+                    "Phase 1: Earlier Consolidation — Market established baseline range and initial liquidity.",
+                    "Phase 2: Development — Pressure building towards the key breakout level.",
+                    "Phase 3: The Event — High-volume expansion breaks beyond structural resistance.",
+                    "Phase 4: Aftermath — Retest confirms the breakout and market expands higher."
+                ];
+                document.getElementById("history-phase-desc").textContent = descs[phase - 1];
+            };
+
+            window.StrativoRPG.openBossModal = () => {
+                closeAllModals();
+                document.getElementById("cd-boss-modal").classList.add("active");
+                refreshBossScenario();
+            };
+
+            function refreshBossScenario() {
+                const q = window.StrativoRPG.ChartScenarioEngine.getQuestion("full_chart_boss");
+                if (q && q.candles) {
+                    renderStaticCandleChart(document.getElementById("boss-canvas"), q.candles);
+                }
+                renderGenericQuestionCard("boss", q, null, refreshBossScenario);
+            }
+            window.refreshBossScenario = refreshBossScenario;
+
+            // Chart Arena Gauntlet Controller
+            let arenaRound = 1;
+            let arenaScore = 0;
+            let arenaCombo = 0;
+            window.StrativoRPG.launchChartArena = () => {
+                closeAllModals();
+                document.getElementById("cd-arena-overlay").classList.add("active");
+                arenaRound = 1;
+                arenaScore = 0;
+                arenaCombo = 0;
+                updateArenaRound();
+            };
+
+            function updateArenaRound() {
+                if (arenaRound > 10) {
+                    finishArenaMatch();
+                    return;
+                }
+                document.getElementById("arena-round-badge").textContent = `ROUND ${arenaRound} / 10`;
+                document.getElementById("arena-score-val").textContent = arenaScore;
+                document.getElementById("arena-combo-val").textContent = `${arenaCombo}x`;
+
+                const q = window.StrativoRPG.ChartScenarioEngine.getQuestion("chart_arena");
+                if (q && q.candles) {
+                    renderStaticCandleChart(document.getElementById("arena-canvas"), q.candles);
+                }
+                renderGenericQuestionCard("arena", q, (isCorrect) => {
+                    if (isCorrect) {
+                        arenaCombo++;
+                        arenaScore += Math.round(100 * (1 + (arenaCombo - 1) * 0.25));
+                    } else {
+                        arenaCombo = 0;
+                    }
+                    setTimeout(() => {
+                        arenaRound++;
+                        updateArenaRound();
+                    }, 1200);
+                }, null);
+            }
+
+            function finishArenaMatch() {
+                alert(`Chart Arena Completed!\nFinal Score: ${arenaScore} PTS\nAccuracy: High\n+35 World XP Logged!`);
+                if (window.StrativoWorldXPEngine) {
+                    window.StrativoWorldXPEngine.addWorldXP(35, "Chart Arena Mastery", "arena_match_" + Date.now());
+                }
+                closeAllModals();
+            }
+
+            // Static Chart Renderer Helper
+            function renderStaticCandleChart(cv, candles) {
+                if (!cv || !candles || candles.length === 0) return;
+                const ctx = cv.getContext("2d");
+                const w = cv.width, h = cv.height;
+                const pad = { top: 25, right: 55, bottom: 25, left: 10 };
+                const plotW = w - pad.left - pad.right;
+                const plotH = h - pad.top - pad.bottom;
+
+                ctx.fillStyle = "#070F2B";
+                ctx.fillRect(0, 0, w, h);
+
+                let minP = Infinity, maxP = -Infinity;
+                candles.forEach(c => {
+                    if (c.low < minP) minP = c.low;
+                    if (c.high > maxP) maxP = c.high;
+                });
+                const pRange = (maxP - minP) || 0.0010;
+                minP -= pRange * 0.08;
+                maxP += pRange * 0.08;
+                const totRange = maxP - minP;
+
+                function getY(p) { return pad.top + plotH - ((p - minP) / totRange) * plotH; }
+
+                // Grid
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
+                ctx.lineWidth = 1;
+                ctx.font = "9px monospace";
+                ctx.fillStyle = "#64748B";
+                ctx.textAlign = "left";
+                for (let i = 0; i <= 4; i++) {
+                    const p = minP + (totRange / 4) * i;
+                    const y = getY(p);
+                    ctx.beginPath();
+                    ctx.moveTo(pad.left, y);
+                    ctx.lineTo(w - pad.right, y);
+                    ctx.stroke();
+                    ctx.fillText(p.toFixed(4), w - pad.right + 5, y + 3);
+                }
+
+                // Candles
+                const slot = plotW / candles.length;
+                const cw = Math.max(3, Math.min(16, slot * 0.7));
+
+                candles.forEach((c, i) => {
+                    const x = pad.left + i * slot + slot / 2;
+                    const isBull = c.close >= c.open;
+                    const col = isBull ? "#10B981" : "#F43F5E";
+
+                    ctx.strokeStyle = col;
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(x, getY(c.high));
+                    ctx.lineTo(x, getY(c.low));
+                    ctx.stroke();
+
+                    ctx.fillStyle = col;
+                    const yO = getY(c.open);
+                    const yC = getY(c.close);
+                    ctx.fillRect(x - cw / 2, Math.min(yO, yC), cw, Math.max(2, Math.abs(yC - yO)));
+                });
+            }
+
+            // Missions Journal Renderer
+            window.StrativoRPG.openMissionsJournal = () => {
+                closeAllModals();
+                renderMissionsList();
+                document.getElementById("cd-missions-modal").classList.add("active");
+            };
+
+            function renderMissionsList() {
+                const listEl = document.getElementById("cd-missions-list");
+                if (!listEl) return;
+                listEl.innerHTML = "";
+
+                const missions = [
+                    { id: "cd_m01", title: "1. Read Your First Chart", desc: "Complete 1 full examination at Chart Academy." },
+                    { id: "cd_m02", title: "2. Find Three Swings", desc: "Identify 3 confirmed Swing Highs and Swing Lows." },
+                    { id: "cd_m03", title: "3. Classify a Range", desc: "Identify horizontal rangebound consolidation." },
+                    { id: "cd_m04", title: "4. Mark Support & Resistance", desc: "Place precise support & resistance zones in Annotation Lab." },
+                    { id: "cd_m05", title: "5. Analyze a Pullback", desc: "Differentiate healthy pullbacks from trend reversals." },
+                    { id: "cd_m06", title: "6. Identify a Breakout", desc: "Confirm structural breakouts with candle body closures." },
+                    { id: "cd_m07", title: "7. Confirm a Retest", desc: "Spot role reversal / polarity shift on broken levels." },
+                    { id: "cd_m08", title: "8. Compare Two Charts", desc: "Identify structural differences in Chart Comparison Room." },
+                    { id: "cd_m09", title: "9. Analyze Multiple Timeframes", desc: "Synthesize Daily macro trend with 1-Hour local execution." },
+                    { id: "cd_m10", title: "10. Step Through Replay", desc: "Complete 3 full replay scenarios in Replay Lab." },
+                    { id: "cd_m11", title: "11. Chart Arena Gauntlet", desc: "Complete 10-round recognition combat in Chart Arena." },
+                    { id: "cd_m12", title: "12. Complete Boss Analysis", desc: "Master the Grand Citadel Full Chart Analysis." }
+                ];
+
+                missions.forEach(m => {
+                    const card = document.createElement("div");
+                    card.className = "pd-mission-card";
+                    card.innerHTML = `
+                        <div class="pd-mission-top">
+                            <span class="pd-mission-name">${m.title}</span>
+                            <span class="pd-mission-status-pill available">ACTIVE</span>
+                        </div>
+                        <p class="pd-mission-desc">${m.desc}</p>
+                        <div class="pd-mission-reward"><i class="fas fa-gift"></i> +25 World XP</div>
+                    `;
+                    listEl.appendChild(card);
+                });
+            }
+
+            const btnMissions = document.getElementById("btn-open-missions");
+            if (btnMissions) btnMissions.onclick = window.StrativoRPG.openMissionsJournal;
+
+            const btnMapToggle = document.getElementById("btn-toggle-minimap");
+            if (btnMapToggle) btnMapToggle.onclick = () => {
+                const mm = document.getElementById("cd-minimap");
+                if (mm) mm.style.display = mm.style.display === "none" ? "block" : "none";
+            };
+        });
+    </script>
+</body>
+</html>

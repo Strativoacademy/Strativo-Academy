@@ -1,0 +1,246 @@
+{
+  "version": "1.0.0",
+  "district": "market-arena",
+  "missions": [
+    {
+      "id": "read_the_structure",
+      "title": "Read the Structure",
+      "giver": "mentor_market",
+      "giverName": "Market Mentor",
+      "description": "Complete 3 basic Higher High (HH), Higher Low (HL), Lower High (LH), and Lower Low (LL) swing challenges in the Market Academy or Structure Observatory.",
+      "category": "structure",
+      "objective": {
+        "type": "structure_swings",
+        "target": 3,
+        "label": "Swings Identified"
+      },
+      "reward": {
+        "xp": 25,
+        "masteryBoost": 6,
+        "title": "Structure Scout"
+      },
+      "dialogue": {
+        "offered": "Welcome to Market Arena! An isolated candlestick tells you almost nothing. You must look at swing points—Higher Highs and Higher Lows. Head to the Academy or Observatory and identify 3 swing formations.",
+        "in_progress": "Observe how each peak and trough relates to the previous one. Complete 3 swing identification drills.",
+        "ready_to_claim": "Superb eye! You've learned to mark swing points accurately across developing price movements. Claim your World XP!",
+        "completed": "You have mastered foundational swing identification. Talk to Structure Analyst next to interpret trending sequences."
+      }
+    },
+    {
+      "id": "find_the_trend",
+      "title": "Find the Trend",
+      "giver": "analyst_structure",
+      "giverName": "Structure Analyst",
+      "description": "Correctly classify 5 simulated market environments as Uptrend, Downtrend, or Sideways in the Trend Stadium.",
+      "category": "trend",
+      "objective": {
+        "type": "trend_classification",
+        "target": 5,
+        "label": "Trends Classified"
+      },
+      "reward": {
+        "xp": 30,
+        "masteryBoost": 8,
+        "title": "Trend Scout"
+      },
+      "dialogue": {
+        "offered": "Market condition dictates trading strategy. Enter the Trend Stadium and classify 5 market environments correctly: Uptrends (HH+HL), Downtrends (LH+LL), and Sideways consolidation.",
+        "in_progress": "Inspect the scenario chambers in Trend Stadium. Reach 5 accurate trend classifications.",
+        "ready_to_claim": "Outstanding analytical accuracy! You can instantly spot whether a market is trending or consolidating. Claim your reward!",
+        "completed": "Trend direction verified. Always align your directional bias with dominant market structure."
+      }
+    },
+    {
+      "id": "structure_sequence",
+      "title": "Structure Sequence",
+      "giver": "analyst_structure",
+      "giverName": "Structure Analyst",
+      "description": "Complete 5 structure-sequence challenges in the Structure Lab.",
+      "category": "sequence",
+      "objective": {
+        "type": "structure_sequence",
+        "target": 5,
+        "label": "Sequences Solved"
+      },
+      "reward": {
+        "xp": 35,
+        "masteryBoost": 10,
+        "title": "Sequence Specialist"
+      },
+      "dialogue": {
+        "offered": "Price moves in structured waves. In the Structure Lab, decode 5 sequences such as HH -> HL -> HH -> HL or LH -> LL -> LH -> LL to determine when a trend continues or shifts.",
+        "in_progress": "Continue solving sequence chains in the Structure Lab. Reach 5 verified solutions.",
+        "ready_to_claim": "Sequence mastery confirmed! You understand how consecutive swing points construct macro trends.",
+        "completed": "You have mastered multi-wave structure sequences. Keep watching for structural breaks."
+      }
+    },
+    {
+      "id": "range_detector",
+      "title": "Range Detector",
+      "giver": "analyst_structure",
+      "giverName": "Structure Analyst",
+      "description": "Correctly identify 5 simulated range and consolidation environments.",
+      "category": "range",
+      "objective": {
+        "type": "range_recognition",
+        "target": 5,
+        "label": "Ranges Detected"
+      },
+      "reward": {
+        "xp": 30,
+        "masteryBoost": 8,
+        "title": "Range Specialist"
+      },
+      "dialogue": {
+        "offered": "Markets spend over 70% of their time consolidating between support and resistance boundaries without establishing new highs or lows. Identify 5 range structures.",
+        "in_progress": "Look for equal highs and equal lows where neither buyers nor sellers can push price into new territory.",
+        "ready_to_claim": "Range recognition verified! You won't get trapped looking for a trend in a consolidating market.",
+        "completed": "Range detection complete! You know when to wait for a breakout rather than forcing trend trades."
+      }
+    },
+    {
+      "id": "breakout_test",
+      "title": "Breakout Test",
+      "giver": "coach_breakout",
+      "giverName": "Breakout Coach",
+      "description": "Complete 5 simulated breakout and rejection scenarios in the Breakout / Fakeout Zone.",
+      "category": "breakout",
+      "objective": {
+        "type": "breakout_scenarios",
+        "target": 5,
+        "label": "Breakouts Solved"
+      },
+      "reward": {
+        "xp": 35,
+        "masteryBoost": 10,
+        "title": "Breakout Analyst"
+      },
+      "dialogue": {
+        "offered": "When price approaches key structural boundaries, it either breaks out with sustained volume or rejects violently. Enter the Breakout Zone and solve 5 boundary scenarios.",
+        "in_progress": "Analyze the candle closes outside key structural levels in the Breakout Zone. Reach 5 confirmed outcomes.",
+        "ready_to_claim": "Breakout verification complete! You understand confirmation versus immediate rejection.",
+        "completed": "Never chase a breakout without waiting for structural confirmation."
+      }
+    },
+    {
+      "id": "fakeout_hunter",
+      "title": "Fakeout Hunter",
+      "giver": "coach_breakout",
+      "giverName": "Breakout Coach",
+      "description": "Complete 5 fakeout recognition scenarios to master liquidity traps and false breakouts.",
+      "category": "fakeout",
+      "objective": {
+        "type": "fakeout_scenarios",
+        "target": 5,
+        "label": "Fakeouts Detected"
+      },
+      "reward": {
+        "xp": 40,
+        "masteryBoost": 12,
+        "title": "Trap Detector"
+      },
+      "dialogue": {
+        "offered": "The most dangerous price action is the fakeout—a candle wick spikes past a structural high only to immediately collapse back into the range. Spot 5 fakeout traps in the Breakout Zone.",
+        "in_progress": "Detect false breakouts where wicks pierce key levels but body closes fail to follow through.",
+        "ready_to_claim": "Trap detection verified! You have developed the patience to avoid chasing false breakouts.",
+        "completed": "You are a certified Fakeout Hunter! You know how to identify liquidity grabs."
+      }
+    },
+    {
+      "id": "chart_theater",
+      "title": "Chart Theater",
+      "giver": "coach_breakout",
+      "giverName": "Breakout Coach",
+      "description": "Complete one sequential playback session in the Chart Theater with pause, identification, and reveal.",
+      "category": "theater",
+      "objective": {
+        "type": "chart_theater_complete",
+        "target": 1,
+        "label": "Theater Session Complete"
+      },
+      "reward": {
+        "xp": 30,
+        "masteryBoost": 8,
+        "title": "Theater Scholar"
+      },
+      "dialogue": {
+        "offered": "Step into the Chart Theater in the southwest quarter. Watch candles develop live, pause at the critical structural inflection point, identify the market state, and reveal historical confirmation.",
+        "in_progress": "Enter the Chart Theater pavilion and complete a full sequential playback scenario.",
+        "ready_to_claim": "Theater session completed! Experiencing structure develop in real-time builds true market instincts.",
+        "completed": "Chart Theater logged! Revisit anytime to observe diverse market scenarios unfold."
+      }
+    },
+    {
+      "id": "market_blitz",
+      "title": "Market Blitz",
+      "giver": "coordinator_market",
+      "giverName": "Mission Coordinator",
+      "description": "Complete one full 10-round match in the Market Blitz Arena under countdown pressure.",
+      "category": "arena",
+      "objective": {
+        "type": "market_blitz_complete",
+        "target": 1,
+        "label": "Blitz Matches Completed"
+      },
+      "reward": {
+        "xp": 35,
+        "masteryBoost": 10,
+        "title": "Market Tactician"
+      },
+      "dialogue": {
+        "offered": "Put your market structure reflexes to the test! Step into the Market Blitz Arena in the northeast sector and clear all 10 procedural rounds.",
+        "in_progress": "The Market Blitz Arena awaits. Complete all 10 rounds of Swings, Trends, Sequences, Breakouts, and Fakeouts.",
+        "ready_to_claim": "Match finished! You maintained rapid precision across all 10 procedural rounds. Claim your reward!",
+        "completed": "Blitz match logged! Replay anytime to push your combo multiplier and Market Structure Mastery to 100%."
+      }
+    },
+    {
+      "id": "city_explorer_market",
+      "title": "City Explorer",
+      "giver": "coordinator_market",
+      "giverName": "Mission Coordinator",
+      "description": "Physically navigate Market Arena and interact with 6 unique facilities, observatories, and arenas.",
+      "category": "exploration",
+      "objective": {
+        "type": "interact_locations",
+        "target": 6,
+        "label": "Facilities Visited"
+      },
+      "reward": {
+        "xp": 40,
+        "masteryBoost": 10,
+        "title": "Arena Pioneer"
+      },
+      "dialogue": {
+        "offered": "Get familiar with the metropolis of structure! Visit Market Academy, Structure Observatory, Structure Lab, Trend Stadium, Breakout Zone, and Chart Theater.",
+        "in_progress": "Walk the avenues of Market Arena! Check in at all major learning facilities and arenas to map out the district.",
+        "ready_to_claim": "District mapped! You have explored every corner of Market Arena. Claim your Pioneer commendation.",
+        "completed": "You know the entire district layout. Use each facility regularly to hone your market structure instincts."
+      }
+    },
+    {
+      "id": "market_structure_master",
+      "title": "Market Structure Master",
+      "giver": "mentor_market",
+      "giverName": "Market Mentor",
+      "description": "Complete the advanced comprehensive trial combining swing analysis, trend transitions, breakouts, and fakeout recognition.",
+      "category": "mastery",
+      "objective": {
+        "type": "market_master_complete",
+        "target": 1,
+        "label": "Mastery Trial Completed"
+      },
+      "reward": {
+        "xp": 50,
+        "masteryBoost": 15,
+        "title": "Market Structure Master"
+      },
+      "dialogue": {
+        "offered": "This is the final trial of Market Arena. You must combine swing identification, trend transitions, range breakouts, and fakeout defenses in a comprehensive multi-step trial.",
+        "in_progress": "Visit the Market Mentor terminal in Market Plaza or the Market Scenario Arena to execute the full trial.",
+        "ready_to_claim": "Mastery trial passed with flying colors! You have conquered market structure and the flow of price.",
+        "completed": "You are an officially certified Market Structure Master of Strativo World. Wear your title with pride!"
+      }
+    }
+  ]
+}
